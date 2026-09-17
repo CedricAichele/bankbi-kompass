@@ -4,7 +4,7 @@
 - Website-Ziel: https://cedricaichele.github.io/bankbi-kompass/
 - Stand: 17. September 2026
 - Status: lokal geprüft; nicht gepusht und nicht veröffentlicht.
-- Branch: main. Commit wird nach Abschluss aller lokalen Prüfungen eingetragen.
+- Branch: main. Anwendungscommit: c0fef2f (Build BankBI Kompass reference workspace with verified demo screenshots). Ein nachfolgender Dokumentationscommit hält dieses Prüfergebnis fest.
 
 ## Konkreter Blocker
 
@@ -21,5 +21,7 @@ Der GitHub-Connector ist als CedricAichele verbunden, liefert für das Zielrepos
 ## Technische Vorbereitung
 
 Vite-Basis /bankbi-kompass/, HashRouter, statischer dist-Build. Der vorhandene Workflow prüft TypeScript, Tests, strikte Inhalte und Repository-Vertraulichkeit; danach baut er und deployt main über die offiziellen Pages-Actions. Pull Requests werden geprüft, aber nicht veröffentlicht.
+
+Prüfergebnis am 17.09.2026: TypeScript erfolgreich, 66 Tests erfolgreich, 228 Inhalte strikt gültig, Repository-Scan ohne Treffer, Produktionsbuild erfolgreich, npm audit mit 0 bekannten Schwachstellen.
 
 Lokale Prüfungen und bekannte Grenzen: [docs/QUALITAETSBERICHT.md](docs/QUALITAETSBERICHT.md). Eine erfolgreiche lokale Vorschau ist kein Nachweis eines erfolgreichen öffentlichen Deployments. Die Online-Anwendung wurde nicht als veröffentlichter Build geprüft.
