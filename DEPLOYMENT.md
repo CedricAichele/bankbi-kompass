@@ -1,27 +1,33 @@
-# Deployment
+# Start und Veröffentlichung
 
+## Lokal starten
+
+Im Projektordner `start-bankbi-kompass.bat` doppelklicken und das Fenster offen lassen. Anschließend [BankBI Kompass](http://127.0.0.1:4173/bankbi-kompass/) öffnen. Voraussetzung: Node.js 22.18 oder neuer. Fehlende Abhängigkeiten und ein fehlender Build werden automatisch erstellt.
+
+Der lokale Server wurde gestartet. Startseite, Power BI, Excel, IDA, typische Aufgaben, Suche sowie ein vorhandenes Beispielbild mit Vergrößerung wurden im Browser geprüft. Es wurden keine neuen Anwendungsinhalte oder Funktionen ergänzt.
+
+## Veröffentlichungsstatus
+
+- Origin: https://github.com/CedricAichele/bankbi-kompass.git
 - Repository-Ziel: https://github.com/CedricAichele/bankbi-kompass
 - Website-Ziel: https://cedricaichele.github.io/bankbi-kompass/
-- Stand: 17. September 2026
-- Status: lokal geprüft; nicht gepusht und nicht veröffentlicht.
-- Branch: main. Anwendungscommit: c0fef2f (Build BankBI Kompass reference workspace with verified demo screenshots). Ein nachfolgender Dokumentationscommit hält dieses Prüfergebnis fest.
+- Nicht gepusht, nicht veröffentlicht; öffentliche Website nicht als Deployment geprüft.
+- Der verfügbare Browser ist bei GitHub abgemeldet und zeigt für das Repository 404. Ob es fehlt oder privat ist, lässt sich so nicht feststellen. Bei dieser Anmeldegrenze wurde gestoppt.
+- Vorhandene Anwendungs- und Dokumentationscommits bleiben erhalten.
 
-## Konkreter Blocker
+## Hier muss Cedric manuell übernehmen
 
-Der GitHub-Connector ist als CedricAichele verbunden, liefert für das Zielrepository aber 404. Auch Git ls-remote meldet Repository not found. Der tatsächliche Browseraufruf zeigt GitHubs 404-Seite und einen Sign-in-Link. Aus 404 lässt sich nicht unterscheiden, ob das Repository fehlt oder für die vorhandene Autorisierung nicht freigegeben ist. Es wurde keine Anmeldung, 2FA oder Sicherheitsbestätigung automatisiert.
+1. [Bei GitHub anmelden](https://github.com/login), Konto **CedricAichele** verwenden und gegebenenfalls 2FA selbst abschließen.
+2. Falls das Repository noch fehlt: [New repository](https://github.com/new) öffnen. Owner **CedricAichele**, Name **bankbi-kompass**, Sichtbarkeit **Public**. Kein README, keine Lizenz und keine .gitignore hinzufügen. **Create repository** anklicken. Ein bereits vorhandenes Repository nicht erneut anlegen.
+3. Den lokalen Projektordner im Explorer öffnen und **Im Terminal öffnen** wählen. In PowerShell ausführen:
 
-## Vom Betreiber zu erledigen
+   ```powershell
+   git -c safe.directory="$($PWD.Path.Replace('\','/'))" push -u origin main
+   ```
 
-1. Bei GitHub anmelden und gegebenenfalls 2FA selbst abschließen.
-2. CedricAichele/bankbi-kompass anlegen, falls es noch nicht existiert, oder dem verwendeten Git-/Connector-Zugang dieses Repository freigeben. Keine vorhandenen Inhalte überschreiben.
-3. Öffentliche Betreiber- und Hostingangaben vervollständigen.
-4. In den Repository-Einstellungen Pages als GitHub-Actions-Deployment konfigurieren. Änderungen auf main pushen, nachdem ein bestehendes Remote geprüft und gegebenenfalls abgeglichen wurde.
-5. Den Workflow bis zum erfolgreichen Pages-Deployment verfolgen und anschließend die Website tatsächlich im Browser prüfen.
+   Falls Git eine Anmeldung öffnet, diese selbst abschließen. Bei einer Ablehnung wegen vorhandener Remote-Commits nicht mit Force-Push überschreiben.
+4. Im Repository **Settings → Pages → Build and deployment → Source → GitHub Actions** auswählen.
+5. **Actions → Prüfen und auf GitHub Pages veröffentlichen → Run workflow → Branch: main → Run workflow** anklicken. Auf erfolgreiche Jobs **build** und **deploy** warten. Der vorhandene Workflow erledigt die Prüfungen und Veröffentlichung.
+6. [Die veröffentlichte Website](https://cedricaichele.github.io/bankbi-kompass/) öffnen und Startseite, Navigation sowie ein Beispielbild prüfen.
 
-## Technische Vorbereitung
-
-Vite-Basis /bankbi-kompass/, HashRouter, statischer dist-Build. Der vorhandene Workflow prüft TypeScript, Tests, strikte Inhalte und Repository-Vertraulichkeit; danach baut er und deployt main über die offiziellen Pages-Actions. Pull Requests werden geprüft, aber nicht veröffentlicht.
-
-Prüfergebnis am 17.09.2026: TypeScript erfolgreich, 66 Tests erfolgreich, 228 Inhalte strikt gültig, Repository-Scan ohne Treffer, Produktionsbuild erfolgreich, npm audit mit 0 bekannten Schwachstellen.
-
-Lokale Prüfungen und bekannte Grenzen: [docs/QUALITAETSBERICHT.md](docs/QUALITAETSBERICHT.md). Eine erfolgreiche lokale Vorschau ist kein Nachweis eines erfolgreichen öffentlichen Deployments. Die Online-Anwendung wurde nicht als veröffentlichter Build geprüft.
+Technisch vorbereitet: Vite-Basis `/bankbi-kompass/`, HashRouter, statischer Build und Pages-Workflow. Frühere umfassende Prüfergebnisse stehen im [Qualitätsbericht](docs/QUALITAETSBERICHT.md); sie wurden für diese reine Start- und Übergabeänderung nicht erneut ausgeführt.
