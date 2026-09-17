@@ -1,0 +1,16 @@
+node_modules/
+dist/
+coverage/
+*.local
+.env*
+!.env.example
+.qa/
+.npm-cache/
+.local-demo/
+working-assets/
+*.pbix
+*.pbit
+*.xlsx
+*.xlsm
+*.xls
+~$*
