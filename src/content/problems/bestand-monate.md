@@ -4,38 +4,72 @@
   "slug": "bestand-monate",
   "titel": "Bestand wird über Monate aufsummiert",
   "bereich": "Power BI",
-  "werkzeuge": ["Power BI"],
+  "werkzeuge": [
+    "Power BI"
+  ],
   "kategorie": "Fehler",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Filtere auf einen fachlich festgelegten Stichtag, bevor du Bestände addierst.",
   "ort": "Power BI → Kontrolltabelle mit Stichtag, Schlüssel und Measure",
-  "tags": ["Bestand wird über Monate aufsummiert"],
-  "synonyme": ["bestand wird aufsummiert"],
-  "verwandteThemen":
-    ["aktueller-stichtag", "bestand-bewegung", "summe-zu-hoch"],
-  "kontexte": ["Reporting"],
+  "tags": [
+    "Bestand wird über Monate aufsummiert"
+  ],
+  "synonyme": [
+    "bestand wird aufsummiert",
+    "Stichtage wurden addiert",
+    "Bestand erscheint mit der Zahl ausgewählter Monate vervielfacht."
+  ],
+  "verwandteThemen": [
+    "aktueller-stichtag",
+    "bestand-bewegung",
+    "summe-zu-hoch"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-17",
+  "zuletztGeprueft": "2026-09-18",
   "art": "problem",
   "quellen": [],
-  "screenshots": [],
+  "screenshots": []
 }
 ---
 
 ## Wann brauche ich das?
 
-Eine Jahreskarte ist viel höher als jeder Monatsbestand.
+Bestand erscheint mit der Zahl ausgewählter Monate vervielfacht.
+
+## Symptom
+
+Bestand erscheint mit der Zahl ausgewählter Monate vervielfacht.
+
+## Mögliche Ursachen
+
+Eine Zustandsgröße wurde über die Zeit summiert.
+
+## Schnelltest
+
+Zeige den Bestand getrennt nach Stichtag.
 
 ## Schritte
 
-1. Stichtag in eine Kontrolltabelle aufnehmen.
-2. Prüfen, ob dasselbe Konto in mehreren Monaten enthalten ist.
-3. Gewünschten Stichtag festlegen oder ein explizites Letztbestandsmeasure verwenden.
+1. Erstelle eine Kopie der Auswertung oder beschränke sie auf synthetische Testdaten. Notiere den fehlerhaften Wert.
+2. Zeige den Bestand getrennt nach Stichtag.
+3. Wähle einen fachlich vollständigen Stichtag oder definiere ein ausdrücklich gewünschtes Durchschnittsmaß. Kein YTD über Monatsbestände.
+4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
 
 ## Beispiel
 
-K001 mit 100 im Januar und 120 im Februar → Februarbestand 120.
+Januar 100, Februar 104, März 101: Märzbestand 101; Summe 305 ist kein aktueller Bestand.
+
+## Ergebnis
+
+Ergebnis gegen genau die Quelle des gewählten Stichtags prüfen.
 
 ## Typischer Fehler
 
-Mit DISTINCT auf Beträgen entdoppeln; zwei Konten dürfen denselben Betrag besitzen.
+Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten, Modell oder Formel bestehen.
+
+## Plausibilitätscheck
+
+Ergebnis gegen genau die Quelle des gewählten Stichtags prüfen.

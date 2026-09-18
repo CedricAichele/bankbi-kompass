@@ -2,13 +2,13 @@
 
 Schnelles Arbeits- und Nachschlagewerk für Power BI, Excel und allgemeine IDA-/Reportingkonzepte. Entwickelt von Cedric Aichele. Ziel: während der Arbeit eine passende Antwort oder Vorgehensweise in 20–60 Sekunden finden.
 
-## Stand des Umbaus
+## Stand · 18. September 2026
 
-228 kurze Einträge: 196 Referenzen, 9 Problemlösungen und 23 werkzeugübergreifende Aufgaben. Nach primärem Bereich: 95 Power BI, 52 Excel, 47 IDA, 31 werkzeugübergreifend und 3 Datenanalyse. Die Startseite bietet Suche mit direkten Vorschlägen, häufig gebrauchte Funktionen und drei Werkzeugbereiche. Tätigkeitsgruppen ersetzen Kurskapitel. Sieben Kontext-Tags ersetzen lange Bankprozessseiten. Es gibt keinen Lernpfad und keine Fortschrittsanzeige.
+272 Einträge: 219 Referenzen, 27 Problemlösungen und 26 Aufgaben. 21 Vergleichsreferenzen unterstützen die Werkzeugwahl; der Grundlagenzugang bündelt 27 Einträge einschließlich vorhandener, zusätzlich zugeordneter Begriffe. Bestehende Architektur und Direktlinks bleiben erhalten.
 
-Alle Einträge enthalten Kurzantwort, Einsatzfall, Schritte, Beispiel, häufigsten Fehler und verwandte Themen. Der Markdown-Text ist auf 250 Wörter begrenzt. Die Kurzantwort steht separat in den Metadaten. Screenshots und Abbildungen sind optional und lassen sich vergrößern.
+Die Kurzantwort und Schnellansicht bleiben kompakt. Ausführliche Anleitungen dürfen mehr als drei Schritte und mehr als 250 Wörter haben. 74 Praxiseinträge enthalten Voraussetzungen, Beispieldaten, Ergebnis, Erklärung, Fehleranalyse und Plausibilitätscheck. Zusätzliche Erklärungen stehen in aufklappbaren Abschnitten. Das sichtbare Datum heißt „Stand“ und behauptet keine pauschale Laufzeitprüfung.
 
-Der Ausbau enthält 15 echte Power-BI-Screenshots, 12 echte Excel-Screenshots, 7 schematische IDA-Abbildungen und ein zusätzliches Beziehungsschema. Suchtreffer bieten eine aufklappbare Schnellansicht; die Werkzeugwahl enthält 10 interaktive Entscheidungen. Den aktuellen Veröffentlichungsstatus dokumentiert [DEPLOYMENT.md](DEPLOYMENT.md). Details zur Inhaltsmigration stehen in [docs/UMBAU.md](docs/UMBAU.md), offene IDA-Fragen und die Bildwunschliste in [TODO.md](TODO.md).
+16 echte Power-BI- und 13 echte Excel-Aufnahmen sowie 8 gekennzeichnete Schemata liegen lokal vor. Dieser Durchlauf ergänzt den Excel-Tabellendialog und einen Power-BI-DAX-Ergebnisnachweis. Grenzen und tatsächlich ausgeführte Beispiele stehen im [Qualitätsbericht](docs/QUALITAETSBERICHT.md), Bildherkunft im [Bildnachweis](docs/BILDNACHWEIS.md), offene Punkte in [TODO.md](TODO.md).
 
 ## Lokal starten und prüfen
 
@@ -33,7 +33,7 @@ npm run preview
 
 Der Build schreibt die statische Website nach `dist/`. `npm ci` verwendet das vorhandene Lockfile; `npm run test:watch` startet den Test-Watchmodus. Bei Windows-Zertifikatsproblemen kann `$env:NODE_OPTIONS = "--use-system-ca"` den System-Zertifikatsspeicher aktivieren, ohne die Zertifikatsprüfung auszuschalten.
 
-Die Tests prüfen Suchpriorität, Synonyme, Tippfehler, Filter, Inhaltsstruktur, Querverweise, Werkzeugkatalog, alte Direktlinks und Favoriten, Navigation, Kopieren und Bilddialog. Die automatisierten Tests führen Formelbeispiele nicht in Office aus. Die illustrierten Excel-Funktionen sowie SUM und die Personendimension wurden zusätzlich in den echten Desktop-Anwendungen mit synthetischen Daten geprüft; das ist keine Laufzeitprüfung aller 228 Einträge. Browserprüfungen ergänzen die automatisierten Tests; das zeitliche Produktziel ist noch nicht durch Nutzertests gemessen.
+Die Tests prüfen Suche, Synonyme, Filter, Inhaltsschema, Querverweise, Kataloge, Direktlinks, Favoriten, Navigation, Kopieren und Bilddialog. Office-/DAX-Laufzeitprüfungen sind davon getrennt dokumentiert. Das Suchziel 20–60 Sekunden ist noch nicht durch Nutzertests gemessen.
 
 ## Aufbau
 
@@ -51,12 +51,11 @@ src/components/            Listen, Markdown, Code und Bilddialog
 src/lib/                   Suche, Favoriten, Entscheidungen, Inhaltsprüfung
 scripts/check-content.ts   Strikte Prüfung einschließlich Bildpfaden
 public/images/             Lokale Abbildungen
-docs/archive-v1/           Alte Inhalte, nicht im Website-Bundle
 ```
 
-Die ursprünglichen Texte bleiben im Archiv nachvollziehbar. Sie werden nicht durchsucht oder ausgeliefert. Frühere Prozess-IDs führen zu konkreten Aufgaben; die Lernpfadroute wurde entfernt. Gültige Favoriten bleiben erhalten, umbenannte IDs werden beim Laden zugeordnet.
+Das ungenutzte Verzeichnis docs/archive-v1 wurde entfernt. Frühere Texte bleiben in der Git-Historie nachvollziehbar. Alte Direktlinks und gültige Favoriten werden weiterhin über die bestehende ID-Zuordnung unterstützt.
 
-## Einen kurzen Eintrag ergänzen
+## Einen Eintrag ergänzen
 
 Datei unter `src/content/articles/`, `problems/` oder `tasks/` anlegen. Das folgende Frontmatter ist eine Vorlage; IDs und Quellen passend ersetzen:
 
@@ -128,8 +127,14 @@ Unabhängiges Wissensprojekt, keine offizielle Anwendung eines Kreditinstituts. 
 
 Nur generische oder vollständig synthetische Beispiele verwenden: keine Arbeitgebernamen, Logos, realen Kunden, Kennzahlen, internen URLs, Feldnamen, Datenmodelle, Tickets oder Prozesse. IDA-Einträge erklären allgemeine Reportingkonzepte; unbekannte Bedienelemente, Syntax und Betriebsabläufe bleiben ausdrücklich TODO. Öffentliche Quellen werden direkt am Eintrag verlinkt.
 
-Die Inhaltsprüfung untersucht Metadaten und Markdown auf verdächtige Muster, prüft Verweise, Länge und Bilddateien. `--strict` macht Warnungen zu Fehlern. Treffer werden ohne Ausgabe des verdächtigen Werts gemeldet. Eine Musterprüfung kann vertrauliche Inhalte übersehen; eine redaktionelle Prüfung bleibt erforderlich.
+Die Inhaltsprüfung untersucht Metadaten und Markdown auf verdächtige Muster, prüft Verweise, Kurzantworten, Praxisabschnitte und Bilddateien. `--strict` macht Warnungen zu Fehlern. Treffer werden ohne Ausgabe des verdächtigen Werts gemeldet. Eine Musterprüfung kann vertrauliche Inhalte übersehen; eine redaktionelle Prüfung bleibt erforderlich.
 
 ## Veröffentlichung
 
 Ziel ist GitHub Pages unter dem Repository CedricAichele/bankbi-kompass. Der Actions-Workflow prüft TypeScript, Tests, Inhalte und Repository-Vertraulichkeit vor dem Build. Er veröffentlicht ausschließlich main. Status, Grenzen und nächste Schritte: [DEPLOYMENT.md](DEPLOYMENT.md). Hash-Routen sind nicht einzeln vorgerendert; Social-Metadaten und Suchmaschinenindexierung bleiben begrenzt.
+
+## Lokale Vertraulichkeitsprüfung
+
+Optional privacy.local.example.txt als privacy.local.txt kopieren und eigene Sperrbegriffe zeilenweise eintragen. Diese Datei bleibt ignoriert; persönliche Begriffe gehören nicht in den öffentlichen Scanner. Die generischen Regeln prüfen unter anderem Token-, IBAN-, Kontakt-, Pfad- und interne Adressmuster. Office-/PBIX-Dateien, CSV/TSV-Exporte, Datenbanken und temporäre Dateien sind ausgeschlossen. Der Check untersucht den aktuellen Veröffentlichungsbestand, nicht die Git-Historie und nicht den Bildinhalt per OCR. Bilder zusätzlich visuell prüfen.
+
+Impressum und Datenschutz sind getrennte Seiten. Ausstehende Betreiberangaben sind sichtbar als TODO markiert und müssen durch den Betreiber ergänzt werden. Die Datenschutzerklärung berücksichtigt GitHub Pages und lokalen Favoritenspeicher.

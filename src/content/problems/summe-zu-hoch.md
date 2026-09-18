@@ -4,44 +4,79 @@
   "slug": "summe-zu-hoch",
   "titel": "Falsche Summe prüfen",
   "bereich": "Power BI",
-  "werkzeuge": ["Power BI"],
+  "werkzeuge": [
+    "Power BI"
+  ],
   "kategorie": "Fehler",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Prüfe zuerst Zeilenebene, Mehrfachtreffer und Stichtage, bevor du die Formel änderst.",
   "ort": "Power Query und Power BI → kleine Kontrolltabelle",
-  "tags": ["Falsche Summe prüfen", "Bestandsanalyse", "Reporting"],
-  "synonyme": ["falsche summe", "Bestand addieren"],
-  "verwandteThemen":
-    [
-      "granularitaet",
-      "eins-zu-viele",
-      "dubletten",
-      "filterkontext",
-      "ida-aggregation",
-    ],
-  "kontexte": ["Bestandsanalyse", "Reporting"],
+  "tags": [
+    "Falsche Summe prüfen",
+    "Bestandsanalyse",
+    "Reporting"
+  ],
+  "synonyme": [
+    "falsche summe",
+    "Bestand addieren",
+    "Summe ist zu hoch",
+    "Die Summe ist höher als in der Quelle.",
+    "summe stimmt nicht"
+  ],
+  "verwandteThemen": [
+    "granularitaet",
+    "eins-zu-viele",
+    "dubletten",
+    "filterkontext",
+    "ida-aggregation"
+  ],
+  "kontexte": [
+    "Bestandsanalyse",
+    "Reporting"
+  ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-16",
+  "zuletztGeprueft": "2026-09-18",
   "art": "problem",
   "quellen": [],
-  "screenshots": [],
+  "screenshots": []
 }
 ---
 
 ## Wann brauche ich das?
 
-Die Gesamtsumme ist höher als die erwartete Kontrollsumme.
+Die Summe ist höher als in der Quelle.
+
+## Symptom
+
+Die Summe ist höher als in der Quelle.
+
+## Mögliche Ursachen
+
+Mehrere Stichtage oder durch einen Merge vervielfachte Kontenzeilen.
+
+## Schnelltest
+
+Zeige Kontonummer, Stichtag und Betrag in einer Tabelle; zähle Zeilen pro Kombination.
 
 ## Schritte
 
-1. Auf einen Stichtag und wenige Schlüssel begrenzen.
-2. Zeilen und Summe vor/nach Join vergleichen.
-3. Prüfen, ob Plan oder Bestand pro Detailzeile wiederholt wird.
+1. Erstelle eine Kopie der Auswertung oder beschränke sie auf synthetische Testdaten. Notiere den fehlerhaften Wert.
+2. Zeige Kontonummer, Stichtag und Betrag in einer Tabelle; zähle Zeilen pro Kombination.
+3. Filtere zuerst einen Stichtag. Vergleiche anschließend Zeilenzahl und Summe vor und nach dem letzten Merge. Korrigiere dessen Schlüssel oder rechte Granularität.
+4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
 
 ## Beispiel
 
-100 Euro treffen nach einem Join auf zwei Detailzeilen → sichtbare Summe 200 Euro, obwohl es nur einen Ausgangsbetrag gibt.
+K001 steht am gleichen Stichtag zweimal mit 120: angezeigt 240, fachlich erwartet 120.
+
+## Ergebnis
+
+Ein Konto je Stichtag und dieselbe Kontrollsumme wie vor dem Merge.
 
 ## Typischer Fehler
 
-DISTINCT auf Beträge anwenden: Zwei fachlich verschiedene Konten können denselben Betrag besitzen.
+Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten, Modell oder Formel bestehen.
+
+## Plausibilitätscheck
+
+Ein Konto je Stichtag und dieselbe Kontrollsumme wie vor dem Merge.

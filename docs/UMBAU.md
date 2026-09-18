@@ -1,3 +1,5 @@
+> Historischer Umbauvermerk. Update 18.09.2026: Das damals aufbewahrte Archiv wurde inzwischen entfernt; der aktuelle Stand steht im Qualitätsbericht.
+
 # Umbau zum Arbeits- und Nachschlagewerk
 
 Historisches Protokoll des ersten Strukturumbaus. Aktueller Ausbau und Prüfergebnisse: [QUALITAETSBERICHT.md](QUALITAETSBERICHT.md). Die unten genannten 120 Inhalte und 39 Tests beschreiben den damaligen Zwischenstand.

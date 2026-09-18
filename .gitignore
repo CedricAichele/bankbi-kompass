@@ -14,3 +14,16 @@ working-assets/
 *.xlsm
 *.xls
 ~$*
+privacy.local.txt
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.xlsb
+*.accdb
+*.mdb
+*.sqlite
+*.sqlite3
+*.db
+*.tmp
+*.log

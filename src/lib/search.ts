@@ -25,6 +25,7 @@ export function searchContent(
     (x) =>
       (!filters.bereich ||
         x.bereich === filters.bereich ||
+        (filters.bereich === "Datenanalyse" && x.tags.includes("Grundbegriff")) ||
         x.werkzeuge.includes(filters.bereich as "Power BI")) &&
       (!filters.schwierigkeit || x.schwierigkeit === filters.schwierigkeit) &&
       (!filters.kategorie ||

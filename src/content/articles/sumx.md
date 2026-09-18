@@ -4,43 +4,77 @@
   "slug": "sumx",
   "titel": "SUMX: zeilenweise rechnen und summieren",
   "bereich": "Power BI",
-  "werkzeuge": ["Power BI"],
+  "werkzeuge": [
+    "Power BI"
+  ],
   "kategorie": "DAX & Measures",
   "schwierigkeit": "Fortgeschritten",
   "kurzbeschreibung": "SUMX berechnet einen Ausdruck für jede sichtbare Tabellenzeile und addiert die Ergebnisse.",
   "ort": "Power BI → Neues Measure",
-  "tags":
-    ["SUMX: zeilenweise rechnen und summieren", "Bestandsanalyse", "Reporting"],
+  "tags": [
+    "SUMX: zeilenweise rechnen und summieren",
+    "Bestandsanalyse",
+    "Reporting"
+  ],
   "synonyme": [],
-  "verwandteThemen": ["sum", "granularitaet"],
-  "kontexte": ["Bestandsanalyse", "Reporting"],
+  "verwandteThemen": [
+    "sum",
+    "granularitaet"
+  ],
+  "kontexte": [
+    "Bestandsanalyse",
+    "Reporting"
+  ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-16",
+  "zuletztGeprueft": "2026-09-18",
   "art": "artikel",
   "quellen": [],
   "screenshots": [],
+  "praxis": true,
+  "kurzformel": "```dax\nPositionswert = SUMX ( Positionen, Positionen[Menge] * Positionen[Preis] )\n```"
 }
 ---
 
 ## Wann brauche ich das?
 
-Ein Betrag entsteht erst aus Menge × Einzelwert je Zeile.
+Ein Betrag muss zuerst je Zeile berechnet und anschließend summiert werden.
+
+## Voraussetzungen
+
+Power BI Desktop; Tabelle Positionen per Start → Daten eingeben anlegen.
 
 ## Schritte
 
-1. Passende Detailtabelle wählen.
-2. Zeilenausdruck in SUMX definieren.
-3. Ergebnis an zwei Zeilen von Hand nachrechnen.
+1. Erstelle Positionen mit den Spalten Vorgang, Menge und Preis aus dem Beispiel. Setze Menge und Preis auf Zahl.
+2. Wähle Modellierung → Neues Measure und gib den vollständigen Ausdruck ein.
+3. Bestätige mit Enter. Ziehe Vorgang und Positionswert in ein Tabellenvisual.
+4. Kontrolliere die beiden Zeilen: V1 = 20, V2 = 60.
+5. Schalte die Gesamtsumme ein beziehungsweise füge eine Karte hinzu: 80.
+6. Filtere auf V1 und prüfe 20. Entferne danach den Filter.
 
 ## Beispiel
 
+| Vorgang | Menge | Preis |
+| --- | --- | --- |
+| V1 | 2 | 10 |
+| V2 | 3 | 20 |
+
 ```dax
-Gesamtwert =
-SUMX ( Demo_Position, Demo_Position[MENGE] * Demo_Position[PREIS_EUR] )
+Positionswert = SUMX ( Positionen, Positionen[Menge] * Positionen[Preis] )
 ```
 
-2 × 10 + 3 × 20 = 80 Euro.
+## Ergebnis
+
+20 + 60 = 80. SUM(Menge) × SUM(Preis) wäre dagegen 5 × 30 = 150 und fachlich falsch.
+
+## Warum funktioniert das?
+
+Argument 1 bestimmt die Zeilen. Argument 2 wird im Zeilenkontext jeder Zeile ausgewertet. SUMX addiert anschließend diese Einzelresultate.
 
 ## Typischer Fehler
 
-SUM(Menge) × SUM(Preis) wäre hier 5 × 30 = 150 und ist eine andere Rechnung.
+**Symptom:** 150 statt 80. **Ursache:** Summen statt zusammengehöriger Zeilenwerte multipliziert. **Lösung:** SUMX oder vorberechnete Positionsspalte verwenden.
+
+## Plausibilitätscheck
+
+Multipliziere beide Zeilen von Hand und teste den Filter V1.

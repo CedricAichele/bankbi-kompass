@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, within } from "@testing-library/react";
 import App from "../App";
-import { imageSchema, parseContent, stepsOf } from "../content/schema";
+import { imageSchema, parseContent, stepsOf, sectionsOf } from "../content/schema";
 import { byId } from "../content";
 import { ReferenceImage } from "../components/ReferenceImage";
 
@@ -40,7 +40,7 @@ describe("Screenshot-Anleitungen", () => {
         "---\n" +
           JSON.stringify({
             ...item,
-            screenshots: [{ ...picture, schritt: 4 }],
+            screenshots: [{ ...picture, schritt: stepsOf(sectionsOf(item.body).Schritte).length + 1 }],
           }) +
           "\n---\n" +
           item.body,
@@ -111,7 +111,7 @@ describe("Screenshot-Anleitungen", () => {
     window.location.hash = "/wissen/beziehungen";
     render(<App />);
     const step = await screen.findByRole("region", { name: "Schritt 2" });
-    const realStep = await screen.findByRole("region", { name: "Schritt 3" });
+    const realStep = await screen.findByRole("region", { name: "Schritt 5" });
     expect(
       within(realStep).getByRole("button", { name: /Abbildung vergrößern/ }),
     ).toBeVisible();

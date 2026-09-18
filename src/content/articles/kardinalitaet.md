@@ -4,25 +4,38 @@
   "slug": "kardinalitaet",
   "titel": "Kardinalität prüfen: 1:1, 1:n oder n:m",
   "bereich": "Power BI",
-  "werkzeuge": ["Power BI"],
+  "werkzeuge": [
+    "Power BI"
+  ],
   "kategorie": "Datenmodell",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Kardinalität beschreibt, ob ein Schlüssel auf jeder Seite einmal oder mehrfach vorkommt. Sie ist keine Einstellung zum Verbergen von Dubletten.",
   "ort": "Power BI Desktop → Modellansicht",
-  "tags": ["Kardinalität prüfen: 1:1, 1:n oder n:m"],
-  "synonyme": [],
-  "verwandteThemen": ["eins-zu-viele", "beziehung-eins-eins", "beziehung-nm"],
-  "kontexte": ["Reporting"],
+  "tags": [
+    "Kardinalität prüfen: 1:1, 1:n oder n:m",
+    "Grundbegriff"
+  ],
+  "synonyme": [
+    "mehr zeilen nach join"
+  ],
+  "verwandteThemen": [
+    "eins-zu-viele",
+    "beziehung-eins-eins",
+    "beziehung-nm"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-17",
+  "zuletztGeprueft": "2026-09-18",
   "art": "artikel",
-  "quellen":
-    [
-      "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-relationships-understand",
-    ],
-  "screenshots": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-relationships-understand"
+  ],
+  "screenshots": []
 }
 ---
+
 
 ## Wann brauche ich das?
 
@@ -41,3 +54,19 @@ Person P001 einmal in Personen, zweimal in Konten → 1:n. Wiederholte Monatsbes
 ## Typischer Fehler
 
 Ein nicht eindeutiges Personenattribut ungeprüft auf die 1-Seite setzen.
+
+## Einfach erklärt
+
+Die Kardinalität beschreibt die möglichen Trefferzahlen zwischen zwei Seiten.
+
+## Mini-Beispiel
+
+Person → Konten: 1:n. Personen ↔ gemeinsame Konten können n:m erfordern. 1:1 benötigt Eindeutigkeit auf beiden Seiten.
+
+## Warum ist das wichtig?
+
+Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Die gewünschte Kardinalität im Dialog wählen, ohne die Daten zu prüfen.
+
+## Wo taucht das auf?
+
+Beziehungsdialog, Join-Prüfung und Datenmodell.

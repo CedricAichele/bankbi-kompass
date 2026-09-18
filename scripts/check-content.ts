@@ -1,6 +1,6 @@
 import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
-import { parseContent, validateLinks } from "../src/content/schema";
+import { parseContent, validateLinks, sectionsOf } from "../src/content/schema";
 import { scanContent } from "../src/lib/content-safety";
 import { toolsCatalog, frequent } from "../src/content/catalog";
 const files = ["articles", "problems", "tasks"].flatMap((dir) =>
@@ -18,11 +18,21 @@ for (const id of [
   ),
 ])
   if (!ids.has(id)) throw new Error(`Ungültiger Katalogeintrag: ${id}`);
+for (const tool of toolsCatalog)
+  for (const group of tool.groups)
+    if (!group.items.length) throw new Error(`Leere Kataloggruppe: ${tool.name}/${group.title}`);
+for (const [label, selected] of [
+  ["Probleme", items.filter((x) => x.art === "problem")],
+  ["Aufgaben", items.filter((x) => x.art === "aufgabe")],
+  ["Werkzeugwahl", items.filter((x) => x.kategorie === "Werkzeugwahl")],
+  ["Grundbegriffe", items.filter((x) => x.bereich === "Datenanalyse" || x.tags.includes("Grundbegriff"))],
+] as const) if (!selected.length) throw new Error(`Leerer Bereich: ${label}`);
 for (const [i, item] of items.entries()) {
-  if (item.body.split(/\s+/).length > 250)
-    throw new Error(
-      `${item.id}: Schnellreferenz auf höchstens 250 Wörter kürzen.`,
-    );
+  const sections = sectionsOf(item.body);
+  if (item.praxis && (!sections.Ergebnis || !sections["Warum funktioniert das?"] || !sections["Plausibilitätscheck"]))
+    throw new Error(`${item.id}: Vertiefte Anleitung benötigt Ergebnis, Erklärung und Plausibilitätscheck.`);
+  if ((frequent.includes(item.id) || item.art === "aufgabe") && !sections.Ergebnis)
+    console.warn(`Redaktioneller Hinweis ${item.id}: konkretes Ergebnis als eigenen Abschnitt ergänzen.`);
   for (const image of item.screenshots) {
     if (image.status === "todo") continue;
     const file = join("public", image.src!);

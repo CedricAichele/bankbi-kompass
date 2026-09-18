@@ -29,21 +29,26 @@ export function Reference({
   const sections = sectionsOf(item.body);
   const illustrated = item.screenshots.length > 0;
   const path =
-    item.art === "aufgabe"
+    item.art === "problem"
+      ? "/probleme"
+      : item.art === "aufgabe"
       ? "/aufgaben"
       : item.kategorie === "Werkzeugwahl"
         ? "/werkzeugwahl"
         : item.bereich === "Datenanalyse"
           ? "/bereich/datenanalyse"
-          : "/bereich/" +
-            toolsCatalog.find((t) => t.name === item.bereich)?.slug;
+          : item.bereich === "Werkzeugübergreifend"
+            ? "/suche"
+            : "/bereich/" + toolsCatalog.find((t) => t.name === item.bereich)?.slug;
   return (
     <>
       <div className="breadcrumbs">
         <Link to="/">Start</Link>
         <ChevronRight size={13} />
         <Link to={path}>
-          {item.art === "aufgabe"
+          {item.art === "problem"
+            ? "Problemlösungen"
+            : item.art === "aufgabe"
             ? "Typische Aufgaben"
             : item.kategorie === "Werkzeugwahl"
               ? "Werkzeugwahl"
@@ -90,10 +95,13 @@ export function Reference({
         </div>
         {item.bereich === "IDA" && (
           <p className="ida-label">
-            Allgemeines Reportingprinzip · konkrete IDA-Bedienung nicht belegt ·{" "}
+            Allgemeines Reportingprinzip · konkrete IDA-Bedienung nicht öffentlich belegt ·{" "}
             <Link to="/ida-hinweise">TODO ansehen</Link>
           </p>
         )}
+        {["Voraussetzungen", "Symptom", "Schnelltest"].filter((name) => sections[name]).map((name) => (
+          <section className="practice-section" key={name}><h2>{name}</h2><Markdown text={sections[name]} /></section>
+        ))}
         <div
           className={
             "reference-grid" + (illustrated ? " illustrated-reference" : "")
@@ -133,6 +141,12 @@ export function Reference({
             <Markdown text={sections.Beispiel} />
           </section>
         </div>
+        {["Ergebnis", "Plausibilitätscheck"].filter((name) => sections[name]).map((name) => (
+          <section className="practice-section" key={name}><h2>{name}</h2><Markdown text={sections[name]} /></section>
+        ))}
+        {Object.entries(sections).filter(([name]) => !["Wann brauche ich das?", "Schritte", "Beispiel", "Typischer Fehler", "Vergleich", "Voraussetzungen", "Symptom", "Schnelltest", "Ergebnis", "Plausibilitätscheck"].includes(name)).map(([name, text]) => (
+          <details className="practice-details" key={name}><summary>{name}</summary><Markdown text={text} /></details>
+        ))}
         <aside className="pitfall">
           <Lightbulb size={21} />
           <div>
@@ -173,7 +187,7 @@ export function Reference({
         )}
         <div className="reference-footer">
           <span>
-            Geprüft:{" "}
+            Stand:{" "}
             {new Date(item.zuletztGeprueft + "T12:00:00").toLocaleDateString(
               "de-DE",
             )}{" "}

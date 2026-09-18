@@ -75,6 +75,9 @@ export const schema = z
     ]),
     zuletztGeprueft: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     art: z.enum(["artikel", "problem", "aufgabe"]),
+    praxis: z.boolean().default(false),
+    schnellschritte: z.array(z.string().min(10)).min(2).max(4).optional(),
+    kurzformel: z.string().max(600).optional(),
     screenshots: z.array(imageSchema).default([]),
     quellen: z.array(z.string().url()).default([]),
   })

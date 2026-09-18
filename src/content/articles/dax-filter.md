@@ -4,40 +4,82 @@
   "slug": "dax-filter",
   "titel": "FILTER: eine Teilmenge bilden",
   "bereich": "Power BI",
-  "werkzeuge": ["Power BI"],
+  "werkzeuge": [
+    "Power BI"
+  ],
   "kategorie": "DAX & Measures",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "FILTER liefert eine Tabelle mit den Zeilen, die eine Bedingung erfüllen.",
   "ort": "Power BI → DAX-Formel im Measure",
-  "tags": ["FILTER: eine Teilmenge bilden", "Reporting"],
+  "tags": [
+    "FILTER: eine Teilmenge bilden",
+    "Reporting"
+  ],
   "synonyme": [],
-  "verwandteThemen": ["calculate", "countrows", "excel-filtern"],
-  "kontexte": ["Reporting"],
+  "verwandteThemen": [
+    "calculate",
+    "countrows",
+    "excel-filtern"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-16",
+  "zuletztGeprueft": "2026-09-18",
   "art": "artikel",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/dax/filter-function-dax"
+  ],
   "screenshots": [],
+  "praxis": true,
+  "kurzformel": "```dax\nEinlagenzeilen = COUNTROWS ( FILTER ( Konten, Konten[Produktgruppe] = \"Einlagen\" ) )\n```"
 }
 ---
 
 ## Wann brauche ich das?
 
-Eine weitere DAX-Berechnung benötigt eine ausdrücklich gefilterte Zeilenmenge.
+Du möchtest FILTER an einem überschaubaren Beispiel verstehen.
+
+## Voraussetzungen
+
+Tabelle Konten mit den sechs Beispielzeilen. Für RELATED zusätzlich Personen mit P001/A, P002/B, P003/A, P004/B und aktive 1:n-Beziehung zu Konten.
 
 ## Schritte
 
-1. Ausgangstabelle festlegen.
-2. Zeilenbedingung formulieren.
-3. Die resultierende Tabelle z. B. an COUNTROWS übergeben.
+1. Lege die synthetischen Tabellen an und prüfe Textschlüssel sowie numerische Beträge.
+2. Wähle Modellierung → Neues Measure.
+3. Gib die Formel aus dem Beispiel ein und bestätige mit Enter.
+4. Füge ein Tabellenvisual mit Personennummer und dem berechneten Ergebnis hinzu.
+5. Teste ungefiltert, dann mit Person P003 und Produktgruppe Einlagen.
+6. Vergleiche den Wert mit dem erwarteten Ergebnis und untersuche den beschriebenen Fehlerfall.
 
 ## Beispiel
 
+| Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
+| --- | --- | --- | --- |
+| K001 | P001 | Einlagen | 1250 |
+| K002 | P001 | Anlagen | 750 |
+| K003 | P002 | Einlagen | 2000 |
+| K004 | P003 | Kredite | 3200 |
+| K005 | P003 | Einlagen | 800 |
+| K006 | P004 | Kredite | 1000 |
+
 ```dax
-Positive Zeilen =
-COUNTROWS ( FILTER ( Demo_Bestand, Demo_Bestand[BESTAND_EUR] > 0 ) )
+Einlagenzeilen = COUNTROWS ( FILTER ( Konten, Konten[Produktgruppe] = "Einlagen" ) )
 ```
+
+## Ergebnis
+
+3
+
+## Warum funktioniert das?
+
+FILTER bekommt eine Tabelle und eine zeilenweise Bedingung. Es liefert eine Tabelle; COUNTROWS macht daraus eine skalare Anzahl.
 
 ## Typischer Fehler
 
-DAX FILTER ist keine Excel-Ausgabeliste. Einfache Spaltenfilter in CALCULATE benötigen oft keine zusätzliche FILTER-Tabelle.
+FILTER allein kann nicht als einzelner Zahlenwert in einer Karte angezeigt werden.
+
+## Plausibilitätscheck
+
+Prüfe Filter einzeln und gemeinsam. Die Ausgangssumme beträgt 9.000 und Einlagen allein 4.050.

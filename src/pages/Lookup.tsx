@@ -186,8 +186,24 @@ export function ToolPage() {
                   {g.title}
                   <span>{g.items.length}</span>
                 </h2>
-                <ul>
-                  {g.items.map((x) => (
+                <p className="catalog-intro">{({
+                  "Daten vorbereiten": "Importieren, bereinigen und Daten in eine auswertbare Form bringen.",
+                  "Datenmodell": "Eindeutige Schlüssel und verlässliche Filterwege aufbauen.",
+                  "DAX & Measures": "Kennzahlen berechnen, die auf die aktuelle Auswahl reagieren.",
+                  "Zeitintelligenz": "Zeiträume mit einem gemeinsamen Kalender vergleichen.",
+                  "Bericht": "Die passende Darstellung wählen und ihre Filterwirkung prüfen.",
+                  "Fehler": "Vom sichtbaren Symptom zum überprüfbaren Schnelltest.",
+                  "Nachschlagen": "Werte sicher über passende Schlüssel zuordnen.",
+                  "Filtern und Listen": "Treffer auswählen und dynamische Ergebnislisten erstellen.",
+                  "Aggregieren": "Summen, Anzahlen und Quoten auf der richtigen Ebene bilden.",
+                  "Listen": "Detailzeilen und gewünschte Ergebnisgranularität festlegen.",
+                  "Filter": "Bedingungen, Klammern und fehlende Werte bewusst behandeln.",
+                  "Mehrfachzeilen / Joins": "Zuordnungen kontrollieren und Zeilenvervielfachung erkennen.",
+                } as Record<string, string>)[g.title] || `${g.title}: passende Funktion auswählen und am Beispiel nachvollziehen.`}</p>
+                {["Grundlage", "Fortgeschritten"].map((level) => {
+                  const entries = g.items.filter((x) => byId(x.id)?.schwierigkeit === level);
+                  return entries.length ? <div key={level}><strong className="catalog-level">{level === "Grundlage" ? "Grundlagen · hier beginnen" : "Für Fortgeschrittene"}</strong><ul>
+                  {entries.map((x) => (
                     <li key={x.label}>
                       <Link to={"/wissen/" + x.id}>
                         <span>{x.label}</span>
@@ -195,7 +211,8 @@ export function ToolPage() {
                       </Link>
                     </li>
                   ))}
-                </ul>
+                </ul></div> : null;
+                })}
               </section>
             ))}
         </div>

@@ -41,3 +41,10 @@ Sieben selbst erstellte SVG-Dateien unter images/ida: eins-zu-viele, mehrere-joi
 ## Grenzen
 
 Die Bilder dokumentieren eine bestimmte Programmversion. Einige Ergebnisvisuals sind kleine Originalausschnitte; Zoomen erzeugt keine zusätzlichen Bilddetails. Der Neue-Beziehung-Dialog wurde wegen uneinheitlicher deutscher Symbolbeschriftung nicht übernommen; verwendet wird die gespeicherte Beziehung mit eindeutig sichtbaren 1-/\*-Markierungen. Ein leerer Bedingte-Spalte-Dialog wurde ebenfalls nicht veröffentlicht. Der Merge-Screenshot bleibt als offener TODO gekennzeichnet.
+
+## Ergänzungen vom 18. September 2026
+
+- images/excel/excel-tabelle-erstellen.jpg: eigene echte Excel-Aufnahme aus einer leeren Demo-Arbeitsmappe, Dialog für A1:D7 mit Überschriften; Anleitung Excel-Liste vorbereiten, Schritt 3. Keine realen Daten.
+- images/power-bi/dax-pruefergebnisse.jpg: eigene echte Aufnahme der DAX-Abfrageansicht mit synthetischer Kontentabelle (6 Zeilen, 4 Personen, 9.000 Bestand). Enger Zuschnitt auf Ergebnisraster, keine Profil-, Pfad- oder Dateiangaben; im COUNTROWS-Eintrag. SUMX verwendet die separate Positionsdemo.
+
+Die Aufnahmen sind Ergebnis-/Bediennachweise, keine nachgebauten Produktoberflächen. Insgesamt nun 37 Bilddateien: 29 echte Rasteraufnahmen und 8 Schemata. Rohaufnahmen und Office-Demos bleiben lokal ignoriert.

@@ -4,22 +4,35 @@
   "slug": "excel-datum",
   "titel": "Datumswerte korrigieren",
   "bereich": "Excel",
-  "werkzeuge": ["Excel"],
+  "werkzeuge": [
+    "Excel"
+  ],
   "kategorie": "Daten bereinigen",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein Datum muss als echter Datumswert vorliegen; mehrdeutige Textformate brauchen eine bekannte Herkunft.",
   "ort": "Excel → Daten → Text in Spalten / Power Query → Datentyp mit Gebietsschema",
-  "tags": ["Datumswerte korrigieren", "Reporting"],
-  "synonyme": [],
-  "verwandteThemen": ["datum-sortieren", "datenbereinigung"],
-  "kontexte": ["Reporting"],
+  "tags": [
+    "Datumswerte korrigieren",
+    "Reporting"
+  ],
+  "synonyme": [
+    "datum falsch"
+  ],
+  "verwandteThemen": [
+    "datum-sortieren",
+    "datenbereinigung"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-16",
+  "zuletztGeprueft": "2026-09-18",
   "art": "artikel",
   "quellen": [],
-  "screenshots": [],
+  "screenshots": []
 }
 ---
+
 
 ## Wann brauche ich das?
 

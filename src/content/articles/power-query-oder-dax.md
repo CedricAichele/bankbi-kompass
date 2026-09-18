@@ -4,37 +4,62 @@
   "slug": "power-query-oder-dax",
   "titel": "Power Query oder DAX?",
   "bereich": "Werkzeugübergreifend",
-  "werkzeuge": ["Power BI", "Excel"],
+  "werkzeuge": [
+    "Power BI",
+    "Excel"
+  ],
   "kategorie": "Werkzeugwahl",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Power Query bereitet Daten bei der Aktualisierung vor. DAX-Measures berechnen Kennzahlen im aktuellen Berichtsfilter.",
   "ort": "Kurze Auswahlhilfe nach Arbeitssituation",
-  "tags": ["Power Query oder DAX?"],
-  "synonyme": ["power query oder dax"],
-  "verwandteThemen": ["power-query", "measure", "pq-benutzerdefiniert"],
-  "kontexte": ["Reporting"],
+  "tags": [
+    "Power Query oder DAX?"
+  ],
+  "synonyme": [
+    "power query oder dax"
+  ],
+  "verwandteThemen": [
+    "power-query",
+    "measure",
+    "pq-benutzerdefiniert"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-17",
+  "zuletztGeprueft": "2026-09-18",
   "art": "artikel",
   "quellen": [],
-  "screenshots": [],
+  "screenshots": []
 }
 ---
 
 ## Wann brauche ich das?
 
-Du weißt nicht, wo eine Berechnung hingehört.
+Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Schritte
 
-1. Feste Datenaufbereitung von interaktiver Kennzahl unterscheiden.
-2. Typen, Bereinigung und feste Zeilenspalten in Power Query prüfen.
-3. Filterabhängige Summen und Quoten als Measure erstellen.
+1. Formuliere die Einheit einer Ergebniszeile und den Aktualisierungsbedarf.
+2. Nimm **Power Query**, wenn du Daten vor dem Laden bereinigst, typisierst oder in eine andere Zeilenform bringst.
+3. Nimm **DAX**, wenn das Ergebnis auf Slicer und Visualfilter reagieren soll.
+4. Baue das Mini-Beispiel mit der gewählten Methode nach und prüfe die beschriebene Fehlerquelle.
 
 ## Beispiel
 
-Leerzeichen entfernen → Power Query. Anteil des ausgewählten Segments → DAX-Measure.
+Leerzeichen in Personennummer: Power Query. Anteil der gewählten Personen am Gesamtbestand: DAX.
 
 ## Typischer Fehler
 
-Ein Power-Query-Ergebnis soll auf einen Slicer reagieren, ohne neu zu laden.
+Eine DAX-Spalte repariert keine mangelhafte Importstruktur.
+
+## Vergleich
+
+| Option | Geeignet, wenn |
+| --- | --- |
+| Power Query | du Daten vor dem Laden bereinigst, typisierst oder in eine andere Zeilenform bringst |
+| DAX | das Ergebnis auf Slicer und Visualfilter reagieren soll |
+
+## Merksatz
+
+Vorbereiten beim Laden; auswerten im Bericht.

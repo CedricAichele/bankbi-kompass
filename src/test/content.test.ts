@@ -13,7 +13,7 @@ import { decisions } from "../lib/decisions";
 import { searchContent } from "../lib/search";
 import { scanContent } from "../lib/content-safety";
 describe("Kurze, vollständige Schnellreferenzen", () => {
-  it("validiert Schema, Pflichtmodule und Wortgrenze aller Einträge", () => {
+  it("validiert kurze Antworten und vollständige Praxisabschnitte", () => {
     expect(contents.length).toBeGreaterThan(30);
     expect(() => validateLinks(contents)).not.toThrow();
     for (const item of contents) {
@@ -21,7 +21,9 @@ describe("Kurze, vollständige Schnellreferenzen", () => {
       const parts = sectionsOf(item.body);
       for (const section of requiredSections)
         expect(parts[section], item.id).toBeTruthy();
-      expect(item.body.split(/\s+/).length, item.id).toBeLessThanOrEqual(250);
+      expect(item.kurzbeschreibung.length, item.id).toBeLessThanOrEqual(340);
+      if (item.praxis) for (const name of ["Ergebnis", "Warum funktioniert das?", "Plausibilitätscheck"])
+        expect(parts[name], `${item.id}: ${name}`).toBeTruthy();
       expect(item.ort.length).toBeGreaterThan(5);
     }
   });
@@ -56,9 +58,9 @@ describe("Kurze, vollständige Schnellreferenzen", () => {
     expect(toolsCatalog[1].groups).toHaveLength(10);
     expect(toolsCatalog[2].groups).toHaveLength(7);
   });
-  it("enthält 23 Aufgaben und keine veröffentlichten Prozessaufsätze", () => {
+  it("enthält 26 Aufgaben und keine veröffentlichten Prozessaufsätze", () => {
     const tasks = contents.filter((x) => x.art === "aufgabe");
-    expect(tasks).toHaveLength(23);
+    expect(tasks).toHaveLength(26);
     expect(tasks.every((x) => x.bereich === "Werkzeugübergreifend")).toBe(true);
     expect(contents.some((x) => x.id === "kundenstruktur")).toBe(false);
   });
@@ -185,7 +187,7 @@ describe("Aufgabensuche", () => {
   it("behandelt Leerraum, leere Treffer und Aufgabenfilter", () => {
     expect(searchContent(contents, "   ")).toHaveLength(contents.length);
     expect(searchContent(contents, "zxqvvvxyz123")).toEqual([]);
-    expect(searchContent(contents, "", { art: "aufgabe" })).toHaveLength(23);
+    expect(searchContent(contents, "", { art: "aufgabe" })).toHaveLength(26);
   });
 });
 describe("Bild- und Inhaltsschutz", () => {

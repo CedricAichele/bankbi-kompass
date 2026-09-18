@@ -4,44 +4,83 @@
   "slug": "dax-switch",
   "titel": "SWITCH: mehrere Fälle verständlich ordnen",
   "bereich": "Power BI",
-  "werkzeuge": ["Power BI"],
+  "werkzeuge": [
+    "Power BI"
+  ],
   "kategorie": "DAX & Measures",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "SWITCH eignet sich für mehrere feste Werte oder geordnete Bedingungen. Der erste passende Fall bestimmt das Ergebnis.",
   "ort": "Power BI Desktop → Modellierung → Neues Measure",
-  "tags": ["SWITCH: mehrere Fälle verständlich ordnen"],
-  "synonyme": ["switch", "ampel"],
-  "verwandteThemen": ["dax-if", "divide"],
-  "kontexte": ["Reporting"],
+  "tags": [
+    "SWITCH: mehrere Fälle verständlich ordnen"
+  ],
+  "synonyme": [
+    "switch",
+    "ampel"
+  ],
+  "verwandteThemen": [
+    "dax-if",
+    "divide"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-17",
+  "zuletztGeprueft": "2026-09-18",
   "art": "artikel",
-  "quellen": ["https://learn.microsoft.com/en-us/dax/switch-function-dax"],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/dax/switch-function-dax"
+  ],
   "screenshots": [],
+  "praxis": true,
+  "kurzformel": "```dax\nKlasse = SWITCH ( TRUE(), SUM ( Konten[Bestand_EUR] ) > 5000, \"Groß\", SUM ( Konten[Bestand_EUR] ) > 3000, \"Mittel\", \"Klein\" )\n```"
 }
 ---
 
 ## Wann brauche ich das?
 
-Du brauchst eine Ampel mit klaren Schwellen.
+Du möchtest SWITCH an einem überschaubaren Beispiel verstehen.
+
+## Voraussetzungen
+
+Tabelle Konten mit den sechs Beispielzeilen. Für RELATED zusätzlich Personen mit P001/A, P002/B, P003/A, P004/B und aktive 1:n-Beziehung zu Konten.
 
 ## Schritte
 
-1. Schwellen fachlich festlegen.
-2. Mit SWITCH(TRUE()) vom speziellen zum allgemeinen Fall prüfen.
-3. Sonst-Fall und fehlende Werte vor den Schwellen behandeln.
+1. Lege die synthetischen Tabellen an und prüfe Textschlüssel sowie numerische Beträge.
+2. Wähle Modellierung → Neues Measure.
+3. Gib die Formel aus dem Beispiel ein und bestätige mit Enter.
+4. Füge ein Tabellenvisual mit Personennummer und dem berechneten Ergebnis hinzu.
+5. Teste ungefiltert, dann mit Person P003 und Produktgruppe Einlagen.
+6. Vergleiche den Wert mit dem erwarteten Ergebnis und untersuche den beschriebenen Fehlerfall.
 
 ## Beispiel
 
+| Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
+| --- | --- | --- | --- |
+| K001 | P001 | Einlagen | 1250 |
+| K002 | P001 | Anlagen | 750 |
+| K003 | P002 | Einlagen | 2000 |
+| K004 | P003 | Kredite | 3200 |
+| K005 | P003 | Einlagen | 800 |
+| K006 | P004 | Kredite | 1000 |
+
 ```dax
-Status =
-SWITCH ( TRUE(),
- ISBLANK ( [Quote] ), "Keine Daten",
- [Quote] >= 1, "Erreicht",
- [Quote] >= 0.9, "Nahe Ziel",
- "Unter Ziel" )
+Klasse = SWITCH ( TRUE(), SUM ( Konten[Bestand_EUR] ) > 5000, "Groß", SUM ( Konten[Bestand_EUR] ) > 3000, "Mittel", "Klein" )
 ```
+
+## Ergebnis
+
+Gesamt 9.000 → Groß; P003 4.000 → Mittel; P001 2.000 → Klein.
+
+## Warum funktioniert das?
+
+TRUE() wird mit Bedingungen verglichen. Der erste wahre Zweig gewinnt; danach folgt der Standardwert.
 
 ## Typischer Fehler
 
-Die Grenze 0,9 vor 1 prüfen: Dann erreicht der Fall 1 nie seine eigene Kategorie.
+Die Reihenfolge überlappender Bedingungen verändert das Ergebnis.
+
+## Plausibilitätscheck
+
+Prüfe Filter einzeln und gemeinsam. Die Ausgangssumme beträgt 9.000 und Einlagen allein 4.050.

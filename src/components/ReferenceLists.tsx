@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Search, ArrowRight, ArrowUpRight, X } from "lucide-react";
 import { contents } from "../content";
 import type { Content } from "../content/schema";
-import { sectionsOf } from "../content/schema";
+import { sectionsOf, stepsOf } from "../content/schema";
 import { Markdown } from "./Markdown";
 import { searchContent } from "../lib/search";
 export function EntryList({
@@ -49,14 +49,13 @@ export function EntryList({
             <details className="quick-preview">
               <summary>Schnellansicht: {item.titel}</summary>
               <div>
-                <strong>Wann brauche ich das?</strong>
-                <Markdown
-                  text={sectionsOf(item.body)["Wann brauche ich das?"]}
-                />
+                <strong>Kurzantwort</strong><p>{item.kurzbeschreibung}</p>
+                <p>Werkzeug: {item.werkzeuge.join(" / ") || item.bereich}</p>
+                <ol>{(item.schnellschritte || stepsOf(sectionsOf(item.body).Schritte).slice(0, 3)).map((step, index) => <li key={index}><Markdown text={step} /></li>)}</ol>
                 <strong>Beispiel</strong>
-                <Markdown text={sectionsOf(item.body).Beispiel} />
+                {item.kurzformel ? <Markdown text={item.kurzformel} /> : <p>{sectionsOf(item.body).Ergebnis || "Daten und vollständiges Beispiel in der Anleitung."}</p>}
                 <Link to={"/wissen/" + item.slug}>
-                  Schritte und Details anzeigen →
+                  Vollständige Anleitung →
                 </Link>
               </div>
             </details>

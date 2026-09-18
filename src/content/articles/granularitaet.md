@@ -4,30 +4,45 @@
   "slug": "granularitaet",
   "titel": "Granularität: Was bedeutet eine Zeile?",
   "bereich": "Datenanalyse",
-  "werkzeuge": ["Power BI", "Excel", "IDA"],
+  "werkzeuge": [
+    "Power BI",
+    "Excel",
+    "IDA"
+  ],
   "kategorie": "Datenmodell",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Lege vor jeder Auswertung fest: Eine Zeile steht für genau welche fachliche Einheit?",
   "ort": "Vor Aggregation, Join und Kennzahldefinition",
-  "tags": ["Granularität: Was bedeutet eine Zeile?", "Reporting"],
-  "synonyme":
-    [
-      "mehrere konten pro kunde",
-      "falsche summe",
-      "eine Zeile je Person",
-      "einzigartige Kunden",
-      "mehrere Zeilen",
-    ],
-  "verwandteThemen":
-    ["eins-zu-viele", "dubletten", "distinctcount", "ida-aggregation"],
-  "kontexte": ["Reporting"],
+  "tags": [
+    "Granularität: Was bedeutet eine Zeile?",
+    "Reporting",
+    "Grundbegriff"
+  ],
+  "synonyme": [
+    "mehrere konten pro kunde",
+    "falsche summe",
+    "eine Zeile je Person",
+    "einzigartige Kunden",
+    "mehrere Zeilen",
+    "summe stimmt nicht"
+  ],
+  "verwandteThemen": [
+    "eins-zu-viele",
+    "dubletten",
+    "distinctcount",
+    "ida-aggregation"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-16",
+  "zuletztGeprueft": "2026-09-18",
   "art": "artikel",
   "quellen": [],
-  "screenshots": [],
+  "screenshots": []
 }
 ---
+
 
 ## Wann brauche ich das?
 
@@ -46,3 +61,19 @@ Drei Konten an zwei Stichtagen ergeben sechs Zeilen. Das sind weder sechs Konten
 ## Typischer Fehler
 
 Eine Personen-ID als eindeutigen Schlüssel einer Konto-Stichtags-Tabelle betrachten.
+
+## Einfach erklärt
+
+Granularität beschreibt, was genau eine einzelne Zeile bedeutet.
+
+## Mini-Beispiel
+
+Konto und Stichtag ist feiner als Person und Monat.
+
+## Warum ist das wichtig?
+
+Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Monatsplan je Kontenzeile wiederholen und addieren.
+
+## Wo taucht das auf?
+
+Gruppieren, Joins und Auswahl der Berichtsdetails.

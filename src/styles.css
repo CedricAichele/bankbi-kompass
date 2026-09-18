@@ -1635,6 +1635,17 @@ footer strong {
   overflow: auto;
   max-height: 75vh;
 }
+
+.practice-section { margin: 22px 0; padding: 18px 22px; border: 1px solid #dce5ec; border-radius: 10px; background: #f7fafc; min-width: 0; }
+.practice-section h2 { margin-top: 0; font-size: 19px; }
+.practice-details { margin: 12px 0; border: 1px solid #dce5ec; border-radius: 9px; padding: 15px 20px; min-width: 0; }
+.practice-details summary { cursor: pointer; font-weight: 650; }
+.practice-details[open] summary { margin-bottom: 14px; }
+.reference-grid, .reference-grid > *, .markdown, .quick-preview { min-width: 0; }
+.markdown { overflow-wrap: anywhere; }
+.markdown table { display: block; max-width: 100%; overflow-x: auto; }
+.catalog-intro { color: #526575; margin: 0 0 10px; font-size: 14px; }
+.catalog-level { display: block; margin: 14px 0 4px; color: #526575; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
 .image-viewport.is-zoomed img {
   width: 200%;
   max-width: none;

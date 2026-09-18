@@ -4,37 +4,72 @@
   "slug": "measure-fehler",
   "titel": "Measure reagiert unerwartet",
   "bereich": "Power BI",
-  "werkzeuge": ["Power BI"],
+  "werkzeuge": [
+    "Power BI"
+  ],
   "kategorie": "Fehler",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Vergleiche das Measure mit einer einfachen Basiskennzahl und prüfe den Kontext jeder Visualzelle.",
   "ort": "Power BI → Kontrollmatrix und DAX-Formel",
-  "tags": ["Measure reagiert unerwartet", "Datenqualität"],
-  "synonyme": [],
-  "verwandteThemen": ["filterkontext", "divide", "distinctcount"],
-  "kontexte": ["Datenqualität"],
+  "tags": [
+    "Measure reagiert unerwartet",
+    "Datenqualität"
+  ],
+  "synonyme": [
+    "Measure liefert überall denselben Wert",
+    "Jede Tabellenzeile zeigt die identische Gesamtsumme."
+  ],
+  "verwandteThemen": [
+    "filterkontext",
+    "divide",
+    "distinctcount"
+  ],
+  "kontexte": [
+    "Datenqualität"
+  ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-16",
+  "zuletztGeprueft": "2026-09-18",
   "art": "problem",
   "quellen": [],
-  "screenshots": [],
+  "screenshots": []
 }
 ---
 
 ## Wann brauche ich das?
 
-Gesamtzeile und Einzelzeilen scheinen nicht zusammenzupassen.
+Jede Tabellenzeile zeigt die identische Gesamtsumme.
+
+## Symptom
+
+Jede Tabellenzeile zeigt die identische Gesamtsumme.
+
+## Mögliche Ursachen
+
+Zeilenfeld filtert die Faktentabelle nicht oder Measure entfernt den Filter.
+
+## Schnelltest
+
+Ersetze das Measure testweise durch SUM(Konten[Bestand_EUR]).
 
 ## Schritte
 
-1. Basismeasure, Zähler und Nenner nebeneinander anzeigen.
-2. Filter je Zeile und Gesamtergebnis vergleichen.
-3. CALCULATE, REMOVEFILTERS und Mehrfachzählungen prüfen.
+1. Erstelle eine Kopie der Auswertung oder beschränke sie auf synthetische Testdaten. Notiere den fehlerhaften Wert.
+2. Ersetze das Measure testweise durch SUM(Konten[Bestand_EUR]).
+3. Prüfe Beziehung und Filterrichtung; entferne zu breite ALL-/REMOVEFILTERS-Ausdrücke. Verwende das passende Dimensionsfeld in den Zeilen.
+4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
 
 ## Beispiel
 
-8/10 und 1/2 ergeben insgesamt 9/12 = 75 %, nicht die Summe oder den einfachen Mittelwert der Quoten.
+P001 und P003 zeigen beide 9.000 statt 2.000 und 4.000.
+
+## Ergebnis
+
+Die Summe muss auf beide Testpersonen unterschiedlich reagieren.
 
 ## Typischer Fehler
 
-Ein korrekt neu berechnetes Gesamtergebnis als Fehler behandeln.
+Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten, Modell oder Formel bestehen.
+
+## Plausibilitätscheck
+
+Die Summe muss auf beide Testpersonen unterschiedlich reagieren.

@@ -22,10 +22,6 @@ const rules: [string, RegExp][] = [
     "private Pfade",
     /(?:[A-Z]:[\\/](?:Users|Benutzer)[\\/]|\/Users\/|\/home\/)[^\s"']+/i,
   ],
-  [
-    "ausgeschlossene Unternehmensbezeichnung",
-    /Volksbank\s+Alzey[ -]Worms|VR[ -]Bank\s+Mainz/i,
-  ],
   ["IBAN", /\b[A-Z]{2}\d{2}(?:\s?\d){18}\b/],
   [
     "Tokenformat",
@@ -46,11 +42,15 @@ const rules: [string, RegExp][] = [
     /\b(?:api[_-]?key|access[_-]?token|password|client[_-]?secret)\s*[:=]\s*["'][A-Za-z0-9_+/-]{12,}["']/i,
   ],
 ];
+// Persönliche Sperrbegriffe bleiben ausschließlich lokal, als Klartext je Zeile.
+const localTerms = existsSync("privacy.local.txt")
+  ? readFileSync("privacy.local.txt", "utf8").split(/\r?\n/).map((x) => x.trim()).filter((x) => x && !x.startsWith("#"))
+  : [];
 let flags = 0;
 for (const file of files) {
   if (!existsSync(file)) continue;
   if (
-    /(?:^|\/)(?:node_modules|\.local-demo|working-assets|\.qa|\.env[^/]*)(?:\/|$)|\.(?:xlsx?|xlsm|pbix|pbit|tmp|log)$/i.test(
+    /(?:^|\/)(?:node_modules|\.local-demo|working-assets|\.qa|privacy\.local\.txt|\.env[^/]*)(?:\/|$)|\.(?:csv|tsv|parquet|feather|xlsx?|xlsm|xlsb|pbix|pbit|accdb|mdb|sqlite3?|db|tmp|log)$/i.test(
       file,
     )
   ) {
@@ -60,6 +60,10 @@ for (const file of files) {
   }
   if ([".png", ".webp", ".jpg", ".jpeg"].includes(extname(file))) continue;
   const text = readFileSync(file, "utf8");
+  if (localTerms.some((term) => text.toLocaleLowerCase().includes(term.toLocaleLowerCase()))) {
+    console.error(`${file}: lokaler Sperrbegriff`);
+    flags++;
+  }
   // Prüfprogramme und Test-Fixtures enthalten die gesuchten Muster absichtlich.
   if (file === "scripts/check-repository.ts" || file.startsWith("src/test/"))
     continue;

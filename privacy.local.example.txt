@@ -1,0 +1,4 @@
+# Optional: nach privacy.local.txt kopieren. Ein Klartext-Sperrbegriff je Zeile.
+# Die lokale Datei darf niemals eingecheckt werden.
+INTERNER_ARBEITGEBERNAME
+INTERNER_PERSONENNAME

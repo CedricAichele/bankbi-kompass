@@ -30,6 +30,7 @@ import { FAVORITES_KEY, readIds, saveIds, toggleId } from "./lib/storage";
 import { SearchForm, EntryList } from "./components/ReferenceLists";
 import { HomePage, ToolPage, Browse } from "./pages/Lookup";
 import { Reference } from "./pages/Reference";
+import { Imprint, Privacy } from "./pages/Legal";
 export { DecisionTools } from "./components/DecisionTools";
 const nav = [
   ["/", "Start", Home],
@@ -182,6 +183,7 @@ function Shell() {
     );
     const title =
       item?.titel ||
+      ({ "/impressum": "Impressum", "/datenschutz": "Datenschutz" } as Record<string, string>)[location.pathname] ||
       nav.find((x) => x[0] === location.pathname)?.[1] ||
       "Suchen & finden";
     document.title = title + " – BankBI Kompass";
@@ -353,6 +355,8 @@ function Shell() {
             <Route path="/favoriten" element={<Favorites ids={favorites} />} />
             <Route path="/ida-hinweise" element={<IdaNotes />} />
             <Route path="/ueber" element={<About />} />
+            <Route path="/impressum" element={<Imprint />} />
+            <Route path="/datenschutz" element={<Privacy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
@@ -367,7 +371,9 @@ function Shell() {
           </div>
           <div className="footer-line">
             <span>Entwickelt von Cedric Aichele</span>
-            <Link to="/ueber">Über das Projekt & Datenschutz</Link>
+            <Link to="/ueber">Über das Projekt</Link>
+            <Link to="/impressum">Impressum</Link>
+            <Link to="/datenschutz">Datenschutz</Link>
           </div>
         </footer>
       </div>
