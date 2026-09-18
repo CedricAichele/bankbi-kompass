@@ -27,3 +27,7 @@
 ## Lokale Browserprüfung
 
 Produktionsvorschau bei 1920×1080, 1366×768, 960×900 und 390×844 geprüft. Kein horizontaler Dokumentüberlauf in den geprüften Ansichten. Navigation aller Hauptbereiche, Suchanfrage „mehr zeilen nach join“ mit passendem ersten Treffer, Schnellansicht, siebenstufige XVERWEIS-Anleitung, Tabelle, scrollbar begrenzter Codeblock, Bildladung, Lightbox/Zoom/Escape, aufklappbare Erklärung, mobiles Menü, Footer und beide Rechteseiten geprüft. Hauptbereiche zeigen 26 Aufgaben, 27 Probleme, 21 Werkzeugvergleiche und 27 Grundlageneinträge. Keine Browser-Konsolenfehler im geprüften Tab. Der gestoppte lokale Vorschauprozess wurde vor dieser Prüfung wieder gestartet.
+
+## Veröffentlichungsnachweis
+
+Anwendungscommit 72f9ac4d222182efd34120813106449e9f36614c wurde auf main gepusht. GitHub-Actions-Lauf 35315704904 ist erfolgreich abgeschlossen; damit bestehen auch die vollständigen CI-Prüfungen des finalen Anwendungsstands. Live geprüft: Startseite mit 26 Aufgaben, CSS, Navigation, Suche (Mehrzeilen nach Join als erster Treffer), siebenstufige XVERWEIS-Referenz samt geladenem Bild, Impressum und Datenschutz. Dieser Nachtrag verändert keine Anwendungsdateien. Workflow: https://github.com/CedricAichele/bankbi-kompass/actions/runs/35315704904

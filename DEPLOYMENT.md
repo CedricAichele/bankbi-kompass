@@ -12,8 +12,10 @@ Lokal: Im Projektordner `npm ci`, `npm run build` und `npm run preview` ausführ
 
 ## Aktueller Qualitätsdurchlauf · 18. September 2026
 
-Die lokale Veröffentlichungsvorbereitung läuft. Push und Deployment dieses Durchlaufs sind noch nicht bestätigt. Frühere Hinweise auf ein fehlendes Repository sind historisch; der Betreiber meldet das Repository und die Website inzwischen als eingerichtet.
+Anwendungscommit 72f9ac4d222182efd34120813106449e9f36614c erfolgreich auf main gepusht. GitHub Actions meldet den Lauf 35315704904 als erfolgreich abgeschlossen. Die öffentliche Website wurde anschließend geöffnet: neuer Umfang (26 Aufgaben), CSS, Navigation, Suche, XVERWEIS mit sieben Schritten, Bilder, Impressum und Datenschutz funktionieren. Frühere Repository-Zugriffsblocker sind behoben. Dieser Nachtrag ändert ausschließlich Dokumentation.
 
 Der vorhandene Workflow prüft Installation, TypeScript, Tests, strikte Inhalte und Repository-Vertraulichkeit, baut die Website und veröffentlicht main auf GitHub Pages. Pages muss GitHub Actions als Quelle verwenden. Anmeldung, 2FA oder zusätzliche GitHub-Bestätigungen führt ausschließlich der Betreiber aus. Kein Force-Push.
 
 Die noch offenen Betreiberangaben auf Impressum und Datenschutz sind in TODO.md dokumentiert. Aktuelle Prüfergebnisse und Grenzen: docs/QUALITAETSBERICHT.md.
+
+Nachweis: https://github.com/CedricAichele/bankbi-kompass/actions/runs/35315704904
