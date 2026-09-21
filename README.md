@@ -1,6 +1,6 @@
 # BankBI Kompass
 
-BankBI Kompass ist ein praxisorientiertes Nachschlagewerk für Power BI, Excel und datenorientiertes Reporting. Es hilft dabei, typische Aufgaben aus Datenanalyse und Controlling schnell zu lösen und technische Konzepte nachvollziehbar zu verstehen. Entwickelt von **Cedric Aichele**.
+BankBI Kompass ist das persönliche Wissens-, Nachschlage- und Portfolio-Projekt von **Cedric Aichele** zu Datenanalyse, Business Intelligence und Reporting. Es verbindet praktische Hilfen für den Arbeitsalltag mit der verständlichen Dokumentation seiner fachlichen und technischen Entwicklung. Der aktuelle Schwerpunkt liegt auf Power BI, Excel und allgemeinen IDA-/Cognos-Reportingprinzipien.
 
 **[BankBI Kompass öffnen](https://cedricaichele.github.io/bankbi-kompass/)** · [Über das Projekt](https://cedricaichele.github.io/bankbi-kompass/#/ueber) · [GitHub-Profil](https://github.com/CedricAichele)
 
@@ -15,19 +15,23 @@ BankBI Kompass ist ein praxisorientiertes Nachschlagewerk für Power BI, Excel u
 
 ## Für wen ist das Projekt?
 
-Für Einsteiger, Analysten, Controller und BI-Anwender, die Power BI oder Excel im Arbeitsalltag einsetzen. Du kannst einen konkreten Fehler nachschlagen, einen Arbeitsschritt nachvollziehen oder die passende Methode für eine Auswertung auswählen.
+Das Projekt dient Cedric als persönliches Nachschlagewerk, Kollegen und anderen Anwendern als praktische Wissensbasis und interessierten Besuchern als öffentliches Portfolio. Einsteiger, Analysten, Controller und BI-Anwender können konkrete Fragen nachschlagen, Arbeitsschritte nachvollziehen und passende Methoden auswählen.
 
 ## Grundidee
 
 Die schnelle Antwort steht oben, die ausführliche Erklärung darunter. Ein Eintrag führt von der praktischen Frage über konkrete Schritte und ein kleines Beispiel zum überprüfbaren Ergebnis. So bleibt er beim Nachschlagen übersichtlich und bietet zugleich genug Kontext zum Lernen.
 
-## Inhaltsschwerpunkte
+## Aktuelle Inhaltsschwerpunkte
 
 **Power BI:** Daten laden, Power Query, Datenmodellierung, DAX, Visualisierung und Fehlersuche.
 
 **Excel:** Formeln, PivotTables, Datenbereinigung, Power Query und Analyse.
 
 **Reporting:** allgemeine Reporting- und Cognos-Prinzipien, Filter, Aggregation, Parameter und Ergebnisprüfung. Die IDA-Rubrik behandelt ausschließlich übertragbare Konzepte; interne Systemdetails oder unbelegte produktspezifische Menüwege werden nicht beschrieben.
+
+## Langfristige Entwicklung
+
+BankBI Kompass soll mit Cedrics beruflichem und fachlichem Wissen wachsen. Über die heutigen Werkzeuge hinaus können allgemeine Themen der bankfachlichen Analyse, des Vertriebsmanagements, der Vertriebssteuerung, der Datenverarbeitung und Batchprozesse sowie weitere Steuerungs- und Reportingfragen hinzukommen. Diese Ausrichtung beschreibt die geplante Entwicklung, nicht bereits vollständig vorhandene Inhalte. Veröffentlicht werden ausschließlich übertragbare Methoden und synthetische Beispiele, keine internen Abläufe oder Unternehmenslogik.
 
 ## Beispiele und Datenschutz
 
@@ -37,7 +41,7 @@ Das Projekt veröffentlicht keine echten Kunden-, Mitarbeiter- oder Unternehmens
 
 ## Über den Entwickler
 
-Cedric Aichele hat einen Bachelor of Engineering in Wirtschaftsingenieurwesen an der Hochschule Mannheim und beschäftigt sich beruflich mit Controlling und Datenanalyse im Bankenumfeld. BankBI Kompass ist ein fortlaufendes Praxis- und Portfolio-Projekt zur strukturierten Aufbereitung von Wissen über Business Intelligence und Datenanalyse.
+Cedric Aichele hat einen Bachelor of Engineering in Wirtschaftsingenieurwesen an der Hochschule Mannheim und beschäftigt sich beruflich mit Controlling und Datenanalyse im Bankenumfeld. Er arbeitet mit Reporting, Datenanalyse, Excel, IDA/Cognos und zunehmend Power BI. Sein Interesse gilt der Verbindung fachlicher Fragestellungen mit Datenmodellen, Reporting und Business Intelligence.
 
 BankBI Kompass ist ein unabhängig entwickeltes Projekt und steht in keiner offiziellen Verbindung zu einem Arbeitgeber, Microsoft oder IBM.
 
