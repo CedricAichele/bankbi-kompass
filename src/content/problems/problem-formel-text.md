@@ -30,7 +30,8 @@
   "art": "problem",
   "screenshots": [],
   "quellen": [
-    "https://support.microsoft.com/en-us/excel/functions/numbervalue-function"
+    "https://support.microsoft.com/en-us/excel/how-to-avoid-broken-formulas-in-excel",
+    "https://support.microsoft.com/en-us/excel/display-or-hide-formulas"
   ],
   "zuletztGeprueft": "2026-09-21",
   "praxis": true

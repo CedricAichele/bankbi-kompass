@@ -25,13 +25,10 @@
     "wert aus anderer tabelle"
   ],
   "verwandteThemen": [
-    "begriff-join",
+    "schluessel",
     "kardinalitaet",
     "problem-merge-zeilen",
-    "anhaengen",
-    "beziehungen",
-    "xverweis",
-    "ida-join-pruefen"
+    "beziehung-oder-merge"
   ],
   "kontexte": [
     "Reporting"
@@ -121,7 +118,7 @@ Eine Tabelle anhand passender Schlüssel um Angaben einer anderen Tabelle ergän
 
 ## Voraussetzungen
 
-Eine vorhandene Abfrage mit den benötigten Spalten.
+Zwei vorhandene Abfragen mit fachlich passenden Schlüsselspalten. Für eine eindeutige Ergänzung muss der Schlüssel in der nachgeschlagenen Tabelle einmalig sein.
 
 ## Schritte
 

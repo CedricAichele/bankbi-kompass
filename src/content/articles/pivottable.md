@@ -30,9 +30,8 @@
   "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
-    "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-excel-stunning-report",
-    "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-matrix-visual",
-    "https://support.microsoft.com/en-us/excel/functions/numbervalue-function"
+    "https://support.microsoft.com/en-us/excel/get-started/create-a-pivottable-to-analyze-worksheet-data",
+    "https://support.microsoft.com/en-us/excel/refresh-pivottable-data"
   ],
   "screenshots": [
     {
@@ -55,7 +54,7 @@ Eine Kontenliste soll je Person summiert werden, ohne Formeln für jede Person z
 
 ## Voraussetzungen
 
-Excel; eine vorhandene Kontenliste mit Kunde, Konto, Produktgruppe und numerischem Bestand. Alle Beträge gehören zu einem Stichtag.
+Excel; eine vorhandene Kontenliste mit Personennummer, Kontonummer, Produktgruppe und numerischem Bestand_EUR. Alle Beträge gehören zu einem Stichtag.
 
 ## Schritte
 
@@ -66,7 +65,7 @@ Excel; eine vorhandene Kontenliste mit Kunde, Konto, Produktgruppe und numerisch
 5. Ziehe Bestand_EUR nach Werte. Öffne das Menü des Wertefelds → Wertfeldeinstellungen und wähle Summe. Bei Anzahl zuerst den numerischen Datentyp in der Quelle korrigieren.
 6. Ziehe Produktgruppe nach Spalten, wenn du zusätzlich nach Produkt vergleichen willst; alternativ nach Filter für eine gezielte Auswahl.
 7. Kontrolliere die Personenwerte und das Gesamtergebnis. Stelle über Zahlenformat das gewünschte Euro- oder Zahlenformat ein.
-8. Ändere K001 testweise von 1250 auf 1300 und wähle Rechtsklick → Aktualisieren in der PivotTable. Prüfe P001 = 2050; setze den Wert zurück und aktualisiere erneut.
+8. Ändere in einer Arbeitskopie der Beispieldaten K001 testweise von 1250 auf 1300 und wähle Rechtsklick → Aktualisieren in der PivotTable. Prüfe P001 = 2050; setze den Wert zurück und aktualisiere erneut.
 
 ## Beispiel
 

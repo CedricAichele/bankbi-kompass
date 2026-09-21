@@ -63,13 +63,6 @@ Monatsauswahl sichtbar: Slicer. Nur abgeschlossene Vorgänge in einem Visual: Vi
 
 Versteckte Seitenfilter können eine Slicerauswahl zusätzlich einschränken.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| Slicer | Berichtsnutzer eine häufige Auswahl direkt auf der Seite treffen sollen |
-| Filterbereich | Filter gezielt auf Visual-, Seiten- oder Berichtsebene gesetzt werden |
-
 ## Merksatz
 
 Sichtbare Auswahl oder definierter Geltungsbereich?

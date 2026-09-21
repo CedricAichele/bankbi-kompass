@@ -65,13 +65,6 @@ Kontenliste: Tabelle. Personen × Produktgruppen mit Beständen: Matrix.
 
 Eine Matrix ist bereits aggregiert und ersetzt keine Prüfung einzelner Datensätze.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| Tabelle | Datensätze als flache Liste geprüft oder exportiert werden |
-| Matrix | Kennzahlen gleichzeitig nach Zeilen- und Spaltengruppen verglichen werden |
-
 ## Merksatz
 
 Details lesen oder Gruppen kreuzen?

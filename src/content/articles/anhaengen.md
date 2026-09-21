@@ -77,7 +77,7 @@ Gleichartige Datensätze aus mehreren Tabellen untereinander sammeln.
 
 ## Voraussetzungen
 
-Eine vorhandene Abfrage mit den benötigten Spalten.
+Mindestens zwei vorhandene Abfragen mit gleichartigen Datensätzen und abgestimmten Spaltennamen.
 
 ## Schritte
 

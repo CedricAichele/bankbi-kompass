@@ -49,7 +49,7 @@ Ein vorhandenes Power-BI-Modell mit den im Ausdruck verwendeten Tabellen, Spalte
 
 ## Schritte
 
-1. Erstelle Positionen mit den Spalten Vorgang, Menge und Preis aus dem Beispiel. Setze Menge und Preis auf Zahl.
+1. Verwende deine Positionstabelle mit Vorgangskennung, Menge und Einzelpreis. Im Beispiel heißt sie Positionen. Prüfe die numerischen Datentypen von Menge und Preis.
 2. Wähle Modellierung → Neues Measure und gib den vollständigen Ausdruck ein.
 3. Bestätige mit Enter. Ziehe Vorgang und Positionswert in ein Tabellenvisual.
 4. Kontrolliere die beiden Zeilen: V1 = 20, V2 = 60.

@@ -47,14 +47,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 1. Formuliere die Einheit einer Ergebniszeile und den Aktualisierungsbedarf.
 2. Nimm **Power Query**, wenn du Daten vor dem Laden bereinigst, typisierst oder in eine andere Zeilenform bringst.
-3. Nimm **DAX**, wenn das Ergebnis auf Slicer und Visualfilter reagieren soll.
+3. Nimm **DAX-Measure**, wenn das Ergebnis auf Slicer und Visualfilter reagieren soll.
 4. Baue das Mini-Beispiel mit der gewählten Methode nach und prüfe die beschriebene Fehlerquelle.
 
 ## Beispiel
 
 ### Ausgangslage und Entscheidung
 
-Leerzeichen in Personennummer: Power Query. Anteil der gewählten Personen am Gesamtbestand: DAX.
+Power Query bereinigt „ P001 “ beim Laden zu „P001“. Ein DAX-Measure für den Bestand reagiert anschließend auf die Kundenauswahl: ohne Filter 3500, für P001 mit zwei Konten zu 1000 und 2000 insgesamt 3000. Beide Methoden ergänzen sich. DAX kann auch berechnete Spalten erzeugen; diese reagieren im Importmodell nicht dynamisch auf Slicer.
 
 | Alternative | Geeignet, wenn |
 | --- | --- |
@@ -65,20 +65,13 @@ Leerzeichen in Personennummer: Power Query. Anteil der gewählten Personen am Ge
 
 Eine DAX-Spalte repariert keine mangelhafte Importstruktur.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| Power Query | du Daten vor dem Laden bereinigst, typisierst oder in eine andere Zeilenform bringst |
-| DAX | das Ergebnis auf Slicer und Visualfilter reagieren soll |
-
 ## Merksatz
 
 Vorbereiten beim Laden; auswerten im Bericht.
 
 ## Warum funktioniert das?
 
-Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **Power Query**, wenn du Daten vor dem Laden bereinigst, typisierst oder in eine andere Zeilenform bringst. Nimm **DAX**, wenn das Ergebnis auf Slicer und Visualfilter reagieren soll.
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **Power Query**, wenn du Daten vor dem Laden bereinigst, typisierst oder in eine andere Zeilenform bringst. Nimm **DAX-Measure**, wenn das Ergebnis auf Slicer und Visualfilter reagieren soll.
 
 ## Ergebnis
 

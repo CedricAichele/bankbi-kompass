@@ -33,9 +33,8 @@
   "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
-    "https://learn.microsoft.com/en-us/power-bi/guidance/model-date-tables",
-    "https://learn.microsoft.com/en-us/dax/totalytd-function-dax",
-    "https://learn.microsoft.com/en-us/dax/sameperiodlastyear-function-dax"
+    "https://learn.microsoft.com/en-us/dax/sameperiodlastyear-function-dax",
+    "https://learn.microsoft.com/en-us/power-bi/guidance/model-date-tables"
   ],
   "screenshots": [],
   "praxis": true,

@@ -64,13 +64,6 @@ Monatsplan und Kontenbestand getrennt an Dimensionen; einfache Kontenliste mit S
 
 Ein flacher Join kann Monatspläne je Konto wiederholen.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| Sternschema | mehrere Fakten, gemeinsame Dimensionen oder wiederverwendbare Filter gebraucht werden |
-| flache Tabelle | eine begrenzte, eindeutig definierte Export- oder Einzelanalyse genügt |
-
 ## Merksatz
 
 Gemeinsame Filter ohne Vervielfachung der Fakten.

@@ -127,7 +127,7 @@ describe("Schnelle Bedienung und Routing", () => {
       await screen.findByRole("heading", { level: 1, name: "Liste erstellen" }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("link", { name: "TODO ansehen" }),
+      screen.getByRole("link", { name: "Geltungsbereich ansehen" }),
     ).toBeInTheDocument();
   });
   it("erhält alte Direktlinks und migriert alte Favoriten", async () => {

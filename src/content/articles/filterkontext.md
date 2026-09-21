@@ -33,9 +33,8 @@
   "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
-    "https://learn.microsoft.com/en-us/dax/dax-overview",
-    "https://learn.microsoft.com/en-us/dax/calculate-function-dax",
-    "https://learn.microsoft.com/en-us/power-bi/guidance/relationships-bidirectional-filtering"
+    "https://learn.microsoft.com/en-us/dax/dax-overview#filter-context",
+    "https://learn.microsoft.com/en-us/dax/calculate-function-dax"
   ],
   "screenshots": [
     {

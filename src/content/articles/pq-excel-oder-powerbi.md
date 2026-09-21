@@ -63,13 +63,6 @@ Gleiche Merge-Regel, unterschiedliche Ladeziele: Blatt gegenüber Modell.
 
 Nicht alle Konnektoren und Ladeoptionen sind in beiden Hosts identisch.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| Power Query in Excel | das Ergebnis in einer Arbeitsmappe oder PivotTable weiterverwendet wird |
-| Power Query in Power BI | die bereinigten Daten in ein Power-BI-Modell geladen werden |
-
 ## Merksatz
 
 Die Weiterverwendung bestimmt den Host.

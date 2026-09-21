@@ -20,16 +20,15 @@ describe("Screenshot-Anleitungen", () => {
     expect(imageSchema.safeParse({ ...replacement, aufnahmeplan: undefined }).success).toBe(false);
     expect(imageSchema.safeParse({ ...replacement, src: undefined }).success).toBe(false);
   });
-  it("zeigt unpassende Altbilder als Ersatzauftrag mit einklappbaren Aufnahmedaten", () => {
+  it("erhält Ersatzplatzhalter und Aufnahmedaten ohne interne Arbeitsanweisung im Nutzerbereich", () => {
     const replacement = byId("xverweis")!.screenshots.find(image => image.status === "ersetzen")!;
     render(<ReferenceImage image={replacement} />);
     expect(screen.getByText("TODO: Screenshot ersetzen")).toBeVisible();
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
-    const summary = screen.getByText("Aufnahmeplan für diesen Screenshot");
-    expect(summary.closest("details")).not.toHaveAttribute("open");
-    fireEvent.click(summary);
-    expect(summary.closest("details")).toHaveAttribute("open");
-    expect(screen.getByText("Synthetische Aufnahmedaten")).toBeVisible();
+    expect(replacement.aufnahmeplan?.klickfolge.length).toBeGreaterThan(0);
+    expect(replacement.aufnahmeplan?.daten).toContain("K002");
+    expect(screen.queryByText("Aufnahmeplan für diesen Screenshot")).not.toBeInTheDocument();
+    expect(screen.queryByText("Synthetische Aufnahmedaten")).not.toBeInTheDocument();
   });
   it("normalisiert Root-Pfade und lehnt ungültige Zuordnungen und unvollständige TODOs ab", () => {
     expect(imageSchema.parse(picture).src).toBe("images/grundlagen/demo.webp");

@@ -64,13 +64,6 @@ Ein kleiner Datenbestand passt in Import. DirectQuery erfordert eine passende Qu
 
 DirectQuery bedeutet nicht uneingeschränkt Echtzeit; Quelle, Caches und Modellbeschränkungen bleiben relevant.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| Import | eine lokale Modellkopie mit geplanter Aktualisierung genügt und Volumen/Regeln dies erlauben |
-| DirectQuery | Abfragen an eine unterstützte Quelle fachlich und technisch erforderlich sind |
-
 ## Merksatz
 
 Speicher- und Aktualisierungsbedarf gemeinsam entscheiden.

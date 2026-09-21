@@ -63,13 +63,6 @@ K003 mit Leerzeichen bereinigen. Kontobestand über Konto und Stichtag statt Kon
 
 Echte Mehrfachbeziehungen nicht durch willkürliches Löschen einer Seite verschleiern.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| Schlüsselbereinigung | dieselbe fachliche Kennung nur durch Typen, Leerzeichen oder Schreibweise abweicht |
-| Änderung der Join-Logik | die Beziehung fachlich weitere Kriterien oder mehrere Zuordnungen benötigt |
-
 ## Merksatz
 
 Formatfehler beheben; fachliche Mehrdeutigkeit modellieren.

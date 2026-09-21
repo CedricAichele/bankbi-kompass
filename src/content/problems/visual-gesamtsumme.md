@@ -20,10 +20,9 @@
     "Gesamtquote entspricht nicht der Summe oder dem Mittel der Zeilenquoten."
   ],
   "verwandteThemen": [
-    "sumx",
-    "distinctcount",
     "divide",
-    "ida-quote"
+    "filterkontext",
+    "sumx"
   ],
   "kontexte": [
     "Reporting"
@@ -32,7 +31,8 @@
   "zuletztGeprueft": "2026-09-21",
   "art": "problem",
   "quellen": [
-    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=style-summarizing-data-relationally"
+    "https://learn.microsoft.com/en-us/dax/divide-function-dax",
+    "https://learn.microsoft.com/en-us/dax/dax-overview#context"
   ],
   "screenshots": [],
   "praxis": true
@@ -61,7 +61,7 @@ Zeige Zähler und Nenner neben jeder Quote und bilde deren Summen.
 2. Zeige Zähler und Nenner neben jeder Quote und bilde deren Summen.
 3. Berechne die Gesamtquote als Gesamtergebnis geteilt durch Gesamtbasis. SUMX nur verwenden, wenn die fachliche Kennzahl tatsächlich additiv über diese Zeilen sein soll.
 4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
-5. Den konkreten Bedienweg für die Korrektur findest du unter [Quote berechnen](#/wissen/ida-quote). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
+5. Den konkreten Bedienweg für die Korrektur findest du unter [DIVIDE: Quote berechnen](#/wissen/divide). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
 
 ## Beispiel
 

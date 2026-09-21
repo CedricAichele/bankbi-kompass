@@ -97,7 +97,7 @@ export function Reference({
         {item.bereich === "IDA" && (
           <p className="ida-label">
             Allgemeines Reportingprinzip · Konkreter IDA-Menüweg nicht öffentlich belegt. {" "}
-            <Link to="/ida-hinweise">TODO ansehen</Link>
+            <Link to="/ida-hinweise">Geltungsbereich ansehen</Link>
           </p>
         )}
         {["Voraussetzungen", "Symptom", "Schnelltest"].filter((name) => sections[name]).map((name) => (

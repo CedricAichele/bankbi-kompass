@@ -63,13 +63,6 @@ Konten K001/K002 prüfen: Liste. P001 mit Gesamtbestand 2.000: Aggregation.
 
 Eine gruppierte Liste enthält nicht mehr jede ursprüngliche Zeile.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| Detailliste | Einzelfälle kontrolliert oder weiterbearbeitet werden |
-| aggregierter Bericht | Überblick, Vergleich und zusammengefasste Kennzahlen gebraucht werden |
-
 ## Merksatz
 
 Erst die gewünschte Ergebniszeile definieren.

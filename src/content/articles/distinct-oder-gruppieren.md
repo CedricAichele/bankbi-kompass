@@ -63,13 +63,6 @@ Personenliste P001/P002: eindeutig. Personen mit Gesamtbestand: gruppieren.
 
 Eindeutig über Person und Konto ist nicht eindeutig nach Person allein.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| DISTINCT / EINDEUTIG | nur unterschiedliche Schlüsselwerte ausgegeben werden sollen |
-| Gruppieren | je Schlüssel zusätzlich Summe, Anzahl oder anderes Aggregat gebraucht wird |
-
 ## Merksatz
 
 Liste verschiedener Werte oder Kennzahl je Gruppe?

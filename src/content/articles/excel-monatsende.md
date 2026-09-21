@@ -50,7 +50,7 @@ Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Exc
 ## Schritte
 
 1. Prüfe die Ausgangszellen und ihre Bedeutung: **A2 = echtes Datum 15.02.2026**. Die Zelladressen dienen als Beispiel und können auf die eigene Liste angepasst werden.
-2. Wähle eine freie Ergebniszelle **H2** und gib die Formel ein. Bei TEXTTEILEN auch I2 freihalten.
+2. Wähle eine freie Ergebniszelle **H2** und gib die Formel ein.
 3. Bestätige mit Enter. Für Datumsergebnisse öffne **Start → Zahlenformat** und wähle ein passendes Datumformat.
 4. Vergleiche das Ergebnis mit dem Beispiel und prüfe mindestens einen leeren oder anders aufgebauten Ausgangswert, bevor du die Formel nach unten kopierst.
 

@@ -19,7 +19,7 @@
   "verwandteThemen": [
     "calculate",
     "countrows",
-    "excel-filtern"
+    "calculate-filterwahl"
   ],
   "kontexte": [
     "Reporting"
@@ -91,7 +91,7 @@ FILTER allein kann nicht als einzelner Zahlenwert in einer Karte angezeigt werde
 
 ## Plausibilitätscheck
 
-Prüfe Filter einzeln und gemeinsam. Die Ausgangssumme beträgt 9.000 und Einlagen allein 4.050.
+Ohne Auswahl zählt das Measure drei Einlagenzeilen. Mit Person P003 bleibt eine Zeile; mit Produktgruppe Kredite bleibt keine Zeile und COUNTROWS liefert BLANK. Prüfe die Zeilenanzahl, nicht die Bestandssumme.
 
 ## Argumente verstehen
 

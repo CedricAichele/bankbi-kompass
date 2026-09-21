@@ -90,7 +90,7 @@ Bestand 100 zu Beginn; Zugang 20 und Abgang 15 → 105, sofern keine weiteren Ve
 
 ## Warum ist das wichtig?
 
-Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Neugeschäft automatisch als reine Bestandsdifferenz interpretieren.
+Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Neugeschäft darf nicht automatisch als reine Bestandsdifferenz interpretiert werden.
 
 ## Wo taucht das auf?
 

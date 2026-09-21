@@ -95,7 +95,7 @@ Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Fo
 ## Schritte
 
 1. Prüfe die benötigten Quellspalten. Im Beispiel stehen Kunde, Konto, Segment und Bestand in **A1:D4**; die Daten beginnen in Zeile 2.
-2. Lege die Kriterien in eigenen Zellen außerhalb der Quelle ab: **Keine weitere Eingabezelle**. Passe diese Bezüge für deine Liste an.
+2. Wähle die Spalte, deren unterschiedliche Werte du benötigst; im Beispiel **A2:A4**. Eine Kriterienzelle ist nicht erforderlich.
 3. Klicke in eine freie Ergebniszelle, im Beispiel **H2**, und gib die Formel aus dem Beispiel ein. Der benötigte Überlaufbereich ab H2 muss frei sein und außerhalb einer Excel-Tabelle liegen.
 4. Bestätige mit Enter. Vergleiche die Ausgabe mit den tatsächlich passenden Ausgangszeilen.
 5. Prüfe einen zweiten Fall und fehlende Werte. Bei wachsenden Listen verwende Excel-Tabellen mit strukturierten Bezügen oder erweitere alle zusammengehörenden Bereiche.
@@ -140,7 +140,7 @@ Das optionale Argument genau_einmal aktivieren: Dann erscheinen nur Werte mit ge
 
 ## Plausibilitätscheck
 
-Erwartete Ausgabe: **P001; P002**. Die Ausgangsliste umfasst drei Kontenzeilen, zwei Kunden und insgesamt 3500. Prüfe bei Kriterienwechsel die betreffenden Zeilen erneut.
+Erwartete Ausgabe: **P001; P002**. Die Ausgangsliste umfasst drei Kontenzeilen, zwei Kunden und insgesamt 3500. Prüfe die Liste nach Änderungen an der Quelle erneut.
 
 ## Argumente verstehen
 

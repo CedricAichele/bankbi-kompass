@@ -19,12 +19,9 @@
   "synonyme": [],
   "verwandteThemen": [
     "fakt-dimension",
-    "datumstabelle",
-    "filterrichtung",
-    "fakt-zu-fakt",
-    "bestand-bewegung",
+    "granularitaet",
     "beziehungen",
-    "eins-zu-viele"
+    "datumstabelle"
   ],
   "kontexte": [
     "Reporting"
@@ -104,13 +101,15 @@ Tabellen mit bekanntem fachlichem Aufbau und passenden Schlüsseln. Das folgende
 | P001 | A |
 | P002 | B |
 
-**FaktKonten**
+**FaktBestand**
 
-| Kunde | Konto | Bestand |
-| --- | --- | --- |
-| P001 | K001 | 1000 |
-| P001 | K002 | 2000 |
-| P002 | K003 | 500 |
+| Kunde | Konto | Datum | Bestand |
+| --- | --- | --- | --- |
+| P001 | K001 | 31.01.2026 | 1000 |
+| P001 | K002 | 31.01.2026 | 2000 |
+| P002 | K003 | 31.01.2026 | 500 |
+
+**DimDatum:** ein vollständiger Kalender mit einer eindeutigen Spalte Datum; der 31.01.2026 ist darin einmal enthalten. Die Einrichtung beschreibt [Datumstabelle](#/wissen/datumstabelle).
 
 ### Aktion
 
@@ -138,4 +137,4 @@ Fakten direkt verbinden oder für jeden Bericht eine breite Tabelle mit wiederho
 
 ## Plausibilitätscheck
 
-Jede Dimension hat eindeutige Schlüssel; ein Kunde und ein Tag liefern exakt die erwarteten Konten.
+Jede Dimension hat eindeutige Schlüssel; P001 am 31.01.2026 liefert K001 und K002 mit zusammen 3000.

@@ -19,12 +19,9 @@
     "datum falsch"
   ],
   "verwandteThemen": [
-    "pq-datum",
     "beziehungen",
     "ytd",
     "vorjahr",
-    "aktive-beziehung",
-    "bestand-bewegung",
     "datum-sortieren"
   ],
   "kontexte": [

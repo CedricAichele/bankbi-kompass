@@ -54,8 +54,8 @@ function Favorites({ ids }: { ids: string[] }) {
         <span className="eyebrow">SCHNELL WIEDERFINDEN</span>
         <h1>Favoriten</h1>
         <p>
-          Deine gemerkten Einträge. Ausschließlich in diesem Browser
-          gespeichert.
+          Deine gemerkten Einträge werden lokal in diesem Browser gespeichert.
+          Keine Anmeldung nötig; keine Synchronisierung zwischen Geräten.
         </p>
       </header>
       {items.length ? (
@@ -76,7 +76,7 @@ function IdaNotes() {
     <>
       <header className="page-heading">
         <span className="eyebrow">INHALTSGRENZEN</span>
-        <h1>IDA: Was noch offen ist</h1>
+        <h1>IDA: Geltungsbereich der Anleitungen</h1>
         <p>
           Die Einträge erklären allgemeine Listen-, Filter- und
           Auswertungsprinzipien. Sie behaupten keine systemspezifische
@@ -84,7 +84,7 @@ function IdaNotes() {
         </p>
       </header>
       <div className="note-list">
-        <h2>TODO – erst mit öffentlichem Beleg ergänzen</h2>
+        <h2>Nicht durch diese Anleitungen abgedeckt</h2>
         <ul>
           <li>
             Konkrete Menüpfade für Listen, Filter und berechnete Datenelemente.
@@ -104,8 +104,8 @@ function IdaNotes() {
         </ul>
         <h2>Geeignete Abbildungen</h2>
         <p>
-          Nur selbst erstellte, generische Schemen oder Mock-ups mit erfundenen
-          Daten. Keine Bildschirmaufnahmen aus internen IDA-Systemen.
+          Die Abbildungen zeigen allgemeine Schemata mit erfundenen Daten.
+          Sie bilden keine interne IDA-Oberfläche ab.
         </p>
         <Link to="/bereich/ida">Zu den allgemeinen IDA-Hilfen →</Link>
       </div>
@@ -114,46 +114,24 @@ function IdaNotes() {
 }
 function About() {
   return (
-    <>
-      <header className="page-heading">
-        <span className="eyebrow">UNABHÄNGIGES WISSENSPROJEKT</span>
-        <h1>Über BankBI Kompass</h1>
-        <p>Power BI, Excel & Datenanalyse im Bankalltag</p>
-      </header>
-      <div className="note-list">
-        <h2>Eine Hilfe neben deinem Werkzeug</h2>
-        <p>
-          Eine Frage eingeben, den passenden Eintrag öffnen, Schritte und
-          Beispiel direkt nutzen. BankBI Kompass ist eine Schnellreferenz für
-          die tägliche Arbeit.
-        </p>
-        <h2>Datenschutz und Vertraulichkeit</h2>
-        <p>{disclaimer}</p>
-        <p>
-          <strong>Keine offizielle Anwendung eines Kreditinstituts.</strong> Es
-          gibt keine Anmeldung, Uploads, Datenbank, externe KI, Tracking oder
-          Cookies der Anwendung. Nur Favoriten werden lokal gespeichert. Externe
-          Quellen werden erst nach einem Klick geöffnet.
-        </p>
-        <p>
-          Beim Abruf einer gehosteten Website erhält der Hostinganbieter
-          technisch notwendige Verbindungsdaten. Die lokale Favoritenliste wird
-          nicht übertragen.
-        </p>
-        <h2>Inhalte und Abbildungen</h2>
-        <p>
-          IDA-Inhalte bleiben auf allgemeine Reportingprinzipien begrenzt.
-          Menübezeichnungen von Power BI und Excel können je Version abweichen.
-          Alle Beispiele und die schematischen Abbildungen sind selbst erstellt
-          und synthetisch.
-        </p>
-        <h2>Entwickelt von Cedric Aichele</h2>
-        <p>
-          Ohne Arbeitgeberbezug, Firmenlogo oder interne
-          Unternehmensinformationen.
-        </p>
-      </div>
-    </>
+    <article className="note-list">
+      <h1>Über BankBI Kompass</h1>
+      <p>BankBI Kompass ist ein unabhängiges Praxis- und Wissensprojekt rund um Power BI, Excel, Datenanalyse, Datenmodellierung und Reporting. Es bereitet typische Aufgaben aus Datenanalyse und Controlling so auf, dass du sie schnell findest und praktisch nachvollziehen kannst.</p>
+      <p>Als Arbeitswerkzeug begleitet es dich bei einer konkreten Frage: Eine Kurzantwort gibt Orientierung, darunter folgen Schritte, Beispiel, Ergebnis, fachliche Erklärung und typische Fehler. Offizielle Dokumentationslinks ermöglichen die Vertiefung.</p>
+      <p>Die <Link to="/suche">Suche</Link> versteht auch typische Fragestellungen wie „kunde mehrfach“, „summe stimmt nicht“, „zwei tabellen verbinden“, „wert aus anderer tabelle“, „vorjahr“ oder „dubletten“. Du musst den Funktionsnamen nicht kennen. Favoriten bleiben lokal in deinem Browser gespeichert – ohne Anmeldung und ohne Synchronisierung zwischen Geräten.</p>
+      <h2>Warum gibt es das Projekt?</h2>
+      <p>Technische Dokumentationen sind oft sehr vollständig. Die praktische Frage „Wie löse ich damit mein konkretes Problem?“ erfordert trotzdem häufig mehrere Übersetzungsschritte. BankBI Kompass verbindet die kurze Lösung mit einem nachvollziehbaren Beispiel und erklärt, warum sie funktioniert.</p>
+      <p>Das Projekt soll Wissen strukturieren und praktische Datenanalyse verständlicher machen. Einsteiger erhalten konkrete Anleitung; erfahrene Anwender finden Formeln, Entscheidungsregeln und Kontrollfragen zum schnellen Nachschlagen.</p>
+      <h2>Qualitäts- und Datenschutzprinzipien</h2>
+      <p>Beispiele zeigen Ausgangsdaten, Vorgehen und erwartete Ergebnisse. Plausibilitätschecks helfen, eine Lösung am eigenen Datenbestand zu beurteilen. Quellen verweisen möglichst direkt auf die offizielle Dokumentation. Menübezeichnungen und Funktionen können je Produktversion abweichen.</p>
+      <p>Alle öffentlich gezeigten Beispieltabellen und Screenshot-Daten sind synthetisch. Die Anleitungen sind mit passenden Arbeitsdaten nutzbar. Vertrauliche Kunden-, Mitarbeiter- und Unternehmensdaten sowie interne Systeme, Feldnamen und Prozesse werden nicht veröffentlicht. IDA- und Cognos-Themen bleiben auf öffentlich belegbare, allgemeine Reportingprinzipien begrenzt.</p>
+      <p>Die Anwendung benötigt kein Konto und bietet keine Uploads. Suche und Favoriten laufen im Browser. Einzelheiten zum Hosting und zur lokalen Speicherung stehen unter <Link to="/datenschutz">Datenschutz</Link>; Betreiberangaben und noch offene Angaben unter <Link to="/impressum">Impressum</Link>.</p>
+      <h2>Über den Entwickler</h2>
+      <p>Ich bin Cedric Aichele und habe einen Bachelor of Engineering in Wirtschaftsingenieurwesen an der Hochschule Mannheim. Beruflich beschäftige ich mich mit Controlling und Datenanalyse im Bankenumfeld. Besonders interessieren mich die Verbindung fachlicher Fragestellungen mit Datenaufbereitung, Reporting und Business Intelligence sowie die strukturierte Analyse größerer Datenbestände.</p>
+      <p>Meine Interessens- und Arbeitsschwerpunkte sind Power BI, Excel, Datenanalyse und Datenmodellierung. BankBI Kompass ist für mich zugleich ein fortlaufendes Praxis- und Portfolio-Projekt, mit dem ich diese Themen strukturiere, vertiefe und verständlich dokumentiere.</p>
+      <p><a href="https://github.com/CedricAichele" target="_blank" rel="noreferrer">Cedric Aichele auf GitHub</a></p>
+      <p>BankBI Kompass ist ein unabhängig entwickeltes Projekt und steht in keiner offiziellen Verbindung zu einem Arbeitgeber, Microsoft oder IBM.</p>
+    </article>
   );
 }
 function NotFound() {

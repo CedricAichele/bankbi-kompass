@@ -1,18 +1,22 @@
-# Offene Punkte · 18. September 2026
+# Offene Punkte
 
-## Betreiber und Veröffentlichung
+## Betreiberangaben
 
-- Impressum: Name bestätigen, ladungsfähige Anschrift und Kontaktangabe selbst ergänzen. Keine Daten wurden erfunden.
-- Datenschutz: Betreiberkontakt, zutreffende Rechtsgrundlage, Rechte-/Beschwerdeinformationen und tatsächliche Hostingkonfiguration abschließend prüfen und ergänzen. Die Seite berücksichtigt GitHub Pages, lokale Favoriten und externe Links.
-- Status des aktuellen Pushs und Deployments: siehe DEPLOYMENT.md und Abschlussbericht.
+- Impressum: Betreibername bestätigen, geeignete ladungsfähige Anschrift und Kontaktadresse ergänzen.
+- Datenschutz: Betreiberkontakt und die zum Angebot passende rechtliche Einordnung einschließlich Rechtsgrundlagen, Rechte- und Beschwerdeinformationen vervollständigen.
 
-## Fachliche und visuelle Grenzen
+## Abbildungen und fachliche Prüfung
 
-- IDA-spezifische Menüwege, Ausdruckssyntax, Parameterbindung und interne Betriebsabläufe sind nicht öffentlich belegt. Die Anleitungen bleiben allgemeine Reportingprinzipien und Schemata.
-- Der Merge-Dialog ist weiterhin ein ausdrücklich markierter Screenshot-TODO. Weitere echte Aufnahmen für Entpivotieren, Slicer und Visualinteraktionen ergänzen, wenn sie einen konkreten Arbeitsschritt besser erklären.
-- Zeitintelligenz wurde diesmal in Power BI mit direkt aus Kalendertagen berechneten synthetischen Bewegungen geprüft. Den vollständigen Zwei-Tabellen-Import samt markierter Datumstabelle, Datumsbeziehung und Slicer zusätzlich nachbauen. Keine pauschale Laufzeitfreigabe aller 272 Einträge.
-- Komplexe n:m-Brücken, Gesamtsummen und Bestandsstichtage mit weiteren real ausgeführten synthetischen Modellen prüfen.
-- Kürzere Spezialreferenzen bei konkretem Bedarf vertiefen. Nicht jeder Eintrag wurde zu einer vollständigen Praxisanleitung ausgebaut.
-- Suchziel 20–60 Sekunden und Anfängerverständlichkeit durch Nutzertests prüfen.
+- Die 45 offenen Aufnahme- und Ersatzaufträge in [SCREENSHOT-TODO.md](docs/SCREENSHOT-TODO.md) bearbeiten. Vor Veröffentlichung Bildinhalt und Lesbarkeit prüfen.
+- IDA-Menüwege und Syntax ausschließlich bei belastbaren öffentlichen Belegen konkretisieren. Bis dahin allgemeine Reportingprinzipien beibehalten.
+- Zeitintelligenz zusätzlich in einem vollständigen Zwei-Tabellen-Modell mit markiertem Kalender, Datumsbeziehung und Slicer prüfen. Komplexe n:m-Brücken, Gesamtsummen und Bestandsstichtage mit weiteren synthetischen Modellen nachvollziehen.
+- Anfängerverständlichkeit und schnelles Finden durch Nutzertests prüfen.
+- Die Vite-Warnung zur Größe des JavaScript-Bundles bei einer gesonderten Performance-Optimierung untersuchen.
 
-Erledigt: ausführliche Kernanleitungen, 27 Probleme, 21 Entscheidungsreferenzen, 27 Einträge im Grundlagenzugang, 26 Aufgaben, kompakte Schnellansicht, aufklappbare Erklärungen, neutraler Privacy-Scanner mit optionaler lokaler Sperrliste, Exportausschlüsse, Archivbereinigung und getrennte Rechteseiten.
+## Veröffentlichung
+
+- Die lokalen Änderungen vom 21. September 2026 nach ausdrücklicher Freigabe veröffentlichen. GitHub Pages ist bereits eingerichtet; lokale Commits sind nicht automatisch live.
+
+## Dokumentation
+
+- Später entscheiden, ob der historische Umbau-Bericht dauerhaft im öffentlichen Repository benötigt wird. Prüfnachweise vor einer Entfernung erhalten oder archivieren; siehe [Dokumentationsübersicht](docs/README.md).

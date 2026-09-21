@@ -91,7 +91,7 @@ Ein vorhandener Datenbestand mit den genannten Feldern. Die Tabelle im Beispiel 
 3. Markiere Kontonummer und setze den Typ Text; setze Bestand_EUR auf Dezimalzahl.
 4. Klicke die Überschrift Produktgruppe mit rechts an und benenne sie testweise in Produkt um.
 5. Klicke rechts nacheinander Quelle und Umbenannte Spalten. Beobachte, dass der alte Name beim frühen Schritt noch existiert.
-6. Entferne nur den Testschritt über dessen X, wenn er nicht benötigt wird. Spätere Schritte können von einem vorherigen Namen abhängen.
+6. Behalte die Umbenennung für das gezeigte Beispiel. Zum Rückgängigmachen kannst du den Schritt über dessen X entfernen; dann heißt die Spalte wieder Produktgruppe. Spätere Schritte können vom Namen abhängen.
 7. Erstelle für alternative Auswertungen per Rechtsklick auf Konten eine Referenz, damit die Basisabfrage erhalten bleibt.
 8. Prüfe im rechten Bereich Angewendete Schritte die Vorschau vor und nach der Aktion. In Power BI abschließend Schließen & übernehmen, in Excel Schließen & laden wählen.
 

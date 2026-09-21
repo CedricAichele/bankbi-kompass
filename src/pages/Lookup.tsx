@@ -22,10 +22,12 @@ export function HomePage() {
   return (
     <>
       <header className="home-heading">
-        <span className="eyebrow">DEIN NACHSCHLAGEWERK IM BANKALLTAG</span>
+        <span className="eyebrow">POWER BI · EXCEL · REPORTING</span>
         <h1>Was möchtest du machen oder finden?</h1>
-        <p>Direkt zur passenden Funktion, Vorgehensweise oder Fehlerursache.</p>
+        <p>BankBI Kompass hilft dir, Daten aufzubereiten, Auswertungen zu verstehen und Fehler zu lösen – mit konkreten Schritten und nachvollziehbaren Beispielen.</p>
         <SearchForm prominent />
+        <p>Suche nach einer Funktion oder deiner Frage, etwa „summe stimmt nicht“ oder „zwei tabellen verbinden“.</p>
+        <p>Ein unabhängiges Praxisprojekt von <Link to="/ueber">Cedric Aichele</Link> – Wirtschaftsingenieur mit Schwerpunkt Controlling und Datenanalyse.</p>
       </header>
       <section className="frequent">
         <h2>Häufig gebraucht</h2>
@@ -155,8 +157,8 @@ export function ToolPage() {
           <p>
             <strong>Allgemeine Reportingprinzipien.</strong> Keine internen
             Funktionen, Datenmodelle oder Bildschirmaufnahmen. Konkrete
-            IDA-Menüpfade und Syntax sind noch{" "}
-            <Link to="/ida-hinweise">TODO</Link>.
+            IDA-Menüpfade und Syntax sind{" "}
+            <Link to="/ida-hinweise">nicht öffentlich belegt</Link>.
           </p>
         </div>
       )}

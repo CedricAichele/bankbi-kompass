@@ -47,7 +47,7 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 ## Schritte
 
 1. Formuliere die Einheit einer Ergebniszeile und den Aktualisierungsbedarf.
-2. Nimm **COUNTROWS / COUNT**, wenn du Zeilen zählen willst (COUNTROWS) oder befüllte Werte einer Spalte (COUNT).
+2. Nimm **COUNTROWS / COUNT**, wenn du Zeilen zählen willst (COUNTROWS) oder nicht leere Zahlen, Datums- oder Textwerte einer Spalte (COUNT; keine Wahrheitswerte).
 3. Nimm **DISTINCTCOUNT**, wenn unterschiedliche Personen oder Objekte gezählt werden sollen.
 4. Baue das Mini-Beispiel mit der gewählten Methode nach und prüfe die beschriebene Fehlerquelle.
 
@@ -55,23 +55,16 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ### Ausgangslage und Entscheidung
 
-P001, P001, P002: drei Zeilen, zwei unterschiedliche Personen. Ein leeres Enddatum wird von COUNT übersprungen.
+P001, P001, P002: drei Zeilen, zwei unterschiedliche Personen. Bei drei Zeilen mit zwei ausgefüllten Enddaten liefert COUNT(Enddatum) 2, COUNTROWS 3 und DISTINCTCOUNT(Person) 2. DISTINCTCOUNT zählt BLANK als eigenen Wert mit.
 
 | Alternative | Geeignet, wenn |
 | --- | --- |
-| COUNTROWS / COUNT | du Zeilen zählen willst (COUNTROWS) oder befüllte Werte einer Spalte (COUNT). |
+| COUNTROWS / COUNT | du Zeilen zählen willst (COUNTROWS) oder nicht leere Zahlen, Datums- oder Textwerte einer Spalte (COUNT; keine Wahrheitswerte). |
 | DISTINCTCOUNT | unterschiedliche Personen oder Objekte gezählt werden sollen. |
 
 ## Typischer Fehler
 
 Eine Gesamtzahl verschiedener Personen ist nicht additiv über überlappende Gruppen.
-
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| COUNTROWS / COUNT | du Zeilen zählen willst (COUNTROWS) oder befüllte Werte einer Spalte (COUNT) |
-| DISTINCTCOUNT | unterschiedliche Personen oder Objekte gezählt werden sollen |
 
 ## Merksatz
 
@@ -79,7 +72,7 @@ Erst die Zähleinheit benennen, dann die Funktion wählen.
 
 ## Warum funktioniert das?
 
-Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **COUNTROWS / COUNT**, wenn du Zeilen zählen willst (COUNTROWS) oder befüllte Werte einer Spalte (COUNT). Nimm **DISTINCTCOUNT**, wenn unterschiedliche Personen oder Objekte gezählt werden sollen.
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **COUNTROWS / COUNT**, wenn du Zeilen zählen willst (COUNTROWS) oder nicht leere Zahlen, Datums- oder Textwerte einer Spalte (COUNT; keine Wahrheitswerte). Nimm **DISTINCTCOUNT**, wenn unterschiedliche Personen oder Objekte gezählt werden sollen.
 
 ## Ergebnis
 

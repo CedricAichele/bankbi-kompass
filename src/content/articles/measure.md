@@ -20,9 +20,6 @@
     "filterkontext",
     "calculate",
     "measure-spalte",
-    "sum",
-    "countrows",
-    "distinctcount",
     "divide"
   ],
   "kontexte": [

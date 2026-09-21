@@ -27,15 +27,10 @@
     "summe stimmt nicht"
   ],
   "verwandteThemen": [
-    "gruppieren",
-    "beziehungen",
+    "schluessel",
     "kardinalitaet",
-    "begriff-join",
-    "dubletten",
-    "problem-person-mehrfach",
-    "eins-zu-viele",
-    "distinctcount",
-    "ida-aggregation"
+    "beziehungen",
+    "gruppieren"
   ],
   "kontexte": [
     "Reporting"
@@ -44,6 +39,7 @@
   "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/guidance/star-schema",
     "https://learn.microsoft.com/en-us/power-query/group-by"
   ],
   "screenshots": [],
@@ -69,19 +65,23 @@ Kenntnis der fachlichen Bedeutung der Daten; keine bestimmte Beispieldatei erfor
 
 ### Vorher · Beispieldaten
 
-| Ausgangslage |
-| --- |
-| P001/K001/31.01./1000; P001/K002/31.01./2000; P001/K001/28.02./1100. |
+| Kunde | Konto | Stichtag | Bestand |
+| --- | --- | --- | --- |
+| P001 | K001 | 31.01.2026 | 1000 |
+| P001 | K002 | 31.01.2026 | 2000 |
+| P001 | K001 | 28.02.2026 | 1100 |
 
 ### Aktion
 
-Den vollständigen Schlüssel vor Gruppierung oder Join festlegen.
+Konto und Stichtag gemeinsam als Schlüssel prüfen. Der Kundenschlüssel allein ist auf dieser Ebene nicht eindeutig.
 
 ### Nachher · Beispielergebnis
 
-| Ergebnis |
-| --- |
-| Drei Konto-Stichtag-Zeilen; zwei Konten; eine Person. |
+| Betrachtung | Anzahl |
+| --- | --- |
+| Konto-Stichtag-Kombinationen | 3 |
+| Konten | 2 |
+| Kunden | 1 |
 
 ## Ergebnis
 

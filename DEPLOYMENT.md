@@ -1,21 +1,24 @@
 # Start und Veröffentlichung
 
-Lokal: Im Projektordner `npm ci`, `npm run build` und `npm run preview` ausführen. Alternativ den vorhandenen lokalen Starthelfer verwenden. Die Vorschau liegt unter http://127.0.0.1:4173/bankbi-kompass/.
+## Adressen und Konfiguration
 
-## Ziel
+- [Live-Version](https://cedricaichele.github.io/bankbi-kompass/)
+- [Repository](https://github.com/CedricAichele/bankbi-kompass)
+- Branch: main; Vite-Basis: /bankbi-kompass/; Direktlinks verwenden Hash-Routen.
+- GitHub Pages verwendet GitHub Actions als Veröffentlichungsquelle.
 
-- Repository: https://github.com/CedricAichele/bankbi-kompass
-- Origin: https://github.com/CedricAichele/bankbi-kompass.git
-- Branch: main
-- Website: https://cedricaichele.github.io/bankbi-kompass/
-- Vite-Basis: /bankbi-kompass/, Navigation über HashRouter.
+GitHub Pages ist eingerichtet. Ein erfolgreiches Deployment ist durch [diesen Actions-Lauf vom 18. September 2026](https://github.com/CedricAichele/bankbi-kompass/actions/runs/35315704904) dokumentiert. Der öffentliche Stand entspricht dem zuletzt erfolgreich veröffentlichten Commit, nicht automatisch dem lokalen Arbeitsverzeichnis.
 
-## Aktueller Qualitätsdurchlauf · 18. September 2026
+## Lokal prüfen
 
-Anwendungscommit 72f9ac4d222182efd34120813106449e9f36614c erfolgreich auf main gepusht. GitHub Actions meldet den Lauf 35315704904 als erfolgreich abgeschlossen. Die öffentliche Website wurde anschließend geöffnet: neuer Umfang (26 Aufgaben), CSS, Navigation, Suche, XVERWEIS mit sieben Schritten, Bilder, Impressum und Datenschutz funktionieren. Frühere Repository-Zugriffsblocker sind behoben. Dieser Nachtrag ändert ausschließlich Dokumentation.
+Im Projektordner npm ci, npm run build und npm run preview ausführen. Die Vorschau ist normalerweise unter http://127.0.0.1:4173/bankbi-kompass/ erreichbar. Für die Entwicklung npm run dev verwenden.
 
-Der vorhandene Workflow prüft Installation, TypeScript, Tests, strikte Inhalte und Repository-Vertraulichkeit, baut die Website und veröffentlicht main auf GitHub Pages. Pages muss GitHub Actions als Quelle verwenden. Anmeldung, 2FA oder zusätzliche GitHub-Bestätigungen führt ausschließlich der Betreiber aus. Kein Force-Push.
+## Veröffentlichung auslösen
 
-Die noch offenen Betreiberangaben auf Impressum und Datenschutz sind in TODO.md dokumentiert. Aktuelle Prüfergebnisse und Grenzen: docs/QUALITAETSBERICHT.md.
+Ein Push auf main startet den vorhandenen Workflow. Er prüft TypeScript, Tests, strikte Inhalte und Repository-Vertraulichkeit, baut die Website und veröffentlicht ausschließlich den Build aus dist/. Pull Requests werden geprüft, aber nicht veröffentlicht. Der Workflow kann außerdem manuell gestartet werden.
 
-Nachweis: https://github.com/CedricAichele/bankbi-kompass/actions/runs/35315704904
+Vor einem beauftragten Push Arbeitsverzeichnis und Origin prüfen. Anschließend den zugehörigen Lauf unter [GitHub Actions](https://github.com/CedricAichele/bankbi-kompass/actions) bis zum Ergebnis verfolgen und Startseite, CSS, Bilder und Navigation der Live-Version prüfen. Kein Force-Push; erforderliche Anmeldung oder 2FA führt der Betreiber aus.
+
+## Offene Betreiberangaben
+
+Impressum und Datenschutz enthalten noch ausdrücklich markierte Angaben, die der Betreiber vervollständigen muss. Die [offenen Punkte](TODO.md) sind getrennt vom technischen Deploymentstatus dokumentiert.

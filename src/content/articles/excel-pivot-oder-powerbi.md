@@ -62,13 +62,6 @@ Einmalige Kontenprüfung: Pivot. Regelmäßiger Bericht mit gemeinsamen Kalender
 
 Veröffentlichung und Lizenzen sind gesondert zu klären; ein Desktop-Bericht ist noch kein gemeinsamer Service.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| Excel Pivot | die Auswertung lokal, überschaubar und eng an eine Arbeitsmappe gebunden bleibt |
-| Power BI | ein wiederkehrendes Datenmodell und mehrere interaktive Berichtsseiten gebraucht werden |
-
 ## Merksatz
 
 Arbeitsmappe oder wiederverwendbares Berichtsmodell?

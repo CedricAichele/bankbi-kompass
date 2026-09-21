@@ -62,13 +62,6 @@ Dateien erst in Power Query anfügen, danach in einer PivotTable nach Person aus
 
 Pivot kann falsche Datentypen nicht fachlich reparieren.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| PivotTable | saubere Detaildaten flexibel zusammengefasst werden sollen |
-| Power Query | Rohdaten vor der Auswertung bereinigt oder umgeformt werden müssen |
-
 ## Merksatz
 
 Die Werkzeuge ergänzen sich häufig.

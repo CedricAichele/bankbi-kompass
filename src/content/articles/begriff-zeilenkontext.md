@@ -29,7 +29,7 @@
   "art": "artikel",
   "screenshots": [],
   "quellen": [
-    "https://learn.microsoft.com/en-us/dax/dax-overview",
+    "https://learn.microsoft.com/en-us/dax/dax-overview#row-context",
     "https://learn.microsoft.com/en-us/dax/sumx-function-dax"
   ],
   "zuletztGeprueft": "2026-09-21",

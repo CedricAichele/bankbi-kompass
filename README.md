@@ -1,25 +1,62 @@
 # BankBI Kompass
 
-Schnelles Arbeits- und Nachschlagewerk für Power BI, Excel und allgemeine IDA-/Reportingkonzepte. Entwickelt von Cedric Aichele. Ziel: während der Arbeit eine passende Antwort oder Vorgehensweise in 20–60 Sekunden finden.
+BankBI Kompass ist ein praxisorientiertes Nachschlagewerk für Power BI, Excel und datenorientiertes Reporting. Es hilft dabei, typische Aufgaben aus Datenanalyse und Controlling schnell zu lösen und technische Konzepte nachvollziehbar zu verstehen. Entwickelt von **Cedric Aichele**.
 
-## Stand · 18. September 2026
+**[BankBI Kompass öffnen](https://cedricaichele.github.io/bankbi-kompass/)** · [Über das Projekt](https://cedricaichele.github.io/bankbi-kompass/#/ueber) · [GitHub-Profil](https://github.com/CedricAichele)
 
-272 Einträge: 219 Referenzen, 27 Problemlösungen und 26 Aufgaben. 21 Vergleichsreferenzen unterstützen die Werkzeugwahl; der Grundlagenzugang bündelt 27 Einträge einschließlich vorhandener, zusätzlich zugeordneter Begriffe. Bestehende Architektur und Direktlinks bleiben erhalten.
+## Was bietet BankBI Kompass?
 
-Die Kurzantwort und Schnellansicht bleiben kompakt. Ausführliche Anleitungen dürfen mehr als drei Schritte und mehr als 250 Wörter haben. 74 Praxiseinträge enthalten Voraussetzungen, Beispieldaten, Ergebnis, Erklärung, Fehleranalyse und Plausibilitätscheck. Zusätzliche Erklärungen stehen in aufklappbaren Abschnitten. Das sichtbare Datum heißt „Stand“ und behauptet keine pauschale Laufzeitprüfung.
+- Eine zentrale Suche nach Funktionen und typischen Fragen: etwa „kunde mehrfach“, „summe stimmt nicht“, „zwei tabellen verbinden“, „wert aus anderer tabelle“, „vorjahr“ oder „dubletten“.
+- Wissenskataloge für Power BI und Excel sowie allgemeine Reporting- und Cognos-Grundlagen.
+- Typische Aufgaben, Probleme & Lösungen, Werkzeugwahl und verständliche Datenbegriffe.
+- Schritt-für-Schritt-Anleitungen mit Vorher-/Nachher-Beispielen, Excel-Formeln und DAX.
+- Erklärungen, typische Fehler, Plausibilitätschecks und Links zur offiziellen Dokumentation.
+- Favoriten, die lokal im jeweiligen Browser gespeichert werden. Eine Anmeldung ist nicht nötig; eine Synchronisierung zwischen Geräten findet nicht statt.
 
-16 echte Power-BI- und 13 echte Excel-Aufnahmen sowie 8 gekennzeichnete Schemata liegen lokal vor. Dieser Durchlauf ergänzt den Excel-Tabellendialog und einen Power-BI-DAX-Ergebnisnachweis. Grenzen und tatsächlich ausgeführte Beispiele stehen im [Qualitätsbericht](docs/QUALITAETSBERICHT.md), Bildherkunft im [Bildnachweis](docs/BILDNACHWEIS.md), offene Punkte in [TODO.md](TODO.md).
+## Für wen ist das Projekt?
 
-## Lokal starten und prüfen
+Für Einsteiger, Analysten, Controller und BI-Anwender, die Power BI oder Excel im Arbeitsalltag einsetzen. Du kannst einen konkreten Fehler nachschlagen, einen Arbeitsschritt nachvollziehen oder die passende Methode für eine Auswertung auswählen.
+
+## Grundidee
+
+Die schnelle Antwort steht oben, die ausführliche Erklärung darunter. Ein Eintrag führt von der praktischen Frage über konkrete Schritte und ein kleines Beispiel zum überprüfbaren Ergebnis. So bleibt er beim Nachschlagen übersichtlich und bietet zugleich genug Kontext zum Lernen.
+
+## Inhaltsschwerpunkte
+
+**Power BI:** Daten laden, Power Query, Datenmodellierung, DAX, Visualisierung und Fehlersuche.
+
+**Excel:** Formeln, PivotTables, Datenbereinigung, Power Query und Analyse.
+
+**Reporting:** allgemeine Reporting- und Cognos-Prinzipien, Filter, Aggregation, Parameter und Ergebnisprüfung. Die IDA-Rubrik behandelt ausschließlich übertragbare Konzepte; interne Systemdetails oder unbelegte produktspezifische Menüwege werden nicht beschrieben.
+
+## Beispiele und Datenschutz
+
+Alle öffentlich gezeigten Beispieldaten, Beispieltabellen und Screenshot-Daten sind synthetisch. Die Anleitungen lassen sich auf passende Arbeitsdaten übertragen; Beispieldateien sind keine allgemeine Voraussetzung.
+
+Das Projekt veröffentlicht keine echten Kunden-, Mitarbeiter- oder Unternehmensdaten und keine internen Systeme, Feldnamen oder Prozesse. Quellen werden am jeweiligen Eintrag genannt. Fehlende oder zu ersetzende Abbildungen sind als Screenshot-TODO gekennzeichnet.
+
+## Über den Entwickler
+
+Cedric Aichele hat einen Bachelor of Engineering in Wirtschaftsingenieurwesen an der Hochschule Mannheim und beschäftigt sich beruflich mit Controlling und Datenanalyse im Bankenumfeld. BankBI Kompass ist ein fortlaufendes Praxis- und Portfolio-Projekt zur strukturierten Aufbereitung von Wissen über Business Intelligence und Datenanalyse.
+
+BankBI Kompass ist ein unabhängig entwickeltes Projekt und steht in keiner offiziellen Verbindung zu einem Arbeitgeber, Microsoft oder IBM.
+
+## Technischer Aufbau
+
+React, TypeScript und Vite erzeugen eine statische Website für GitHub Pages. Es gibt kein Backend und keine Datenbank. Inhalte liegen als Markdown mit geprüften Metadaten vor. Die Suche läuft im Browser; Favoriten verwenden localStorage. Hash-Routen ermöglichen Direktlinks unter /bankbi-kompass/.
+
+## Lokal starten
 
 Voraussetzung: Node.js 22.18 oder neuer und npm. Im Projektordner:
 
 ```sh
-npm install
+npm ci
 npm run dev
 ```
 
-Die lokale Adresse steht im Terminal, normalerweise `http://127.0.0.1:5173/bankbi-kompass/`. Unter PowerShell bei Bedarf `npm.cmd` verwenden. Der Server bindet nur an die lokale Loopback-Adresse.
+Die lokale Adresse steht im Terminal, normalerweise http://127.0.0.1:5173/bankbi-kompass/. Unter PowerShell bei Bedarf npm.cmd verwenden. npm run build erzeugt dist/; npm run preview öffnet eine lokale Build-Vorschau.
+
+## Qualität
 
 ```sh
 npm run typecheck
@@ -28,113 +65,15 @@ npm run content:check -- --strict
 npm run privacy:check
 npm run build
 npm audit
-npm run preview
 ```
 
-Der Build schreibt die statische Website nach `dist/`. `npm ci` verwendet das vorhandene Lockfile; `npm run test:watch` startet den Test-Watchmodus. Bei Windows-Zertifikatsproblemen kann `$env:NODE_OPTIONS = "--use-system-ca"` den System-Zertifikatsspeicher aktivieren, ohne die Zertifikatsprüfung auszuschalten.
+Die Prüfungen decken Typen, Anwendungsfunktionen, Inhaltsschema, Querverweise und auffällige Veröffentlichungsdaten ab. Sie ersetzen weder die fachliche Prüfung von Beispielen noch eine rechtliche Prüfung der Betreiberangaben.
 
-Die Tests prüfen Suche, Synonyme, Filter, Inhaltsschema, Querverweise, Kataloge, Direktlinks, Favoriten, Navigation, Kopieren und Bilddialog. Office-/DAX-Laufzeitprüfungen sind davon getrennt dokumentiert. Das Suchziel 20–60 Sekunden ist noch nicht durch Nutzertests gemessen.
+## Projektdokumentation
 
-## Aufbau
+- [Start und Veröffentlichung](DEPLOYMENT.md)
+- [Offene Punkte](TODO.md)
+- [Screenshot-Arbeitsliste](docs/SCREENSHOT-TODO.md) und [Bildnachweis](docs/BILDNACHWEIS.md)
+- [Dokumentationsübersicht und Entwicklungshistorie](docs/README.md)
 
-React, TypeScript und Vite erzeugen eine statische Anwendung. HashRouter unterstützt Direktlinks unter dem konfigurierten Unterpfad `/bankbi-kompass/`. Markdown wird mit React Markdown und remark-gfm dargestellt; YAML-Frontmatter wird mit Zod geprüft. Fuse.js sucht lokal, exakte Suchsynonyme haben Vorrang.
-
-```text
-src/content/articles/       Kurze Funktions- und Konzeptreferenzen
-src/content/problems/       Konkrete Fehlerhilfen
-src/content/tasks/          Werkzeugübergreifende Aufgaben
-src/content/catalog.ts      Werkzeugseiten und Tätigkeitsgruppen
-src/content/schema.ts       Metadaten, Bildmodell und Pflichtabschnitte
-src/content/redirects.ts    Migration alter Links und Favoriten
-src/pages/                 Suche, Werkzeugseiten und Referenzansicht
-src/components/            Listen, Markdown, Code und Bilddialog
-src/lib/                   Suche, Favoriten, Entscheidungen, Inhaltsprüfung
-scripts/check-content.ts   Strikte Prüfung einschließlich Bildpfaden
-public/images/             Lokale Abbildungen
-```
-
-Das ungenutzte Verzeichnis docs/archive-v1 wurde entfernt. Frühere Texte bleiben in der Git-Historie nachvollziehbar. Alte Direktlinks und gültige Favoriten werden weiterhin über die bestehende ID-Zuordnung unterstützt.
-
-## Einen Eintrag ergänzen
-
-Datei unter `src/content/articles/`, `problems/` oder `tasks/` anlegen. Das folgende Frontmatter ist eine Vorlage; IDs und Quellen passend ersetzen:
-
-```yaml
----
-id: mein-thema
-slug: mein-thema
-titel: Meine konkrete Aufgabe
-bereich: Power BI
-werkzeuge: [Power BI]
-kategorie: Datenmodell
-schwierigkeit: Grundlage
-kurzbeschreibung: Eine direkte Antwort auf die Frage des Nutzers in ein bis zwei Sätzen.
-ort: Power BI Desktop → Modellansicht
-tags: [Schlüssel]
-synonyme: [Wie verbinde ich diese Daten?]
-verwandteThemen: [beziehungen, granularitaet]
-kontexte: [Reporting, Datenqualität]
-quelleTyp: synthetisches-beispiel
-zuletztGeprueft: "2026-09-16"
-art: artikel
-screenshots: []
-quellen: []
----
-
-## Wann brauche ich das?
-Ein konkreter Arbeitsanlass.
-
-## Schritte
-1. Ausgangslage prüfen.
-2. Die passende Aktion ausführen.
-3. Ergebnis plausibilisieren.
-
-## Beispiel
-Ein kleines, vollständig synthetisches Beispiel mit erwartetem Ergebnis.
-
-## Typischer Fehler
-Der wichtigste Stolperstein und seine Folge.
-```
-
-`kurzbeschreibung` liefert die sichtbare Kurzantwort, `ort` den Bedienort beziehungsweise einen klaren generischen IDA-Hinweis. Pflichtabschnitte verwenden genau die gezeigten Überschriften. Codeblöcke unterstützen beispielsweise `dax`, `excel`, `m` und `text`; die Hervorhebung ist kein Sprachparser.
-
-Suchsynonyme als echte Nutzerfragen formulieren. Neue Einträge gelangen automatisch in den Suchindex. Für den Einstieg über eine Werkzeugseite zusätzlich die ID in `catalog.ts` der passenden Tätigkeitsgruppe zuordnen. Mehrfachzuordnungen sind möglich, insbesondere bei Power Query. Querverweise müssen vorhandene IDs enthalten. Links im Text: `[Beziehungen](#/wissen/beziehungen)`.
-
-Kontexte: Marktsteuerung, Bestandsanalyse, Neugeschäft, Kundenanalyse, Prozessanalyse, Reporting, Datenqualität. Keine neuen langen Prozessaufsätze anlegen.
-
-## Bilder ergänzen
-
-Dateien unter `public/images/power-bi/`, `public/images/excel/` oder `public/images/ida/` ablegen. Im Frontmatter ohne `public/` und ohne führenden Schrägstrich referenzieren:
-
-```yaml
-screenshots:
-  - src: images/power-bi/beziehung.svg
-    alt: Eine Produktdimension filtert zwei passende Bestandszeilen.
-    caption: Selbst erstelltes Beziehungsschema.
-    hinweis: Die 1-Seite enthält jeden Schlüssel nur einmal.
-    schritt: 2
-    schema: true
-    status: bereit
-```
-
-Erlaubt sind PNG, JPG, JPEG, WebP und SVG mit Kleinbuchstaben, Ziffern und Bindestrichen. Alt-Text, Caption, Schema-Kennzeichnung und Status sind Pflicht. Eine optionale Schrittnummer ordnet das Bild einem vorhandenen Arbeitsschritt zu. Fehlende Aufnahmen erhalten `status: todo`, einen konkreten `todo`-Text und keinen erfundenen Bildpfad.
-
-Screenshots für Power BI und Excel stammen aus echten Anwendungen mit vollständig synthetischen Daten. IDA verwendet ausschließlich gekennzeichnete allgemeine Schemen. Bilder liegen lokal, laden verzögert und öffnen einen Dialog mit Zoom, Scrollbereich und Escape. Fehlerhafte Bilder zeigen einen verständlichen Ersatzhinweis. Das Verzeichnis `.local-demo/` mit Rohaufnahmen, CSV, Arbeitsmappen und Zwischenständen bleibt aus Git ausgeschlossen.
-
-## Datenschutz und fachliche Grenzen
-
-Unabhängiges Wissensprojekt, keine offizielle Anwendung eines Kreditinstituts. Kein Backend, keine Anmeldung, keine Uploads, keine KI-API und kein Tracking. Keine externen Schriftarten oder automatisch geladenen Fremdinhalte. Favoriten liegen nur unter `bankbi:favoriten:v1` im localStorage. Die Kopierfunktion schreibt sichtbaren Beispielcode erst nach Klick und liest die Zwischenablage nicht.
-
-Nur generische oder vollständig synthetische Beispiele verwenden: keine Arbeitgebernamen, Logos, realen Kunden, Kennzahlen, internen URLs, Feldnamen, Datenmodelle, Tickets oder Prozesse. IDA-Einträge erklären allgemeine Reportingkonzepte; unbekannte Bedienelemente, Syntax und Betriebsabläufe bleiben ausdrücklich TODO. Öffentliche Quellen werden direkt am Eintrag verlinkt.
-
-Die Inhaltsprüfung untersucht Metadaten und Markdown auf verdächtige Muster, prüft Verweise, Kurzantworten, Praxisabschnitte und Bilddateien. `--strict` macht Warnungen zu Fehlern. Treffer werden ohne Ausgabe des verdächtigen Werts gemeldet. Eine Musterprüfung kann vertrauliche Inhalte übersehen; eine redaktionelle Prüfung bleibt erforderlich.
-
-## Veröffentlichung
-
-Ziel ist GitHub Pages unter dem Repository CedricAichele/bankbi-kompass. Der Actions-Workflow prüft TypeScript, Tests, Inhalte und Repository-Vertraulichkeit vor dem Build. Er veröffentlicht ausschließlich main. Status, Grenzen und nächste Schritte: [DEPLOYMENT.md](DEPLOYMENT.md). Hash-Routen sind nicht einzeln vorgerendert; Social-Metadaten und Suchmaschinenindexierung bleiben begrenzt.
-
-## Lokale Vertraulichkeitsprüfung
-
-Optional privacy.local.example.txt als privacy.local.txt kopieren und eigene Sperrbegriffe zeilenweise eintragen. Diese Datei bleibt ignoriert; persönliche Begriffe gehören nicht in den öffentlichen Scanner. Die generischen Regeln prüfen unter anderem Token-, IBAN-, Kontakt-, Pfad- und interne Adressmuster. Office-/PBIX-Dateien, CSV/TSV-Exporte, Datenbanken und temporäre Dateien sind ausgeschlossen. Der Check untersucht den aktuellen Veröffentlichungsbestand, nicht die Git-Historie und nicht den Bildinhalt per OCR. Bilder zusätzlich visuell prüfen.
-
-Impressum und Datenschutz sind getrennte Seiten. Ausstehende Betreiberangaben sind sichtbar als TODO markiert und müssen durch den Betreiber ergänzt werden. Die Datenschutzerklärung berücksichtigt GitHub Pages und lokalen Favoritenspeicher.
+[Impressum](https://cedricaichele.github.io/bankbi-kompass/#/impressum) und [Datenschutz](https://cedricaichele.github.io/bankbi-kompass/#/datenschutz) sind in der Website erreichbar. Noch fehlende Betreiberangaben sind dort ausdrücklich als TODO markiert.

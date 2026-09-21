@@ -20,10 +20,9 @@
     "Eine Karte bleibt leer."
   ],
   "verwandteThemen": [
-    "divide",
-    "selectedvalue",
     "filterkontext",
-    "nullwerte"
+    "countrows",
+    "divide"
   ],
   "kontexte": [
     "Reporting"
@@ -32,7 +31,9 @@
   "zuletztGeprueft": "2026-09-21",
   "art": "problem",
   "quellen": [
-    "https://learn.microsoft.com/en-us/power-query/replace-values"
+    "https://learn.microsoft.com/en-us/dax/blank-function-dax",
+    "https://learn.microsoft.com/en-us/dax/countrows-function-dax",
+    "https://learn.microsoft.com/en-us/dax/coalesce-function-dax"
   ],
   "screenshots": [],
   "praxis": true
@@ -61,7 +62,7 @@ Zeige zunächst COUNTROWS und das Basismeasure unter demselben Filter.
 2. Zeige zunächst COUNTROWS und das Basismeasure unter demselben Filter.
 3. Behebe fehlende Daten oder Filter zuerst. Verwende COALESCE([Measure], 0) nur, wenn fehlend fachlich wirklich als null angezeigt werden darf.
 4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
-5. Den konkreten Bedienweg für die Korrektur findest du unter [Nullwerte behandeln](#/wissen/nullwerte). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
+5. Wie Filter die Kennzahl beeinflussen, erklärt [Filterkontext](#/wissen/filterkontext). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
 
 ## Beispiel
 
@@ -95,4 +96,4 @@ Unterscheide Testfall mit echter 0 von einem Testfall ohne Datensatz.
 
 ## Warum funktioniert das?
 
-NULL beschreibt Abwesenheit. Leerer Text ist ein vorhandener Text mit Länge null. Wird ein unbekannter Betrag durch 0 ersetzt, ändert sich etwa der Durchschnitt von 250 auf rund 166,67; die Daten sehen vollständiger aus, als sie sind.
+DAX verwendet BLANK für fehlende Werte und leere Berechnungsergebnisse. Eine echte 0 kann einen gemessenen Wert ausdrücken; BLANK belegt ihn nicht. COUNTROWS liefert bei einer leeren Tabelle ebenfalls BLANK. COALESCE ändert die Anzeige, behebt aber keine fehlenden Quelldaten.

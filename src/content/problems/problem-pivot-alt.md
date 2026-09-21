@@ -30,7 +30,7 @@
   "art": "problem",
   "screenshots": [],
   "quellen": [
-    "https://support.microsoft.com/de-DE/Excel/get-started/create-a-pivottable-to-analyze-worksheet-data"
+    "https://support.microsoft.com/en-us/excel/refresh-pivottable-data"
   ],
   "zuletztGeprueft": "2026-09-21",
   "praxis": true

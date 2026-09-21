@@ -63,13 +63,6 @@ Drei Kontrollsummen in Excel; mehrere Fakten mit einem gemeinsamen Kalender in P
 
 Einmalig heißt nicht ohne Datenqualitätskontrolle.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| Excel | kleine Datenmengen, manuelle Eingaben und ein einmaliges Ergebnis im Vordergrund stehen |
-| Power BI | mehrere Quellen und ein komplexeres Modell auch bei einer einzelnen Analyse nötig sind |
-
 ## Merksatz
 
 Komplexität der Daten zählt mehr als die Zahl der Berichte.

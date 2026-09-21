@@ -2,7 +2,7 @@
 {
   "id": "problem-granularitaet",
   "slug": "problem-granularitaet",
-  "titel": "Aggregation auf falscher Ebene",
+  "titel": "Auswertung zeigt zu viele oder zu wenige Zeilen",
   "bereich": "Datenanalyse",
   "werkzeuge": [
     "Power BI",

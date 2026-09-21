@@ -64,13 +64,6 @@ Sechs Konten zu vier Personenbeständen: Gruppieren. Jedes Konto als klein/groß
 
 Gruppieren entfernt Detailinformation aus dem Ergebnis.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| Gruppieren | eine Zeile je Gruppe mit zusammengefassten Werten gebraucht wird |
-| berechnete Spalte | jede Originalzeile erhalten bleiben und ein Merkmal bekommen soll |
-
 ## Merksatz
 
 Weniger Zeilen oder mehr Merkmale?

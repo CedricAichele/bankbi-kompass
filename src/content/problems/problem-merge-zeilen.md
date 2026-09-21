@@ -21,7 +21,7 @@
   ],
   "verwandteThemen": [
     "zusammenfuehren",
-    "ida-join-pruefen",
+    "eins-zu-viele",
     "granularitaet"
   ],
   "kontexte": [

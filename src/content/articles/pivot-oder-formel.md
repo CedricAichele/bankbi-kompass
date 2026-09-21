@@ -62,13 +62,6 @@ Bestand je Person interaktiv: Pivot. Bestand einer ausgewählten Kennung im Form
 
 Feste Formelbereiche schließen neue Zeilen nicht automatisch ein.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| PivotTable | Gruppierung und Kennzahlen schnell umgestellt werden sollen |
-| Formel | ein festes Layout oder einzelne steuerbare Ergebniszellen gebraucht werden |
-
 ## Merksatz
 
 Flexible Gruppierung oder gezielte Zelle?

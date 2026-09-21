@@ -86,7 +86,7 @@ Zeilen zählen, die mehrere Bedingungen gleichzeitig erfüllen.
 
 ## Voraussetzungen
 
-Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. XVERWEIS und dynamische Arrayfunktionen benötigen eine unterstützte Version, zum Beispiel Microsoft 365 oder Excel 2021/2024.
+Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen.
 
 ## Schritte
 

@@ -63,13 +63,6 @@ Produktgruppe = Einlagen kann direkt in CALCULATE stehen. Komplexe Auswahl von G
 
 FILTER über die gesamte Faktentabelle ist nicht automatisch nötig und kann unerwünschte Filterwirkung haben.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| direkter Spaltenfilter | eine einfache Bedingung auf Spalten einer Tabelle genügt |
-| FILTER | eine zeilenweise Tabellenbedingung, etwa mit einer Measure-Auswertung, gebraucht wird |
-
 ## Merksatz
 
 Die kleinste fachlich passende Filtermenge verwenden.

@@ -73,7 +73,7 @@
 
 ## Wann brauche ich das?
 
-Du vergleichst Bestände je synthetischer Produktgruppe.
+Du vergleichst Bestände je Produktgruppe.
 
 ## Voraussetzungen
 

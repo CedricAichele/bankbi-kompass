@@ -63,13 +63,6 @@ Personenslicer filtert Konten über eine Beziehung. Segment in einer exportierba
 
 Mehrere rechte Treffer können beim Merge Zeilen vervielfachen.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| Beziehung | getrennte Tabellen im Modell über einen eindeutigen Schlüssel filtern sollen |
-| Merge | ein Attribut beim Laden physisch an die Ergebniszeilen angefügt werden soll |
-
 ## Merksatz
 
 Filterweg im Modell oder neue Spalten beim Laden?

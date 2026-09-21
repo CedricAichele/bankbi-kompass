@@ -64,13 +64,6 @@ Konten plus Personenattribute: Merge. Zwei Monatsdateien mit gleichen Spalten: A
 
 Append gleicht Spaltennamen ab, nicht ihre Position.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| Merge | du passende Zeilen über gemeinsame Kennungen zuordnest |
-| Append | gleichartige Zeilen aus mehreren Tabellen untereinander gehören |
-
 ## Merksatz
 
 Nebeneinander zuordnen oder untereinander stapeln?

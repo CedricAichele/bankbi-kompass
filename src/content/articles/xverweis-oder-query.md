@@ -65,13 +65,6 @@ Ein Konto im Eingabefeld nachschlagen: XVERWEIS. Jeden Monat fünf Dateien harmo
 
 Keine der Methoden klärt automatisch mehrdeutige Schlüssel.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| XVERWEIS | wenige Werte interaktiv in einer Arbeitsmappe nachgeschlagen werden |
-| Power Query | regelmäßige Zusammenführungen vieler Zeilen reproduzierbar beim Laden erfolgen sollen |
-
 ## Merksatz
 
 Zellantwort oder wiederholbarer Datenprozess?

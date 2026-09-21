@@ -62,13 +62,6 @@ Vorhandener Bestand_EUR: SUM. Zwei Positionen 2×10 und 3×20: SUMX ergibt 80.
 
 SUM(Menge) × SUM(Preis) ergibt hier 150 statt 80.
 
-## Vergleich
-
-| Option | Geeignet, wenn |
-| --- | --- |
-| SUM | eine vorhandene numerische Spalte addiert werden soll |
-| SUMX | pro Zeile erst ein Ausdruck wie Menge × Preis berechnet werden muss |
-
 ## Merksatz
 
 Eine Spalte addieren oder je Zeile rechnen?

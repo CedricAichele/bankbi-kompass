@@ -2,7 +2,7 @@
 {
   "id": "mehrere-datumsbeziehungen",
   "slug": "mehrere-datumsbeziehungen",
-  "titel": "Mehrere Datumsbeziehungen prüfen",
+  "titel": "Datumsfilter wirkt auf das falsche Datum",
   "bereich": "Power BI",
   "werkzeuge": [
     "Power BI"
