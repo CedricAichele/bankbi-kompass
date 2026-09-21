@@ -43,12 +43,12 @@ Eine Liste soll in Excel weiterverarbeitet werden.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Vor dem Lauf Pflichtparameter, Datenstand und erwartete Zähleinheit prüfen.
-2. Formuliere die gewünschte Regel: **Parameter prüfen, Bericht ausführen und ein zum Zweck passendes Ausgabeformat wählen.**.
+2. Formuliere die gewünschte Regel: **Parameter prüfen, Bericht ausführen und ein zum Zweck passendes Ausgabeformat wählen**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Nach dem Lauf Zeilenzahl, Filter und Exportstruktur kontrollieren.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

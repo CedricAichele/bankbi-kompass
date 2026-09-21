@@ -53,12 +53,12 @@ Ein Bericht soll nach einem gewählten Segment laufen.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Prompt, Parametername und verwendeten Filter als drei getrennte Bestandteile prüfen.
-2. Formuliere die gewünschte Regel: **Eine Eingabeaufforderung mit Parameter AuswahlSegment verbinden; Filter nutzt den Parameter.**.
+2. Formuliere die gewünschte Regel: **Eine Eingabeaufforderung mit Parameter AuswahlSegment verbinden; Filter nutzt den Parameter**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Auswahl A und B jeweils ausführen; eine bloß veränderte Überschrift reicht nicht als Beweis.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

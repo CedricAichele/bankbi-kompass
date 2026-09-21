@@ -42,12 +42,12 @@ Eine weitergegebene Liste soll später eindeutig zugeordnet werden.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Fachliche Kontrollgrößen vor der Weiterverwendung festlegen.
-2. Formuliere die gewünschte Regel: **Prüfnotiz zu Definition, Datenstand, Auswahl und Kontrollen führen.**.
+2. Formuliere die gewünschte Regel: **Prüfnotiz zu Definition, Datenstand, Auswahl und Kontrollen führen**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Abweichungen vom Vorlauf begründen und Laufstatus nicht mit Datenvollständigkeit gleichsetzen.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

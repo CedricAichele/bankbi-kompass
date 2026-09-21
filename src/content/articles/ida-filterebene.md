@@ -54,13 +54,13 @@ Gesucht sind Personen mit insgesamt mehr als 100 Euro Bestand.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
 1. Definiere das Ziel als Personen mit Gesamtbetrag über 100.
 2. Wähle einen Summenfilter auf der Personenebene; kontrolliere bei Detailfiltern außerdem deren Anwendung vor oder nach Aggregation.
-3. Notiere die fachliche Regel: **Je Person summieren, danach Gruppenbetrag > 100 filtern.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+3. Notiere die fachliche Regel: **Je Person summieren, danach Gruppenbetrag > 100 filtern**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
 4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
 5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 
@@ -96,7 +96,7 @@ Ein Detailfilter vor dem Summieren bewertet einzelne Konten. Ein Summenfilter be
 
 ## Typischer Fehler
 
-Detail- und Summenfilter vertauschen. Cognos dokumentiert unterschiedliche Filterebenen; die konkrete IDA-Konfiguration bleibt TODO.
+Detail- und Summenfilter vertauschen. Cognos dokumentiert unterschiedliche Filterebenen; die konkrete Konfiguration hängt von der eingesetzten Umgebung ab.
 
 ## Plausibilitätscheck
 

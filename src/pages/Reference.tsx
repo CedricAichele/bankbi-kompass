@@ -7,6 +7,7 @@ import { toolsCatalog } from "../content/catalog";
 import { Markdown } from "../components/Markdown";
 import { ReferenceImage } from "../components/ReferenceImage";
 import { DecisionTools } from "../components/DecisionTools";
+import { documentationLabel } from "../lib/sources";
 export function Reference({
   favorites,
   onToggle,
@@ -90,13 +91,13 @@ export function Reference({
             <Markdown text={sections["Wann brauche ich das?"]} />
           </div>
         </div>
-        <div className="location">
+        {item.bereich !== "IDA" && <div className="location">
           <span>WO FINDE ICH DAS?</span>
           <p>{item.ort}</p>
-        </div>
+        </div>}
         {item.bereich === "IDA" && (
           <p className="ida-label">
-            Allgemeines Reportingprinzip · Konkreter IDA-Menüweg nicht öffentlich belegt. {" "}
+            Allgemeines Reportingprinzip · Bedienung kann je IDA-Umgebung abweichen. {" "}
             <Link to="/ida-hinweise">Geltungsbereich ansehen</Link>
           </p>
         )}
@@ -192,12 +193,11 @@ export function Reference({
             {new Date(item.zuletztGeprueft + "T12:00:00").toLocaleDateString(
               "de-DE",
             )}{" "}
-            · Nur generische / synthetische Beispiele
+            · Beispiele: generisch oder synthetisch
           </span>
           {item.quellen.map((url, i) => (
             <a key={url} href={url} target="_blank" rel="noreferrer">
-              Offizielle Dokumentation
-              {url.includes("ibm.com") ? " · IBM" : " · Microsoft"}
+              {documentationLabel(url)}
               {item.quellen.length > 1 ? " " + (i + 1) : ""}{" "}
               <ArrowUpRight size={13} />
             </a>

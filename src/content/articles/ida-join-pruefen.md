@@ -55,13 +55,13 @@ Nach einer Zuordnung verändern sich Zeilenzahl und Summen.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
 1. Notiere vor dem Join zwei linke Zeilen und Summe 200.
 2. Prüfe rechte Schlüssel auf Mehrfachtreffer und entscheide, ob diese fachlich gewünscht sind.
-3. Notiere die fachliche Regel: **Linker Join über Person; rechte Merkmale ergänzen.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+3. Notiere die fachliche Regel: **Linker Join über Person; rechte Merkmale ergänzen**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
 4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
 5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 

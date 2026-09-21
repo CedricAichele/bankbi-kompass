@@ -42,12 +42,12 @@ Eine Liste braucht ein weiteres Merkmal für die Auswertung.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Die Zeilenebene des neuen Felds mit dem bisherigen Bericht vergleichen.
-2. Formuliere die gewünschte Regel: **Konto als zusätzliches Detailfeld in die Abfrage aufnehmen.**.
+2. Formuliere die gewünschte Regel: **Konto als zusätzliches Detailfeld in die Abfrage aufnehmen**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Vorher zwei Personenzeilen und nachher drei Kontenzeilen gegenprüfen.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

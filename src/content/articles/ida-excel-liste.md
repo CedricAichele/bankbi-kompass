@@ -42,12 +42,12 @@ Die Ausgabe soll gefiltert, verbunden oder in einer PivotTable genutzt werden.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Eine fachliche Zeile pro Konto und Stichtag festlegen.
-2. Formuliere die gewünschte Regel: **Für den Datenexport eine flache Liste ohne Gruppen- oder Summenzeilen definieren.**.
+2. Formuliere die gewünschte Regel: **Für den Datenexport eine flache Liste ohne Gruppen- oder Summenzeilen definieren**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Nach Export nur Detailbeträge summieren: 200, nicht 400.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

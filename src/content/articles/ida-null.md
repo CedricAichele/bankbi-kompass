@@ -42,13 +42,13 @@ Ein Filter oder eine Kennzahl lässt fehlende Werte unerwartet weg.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
 1. Unterscheide fehlende Werte, leeren Text und echte Nullen.
 2. Verwende eine vom Werkzeug unterstützte NULL-Prüfung und lege Ersatz nur mit fachlicher Begründung fest.
-3. Notiere die fachliche Regel: **Bekannte Dauerwerte mitteln; unbekannte Dauer separat zählen.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+3. Notiere die fachliche Regel: **Bekannte Dauerwerte mitteln; unbekannte Dauer separat zählen**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
 4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
 5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 

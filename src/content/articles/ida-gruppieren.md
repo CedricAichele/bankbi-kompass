@@ -42,13 +42,13 @@ Detailzeilen sollen nach Person gebündelt oder zusammengefasst werden.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
 1. Entscheide vorab, ob Kontozeilen sichtbar bleiben sollen.
 2. Für eine eindeutige Personenliste Konto als Detail entfernen und den Betrag je Person aggregieren.
-3. Notiere die fachliche Regel: **Nach Person gruppieren; je nach Ziel Details behalten oder aggregieren.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+3. Notiere die fachliche Regel: **Nach Person gruppieren; je nach Ziel Details behalten oder aggregieren**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
 4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
 5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 

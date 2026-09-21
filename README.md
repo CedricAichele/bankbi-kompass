@@ -1,53 +1,55 @@
 # BankBI Kompass
 
-BankBI Kompass ist das persönliche Wissens-, Nachschlage- und Portfolio-Projekt von **Cedric Aichele** zu Datenanalyse, Business Intelligence und Reporting. Es verbindet praktische Hilfen für den Arbeitsalltag mit der verständlichen Dokumentation seiner fachlichen und technischen Entwicklung. Der aktuelle Schwerpunkt liegt auf Power BI, Excel und allgemeinen IDA-/Cognos-Reportingprinzipien.
+BankBI Kompass ist ein praxisorientiertes Wissens- und Nachschlagewerk für Datenanalyse, Business Intelligence und Reporting. Der aktuelle Schwerpunkt liegt auf Power BI, Excel und IDA/Cognos-basiertem Reporting. Die Inhalte helfen dabei, typische Aufgaben aus Datenaufbereitung, Analyse, Datenmodellierung, Reporting und Controlling schnell nachzuschlagen und praktisch nachzuvollziehen.
 
-**[BankBI Kompass öffnen](https://cedricaichele.github.io/bankbi-kompass/)** · [Über das Projekt](https://cedricaichele.github.io/bankbi-kompass/#/ueber) · [GitHub-Profil](https://github.com/CedricAichele)
+**[BankBI Kompass öffnen](https://cedricaichele.github.io/bankbi-kompass/)**
 
-## Was bietet BankBI Kompass?
+## Was ist BankBI Kompass?
 
-- Eine zentrale Suche nach Funktionen und typischen Fragen: etwa „kunde mehrfach“, „summe stimmt nicht“, „zwei tabellen verbinden“, „wert aus anderer tabelle“, „vorjahr“ oder „dubletten“.
-- Wissenskataloge für Power BI und Excel sowie allgemeine Reporting- und Cognos-Grundlagen.
-- Typische Aufgaben, Probleme & Lösungen, Werkzeugwahl und verständliche Datenbegriffe.
-- Schritt-für-Schritt-Anleitungen mit Vorher-/Nachher-Beispielen, Excel-Formeln und DAX.
-- Erklärungen, typische Fehler, Plausibilitätschecks und Links zur offiziellen Dokumentation.
-- Favoriten, die lokal im jeweiligen Browser gespeichert werden. Eine Anmeldung ist nicht nötig; eine Synchronisierung zwischen Geräten findet nicht statt.
+Ein Arbeitswerkzeug für konkrete Fragen: Die Kurzantwort bietet schnelle Orientierung, darunter folgen nachvollziehbare Schritte und ausführlichere Erklärungen. Du kannst gezielt eine Lösung nachschlagen, ohne einen Kurs von Anfang an durchzuarbeiten oder Blogbeiträge chronologisch zu lesen.
 
-## Für wen ist das Projekt?
+## Was bietet die Anwendung?
 
-Das Projekt dient Cedric als persönliches Nachschlagewerk, Kollegen und anderen Anwendern als praktische Wissensbasis und interessierten Besuchern als öffentliches Portfolio. Einsteiger, Analysten, Controller und BI-Anwender können konkrete Fragen nachschlagen, Arbeitsschritte nachvollziehen und passende Methoden auswählen.
+- Zentrale Suche nach Funktionen, Begriffen und Aufgaben.
+- Kataloge für Power BI, Excel und IDA/Cognos-Reportinggrundlagen.
+- Typische Aufgaben, Probleme & Lösungen, Werkzeugwahl und Datenbegriffe.
+- Schritt-für-Schritt-Anleitungen mit Vorher-/Nachher-Beispielen sowie DAX- und Excel-Formeln.
+- Typische Fehler, Plausibilitätschecks, verwandte Themen und offizielle Dokumentationslinks.
+- Favoriten, lokal im jeweiligen Browser gespeichert – ohne Anmeldung und ohne Synchronisierung zwischen Geräten.
 
-## Grundidee
+## Für wen ist BankBI Kompass?
 
-Die schnelle Antwort steht oben, die ausführliche Erklärung darunter. Ein Eintrag führt von der praktischen Frage über konkrete Schritte und ein kleines Beispiel zum überprüfbaren Ergebnis. So bleibt er beim Nachschlagen übersichtlich und bietet zugleich genug Kontext zum Lernen.
+Für Einsteiger, Analysten, Controller, BI-Anwender und Personen im Reporting, die während ihrer täglichen Arbeit eine Frage klären möchten. Die Anwendung ist sowohl als persönliche Wissensbasis als auch als öffentlich nutzbares Nachschlagewerk konzipiert.
 
-## Aktuelle Inhaltsschwerpunkte
+## Wie finde ich eine Lösung?
 
-**Power BI:** Daten laden, Power Query, Datenmodellierung, DAX, Visualisierung und Fehlersuche.
+Die Suche berücksichtigt auch typische Aufgaben und Fragen. Du musst den Funktionsnamen nicht kennen: „kunde mehrfach“, „summe stimmt nicht“, „zwei tabellen verbinden“, „wert aus anderer tabelle“ oder „vorjahr“ führen zu passenden Themen. Alternativ kannst du über einen Werkzeugkatalog, eine Aufgabe oder ein Fehlersymptom einsteigen.
 
-**Excel:** Formeln, PivotTables, Datenbereinigung, Power Query und Analyse.
+## Wie sind die Inhalte aufgebaut?
 
-**Reporting:** allgemeine Reporting- und Cognos-Prinzipien, Filter, Aggregation, Parameter und Ergebnisprüfung. Die IDA-Rubrik behandelt ausschließlich übertragbare Konzepte; interne Systemdetails oder unbelegte produktspezifische Menüwege werden nicht beschrieben.
+Die Kurzantwort steht oben. Danach folgen Anlass und Voraussetzungen, konkrete Schritte, Beispiel und Ergebnis. Fachliche Erklärungen, typische Fehler und Plausibilitätschecks helfen beim Übertragen auf eigene Daten. Verwandte Themen und offizielle Dokumentation ermöglichen die Vertiefung.
+
+## Inhaltsschwerpunkte
+
+**Power BI:** Power Query, Datenmodellierung, DAX, Zeitintelligenz, Visualisierung und Fehlersuche.
+
+**Excel:** Formeln, Datenbereinigung, PivotTables, Power Query und Analyse.
+
+**IDA/Cognos:** Listen, Filter, Parameter, Berechnungen, Aggregationen, Mehrfachzeilen, Joins, Export und übertragbare Reportingprinzipien. Konkrete Bedienmöglichkeiten hängen von Umgebung und Version ab.
 
 ## Langfristige Entwicklung
 
-BankBI Kompass soll mit Cedrics beruflichem und fachlichem Wissen wachsen. Über die heutigen Werkzeuge hinaus können allgemeine Themen der bankfachlichen Analyse, des Vertriebsmanagements, der Vertriebssteuerung, der Datenverarbeitung und Batchprozesse sowie weitere Steuerungs- und Reportingfragen hinzukommen. Diese Ausrichtung beschreibt die geplante Entwicklung, nicht bereits vollständig vorhandene Inhalte. Veröffentlicht werden ausschließlich übertragbare Methoden und synthetische Beispiele, keine internen Abläufe oder Unternehmenslogik.
+Der Katalog soll schrittweise um weitere fachliche und technische Themen erweitert werden: allgemeine bankfachliche Analyse, Vertriebsmanagement, Vertriebssteuerung, weitere Steuerungs- und Reportingfragen sowie Datenverarbeitungs- und Batchprozesse. Diese Entwicklungsrichtung beschreibt noch keinen vollständigen Themenbestand.
 
 ## Beispiele und Datenschutz
 
-Alle öffentlich gezeigten Beispieldaten, Beispieltabellen und Screenshot-Daten sind synthetisch. Die Anleitungen lassen sich auf passende Arbeitsdaten übertragen; Beispieldateien sind keine allgemeine Voraussetzung.
+Öffentlich gezeigte Beispieltabellen und Screenshot-Daten sind synthetisch. Die Anleitungen lassen sich auf passende Arbeitsdaten übertragen; Beispieldateien sind keine allgemeine Voraussetzung.
 
-Das Projekt veröffentlicht keine echten Kunden-, Mitarbeiter- oder Unternehmensdaten und keine internen Systeme, Feldnamen oder Prozesse. Quellen werden am jeweiligen Eintrag genannt. Fehlende oder zu ersetzende Abbildungen sind als Screenshot-TODO gekennzeichnet.
-
-## Über den Entwickler
-
-Cedric Aichele hat einen Bachelor of Engineering in Wirtschaftsingenieurwesen an der Hochschule Mannheim und beschäftigt sich beruflich mit Controlling und Datenanalyse im Bankenumfeld. Er arbeitet mit Reporting, Datenanalyse, Excel, IDA/Cognos und zunehmend Power BI. Sein Interesse gilt der Verbindung fachlicher Fragestellungen mit Datenmodellen, Reporting und Business Intelligence.
-
-BankBI Kompass ist ein unabhängig entwickeltes Projekt und steht in keiner offiziellen Verbindung zu einem Arbeitgeber, Microsoft oder IBM.
+Veröffentlicht werden allgemeine Methoden und öffentlich dokumentierte Technologien. Reale Kunden-, Mitarbeiter- und Unternehmensdaten, interne Systeme, Feldnamen, Bildschirmaufnahmen, Prozesse und Unternehmenslogik bleiben ausgeschlossen. Die Anwendung bietet keine Uploads, Nutzerkonten, externe KI oder eigenes Tracking. Hinweise zum Hosting und zur lokalen Speicherung stehen im [Datenschutz](https://cedricaichele.github.io/bankbi-kompass/#/datenschutz).
 
 ## Technischer Aufbau
 
-React, TypeScript und Vite erzeugen eine statische Website für GitHub Pages. Es gibt kein Backend und keine Datenbank. Inhalte liegen als Markdown mit geprüften Metadaten vor. Die Suche läuft im Browser; Favoriten verwenden localStorage. Hash-Routen ermöglichen Direktlinks unter /bankbi-kompass/.
+React, TypeScript und Vite erzeugen eine statische Website für GitHub Pages. Inhalte liegen in Markdown mit geprüften Metadaten vor. Es gibt kein Backend und keine Datenbank. Die Suche läuft lokal; Favoriten verwenden localStorage. Hash-Routen ermöglichen Direktlinks unter /bankbi-kompass/.
 
 ## Lokal starten
 
@@ -58,7 +60,7 @@ npm ci
 npm run dev
 ```
 
-Die lokale Adresse steht im Terminal, normalerweise http://127.0.0.1:5173/bankbi-kompass/. Unter PowerShell bei Bedarf npm.cmd verwenden. npm run build erzeugt dist/; npm run preview öffnet eine lokale Build-Vorschau.
+Die lokale Adresse steht im Terminal, normalerweise http://127.0.0.1:5173/bankbi-kompass/. Unter PowerShell bei Bedarf npm.cmd verwenden. npm run build erzeugt dist/; npm run preview startet die lokale Build-Vorschau.
 
 ## Qualität
 
@@ -71,13 +73,14 @@ npm run build
 npm audit
 ```
 
-Die Prüfungen decken Typen, Anwendungsfunktionen, Inhaltsschema, Querverweise und auffällige Veröffentlichungsdaten ab. Sie ersetzen weder die fachliche Prüfung von Beispielen noch eine rechtliche Prüfung der Betreiberangaben.
+Die Prüfungen decken Typen, Anwendungsfunktionen, Suchqualität, Inhaltsschema, Querverweise und auffällige Veröffentlichungsdaten ab. Sie ersetzen weder die fachliche Prüfung von Beispielen noch eine rechtliche Prüfung der Betreiberangaben.
 
-## Projektdokumentation
+Technische Unterlagen: [Start und Veröffentlichung](DEPLOYMENT.md) · [Entwicklungsdokumentation](docs/README.md).
 
-- [Start und Veröffentlichung](DEPLOYMENT.md)
-- [Offene Punkte](TODO.md)
-- [Screenshot-Arbeitsliste](docs/SCREENSHOT-TODO.md) und [Bildnachweis](docs/BILDNACHWEIS.md)
-- [Dokumentationsübersicht und Entwicklungshistorie](docs/README.md)
+## Entwickler
 
-[Impressum](https://cedricaichele.github.io/bankbi-kompass/#/impressum) und [Datenschutz](https://cedricaichele.github.io/bankbi-kompass/#/datenschutz) sind in der Website erreichbar. Noch fehlende Betreiberangaben sind dort ausdrücklich als TODO markiert.
+BankBI Kompass wird von **Cedric Aichele** entwickelt. Ich habe Wirtschaftsingenieurwesen an der Hochschule Mannheim studiert und mit dem Bachelor of Engineering abgeschlossen. Beruflich beschäftige ich mich mit Controlling und Datenanalyse im Bankenumfeld.
+
+Mehr zu Motivation und fachlicher Entwicklung: [Über das Projekt](https://cedricaichele.github.io/bankbi-kompass/#/ueber) · [GitHub-Profil](https://github.com/CedricAichele).
+
+BankBI Kompass ist unabhängig entwickelt und steht in keiner offiziellen Verbindung zu einem Arbeitgeber, Microsoft oder IBM. [Impressum](https://cedricaichele.github.io/bankbi-kompass/#/impressum).

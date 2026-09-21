@@ -44,12 +44,12 @@ Ein Segmentfilter soll wahlweise entfallen.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Bedeutung der leeren Auswahl schriftlich festlegen und von einem leeren Segmentwert unterscheiden.
-2. Formuliere die gewünschte Regel: **Den zusätzlichen Segmentfilter bei fehlender Auswahl gemäß Fachregel auslassen.**.
+2. Formuliere die gewünschte Regel: **Den zusätzlichen Segmentfilter bei fehlender Auswahl gemäß Fachregel auslassen**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Leerfall und Einzelwertfall testen; ein optionales Eingabefeld allein macht keinen Pflichtfilter optional.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

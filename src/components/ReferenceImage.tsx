@@ -7,6 +7,7 @@ export function ReferenceImage({ image }: { image: ReferencePicture }) {
   const trigger = useRef<HTMLButtonElement>(null);
   const [failed, setFailed] = useState(false);
   const [zoom, setZoom] = useState(false);
+  if (image.status === "todo" || image.bildAnzeigen === false || !image.src) return null;
   const src = image.src
     ? import.meta.env.BASE_URL + image.src.replace(/^\//, "")
     : undefined;
@@ -14,31 +15,17 @@ export function ReferenceImage({ image }: { image: ReferencePicture }) {
     <div className="image-labels">
       {image.schritt && <span>Schritt {image.schritt}</span>}
       {image.schema && <strong>Schematische Darstellung</strong>}
-      {image.status === "ersetzen" && <strong>Screenshot ersetzen</strong>}
     </div>
   );
-  const placeholder = image.status === "todo" || image.bildAnzeigen === false || failed;
   return (
     <figure className="reference-image">
       {label}
-      {placeholder ? (
+      {failed ? (
         <div className="image-placeholder" role="note">
           <ImageIcon size={24} />
           <div>
-            <strong>
-              {failed
-                ? "Abbildung nicht verfügbar"
-                : image.status === "ersetzen"
-                  ? "TODO: Screenshot ersetzen"
-                : image.schema
-                  ? "TODO: Schematische Darstellung ergänzen"
-                  : "TODO: Echten Screenshot ergänzen"}
-            </strong>
-            <p>
-              {failed
-                ? "Die Bilddatei konnte nicht geladen werden. Die Arbeitsschritte bleiben verfügbar."
-                : image.todo}
-            </p>
+            <strong>Abbildung derzeit nicht verfügbar.</strong>
+            <p>Die Arbeitsschritte und das Beispiel bleiben verfügbar.</p>
           </div>
         </div>
       ) : (
@@ -62,10 +49,9 @@ export function ReferenceImage({ image }: { image: ReferencePicture }) {
       )}
       <figcaption>
         {image.caption}
-        {image.hinweis && !placeholder && <span className="image-note">{image.hinweis}</span>}
+        {image.hinweis && !failed && <span className="image-note">{image.hinweis}</span>}
       </figcaption>
-      {image.status === "ersetzen" && !placeholder && <p className="image-note">{image.todo}</p>}
-      {!placeholder && (
+      {!failed && (
         <dialog
           ref={dialog}
           aria-label={image.caption}

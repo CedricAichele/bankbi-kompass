@@ -41,13 +41,13 @@ Du brauchst eine mittlere Dauer auf Vorgangsebene.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
 1. Prüfe, ob jeder Vorgang genau einmal in der Berechnungsmenge steht.
 2. Lege fest, wie offene Vorgänge ohne bekannte Dauer behandelt werden.
-3. Notiere die fachliche Regel: **Eine Beobachtung je Vorgang verwenden und Dauer mitteln.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+3. Notiere die fachliche Regel: **Eine Beobachtung je Vorgang verwenden und Dauer mitteln**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
 4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
 5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 

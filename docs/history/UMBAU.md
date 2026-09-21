@@ -55,11 +55,11 @@ Alte IDs werden soweit vorgesehen auf Nachfolger abgebildet. Favoriten mit weite
 
 ## 9. IDA-TODOs
 
-Menüwege, Ausdruckssyntax, Parameterbindung, produktspezifische Join-/Aggregationskonfiguration, Exportoptionen und Betriebsabläufe bleiben TODO. Die Anwendung benennt diese Grenze direkt an IDA-Inhalten. Einzelheiten stehen in [../TODO.md](../TODO.md).
+Menüwege, Ausdruckssyntax, Parameterbindung, produktspezifische Join-/Aggregationskonfiguration, Exportoptionen und Betriebsabläufe bleiben TODO. Die Anwendung benennt diese Grenze direkt an IDA-Inhalten. Einzelheiten stehen in [TODO.md](../../TODO.md).
 
 ## 10. Spätere eigene Screenshots
 
-Vorrangig Power-BI-Beziehungen und Power-Query-Zusammenführen/Gruppieren, Excel-XVERWEIS und PivotTable. Danach Measure/Spalte, Visualinteraktionen, Entpivotieren und Formatkorrekturen. IDA ausschließlich durch eigene allgemeine Schemen illustrieren. Die konkrete Bildwunschliste steht in [../TODO.md](../TODO.md).
+Vorrangig Power-BI-Beziehungen und Power-Query-Zusammenführen/Gruppieren, Excel-XVERWEIS und PivotTable. Danach Measure/Spalte, Visualinteraktionen, Entpivotieren und Formatkorrekturen. IDA ausschließlich durch eigene allgemeine Schemen illustrieren. Die konkrete Bildwunschliste steht in [TODO.md](../../TODO.md).
 
 ## Prüfung und Freigabestatus
 

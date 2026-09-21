@@ -39,11 +39,11 @@
     {
       "src": "images/power-bi/pbi-gruppieren.webp",
       "alt": "Alternative Aggregation: Kontenzeilen je Person zählen. Für einen Bestand stattdessen Summe und die Betragsspalte wählen.",
-      "caption": "Ersatzaufnahme: Power Query – Gruppieren: Werte je Schlüssel zusammenfassen",
+      "caption": "Gruppieren nach im Power Query-Editor.",
       "schritt": 3,
       "schema": false,
       "status": "ersetzen",
-      "hinweis": "Ältere Aufnahme: Der vorhandene Dialog zeigt Zeilen zählen. Das neue Hauptbeispiel benötigt Summe von Bestand nach Kunde. Maßgeblich sind die aktuellen Tabellen und Schritte im Artikel.",
+      "hinweis": "Der Dialog zeigt die Alternative Anzahl Zeilen. Für die Bestandssumme im Textbeispiel wähle Summe und die Spalte Bestand.",
       "todo": "Der vorhandene Dialog zeigt Zeilen zählen. Das neue Hauptbeispiel benötigt Summe von Bestand nach Kunde.",
       "aufnahmeplan": {
         "prioritaet": "Hoch",

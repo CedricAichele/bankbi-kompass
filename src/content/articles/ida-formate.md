@@ -42,12 +42,12 @@ Beträge oder Stichtage werden in Excel falsch interpretiert.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Dezimal-/Tausenderzeichen und Datumsreihenfolge der Quelle feststellen.
-2. Formuliere die gewünschte Regel: **Betrag mit deutscher Konvention interpretieren; Datumsreihenfolge vor der Umwandlung klären.**.
+2. Formuliere die gewünschte Regel: **Betrag mit deutscher Konvention interpretieren; Datumsreihenfolge vor der Umwandlung klären**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Ein Datum mit Tag größer als 12 und eine bekannte Betragssumme als Kontrollfall verwenden.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

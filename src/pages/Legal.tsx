@@ -4,8 +4,8 @@ export function Imprint() {
   return <article className="note-list"><h1>Impressum</h1>
     <p>BankBI Kompass ist ein unabhängiges Wissensprojekt von Cedric Aichele.</p>
     <h2>Angaben des Betreibers</h2>
-    <p><strong>TODO – vom Betreiber zu vervollständigen:</strong> Vollständigen Namen bestätigen, eine geeignete ladungsfähige Anschrift und eine E-Mail-Adresse für die Kontaktaufnahme ergänzen.</p>
-    <p>Diese Angaben fehlen derzeit. Diese Seite ist damit noch kein vollständiges Impressum. Die Kontakt- und Adressangaben werden durch den Betreiber ergänzt.</p>
+    <p>Betreiber: Cedric Aichele. <strong>Noch zu vervollständigen:</strong> eine geeignete ladungsfähige Anschrift und eine E-Mail-Adresse für die Kontaktaufnahme.</p>
+    <p>Die erforderlichen Kontakt- und Adressangaben werden durch den Betreiber ergänzt. Bis dahin sind die Betreiberangaben unvollständig.</p>
     <h2>Anwendbare Pflichten klären</h2>
     <p>Welche weiteren Angaben erforderlich sind, hängt vom tatsächlichen Angebot und Betreiberstatus ab. Der Betreiber muss insbesondere die Anwendbarkeit von § 5 DDG und gegebenenfalls weiterer Informationspflichten prüfen. Diese Vorlage ersetzt keine rechtliche Prüfung.</p>
     <p><a href="https://www.gesetze-im-internet.de/ddg/__5.html" target="_blank" rel="noreferrer">§ 5 Digitale-Dienste-Gesetz – amtlicher Gesetzestext</a></p>

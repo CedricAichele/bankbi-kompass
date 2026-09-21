@@ -44,13 +44,13 @@ Du möchtest den Anteil einer fachlich definierten Teilmenge bestimmen.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
 1. Zähler und Nenner mit demselben Zeitraum und derselben Zähleinheit definieren.
 2. Nenner 0 oder fehlend ausdrücklich behandeln und eine leere beziehungsweise gekennzeichnete Ausgabe festlegen.
-3. Notiere die fachliche Regel: **Erfüllte Fälle und alle Fälle summieren; anschließend dividieren.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+3. Notiere die fachliche Regel: **Erfüllte Fälle und alle Fälle summieren; anschließend dividieren**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
 4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
 5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 

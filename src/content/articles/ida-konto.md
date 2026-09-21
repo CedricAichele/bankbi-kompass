@@ -42,12 +42,12 @@ Eine Liste zeigt scheinbar doppelte Konten.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Stichtag in die Eindeutigkeitsprüfung aufnehmen.
-2. Formuliere die gewünschte Regel: **Konto und Stichtag gemeinsam als Zeilenschlüssel verwenden.**.
+2. Formuliere die gewünschte Regel: **Konto und Stichtag gemeinsam als Zeilenschlüssel verwenden**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Mehrere Zeilen nur bei gleichem Konto und gleichem Stichtag auf ungeklärte Mehrfachlieferung untersuchen.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

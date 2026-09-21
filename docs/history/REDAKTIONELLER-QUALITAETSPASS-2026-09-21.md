@@ -31,7 +31,7 @@ Schwerpunkte waren Power Query, Datenmodell, DAX, Excel-Formeln und PivotTables 
 
 ## Screenshot-Arbeitsliste
 
-[SCREENSHOT-TODO.md](SCREENSHOT-TODO.md) enthält **45** geordnete Aufnahmeaufträge: **35 Power BI**, **10 Excel**, **0 IDA**. **18** vorhandene Aufnahmen sind zum Ersatz markiert. Jeder Auftrag enthält Schritt, Oberfläche, Klickfolge, synthetische Daten, sichtbare Elemente, Ausschnitt, Dateiname und Ersatzgrund.
+[SCREENSHOT-TODO.md](../SCREENSHOT-TODO.md) enthält **45** geordnete Aufnahmeaufträge: **35 Power BI**, **10 Excel**, **0 IDA**. **18** vorhandene Aufnahmen sind zum Ersatz markiert. Jeder Auftrag enthält Schritt, Oberfläche, Klickfolge, synthetische Daten, sichtbare Elemente, Ausschnitt, Dateiname und Ersatzgrund.
 
 Zum Ersatz markiert sind:
 

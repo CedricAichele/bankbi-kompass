@@ -41,12 +41,12 @@ Das Ergebnis soll kontrolliert oder in Excel weiterverarbeitet werden.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Zielzeile als ein Konto am betrachteten Stichtag definieren.
-2. Formuliere die gewünschte Regel: **Eine Liste mit Person, Konto und Betrag auf Kontoebene definieren.**.
+2. Formuliere die gewünschte Regel: **Eine Liste mit Person, Konto und Betrag auf Kontoebene definieren**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Nur benötigte Schlüssel, Merkmale und Messwerte aufnehmen; anschließend Zeilen und Summe prüfen.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

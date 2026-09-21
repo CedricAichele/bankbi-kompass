@@ -833,7 +833,7 @@ export const toolsCatalog: Tool[] = [
     name: "IDA",
     slug: "ida",
     description:
-      "Listen, Filter und Weiterverarbeitung. Ausschließlich allgemeine Reportingprinzipien.",
+      "Reporting mit IDA/Cognos: übertragbare Prinzipien für Listen, Filter, Parameter, Berechnungen, Joins und Exporte.",
     groups: [
       {
         title: "Listen",

@@ -52,12 +52,12 @@ Personennummer 00123 wird nach dem Öffnen zu 123.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Die Kennung schon vor dem Export als Text prüfen.
-2. Formuliere die gewünschte Regel: **Export und Import mit Datentyp Text durchführen.**.
+2. Formuliere die gewünschte Regel: **Export und Import mit Datentyp Text durchführen**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Nach dem Import Zeichenlänge und exakten Wert gegen die Quelle vergleichen.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

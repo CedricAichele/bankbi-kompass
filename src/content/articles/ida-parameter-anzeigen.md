@@ -41,12 +41,12 @@ Ein exportierter Bericht soll Zeitraum und Segmentauswahl nachvollziehbar machen
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Nutzwert und Anzeigewert unterscheiden; lesbare Beschriftung und eindeutige Auswahl sicherstellen.
-2. Formuliere die gewünschte Regel: **Begleitinformation aus den tatsächlich verwendeten Parameterwerten erzeugen.**.
+2. Formuliere die gewünschte Regel: **Begleitinformation aus den tatsächlich verwendeten Parameterwerten erzeugen**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Parameter ändern und sowohl Berichtskopf als auch enthaltene Daten kontrollieren.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

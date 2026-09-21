@@ -45,13 +45,13 @@ Ein Datums- oder Betragsfilter liefert unerwartete Zeilen.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
 1. Prüfe Feldtypen: Kennung Text, Zeitpunkt Datum/Uhrzeit, Betrag Zahl.
 2. Formuliere Monatsgrenzen als Beginn einschließlich und nächsten Monatsbeginn ausschließlich.
-3. Notiere die fachliche Regel: **Zeitpunkt >= 01.03.2026 UND Zeitpunkt < 01.04.2026.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+3. Notiere die fachliche Regel: **Zeitpunkt >= 01.03.2026 UND Zeitpunkt < 01.04.2026**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
 4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
 5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 

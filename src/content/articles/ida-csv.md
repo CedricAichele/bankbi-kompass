@@ -42,12 +42,12 @@ Du brauchst einen einfachen, flachen Datenaustausch.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Trennzeichen, Zeichencodierung und Kopfzeile in der Vorschau prüfen.
-2. Formuliere die gewünschte Regel: **CSV mit Semikolon und passendem Gebietsschema importieren; Kennung als Text behandeln.**.
+2. Formuliere die gewünschte Regel: **CSV mit Semikolon und passendem Gebietsschema importieren; Kennung als Text behandeln**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. In Excel Daten → Aus Text/CSV verwenden; automatische Typkonvertierung der Kennung verhindern.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

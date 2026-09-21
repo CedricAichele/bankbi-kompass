@@ -42,12 +42,12 @@ Eine Exportliste enthält zu viele Spalten.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Vor dem Entfernen prüfen, ob Filter, Sortierung oder Berechnungen auf das Feld zugreifen.
-2. Formuliere die gewünschte Regel: **Notiz aus der Ausgabe entfernen; Person, Konto, Stichtag und Betrag in dieser Reihenfolge anzeigen.**.
+2. Formuliere die gewünschte Regel: **Notiz aus der Ausgabe entfernen; Person, Konto, Stichtag und Betrag in dieser Reihenfolge anzeigen**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Zeilenzahl und Summe vergleichen; der fachliche Schlüssel muss weiterhin nachvollziehbar sein.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

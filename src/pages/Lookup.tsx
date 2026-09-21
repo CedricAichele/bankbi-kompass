@@ -22,7 +22,7 @@ export function HomePage() {
   return (
     <>
       <header className="home-heading">
-        <span className="eyebrow">POWER BI · EXCEL · REPORTING</span>
+        <span className="eyebrow">DATENANALYSE · BUSINESS INTELLIGENCE · REPORTING</span>
         <h1>Was möchtest du machen oder finden?</h1>
         <p>BankBI Kompass hilft dir, Daten aufzubereiten, Auswertungen zu verstehen und Fehler zu lösen – mit konkreten Schritten und nachvollziehbaren Beispielen.</p>
         <SearchForm prominent />
@@ -129,7 +129,7 @@ function ToolOverview({ tool }: { tool: Tool }) {
         ))}
       </div>
       <Link className="tool-all" to={"/bereich/" + tool.slug}>
-        Alle Tätigkeiten <ArrowRight size={15} />
+        Alle Themen <ArrowRight size={15} />
       </Link>
     </div>
   );
@@ -155,10 +155,9 @@ export function ToolPage() {
         <div className="scope-note">
           <ShieldCheck size={19} />
           <p>
-            <strong>Allgemeine Reportingprinzipien.</strong> Keine internen
-            Funktionen, Datenmodelle oder Bildschirmaufnahmen. Konkrete
-            IDA-Menüpfade und Syntax sind{" "}
-            <Link to="/ida-hinweise">nicht öffentlich belegt</Link>.
+            Konkrete Menübezeichnungen können je Umgebung und Version abweichen.
+            Interne Systemdetails und nicht öffentlich belegbare Bedienwege werden nicht veröffentlicht.{" "}
+            <Link to="/ida-hinweise">Geltungsbereich ansehen</Link>.
           </p>
         </div>
       )}
@@ -332,7 +331,7 @@ export function Browse({
               value={category}
               onChange={(e) => update("kategorie", e.target.value)}
             >
-              <option value="">Alle Tätigkeiten</option>
+              <option value="">Alle Themen</option>
               {categories.map((x) => (
                 <option key={x}>{x}</option>
               ))}

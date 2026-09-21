@@ -12,9 +12,9 @@
 
 Diese Berichte beschreiben einen datierten Arbeitsstand. Sie sind keine aktuelle Produktbeschreibung und keine pauschale Freigabe späterer Änderungen.
 
-- [Qualitätsbericht](QUALITAETSBERICHT.md)
-- [Redaktioneller Qualitätspass vom 21. September 2026](REDAKTIONELLER-QUALITAETSPASS-2026-09-21.md)
-- [Cleanup vom 21. September 2026](CLEANUP-2026-09-21.md)
-- [Historischer Umbau](UMBAU.md)
+- [Qualitätsbericht](history/QUALITAETSBERICHT.md)
+- [Redaktioneller Qualitätspass vom 21. September 2026](history/REDAKTIONELLER-QUALITAETSPASS-2026-09-21.md)
+- [Cleanup vom 21. September 2026](history/CLEANUP-2026-09-21.md)
+- [Historischer Umbau](history/UMBAU.md)
 
-Der Umbau-Bericht hat vor allem historischen Nutzen. Bei einer späteren Repository-Bereinigung kann er nach bewusster Entscheidung aus dem aktuellen Dateibestand entfernt werden; die Git-Historie bleibt als Nachweis erhalten. Bestehende Berichte wurden hier nicht gelöscht.
+Historische Arbeitsberichte liegen unter docs/history/. Aufnahmeplanung und Bildnachweise bleiben als laufende Arbeitsunterlagen direkt unter docs/. Die Berichte wurden archiviert, nicht gelöscht.

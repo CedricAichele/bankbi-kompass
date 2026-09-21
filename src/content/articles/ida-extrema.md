@@ -42,13 +42,13 @@ Du suchst den ersten oder letzten Zeitpunkt oder eine besonders lange Dauer.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
 1. Lege Gruppe und Zahlen- beziehungsweise Datumsfeld fest.
 2. Wenn der ganze Datensatz benötigt wird, ordne den Extremwert wieder passenden Zeilen zu und kläre Gleichstände.
-3. Notiere die fachliche Regel: **Minimum und Maximum der Dauer berechnen.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+3. Notiere die fachliche Regel: **Minimum und Maximum der Dauer berechnen**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
 4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
 5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 

@@ -43,12 +43,12 @@ Ein Monatsbericht soll regelmäßig nach Datenbereitstellung laufen.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Benötigten Datenstand, Zeitpunkt, Parameterwerte und Ausgabeziel festhalten.
-2. Formuliere die gewünschte Regel: **Ausführung erst an eine fachlich bestätigte Bereitstellung knüpfen; Verantwortliche und Fehlerbehandlung festlegen.**.
+2. Formuliere die gewünschte Regel: **Ausführung erst an eine fachlich bestätigte Bereitstellung knüpfen; Verantwortliche und Fehlerbehandlung festlegen**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Fehlende Lieferung und fehlgeschlagenen Lauf als getrennte Fälle prüfen; konkrete lokale Freigaben nicht erfinden.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

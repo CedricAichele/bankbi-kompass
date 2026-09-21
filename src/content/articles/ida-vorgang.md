@@ -44,12 +44,12 @@ Ein Vorgang erscheint wegen mehrerer Stufen mehrfach.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Zähleinheit Vorgang und gewünschten Statuszeitpunkt bestimmen.
-2. Formuliere die gewünschte Regel: **Vorgänge eindeutig zählen und Status-/Dauerregeln getrennt festlegen.**.
+2. Formuliere die gewünschte Regel: **Vorgänge eindeutig zählen und Status-/Dauerregeln getrennt festlegen**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. V001 einmal zählen und die benötigte Statuszeile nach der Zeitregel auswählen.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

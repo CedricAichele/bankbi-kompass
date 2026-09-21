@@ -73,11 +73,11 @@
     {
       "src": "images/power-bi/pbi-measure.webp",
       "alt": "Neues Measure: Gesamtbestand = SUM(Konten[Bestand_EUR]).",
-      "caption": "Ersatzaufnahme: Power BI – Neues Measure",
+      "caption": "Ein Measure in der Formelleiste von Power BI erstellen.",
       "schritt": 2,
       "schema": false,
       "status": "ersetzen",
-      "hinweis": "Ältere Aufnahme: Formelleiste gut erkennbar, aber alte Tabelle Konten statt Fakt und kleine Schrift. An das neue Measure-Beispiel anpassen. Maßgeblich sind die aktuellen Tabellen und Schritte im Artikel.",
+      "hinweis": "Die Abbildung verwendet Konten[Bestand_EUR]. Im Textbeispiel heißt die entsprechende Spalte Fakt[Bestand]; passe den Bezug an dein Modell an.",
       "todo": "Formelleiste gut erkennbar, aber alte Tabelle Konten statt Fakt und kleine Schrift. An das neue Measure-Beispiel anpassen.",
       "aufnahmeplan": {
         "prioritaet": "Hoch",

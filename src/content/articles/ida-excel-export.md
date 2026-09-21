@@ -41,12 +41,12 @@ Ein Bericht soll nach dem Export dieselben fachlichen Werte behalten.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Vor Export Zeilenzahl, Betragssumme und einen Schlüssel mit führender Null notieren.
-2. Formuliere die gewünschte Regel: **Tabellarische Ausgabe wählen und Datentypen sowie Kontrollsummen nach dem Import prüfen.**.
+2. Formuliere die gewünschte Regel: **Tabellarische Ausgabe wählen und Datentypen sowie Kontrollsummen nach dem Import prüfen**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Nach Öffnen dieselben Kontrollen durchführen und zusätzliche Kopf-/Summenzeilen ausschließen.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

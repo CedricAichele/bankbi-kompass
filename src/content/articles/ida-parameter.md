@@ -44,12 +44,12 @@ Eine fachlich gleiche Liste soll für wechselnde Stichtage nutzbar sein.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Datentyp Datum, zulässigen Zeitraum und Pflichtangabe festlegen.
-2. Formuliere die gewünschte Regel: **Parameter AuswahlDatum als Datum anlegen und im Stichtagsfilter verwenden.**.
+2. Formuliere die gewünschte Regel: **Parameter AuswahlDatum als Datum anlegen und im Stichtagsfilter verwenden**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Mit beiden Stichtagen prüfen, ob sich die Ausgabe passend ändert.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

@@ -43,13 +43,13 @@ Du brauchst eine verständliche Statusklasse.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
 1. Schreibe die Falltabelle einschließlich Grenzwert 3 und fehlendem Wert auf.
 2. Übertrage sie in eine unterstützte bedingte Berechnung; die unten angegebene Regel ist Pseudologik, keine garantierte IDA-Syntax.
-3. Notiere die fachliche Regel: **Wenn Dauer fehlt: Offen; sonst bis einschließlich 3: Kurz; sonst Länger.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+3. Notiere die fachliche Regel: **Wenn Dauer fehlt: Offen; sonst bis einschließlich 3: Kurz; sonst Länger**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
 4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
 5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 
@@ -87,7 +87,7 @@ Geordnete Fallzweige bilden sich ausschließende Kategorien. Die erste zutreffen
 
 ## Typischer Fehler
 
-MAX(Status) als letzte fachliche Entscheidung verwenden. Implementierbare IDA-Syntax bleibt TODO.
+MAX(Status) als letzte fachliche Entscheidung verwenden. Prüfe die Ausdruckssyntax in der Dokumentation deiner Umgebung.
 
 ## Plausibilitätscheck
 

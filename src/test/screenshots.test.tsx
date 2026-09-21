@@ -2,7 +2,8 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, within } from "@testing-library/react";
 import App from "../App";
 import { imageSchema, parseContent, stepsOf, sectionsOf } from "../content/schema";
-import { byId } from "../content";
+import { byId, contents } from "../content";
+import { renderToStaticMarkup } from "react-dom/server";
 import { ReferenceImage } from "../components/ReferenceImage";
 
 const picture = {
@@ -20,10 +21,10 @@ describe("Screenshot-Anleitungen", () => {
     expect(imageSchema.safeParse({ ...replacement, aufnahmeplan: undefined }).success).toBe(false);
     expect(imageSchema.safeParse({ ...replacement, src: undefined }).success).toBe(false);
   });
-  it("erhält Ersatzplatzhalter und Aufnahmedaten ohne interne Arbeitsanweisung im Nutzerbereich", () => {
+  it("blendet unbrauchbare Altbilder aus und erhält die internen Aufnahmedaten", () => {
     const replacement = byId("xverweis")!.screenshots.find(image => image.status === "ersetzen")!;
-    render(<ReferenceImage image={replacement} />);
-    expect(screen.getByText("TODO: Screenshot ersetzen")).toBeVisible();
+    const { container } = render(<ReferenceImage image={replacement} />);
+    expect(container).toBeEmptyDOMElement();
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
     expect(replacement.aufnahmeplan?.klickfolge.length).toBeGreaterThan(0);
     expect(replacement.aufnahmeplan?.daten).toContain("K002");
@@ -101,8 +102,8 @@ describe("Screenshot-Anleitungen", () => {
       within(dialog).getByRole("button", { name: "Zoom 200 %" }),
     ).toHaveAttribute("aria-pressed", "false");
   });
-  it("zeigt TODOs ohne kaputte Bilder oder falsche Zoomaktion", () => {
-    render(
+  it("blendet geplante Bilder vollständig ohne leere Boxen oder Zoomaktion aus", () => {
+    const { container } = render(
       <ReferenceImage
         image={{
           alt: picture.alt,
@@ -113,15 +114,35 @@ describe("Screenshot-Anleitungen", () => {
         }}
       />,
     );
-    expect(screen.getByText("TODO: Echten Screenshot ergänzen")).toBeVisible();
+    expect(container).toBeEmptyDOMElement();
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
     expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
   it("behandelt fehlgeschlagene Bildanforderungen verständlich", () => {
     render(<ReferenceImage image={picture} />);
     fireEvent.error(screen.getAllByAltText(picture.alt)[0]);
-    expect(screen.getByText("Abbildung nicht verfügbar")).toBeVisible();
+    expect(screen.getByText("Abbildung derzeit nicht verfügbar.")).toBeVisible();
     expect(screen.queryByRole("button")).not.toBeInTheDocument();
+  });
+  it("zeigt brauchbare Ersatzbilder normal einschließlich Zoom, aber ohne Auftrag", () => {
+    const image = byId("measure")!.screenshots.find(p => p.status === "ersetzen")!;
+    const { container } = render(<ReferenceImage image={image} />);
+    expect(screen.getAllByAltText(image.alt)[0]).toBeVisible();
+    expect(container.textContent).not.toMatch(/TODO|Ersatzaufnahme|Screenshot ersetzen|Aufnahmeplan|Dateiname/i);
+    expect(container.textContent).not.toContain(image.todo);
+    fireEvent.click(screen.getByRole("button", { name: /Abbildung vergrößern/ }));
+    expect(screen.getByRole("dialog")).toBeVisible();
+    expect(within(screen.getByRole("dialog")).getByText(image.caption)).toBeVisible();
+    expect(screen.getByRole("dialog").textContent).not.toContain(image.todo);
+  });
+  it("gibt bei keinem Katalogbild interne Aufnahmetexte oder Statusbegriffe aus", () => {
+    for (const item of contents) for (const image of item.screenshots) {
+      const html = renderToStaticMarkup(<ReferenceImage image={image} />);
+      expect(html, item.id).not.toMatch(/TODO|Ersatzaufnahme|Geplante Aufnahme|Screenshot ersetzen|Aufnahmeplan|Arbeitsauftrag|Dateiname/i);
+      if (image.status === "todo" || image.bildAnzeigen === false) expect(html, item.id).toBe("");
+      else expect(html, item.id).toContain("<img");
+      if (image.todo) expect(html, item.id).not.toContain(image.todo);
+    }
   });
   it("ordnet mehrere Bilder dem passenden Schritt vor Beispiel und Fehler zu", async () => {
     window.location.hash = "/wissen/beziehungen";

@@ -38,11 +38,11 @@
     {
       "src": "images/power-bi/pbi-power-query.webp",
       "alt": "Power Query mit sechs synthetischen Kontenzeilen.",
-      "caption": "Ersatzaufnahme: Excel – Power Query öffnen",
+      "caption": "Tabellenvorschau im Power Query-Editor.",
       "schritt": 1,
       "schema": false,
       "status": "ersetzen",
-      "hinweis": "Ältere Aufnahme: Sehr breiter Ausschnitt mit kleiner Schrift; Angewendete Schritte rechts fehlen. Die Orientierung braucht Abfragen, Vorschau und Schrittbereich gemeinsam. Maßgeblich sind die aktuellen Tabellen und Schritte im Artikel.",
+      "hinweis": "Die Abbildung zeigt sechs synthetische Kontenzeilen. Menübezeichnungen können je Version abweichen.",
       "todo": "Sehr breiter Ausschnitt mit kleiner Schrift; Angewendete Schritte rechts fehlen. Die Orientierung braucht Abfragen, Vorschau und Schrittbereich gemeinsam.",
       "aufnahmeplan": {
         "prioritaet": "Hoch",

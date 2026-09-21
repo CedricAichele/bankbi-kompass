@@ -16,7 +16,9 @@
   ],
   "synonyme": [
     "Visual reagiert nicht auf Slicer",
-    "Andere Visuals reagieren, eines bleibt unverändert."
+    "Andere Visuals reagieren, eines bleibt unverändert.",
+    "Slicer ohne Wirkung",
+    "keine Filterwirkung"
   ],
   "verwandteThemen": [
     "visualinteraktionen",

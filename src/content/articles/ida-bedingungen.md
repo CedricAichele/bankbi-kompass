@@ -41,13 +41,13 @@ Mehrere Segmente sollen gemeinsam mit einer Datumsgrenze gelten.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
 1. Notiere zuerst die Alternative A/B, danach die gemeinsame Zeitraumseinschränkung.
 2. Teste zusätzlich A außerhalb des Zeitraums, weil dieser Fall einen Klammerfehler aufdeckt.
-3. Notiere die fachliche Regel: **(Segment A ODER Segment B) UND Im Zeitraum.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+3. Notiere die fachliche Regel: **(Segment A ODER Segment B) UND Im Zeitraum**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
 4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
 5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 

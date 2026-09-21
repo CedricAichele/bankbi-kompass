@@ -40,12 +40,12 @@ Du möchtest ein Ergebnis später nachvollziehen.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Definition, Parameter und Ausgabezeitpunkt unterscheidbar benennen.
-2. Formuliere die gewünschte Regel: **Definition und konkrete Ausgabe getrennt dokumentieren.**.
+2. Formuliere die gewünschte Regel: **Definition und konkrete Ausgabe getrennt dokumentieren**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Prüfen, ob für die Nachvollziehbarkeit eine Ausgabeversion zusätzlich zur Definition benötigt wird.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

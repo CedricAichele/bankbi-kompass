@@ -42,12 +42,12 @@ Eine scheinbar passende Eingabe liefert keine Treffer.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Feldtyp und Parameterwert vor dem Vergleich kontrollieren.
-2. Formuliere die gewünschte Regel: **Parameter als Text definieren und 0012 unverändert übergeben.**.
+2. Formuliere die gewünschte Regel: **Parameter als Text definieren und 0012 unverändert übergeben**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Auch eine Kennung mit führender Null und einen echten Datumswert prüfen.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

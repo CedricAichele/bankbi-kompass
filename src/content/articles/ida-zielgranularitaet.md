@@ -53,12 +53,12 @@ Eine Person mit mehreren Konten soll genau einmal mit Gesamtbestand erscheinen.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Ziel eine Zeile je Person festlegen; Konto aus der Zielgruppierung entfernen.
-2. Formuliere die gewünschte Regel: **Vor einem Join auf eine eindeutige Kundentabelle die Konten nach Person summieren.**.
+2. Formuliere die gewünschte Regel: **Vor einem Join auf eine eindeutige Kundentabelle die Konten nach Person summieren**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Drei Detailzeilen gegen zwei Ergebniszeilen und unveränderte Summe 250 prüfen.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

@@ -42,12 +42,12 @@ Ein Export soll nachvollziehbar und reproduzierbar geordnet sein.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Datumsfeld als Datum und Kennung als Text prüfen.
-2. Formuliere die gewünschte Regel: **Zuerst Stichtag aufsteigend, dann Konto aufsteigend sortieren.**.
+2. Formuliere die gewünschte Regel: **Zuerst Stichtag aufsteigend, dann Konto aufsteigend sortieren**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Ersten und letzten Wert sowie Reihenfolge innerhalb desselben Tages kontrollieren.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

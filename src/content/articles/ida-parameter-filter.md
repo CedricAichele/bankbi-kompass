@@ -41,12 +41,12 @@ Eine Eingabe verändert das Ergebnis noch nicht.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Prüfe, dass Parameter und Datenfeld kompatible Datentypen haben.
-2. Formuliere die gewünschte Regel: **Stichtag mit dem Wert des Parameters AuswahlDatum vergleichen.**.
+2. Formuliere die gewünschte Regel: **Stichtag mit dem Wert des Parameters AuswahlDatum vergleichen**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Wechsle den Parameter auf 28.02.2026: Nun muss P002 statt P001 erscheinen.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

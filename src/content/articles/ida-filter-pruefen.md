@@ -41,13 +41,13 @@ Das Ergebnis enthält unerwartete oder zu wenige Zeilen.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
 1. Lege für jede Testzeile vorab die erwartete Entscheidung fest.
 2. Vergleiche die tatsächliche Ausgabe und ändere immer nur eine Bedingung gleichzeitig.
-3. Notiere die fachliche Regel: **Betrag > 0; fehlende Werte separat ausweisen.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+3. Notiere die fachliche Regel: **Betrag > 0; fehlende Werte separat ausweisen**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
 4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
 5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 

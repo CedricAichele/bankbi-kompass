@@ -42,12 +42,12 @@ Ein Bericht wird nach einer zusätzlichen Verknüpfung langsam.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Laufzeit und Ergebnis vor jeder Änderung notieren.
-2. Formuliere die gewünschte Regel: **Zuerst Zeilenvervielfachung und unnötige Felder untersuchen; Filter fachlich korrekt platzieren.**.
+2. Formuliere die gewünschte Regel: **Zuerst Zeilenvervielfachung und unnötige Felder untersuchen; Filter fachlich korrekt platzieren**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Jeweils nur einen Join oder Filter ändern und Ergebnisgleichheit beziehungsweise begründete Korrektur prüfen.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

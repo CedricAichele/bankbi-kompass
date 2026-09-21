@@ -44,13 +44,13 @@ Ein Listenbetrag steigt nach einer Verknüpfung.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
 1. Bestimme die Ebene des Plans: hier Person, nicht Konto.
 2. Verdichte die Kontendetails vor dem Join auf Person oder halte Kennzahlen in getrennten Fakten mit gemeinsamen Dimensionen.
-3. Notiere die fachliche Regel: **Konten zuerst je Person aggregieren, dann Plan zuordnen.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+3. Notiere die fachliche Regel: **Konten zuerst je Person aggregieren, dann Plan zuordnen**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
 4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
 5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 

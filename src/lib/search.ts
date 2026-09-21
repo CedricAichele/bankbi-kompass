@@ -61,8 +61,26 @@ export function searchContent(
       "body",
     ],
   });
-  return fuse
-    .search(q)
+  const matches = fuse.search(q);
+  if (!matches.length) {
+    // Longer questions can fail phrase matching despite containing useful terms.
+    // Keep negations and compare all remaining terms, independent of word order.
+    const filler = new Set(["ich", "mein", "meine", "meinen", "der", "die", "das", "ein", "eine", "ist", "hat", "habe", "es", "gibt", "warum", "wie", "nach", "dem", "beim", "von", "mit", "im", "auf", "mir", "kann", "zu"]);
+    const terms = [...new Set(q.split(" ").filter(term => !filler.has(term)))];
+    if (terms.length >= 2) {
+      return indexed
+        .filter(x => {
+          const text = [x.title, ...x.synonyms, ...x.tags, x.description].join(" ");
+          return terms.every(term => text.includes(term));
+        })
+        .sort((a, b) => {
+          const titleHits = (x: typeof a) => terms.filter(term => x.title.includes(term)).length;
+          return titleHits(b) - titleHits(a) || a.item.titel.localeCompare(b.item.titel, "de");
+        })
+        .map(x => x.item);
+    }
+  }
+  return matches
     .sort((a, b) => {
       const priority = (x: typeof a) =>
         x.item.synonyms.includes(q)

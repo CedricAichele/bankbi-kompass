@@ -52,12 +52,12 @@ Eine Vorgangsliste enthält mehrere Bearbeitungsstände.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Bei identischen Zeitstempeln eine zusätzliche fachliche Reihenfolge oder eindeutige Ereigniskennung verlangen.
-2. Formuliere die gewünschte Regel: **Letzten gültigen Zeitstempel je Vorgang bestimmen und die gesamte passende Statuszeile wählen.**.
+2. Formuliere die gewünschte Regel: **Letzten gültigen Zeitstempel je Vorgang bestimmen und die gesamte passende Statuszeile wählen**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. Prüfen, dass der ausgegebene Status tatsächlich in der gewählten Quellzeile steht.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

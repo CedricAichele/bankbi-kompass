@@ -41,12 +41,12 @@ Eine Liste enthält mehr oder weniger Zeilen als erwartet.
 
 ## Voraussetzungen
 
-Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+Allgemeines Cognos-/Reportingprinzip. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
 1. Den vollständigen Zielschlüssel formulieren, bevor Felder ausgewählt werden.
-2. Formuliere die gewünschte Regel: **Entweder nach Person oder nach Person und Segment aggregieren.**.
+2. Formuliere die gewünschte Regel: **Entweder nach Person oder nach Person und Segment aggregieren**.
 3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
 4. An P001 prüfen, ob eine oder zwei Zeilen beabsichtigt sind.
 5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.

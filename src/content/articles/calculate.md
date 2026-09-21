@@ -10,7 +10,7 @@
   "kategorie": "DAX & Measures",
   "schwierigkeit": "Fortgeschritten",
   "kurzbeschreibung": "CALCULATE berechnet einen Ausdruck mit geänderten Filtern. Ein Filter auf derselben Spalte wird normalerweise ersetzt.",
-  "ort": "Power BI → Neues Measure; aktive Produktbeziehung vorausgesetzt",
+  "ort": "Power BI Desktop → Modellierung → Neues Measure",
   "tags": [
     "CALCULATE",
     "Reporting"
@@ -97,7 +97,7 @@ Das erste Argument ist die zu berechnende Summe. Das zweite ersetzt den Filter a
 
 ## Plausibilitätscheck
 
-Wähle anschließend Einlagen: 1.250 + 2.000 + 800 = 4.050. Lösche den Slicer und prüfe das Basismeasure mit 9.000.
+Wähle anschließend Einlagen: 1.250 + 2.000 + 800 = 4.050. Lösche den Slicer und kontrolliere die Summe der Quellspalte Bestand_EUR: 9.000. Das Einlagenmeasure bleibt bei 4.050.
 
 ## Argumente verstehen
 
