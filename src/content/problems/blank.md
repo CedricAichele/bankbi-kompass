@@ -22,16 +22,20 @@
   "verwandteThemen": [
     "divide",
     "selectedvalue",
-    "filterkontext"
+    "filterkontext",
+    "nullwerte"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "problem",
-  "quellen": [],
-  "screenshots": []
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/replace-values"
+  ],
+  "screenshots": [],
+  "praxis": true
 }
 ---
 
@@ -53,18 +57,33 @@ Zeige zunächst COUNTROWS und das Basismeasure unter demselben Filter.
 
 ## Schritte
 
-1. Erstelle eine Kopie der Auswertung oder beschränke sie auf synthetische Testdaten. Notiere den fehlerhaften Wert.
+1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
 2. Zeige zunächst COUNTROWS und das Basismeasure unter demselben Filter.
 3. Behebe fehlende Daten oder Filter zuerst. Verwende COALESCE([Measure], 0) nur, wenn fehlend fachlich wirklich als null angezeigt werden darf.
 4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
+5. Den konkreten Bedienweg für die Korrektur findest du unter [Nullwerte behandeln](#/wissen/nullwerte). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
 
 ## Beispiel
 
-Keine Daten für P999: leer. Das beweist keinen gemessenen Bestand von 0.
+### Vorher · Fehlerbild
+
+| Beobachtung |
+| --- |
+| Keine Daten für P999: leer. Das beweist keinen gemessenen Bestand von 0. |
+
+### Aktion
+
+Behebe fehlende Daten oder Filter zuerst. Verwende COALESCE([Measure], 0) nur, wenn fehlend fachlich wirklich als null angezeigt werden darf.
+
+### Nachher · Erwartete Kontrolle
+
+| Prüfergebnis |
+| --- |
+| Unterscheide Testfall mit echter 0 von einem Testfall ohne Datensatz. |
 
 ## Ergebnis
 
-Unterscheide Testfall mit echter 0 von einem Testfall ohne Datensatz.
+Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
 
 ## Typischer Fehler
 
@@ -73,3 +92,7 @@ Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten
 ## Plausibilitätscheck
 
 Unterscheide Testfall mit echter 0 von einem Testfall ohne Datensatz.
+
+## Warum funktioniert das?
+
+NULL beschreibt Abwesenheit. Leerer Text ist ein vorhandener Text mit Länge null. Wird ein unbekannter Betrag durch 0 ersetzt, ändert sich etwa der Durchschnitt von 250 auf rund 166,67; die Daten sehen vollständiger aus, als sie sind.

@@ -19,6 +19,7 @@
   ],
   "synonyme": [],
   "verwandteThemen": [
+    "bestand-bewegung",
     "stichtag"
   ],
   "kontexte": [
@@ -28,8 +29,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/guidance/star-schema"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -37,32 +41,46 @@
 
 Stichtagsslicer, Exportdatum und Monatsabschlussanalyse.
 
+## Voraussetzungen
+
+Kenntnis der fachlichen Bedeutung der Daten; keine bestimmte Beispieldatei erforderlich.
+
 ## Schritte
 
-1. Benenne das Konzept an einer konkreten Ergebniszeile.
-2. Bestand am 31.03. = 101; März-Zugänge = 12. Das sind unterschiedliche Kennzahlen.
-3. Prüfe vor der Berechnung die genannte Fehlerquelle.
+1. Beschreibe die Ausgangssituation: 31.01.: Bestand 100; 28.02.: Bestand 120; Februar-Zugang 20.
+2. Zustand am Datum und Bewegung im Intervall getrennt auswerten.
+3. Prüfe die Unterscheidung am Ergebnis: Februarbestand 120; Februarzugang 20.
 
 ## Beispiel
 
-Bestand am 31.03. = 101; März-Zugänge = 12. Das sind unterschiedliche Kennzahlen.
+### Vorher · Beispieldaten
+
+| Ausgangslage |
+| --- |
+| 31.01.: Bestand 100; 28.02.: Bestand 120; Februar-Zugang 20. |
+
+### Aktion
+
+Zustand am Datum und Bewegung im Intervall getrennt auswerten.
+
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| Februarbestand 120; Februarzugang 20. |
+
+## Ergebnis
+
+Ein Stichtag beschreibt einen Zustand zu einem Zeitpunkt; ein Zeitraum umfasst Ereignisse zwischen Grenzen. Ein Snapshot speichert einen solchen Zustand.
+
+## Warum funktioniert das?
+
+Ein Snapshot beobachtet einen Zustand; eine Bewegung beschreibt eine Veränderung. Beide besitzen einen anderen zeitlichen Bezug.
 
 ## Typischer Fehler
 
 Mehrere Snapshots summieren und als aktuellen Bestand ausgeben.
 
-## Einfach erklärt
+## Plausibilitätscheck
 
-Ein Stichtag beschreibt einen Zustand zu einem Zeitpunkt; ein Zeitraum umfasst Ereignisse zwischen Grenzen. Ein Snapshot speichert einen solchen Zustand.
-
-## Mini-Beispiel
-
-Bestand am 31.03. = 101; März-Zugänge = 12. Das sind unterschiedliche Kennzahlen.
-
-## Warum ist das wichtig?
-
-Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Mehrere Snapshots summieren und als aktuellen Bestand ausgeben.
-
-## Wo taucht das auf?
-
-Stichtagsslicer, Exportdatum und Monatsabschlussanalyse.
+Februarbestand 120; Februarzugang 20.

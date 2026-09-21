@@ -28,8 +28,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/functions/sumifs-function"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -46,7 +49,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Beispiel
 
+### Ausgangslage und Entscheidung
+
 Bestand je Person interaktiv: Pivot. Bestand einer ausgewählten Kennung im Formular: SUMMEWENNS.
+
+| Alternative | Geeignet, wenn |
+| --- | --- |
+| PivotTable | Gruppierung und Kennzahlen schnell umgestellt werden sollen. |
+| Formel | ein festes Layout oder einzelne steuerbare Ergebniszellen gebraucht werden. |
 
 ## Typischer Fehler
 
@@ -62,3 +72,15 @@ Feste Formelbereiche schließen neue Zeilen nicht automatisch ein.
 ## Merksatz
 
 Flexible Gruppierung oder gezielte Zelle?
+
+## Warum funktioniert das?
+
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **PivotTable**, wenn Gruppierung und Kennzahlen schnell umgestellt werden sollen. Nimm **Formel**, wenn ein festes Layout oder einzelne steuerbare Ergebniszellen gebraucht werden.
+
+## Ergebnis
+
+Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+
+## Plausibilitätscheck
+
+Feste Formelbereiche schließen neue Zeilen nicht automatisch ein. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.

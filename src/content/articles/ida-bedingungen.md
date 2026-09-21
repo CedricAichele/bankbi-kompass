@@ -10,13 +10,14 @@
   "kategorie": "Filter",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "UND verlangt alle Bedingungen. ODER lässt Alternativen zu. Klammern machen gemischte Logik eindeutig.",
-  "ort": "IDA / Reporting: allgemeine Boolesche Logik, keine IDA-Syntax",
+  "ort": "Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt.",
   "tags": [
     "Mehrere Bedingungen: UND / ODER",
     "Reporting"
   ],
   "synonyme": [],
   "verwandteThemen": [
+    "ida-filter",
     "ida-filter-pruefen",
     "ida-mehrfachauswahl"
   ],
@@ -24,9 +25,11 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
+  "quellen": [
+    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=data-create-detail-summary-filter"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -38,41 +41,54 @@ Mehrere Segmente sollen gemeinsam mit einer Datumsgrenze gelten.
 
 ## Voraussetzungen
 
-Allgemeines Reportingprinzip. Konkrete IDA-Bedienung nicht öffentlich belegt; Menüpfade und ausführbare Syntax bleiben TODO.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
-1. Formuliere die gewünschte Ergebniszeile: Welche fachliche Einheit soll genau einmal erscheinen?
-2. Übertrage das synthetische Mini-Beispiel in eine eigene Prüfliste. Notiere Zeilenzahl und Betrag vor der Änderung.
-3. Formuliere die Regel zunächst unabhängig vom Werkzeug: Pseudologik: (Segment = A ODER Segment = B) UND ImZeitraum.
-4. Lege die Regel in der öffentlich dokumentierten Reportingumgebung an. Für IDA gibt diese Seite bewusst keinen erfundenen Klickpfad vor.
-5. Führe den Bericht zuerst für die kleine Prüfliste aus und vergleiche das konkrete erwartete Ergebnis.
-6. Teste auch den beschriebenen Fehlerfall. Erst bei passender Kontrollsumme die Regel auf weitere synthetische Daten übertragen.
+1. Notiere zuerst die Alternative A/B, danach die gemeinsame Zeitraumseinschränkung.
+2. Teste zusätzlich A außerhalb des Zeitraums, weil dieser Fall einen Klammerfehler aufdeckt.
+3. Notiere die fachliche Regel: **(Segment A ODER Segment B) UND Im Zeitraum.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
+5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 
 ## Beispiel
 
+### Vorher · Beispieldaten
+
 | Person | Segment | Im Zeitraum |
 | --- | --- | --- |
-| P001 | A | ja |
-| P002 | B | nein |
-| P003 | C | ja |
+| P001 | A | Ja |
+| P002 | B | Nein |
+| P003 | C | Ja |
+| P004 | A | Nein |
+
+### Aktion
 
 ```text
-Pseudologik: (Segment = A ODER Segment = B) UND ImZeitraum
+Pseudologik: (Segment A ODER Segment B) UND Im Zeitraum.
 ```
+
+### Nachher · Beispielergebnis
+
+| Person | Eingeschlossen |
+| --- | --- |
+| P001 | Ja |
+| P002 | Nein |
+| P003 | Nein |
+| P004 | Nein |
 
 ## Ergebnis
 
-Nur P001.
+UND verlangt alle Bedingungen. ODER lässt Alternativen zu. Klammern machen gemischte Logik eindeutig.
 
 ## Warum funktioniert das?
 
-Klammern machen die beabsichtigte Kombination explizit. Ohne die zeitliche Einschränkung für beide Segmente könnten veraltete Zeilen einfließen.
+Die Klammer verbindet die Alternativen zu einer gemeinsamen Gruppe. Die Zeitraumspflicht gilt damit für beide Segmente.
 
 ## Typischer Fehler
 
-**Symptom/Ursache:** A ODER (B UND Zeitraum) erlaubt auch A außerhalb des Zeitraums. **Lösung:** Regel auf die gewünschte Zeilenebene zurückführen und den Schnelltest wiederholen.
+**Symptom/Ursache:** A ODER (B UND Zeitraum) erlaubt auch A außerhalb des Zeitraums.
 
 ## Plausibilitätscheck
 
-Teste A außerhalb des Zeitraums zusätzlich: Diese Zeile darf nicht erscheinen.
+Nur P001 bleibt. A ODER (B UND Zeitraum) würde P004 fälschlich zulassen.

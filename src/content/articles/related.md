@@ -27,7 +27,7 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/related-function-dax"
@@ -44,11 +44,11 @@ Du möchtest RELATED an einem überschaubaren Beispiel verstehen.
 
 ## Voraussetzungen
 
-Tabelle Konten mit den sechs Beispielzeilen. Für RELATED zusätzlich Personen mit P001/A, P002/B, P003/A, P004/B und aktive 1:n-Beziehung zu Konten.
+Ein vorhandenes Power-BI-Modell mit den im Ausdruck verwendeten Tabellen, Spalten und gegebenenfalls Basismeasures.
 
 ## Schritte
 
-1. Lege die synthetischen Tabellen an und prüfe Textschlüssel sowie numerische Beträge.
+1. Prüfe die benötigten Tabellen, Textschlüssel und numerischen Beträge im vorhandenen Modell. Die Tabellen im Beispiel illustrieren den Aufbau.
 2. Wähle in Konten Modellierung → Neue Spalte.
 3. Gib die Formel aus dem Beispiel ein und bestätige mit Enter.
 4. Füge ein Tabellenvisual mit Personennummer und dem berechneten Ergebnis hinzu.
@@ -56,6 +56,8 @@ Tabelle Konten mit den sechs Beispielzeilen. Für RELATED zusätzlich Personen m
 6. Vergleiche den Wert mit dem erwarteten Ergebnis und untersuche den beschriebenen Fehlerfall.
 
 ## Beispiel
+
+### Vorher · Beispieldaten
 
 | Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
 | --- | --- | --- | --- |
@@ -66,13 +68,20 @@ Tabelle Konten mit den sechs Beispielzeilen. Für RELATED zusätzlich Personen m
 | K005 | P003 | Einlagen | 800 |
 | K006 | P004 | Kredite | 1000 |
 
+
+### Aktion
+
 ```dax
 Segment = RELATED ( Personen[Segment] )
 ```
 
-## Ergebnis
+### Nachher · Beispielergebnis
 
 P001-Konten erhalten A, P002-Konto B.
+
+## Ergebnis
+
+RELATED holt in einem Zeilenkontext einen passenden Wert von der eindeutigen Seite einer geeigneten Beziehung.
 
 ## Warum funktioniert das?
 

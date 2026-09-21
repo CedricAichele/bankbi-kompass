@@ -4,43 +4,88 @@
   "slug": "excel-monatsende",
   "titel": "MONATSENDE und HEUTE",
   "bereich": "Excel",
-  "werkzeuge": ["Excel"],
+  "werkzeuge": [
+    "Excel"
+  ],
   "kategorie": "Datum",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "MONATSENDE bestimmt den letzten Kalendertag eines Monats. HEUTE liefert das aktuelle Systemdatum, keinen Datenstand.",
   "ort": "Excel → Formelzelle",
-  "tags": ["MONATSENDE und HEUTE"],
-  "synonyme": ["monatsende", "heute"],
-  "verwandteThemen": ["monatsultimo", "aktueller-stichtag"],
-  "kontexte": ["Reporting"],
+  "tags": [
+    "MONATSENDE und HEUTE"
+  ],
+  "synonyme": [
+    "monatsende",
+    "heute"
+  ],
+  "verwandteThemen": [
+    "excel-datum",
+    "excel-kalender",
+    "monatsultimo",
+    "aktueller-stichtag"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-17",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen":
-    ["https://support.microsoft.com/de-DE/Excel/excel-functions-alphabetical"],
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/functions/eomonth-function"
+  ],
   "screenshots": [],
+  "praxis": true,
+  "kurzformel": "```excel\n=MONATSENDE(A2;0)\n```"
 }
 ---
 
 ## Wann brauche ich das?
 
-Du brauchst einen Monatsabschluss-Stichtag.
+Den letzten Tag eines Monats bestimmen.
+
+## Voraussetzungen
+
+Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Excel angegeben; Hinweise zu neueren Funktionen stehen beim jeweiligen Beispiel.
 
 ## Schritte
 
-1. Ausgangsdatum fachlich festlegen.
-2. MONATSENDE mit 0 oder einem Monatsversatz verwenden.
-3. Den resultierenden Stichtag mit verfügbaren Daten abgleichen.
+1. Prüfe die Ausgangszellen und ihre Bedeutung: **A2 = echtes Datum 15.02.2026**. Die Zelladressen dienen als Beispiel und können auf die eigene Liste angepasst werden.
+2. Wähle eine freie Ergebniszelle **H2** und gib die Formel ein. Bei TEXTTEILEN auch I2 freihalten.
+3. Bestätige mit Enter. Für Datumsergebnisse öffne **Start → Zahlenformat** und wähle ein passendes Datumformat.
+4. Vergleiche das Ergebnis mit dem Beispiel und prüfe mindestens einen leeren oder anders aufgebauten Ausgangswert, bevor du die Formel nach unten kopierst.
 
 ## Beispiel
 
+### Vorher · Beispieldaten
+
+| Ausgangswerte |
+| --- |
+| A2 = echtes Datum 15.02.2026 |
+
+### Aktion
+
 ```excel
-=MONATSENDE(DATUM(2026;3;17);0)
-=HEUTE()
+=MONATSENDE(A2;0)
 ```
 
-Die erste Formel liefert 31.03.2026.
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| 28.02.2026 |
+
+## Ergebnis
+
+Den letzten Tag eines Monats bestimmen.
+
+## Warum funktioniert das?
+
+0 meint den Monat des Ausgangsdatums; 1 den Folgemonat und -1 den Vormonat. Die Funktion berücksichtigt unterschiedliche Monatslängen.
 
 ## Typischer Fehler
 
-Einen noch nicht vorliegenden Monatsendbestand mit dem aktuellen Systemdatum beschriften.
+Pauschal 30 oder 31 Tage zum Ausgangsdatum addieren.
+
+## Plausibilitätscheck
+
+Für die genannten Ausgangswerte wird **28.02.2026** erwartet. Die Originalzellen bleiben unverändert; ergänzte Ergebniszellen werden separat geprüft.

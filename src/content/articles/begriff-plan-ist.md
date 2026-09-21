@@ -19,8 +19,8 @@
   ],
   "synonyme": [],
   "verwandteThemen": [
-    "plan-ist",
-    "divide"
+    "divide",
+    "plan-ist"
   ],
   "kontexte": [
     "Reporting",
@@ -29,8 +29,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/dax/divide-function-dax"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -38,32 +41,46 @@
 
 DIVIDE, Excel-Formeln und aggregierte Berichte.
 
+## Voraussetzungen
+
+Kenntnis der fachlichen Bedeutung der Daten; keine bestimmte Beispieldatei erforderlich.
+
 ## Schritte
 
-1. Benenne das Konzept an einer konkreten Ergebniszeile.
-2. Plan 100, Ist 90: Abweichung −10; Erreichung 90 %; relative Abweichung −10 %.
-3. Prüfe vor der Berechnung die genannte Fehlerquelle.
+1. Beschreibe die Ausgangssituation: Plan 100; Ist 90.
+2. Differenz Ist − Plan und Verhältnis Ist / Plan bilden.
+3. Prüfe die Unterscheidung am Ergebnis: Abweichung −10; Erreichung 90 %; relative Abweichung −10 %.
 
 ## Beispiel
 
-Plan 100, Ist 90: Abweichung −10; Erreichung 90 %; relative Abweichung −10 %.
+### Vorher · Beispieldaten
+
+| Ausgangslage |
+| --- |
+| Plan 100; Ist 90. |
+
+### Aktion
+
+Differenz Ist − Plan und Verhältnis Ist / Plan bilden.
+
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| Abweichung −10; Erreichung 90 %; relative Abweichung −10 %. |
+
+## Ergebnis
+
+Plan und Ist sind nur bei gleicher Einheit, Ebene und Zeitspanne vergleichbar. Eine Quote teilt fachlich passende Größen.
+
+## Warum funktioniert das?
+
+Differenz, Erreichung und relative Abweichung beantworten verschiedene Fragen. Zähler und Nenner müssen denselben Zeitraum und dieselbe Ebene beschreiben.
 
 ## Typischer Fehler
 
 Quoten mitteln, obwohl ihre Bezugsgrößen unterschiedlich groß sind.
 
-## Einfach erklärt
+## Plausibilitätscheck
 
-Plan und Ist sind nur bei gleicher Einheit, Ebene und Zeitspanne vergleichbar. Eine Quote teilt fachlich passende Größen.
-
-## Mini-Beispiel
-
-Plan 100, Ist 90: Abweichung −10; Erreichung 90 %; relative Abweichung −10 %.
-
-## Warum ist das wichtig?
-
-Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Quoten mitteln, obwohl ihre Bezugsgrößen unterschiedlich groß sind.
-
-## Wo taucht das auf?
-
-DIVIDE, Excel-Formeln und aggregierte Berichte.
+Abweichung −10; Erreichung 90 %; relative Abweichung −10 %.

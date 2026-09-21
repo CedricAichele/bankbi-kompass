@@ -27,10 +27,15 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
-  "screenshots": []
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-tables",
+    "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-matrix-visual",
+    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=reports-viewing-interacting"
+  ],
+  "screenshots": [],
+  "praxis": true
 }
 ---
 
@@ -47,7 +52,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Beispiel
 
+### Ausgangslage und Entscheidung
+
 Kontenliste: Tabelle. Personen × Produktgruppen mit Beständen: Matrix.
+
+| Alternative | Geeignet, wenn |
+| --- | --- |
+| Tabelle | Datensätze als flache Liste geprüft oder exportiert werden. |
+| Matrix | Kennzahlen gleichzeitig nach Zeilen- und Spaltengruppen verglichen werden. |
 
 ## Typischer Fehler
 
@@ -63,3 +75,15 @@ Eine Matrix ist bereits aggregiert und ersetzt keine Prüfung einzelner Datensä
 ## Merksatz
 
 Details lesen oder Gruppen kreuzen?
+
+## Warum funktioniert das?
+
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **Tabelle**, wenn Datensätze als flache Liste geprüft oder exportiert werden. Nimm **Matrix**, wenn Kennzahlen gleichzeitig nach Zeilen- und Spaltengruppen verglichen werden.
+
+## Ergebnis
+
+Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+
+## Plausibilitätscheck
+
+Eine Matrix ist bereits aggregiert und ersetzt keine Prüfung einzelner Datensätze. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.

@@ -19,7 +19,8 @@
   ],
   "synonyme": [],
   "verwandteThemen": [
-    "zusammenfuehren"
+    "zusammenfuehren",
+    "granularitaet"
   ],
   "kontexte": [
     "Reporting",
@@ -28,8 +29,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/merge-queries-overview"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -37,32 +41,46 @@
 
 Power Query und allgemeines Reporting.
 
+## Voraussetzungen
+
+Kenntnis der fachlichen Bedeutung der Daten; keine bestimmte Beispieldatei erforderlich.
+
 ## Schritte
 
-1. Benenne das Konzept an einer konkreten Ergebniszeile.
-2. K001/P001 plus P001/Segment A ergibt K001/P001/A. Zwei rechte P001-Treffer erzeugen zwei Ergebniszeilen.
-3. Prüfe vor der Berechnung die genannte Fehlerquelle.
+1. Beschreibe die Ausgangssituation: Konten: K001/P001; Kunden: P001/A.
+2. Über Kunde passende Attribute zuordnen.
+3. Prüfe die Unterscheidung am Ergebnis: K001/P001/A; bei zwei rechten P001-Treffern zwei Ergebniszeilen.
 
 ## Beispiel
 
-K001/P001 plus P001/Segment A ergibt K001/P001/A. Zwei rechte P001-Treffer erzeugen zwei Ergebniszeilen.
+### Vorher · Beispieldaten
+
+| Ausgangslage |
+| --- |
+| Konten: K001/P001; Kunden: P001/A. |
+
+### Aktion
+
+Über Kunde passende Attribute zuordnen.
+
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| K001/P001/A; bei zwei rechten P001-Treffern zwei Ergebniszeilen. |
+
+## Ergebnis
+
+Ein Join ordnet Zeilen anhand einer Bedingung einander zu; Power Query nennt dies Zusammenführen.
+
+## Warum funktioniert das?
+
+Die Anzahl passender Schlüssel bestimmt die Anzahl resultierender Kombinationen.
 
 ## Typischer Fehler
 
 Links außen mit unveränderter Zeilenzahl verwechseln.
 
-## Einfach erklärt
+## Plausibilitätscheck
 
-Ein Join ordnet Zeilen anhand einer Bedingung einander zu; Power Query nennt dies Zusammenführen.
-
-## Mini-Beispiel
-
-K001/P001 plus P001/Segment A ergibt K001/P001/A. Zwei rechte P001-Treffer erzeugen zwei Ergebniszeilen.
-
-## Warum ist das wichtig?
-
-Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Links außen mit unveränderter Zeilenzahl verwechseln.
-
-## Wo taucht das auf?
-
-Power Query und allgemeines Reporting.
+K001/P001/A; bei zwei rechten P001-Treffern zwei Ergebniszeilen.

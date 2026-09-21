@@ -28,8 +28,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/power-query-ui"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -37,32 +40,46 @@
 
 Daten abrufen, Angewendete Schritte und Aktualisieren.
 
+## Voraussetzungen
+
+Kenntnis der fachlichen Bedeutung der Daten; keine bestimmte Beispieldatei erforderlich.
+
 ## Schritte
 
-1. Benenne das Konzept an einer konkreten Ergebniszeile.
-2. CSV lesen → Typen korrigieren → Personenattribute ergänzen → Modell laden.
-3. Prüfe vor der Berechnung die genannte Fehlerquelle.
+1. Beschreibe die Ausgangssituation: CSV enthält Konto als Text und Betrag als Zahlentext.
+2. Extrahieren → Typen transformieren → Tabelle laden.
+3. Prüfe die Unterscheidung am Ergebnis: Eine typisierte Modelltabelle; Quelle bleibt unverändert.
 
 ## Beispiel
 
-CSV lesen → Typen korrigieren → Personenattribute ergänzen → Modell laden.
+### Vorher · Beispieldaten
+
+| Ausgangslage |
+| --- |
+| CSV enthält Konto als Text und Betrag als Zahlentext. |
+
+### Aktion
+
+Extrahieren → Typen transformieren → Tabelle laden.
+
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| Eine typisierte Modelltabelle; Quelle bleibt unverändert. |
+
+## Ergebnis
+
+ETL steht für Extrahieren, Transformieren und Laden. Power Query kann solche Vorbereitungsschritte beschreiben.
+
+## Warum funktioniert das?
+
+ETL trennt die Beschaffung, Aufbereitung und Bereitstellung. Wiederverwendbare Transformationen ersetzen wiederholte manuelle Korrekturen.
 
 ## Typischer Fehler
 
 Eine Vorschauänderung mit einer Änderung der Originaldatei verwechseln.
 
-## Einfach erklärt
+## Plausibilitätscheck
 
-ETL steht für Extrahieren, Transformieren und Laden. Power Query kann solche Vorbereitungsschritte beschreiben.
-
-## Mini-Beispiel
-
-CSV lesen → Typen korrigieren → Personenattribute ergänzen → Modell laden.
-
-## Warum ist das wichtig?
-
-Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Eine Vorschauänderung mit einer Änderung der Originaldatei verwechseln.
-
-## Wo taucht das auf?
-
-Daten abrufen, Angewendete Schritte und Aktualisieren.
+Eine typisierte Modelltabelle; Quelle bleibt unverändert.

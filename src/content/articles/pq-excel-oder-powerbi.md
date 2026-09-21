@@ -28,8 +28,12 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/power-query-ui",
+    "https://learn.microsoft.com/en-us/power-query/queries-pane"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -46,7 +50,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Beispiel
 
+### Ausgangslage und Entscheidung
+
 Gleiche Merge-Regel, unterschiedliche Ladeziele: Blatt gegenüber Modell.
+
+| Alternative | Geeignet, wenn |
+| --- | --- |
+| Power Query in Excel | das Ergebnis in einer Arbeitsmappe oder PivotTable weiterverwendet wird. |
+| Power Query in Power BI | die bereinigten Daten in ein Power-BI-Modell geladen werden. |
 
 ## Typischer Fehler
 
@@ -62,3 +73,15 @@ Nicht alle Konnektoren und Ladeoptionen sind in beiden Hosts identisch.
 ## Merksatz
 
 Die Weiterverwendung bestimmt den Host.
+
+## Warum funktioniert das?
+
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **Power Query in Excel**, wenn das Ergebnis in einer Arbeitsmappe oder PivotTable weiterverwendet wird. Nimm **Power Query in Power BI**, wenn die bereinigten Daten in ein Power-BI-Modell geladen werden.
+
+## Ergebnis
+
+Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+
+## Plausibilitätscheck
+
+Nicht alle Konnektoren und Ladeoptionen sind in beiden Hosts identisch. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.

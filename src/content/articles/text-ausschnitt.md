@@ -4,44 +4,89 @@
   "slug": "text-ausschnitt",
   "titel": "LINKS, RECHTS und TEIL",
   "bereich": "Excel",
-  "werkzeuge": ["Excel"],
+  "werkzeuge": [
+    "Excel"
+  ],
   "kategorie": "Text",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Diese Funktionen schneiden Text nach festen Zeichenpositionen aus. Bei variabler Länge eignen sich Trennzeichenfunktionen besser.",
   "ort": "Excel → Formelzelle",
-  "tags": ["LINKS, RECHTS und TEIL"],
-  "synonyme": ["links", "rechts", "teil"],
-  "verwandteThemen": ["text-trennzeichen", "excel-text-teilen"],
-  "kontexte": ["Reporting"],
+  "tags": [
+    "LINKS, RECHTS und TEIL"
+  ],
+  "synonyme": [
+    "links",
+    "rechts",
+    "teil"
+  ],
+  "verwandteThemen": [
+    "text-trennzeichen",
+    "textteilen",
+    "excel-text-teilen"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-17",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen":
-    ["https://support.microsoft.com/de-de/excel/text-functions-reference"],
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/functions/left-function",
+    "https://support.microsoft.com/de-de/excel/text-functions-reference"
+  ],
   "screenshots": [],
+  "praxis": true,
+  "kurzformel": "```excel\n=LINKS(A2;4)\n```"
 }
 ---
 
 ## Wann brauche ich das?
 
-Eine synthetische Kennung enthält einen festen Präfix.
+Eine feste Anzahl Zeichen vom Textanfang entnehmen.
+
+## Voraussetzungen
+
+Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Excel angegeben; Hinweise zu neueren Funktionen stehen beim jeweiligen Beispiel.
 
 ## Schritte
 
-1. Feste Länge oder Trennzeichenstruktur unterscheiden.
-2. LINKS/RECHTS für Ränder, TEIL für Startposition und Länge verwenden.
-3. Kurze und abweichende Kennungen testen.
+1. Prüfe die Ausgangszellen und ihre Bedeutung: **A2 = P001-K001**. Die Zelladressen dienen als Beispiel und können auf die eigene Liste angepasst werden.
+2. Wähle eine freie Ergebniszelle **H2** und gib die Formel ein. Bei TEXTTEILEN auch I2 freihalten.
+3. Bestätige mit Enter. Für Datumsergebnisse öffne **Start → Zahlenformat** und wähle ein passendes Datumformat.
+4. Vergleiche das Ergebnis mit dem Beispiel und prüfe mindestens einen leeren oder anders aufgebauten Ausgangswert, bevor du die Formel nach unten kopierst.
 
 ## Beispiel
 
+### Vorher · Beispieldaten
+
+| Ausgangswerte |
+| --- |
+| A2 = P001-K001 |
+
+### Aktion
+
 ```excel
-=LINKS(A2;2)
-=RECHTS(A2;3)
-=TEIL(A2;4;3)
+=LINKS(A2;4)
 ```
 
-A2 = AB-123 → AB, 123, 123.
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| P001 |
+
+## Ergebnis
+
+Eine feste Anzahl Zeichen vom Textanfang entnehmen.
+
+## Warum funktioniert das?
+
+LINKS zählt Zeichenpositionen. Für K001 wäre RECHTS(A2;4), für einen mittleren Abschnitt TEIL(A2;6;4) geeignet.
 
 ## Typischer Fehler
 
-Positionen hart setzen, obwohl die Kennungen unterschiedlich aufgebaut sind.
+Feste Positionen auf Texte mit variabler Länge anwenden.
+
+## Plausibilitätscheck
+
+Für die genannten Ausgangswerte wird **P001** erwartet. Die Originalzellen bleiben unverändert; ergänzte Ergebniszellen werden separat geprüft.

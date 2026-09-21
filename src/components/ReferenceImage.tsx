@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { Expand, X, ImageIcon } from "lucide-react";
 import type { ReferencePicture } from "../content/schema";
+import { Markdown } from "./Markdown";
 
 export function ReferenceImage({ image }: { image: ReferencePicture }) {
   const dialog = useRef<HTMLDialogElement>(null);
@@ -14,9 +15,10 @@ export function ReferenceImage({ image }: { image: ReferencePicture }) {
     <div className="image-labels">
       {image.schritt && <span>Schritt {image.schritt}</span>}
       {image.schema && <strong>Schematische Darstellung</strong>}
+      {image.status === "ersetzen" && <strong>Screenshot ersetzen</strong>}
     </div>
   );
-  const placeholder = image.status === "todo" || failed;
+  const placeholder = image.status === "todo" || image.bildAnzeigen === false || failed;
   return (
     <figure className="reference-image">
       {label}
@@ -27,6 +29,8 @@ export function ReferenceImage({ image }: { image: ReferencePicture }) {
             <strong>
               {failed
                 ? "Abbildung nicht verfügbar"
+                : image.status === "ersetzen"
+                  ? "TODO: Screenshot ersetzen"
                 : image.schema
                   ? "TODO: Schematische Darstellung ergänzen"
                   : "TODO: Echten Screenshot ergänzen"}
@@ -59,8 +63,23 @@ export function ReferenceImage({ image }: { image: ReferencePicture }) {
       )}
       <figcaption>
         {image.caption}
-        {image.hinweis && <span className="image-note">{image.hinweis}</span>}
+        {image.hinweis && !placeholder && <span className="image-note">{image.hinweis}</span>}
       </figcaption>
+      {image.status === "ersetzen" && !placeholder && <p className="image-note">{image.todo}</p>}
+      {image.aufnahmeplan && (
+        <details className="capture-plan">
+          <summary>Aufnahmeplan für diesen Screenshot</summary>
+          <p><strong>{image.aufnahmeplan.werkzeug}</strong> · {image.aufnahmeplan.oberflaeche}</p>
+          <ol>{image.aufnahmeplan.klickfolge.map((step, index) => <li key={index}><Markdown text={step} /></li>)}</ol>
+          <strong>Synthetische Aufnahmedaten</strong>
+          <Markdown text={image.aufnahmeplan.daten} />
+          <strong>Sichtbar</strong>
+          <Markdown text={image.aufnahmeplan.sichtbar.map(value => "- " + value).join("\n")} />
+          <p><strong>Ausschnitt:</strong> {image.aufnahmeplan.ausschnitt}</p>
+          <p><strong>Dateiname:</strong> <code>{image.aufnahmeplan.dateiname}</code></p>
+          <p><strong>Nicht zeigen:</strong> {image.aufnahmeplan.nichtZeigen.join("; ")}</p>
+        </details>
+      )}
       {!placeholder && (
         <dialog
           ref={dialog}

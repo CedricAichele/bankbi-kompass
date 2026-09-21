@@ -22,16 +22,20 @@
   "verwandteThemen": [
     "datum-sortieren",
     "visual-sortieren",
-    "excel-datum"
+    "excel-datum",
+    "dax-jahr-monat"
   ],
   "kontexte": [
     "Reporting",
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/dax/year-function-dax",
+    "https://learn.microsoft.com/en-us/dax/month-function-dax"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -43,20 +47,39 @@ April steht vor Februar oder Jahre werden vermischt.
 
 ## Schritte
 
-1. Datumstyp beziehungsweise Textwerte prüfen.
-2. Jahr-Monat-Schlüssel bilden.
-3. Anzeige nach dem Schlüssel sortieren und Jahreswechsel testen.
-4. Öffne die [konkrete Datum / Monat falsch sortiert-Anleitung](#/wissen/datum-sortieren) und baue deren synthetisches Beispiel nach.
-5. Übertrage die dort beschriebene Werkzeugaktion auf die Ausgangsdaten dieser Aufgabe; ersetze Feldnamen bewusst, nicht nur per Textsuche.
-6. Prüfe diesen Gegenfall: Prüfe zusätzlich Dezember 2025 vor Januar 2026.
+1. Definiere das gewünschte Ergebnis und den fachlichen Schlüssel jeder Ergebniszeile. Notiere Zeilenzahl und eine geeignete Kontrollsumme der Quelle.
+2. Prüfe die Eingabefelder und Datentypen anhand der Ausgangstabelle im Beispiel. Übertrage die dort verwendeten Namen bewusst auf deine Daten.
+3. Nutze die konkrete [YEAR und MONTH: Kalenderattribute-Anleitung](#/wissen/dax-jahr-monat). Sie zeigt Bedienort, Auswahl und Einstellungen für diese Operation.
+4. Vergleiche das Ergebnis mit den passenden Quellzeilen und der unten genannten Kontrolle. Kläre Mehrfachtreffer oder fehlende Werte vor der Weiterverwendung.
+5. Prüfe auch den im Fehlerabschnitt genannten Gegenfall. Halte eine fachlich begründete Änderung der Zeilenzahl oder Summe fest.
 
 ## Beispiel
 
-Dezember 2025 steht vor Januar 2026; nicht umgekehrt.
+### Vorher · Beispieldaten
+
+| Datum | Neugeschäft | Bestand |
+| --- | --- | --- |
+| 28.02.2025 | 9 | 90 |
+| 31.01.2026 | 10 | 100 |
+| 28.02.2026 | 15 | 120 |
+
+### Aktion
+
+Jahr, Monat und jahresübergreifenden Sortierschlüssel aus dem Datum ableiten.
+
+```dax
+Jahr = YEAR ( Demo_Datum[Date] )
+MonatNr = MONTH ( Demo_Datum[Date] )
+JahrMonatSort = YEAR ( Demo_Datum[Date] ) * 100 + MONTH ( Demo_Datum[Date] )
+```
+
+### Nachher · Beispielergebnis
+
+28.02.2026 → Jahr 2026, Monat 2, Sortierschlüssel 202602.
 
 ## Typischer Fehler
 
-Nur Monatsnummer oder Monatsname verwenden.
+Nur nach Monatsnamen sortieren oder Januar verschiedener Jahre zusammenfassen.
 
 ## Vergleich
 
@@ -68,12 +91,16 @@ Nur Monatsnummer oder Monatsname verwenden.
 
 ## Ergebnis
 
-Januar, Februar, März werden über 1, 2, 3 sortiert.
+YEAR und MONTH leiten numerische Kalenderattribute aus einem Datum ab. Für eine Monatsachse brauchst du zusätzlich das Jahr.
 
 ## Warum funktioniert das?
 
-Textsortierung ist keine Zeitordnung.
+Jahr × 100 + Monat hält Jahr und Monat in chronologischer Reihenfolge. Ein Monatsname allein unterscheidet keine Jahre.
 
 ## Plausibilitätscheck
 
-Prüfe zusätzlich Dezember 2025 vor Januar 2026.
+28.02.2026 → Jahr 2026, Monat 2, Sortierschlüssel 202602. Prüfe außerdem einen Zeitraum ohne Daten.
+
+## Voraussetzungen
+
+Ein vorhandener Datenbestand mit bekannter Zeilenebene und Zugriff auf das gewählte Werkzeug. Die Beispielwerte veranschaulichen ausschließlich den Ablauf.

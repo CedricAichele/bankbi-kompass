@@ -21,6 +21,8 @@
     "nur eindeutige kunden"
   ],
   "verwandteThemen": [
+    "zaehlenwenn",
+    "excel-dubletten-entfernen",
     "distinctcount",
     "eine-zeile-je-person"
   ],
@@ -29,75 +31,117 @@
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/functions/unique-function"
+  ],
   "screenshots": [
     {
       "src": "images/excel/excel-eindeutig.webp",
       "alt": "EINDEUTIG liefert vier unterschiedliche Personennummern.",
-      "caption": "EINDEUTIG liefert vier unterschiedliche Personennummern.",
-      "schritt": 5,
+      "caption": "Ersatzaufnahme: Excel – EINDEUTIG: Liste ohne Wiederholungen",
+      "schritt": 3,
       "schema": false,
-      "status": "bereit",
-      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen."
+      "status": "ersetzen",
+      "hinweis": "Ältere Aufnahme: Vier alte Personen statt zwei Kunden im neuen Beispiel; Zellbezüge anpassen. Maßgeblich sind die aktuellen Tabellen und Schritte im Artikel.",
+      "todo": "Vier alte Personen statt zwei Kunden im neuen Beispiel; Zellbezüge anpassen.",
+      "aufnahmeplan": {
+        "prioritaet": "Hoch",
+        "werkzeug": "Excel",
+        "oberflaeche": "Excel – EINDEUTIG: Liste ohne Wiederholungen",
+        "klickfolge": [
+          "Beispieltabelle in A1:D4 eintragen.",
+          "Keine weitere Eingabezelle",
+          "Zelle H2 auswählen und =EINDEUTIG(A2:A4) eingeben."
+        ],
+        "daten": "| Zeile | A: Kunde | B: Konto | C: Segment | D: Bestand |\n| --- | --- | --- | --- | --- |\n| 1 | Kunde | Konto | Segment | Bestand |\n| 2 | P001 | K001 | A | 1000 |\n| 3 | P001 | K002 | B | 2000 |\n| 4 | P002 | K003 | A | 500 |\nKeine weitere Eingabezelle",
+        "sichtbar": [
+          "Quelltabelle A1:D4",
+          "Kriterienzellen F2/G2 soweit genutzt",
+          "Formelleiste und Ausgabe ab H2"
+        ],
+        "ausschnitt": "Excel – EINDEUTIG: Liste ohne Wiederholungen mit Quelltabelle A1:D4, Kriterienzellen F2/G2 soweit genutzt, Formelleiste und Ausgabe ab H2. Auf den relevanten Dialog und die lesbaren Tabellenüberschriften begrenzen.",
+        "dateiname": "excel-eindeutig.webp",
+        "zweck": "Zusammenhang zwischen Eingabezellen, Formelargumenten und Ergebnis zeigen.",
+        "nichtZeigen": [
+          "Lokale Dateipfade",
+          "Benutzername oder Profil",
+          "Andere Programme und Benachrichtigungen",
+          "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
+        ]
+      },
+      "bildAnzeigen": false
     }
   ],
   "praxis": true,
-  "kurzformel": "```excel\n=EINDEUTIG(Konten!B2:B7)\n```",
+  "kurzformel": "```excel\n=EINDEUTIG(A2:A4)\n```",
   "schnellschritte": [
-    "Quelldaten im Blatt Konten vorbereiten.",
-    "Formel in einer freien Zelle eingeben.",
-    "Ausgabe und Randfälle gegen das Beispiel prüfen."
+    "Quellbereiche und Kriterienzellen festlegen.",
+    "Formel in einer freien Ergebniszelle eingeben.",
+    "Ausgabe anhand der passenden Quellzeilen kontrollieren."
   ]
 }
 ---
 
 ## Wann brauche ich das?
 
-Du willst eine vorhandene Liste ohne manuelle Zuordnung reproduzierbar auswerten.
+Eine Liste unterschiedlicher Werte erzeugen.
 
 ## Voraussetzungen
 
-Deutsches Excel; für XVERWEIS und dynamische Arrays Microsoft 365 oder Excel 2021 oder neuer. Andere Sprachversionen verwenden andere Funktionsnamen und Trennzeichen.
+Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. XVERWEIS und dynamische Arrayfunktionen benötigen eine unterstützte Version, zum Beispiel Microsoft 365 oder Excel 2021/2024.
 
 ## Schritte
 
-1. Öffne eine leere Arbeitsmappe und benenne das erste Blatt Konten. Übertrage die Spaltenüberschriften des Beispiels nach A1:D1 und die sechs Datenzeilen nach A2:D7.
-2. Prüfe in D2:D7, dass die Beträge echte Zahlen sind. Gib 1250 ohne Tausenderpunkt ein; formatiere erst danach als Zahl.
-3. Lege über das Plus neben dem Blattregister ein Blatt Auswertung an. Klicke dort A2 an. Für dynamische Arrays müssen mindestens sechs Zeilen und vier Spalten frei sein.
-4. Kopiere die angegebene Formel in A2 und bestätige mit Enter. Nutze die Bereiche einschließlich Blattname exakt wie angegeben.
-5. Vergleiche die Ausgabe mit dem erwarteten Ergebnis. Bei Nachschlag teste zusätzlich den nicht vorhandenen Schlüssel K999.
-6. Ändere in der Quelldatei testweise den Betrag von K001 auf 1300. Beobachte die Neuberechnung, sofern die Funktion Beträge verwendet. Setze ihn anschließend wieder auf 1250.
-7. Prüfe bei neuen Daten, ob sie innerhalb der Formelbereiche liegen. Für dauerhaft wachsende Listen ist eine Excel-Tabelle mit strukturierten Bezügen vorzuziehen.
+1. Prüfe die benötigten Quellspalten. Im Beispiel stehen Kunde, Konto, Segment und Bestand in **A1:D4**; die Daten beginnen in Zeile 2.
+2. Lege die Kriterien in eigenen Zellen außerhalb der Quelle ab: **Keine weitere Eingabezelle**. Passe diese Bezüge für deine Liste an.
+3. Klicke in eine freie Ergebniszelle, im Beispiel **H2**, und gib die Formel aus dem Beispiel ein. Der benötigte Überlaufbereich ab H2 muss frei sein und außerhalb einer Excel-Tabelle liegen.
+4. Bestätige mit Enter. Vergleiche die Ausgabe mit den tatsächlich passenden Ausgangszeilen.
+5. Prüfe einen zweiten Fall und fehlende Werte. Bei wachsenden Listen verwende Excel-Tabellen mit strukturierten Bezügen oder erweitere alle zusammengehörenden Bereiche.
 
 ## Beispiel
 
-| Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
-| --- | --- | --- | --- |
-| K001 | P001 | Einlagen | 1250 |
-| K002 | P001 | Anlagen | 750 |
-| K003 | P002 | Einlagen | 2000 |
-| K004 | P003 | Kredite | 3200 |
-| K005 | P003 | Einlagen | 800 |
-| K006 | P004 | Kredite | 1000 |
+### Vorher · Beispieldaten
+
+| Zeile | A: Kunde | B: Konto | C: Segment | D: Bestand |
+| --- | --- | --- | --- | --- |
+| 1 | Kunde | Konto | Segment | Bestand |
+| 2 | P001 | K001 | A | 1000 |
+| 3 | P001 | K002 | B | 2000 |
+| 4 | P002 | K003 | A | 500 |
+
+Keine weitere Eingabezelle
+
+### Aktion
 
 ```excel
-=EINDEUTIG(Konten!B2:B7)
+=EINDEUTIG(A2:A4)
 ```
+
+### Nachher · Beispielergebnis
+
+| H: Kunde |
+| --- |
+| P001 |
+| P002 |
 
 ## Ergebnis
 
-P001, P002, P003, P004 in vier Zellen.
+Eine Liste unterschiedlicher Werte erzeugen.
 
 ## Warum funktioniert das?
 
-Standardmäßig werden unterschiedliche Werte ausgegeben. Der optionale Parameter genau_einmal ist eine andere Frage: Werte, die nur ein einziges Mal vorkommen.
+Die zweimal vorhandene Kennung P001 wird einmal ausgegeben. Das löscht keine Zeilen aus der Quelle.
 
 ## Typischer Fehler
 
-**Symptom und Ursache:** P001 darf trotz zweier Konten einmal in der Ergebnisliste erscheinen; genau_einmal würde diese Person ausschließen. **Lösung:** Vergleiche Datentypen, Schlüssel und die markierten Formelbereiche, bevor du Fehler mit WENNFEHLER verdeckst.
+Das optionale Argument genau_einmal aktivieren: Dann erscheinen nur Werte mit genau einem Vorkommen, hier ausschließlich P002.
 
 ## Plausibilitätscheck
 
-P001 kommt genau zweimal vor und hat 1.250 + 750 = 2.000. Alle sechs Beträge ergeben 9.000. Prüfe außerdem einen leeren und einen nicht vorhandenen Suchwert.
+Erwartete Ausgabe: **P001; P002**. Die Ausgangsliste umfasst drei Kontenzeilen, zwei Kunden und insgesamt 3500. Prüfe bei Kriterienwechsel die betreffenden Zeilen erneut.
+
+## Argumente verstehen
+
+**A2:A4** ist die Ausgangsmatrix. Ohne weitere Argumente werden unterschiedliche Zeilen zurückgegeben.

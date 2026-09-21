@@ -14,6 +14,23 @@ const picture = {
   schritt: 2,
 };
 describe("Screenshot-Anleitungen", () => {
+  it("verlangt bei Ersatzaufnahmen einen vollständigen Plan und erhält den alten Dateipfad", () => {
+    const replacement = byId("xverweis")!.screenshots.find(image => image.status === "ersetzen")!;
+    expect(imageSchema.safeParse(replacement).success).toBe(true);
+    expect(imageSchema.safeParse({ ...replacement, aufnahmeplan: undefined }).success).toBe(false);
+    expect(imageSchema.safeParse({ ...replacement, src: undefined }).success).toBe(false);
+  });
+  it("zeigt unpassende Altbilder als Ersatzauftrag mit einklappbaren Aufnahmedaten", () => {
+    const replacement = byId("xverweis")!.screenshots.find(image => image.status === "ersetzen")!;
+    render(<ReferenceImage image={replacement} />);
+    expect(screen.getByText("TODO: Screenshot ersetzen")).toBeVisible();
+    expect(screen.queryByRole("img")).not.toBeInTheDocument();
+    const summary = screen.getByText("Aufnahmeplan für diesen Screenshot");
+    expect(summary.closest("details")).not.toHaveAttribute("open");
+    fireEvent.click(summary);
+    expect(summary.closest("details")).toHaveAttribute("open");
+    expect(screen.getByText("Synthetische Aufnahmedaten")).toBeVisible();
+  });
   it("normalisiert Root-Pfade und lehnt ungültige Zuordnungen und unvollständige TODOs ab", () => {
     expect(imageSchema.parse(picture).src).toBe("images/grundlagen/demo.webp");
     for (const invalid of [

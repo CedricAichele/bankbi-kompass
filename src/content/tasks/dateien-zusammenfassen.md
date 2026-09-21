@@ -27,9 +27,11 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/connectors/folder"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -41,22 +43,33 @@ Monatliche Dateien sollen ohne manuelles Kopieren gemeinsam ausgewertet werden.
 
 ## Schritte
 
-1. Dateien und Spaltenschema abgleichen.
-2. Dateiliste filtern und Transformation für die Beispieldatei definieren.
-3. Ergebnis je Quelldatei und insgesamt kontrollieren.
-4. Öffne die [konkrete Mehrere Dateien kombinieren-Anleitung](#/wissen/dateien-kombinieren) und baue deren synthetisches Beispiel nach.
-5. Übertrage die dort beschriebene Werkzeugaktion auf die Ausgangsdaten dieser Aufgabe; ersetze Feldnamen bewusst, nicht nur per Textsuche.
-6. Prüfe diesen Gegenfall: Notiere vor dem Kombinieren die Anzahl je Datei; kontrolliere sie anschließend anhand der Herkunftsspalte.
+1. Definiere das gewünschte Ergebnis und den fachlichen Schlüssel jeder Ergebniszeile. Notiere Zeilenzahl und eine geeignete Kontrollsumme der Quelle.
+2. Prüfe die Eingabefelder und Datentypen anhand der Ausgangstabelle im Beispiel. Übertrage die dort verwendeten Namen bewusst auf deine Daten.
+3. Nutze die konkrete [Mehrere Dateien kombinieren-Anleitung](#/wissen/dateien-kombinieren). Sie zeigt Bedienort, Auswahl und Einstellungen für diese Operation.
+4. Vergleiche das Ergebnis mit den passenden Quellzeilen und der unten genannten Kontrolle. Kläre Mehrfachtreffer oder fehlende Werte vor der Weiterverwendung.
+5. Prüfe auch den im Fehlerabschnitt genannten Gegenfall. Halte eine fachlich begründete Änderung der Zeilenzahl oder Summe fest.
 
 ## Beispiel
 
-Zwei Dateien mit 3 und 4 Zeilen → 7 Zeilen. Den Quelldateinamen zur Kontrolle behalten.
+### Vorher · Beispieldaten
 
-[Power Query: Dateien kombinieren](#/wissen/dateien-kombinieren). Für IDA wird kein unbelegter interner Dateiimport beschrieben.
+Januar.csv: Konto/Betrag mit K001/10 und K002/20. Februar.csv: dieselben Spalten mit K001/15.
+
+### Aktion
+
+Alle passenden CSV-Dateien mit derselben Transformation lesen und anfügen.
+
+### Nachher · Beispielergebnis
+
+| Quelldatei | Konto | Betrag |
+| --- | --- | --- |
+| Januar.csv | K001 | 10 |
+| Januar.csv | K002 | 20 |
+| Februar.csv | K001 | 15 |
 
 ## Typischer Fehler
 
-Temporäre oder abweichend aufgebaute Dateien ungefiltert einbeziehen.
+Eine zufällige Beispieldatei wählen und Strukturabweichungen mit Fehler entfernen verbergen.
 
 ## Vergleich
 
@@ -67,12 +80,16 @@ Temporäre oder abweichend aufgebaute Dateien ungefiltert einbeziehen.
 
 ## Ergebnis
 
-Januar mit 2 Zeilen und Februar mit 3 Zeilen ergeben 5 Zeilen, wenn keine Filter greifen.
+Eine gemeinsame Abfrage enthält die Zeilen aller ausgewählten, kompatiblen Dateien.
 
 ## Warum funktioniert das?
 
-Dateien gleichen Aufbaus können dieselbe Transformation durchlaufen.
+Die Transformation wird anhand einer Datei definiert und für jede gefilterte Datei wiederverwendet. Deshalb ist ein einheitlicher Aufbau entscheidend; Append sammelt anschließend die Ergebnisse.
 
 ## Plausibilitätscheck
 
-Notiere vor dem Kombinieren die Anzahl je Datei; kontrolliere sie anschließend anhand der Herkunftsspalte.
+2 + 1 = 3 Zeilen und Summe 45. Jede Quelldatei ist im Ergebnis nachvollziehbar.
+
+## Voraussetzungen
+
+Ein vorhandener Datenbestand mit bekannter Zeilenebene und Zugriff auf das gewählte Werkzeug. Die Beispielwerte veranschaulichen ausschließlich den Ablauf.

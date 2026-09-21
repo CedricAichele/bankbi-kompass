@@ -29,9 +29,11 @@
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/connectors/text-csv"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -43,20 +45,36 @@ Kennungen, Umlaute oder Beträge ändern sich beim Öffnen.
 
 ## Schritte
 
-1. Trennzeichen und Zeichencodierung in der Vorschau prüfen.
-2. Kennungen als Text und Zahlen mit passendem Gebietsschema importieren.
-3. Zeilenzahl und Kontrollsumme sowie führende Nullen prüfen.
-4. Öffne die [konkrete CSV korrekt importieren-Anleitung](#/wissen/csv-import) und baue deren synthetisches Beispiel nach.
-5. Übertrage die dort beschriebene Werkzeugaktion auf die Ausgangsdaten dieser Aufgabe; ersetze Feldnamen bewusst, nicht nur per Textsuche.
-6. Prüfe diesen Gegenfall: Vergleiche eine Kennung mit führenden Nullen und einen Dezimalbetrag mit der Originaldatei.
+1. Definiere das gewünschte Ergebnis und den fachlichen Schlüssel jeder Ergebniszeile. Notiere Zeilenzahl und eine geeignete Kontrollsumme der Quelle.
+2. Prüfe die Eingabefelder und Datentypen anhand der Ausgangstabelle im Beispiel. Übertrage die dort verwendeten Namen bewusst auf deine Daten.
+3. Nutze die konkrete [CSV korrekt importieren-Anleitung](#/wissen/csv-import). Sie zeigt Bedienort, Auswahl und Einstellungen für diese Operation.
+4. Vergleiche das Ergebnis mit den passenden Quellzeilen und der unten genannten Kontrolle. Kläre Mehrfachtreffer oder fehlende Werte vor der Weiterverwendung.
+5. Prüfe auch den im Fehlerabschnitt genannten Gegenfall. Halte eine fachlich begründete Änderung der Zeilenzahl oder Summe fest.
 
 ## Beispiel
 
-00123 bleibt fünfstellig; 1.250,50 bleibt ein Betrag von 1250,50.
+### Vorher · Beispieldaten
+
+```text
+Konto;Betrag;Datum
+00123;1.250,50;31.01.2026
+00124;20,00;01.02.2026
+```
+
+### Aktion
+
+Semikolon lesen, Kennung als Text erhalten, deutsche Zahl und Datum umwandeln.
+
+### Nachher · Beispielergebnis
+
+| Konto (Text) | Betrag (Zahl) | Datum |
+| --- | --- | --- |
+| 00123 | 1250,50 | 31.01.2026 |
+| 00124 | 20,00 | 01.02.2026 |
 
 ## Typischer Fehler
 
-Verlorene führende Nullen nachträglich ohne belegte Längenregel rekonstruieren.
+Die Vorschau mit einer einzigen langen Spalte akzeptieren oder 00123 erst nach einer Zahlenumwandlung auf Text setzen.
 
 ## Vergleich
 
@@ -68,12 +86,16 @@ Verlorene führende Nullen nachträglich ohne belegte Längenregel rekonstruiere
 
 ## Ergebnis
 
-00123 bleibt Text; 1.250,50 wird als Zahl 1250,50 geladen.
+Die Datei wird mit korrekt erkannten Spalten, Zeichen und Datentypen zur Tabelle.
 
 ## Warum funktioniert das?
 
-Trennzeichen, Kodierung und Gebietsschema bestimmen die Interpretation.
+CSV enthält Text und keine verlässlichen Excel-Zelltypen. Trennzeichen definieren Spalten, Codierung definiert Zeichen, Gebietsschema steuert die Interpretation von Zahl- und Datumstexten.
 
 ## Plausibilitätscheck
 
-Vergleiche eine Kennung mit führenden Nullen und einen Dezimalbetrag mit der Originaldatei.
+Zwei Datenzeilen, drei Spalten, beide Kennungen fünfstellig; Summe 1270,50.
+
+## Voraussetzungen
+
+Ein vorhandener Datenbestand mit bekannter Zeilenebene und Zugriff auf das gewählte Werkzeug. Die Beispielwerte veranschaulichen ausschließlich den Ablauf.

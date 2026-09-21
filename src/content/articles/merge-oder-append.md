@@ -27,10 +27,14 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
-  "screenshots": []
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/merge-queries-overview",
+    "https://learn.microsoft.com/en-us/power-query/append-queries"
+  ],
+  "screenshots": [],
+  "praxis": true
 }
 ---
 
@@ -47,7 +51,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Beispiel
 
+### Ausgangslage und Entscheidung
+
 Konten plus Personenattribute: Merge. Zwei Monatsdateien mit gleichen Spalten: Append.
+
+| Alternative | Geeignet, wenn |
+| --- | --- |
+| Merge | du passende Zeilen über gemeinsame Kennungen zuordnest. |
+| Append | gleichartige Zeilen aus mehreren Tabellen untereinander gehören. |
 
 ## Typischer Fehler
 
@@ -63,3 +74,15 @@ Append gleicht Spaltennamen ab, nicht ihre Position.
 ## Merksatz
 
 Nebeneinander zuordnen oder untereinander stapeln?
+
+## Warum funktioniert das?
+
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **Merge**, wenn du passende Zeilen über gemeinsame Kennungen zuordnest. Nimm **Append**, wenn gleichartige Zeilen aus mehreren Tabellen untereinander gehören.
+
+## Ergebnis
+
+Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+
+## Plausibilitätscheck
+
+Append gleicht Spaltennamen ab, nicht ihre Position. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.

@@ -35,9 +35,13 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/guidance/model-date-tables",
+    "https://learn.microsoft.com/en-us/dax/calendar-function-dax",
+    "https://learn.microsoft.com/en-us/dax/totalytd-function-dax"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -49,7 +53,7 @@ Einen Bestand zu genau einem fachlich vollständigen Datum berechnen.
 
 ## Voraussetzungen
 
-Nur synthetische Ausgangsdaten. Die verwendeten Feldnamen im Beispiel exakt übernehmen.
+Ein vorhandener Datenbestand mit passender Zeilenebene. Tabellen- und Feldnamen im Beispiel auf die eigene Quelle übertragen.
 
 ## Schritte
 
@@ -61,6 +65,8 @@ Nur synthetische Ausgangsdaten. Die verwendeten Feldnamen im Beispiel exakt übe
 6. Entferne den Datumsfilter testweise: 305 zeigt, warum eine Summe über alle Snapshots nicht als Bestand verwendet werden darf. Setze ihn zurück.
 
 ## Beispiel
+
+### Vorher · Beispieldaten
 
 | Stichtag | Konto | Betrag |
 | --- | --- | --- |
@@ -74,9 +80,18 @@ Excel mit Datum in A2:A4 und Betrag in C2:C4:
 =SUMMEWENNS(C2:C4;A2:A4;DATUM(2026;3;31))
 ```
 
-## Ergebnis
+### Aktion
+
+Prüfe Eindeutigkeit der Kombination Konto/Stichtag.
+Lege eine Summe über Betrag an und setze einen Filter auf 31.03.2026.
+
+### Nachher · Beispielergebnis
 
 101 zum 31.03.2026, nicht 305.
+
+## Ergebnis
+
+Ein Bestand ist eine Momentaufnahme. Wähle einen definierten Stichtag; addiere nicht mehrere Monatsbestände.
 
 ## Warum funktioniert das?
 

@@ -1644,8 +1644,11 @@ footer strong {
 .reference-grid, .reference-grid > *, .markdown, .quick-preview { min-width: 0; }
 .markdown { overflow-wrap: anywhere; }
 .markdown table { display: block; max-width: 100%; overflow-x: auto; }
-.catalog-intro { color: #526575; margin: 0 0 10px; font-size: 14px; }
-.catalog-level { display: block; margin: 14px 0 4px; color: #526575; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+.catalog-intro { color: #526575; margin: 0 0 10px; padding: 0 18px; font-size: 14px; }
+.catalog-level { display: block; margin: 14px 0 4px; padding: 0 18px; color: #526575; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+.capture-plan { margin-top: 12px; padding: 12px; border: 1px solid #d5e0e7; border-radius: 8px; font-size: 14px; overflow-wrap: anywhere; }
+.capture-plan summary { cursor: pointer; font-weight: 600; }
+.capture-plan li { margin-block: 8px; }
 .image-viewport.is-zoomed img {
   width: 200%;
   max-width: none;

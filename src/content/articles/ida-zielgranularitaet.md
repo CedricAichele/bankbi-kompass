@@ -10,7 +10,7 @@
   "kategorie": "Mehrfachzeilen / Joins",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Lege zuerst fest, was genau eine Ergebniszeile bedeutet. Daraus folgen Schlüssel, Aggregationen und erlaubte Detailfelder.",
-  "ort": "Allgemeines Daten- und Joinprinzip; keine interne Implementierung",
+  "ort": "Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt.",
   "tags": [
     "Zielgranularität vor dem Join festlegen"
   ],
@@ -18,16 +18,20 @@
     "zielgranularität"
   ],
   "verwandteThemen": [
-    "eine-zeile-je-person",
-    "ida-mehrere-joins"
+    "ida-aggregation",
+    "ida-mehrere-joins",
+    "granularitaet",
+    "eine-zeile-je-person"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
+  "quellen": [
+    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=relationships-creating-relationship-manually"
+  ],
   "screenshots": [
     {
       "src": "images/ida/zielgranularitaet.svg",
@@ -49,44 +53,48 @@ Eine Person mit mehreren Konten soll genau einmal mit Gesamtbestand erscheinen.
 
 ## Voraussetzungen
 
-Allgemeines Reportingprinzip. Konkrete IDA-Bedienung nicht öffentlich belegt; Menüpfade und ausführbare Syntax bleiben TODO.
+Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
-1. Formuliere die gewünschte Ergebniszeile: Welche fachliche Einheit soll genau einmal erscheinen?
-2. Übertrage das synthetische Mini-Beispiel in eine eigene Prüfliste. Notiere Zeilenzahl und Betrag vor der Änderung.
-3. Formuliere die Regel zunächst unabhängig vom Werkzeug: Pseudologik: gruppiere nach Personennummer; summiere Bestand_EUR.
-4. Lege die Regel in der öffentlich dokumentierten Reportingumgebung an. Für IDA gibt diese Seite bewusst keinen erfundenen Klickpfad vor.
-5. Führe den Bericht zuerst für die kleine Prüfliste aus und vergleiche das konkrete erwartete Ergebnis.
-6. Teste auch den beschriebenen Fehlerfall. Erst bei passender Kontrollsumme die Regel auf weitere synthetische Daten übertragen.
+1. Ziel eine Zeile je Person festlegen; Konto aus der Zielgruppierung entfernen.
+2. Formuliere die gewünschte Regel: **Vor einem Join auf eine eindeutige Kundentabelle die Konten nach Person summieren.**.
+3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
+4. Drei Detailzeilen gegen zwei Ergebniszeilen und unveränderte Summe 250 prüfen.
+5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.
 
 ## Beispiel
 
-| Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
-| --- | --- | --- | --- |
-| K001 | P001 | Einlagen | 1250 |
-| K002 | P001 | Anlagen | 750 |
-| K003 | P002 | Einlagen | 2000 |
-| K004 | P003 | Kredite | 3200 |
-| K005 | P003 | Einlagen | 800 |
-| K006 | P004 | Kredite | 1000 |
+### Vorher · Beispieldaten
+
+| Ausgangslage |
+| --- |
+| P001/K001/120, P001/K002/80, P002/K003/50. |
+
+### Aktion
 
 ```text
-Pseudologik: gruppiere nach Personennummer; summiere Bestand_EUR
+Fachliche Regel: Vor einem Join auf eine eindeutige Kundentabelle die Konten nach Person summieren.
 ```
+
+### Nachher · Beispielergebnis
+
+| Erwartete Ausgabe |
+| --- |
+| P001/200 und P002/50; anschließend je ein Stammdatentreffer. |
 
 ## Ergebnis
 
-Vier Personen: 2.000 / 2.000 / 4.000 / 1.000.
+Lege zuerst fest, was genau eine Ergebniszeile bedeutet. Daraus folgen Schlüssel, Aggregationen und erlaubte Detailfelder.
 
 ## Warum funktioniert das?
 
-Eine Gruppierung reduziert die Ebene. Kontonummer kann danach nicht als beliebiges Detail zusätzlich stehen bleiben.
+Die Voraggregation beseitigt nicht vermeintliche Dubletten, sondern ändert bewusst die Ebene. Kontodetails können danach nicht beliebig zusätzlich ausgegeben werden.
 
 ## Typischer Fehler
 
-**Symptom/Ursache:** DISTINCT über Person und Kontonummer behält mehrere Zeilen pro Person. **Lösung:** Regel auf die gewünschte Zeilenebene zurückführen und den Schnelltest wiederholen.
+**Symptom/Ursache:** DISTINCT über Person und Kontonummer behält mehrere Zeilen pro Person.
 
 ## Plausibilitätscheck
 
-Vier Zeilen und weiterhin 9.000. Bei mehreren Stichtagen muss nach Person und Stichtag gruppiert werden.
+P001/200 und P002/50; anschließend je ein Stammdatentreffer.

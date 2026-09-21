@@ -18,15 +18,18 @@
   "synonyme": [],
   "verwandteThemen": [
     "filterrichtung",
-    "visualinteraktionen"
+    "visualinteraktionen",
+    "measure"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-slicers"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -38,11 +41,11 @@ Eine sichtbare Auswahl im Bericht anbieten.
 
 ## Voraussetzungen
 
-Power BI Desktop; Beispieltabelle Konten über Start → Daten eingeben anlegen.
+Ein vorhandener Datenbestand mit den genannten Feldern. Die Tabelle im Beispiel dient ausschließlich zur Veranschaulichung.
 
 ## Schritte
 
-1. Verwende die Tabelle Konten aus dem Beispiel und erstelle Gesamtbestand = SUM(Konten[Bestand_EUR]).
+1. Prüfe die vorhandenen Quellfelder und Datentypen. Verwende bei Bedarf ein bereits angelegtes Gesamtbestand-Measure; die Erstellung erklärt der verlinkte Measure-Artikel.
 2. Füge eine Karte mit Gesamtbestand hinzu; ohne Auswahl soll 9.000 erscheinen.
 3. Klicke auf eine freie Berichtsfläche und wähle das Visual Datenschnitt.
 4. Ziehe Konten[Produktgruppe] in das Feld des Datenschnitts.
@@ -51,6 +54,8 @@ Power BI Desktop; Beispieltabelle Konten über Start → Daten eingeben anlegen.
 7. Lösche die Auswahl und kontrolliere wieder 9.000; teste anschließend jede weitere Berichtsseite, auf der der Slicer synchronisiert wird.
 
 ## Beispiel
+
+### Vorher · Beispieldaten
 
 | Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
 | --- | --- | --- | --- |
@@ -61,9 +66,17 @@ Power BI Desktop; Beispieltabelle Konten über Start → Daten eingeben anlegen.
 | K005 | P003 | Einlagen | 800 |
 | K006 | P004 | Kredite | 1000 |
 
-## Ergebnis
+### Aktion
+
+Die im Ablauf genannten Felder dem Visual zuweisen und die Auswahl prüfen.
+
+### Nachher · Beispielergebnis
 
 Einlagen → 4.050, Kredite → 4.200, ohne Filter → 9.000.
+
+## Ergebnis
+
+Ein Slicer stellt eine sichtbare Filterauswahl für verbundene Visuals bereit.
 
 ## Warum funktioniert das?
 

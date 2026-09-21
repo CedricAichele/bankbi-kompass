@@ -28,8 +28,12 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/guidance/star-schema",
+    "https://learn.microsoft.com/en-us/power-query/merge-queries-overview"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -46,7 +50,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Beispiel
 
+### Ausgangslage und Entscheidung
+
 K003 mit Leerzeichen bereinigen. Kontobestand über Konto und Stichtag statt Konto allein zuordnen.
+
+| Alternative | Geeignet, wenn |
+| --- | --- |
+| Schlüsselbereinigung | dieselbe fachliche Kennung nur durch Typen, Leerzeichen oder Schreibweise abweicht. |
+| Änderung der Join-Logik | die Beziehung fachlich weitere Kriterien oder mehrere Zuordnungen benötigt. |
 
 ## Typischer Fehler
 
@@ -62,3 +73,15 @@ Echte Mehrfachbeziehungen nicht durch willkürliches Löschen einer Seite versch
 ## Merksatz
 
 Formatfehler beheben; fachliche Mehrdeutigkeit modellieren.
+
+## Warum funktioniert das?
+
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **Schlüsselbereinigung**, wenn dieselbe fachliche Kennung nur durch Typen, Leerzeichen oder Schreibweise abweicht. Nimm **Änderung der Join-Logik**, wenn die Beziehung fachlich weitere Kriterien oder mehrere Zuordnungen benötigt.
+
+## Ergebnis
+
+Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+
+## Plausibilitätscheck
+
+Echte Mehrfachbeziehungen nicht durch willkürliches Löschen einer Seite verschleiern. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.

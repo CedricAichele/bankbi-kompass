@@ -26,10 +26,13 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
-  "screenshots": []
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/group-by"
+  ],
+  "screenshots": [],
+  "praxis": true
 }
 ---
 
@@ -46,7 +49,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Beispiel
 
+### Ausgangslage und Entscheidung
+
 Dateien erst in Power Query anfügen, danach in einer PivotTable nach Person auswerten.
+
+| Alternative | Geeignet, wenn |
+| --- | --- |
+| PivotTable | saubere Detaildaten flexibel zusammengefasst werden sollen. |
+| Power Query | Rohdaten vor der Auswertung bereinigt oder umgeformt werden müssen. |
 
 ## Typischer Fehler
 
@@ -62,3 +72,15 @@ Pivot kann falsche Datentypen nicht fachlich reparieren.
 ## Merksatz
 
 Die Werkzeuge ergänzen sich häufig.
+
+## Warum funktioniert das?
+
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **PivotTable**, wenn saubere Detaildaten flexibel zusammengefasst werden sollen. Nimm **Power Query**, wenn Rohdaten vor der Auswertung bereinigt oder umgeformt werden müssen.
+
+## Ergebnis
+
+Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+
+## Plausibilitätscheck
+
+Pivot kann falsche Datentypen nicht fachlich reparieren. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.

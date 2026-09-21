@@ -29,8 +29,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "problem",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/functions/filter-function"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -52,18 +55,33 @@ Teste dieselbe Formel mit einem sicher vorhandenen und einem fehlenden Schlüsse
 
 ## Schritte
 
-1. Erstelle eine Kopie der Auswertung oder beschränke sie auf synthetische Testdaten. Notiere den fehlerhaften Wert.
+1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
 2. Teste dieselbe Formel mit einem sicher vorhandenen und einem fehlenden Schlüssel.
 3. Ergänze das dritte Argument, beispielsweise "Keine Treffer". Bei #ÜBERLAUF! stattdessen blockierende Zellen unter/neben der Ausgabe prüfen.
 4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
+5. Den konkreten Bedienweg für die Korrektur findest du unter [FILTER: passende Zeilen ausgeben](#/wissen/excel-filtern). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
 
 ## Beispiel
 
-FILTER(A2:D7;B2:B7="P999";"Keine Treffer") liefert den Ersatztext.
+### Vorher · Fehlerbild
+
+| Beobachtung |
+| --- |
+| FILTER(A2:D7;B2:B7="P999";"Keine Treffer") liefert den Ersatztext. |
+
+### Aktion
+
+Ergänze das dritte Argument, beispielsweise "Keine Treffer". Bei #ÜBERLAUF! stattdessen blockierende Zellen unter/neben der Ausgabe prüfen.
+
+### Nachher · Erwartete Kontrolle
+
+| Prüfergebnis |
+| --- |
+| P001 muss weiterhin zwei Zeilen liefern; P999 den Ersatztext. |
 
 ## Ergebnis
 
-P001 muss weiterhin zwei Zeilen liefern; P999 den Ersatztext.
+Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
 
 ## Typischer Fehler
 
@@ -72,3 +90,7 @@ Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten
 ## Plausibilitätscheck
 
 P001 muss weiterhin zwei Zeilen liefern; P999 den Ersatztext.
+
+## Warum funktioniert das?
+
+Eine Wahrheitsliste entscheidet für jede Ausgangszeile, ob sie in die Ausgabe gelangt. Mehrere Treffer bleiben als mehrere Zeilen erhalten.

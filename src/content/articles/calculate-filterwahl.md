@@ -28,8 +28,12 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/dax/calculate-function-dax",
+    "https://learn.microsoft.com/en-us/dax/filter-function-dax"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -46,7 +50,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Beispiel
 
+### Ausgangslage und Entscheidung
+
 Produktgruppe = Einlagen kann direkt in CALCULATE stehen. Komplexe Auswahl von Gruppen anhand einer Kennzahl benötigt eine passende gefilterte Tabelle.
+
+| Alternative | Geeignet, wenn |
+| --- | --- |
+| direkter Spaltenfilter | eine einfache Bedingung auf Spalten einer Tabelle genügt. |
+| FILTER | eine zeilenweise Tabellenbedingung, etwa mit einer Measure-Auswertung, gebraucht wird. |
 
 ## Typischer Fehler
 
@@ -62,3 +73,15 @@ FILTER über die gesamte Faktentabelle ist nicht automatisch nötig und kann une
 ## Merksatz
 
 Die kleinste fachlich passende Filtermenge verwenden.
+
+## Warum funktioniert das?
+
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **direkter Spaltenfilter**, wenn eine einfache Bedingung auf Spalten einer Tabelle genügt. Nimm **FILTER**, wenn eine zeilenweise Tabellenbedingung, etwa mit einer Measure-Auswertung, gebraucht wird.
+
+## Ergebnis
+
+Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+
+## Plausibilitätscheck
+
+FILTER über die gesamte Faktentabelle ist nicht automatisch nötig und kann unerwünschte Filterwirkung haben. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.

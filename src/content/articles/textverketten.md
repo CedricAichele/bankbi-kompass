@@ -4,42 +4,89 @@
   "slug": "textverketten",
   "titel": "TEXTVERKETTEN: Werte mit Trennzeichen verbinden",
   "bereich": "Excel",
-  "werkzeuge": ["Excel"],
+  "werkzeuge": [
+    "Excel"
+  ],
   "kategorie": "Text",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "TEXTVERKETTEN verbindet Textwerte mit einem gemeinsamen Trennzeichen und kann leere Zellen auslassen.",
   "ort": "Excel → Formelzelle",
-  "tags": ["TEXTVERKETTEN: Werte mit Trennzeichen verbinden"],
-  "synonyme": ["verketten", "textverketten"],
-  "verwandteThemen": ["eindeutig", "gruppieren"],
-  "kontexte": ["Reporting"],
+  "tags": [
+    "TEXTVERKETTEN: Werte mit Trennzeichen verbinden"
+  ],
+  "synonyme": [
+    "verketten",
+    "textverketten"
+  ],
+  "verwandteThemen": [
+    "schluessel",
+    "textteilen",
+    "eindeutig",
+    "gruppieren"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-17",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen":
-    ["https://support.microsoft.com/de-de/excel/text-functions-reference"],
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/functions/textjoin-function",
+    "https://support.microsoft.com/de-de/excel/text-functions-reference"
+  ],
   "screenshots": [],
+  "praxis": true,
+  "kurzformel": "```excel\n=TEXTVERKETTEN(\"-\";WAHR;A2:B2)\n```"
 }
 ---
 
 ## Wann brauche ich das?
 
-Mehrere Produktgruppen sollen in einer lesbaren Übersicht stehen.
+Mehrere Textwerte mit einem festgelegten Trennzeichen verbinden.
+
+## Voraussetzungen
+
+Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Excel angegeben; Hinweise zu neueren Funktionen stehen beim jeweiligen Beispiel.
 
 ## Schritte
 
-1. Einen fachlich passenden Bereich auswählen.
-2. Trennzeichen und Leerwertbehandlung festlegen.
-3. Doppelte Werte bei Bedarf vorher mit EINDEUTIG entfernen.
+1. Prüfe die Ausgangszellen und ihre Bedeutung: **A2 = P001; B2 = K001**. Die Zelladressen dienen als Beispiel und können auf die eigene Liste angepasst werden.
+2. Wähle eine freie Ergebniszelle **H2** und gib die Formel ein. Bei TEXTTEILEN auch I2 freihalten.
+3. Bestätige mit Enter. Für Datumsergebnisse öffne **Start → Zahlenformat** und wähle ein passendes Datumformat.
+4. Vergleiche das Ergebnis mit dem Beispiel und prüfe mindestens einen leeren oder anders aufgebauten Ausgangswert, bevor du die Formel nach unten kopierst.
 
 ## Beispiel
 
+### Vorher · Beispieldaten
+
+| Ausgangswerte |
+| --- |
+| A2 = P001; B2 = K001 |
+
+### Aktion
+
 ```excel
-=TEXTVERKETTEN(", ";WAHR;B2:B4)
+=TEXTVERKETTEN("-";WAHR;A2:B2)
 ```
 
-A, leere Zelle, B → A, B.
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| P001-K001 |
+
+## Ergebnis
+
+Mehrere Textwerte mit einem festgelegten Trennzeichen verbinden.
+
+## Warum funktioniert das?
+
+Das erste Argument trennt die Werte, WAHR überspringt leere Zellen und der Bereich liefert die Bestandteile.
 
 ## Typischer Fehler
 
-Eine verkettete Liste später als verlässlichen Beziehungsschlüssel verwenden.
+Eine Verkettung ohne Trennregel als eindeutigen Schlüssel nutzen: AB+C und A+BC könnten zusammenfallen.
+
+## Plausibilitätscheck
+
+Für die genannten Ausgangswerte wird **P001-K001** erwartet. Die Originalzellen bleiben unverändert; ergänzte Ergebniszellen werden separat geprüft.

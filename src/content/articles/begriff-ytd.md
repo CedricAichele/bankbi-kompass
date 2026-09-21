@@ -29,8 +29,13 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/guidance/model-date-tables",
+    "https://learn.microsoft.com/en-us/dax/totalytd-function-dax",
+    "https://learn.microsoft.com/en-us/dax/sameperiodlastyear-function-dax"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -38,32 +43,46 @@
 
 DAX-Zeitintelligenz und zeitabhängige Excel-Kriterien.
 
+## Voraussetzungen
+
+Kenntnis der fachlichen Bedeutung der Daten; keine bestimmte Beispieldatei erforderlich.
+
 ## Schritte
 
-1. Benenne das Konzept an einer konkreten Ergebniszeile.
-2. Januar 10 plus Februar 15 → YTD 25. Vorjahres-Februar 9 ist eine andere Vergleichsgröße.
-3. Prüfe vor der Berechnung die genannte Fehlerquelle.
+1. Beschreibe die Ausgangssituation: Januar 2026: 10; Februar 2026: 15; Februar 2025: 9.
+2. Ab Jahresbeginn kumulieren beziehungsweise denselben Vorjahresmonat vergleichen.
+3. Prüfe die Unterscheidung am Ergebnis: Februar-YTD 25; Vorjahres-Februar 9.
 
 ## Beispiel
 
-Januar 10 plus Februar 15 → YTD 25. Vorjahres-Februar 9 ist eine andere Vergleichsgröße.
+### Vorher · Beispieldaten
+
+| Ausgangslage |
+| --- |
+| Januar 2026: 10; Februar 2026: 15; Februar 2025: 9. |
+
+### Aktion
+
+Ab Jahresbeginn kumulieren beziehungsweise denselben Vorjahresmonat vergleichen.
+
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| Februar-YTD 25; Vorjahres-Februar 9. |
+
+## Ergebnis
+
+YTD bedeutet seit Jahresbeginn bis zur Auswahl; Vorjahr vergleicht einen entsprechenden früheren Zeitraum.
+
+## Warum funktioniert das?
+
+YTD erweitert das aktuelle Jahresintervall nach hinten zum Jahresbeginn. Vorjahr verschiebt dagegen den Vergleichszeitraum.
 
 ## Typischer Fehler
 
 YTD bis Februar mit einem vollen Vorjahr vergleichen.
 
-## Einfach erklärt
+## Plausibilitätscheck
 
-YTD bedeutet seit Jahresbeginn bis zur Auswahl; Vorjahr vergleicht einen entsprechenden früheren Zeitraum.
-
-## Mini-Beispiel
-
-Januar 10 plus Februar 15 → YTD 25. Vorjahres-Februar 9 ist eine andere Vergleichsgröße.
-
-## Warum ist das wichtig?
-
-Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. YTD bis Februar mit einem vollen Vorjahr vergleichen.
-
-## Wo taucht das auf?
-
-DAX-Zeitintelligenz und zeitabhängige Excel-Kriterien.
+Februar-YTD 25; Vorjahres-Februar 9.

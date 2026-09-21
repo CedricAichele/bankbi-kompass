@@ -28,8 +28,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/data-types"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -37,32 +40,46 @@
 
 Feldliste, Tabellenkopf und Datentypauswahl.
 
+## Voraussetzungen
+
+Kenntnis der fachlichen Bedeutung der Daten; keine bestimmte Beispieldatei erforderlich.
+
 ## Schritte
 
-1. Benenne das Konzept an einer konkreten Ergebniszeile.
-2. Personennummer identifiziert die zugehörige Person, Bestand_EUR enthält den numerischen Wert.
-3. Prüfe vor der Berechnung die genannte Fehlerquelle.
+1. Beschreibe die Ausgangssituation: K001 | P001 | 1000.
+2. Jedem Feld einen Namen und Datentyp zuordnen.
+3. Prüfe die Unterscheidung am Ergebnis: Konto: Text; Kunde: Text; Bestand: Zahl.
 
 ## Beispiel
 
-Personennummer identifiziert die zugehörige Person, Bestand_EUR enthält den numerischen Wert.
+### Vorher · Beispieldaten
+
+| Ausgangslage |
+| --- |
+| K001 | P001 | 1000. |
+
+### Aktion
+
+Jedem Feld einen Namen und Datentyp zuordnen.
+
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| Konto: Text; Kunde: Text; Bestand: Zahl. |
+
+## Ergebnis
+
+Eine Spalte enthält dasselbe Merkmal für jede Zeile.
+
+## Warum funktioniert das?
+
+Eine Spalte beschreibt dieselbe Eigenschaft über alle Zeilen. Ihre Bedeutung und ihr Datentyp bestimmen, welche Operationen sinnvoll sind.
 
 ## Typischer Fehler
 
 Datentypen oder Bedeutungen innerhalb einer Spalte mischen.
 
-## Einfach erklärt
+## Plausibilitätscheck
 
-Eine Spalte enthält dasselbe Merkmal für jede Zeile.
-
-## Mini-Beispiel
-
-Personennummer identifiziert die zugehörige Person, Bestand_EUR enthält den numerischen Wert.
-
-## Warum ist das wichtig?
-
-Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Datentypen oder Bedeutungen innerhalb einer Spalte mischen.
-
-## Wo taucht das auf?
-
-Feldliste, Tabellenkopf und Datentypauswahl.
+Konto: Text; Kunde: Text; Bestand: Zahl.

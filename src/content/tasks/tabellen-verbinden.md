@@ -33,9 +33,13 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/merge-queries-overview",
+    "https://learn.microsoft.com/en-us/power-query/append-queries",
+    "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-relationships-understand"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -47,7 +51,7 @@ Zwei Tabellen verbinden, ohne Beträge zu vervielfachen.
 
 ## Voraussetzungen
 
-Nur synthetische Ausgangsdaten. Die verwendeten Feldnamen im Beispiel exakt übernehmen.
+Ein vorhandener Datenbestand mit passender Zeilenebene. Tabellen- und Feldnamen im Beispiel auf die eigene Quelle übertragen.
 
 ## Schritte
 
@@ -60,6 +64,8 @@ Nur synthetische Ausgangsdaten. Die verwendeten Feldnamen im Beispiel exakt übe
 
 ## Beispiel
 
+### Vorher · Beispieldaten
+
 | Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
 | --- | --- | --- | --- |
 | K001 | P001 | Einlagen | 1250 |
@@ -71,9 +77,18 @@ Nur synthetische Ausgangsdaten. Die verwendeten Feldnamen im Beispiel exakt übe
 
 Alle sechs Kontenzeilen erhalten eine passende Segmentzuordnung.
 
-## Ergebnis
+### Aktion
+
+Prüfe den Personenschlüssel rechts auf genau einen Treffer je Person.
+Öffne Power Query → Start → Abfragen als neu zusammenführen. Wähle Konten links und Personen rechts.
+
+### Nachher · Beispielergebnis
 
 Sechs Ergebniszeilen, Summe 9.000.
+
+## Ergebnis
+
+Wähle nach dem Ziel: Filterweg im Modell, Spalten über Schlüssel ergänzen oder gleichartige Zeilen untereinander setzen.
 
 ## Warum funktioniert das?
 

@@ -27,9 +27,11 @@
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/unpivot-column"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -41,20 +43,37 @@ Januar, Februar und März stehen als eigene Spalten in einem Export.
 
 ## Schritte
 
-1. Identifikationsspalten auswählen.
-2. Andere Spalten entpivotieren; Attribut und Wert sinnvoll benennen.
-3. Typen, Nullwerte und Summe prüfen.
-4. Öffne die [konkrete Entpivotieren: von breit nach lang-Anleitung](#/wissen/entpivotieren) und baue deren synthetisches Beispiel nach.
-5. Übertrage die dort beschriebene Werkzeugaktion auf die Ausgangsdaten dieser Aufgabe; ersetze Feldnamen bewusst, nicht nur per Textsuche.
-6. Prüfe diesen Gegenfall: Vergleiche Anzahl befüllter Monatszellen mit erzeugten Wertzeilen.
+1. Definiere das gewünschte Ergebnis und den fachlichen Schlüssel jeder Ergebniszeile. Notiere Zeilenzahl und eine geeignete Kontrollsumme der Quelle.
+2. Prüfe die Eingabefelder und Datentypen anhand der Ausgangstabelle im Beispiel. Übertrage die dort verwendeten Namen bewusst auf deine Daten.
+3. Nutze die konkrete [Entpivotieren: von breit nach lang-Anleitung](#/wissen/entpivotieren). Sie zeigt Bedienort, Auswahl und Einstellungen für diese Operation.
+4. Vergleiche das Ergebnis mit den passenden Quellzeilen und der unten genannten Kontrolle. Kläre Mehrfachtreffer oder fehlende Werte vor der Weiterverwendung.
+5. Prüfe auch den im Fehlerabschnitt genannten Gegenfall. Halte eine fachlich begründete Änderung der Zeilenzahl oder Summe fest.
 
 ## Beispiel
 
-P001 mit Jan=10, Feb=20 → zwei Zeilen mit Monat und Betrag.
+### Vorher · Beispieldaten
+
+| Kunde | Jan | Feb |
+| --- | --- | --- |
+| P001 | 10 | 15 |
+| P002 | 20 | 25 |
+
+### Aktion
+
+Jan und Feb in Monat/Betrag-Zeilen umformen.
+
+### Nachher · Beispielergebnis
+
+| Kunde | Monat | Betrag |
+| --- | --- | --- |
+| P001 | Jan | 10 |
+| P001 | Feb | 15 |
+| P002 | Jan | 20 |
+| P002 | Feb | 25 |
 
 ## Typischer Fehler
 
-Künftige Monatsspalten bei einer starren Spaltenauswahl übersehen.
+Schlüsselspalten mit entpivotieren oder aus ausgebliebenen NULL-Zeilen einen Betrag von null ableiten.
 
 ## Vergleich
 
@@ -65,12 +84,16 @@ Künftige Monatsspalten bei einer starren Spaltenauswahl übersehen.
 
 ## Ergebnis
 
-P001 mit Januar 10 und Februar 20 ergibt zwei Zeilen und unverändert 30.
+Wertespalten werden zu Attribut-Wert-Paaren untereinander.
 
 ## Warum funktioniert das?
 
-Die Monatsspalten werden zu Werten einer gemeinsamen Attributspalte.
+Eine bisher in der Überschrift gespeicherte Kategorie wird selbst zu einem Datenwert. Die neue Zeilenebene ist Kunde und Monat.
 
 ## Plausibilitätscheck
 
-Vergleiche Anzahl befüllter Monatszellen mit erzeugten Wertzeilen.
+Zwei Kunden × zwei gefüllte Monatsspalten ergeben vier Zeilen; Summe 70.
+
+## Voraussetzungen
+
+Ein vorhandener Datenbestand mit bekannter Zeilenebene und Zugriff auf das gewählte Werkzeug. Die Beispielwerte veranschaulichen ausschließlich den Ablauf.

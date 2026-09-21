@@ -20,17 +20,23 @@
     "falsche summe"
   ],
   "verwandteThemen": [
+    "measure",
     "calculate",
     "filterrichtung",
+    "begriff-zeilenkontext",
     "measure-fehler"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/dax/dax-overview",
+    "https://learn.microsoft.com/en-us/dax/calculate-function-dax",
+    "https://learn.microsoft.com/en-us/power-bi/guidance/relationships-bidirectional-filtering"
+  ],
   "screenshots": [
     {
       "src": "images/power-bi/pbi-filterbereich.webp",
@@ -39,43 +45,61 @@
       "schritt": 2,
       "schema": false,
       "status": "bereit",
-      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen."
+      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen. Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen."
     }
-  ]
+  ],
+  "praxis": true
 }
 ---
 
-
 ## Wann brauche ich das?
 
-Ein Measure liefert je Visual unterschiedliche oder unerwartete Zahlen.
+Dieselbe Formel liefert je Zeile oder Auswahl verschiedene Ergebnisse.
+
+## Voraussetzungen
+
+Ein Bericht mit Kennzahl und den dazugehörigen Gruppierungs- oder Filterfeldern.
 
 ## Schritte
 
-1. Ein einfaches Basismeasure in einer Kontrollmatrix anzeigen.
-2. Seiten-, Berichts- und Visualfilter prüfen.
-3. Aktive Beziehungen und filterändernde DAX-Funktionen kontrollieren.
+1. Zeige eine Summe in einer Karte ohne zusätzliche Auswahl.
+2. Füge einen Datenschnitt für Segment hinzu und wähle **A**.
+3. Zeige dieselbe Summe in einer Tabelle mit Segment als Zeilenfeld. Jede Zeile liefert nun ihren eigenen Kontext.
+4. Prüfe weitere Filter auf Visual-, Seiten- und Berichtsebene sowie aktive Beziehungen. CALCULATE kann diesen Kontext innerhalb eines Measures gezielt ändern.
 
 ## Beispiel
 
-Segment A hat 120 Euro, B 80 Euro. Slicer A → 120. Keine Segmentbegrenzung → 200.
+### Vorher · Beispieldaten
+
+| Segment | Betrag |
+| --- | --- |
+| A | 120 |
+| B | 80 |
+
+### Aktion
+
+Summe erst ohne Filter, dann für A auswerten.
+
+### Nachher · Beispielergebnis
+
+| Kontext | Ergebnis |
+| --- | --- |
+| Keine Auswahl | 200 |
+| Segment A | 120 |
+| Segment B | 80 |
+
+## Ergebnis
+
+Eine Kennzahl berücksichtigt die gemeinsam wirksamen Filter der jeweiligen Abfrage.
+
+## Warum funktioniert das?
+
+Die Formel bleibt gleich, aber die Menge sichtbarer Daten ändert sich. Eine Tabellenzeile ist für ein Measure ein Filter auf ihre Gruppe; sie ist nicht einfach der Zeilenkontext einer berechneten Spalte.
 
 ## Typischer Fehler
 
-Eine Matrix-Gesamtzeile ist eine neue Auswertung im Gesamtkontext und nicht immer die Summe sichtbarer Zeilen.
+Nur den sichtbaren Slicer prüfen und versteckte Visual- oder Seitenfilter übersehen.
 
-## Einfach erklärt
+## Plausibilitätscheck
 
-Filterkontext ist die Menge der wirksamen Einschränkungen bei einer DAX-Auswertung.
-
-## Mini-Beispiel
-
-P003 im Slicer und Einlagen in einer Tabellenzeile ergeben gemeinsam nur K005 mit 800.
-
-## Warum ist das wichtig?
-
-Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Nur den sichtbaren Slicer beachten und Seitenfilter übersehen.
-
-## Wo taucht das auf?
-
-DAX-Measure, Slicer, Visualzeile und Filterbereich.
+120 + 80 = 200 bei dieser additiven Summe. Für Quoten oder eindeutige Anzahlen muss die Gesamtzeile neu ausgewertet werden.

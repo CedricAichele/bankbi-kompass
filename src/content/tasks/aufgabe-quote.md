@@ -30,9 +30,11 @@
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=style-summarizing-data-relationally"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -44,20 +46,38 @@ Du brauchst Planerreichung oder den Anteil einer Produktgruppe.
 
 ## Schritte
 
-1. Zähler, Nenner, Zeitraum und Ebene festlegen.
-2. Beide Größen aggregieren und dann dividieren.
-3. Nenner 0 und fehlende Werte behandeln; Prozentformat setzen.
-4. Öffne die [konkrete DIVIDE: Quote berechnen-Anleitung](#/wissen/divide) und baue deren synthetisches Beispiel nach.
-5. Übertrage die dort beschriebene Werkzeugaktion auf die Ausgangsdaten dieser Aufgabe; ersetze Feldnamen bewusst, nicht nur per Textsuche.
-6. Prüfe diesen Gegenfall: Zeige Zähler und Nenner neben der Quote; prüfe auch Nenner 0.
+1. Definiere das gewünschte Ergebnis und den fachlichen Schlüssel jeder Ergebniszeile. Notiere Zeilenzahl und eine geeignete Kontrollsumme der Quelle.
+2. Prüfe die Eingabefelder und Datentypen anhand der Ausgangstabelle im Beispiel. Übertrage die dort verwendeten Namen bewusst auf deine Daten.
+3. Nutze die konkrete [Quote berechnen-Anleitung](#/wissen/ida-quote). Sie zeigt Bedienort, Auswahl und Einstellungen für diese Operation.
+4. Vergleiche das Ergebnis mit den passenden Quellzeilen und der unten genannten Kontrolle. Kläre Mehrfachtreffer oder fehlende Werte vor der Weiterverwendung.
+5. Prüfe auch den im Fehlerabschnitt genannten Gegenfall. Halte eine fachlich begründete Änderung der Zeilenzahl oder Summe fest.
 
 ## Beispiel
 
-Ist 95, Plan 100 → 95 %. Zwei Einzelquoten werden nicht einfach addiert.
+### Vorher · Beispieldaten
+
+| Gruppe | Erfüllt | Alle |
+| --- | --- | --- |
+| A | 8 | 10 |
+| B | 1 | 2 |
+
+### Aktion
+
+```text
+Pseudologik: Erfüllte Fälle und alle Fälle summieren; anschließend dividieren.
+```
+
+### Nachher · Beispielergebnis
+
+| Ebene | Quote |
+| --- | --- |
+| A | 80 % |
+| B | 50 % |
+| Gesamt | 9 / 12 = 75 % |
 
 ## Typischer Fehler
 
-Ungewichtete Durchschnittsquoten als Gesamtquote ausgeben.
+80 % und 50 % ungewichtet mitteln: 65 % ist hier nicht die Gesamtquote.
 
 ## Vergleich
 
@@ -69,12 +89,16 @@ Ungewichtete Durchschnittsquoten als Gesamtquote ausgeben.
 
 ## Ergebnis
 
-1/2 und 9/10 ergeben insgesamt 10/12 = 83,33 %.
+Eine Gesamtquote entsteht aus Gesamtzähler geteilt durch Gesamtnenner.
 
 ## Warum funktioniert das?
 
-Ein Quotient benötigt fachlich passende Größen und gleiche Filter.
+Die Gesamtquote gewichtet nach den Fallzahlen. Ein einfacher Mittelwert der Gruppenquoten würde kleinen und großen Gruppen dasselbe Gewicht geben.
 
 ## Plausibilitätscheck
 
-Zeige Zähler und Nenner neben der Quote; prüfe auch Nenner 0.
+75 %, nicht (80 % + 50 %) / 2 = 65 %.
+
+## Voraussetzungen
+
+Ein vorhandener Datenbestand mit bekannter Zeilenebene und Zugriff auf das gewählte Werkzeug. Die Beispielwerte veranschaulichen ausschließlich den Ablauf.

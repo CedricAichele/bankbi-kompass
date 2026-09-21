@@ -18,6 +18,9 @@
     "mehrere kriterien"
   ],
   "verwandteThemen": [
+    "summewenns",
+    "und",
+    "excel-kombinationen",
     "xverweis",
     "zaehlenwenns",
     "excel-filtern"
@@ -26,31 +29,64 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-17",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
-    "https://support.microsoft.com/de-DE/Excel/excel-functions-alphabetical"
+    "https://support.microsoft.com/en-us/excel/functions/and-function"
   ],
-  "screenshots": []
+  "screenshots": [],
+  "praxis": true,
+  "kurzformel": "```excel\n=WENN(UND(A2=\"P001\";B2=\"A\");C2;0)\n```"
 }
 ---
 
 ## Wann brauche ich das?
 
-Ein Bestand hängt von Konto und Stichtag ab.
+Eine Zeilenentscheidung von mehreren gleichzeitigen Kriterien abhängig machen.
+
+## Voraussetzungen
+
+Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Excel angegeben; Hinweise zu neueren Funktionen stehen beim jeweiligen Beispiel.
 
 ## Schritte
 
-1. Schlüssel und Datumswert als Suchkriterien festlegen.
-2. In moderner Excel-Version die Wahrheitsbedingungen multiplizieren und nach 1 suchen.
-3. Mehrfachtreffer vorab zählen und die Fachregel klären.
+1. Prüfe die Ausgangszellen und ihre Bedeutung: **A2 = P001; B2 = A; C2 = 1000**. Die Zelladressen dienen als Beispiel und können auf die eigene Liste angepasst werden.
+2. Wähle eine freie Ergebniszelle **H2** und gib die Formel ein. Bei TEXTTEILEN auch I2 freihalten.
+3. Bestätige mit Enter. Für Datumsergebnisse öffne **Start → Zahlenformat** und wähle ein passendes Datumformat.
+4. Vergleiche das Ergebnis mit dem Beispiel und prüfe mindestens einen leeren oder anders aufgebauten Ausgangswert, bevor du die Formel nach unten kopierst.
 
 ## Beispiel
 
+### Vorher · Beispieldaten
+
+| Ausgangswerte |
+| --- |
+| A2 = P001; B2 = A; C2 = 1000 |
+
+### Aktion
+
 ```excel
-=XVERWEIS(1;(A2:A9=F2)*(B2:B9=G2);C2:C9;"Nicht gefunden")
+=WENN(UND(A2="P001";B2="A");C2;0)
 ```
+
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| 1000 |
+
+## Ergebnis
+
+Eine Zeilenentscheidung von mehreren gleichzeitigen Kriterien abhängig machen.
+
+## Warum funktioniert das?
+
+UND bündelt die Prüfungen. Nur wenn beide zutreffen, wird der Betrag übernommen; sonst liefert diese ausdrücklich gewählte Regel 0.
 
 ## Typischer Fehler
 
-Eine zweite passende Zeile übersehen: XVERWEIS liefert standardmäßig nur den ersten Treffer.
+Die Zeilenformel mit einer Gesamtaggregation verwechseln; für eine direkte Gesamtsumme SUMMEWENNS nutzen.
+
+## Plausibilitätscheck
+
+Für die genannten Ausgangswerte wird **1000** erwartet. Die Originalzellen bleiben unverändert; ergänzte Ergebniszellen werden separat geprüft.

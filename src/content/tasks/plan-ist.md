@@ -29,9 +29,13 @@
     "Neugeschäft"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/dax/divide-function-dax",
+    "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-conditional-table-formatting",
+    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=style-summarizing-data-relationally"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -43,7 +47,7 @@ Plan und Ist auf identischer Monats- und Personenebene vergleichen.
 
 ## Voraussetzungen
 
-Nur synthetische Ausgangsdaten. Die verwendeten Feldnamen im Beispiel exakt übernehmen.
+Ein vorhandener Datenbestand mit passender Zeilenebene. Tabellen- und Feldnamen im Beispiel auf die eigene Quelle übertragen.
 
 ## Schritte
 
@@ -56,6 +60,8 @@ Nur synthetische Ausgangsdaten. Die verwendeten Feldnamen im Beispiel exakt übe
 
 ## Beispiel
 
+### Vorher · Beispieldaten
+
 | Monat | Person | Plan | Ist |
 | --- | --- | --- | --- |
 | 2026-03 | P001 | 100 | 90 |
@@ -66,9 +72,18 @@ Abweichung = [Ist] - [Plan]
 Erreichung = DIVIDE ( [Ist], [Plan] )
 ```
 
-## Ergebnis
+### Aktion
+
+Erstelle in Power BI die Measures Plan = SUM(Vergleich[Plan]) und Ist = SUM(Vergleich[Ist]).
+Erstelle Abweichung = [Ist] - [Plan] und Erreichung = DIVIDE([Ist], [Plan]). Formatiere Erreichung als Prozent.
+
+### Nachher · Beispielergebnis
 
 P001: −10 und 90 %. P002: +20 und 110 %. Gesamt: Plan 300, Ist 310, Abweichung +10, Erreichung 103,33 %.
+
+## Ergebnis
+
+Stimme Plan und Ist auf dieselbe Ebene und denselben Zeitraum ab; zeige dann Abweichung und Planerreichung.
 
 ## Warum funktioniert das?
 

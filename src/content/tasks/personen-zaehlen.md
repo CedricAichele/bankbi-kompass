@@ -31,9 +31,13 @@
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/dax/distinctcount-function-dax",
+    "https://support.microsoft.com/en-us/excel/functions/unique-function",
+    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=style-summarizing-data-relationally"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -45,7 +49,7 @@ Personen eindeutig zählen, auch wenn mehrere Konten existieren.
 
 ## Voraussetzungen
 
-Nur synthetische Ausgangsdaten. Die verwendeten Feldnamen im Beispiel exakt übernehmen.
+Ein vorhandener Datenbestand mit passender Zeilenebene. Tabellen- und Feldnamen im Beispiel auf die eigene Quelle übertragen.
 
 ## Schritte
 
@@ -57,6 +61,8 @@ Nur synthetische Ausgangsdaten. Die verwendeten Feldnamen im Beispiel exakt übe
 6. Wähle P001 und prüfe anschließend beide Werte erneut.
 
 ## Beispiel
+
+### Vorher · Beispieldaten
 
 | Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
 | --- | --- | --- | --- |
@@ -71,9 +77,18 @@ Nur synthetische Ausgangsdaten. Die verwendeten Feldnamen im Beispiel exakt übe
 Personen = DISTINCTCOUNT ( Konten[Personennummer] )
 ```
 
-## Ergebnis
+### Aktion
+
+Erstelle in Power BI unter Modellierung → Neues Measure die angegebene Formel.
+Erstelle als Vergleich Kontenzeilen = COUNTROWS(Konten).
+
+### Nachher · Beispielergebnis
 
 Ungefiltert 4 Personen und 6 Zeilen. P001 ausgewählt: 1 Person und 2 Zeilen.
+
+## Ergebnis
+
+Zähle unterschiedliche Personenkennungen, nicht alle Kontenzeilen.
 
 ## Warum funktioniert das?
 

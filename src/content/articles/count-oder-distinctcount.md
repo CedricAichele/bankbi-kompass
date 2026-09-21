@@ -28,10 +28,15 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
-  "screenshots": []
+  "quellen": [
+    "https://learn.microsoft.com/en-us/dax/count-function-dax",
+    "https://learn.microsoft.com/en-us/dax/countrows-function-dax",
+    "https://learn.microsoft.com/en-us/dax/distinctcount-function-dax"
+  ],
+  "screenshots": [],
+  "praxis": true
 }
 ---
 
@@ -48,7 +53,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Beispiel
 
+### Ausgangslage und Entscheidung
+
 P001, P001, P002: drei Zeilen, zwei unterschiedliche Personen. Ein leeres Enddatum wird von COUNT übersprungen.
+
+| Alternative | Geeignet, wenn |
+| --- | --- |
+| COUNTROWS / COUNT | du Zeilen zählen willst (COUNTROWS) oder befüllte Werte einer Spalte (COUNT). |
+| DISTINCTCOUNT | unterschiedliche Personen oder Objekte gezählt werden sollen. |
 
 ## Typischer Fehler
 
@@ -64,3 +76,15 @@ Eine Gesamtzahl verschiedener Personen ist nicht additiv über überlappende Gru
 ## Merksatz
 
 Erst die Zähleinheit benennen, dann die Funktion wählen.
+
+## Warum funktioniert das?
+
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **COUNTROWS / COUNT**, wenn du Zeilen zählen willst (COUNTROWS) oder befüllte Werte einer Spalte (COUNT). Nimm **DISTINCTCOUNT**, wenn unterschiedliche Personen oder Objekte gezählt werden sollen.
+
+## Ergebnis
+
+Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+
+## Plausibilitätscheck
+
+Eine Gesamtzahl verschiedener Personen ist nicht additiv über überlappende Gruppen. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.

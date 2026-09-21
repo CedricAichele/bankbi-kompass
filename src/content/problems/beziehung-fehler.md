@@ -22,16 +22,20 @@
   "verwandteThemen": [
     "beziehungen",
     "dubletten",
-    "datenbereinigung"
+    "datenbereinigung",
+    "kardinalitaet"
   ],
   "kontexte": [
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "problem",
-  "quellen": [],
-  "screenshots": []
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-relationships-understand"
+  ],
+  "screenshots": [],
+  "praxis": true
 }
 ---
 
@@ -53,18 +57,33 @@ Gruppiere die Dimension nach Schlüssel und zähle die Zeilen je Schlüssel.
 
 ## Schritte
 
-1. Erstelle eine Kopie der Auswertung oder beschränke sie auf synthetische Testdaten. Notiere den fehlerhaften Wert.
+1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
 2. Gruppiere die Dimension nach Schlüssel und zähle die Zeilen je Schlüssel.
 3. Bereinige ungewollte Dubletten fachlich. Wenn mehrere Zuordnungen echt sind, entwirf bewusst eine Brücke; ändere nicht nur die Kardinalität, um den Dialog zu schließen.
 4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
+5. Den konkreten Bedienweg für die Korrektur findest du unter [Kardinalität prüfen: 1:1, 1:n oder n:m](#/wissen/kardinalitaet). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
 
 ## Beispiel
 
-Dimension P001 zweimal; Konten P001 zweimal. Das ist keine eindeutige Personendimension.
+### Vorher · Fehlerbild
+
+| Beobachtung |
+| --- |
+| Dimension P001 zweimal; Konten P001 zweimal. Das ist keine eindeutige Personendimension. |
+
+### Aktion
+
+Bereinige ungewollte Dubletten fachlich. Wenn mehrere Zuordnungen echt sind, entwirf bewusst eine Brücke; ändere nicht nur die Kardinalität, um den Dialog zu schließen.
+
+### Nachher · Erwartete Kontrolle
+
+| Prüfergebnis |
+| --- |
+| Dimension: Zeilenzahl = Anzahl verschiedener nichtleerer Schlüssel. |
 
 ## Ergebnis
 
-Dimension: Zeilenzahl = Anzahl verschiedener nichtleerer Schlüssel.
+Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
 
 ## Typischer Fehler
 
@@ -73,3 +92,7 @@ Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten
 ## Plausibilitätscheck
 
 Dimension: Zeilenzahl = Anzahl verschiedener nichtleerer Schlüssel.
+
+## Warum funktioniert das?
+
+Kardinalität ist eine Aussage über mögliche Zuordnungen, keine gewünschte Darstellungsform. Auch heute zufällig eindeutige Fakten können morgen mehrere gültige Zeilen je Kunde enthalten.

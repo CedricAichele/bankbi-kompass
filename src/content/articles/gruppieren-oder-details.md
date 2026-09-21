@@ -27,10 +27,14 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
-  "screenshots": []
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/group-by",
+    "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-matrix-visual"
+  ],
+  "screenshots": [],
+  "praxis": true
 }
 ---
 
@@ -47,7 +51,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Beispiel
 
+### Ausgangslage und Entscheidung
+
 Sechs Konten zu vier Personenbeständen: Gruppieren. Jedes Konto als klein/groß markieren: Spalte.
+
+| Alternative | Geeignet, wenn |
+| --- | --- |
+| Gruppieren | eine Zeile je Gruppe mit zusammengefassten Werten gebraucht wird. |
+| berechnete Spalte | jede Originalzeile erhalten bleiben und ein Merkmal bekommen soll. |
 
 ## Typischer Fehler
 
@@ -63,3 +74,15 @@ Gruppieren entfernt Detailinformation aus dem Ergebnis.
 ## Merksatz
 
 Weniger Zeilen oder mehr Merkmale?
+
+## Warum funktioniert das?
+
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **Gruppieren**, wenn eine Zeile je Gruppe mit zusammengefassten Werten gebraucht wird. Nimm **berechnete Spalte**, wenn jede Originalzeile erhalten bleiben und ein Merkmal bekommen soll.
+
+## Ergebnis
+
+Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+
+## Plausibilitätscheck
+
+Gruppieren entfernt Detailinformation aus dem Ergebnis. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.

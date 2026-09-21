@@ -18,66 +18,110 @@
   ],
   "synonyme": [],
   "verwandteThemen": [
+    "csv-import",
+    "excel-import",
+    "dateien-kombinieren",
     "power-query",
+    "import-oder-directquery",
     "datenbereinigung"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-data-sources",
     "https://learn.microsoft.com/en-us/power-query/connectors/excel",
     "https://learn.microsoft.com/en-us/power-query/connectors/text-csv"
   ],
-  "screenshots": [],
+  "screenshots": [
+    {
+      "alt": "Bedienort: Power BI – Daten abrufen",
+      "caption": "Geplante Aufnahme: Power BI – Daten abrufen",
+      "schritt": 2,
+      "schema": false,
+      "status": "todo",
+      "todo": "Zeigen, dass zahlreiche Quelltypen verfügbar sind.",
+      "aufnahmeplan": {
+        "prioritaet": "Hoch",
+        "werkzeug": "Power BI Desktop",
+        "oberflaeche": "Power BI – Daten abrufen",
+        "klickfolge": [
+          "Power BI Desktop öffnen.",
+          "Start → Daten abrufen → Mehr… öffnen."
+        ],
+        "daten": "| Konto | Bestand |\n| --- | --- |\n| K001 | 1000 |\n| K002 | 2000 |",
+        "sichtbar": [
+          "Connectorliste",
+          "Suchfeld",
+          "Excel, Text/CSV und Datenbankkategorien"
+        ],
+        "ausschnitt": "Power BI – Daten abrufen mit Connectorliste, Suchfeld, Excel, Text/CSV und Datenbankkategorien. Auf den relevanten Dialog und die lesbaren Tabellenüberschriften begrenzen.",
+        "dateiname": "pbi-daten-abrufen.webp",
+        "zweck": "Zeigen, dass zahlreiche Quelltypen verfügbar sind.",
+        "nichtZeigen": [
+          "Lokale Dateipfade",
+          "Benutzername oder Profil",
+          "Andere Programme und Benachrichtigungen",
+          "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
+        ]
+      }
+    }
+  ],
   "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-Du möchtest eine Excel- oder CSV-Datei kontrolliert in Power BI importieren.
+Daten aus einer neuen Quelle in Power BI verwenden.
 
 ## Voraussetzungen
 
-Eine ausschließlich synthetische Datei mit eindeutigen Überschriften. Die Tabelle Konten im Beispiel lässt sich in Excel als Tabelle speichern.
+Berechtigter Zugriff auf die Datenquelle; gegebenenfalls Servername, Datenbank und passende Anmeldung.
 
 ## Schritte
 
-1. Öffne Power BI Desktop → Start → Daten abrufen. Wähle Excel-Arbeitsmappe für Excel oder Text/CSV für eine Textdatei.
-2. Wähle deine Demo-Datei. Für Excel zeigt der Navigator Blätter und formatierte Tabellen; bevorzuge die passende Tabelle und kontrolliere die Vorschau.
-3. Bei CSV prüfe Trennzeichen und Dateiursprung. Umlaute und vier getrennte Spalten müssen in der Vorschau richtig aussehen.
-4. Wähle Daten transformieren, um vor dem Laden die Struktur zu prüfen.
-5. Prüfe die Überschriften. Falls Column1 etc. angezeigt wird, verwende Erste Zeile als Überschriften nur dann, wenn diese Zeile tatsächlich Namen enthält.
-6. Setze Kennungen auf Text und Bestand_EUR auf Zahl. Prüfe führende Nullen, leere Zellen und Fehler über die Spaltenqualität.
-7. Benenne die Abfrage Konten. Kontrolliere sechs Zeilen und vier Spalten im Beispiel.
-8. Wähle Schließen & übernehmen. Erstelle ein Tabellenvisual und eine Summe von Bestand_EUR zur Kontrolle.
+1. Öffne **Power BI Desktop → Start → Daten abrufen → Mehr…**.
+2. Wähle den passenden Connector: beispielsweise Excel, Text/CSV, SQL Server, Ordner, SharePoint oder eine unterstützte Onlinedatenquelle. Suche nach dem tatsächlichen Quellsystem.
+3. Trage die vom Connector geforderten Verbindungsangaben ein und melde dich mit dem dafür vorgesehenen Konto an. Gib keine Kennwörter in Abfrageformeln ein.
+4. Wähle, falls angeboten, im **Navigator** die benötigten Tabellen. Prüfe die Vorschau statt pauschal alles auszuwählen.
+5. Wähle **Daten transformieren**, um Spaltennamen, Datentypen und Zeilen vor dem Laden zu prüfen.
+6. Wähle im Editor **Schließen & übernehmen**. Bei geeigneten Quellen kann Import oder DirectQuery angeboten werden; die Betriebsfolgen behandelt der verlinkte Entscheidungsartikel.
 
 ## Beispiel
 
-| Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
-| --- | --- | --- | --- |
-| K001 | P001 | Einlagen | 1250 |
-| K002 | P001 | Anlagen | 750 |
-| K003 | P002 | Einlagen | 2000 |
-| K004 | P003 | Kredite | 3200 |
-| K005 | P003 | Einlagen | 800 |
-| K006 | P004 | Kredite | 1000 |
+### Vorher · Beispieldaten
+
+| Quelle | Enthaltener Bereich |
+| --- | --- |
+| Excel-Arbeitsmappe | Tabelle Konten: K001/1000, K002/2000 |
+
+### Aktion
+
+Excel-Connector wählen und ausschließlich Tabelle Konten übernehmen.
+
+### Nachher · Beispielergebnis
+
+| Konto | Bestand |
+| --- | --- |
+| K001 | 1000 |
+| K002 | 2000 |
 
 ## Ergebnis
 
-Sechs Kontenzeilen und 9.000 Bestand sind im Modell verfügbar.
+Eine Verbindung und die ausgewählten Daten stehen für die weitere Aufbereitung beziehungsweise das Modell bereit.
 
 ## Warum funktioniert das?
 
-Der Import lädt eine Kopie. Power Query speichert die Transformationsschritte; eine Aktualisierung liest die Quelle erneut. Vorschau und vollständiger Datenbestand sind zu unterscheiden.
+Ein Connector übersetzt das jeweilige Quellformat in eine tabellarische Vorschau. Die Auswahl begrenzt den Umfang; Transformationen machen die Daten anschließend fachlich nutzbar.
 
 ## Typischer Fehler
 
-**Symptom:** nur eine CSV-Spalte oder kaputte Umlaute. **Ursache:** Trennzeichen beziehungsweise Kodierung falsch. **Lösung:** Importdialog korrigieren, nicht nachträglich jede Zeile reparieren.
+Daten abrufen auf Excel und CSV reduzieren oder alle Tabellen ungeprüft laden.
 
 ## Plausibilitätscheck
 
-Kontrolliere Zeilenzahl, Summe und wenigstens eine Kennung direkt gegen die Quelldatei.
+Der gewählte Bereich liefert zwei Konten und Summe 3000. Verbindungsart und Aktualisierungszugriff sind bekannt.

@@ -25,18 +25,56 @@
   "verwandteThemen": [
     "eins-zu-viele",
     "filterrichtung",
-    "beziehung-fehler"
+    "kardinalitaet",
+    "measure",
+    "beziehung-oder-merge",
+    "beziehung-fehler",
+    "datumstabelle",
+    "granularitaet"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-relationships-understand"
   ],
   "screenshots": [
+    {
+      "alt": "Bedienort: Power BI – Beziehung erstellen",
+      "caption": "Geplante Aufnahme: Power BI – Beziehung erstellen",
+      "schritt": 4,
+      "schema": false,
+      "status": "todo",
+      "todo": "Die relevante Modellstruktur und Einstellung lesbar zeigen.",
+      "aufnahmeplan": {
+        "prioritaet": "Hoch",
+        "werkzeug": "Power BI Desktop",
+        "oberflaeche": "Power BI – Beziehung erstellen",
+        "klickfolge": [
+          "Lade die benötigte Dimension und Faktentabelle. Prüfe die Schlüsselspalten auf denselben Datentyp und dieselbe fachliche Bedeutung.",
+          "Prüfe **DimKunde[Kunde]**: Jeder Schlüssel muss genau einmal vorkommen. In FaktKonten darf ein Kunde mehrfach vorkommen.",
+          "Öffne links die **Modellansicht**, dann **Modellierung → Beziehungen verwalten → Neu**. Wähle DimKunde und FaktKonten mit jeweils der Spalte Kunde.",
+          "Stelle die Kardinalität auf **Eins-zu-Viele (1:*)**, die Kreuzfilterrichtung auf **Einfach** und die Beziehung auf **aktiv**. Prüfe, welche Tabelle tatsächlich auf der 1-Seite steht."
+        ],
+        "daten": "**DimKunde**\n\n| Kunde | Segment |\n| --- | --- |\n| P001 | A |\n| P002 | B |\n\n**FaktKonten**\n\n| Kunde | Konto | Bestand |\n| --- | --- | --- |\n| P001 | K001 | 1000 |\n| P001 | K002 | 2000 |\n| P002 | K003 | 500 |",
+        "sichtbar": [
+          "Tabellennamen und Schlüssel",
+          "1/* und Filterpfeil beziehungsweise Prüfdialog"
+        ],
+        "ausschnitt": "Power BI – Beziehung erstellen mit Tabellennamen und Schlüssel, 1/* und Filterpfeil beziehungsweise Prüfdialog. Auf den relevanten Dialog und die lesbaren Tabellenüberschriften begrenzen.",
+        "dateiname": "pbi-beziehungen.webp",
+        "zweck": "Die relevante Modellstruktur und Einstellung lesbar zeigen.",
+        "nichtZeigen": [
+          "Lokale Dateipfade",
+          "Benutzername oder Profil",
+          "Andere Programme und Benachrichtigungen",
+          "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
+        ]
+      }
+    },
     {
       "src": "images/power-bi/beziehung.svg",
       "alt": "Schema: Eine Produktzeile mit PR-A filtert zwei Bestandszeilen mit PR-A.",
@@ -53,7 +91,7 @@
       "schritt": 5,
       "schema": false,
       "status": "bereit",
-      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen."
+      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen. Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen."
     }
   ],
   "praxis": true
@@ -62,46 +100,64 @@
 
 ## Wann brauche ich das?
 
-Personen sollen Konten filtern, ohne die Tabellen physisch zusammenzuführen.
+Eine Kundenauswahl soll die passenden Konten filtern, obwohl beide Tabellen getrennt bleiben.
 
 ## Voraussetzungen
 
-Power BI Desktop; Tabelle Konten aus dem Beispiel und Personen mit P001, P002, P003, P004 jeweils einmal.
+Tabellen mit bekanntem fachlichem Aufbau und passenden Schlüsseln. Das folgende Modell ist ein frei erfundenes Beispiel.
 
 ## Schritte
 
-1. Lade Konten und Personen. Stelle Personennummer auf beiden Seiten auf Text.
-2. Prüfe in Personen vier Zeilen und vier unterschiedliche Kennungen. Leere Kennungen dürfen nicht als Sammelschlüssel dienen.
-3. Öffne links die Modellansicht. Ziehe Personen[Personennummer] auf Konten[Personennummer] oder wähle Beziehungen verwalten → Neu.
-4. Prüfe die Tabellen und Spalten im Dialog. Personen muss die 1-Seite, Konten die *-Seite sein. Wähle eine aktive Beziehung mit einfacher Filterrichtung.
-5. Bestätige und kontrolliere die durchgezogene Linie im Modell. Eine gestrichelte Linie kennzeichnet eine inaktive Beziehung.
-6. Erstelle Gesamtbestand = SUM ( Konten[Bestand_EUR] ). Füge eine Karte mit diesem Measure hinzu.
-7. Füge einen Slicer aus Personen[Personennummer] hinzu. Wähle P003 und kontrolliere 4.000.
-8. Lösche die Slicerauswahl und prüfe wieder 9.000. Teste auch P001 mit 2.000.
+1. Lade die benötigte Dimension und Faktentabelle. Prüfe die Schlüsselspalten auf denselben Datentyp und dieselbe fachliche Bedeutung.
+2. Prüfe **DimKunde[Kunde]**: Jeder Schlüssel muss genau einmal vorkommen. In FaktKonten darf ein Kunde mehrfach vorkommen.
+3. Öffne links die **Modellansicht**, dann **Modellierung → Beziehungen verwalten → Neu**. Wähle DimKunde und FaktKonten mit jeweils der Spalte Kunde.
+4. Stelle die Kardinalität auf **Eins-zu-Viele (1:*)**, die Kreuzfilterrichtung auf **Einfach** und die Beziehung auf **aktiv**. Prüfe, welche Tabelle tatsächlich auf der 1-Seite steht.
+5. Bestätige. Die Linie verbindet DimKunde auf der 1-Seite mit FaktKonten auf der *-Seite; durchgezogen bedeutet aktiv.
+6. Prüfe im Bericht mit einem Tabellenvisual aus **FaktKonten[Konto]** und **Bestand** sowie einem Datenschnitt aus **DimKunde[Kunde]**. Wähle P001.
+7. Erwartet werden K001 und K002. Hebe den Filter auf: K003 erscheint wieder. Dafür ist kein neues Measure erforderlich.
 
 ## Beispiel
 
-| Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
-| --- | --- | --- | --- |
-| K001 | P001 | Einlagen | 1250 |
-| K002 | P001 | Anlagen | 750 |
-| K003 | P002 | Einlagen | 2000 |
-| K004 | P003 | Kredite | 3200 |
-| K005 | P003 | Einlagen | 800 |
-| K006 | P004 | Kredite | 1000 |
+### Vorher · Beispieldaten
+
+**DimKunde**
+
+| Kunde | Segment |
+| --- | --- |
+| P001 | A |
+| P002 | B |
+
+**FaktKonten**
+
+| Kunde | Konto | Bestand |
+| --- | --- | --- |
+| P001 | K001 | 1000 |
+| P001 | K002 | 2000 |
+| P002 | K003 | 500 |
+
+### Aktion
+
+DimKunde[Kunde] (1) → FaktKonten[Kunde] (*); Filter P001.
+
+### Nachher · Beispielergebnis
+
+| Konto | Bestand |
+| --- | --- |
+| K001 | 1000 |
+| K002 | 2000 |
 
 ## Ergebnis
 
-Die Dimension Personen filtert Konten: P003 → K004 und K005 → 4.000.
+Eine aktive Beziehung überträgt Filter zwischen logisch verbundenen, physisch getrennten Tabellen.
 
 ## Warum funktioniert das?
 
-Die Beziehung leitet Filter weiter. Sie kopiert keine Spalten in Konten und behebt keine fehlenden oder doppelten Schlüssel.
+Der ausgewählte Dimensionsschlüssel grenzt die passenden Faktzeilen ein. Die Beziehung kopiert weder Segment in die Kontentabelle noch führt sie die Tabellen wie ein Merge zusammen.
 
 ## Typischer Fehler
 
-**Symptom:** keine 1:n-Beziehung möglich. **Ursache:** doppelte Schlüssel auf der 1-Seite. **Lösung:** die Dimension fachlich eindeutig machen, statt automatisch n:m oder beidseitige Filter zu aktivieren.
+Zwei nicht eindeutige Spalten verbinden und eine n:m-Beziehung als schnelle Reparatur akzeptieren.
 
 ## Plausibilitätscheck
 
-Slicer muss aus Personen stammen. Stimmt der Wert nur mit einem Konten-Slicer, ist der Filterweg von der Dimension noch nicht bewiesen.
+P001 zeigt zwei Konten und 3000; ohne Filter drei Konten und 3500.

@@ -31,9 +31,13 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/guidance/model-date-tables",
+    "https://learn.microsoft.com/en-us/dax/totalytd-function-dax",
+    "https://learn.microsoft.com/en-us/dax/sameperiodlastyear-function-dax"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -45,22 +49,46 @@ Du brauchst bisheriges Neugeschäft oder einen vergleichbaren Plan-Ist-Zeitraum.
 
 ## Schritte
 
-1. Beginn und Ende festlegen.
-2. Bewegungen im Intervall summieren.
-3. Gleichen Zeitraum für Vergleichs- und Planwerte verwenden.
-4. Öffne die [konkrete YTD berechnen-Anleitung](#/wissen/ytd) und baue deren synthetisches Beispiel nach.
-5. Übertrage die dort beschriebene Werkzeugaktion auf die Ausgangsdaten dieser Aufgabe; ersetze Feldnamen bewusst, nicht nur per Textsuche.
-6. Prüfe diesen Gegenfall: Februar-YTD 25; Januar-YTD 10. Ein Monatsbestand darf nicht kumuliert werden.
+1. Definiere das gewünschte Ergebnis und den fachlichen Schlüssel jeder Ergebniszeile. Notiere Zeilenzahl und eine geeignete Kontrollsumme der Quelle.
+2. Prüfe die Eingabefelder und Datentypen anhand der Ausgangstabelle im Beispiel. Übertrage die dort verwendeten Namen bewusst auf deine Daten.
+3. Nutze die konkrete [YTD berechnen-Anleitung](#/wissen/ytd). Sie zeigt Bedienort, Auswahl und Einstellungen für diese Operation.
+4. Vergleiche das Ergebnis mit den passenden Quellzeilen und der unten genannten Kontrolle. Kläre Mehrfachtreffer oder fehlende Werte vor der Weiterverwendung.
+5. Prüfe auch den im Fehlerabschnitt genannten Gegenfall. Halte eine fachlich begründete Änderung der Zeilenzahl oder Summe fest.
 
 ## Beispiel
 
-Januar 10, Februar 15, März 12 → 37 Euro.
+### Vorher · Beispieldaten
 
-[Power BI: YTD](#/wissen/ytd) · [Excel: SUMMEWENNS](#/wissen/summewenns) · [IDA: Filter](#/wissen/ida-filter)
+| Datum | Betrag |
+| --- | --- |
+| 15.01.2025 | 8 |
+| 15.02.2025 | 9 |
+| 15.01.2026 | 10 |
+| 15.02.2026 | 15 |
+| 15.03.2026 | 12 |
+
+
+### Aktion
+
+```dax
+Kalender = CALENDAR ( DATE ( 2025, 1, 1 ), DATE ( 2026, 12, 31 ) )
+```
+
+```dax
+Neugeschaeft = SUM ( Bewegungen[Betrag] )
+```
+
+```dax
+Neugeschaeft YTD = TOTALYTD ( [Neugeschaeft], Kalender[Date] )
+```
+
+### Nachher · Beispielergebnis
+
+Februar 2026: 25 (10 + 15). März 2026: 37. Februar 2025: 17.
 
 ## Typischer Fehler
 
-Snapshots sind keine additiven Monatsbewegungen. Abweichende Geschäftsjahre benötigen eine eigene Regel.
+**Symptom:** leerer Vorjahreswert oder falsches YTD. **Ursache:** Kalender endet vor dem Vorjahr, inaktive Beziehung, Datum mit Uhrzeit oder Faktendatum als Slicer. **Lösung:** Datentyp, Zeitraum und Filterweg prüfen. Bestände niemals wie Bewegungen kumulieren.
 
 ## Vergleich
 
@@ -72,12 +100,16 @@ Snapshots sind keine additiven Monatsbewegungen. Abweichende Geschäftsjahre ben
 
 ## Ergebnis
 
-Januar 10, Februar 15, März 12 → März-YTD 37.
+Eine geeignete Kennzahl wird vom Jahresbeginn bis zum letzten Datum des aktuellen Kontexts ausgewertet.
 
 ## Warum funktioniert das?
 
-Der Zeitraum wird vom Jahresanfang bis zum letzten ausgewählten Datum erweitert.
+TOTALYTD erhält zuerst das Basismeasure, dann die Datumsspalte. Es erweitert die Datumauswahl vom Jahresanfang bis zum letzten sichtbaren Datum.
 
 ## Plausibilitätscheck
 
-Februar-YTD 25; Januar-YTD 10. Ein Monatsbestand darf nicht kumuliert werden.
+Basis Februar 2026 = 15; Vorjahr Februar = 9; YTD Februar = 25. Prüfe jede Zahl einzeln, bevor du eine Abweichung berechnest.
+
+## Voraussetzungen
+
+Ein vorhandener Datenbestand mit bekannter Zeilenebene und Zugriff auf das gewählte Werkzeug. Die Beispielwerte veranschaulichen ausschließlich den Ablauf.

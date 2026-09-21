@@ -31,6 +31,8 @@
   ],
   "verwandteThemen": [
     "granularitaet",
+    "schluessel",
+    "gruppieren",
     "eins-zu-viele",
     "excel-dubletten-finden"
   ],
@@ -39,49 +41,98 @@
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
-  "screenshots": []
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/working-with-duplicates"
+  ],
+  "screenshots": [
+    {
+      "alt": "Bedienort: Power Query-Editor – Dubletten prüfen und entfernen",
+      "caption": "Geplante Aufnahme: Power Query – Dubletten prüfen und entfernen",
+      "schritt": 5,
+      "schema": false,
+      "status": "todo",
+      "todo": "Bedienort und Auswahl für Dubletten prüfen und entfernen zeigen.",
+      "aufnahmeplan": {
+        "prioritaet": "Hoch",
+        "werkzeug": "Power BI Desktop",
+        "oberflaeche": "Power Query – Dubletten prüfen und entfernen",
+        "klickfolge": [
+          "Power BI Desktop öffnen. Die unten aufgeführten Tabellen über Start → Daten eingeben mit exakt diesen Spaltennamen und Werten anlegen; danach Start → Daten transformieren öffnen.",
+          "Konto und Stichtag mit Strg gemeinsam markieren.",
+          "Start → Zeilen entfernen öffnen; Duplikate entfernen noch nicht ausführen."
+        ],
+        "daten": "| Kunde | Konto | Stichtag | Bestand |\n| --- | --- | --- | --- |\n| P001 | K001 | 31.01.2026 | 1000 |\n| P001 | K001 | 31.01.2026 | 1000 |\n| P001 | K002 | 31.01.2026 | 2000 |",
+        "sichtbar": [
+          "Beide markierten Schlüsselspalten; Option Duplikate entfernen"
+        ],
+        "ausschnitt": "Geöffneten Dialog beziehungsweise Menü mit den genannten Einstellungen und den relevanten Spaltenüberschriften aufnehmen. Text bei 100 % lesbar halten; keine unnötige Leerfläche.",
+        "dateiname": "pbi-dubletten.webp",
+        "zweck": "Bedienort und Auswahl für Dubletten prüfen und entfernen zeigen.",
+        "nichtZeigen": [
+          "Lokale Dateipfade",
+          "Benutzername oder Profil",
+          "Andere Programme und Benachrichtigungen",
+          "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
+        ]
+      }
+    }
+  ],
+  "praxis": true
 }
 ---
 
-
-
 ## Wann brauche ich das?
 
-Du siehst wiederholte Personen oder zu hohe Summen.
+Nach einer fachlich definierten Schlüsselkombination doppelte Datensätze entfernen.
+
+## Voraussetzungen
+
+Eine geladene Abfrage mit den benötigten Spalten. Die folgenden Tabellen sind frei erfundene Beispiele.
 
 ## Schritte
 
-1. Zeilenebene definieren, z. B. Konto plus Stichtag.
-2. Mehrfachkombinationen prüfen; unterschiedliche Werte nicht blind löschen.
-3. Nur bestätigte Dubletten entfernen und Anzahl vorher/nachher vergleichen.
+1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
+2. Lege zuerst fest, was eine Zeile eindeutig macht: hier **Konto und Stichtag**, nicht Kunde.
+3. Prüfe wiederholte Schlüssel vor dem Löschen: Stimmen auch die übrigen Werte überein? Bei Abweichungen ist eine fachliche Auswahlregel nötig.
+4. Markiere **Konto** und mit Strg zusätzlich **Stichtag**.
+5. Wähle **Start → Zeilen entfernen → Duplikate entfernen**.
+6. Prüfe die Anzahl und Summe nach dem Entfernen. Verlasse dich bei unterschiedlichen Datensätzen nicht darauf, welche Zeile Power Query behält.
 
 ## Beispiel
 
-P001 mit K-A und K-B sind zwei gültige Konten. K-A am gleichen Stichtag zweimal kann eine Dublette sein.
+### Vorher · Beispieldaten
 
-## Typischer Fehler
+| Kunde | Konto | Stichtag | Bestand |
+| --- | --- | --- | --- |
+| P001 | K001 | 31.01.2026 | 1000 |
+| P001 | K001 | 31.01.2026 | 1000 |
+| P001 | K002 | 31.01.2026 | 2000 |
 
-Nicht darauf vertrauen, dass bei widersprüchlichen Zeilen ohne weitere Regel gerade die gewünschte Zeile erhalten bleibt.
+### Aktion
 
-## Einfach erklärt
+Identisches Duplikat nach Konto + Stichtag entfernen.
 
-Eine Dublette ist nur bezogen auf den fachlichen Schlüssel ein Duplikat. Distinct liefert unterschiedliche Werte oder Zeilen.
+### Nachher · Beispielergebnis
 
-## Mini-Beispiel
-
-Zwei Konten derselben Person sind keine doppelten Konten.
-
-## Warum ist das wichtig?
-
-Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Nur nach Person Dubletten entfernen und dabei ein echtes Konto verlieren.
-
-## Wo taucht das auf?
-
-Excel EINDEUTIG, Dublettenprüfung und DISTINCTCOUNT.
+| Kunde | Konto | Stichtag | Bestand |
+| --- | --- | --- | --- |
+| P001 | K001 | 31.01.2026 | 1000 |
+| P001 | K002 | 31.01.2026 | 2000 |
 
 ## Ergebnis
 
-P001 darf nach der Prüfung weiterhin zwei unterschiedliche Konten besitzen. Entferne nur die bestätigte Wiederholung desselben Kontos am selben Stichtag; protokolliere entfernte Zeilen und die Änderung der Summe.
+Pro gewählter Schlüsselkombination bleibt eine Zeile übrig.
+
+## Warum funktioniert das?
+
+Die markierten Spalten definieren Gleichheit. Kunde allein wäre zu grob: Eine Person kann mehrere gültige Konten besitzen. Das Entfernen ist keine fachliche Entscheidung über den neuesten Datensatz.
+
+## Typischer Fehler
+
+Eine vorherige Sortierung garantiert nicht allgemein, welcher Datensatz beim Entfernen erhalten bleibt. Unterschiedliche Versionen zuerst fachlich auflösen.
+
+## Plausibilitätscheck
+
+Drei Zeilen werden zwei; die um ein Duplikat erhöhte Summe 4.000 wird korrekt zu 3.000.

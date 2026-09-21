@@ -28,9 +28,11 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/group-by"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -42,22 +44,36 @@ Du brauchst Summen oder Anzahlen je Person, Produkt oder Vorgang.
 
 ## Schritte
 
-1. Zielschlüssel und gewünschte Kennzahl bestimmen.
-2. Bei dauerhaft verdichteter Ausgabe Gruppieren verwenden.
-3. Bei weiterhin benötigten Details PivotTable oder Matrix bevorzugen.
-4. Öffne die [konkrete Gruppieren: Werte je Schlüssel zusammenfassen-Anleitung](#/wissen/gruppieren) und baue deren synthetisches Beispiel nach.
-5. Übertrage die dort beschriebene Werkzeugaktion auf die Ausgangsdaten dieser Aufgabe; ersetze Feldnamen bewusst, nicht nur per Textsuche.
-6. Prüfe diesen Gegenfall: Die Summe muss unverändert bleiben; Detailspalten verschwinden bewusst.
+1. Definiere das gewünschte Ergebnis und den fachlichen Schlüssel jeder Ergebniszeile. Notiere Zeilenzahl und eine geeignete Kontrollsumme der Quelle.
+2. Prüfe die Eingabefelder und Datentypen anhand der Ausgangstabelle im Beispiel. Übertrage die dort verwendeten Namen bewusst auf deine Daten.
+3. Nutze die konkrete [Gruppieren: Werte je Schlüssel zusammenfassen-Anleitung](#/wissen/gruppieren). Sie zeigt Bedienort, Auswahl und Einstellungen für diese Operation.
+4. Vergleiche das Ergebnis mit den passenden Quellzeilen und der unten genannten Kontrolle. Kläre Mehrfachtreffer oder fehlende Werte vor der Weiterverwendung.
+5. Prüfe auch den im Fehlerabschnitt genannten Gegenfall. Halte eine fachlich begründete Änderung der Zeilenzahl oder Summe fest.
 
 ## Beispiel
 
-P001 mit 120 und 80 Euro → Gruppensumme 200 Euro am selben Stichtag.
+### Vorher · Beispieldaten
 
-[Gruppieren](#/wissen/gruppieren) · [PivotTable](#/wissen/pivottable) · [Matrix](#/wissen/matrix) · [IDA](#/wissen/ida-aggregation)
+| Kunde | Konto | Bestand |
+| --- | --- | --- |
+| P001 | K001 | 1000 |
+| P001 | K002 | 2000 |
+| P002 | K003 | 500 |
+
+### Aktion
+
+Nach Kunde gruppieren; Bestand summieren.
+
+### Nachher · Beispielergebnis
+
+| Kunde | Gesamtbestand |
+| --- | --- |
+| P001 | 3000 |
+| P002 | 500 |
 
 ## Typischer Fehler
 
-Detailinformationen verwerfen, die später noch zum Filtern oder Prüfen gebraucht werden.
+Nach zu vielen Spalten gruppieren oder Anzahl Zeilen mit Anzahl eindeutiger Kunden verwechseln.
 
 ## Vergleich
 
@@ -69,12 +85,16 @@ Detailinformationen verwerfen, die später noch zum Filtern oder Prüfen gebrauc
 
 ## Ergebnis
 
-P001: 120 + 80 = 200; P002: 50. Zwei Gruppen, Gesamtsumme 250.
+Eine Zeile je Gruppenschlüsselkombination ersetzt die Detailzeilen.
 
 ## Warum funktioniert das?
 
-Die Gruppierung reduziert Zeilen, das Aggregat fasst deren Werte zusammen.
+Die Granularität wechselt hier von Konto zu Kunde. Die Aggregation bestimmt, wie die Bestände innerhalb jeder Gruppe zu einem Ergebnis werden. Summe erhält additive Gesamtbeträge; Durchschnitt teilt dagegen durch die Anzahl vorhandener Zahlen.
 
 ## Plausibilitätscheck
 
-Die Summe muss unverändert bleiben; Detailspalten verschwinden bewusst.
+Drei Kontozeilen ergeben zwei Kundenzeilen. 3000 + 500 = 3500 bleibt die Gesamtsumme.
+
+## Voraussetzungen
+
+Ein vorhandener Datenbestand mit bekannter Zeilenebene und Zugriff auf das gewählte Werkzeug. Die Beispielwerte veranschaulichen ausschließlich den Ablauf.

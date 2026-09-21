@@ -27,8 +27,13 @@
     "summe stimmt nicht"
   ],
   "verwandteThemen": [
-    "eins-zu-viele",
+    "gruppieren",
+    "beziehungen",
+    "kardinalitaet",
+    "begriff-join",
     "dubletten",
+    "problem-person-mehrfach",
+    "eins-zu-viele",
     "distinctcount",
     "ida-aggregation"
   ],
@@ -36,44 +41,60 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
-  "screenshots": []
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/group-by"
+  ],
+  "screenshots": [],
+  "praxis": true
 }
 ---
-
 
 ## Wann brauche ich das?
 
 Summen sind falsch, Personen mehrfach vorhanden oder ein Join verändert das Ergebnis.
 
+## Voraussetzungen
+
+Kenntnis der fachlichen Bedeutung der Daten; keine bestimmte Beispieldatei erforderlich.
+
 ## Schritte
 
-1. Den Satz „Eine Zeile je …“ vervollständigen.
-2. Die dazu passende Schlüsselkombination bestimmen.
-3. Mehrfachkombinationen und fehlende Schlüssel prüfen.
+1. Beschreibe die Ausgangssituation: P001/K001/31.01./1000; P001/K002/31.01./2000; P001/K001/28.02./1100.
+2. Den vollständigen Schlüssel vor Gruppierung oder Join festlegen.
+3. Prüfe die Unterscheidung am Ergebnis: Drei Konto-Stichtag-Zeilen; zwei Konten; eine Person.
 
 ## Beispiel
 
-Drei Konten an zwei Stichtagen ergeben sechs Zeilen. Das sind weder sechs Konten noch sechs Personen.
+### Vorher · Beispieldaten
+
+| Ausgangslage |
+| --- |
+| P001/K001/31.01./1000; P001/K002/31.01./2000; P001/K001/28.02./1100. |
+
+### Aktion
+
+Den vollständigen Schlüssel vor Gruppierung oder Join festlegen.
+
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| Drei Konto-Stichtag-Zeilen; zwei Konten; eine Person. |
+
+## Ergebnis
+
+Lege vor jeder Auswertung fest: Eine Zeile steht für genau welche fachliche Einheit?
+
+## Warum funktioniert das?
+
+Die Granularität ist die Bedeutung einer Zeile. Ein Join auf Kunde allein verbindet eine gröbere Identität als Konto und Stichtag; dadurch können Kombinationen entstehen, die keine einzelne Beobachtung darstellen.
 
 ## Typischer Fehler
 
 Eine Personen-ID als eindeutigen Schlüssel einer Konto-Stichtags-Tabelle betrachten.
 
-## Einfach erklärt
+## Plausibilitätscheck
 
-Granularität beschreibt, was genau eine einzelne Zeile bedeutet.
-
-## Mini-Beispiel
-
-Konto und Stichtag ist feiner als Person und Monat.
-
-## Warum ist das wichtig?
-
-Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Monatsplan je Kontenzeile wiederholen und addieren.
-
-## Wo taucht das auf?
-
-Gruppieren, Joins und Auswahl der Berichtsdetails.
+Drei Konto-Stichtag-Zeilen; zwei Konten; eine Person.

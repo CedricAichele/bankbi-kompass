@@ -26,7 +26,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/calculate-function-dax"
@@ -35,7 +35,7 @@
   "praxis": true,
   "kurzformel": "```dax\nEinlagenbestand = CALCULATE ( SUM ( Konten[Bestand_EUR] ), Konten[Produktgruppe] = \"Einlagen\" )\n```",
   "schnellschritte": [
-    "Tabelle Konten mit synthetischen Daten laden.",
+    "Vorhandene Tabelle und benötigte Datentypen prüfen.",
     "Neues Measure mit der angegebenen Formel erstellen.",
     "Ergebnis ohne Filter und mit Slicer vergleichen."
   ]
@@ -48,11 +48,11 @@ Du brauchst die gleiche Kennzahl unter einer gezielt veränderten Produktauswahl
 
 ## Voraussetzungen
 
-Power BI Desktop im Importmodus. Die Tabelle wird im ersten Schritt angelegt; ein separates Modell ist für dieses Beispiel nicht nötig.
+Ein vorhandenes Power-BI-Modell mit den im Ausdruck verwendeten Tabellen, Spalten und gegebenenfalls Basismeasures.
 
 ## Schritte
 
-1. Lege in Power BI Desktop über **Start → Daten eingeben** die Tabelle `Konten` mit den sechs Zeilen aus dem Beispiel an. Alle Beträge beziehen sich auf denselben Stichtag. Setze Bestand_EUR auf Zahl und die Kennungen auf Text.
+1. Verwende eine geladene Tabelle mit den im Ausdruck benötigten Feldern. Prüfe die Datentypen. Die Namen und frei erfundenen Werte im Beispiel illustrieren die Formel; passe Tabellen- und Spaltennamen an dein Modell an.
 2. Wähle **Modellierung → Neues Measure**. Ersetze den gesamten Vorgabetext in der Formelleiste durch die Formel im Beispiel.
 3. Bestätige mit Enter. Bei lokalisierter DAX-Trennzeicheneinstellung Kommas gegebenenfalls durch Semikolons ersetzen. Prüfe, ob das Measure ohne Fehlermeldung im Datenbereich erscheint.
 4. Füge im Bericht ein Tabellenvisual hinzu. Ziehe `Personennummer` und das neue Measure in die Tabelle. Für die Gesamtprüfung verwende zusätzlich eine Karte mit nur dem Measure.
@@ -60,6 +60,8 @@ Power BI Desktop im Importmodus. Die Tabelle wird im ersten Schritt angelegt; ei
 6. Entferne die Auswahl über das Radierersymbol des Datenschnitts. Teste anschließend den beschriebenen Personenfilter und kontrolliere den Unterschied.
 
 ## Beispiel
+
+### Vorher · Beispieldaten
 
 | Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
 | --- | --- | --- | --- |
@@ -70,13 +72,20 @@ Power BI Desktop im Importmodus. Die Tabelle wird im ersten Schritt angelegt; ei
 | K005 | P003 | Einlagen | 800 |
 | K006 | P004 | Kredite | 1000 |
 
+
+### Aktion
+
 ```dax
 Einlagenbestand = CALCULATE ( SUM ( Konten[Bestand_EUR] ), Konten[Produktgruppe] = "Einlagen" )
 ```
 
-## Ergebnis
+### Nachher · Beispielergebnis
 
 4.050 ohne Filter. Auch bei einem Slicer auf Konten[Produktgruppe] = Kredite liefert das Measure 4.050. Mit zusätzlichem Filter Personennummer = P003: 800.
+
+## Ergebnis
+
+Eine Kennzahl wird in einem gezielt veränderten Filterkontext ausgewertet.
 
 ## Warum funktioniert das?
 
@@ -89,3 +98,10 @@ Das erste Argument ist die zu berechnende Summe. Das zweite ersetzt den Filter a
 ## Plausibilitätscheck
 
 Wähle anschließend Einlagen: 1.250 + 2.000 + 800 = 4.050. Lösche den Slicer und prüfe das Basismeasure mit 9.000.
+
+## Argumente verstehen
+
+| Argument | Bedeutung |
+| --- | --- |
+| Ausdruck | Berechnung, die nach der Filteränderung ausgewertet wird. |
+| Filterargumente | Ändern Filter auf den angesprochenen Spalten; andere Filter bleiben grundsätzlich erhalten. |

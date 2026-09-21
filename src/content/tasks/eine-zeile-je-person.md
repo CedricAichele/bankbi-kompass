@@ -36,9 +36,13 @@
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/group-by",
+    "https://learn.microsoft.com/en-us/dax/distinctcount-function-dax",
+    "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-relationships-understand"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -50,7 +54,7 @@ Mehrere Konten zu einer Personenübersicht verdichten.
 
 ## Voraussetzungen
 
-Nur synthetische Ausgangsdaten. Die verwendeten Feldnamen im Beispiel exakt übernehmen.
+Ein vorhandener Datenbestand mit passender Zeilenebene. Tabellen- und Feldnamen im Beispiel auf die eigene Quelle übertragen.
 
 ## Schritte
 
@@ -63,6 +67,8 @@ Nur synthetische Ausgangsdaten. Die verwendeten Feldnamen im Beispiel exakt übe
 
 ## Beispiel
 
+### Vorher · Beispieldaten
+
 | Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
 | --- | --- | --- | --- |
 | K001 | P001 | Einlagen | 1250 |
@@ -74,9 +80,18 @@ Nur synthetische Ausgangsdaten. Die verwendeten Feldnamen im Beispiel exakt übe
 
 Siehe sechs Ausgangszeilen oben.
 
-## Ergebnis
+### Aktion
+
+Wähle Personennummer → Start → Gruppieren nach.
+Wähle Summe von Bestand_EUR und nenne das Ergebnis Personenbestand.
+
+### Nachher · Beispielergebnis
 
 P001 2.000, P002 2.000, P003 4.000, P004 1.000.
+
+## Ergebnis
+
+Eine reine Personenliste braucht eindeutige IDs. Für zusätzliche Messwerte musst du je Person fachlich passend aggregieren.
 
 ## Warum funktioniert das?
 

@@ -4,40 +4,100 @@
   "slug": "summewenn",
   "titel": "SUMMEWENN: ein Kriterium",
   "bereich": "Excel",
-  "werkzeuge": ["Excel"],
+  "werkzeuge": [
+    "Excel"
+  ],
   "kategorie": "Aggregieren",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "SUMMEWENN summiert Werte für genau ein Kriterium. Für mehrere Bedingungen verwende SUMMEWENNS.",
   "ort": "Excel → Formelzelle",
-  "tags": ["SUMMEWENN: ein Kriterium"],
-  "synonyme": ["summe wenn"],
-  "verwandteThemen": ["summewenns", "zaehlenwenn"],
-  "kontexte": ["Reporting"],
+  "tags": [
+    "SUMMEWENN: ein Kriterium"
+  ],
+  "synonyme": [
+    "summe wenn"
+  ],
+  "verwandteThemen": [
+    "summewenns",
+    "zaehlenwenn"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-17",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen":
-    ["https://support.microsoft.com/de-DE/Excel/excel-functions-alphabetical"],
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/functions/sumif-function"
+  ],
   "screenshots": [],
+  "praxis": true,
+  "kurzformel": "```excel\n=SUMMEWENN(C2:C4;F2;D2:D4)\n```",
+  "schnellschritte": [
+    "Quellbereiche und Kriterienzellen festlegen.",
+    "Formel in einer freien Ergebniszelle eingeben.",
+    "Ausgabe anhand der passenden Quellzeilen kontrollieren."
+  ]
 }
 ---
 
 ## Wann brauche ich das?
 
-Du brauchst den Betrag einer Produktgruppe.
+Beträge zu genau einem Kriterium summieren.
+
+## Voraussetzungen
+
+Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. XVERWEIS und dynamische Arrayfunktionen benötigen eine unterstützte Version, zum Beispiel Microsoft 365 oder Excel 2021/2024.
 
 ## Schritte
 
-1. Kriterienbereich und Kriterium festlegen.
-2. Passenden gleich langen Summenbereich angeben.
-3. Mit wenigen bekannten Zeilen kontrollieren.
+1. Prüfe die benötigten Quellspalten. Im Beispiel stehen Kunde, Konto, Segment und Bestand in **A1:D4**; die Daten beginnen in Zeile 2.
+2. Lege die Kriterien in eigenen Zellen außerhalb der Quelle ab: **F2 = A**. Passe diese Bezüge für deine Liste an.
+3. Klicke in eine freie Ergebniszelle, im Beispiel **H2**, und gib die Formel aus dem Beispiel ein. Achte auf gleich große und gleich ausgerichtete Bereiche.
+4. Bestätige mit Enter. Vergleiche die Ausgabe mit den tatsächlich passenden Ausgangszeilen.
+5. Prüfe einen zweiten Fall und fehlende Werte. Bei wachsenden Listen verwende Excel-Tabellen mit strukturierten Bezügen oder erweitere alle zusammengehörenden Bereiche.
 
 ## Beispiel
 
+### Vorher · Beispieldaten
+
+| Zeile | A: Kunde | B: Konto | C: Segment | D: Bestand |
+| --- | --- | --- | --- | --- |
+| 1 | Kunde | Konto | Segment | Bestand |
+| 2 | P001 | K001 | A | 1000 |
+| 3 | P001 | K002 | B | 2000 |
+| 4 | P002 | K003 | A | 500 |
+
+F2 = A
+
+### Aktion
+
 ```excel
-=SUMMEWENN(B2:B9;"Gruppe A";C2:C9)
+=SUMMEWENN(C2:C4;F2;D2:D4)
 ```
+
+### Nachher · Beispielergebnis
+
+| Ausgabe ab H2 |
+| --- |
+| 1500 |
+
+## Ergebnis
+
+Beträge zu genau einem Kriterium summieren.
+
+## Warum funktioniert das?
+
+Jede passende Kriterienzeile schaltet den Betrag an derselben Position frei. 1000 und 500 gehören zu Segment A.
 
 ## Typischer Fehler
 
-Kriterienbereich und Summenbereich um eine Zeile verschieben.
+SUMMEWENN und SUMMEWENNS haben eine andere Argumentreihenfolge.
+
+## Plausibilitätscheck
+
+Erwartete Ausgabe: **1500**. Die Ausgangsliste umfasst drei Kontenzeilen, zwei Kunden und insgesamt 3500. Prüfe bei Kriterienwechsel die betreffenden Zeilen erneut.
+
+## Argumente verstehen
+
+**C2:C4** wird mit **F2** verglichen; **D2:D4** liefert die zu summierenden Zahlen.

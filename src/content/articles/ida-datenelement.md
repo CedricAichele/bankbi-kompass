@@ -4,20 +4,35 @@
   "slug": "ida-datenelement",
   "titel": "Datenelement hinzufügen",
   "bereich": "IDA",
-  "werkzeuge": ["IDA"],
+  "werkzeuge": [
+    "IDA"
+  ],
   "kategorie": "Listen",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein zusätzliches Feld darf die beabsichtigte Zeilenebene nicht unbeabsichtigt verändern.",
-  "ort": "IDA / Reporting: allgemeine Feldwahl; systemspezifische Bedienung TODO",
-  "tags": ["Datenelement hinzufügen", "Reporting"],
+  "ort": "Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt.",
+  "tags": [
+    "Datenelement hinzufügen",
+    "Reporting"
+  ],
   "synonyme": [],
-  "verwandteThemen": ["granularitaet", "eins-zu-viele"],
-  "kontexte": ["Reporting"],
+  "verwandteThemen": [
+    "ida-ebene",
+    "ida-gruppieren",
+    "granularitaet",
+    "eins-zu-viele"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-16",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
+  "quellen": [
+    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=style-summarizing-data-relationally"
+  ],
   "screenshots": [],
+  "praxis": true
 }
 ---
 
@@ -25,16 +40,50 @@
 
 Eine Liste braucht ein weiteres Merkmal für die Auswertung.
 
+## Voraussetzungen
+
+Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
+
 ## Schritte
 
-1. Bedeutung und Datentyp des Feldes klären.
-2. Prüfen, ob je bestehendem Schlüssel genau ein Wert vorhanden ist.
-3. Nach Ergänzung Zeilenanzahl und Summen vergleichen.
+1. Die Zeilenebene des neuen Felds mit dem bisherigen Bericht vergleichen.
+2. Formuliere die gewünschte Regel: **Konto als zusätzliches Detailfeld in die Abfrage aufnehmen.**.
+3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
+4. Vorher zwei Personenzeilen und nachher drei Kontenzeilen gegenprüfen.
+5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.
 
 ## Beispiel
 
-Eine Personenliste erhält KONTO_ID: Bei zwei Konten je Person können jetzt zwei Zeilen entstehen.
+### Vorher · Beispieldaten
+
+| Ausgangslage |
+| --- |
+| Personenübersicht: P001/200; P002/50. Details: P001 hat K001/120 und K002/80. |
+
+### Aktion
+
+```text
+Fachliche Regel: Konto als zusätzliches Detailfeld in die Abfrage aufnehmen.
+```
+
+### Nachher · Beispielergebnis
+
+| Erwartete Ausgabe |
+| --- |
+| P001/K001/120; P001/K002/80; P002/K003/50. |
+
+## Ergebnis
+
+Ein zusätzliches Feld darf die beabsichtigte Zeilenebene nicht unbeabsichtigt verändern.
+
+## Warum funktioniert das?
+
+Ein zusätzliches Detailfeld kann die Gruppierung verfeinern. Es verändert dann die Ergebnisgranularität und nicht nur die sichtbare Spaltenzahl.
 
 ## Typischer Fehler
 
 Annehmen, dass ein neues Feld immer nur eine zusätzliche Spalte ohne neue Zeilen erzeugt.
+
+## Plausibilitätscheck
+
+P001/K001/120; P001/K002/80; P002/K003/50.

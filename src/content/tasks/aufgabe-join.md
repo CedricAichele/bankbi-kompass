@@ -29,9 +29,11 @@
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/merge-queries-overview"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -43,20 +45,46 @@ Nach einer Verknüpfung wächst die Tabelle unerwartet.
 
 ## Schritte
 
-1. Vor dem Join Zeilenanzahl, Schlüsselhäufigkeit und Summe notieren.
-2. Join-Art und Kardinalität prüfen; kleine Mehrfachfälle nachvollziehen.
-3. Nach dem Join dieselben Kontrollen ausführen und Unterschiede erklären.
-4. Öffne die [konkrete Ergebnis vor / nach Join plausibilisieren-Anleitung](#/wissen/ida-join-pruefen) und baue deren synthetisches Beispiel nach.
-5. Übertrage die dort beschriebene Werkzeugaktion auf die Ausgangsdaten dieser Aufgabe; ersetze Feldnamen bewusst, nicht nur per Textsuche.
-6. Prüfe diesen Gegenfall: Prüfe die Anzahl rechter Treffer je Schlüssel vor dem Join.
+1. Definiere das gewünschte Ergebnis und den fachlichen Schlüssel jeder Ergebniszeile. Notiere Zeilenzahl und eine geeignete Kontrollsumme der Quelle.
+2. Prüfe die Eingabefelder und Datentypen anhand der Ausgangstabelle im Beispiel. Übertrage die dort verwendeten Namen bewusst auf deine Daten.
+3. Nutze die konkrete [Tabellen zusammenführen-Anleitung](#/wissen/zusammenfuehren). Sie zeigt Bedienort, Auswahl und Einstellungen für diese Operation.
+4. Vergleiche das Ergebnis mit den passenden Quellzeilen und der unten genannten Kontrolle. Kläre Mehrfachtreffer oder fehlende Werte vor der Weiterverwendung.
+5. Prüfe auch den im Fehlerabschnitt genannten Gegenfall. Halte eine fachlich begründete Änderung der Zeilenzahl oder Summe fest.
 
 ## Beispiel
 
-Eine eindeutige Segmentzuordnung darf die sechs Kontenzeilen nicht verdoppeln.
+### Vorher · Beispieldaten
+
+**Konten**
+
+| Kunde | Konto | Bestand |
+| --- | --- | --- |
+| P001 | K001 | 1000 |
+| P001 | K002 | 2000 |
+| P002 | K003 | 500 |
+
+**Kunden**
+
+| Kunde | Segment |
+| --- | --- |
+| P001 | A |
+| P002 | B |
+
+### Aktion
+
+Konten mit Kunden über Kunde verbinden; Segment erweitern.
+
+### Nachher · Beispielergebnis
+
+| Kunde | Konto | Bestand | Segment |
+| --- | --- | --- | --- |
+| P001 | K001 | 1000 | A |
+| P001 | K002 | 2000 | A |
+| P002 | K003 | 500 | B |
 
 ## Typischer Fehler
 
-Nur die Zeilenzahl prüfen, obwohl Zeilen verloren und andere vervielfacht wurden.
+Mehrfachtreffer mit Duplikate entfernen nachträglich verstecken oder inneren Join wählen und fehlende Schlüssel unbemerkt verlieren.
 
 ## Vergleich
 
@@ -68,12 +96,16 @@ Nur die Zeilenzahl prüfen, obwohl Zeilen verloren und andere vervielfacht wurde
 
 ## Ergebnis
 
-Links 2 Zeilen / 200; rechts P001 zweimal → 3 Zeilen / 320.
+Passende Datensätze werden per Schlüssel zugeordnet; ausgewählte Felder der zweiten Tabelle ergänzen die erste.
 
 ## Warum funktioniert das?
 
-Ein Join bildet Trefferkombinationen; er garantiert keine Erhaltung der Zeilenzahl.
+Ein Join findet alle passenden Zeilen, nicht automatisch genau eine. Zwei Kundentreffer würden jede betroffene Kontenzeile beim Erweitern verdoppeln. Die Join-Art bestimmt zusätzlich, welche nicht passenden Zeilen erhalten bleiben.
 
 ## Plausibilitätscheck
 
-Prüfe die Anzahl rechter Treffer je Schlüssel vor dem Join.
+Drei Konten bleiben drei Zeilen und Summe 3500. Für P001 zweimal Segment A, für P002 B.
+
+## Voraussetzungen
+
+Ein vorhandener Datenbestand mit bekannter Zeilenebene und Zugriff auf das gewählte Werkzeug. Die Beispielwerte veranschaulichen ausschließlich den Ablauf.

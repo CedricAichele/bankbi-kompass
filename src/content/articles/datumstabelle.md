@@ -19,18 +19,23 @@
     "datum falsch"
   ],
   "verwandteThemen": [
-    "vorjahr",
+    "pq-datum",
+    "beziehungen",
     "ytd",
+    "vorjahr",
+    "aktive-beziehung",
+    "bestand-bewegung",
     "datum-sortieren"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-bi/guidance/model-date-tables",
+    "https://learn.microsoft.com/en-us/dax/calendar-function-dax",
     "https://learn.microsoft.com/en-us/dax/totalytd-function-dax",
     "https://learn.microsoft.com/en-us/dax/sameperiodlastyear-function-dax"
   ],
@@ -40,57 +45,58 @@
 }
 ---
 
-
-
 ## Wann brauche ich das?
 
-Du willst Bewegungen nach Zeitraum filtern und Jahreswerte reproduzierbar vergleichen.
+Zeiträume vollständig und einheitlich über mehrere Faktentabellen auswerten.
 
 ## Voraussetzungen
 
-Klassische DAX-Zeitintelligenz mit einer als Datumstabelle markierten Kalendertabelle. Keine Visualberechnung.
+Eine Faktentabelle mit reinem Datumsfeld und bekanntem Auswertungszeitraum.
 
 ## Schritte
 
-1. Erstelle per Start → Daten eingeben die Tabelle Bewegungen mit Datum und Betrag. Stelle Datum auf Datum ohne Uhrzeit und Betrag auf Zahl.
-2. Erstelle unter Modellierung → Neue Tabelle den Kalenderausdruck aus dem Beispiel.
-3. Markiere Kalender über Tabellentools → Als Datumstabelle markieren und wähle Date.
-4. Verbinde in der Modellansicht Kalender[Date] auf der 1-Seite mit Bewegungen[Datum] auf der *-Seite. Verwende eine aktive Beziehung und einfache Filterrichtung Kalender → Bewegungen.
-5. Erstelle das Basismeasure Neugeschaeft = SUM ( Bewegungen[Betrag] ).
-6. Erstelle gegebenenfalls das YTD- beziehungsweise Vorjahresmeasure aus dem Beispiel als weiteres Measure.
-7. Nutze Kalender[Date] als Datenschnitt vom Typ Zwischen. Wähle 01.02.2026 bis 28.02.2026; verwende keine automatische Datumshierarchie der Faktentabelle.
-8. Zeige Basismeasure und Vergleichsmeasure in Karten. Prüfe Februar, dann Januar bis Februar, dann März.
+1. Bestimme den benötigten Zeitraum einschließlich vollständiger Kalenderjahre.
+2. Erstelle oder lade **DimDatum** mit genau einer lückenlosen Zeile pro Tag. Eine berechnete Tabelle kann unter **Modellierung → Neue Tabelle** entstehen. CALENDAR erzeugt dabei zunächst die Spalte **Date**; benenne sie in der Tabellenansicht in **Datum** um, damit die folgende Beziehung denselben Namen verwendet.
+3. Ergänze bei Bedarf Jahr, Monatsnummer und Jahr-Monat. Sortiere Monatsnamen nach Monatsnummer, Jahr-Monat nach einem jahresübergreifenden Sortierschlüssel.
+4. Für klassische DAX-Zeitintelligenz markiere die Tabelle über **Tabellentools → Als Datumstabelle markieren** und wähle **Datum**. Prüfe Eindeutigkeit, keine leeren Werte und keine Lücken.
+5. Erstelle **DimDatum[Datum] (1) → FaktBestand[Datum] (*)**, aktiv und mit einfacher Filterrichtung. FaktBestand[Datum] darf keine Uhrzeiten enthalten.
+6. Verwende Datumsfelder aus DimDatum im Bericht. YTD und Vorjahresberechnungen behandeln die verlinkten eigenen Artikel.
 
 ## Beispiel
 
-| Datum | Betrag |
+### Vorher · Beispieldaten
+
+| FaktBestand.Datum | Bestand |
 | --- | --- |
-| 15.01.2025 | 8 |
-| 15.02.2025 | 9 |
-| 15.01.2026 | 10 |
-| 15.02.2026 | 15 |
-| 15.03.2026 | 12 |
+| 01.01.2026 | 100 |
+| 03.01.2026 | 150 |
+
+### Aktion
 
 ```dax
-Kalender = CALENDAR ( DATE ( 2025, 1, 1 ), DATE ( 2026, 12, 31 ) )
+DimDatum = CALENDAR ( DATE ( 2025, 1, 1 ), DATE ( 2026, 12, 31 ) )
 ```
 
-```dax
-Neugeschaeft = SUM ( Bewegungen[Betrag] )
-```
+### Nachher · Beispielergebnis
+
+| DimDatum.Datum (Ausschnitt) | Passende Faktzeile |
+| --- | --- |
+| 01.01.2026 | 100 |
+| 02.01.2026 | Keine |
+| 03.01.2026 | 150 |
 
 ## Ergebnis
 
-730 eindeutige Tageszeilen für die vollständigen Jahre 2025 und 2026. Bewegungssumme 2026: 37.
+Ein vollständiger Kalender bildet die gemeinsame zeitliche Analyseachse, auch an Tagen ohne Fakten.
 
 ## Warum funktioniert das?
 
-Eine lückenlose Datumstabelle liefert auch Tage ohne Bewegung und einen gemeinsamen Kalender für Filter. Faktendaten müssen deshalb nicht an jedem Tag vorhanden sein.
+Die Faktentabelle enthält nur beobachtete Tage und kann Lücken haben. Eine eigene Datumstabelle stellt unabhängig davon alle Kalendertage bereit und filtert die zugehörigen Fakten.
 
 ## Typischer Fehler
 
-**Symptom:** leerer Vorjahreswert oder falsches YTD. **Ursache:** Kalender endet vor dem Vorjahr, inaktive Beziehung, Datum mit Uhrzeit oder Faktendatum als Slicer. **Lösung:** Datentyp, Zeitraum und Filterweg prüfen. Bestände niemals wie Bewegungen kumulieren.
+Die Datumstabelle nur aus vorhandenen Faktentagen erzeugen oder Bestände über mehrere Tage wie Umsätze summieren.
 
 ## Plausibilitätscheck
 
-Basis Februar 2026 = 15; Vorjahr Februar = 9; YTD Februar = 25. Prüfe jede Zahl einzeln, bevor du eine Abweichung berechnest.
+Der 02.01. existiert im Kalender ohne künstlich erzeugten Bestand. Jeder Faktentag findet genau einen Kalendertag.

@@ -30,8 +30,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "problem",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://support.microsoft.com/de-DE/Excel/get-started/create-a-pivottable-to-analyze-worksheet-data"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -53,18 +56,33 @@ Prüfe ISTZAHL in der Quelle und öffne Wertfeldeinstellungen.
 
 ## Schritte
 
-1. Erstelle eine Kopie der Auswertung oder beschränke sie auf synthetische Testdaten. Notiere den fehlerhaften Wert.
+1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
 2. Prüfe ISTZAHL in der Quelle und öffne Wertfeldeinstellungen.
 3. Korrigiere zuerst die Datentypen; aktualisiere die PivotTable. Wähle im Wertefeld Summe.
 4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
+5. Den konkreten Bedienweg für die Korrektur findest du unter [Pivot zeigt Anzahl statt Summe](#/wissen/pivot-summe-anzahl). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
 
 ## Beispiel
 
-P001 mit 1250 und 750 → Summe 2000, Anzahl 2.
+### Vorher · Fehlerbild
+
+| Beobachtung |
+| --- |
+| P001 mit 1250 und 750 → Summe 2000, Anzahl 2. |
+
+### Aktion
+
+Korrigiere zuerst die Datentypen; aktualisiere die PivotTable. Wähle im Wertefeld Summe.
+
+### Nachher · Erwartete Kontrolle
+
+| Prüfergebnis |
+| --- |
+| Summe über alle Personen = 9.000. |
 
 ## Ergebnis
 
-Summe über alle Personen = 9.000.
+Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
 
 ## Typischer Fehler
 
@@ -73,3 +91,7 @@ Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten
 ## Plausibilitätscheck
 
 Summe über alle Personen = 9.000.
+
+## Warum funktioniert das?
+
+Prüfe zuerst den Quelldatentyp, dann die Zusammenfassung des Wertfelds.

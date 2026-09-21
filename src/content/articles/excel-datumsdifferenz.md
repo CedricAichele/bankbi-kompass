@@ -4,42 +4,87 @@
   "slug": "excel-datumsdifferenz",
   "titel": "Differenz zwischen Datumswerten",
   "bereich": "Excel",
-  "werkzeuge": ["Excel"],
+  "werkzeuge": [
+    "Excel"
+  ],
   "kategorie": "Datum",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Enddatum minus Startdatum ergibt bei echten Excel-Datumswerten die verstrichenen Kalendertage.",
   "ort": "Excel → Formelzelle",
-  "tags": ["Differenz zwischen Datumswerten"],
-  "synonyme": ["datumsdifferenz", "prozessdauer"],
-  "verwandteThemen": ["excel-kalender", "ida-vorgang"],
-  "kontexte": ["Reporting"],
+  "tags": [
+    "Differenz zwischen Datumswerten"
+  ],
+  "synonyme": [
+    "datumsdifferenz",
+    "prozessdauer"
+  ],
+  "verwandteThemen": [
+    "excel-datum",
+    "excel-kalender",
+    "ida-vorgang"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-17",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen":
-    ["https://support.microsoft.com/de-DE/Excel/excel-functions-alphabetical"],
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/functions/days-function"
+  ],
   "screenshots": [],
+  "praxis": true,
+  "kurzformel": "```excel\n=B2-A2\n```"
 }
 ---
 
 ## Wann brauche ich das?
 
-Du prüfst die Dauer synthetischer Vorgänge.
+Die verstrichenen Kalendertage zwischen zwei Daten bestimmen.
+
+## Voraussetzungen
+
+Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Excel angegeben; Hinweise zu neueren Funktionen stehen beim jeweiligen Beispiel.
 
 ## Schritte
 
-1. Start- und Enddatum auf echte Datumswerte prüfen.
-2. Enddatum minus Startdatum berechnen; Ergebnis als Zahl formatieren.
-3. Offene Vorgänge, negative Dauer und Uhrzeitanteile prüfen.
+1. Prüfe die Ausgangszellen und ihre Bedeutung: **A2 = echtes Datum 01.02.2026; B2 = 05.02.2026**. Die Zelladressen dienen als Beispiel und können auf die eigene Liste angepasst werden.
+2. Wähle eine freie Ergebniszelle **H2** und gib die Formel ein. Bei TEXTTEILEN auch I2 freihalten.
+3. Bestätige mit Enter. Für Datumsergebnisse öffne **Start → Zahlenformat** und wähle ein passendes Datumformat.
+4. Vergleiche das Ergebnis mit dem Beispiel und prüfe mindestens einen leeren oder anders aufgebauten Ausgangswert, bevor du die Formel nach unten kopierst.
 
 ## Beispiel
 
+### Vorher · Beispieldaten
+
+| Ausgangswerte |
+| --- |
+| A2 = echtes Datum 01.02.2026; B2 = 05.02.2026 |
+
+### Aktion
+
 ```excel
-=WENN(ODER(A2="";B2="");"";B2-A2)
+=B2-A2
 ```
 
-01.03. bis 04.03. → 3 verstrichene Tage.
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| 4 |
+
+## Ergebnis
+
+Die verstrichenen Kalendertage zwischen zwei Daten bestimmen.
+
+## Warum funktioniert das?
+
+Die Differenz der fortlaufenden Tageswerte zählt die Tagesabstände. Bei beidseitig eingeschlossener fachlicher Zählung wären es fünf Tage; das ist eine andere Definition.
 
 ## Typischer Fehler
 
-Kalendertage als Arbeitstage ausweisen oder beide Grenztage mitzählen, ohne die Fachregel zu nennen.
+Kalendertage mit Arbeitstagen gleichsetzen oder Endpunkte ungeklärt mitzählen.
+
+## Plausibilitätscheck
+
+Für die genannten Ausgangswerte wird **4** erwartet. Die Originalzellen bleiben unverändert; ergänzte Ergebniszellen werden separat geprüft.

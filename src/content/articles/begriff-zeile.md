@@ -28,8 +28,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/group-by"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -37,32 +40,46 @@
 
 Excel-Zeile, Power-Query-Datensatz und Berichtsdetail.
 
+## Voraussetzungen
+
+Kenntnis der fachlichen Bedeutung der Daten; keine bestimmte Beispieldatei erforderlich.
+
 ## Schritte
 
-1. Benenne das Konzept an einer konkreten Ergebniszeile.
-2. K001/P001/1250 ist ein Konto-Datensatz; die Person P001 kann in weiteren Zeilen stehen.
-3. Prüfe vor der Berechnung die genannte Fehlerquelle.
+1. Beschreibe die Ausgangssituation: K001/P001/1000; K002/P001/2000.
+2. Eine Zeile als einen Kontodatensatz am Stichtag definieren.
+3. Prüfe die Unterscheidung am Ergebnis: Zwei Konten, eine Person, Gesamtbestand 3000.
 
 ## Beispiel
 
-K001/P001/1250 ist ein Konto-Datensatz; die Person P001 kann in weiteren Zeilen stehen.
+### Vorher · Beispieldaten
+
+| Ausgangslage |
+| --- |
+| K001/P001/1000; K002/P001/2000. |
+
+### Aktion
+
+Eine Zeile als einen Kontodatensatz am Stichtag definieren.
+
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| Zwei Konten, eine Person, Gesamtbestand 3000. |
+
+## Ergebnis
+
+Eine Zeile beschreibt eine Einheit auf einer festgelegten Ebene.
+
+## Warum funktioniert das?
+
+Die Wiederholung einer Person macht aus zwei verschiedenen Kontodatensätzen keine Dublette.
 
 ## Typischer Fehler
 
 Eine Zeile ungeprüft mit einer Person gleichsetzen.
 
-## Einfach erklärt
+## Plausibilitätscheck
 
-Eine Zeile beschreibt eine Einheit auf einer festgelegten Ebene.
-
-## Mini-Beispiel
-
-K001/P001/1250 ist ein Konto-Datensatz; die Person P001 kann in weiteren Zeilen stehen.
-
-## Warum ist das wichtig?
-
-Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Eine Zeile ungeprüft mit einer Person gleichsetzen.
-
-## Wo taucht das auf?
-
-Excel-Zeile, Power-Query-Datensatz und Berichtsdetail.
+Zwei Konten, eine Person, Gesamtbestand 3000.

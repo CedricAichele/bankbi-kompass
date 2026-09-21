@@ -84,6 +84,7 @@ export function Reference({
         <div className="answer">
           <h2>Kurzantwort</h2>
           <p>{item.kurzbeschreibung}</p>
+          {item.kurzformel && <Markdown text={item.kurzformel} />}
           <div className="use-case">
             <strong>Wann brauche ich das?</strong>
             <Markdown text={sections["Wann brauche ich das?"]} />
@@ -95,12 +96,12 @@ export function Reference({
         </div>
         {item.bereich === "IDA" && (
           <p className="ida-label">
-            Allgemeines Reportingprinzip · konkrete IDA-Bedienung nicht öffentlich belegt ·{" "}
+            Allgemeines Reportingprinzip · Konkreter IDA-Menüweg nicht öffentlich belegt. {" "}
             <Link to="/ida-hinweise">TODO ansehen</Link>
           </p>
         )}
         {["Voraussetzungen", "Symptom", "Schnelltest"].filter((name) => sections[name]).map((name) => (
-          <section className="practice-section" key={name}><h2>{name}</h2><Markdown text={sections[name]} /></section>
+          <section className="practice-section" key={name}><h2>{name === "Ergebnis" ? "Allgemeines Ergebnis" : name}</h2><Markdown text={sections[name]} /></section>
         ))}
         <div
           className={
@@ -142,7 +143,7 @@ export function Reference({
           </section>
         </div>
         {["Ergebnis", "Plausibilitätscheck"].filter((name) => sections[name]).map((name) => (
-          <section className="practice-section" key={name}><h2>{name}</h2><Markdown text={sections[name]} /></section>
+          <section className="practice-section" key={name}><h2>{name === "Ergebnis" ? "Allgemeines Ergebnis" : name}</h2><Markdown text={sections[name]} /></section>
         ))}
         {Object.entries(sections).filter(([name]) => !["Wann brauche ich das?", "Schritte", "Beispiel", "Typischer Fehler", "Vergleich", "Voraussetzungen", "Symptom", "Schnelltest", "Ergebnis", "Plausibilitätscheck"].includes(name)).map(([name, text]) => (
           <details className="practice-details" key={name}><summary>{name}</summary><Markdown text={text} /></details>
@@ -196,6 +197,7 @@ export function Reference({
           {item.quellen.map((url, i) => (
             <a key={url} href={url} target="_blank" rel="noreferrer">
               Offizielle Dokumentation
+              {url.includes("ibm.com") ? " · IBM" : " · Microsoft"}
               {item.quellen.length > 1 ? " " + (i + 1) : ""}{" "}
               <ArrowUpRight size={13} />
             </a>

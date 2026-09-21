@@ -28,8 +28,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/guidance/star-schema"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -46,7 +49,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Beispiel
 
+### Ausgangslage und Entscheidung
+
 Einmalige Kontenprüfung: Pivot. Regelmäßiger Bericht mit gemeinsamen Kalender- und Produktdimensionen: Power BI.
+
+| Alternative | Geeignet, wenn |
+| --- | --- |
+| Excel Pivot | die Auswertung lokal, überschaubar und eng an eine Arbeitsmappe gebunden bleibt. |
+| Power BI | ein wiederkehrendes Datenmodell und mehrere interaktive Berichtsseiten gebraucht werden. |
 
 ## Typischer Fehler
 
@@ -62,3 +72,15 @@ Veröffentlichung und Lizenzen sind gesondert zu klären; ein Desktop-Bericht is
 ## Merksatz
 
 Arbeitsmappe oder wiederverwendbares Berichtsmodell?
+
+## Warum funktioniert das?
+
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **Excel Pivot**, wenn die Auswertung lokal, überschaubar und eng an eine Arbeitsmappe gebunden bleibt. Nimm **Power BI**, wenn ein wiederkehrendes Datenmodell und mehrere interaktive Berichtsseiten gebraucht werden.
+
+## Ergebnis
+
+Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+
+## Plausibilitätscheck
+
+Veröffentlichung und Lizenzen sind gesondert zu klären; ein Desktop-Bericht ist noch kein gemeinsamer Service. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.

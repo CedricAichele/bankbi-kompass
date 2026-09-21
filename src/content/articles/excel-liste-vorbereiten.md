@@ -20,6 +20,8 @@
   ],
   "verwandteThemen": [
     "pivottable",
+    "excel-import",
+    "xverweis",
     "csv-import",
     "datenqualitaet"
   ],
@@ -27,16 +29,19 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/get-started/create-and-format-tables"
+  ],
   "screenshots": [
     {
       "src": "images/excel/excel-tabelle-erstellen.jpg",
       "alt": "Excel-Dialog Tabelle erstellen mit Bereich A1 bis D7 und aktivierten Überschriften",
       "caption": "Echter Excel-Dialog der synthetischen Demo: Bereich A1:D7, Tabelle hat Überschriften.",
       "schema": false,
-      "schritt": 3
+      "schritt": 2,
+      "hinweis": "undefined Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen."
     }
   ],
   "praxis": true,
@@ -50,44 +55,52 @@
 
 ## Wann brauche ich das?
 
-Ein Export soll eine zuverlässige Quelle für Pivot oder Power Query werden.
+Eine robuste Quelle für Formeln, PivotTables und Power Query herstellen.
 
 ## Voraussetzungen
 
-Leere Excel-Arbeitsmappe; verwende ausschließlich die sechs synthetischen Konten unten.
+Eine vorhandene Excel-Liste mit geklärter Zeilenebene und bekanntem Aufbau.
 
 ## Schritte
 
-1. Kopiere die Beispieltabelle nach A1:D7. Zeile 1 enthält die Überschriften; jede folgende Zeile genau ein Konto desselben Stichtags.
-2. Prüfe: keine Leerzeile im Datenblock, keine verbundenen Zellen, keine Zwischensummen. Kennungen bleiben Text, Bestand_EUR muss eine Zahl sein.
-3. Markiere A1:D7 und drücke Strg+T. Prüfe den Bereich $A$1:$D$7 und aktiviere Tabelle hat Überschriften. Bestätige mit OK.
-4. Wähle eine Tabellenzelle. Unter Tabellenentwurf → Tabellenname vergib Konten. Die Filterpfeile gehören zur Kopfzeile, nicht zur ersten Datenzeile.
-5. Schreibe außerhalb der Tabelle =SUMME(Konten[Bestand_EUR]) und =ZEILEN(Konten[Kontonummer]). Prüfe die Ergebnisse 9000 und 6.
-6. Lege eine Pivot-Auswertung auf einem neuen Blatt an oder wähle Daten → Aus Tabelle/Bereich für Power Query. Eine spätere neue Kontozeile direkt unter der Tabelle muss zum Tabellenbereich gehören; aktualisiere danach die Auswertung.
+1. Prüfe eine einzige Überschriftenzeile mit eindeutigen Namen. Entferne Zwischensummen und verbundene Zellen aus dem Datenbereich.
+2. Klicke in den zusammenhängenden Bereich und wähle **Einfügen → Tabelle** oder **Strg+T**.
+3. Prüfe den Bereich und aktiviere **Tabelle hat Überschriften**.
+4. Vergib unter **Tabellenentwurf → Tabellenname** einen eindeutigen Namen, zum Beispiel Konten.
+5. Prüfe Datentypen und ergänze neue Zeilen innerhalb der Tabelle.
 
 ## Beispiel
 
-| Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
-| --- | --- | --- | --- |
-| K001 | P001 | Einlagen | 1250 |
-| K002 | P001 | Anlagen | 750 |
-| K003 | P002 | Einlagen | 2000 |
-| K004 | P003 | Kredite | 3200 |
-| K005 | P003 | Einlagen | 800 |
-| K006 | P004 | Kredite | 1000 |
+### Vorher · Beispieldaten
+
+| Kunde | Konto | Bestand |
+| --- | --- | --- |
+| P001 | K001 | 1000 |
+| P001 | K002 | 2000 |
+| P002 | K003 | 500 |
+
+### Aktion
+
+A1:C4 in die Excel-Tabelle Konten umwandeln.
+
+### Nachher · Beispielergebnis
+
+| Beispielergebnis |
+| --- |
+| Dieselben drei Datenzeilen mit Tabellenüberschriften und Filterpfeilen. |
 
 ## Ergebnis
 
-Sechs Datensätze, eindeutige Kontonummern und Gesamtsumme 9.000. P001 hat zwei Konten; diese Personenwiederholung ist kein Kontoduplikat.
+Eine benannte Excel-Tabelle stellt einen klar begrenzten, erweiterbaren Datenbereich bereit.
 
 ## Warum funktioniert das?
 
-Die benannte Tabelle wächst mit und stellt Überschriften und Datenbereich eindeutig bereit. Zahlformat allein wandelt Textzahlen nicht um.
+Formeln und Pivotquellen können den Tabellennamen verwenden. Eine neue Tabellenzeile erweitert den strukturierten Bereich automatisch.
 
 ## Typischer Fehler
 
-Eine Summenzeile als normalen Datensatz importieren verdoppelt die Summe. Zahlen als Text können in Pivot zu Anzahl statt Summe führen.
+Titel- oder Summenzeilen als Daten mit aufnehmen.
 
 ## Plausibilitätscheck
 
-Vergleiche 6 Konten, 4 Personen und 9.000 Gesamtbestand vor und nach jedem Import.
+Drei Zeilen, drei eindeutige Spaltennamen, Bestand als Zahl.

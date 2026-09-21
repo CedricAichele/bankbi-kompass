@@ -29,9 +29,11 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/functions/xlookup-function"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -43,22 +45,40 @@ Zu einer Kennung fehlt eine passende Beschreibung.
 
 ## Schritte
 
-1. Eindeutigkeit und Typ des Suchschlüssels prüfen.
-2. Passenden Ansatz nach benötigtem Ergebnis wählen.
-3. Fehlende und mehrfache Treffer separat prüfen.
-4. Öffne die [konkrete XVERWEIS-Anleitung](#/wissen/xverweis) und baue deren synthetisches Beispiel nach.
-5. Übertrage die dort beschriebene Werkzeugaktion auf die Ausgangsdaten dieser Aufgabe; ersetze Feldnamen bewusst, nicht nur per Textsuche.
-6. Prüfe diesen Gegenfall: Ändere den Suchwert K003 auf K004: Ergebnis muss 3.200 sein.
+1. Definiere das gewünschte Ergebnis und den fachlichen Schlüssel jeder Ergebniszeile. Notiere Zeilenzahl und eine geeignete Kontrollsumme der Quelle.
+2. Prüfe die Eingabefelder und Datentypen anhand der Ausgangstabelle im Beispiel. Übertrage die dort verwendeten Namen bewusst auf deine Daten.
+3. Nutze die konkrete [XVERWEIS-Anleitung](#/wissen/xverweis). Sie zeigt Bedienort, Auswahl und Einstellungen für diese Operation.
+4. Vergleiche das Ergebnis mit den passenden Quellzeilen und der unten genannten Kontrolle. Kläre Mehrfachtreffer oder fehlende Werte vor der Weiterverwendung.
+5. Prüfe auch den im Fehlerabschnitt genannten Gegenfall. Halte eine fachlich begründete Änderung der Zeilenzahl oder Summe fest.
 
 ## Beispiel
 
-PR-A soll „Gruppe A“ erhalten.
+### Vorher · Beispieldaten
 
-[Excel: XVERWEIS](#/wissen/xverweis) · [Power Query: Zusammenführen](#/wissen/zusammenfuehren) · [Power BI: Beziehung](#/wissen/beziehungen) · [IDA: Join prüfen](#/wissen/ida-join-pruefen)
+| Zeile | A: Kunde | B: Konto | C: Segment | D: Bestand |
+| --- | --- | --- | --- | --- |
+| 1 | Kunde | Konto | Segment | Bestand |
+| 2 | P001 | K001 | A | 1000 |
+| 3 | P001 | K002 | B | 2000 |
+| 4 | P002 | K003 | A | 500 |
+
+F2 = K002
+
+### Aktion
+
+```excel
+=XVERWEIS(F2;B2:B4;D2:D4;"Fehlt";0)
+```
+
+### Nachher · Beispielergebnis
+
+| Ausgabe ab H2 |
+| --- |
+| 2000 |
 
 ## Typischer Fehler
 
-Eine willkürlich erste Zuordnung übernehmen, obwohl mehrere widersprüchliche Treffer vorliegen.
+Ein nicht eindeutiger Schlüssel liefert nur einen Treffer. Prüfe mit ZÄHLENWENN, ob die Kontonummer genau einmal existiert.
 
 ## Vergleich
 
@@ -70,12 +90,16 @@ Eine willkürlich erste Zuordnung übernehmen, obwohl mehrere widersprüchliche 
 
 ## Ergebnis
 
-K003 → 2.000; K999 → Fehlt.
+Einen Wert über einen eindeutigen Schlüssel nachschlagen.
 
 ## Warum funktioniert das?
 
-Ein eindeutiger Schlüssel verbindet Suchwert und Ergebniszeile.
+Excel ermittelt die Position des passenden Kontos und übernimmt den Betrag derselben Position aus der Rückgabematrix. Standardmäßig wird der erste Treffer geliefert.
 
 ## Plausibilitätscheck
 
-Ändere den Suchwert K003 auf K004: Ergebnis muss 3.200 sein.
+Erwartete Ausgabe: **2000**. Die Ausgangsliste umfasst drei Kontenzeilen, zwei Kunden und insgesamt 3500. Prüfe bei Kriterienwechsel die betreffenden Zeilen erneut.
+
+## Voraussetzungen
+
+Ein vorhandener Datenbestand mit bekannter Zeilenebene und Zugriff auf das gewählte Werkzeug. Die Beispielwerte veranschaulichen ausschließlich den Ablauf.

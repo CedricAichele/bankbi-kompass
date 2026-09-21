@@ -31,9 +31,11 @@
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/find-and-remove-duplicates"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -45,22 +47,35 @@ Wiederholungen sollen vor dem Weiterverarbeiten sichtbar werden.
 
 ## Schritte
 
-1. Fachliche Ebene notieren.
-2. Häufigkeit je Schlüsselkombination bestimmen.
-3. Abweichende Details prüfen, bevor du etwas löschst.
-4. Öffne die [konkrete Duplikate finden-Anleitung](#/wissen/excel-dubletten-finden) und baue deren synthetisches Beispiel nach.
-5. Übertrage die dort beschriebene Werkzeugaktion auf die Ausgangsdaten dieser Aufgabe; ersetze Feldnamen bewusst, nicht nur per Textsuche.
-6. Prüfe diesen Gegenfall: Filtere auf den vollständigen fachlichen Schlüssel und zeige alle Detailspalten.
+1. Definiere das gewünschte Ergebnis und den fachlichen Schlüssel jeder Ergebniszeile. Notiere Zeilenzahl und eine geeignete Kontrollsumme der Quelle.
+2. Prüfe die Eingabefelder und Datentypen anhand der Ausgangstabelle im Beispiel. Übertrage die dort verwendeten Namen bewusst auf deine Daten.
+3. Nutze die konkrete [Duplikate finden-Anleitung](#/wissen/excel-dubletten-finden). Sie zeigt Bedienort, Auswahl und Einstellungen für diese Operation.
+4. Vergleiche das Ergebnis mit den passenden Quellzeilen und der unten genannten Kontrolle. Kläre Mehrfachtreffer oder fehlende Werte vor der Weiterverwendung.
+5. Prüfe auch den im Fehlerabschnitt genannten Gegenfall. Halte eine fachlich begründete Änderung der Zeilenzahl oder Summe fest.
 
 ## Beispiel
 
-K-A am 31.03.2026 zweimal → untersuchen. P001 mit K-A und K-B → auf Kontoebene korrekt.
+### Vorher · Beispieldaten
 
-[Excel-Prüfung](#/wissen/excel-dubletten-finden) · [Power Query](#/wissen/dubletten) · [IDA-Prüfung](#/wissen/ida-dubletten)
+| Kunde | Konto | Bestand |
+| --- | --- | --- |
+| P001 | K001 | 1000 |
+| P001 | K002 | 2000 |
+| P002 | K003 | 500 |
+
+### Aktion
+
+Kundenspalte auf doppelte Werte markieren.
+
+### Nachher · Beispielergebnis
+
+| Beispielergebnis |
+| --- |
+| P001 in beiden Zeilen markiert; P002 nicht markiert. |
 
 ## Typischer Fehler
 
-Wiederholte Personenkennungen pauschal als fehlerhafte Dubletten behandeln.
+Markierte Kundenzeilen ungeprüft löschen.
 
 ## Vergleich
 
@@ -72,12 +87,16 @@ Wiederholte Personenkennungen pauschal als fehlerhafte Dubletten behandeln.
 
 ## Ergebnis
 
-P001 darf bei zwei verschiedenen Konten zweimal vorkommen; dieselbe Konto-Stichtag-Kombination soll nur einmal vorkommen.
+Gleiche Zellwerte werden hervorgehoben; die Datensätze bleiben unverändert.
 
 ## Warum funktioniert das?
 
-Duplikate sind immer relativ zur gewählten Schlüsselmenge.
+Die Prüfung betrachtet die markierte Spalte. Sie beantwortet nicht automatisch, ob komplette Datensätze doppelt sind.
 
 ## Plausibilitätscheck
 
-Filtere auf den vollständigen fachlichen Schlüssel und zeige alle Detailspalten.
+Zwei Markierungen zeigen einen zweimal vorkommenden Kunden, nicht zwei fehlerhafte Konten.
+
+## Voraussetzungen
+
+Ein vorhandener Datenbestand mit bekannter Zeilenebene und Zugriff auf das gewählte Werkzeug. Die Beispielwerte veranschaulichen ausschließlich den Ablauf.

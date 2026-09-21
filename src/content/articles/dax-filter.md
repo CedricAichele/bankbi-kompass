@@ -25,7 +25,7 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/filter-function-dax"
@@ -42,11 +42,11 @@ Du möchtest FILTER an einem überschaubaren Beispiel verstehen.
 
 ## Voraussetzungen
 
-Tabelle Konten mit den sechs Beispielzeilen. Für RELATED zusätzlich Personen mit P001/A, P002/B, P003/A, P004/B und aktive 1:n-Beziehung zu Konten.
+Ein vorhandenes Power-BI-Modell mit den im Ausdruck verwendeten Tabellen, Spalten und gegebenenfalls Basismeasures.
 
 ## Schritte
 
-1. Lege die synthetischen Tabellen an und prüfe Textschlüssel sowie numerische Beträge.
+1. Prüfe die benötigten Tabellen, Textschlüssel und numerischen Beträge im vorhandenen Modell. Die Tabellen im Beispiel illustrieren den Aufbau.
 2. Wähle Modellierung → Neues Measure.
 3. Gib die Formel aus dem Beispiel ein und bestätige mit Enter.
 4. Füge ein Tabellenvisual mit Personennummer und dem berechneten Ergebnis hinzu.
@@ -54,6 +54,8 @@ Tabelle Konten mit den sechs Beispielzeilen. Für RELATED zusätzlich Personen m
 6. Vergleiche den Wert mit dem erwarteten Ergebnis und untersuche den beschriebenen Fehlerfall.
 
 ## Beispiel
+
+### Vorher · Beispieldaten
 
 | Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
 | --- | --- | --- | --- |
@@ -64,13 +66,20 @@ Tabelle Konten mit den sechs Beispielzeilen. Für RELATED zusätzlich Personen m
 | K005 | P003 | Einlagen | 800 |
 | K006 | P004 | Kredite | 1000 |
 
+
+### Aktion
+
 ```dax
 Einlagenzeilen = COUNTROWS ( FILTER ( Konten, Konten[Produktgruppe] = "Einlagen" ) )
 ```
 
-## Ergebnis
+### Nachher · Beispielergebnis
 
 3
+
+## Ergebnis
+
+FILTER liefert eine Tabelle mit den Zeilen, die eine Bedingung erfüllen.
 
 ## Warum funktioniert das?
 
@@ -83,3 +92,10 @@ FILTER allein kann nicht als einzelner Zahlenwert in einer Karte angezeigt werde
 ## Plausibilitätscheck
 
 Prüfe Filter einzeln und gemeinsam. Die Ausgangssumme beträgt 9.000 und Einlagen allein 4.050.
+
+## Argumente verstehen
+
+| Argument | Bedeutung |
+| --- | --- |
+| Tabelle | Ausgangsmenge der zu prüfenden Zeilen. |
+| Bedingung | Wird je Zeile geprüft. FILTER liefert eine Tabelle, keinen fertigen Summenwert. |

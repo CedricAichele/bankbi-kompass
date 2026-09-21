@@ -27,9 +27,11 @@
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/data-types"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -41,22 +43,33 @@ Eine neue Liste soll zuverlässig weiterverarbeitet werden.
 
 ## Schritte
 
-1. Fachliche Zeilenebene und Schlüssel festlegen.
-2. Datentypen, NULL, Leertext und Mehrfachkombinationen prüfen.
-3. Zeilenanzahl und Kontrollsumme vor/nach jeder Änderung vergleichen.
-4. Öffne die [konkrete Datentyp ändern / Daten bereinigen-Anleitung](#/wissen/datenbereinigung) und baue deren synthetisches Beispiel nach.
-5. Übertrage die dort beschriebene Werkzeugaktion auf die Ausgangsdaten dieser Aufgabe; ersetze Feldnamen bewusst, nicht nur per Textsuche.
-6. Prüfe diesen Gegenfall: Nach Bereinigung dieselben Prüfgrößen wiederholen und begründete Differenzen notieren.
+1. Definiere das gewünschte Ergebnis und den fachlichen Schlüssel jeder Ergebniszeile. Notiere Zeilenzahl und eine geeignete Kontrollsumme der Quelle.
+2. Prüfe die Eingabefelder und Datentypen anhand der Ausgangstabelle im Beispiel. Übertrage die dort verwendeten Namen bewusst auf deine Daten.
+3. Nutze die konkrete [Datentyp ändern / Daten bereinigen-Anleitung](#/wissen/datenbereinigung). Sie zeigt Bedienort, Auswahl und Einstellungen für diese Operation.
+4. Vergleiche das Ergebnis mit den passenden Quellzeilen und der unten genannten Kontrolle. Kläre Mehrfachtreffer oder fehlende Werte vor der Weiterverwendung.
+5. Prüfe auch den im Fehlerabschnitt genannten Gegenfall. Halte eine fachlich begründete Änderung der Zeilenzahl oder Summe fest.
 
 ## Beispiel
 
-[Power Query: Typen](#/wissen/datenbereinigung) · [Excel: GLÄTTEN](#/wissen/glaetten) · [IDA: Join-Prüfung](#/wissen/ida-join-pruefen).
+### Vorher · Beispieldaten
 
-Drei Ausgangszeilen werden nach Join zu fünf: Ursache untersuchen.
+| Kennung als Zahl | Betrag als Text | Datum als Text |
+| --- | --- | --- |
+| 123 | 1.250,50 | 31.01.2026 |
+
+### Aktion
+
+Ursprüngliche Kennung "00123" aus der Quelle als Text erhalten; Betrag und Datum passend interpretieren.
+
+### Nachher · Beispielergebnis
+
+| Kennung (Text) | Betrag (Zahl) | Datum |
+| --- | --- | --- |
+| 00123 | 1250,50 | 31.01.2026 |
 
 ## Typischer Fehler
 
-Pauschal 0 einsetzen oder Zeilen löschen, bis die Zahl plausibel aussieht.
+Nachträgliches Formatieren mit Nullen repariert keine verlorene ursprüngliche Kennung. Falsches Gebietsschema kann Zahlen falsch lesen oder Fehler erzeugen.
 
 ## Vergleich
 
@@ -68,12 +81,16 @@ Pauschal 0 einsetzen oder Zeilen löschen, bis die Zahl plausibel aussieht.
 
 ## Ergebnis
 
-Konten-Beispiel: 6 gültige Konten, 4 Personen, 9.000 Bestand, 0 fehlende Kennungen.
+Jede Spalte erhält einen Typ, der ihre fachliche Verwendung unterstützt.
 
 ## Warum funktioniert das?
 
-Qualität umfasst Struktur, Vollständigkeit, Eindeutigkeit und fachliche Plausibilität.
+Zahlentypen ermöglichen Rechnen, Datumstypen zeitliche Vergleiche und Texttypen erhalten Kennungen. Ein Format verändert nur die Anzeige; eine Typumwandlung interpretiert den Inhalt.
 
 ## Plausibilitätscheck
 
-Nach Bereinigung dieselben Prüfgrößen wiederholen und begründete Differenzen notieren.
+00123 enthält fünf Zeichen; der Betrag lässt sich summieren; das Datum nach Monaten sortieren.
+
+## Voraussetzungen
+
+Ein vorhandener Datenbestand mit bekannter Zeilenebene und Zugriff auf das gewählte Werkzeug. Die Beispielwerte veranschaulichen ausschließlich den Ablauf.

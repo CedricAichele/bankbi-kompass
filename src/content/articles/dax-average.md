@@ -4,20 +4,38 @@
   "slug": "dax-average",
   "titel": "AVERAGE: Durchschnitt je Datenzeile",
   "bereich": "Power BI",
-  "werkzeuge": ["Power BI"],
+  "werkzeuge": [
+    "Power BI"
+  ],
   "kategorie": "DAX & Measures",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "AVERAGE mittelt numerische Spaltenwerte. Leere Werte werden ignoriert, echte Nullen zählen mit.",
   "ort": "Power BI Desktop → Modellierung → Neues Measure",
-  "tags": ["AVERAGE: Durchschnitt je Datenzeile"],
-  "synonyme": ["average", "durchschnitt"],
-  "verwandteThemen": ["granularitaet", "dax-median"],
-  "kontexte": ["Reporting"],
+  "tags": [
+    "AVERAGE: Durchschnitt je Datenzeile"
+  ],
+  "synonyme": [
+    "average",
+    "durchschnitt"
+  ],
+  "verwandteThemen": [
+    "measure",
+    "filterkontext",
+    "granularitaet",
+    "dax-median"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-17",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": ["https://learn.microsoft.com/en-us/dax/average-function-dax"],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/dax/average-function-dax"
+  ],
   "screenshots": [],
+  "praxis": true,
+  "kurzformel": "```dax\nMittelwert = AVERAGE ( Fakt[Bestand] )\n```"
 }
 ---
 
@@ -25,20 +43,50 @@
 
 Du brauchst den durchschnittlichen Bestand je Konto am gewählten Stichtag.
 
+## Voraussetzungen
+
+Eine vorhandene Tabelle mit passendem Zahlen- beziehungsweise Datumsfeld.
+
 ## Schritte
 
-1. Sicherstellen, dass eine Zeile einem Konto am Stichtag entspricht.
-2. AVERAGE auf die Betragsspalte anwenden.
-3. Nullen, Leerwerte und Gewichtung prüfen.
+1. Prüfe die Spalte **Bestand** und ihren Datentyp.
+2. Wähle **Modellierung → Neues Measure** und gib die Formel aus dem Beispiel ein; passe Fakt und den Spaltennamen an dein Modell an.
+3. Ziehe das Measure in eine Karte. Vergleiche zunächst ohne Filter, anschließend mit einer eingeschränkten Auswahl.
 
 ## Beispiel
 
+### Vorher · Beispieldaten
+
+| Fakt[Bestand] |
+| --- |
+| 100 |
+| 0 |
+| BLANK |
+
+### Aktion
+
 ```dax
-Ø Bestand = AVERAGE ( Demo_Bestand[BESTAND_EUR] )
+Mittelwert = AVERAGE ( Fakt[Bestand] )
 ```
 
-100, 0 und BLANK → 50.
+### Nachher · Beispielergebnis
+
+| Ohne weitere Filter |
+| --- |
+| 50 |
+
+## Ergebnis
+
+AVERAGE mittelt numerische Spaltenwerte. Leere Werte werden ignoriert, echte Nullen zählen mit.
+
+## Warum funktioniert das?
+
+AVERAGE ignoriert BLANK in der Zahlenspalte, zählt eine echte 0 aber als Beobachtung. Deshalb wird 100 durch zwei geteilt.
 
 ## Typischer Fehler
 
 Kontodurchschnitt mit Personendurchschnitt verwechseln, wenn Personen mehrere Konten haben.
+
+## Plausibilitätscheck
+
+Ungefiltert 50. Ein Filter begrenzt die ausgewerteten Zeilen und kann deshalb das Ergebnis verändern.

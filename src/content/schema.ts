@@ -30,10 +30,25 @@ export const imageSchema = z
     hinweis: z.string().optional(),
     schritt: z.number().int().positive().optional(),
     schema: z.boolean(),
-    status: z.enum(["bereit", "todo"]).default("bereit"),
+    status: z.enum(["bereit", "todo", "ersetzen"]).default("bereit"),
     todo: z.string().min(10).optional(),
+    bildAnzeigen: z.boolean().optional(),
+    aufnahmeplan: z.object({
+      prioritaet: z.enum(["Hoch", "Mittel", "Niedrig"]),
+      werkzeug: z.string().min(3),
+      oberflaeche: z.string().min(5),
+      klickfolge: z.array(z.string().min(5)).min(1),
+      daten: z.string().min(10),
+      sichtbar: z.array(z.string().min(5)).min(1),
+      ausschnitt: z.string().min(10),
+      dateiname: z.string().regex(/^[a-z0-9-]+\.webp$/),
+      zweck: z.string().min(10),
+      nichtZeigen: z.array(z.string()).min(1),
+    }).optional(),
   })
   .superRefine((image, ctx) => {
+    if (image.status === "ersetzen" && (!image.src || !image.todo || !image.aufnahmeplan))
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Zu ersetzende Bilder benötigen Bildpfad, Grund und Aufnahmeplan." });
     if (image.status === "bereit" && (!image.src || image.todo))
       ctx.addIssue({
         code: z.ZodIssueCode.custom,

@@ -28,8 +28,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/append-queries"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -37,32 +40,46 @@
 
 Power Query in Excel und Power BI.
 
+## Voraussetzungen
+
+Kenntnis der fachlichen Bedeutung der Daten; keine bestimmte Beispieldatei erforderlich.
+
 ## Schritte
 
-1. Benenne das Konzept an einer konkreten Ergebniszeile.
-2. Zwei Monatsdateien mit 10 und 12 Zeilen ergeben zunächst 22 Zeilen.
-3. Prüfe vor der Berechnung die genannte Fehlerquelle.
+1. Beschreibe die Ausgangssituation: Januar: K001/10; Februar: K001/15.
+2. Zeilen untereinander anfügen.
+3. Prüfe die Unterscheidung am Ergebnis: K001/Jan/10 und K001/Feb/15; zwei Zeilen.
 
 ## Beispiel
 
-Zwei Monatsdateien mit 10 und 12 Zeilen ergeben zunächst 22 Zeilen.
+### Vorher · Beispieldaten
+
+| Ausgangslage |
+| --- |
+| Januar: K001/10; Februar: K001/15. |
+
+### Aktion
+
+Zeilen untereinander anfügen.
+
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| K001/Jan/10 und K001/Feb/15; zwei Zeilen. |
+
+## Ergebnis
+
+Anfügen stapelt gleichartig aufgebaute Zeilen untereinander.
+
+## Warum funktioniert das?
+
+Append erhöht die Zahl der Datensätze und ordnet Spalten nach Namen zu. Es sucht keine passenden Schlüssel.
 
 ## Typischer Fehler
 
 Dublettenbereinigung oder Schlüsselzuordnung erwarten.
 
-## Einfach erklärt
+## Plausibilitätscheck
 
-Anfügen stapelt gleichartig aufgebaute Zeilen untereinander.
-
-## Mini-Beispiel
-
-Zwei Monatsdateien mit 10 und 12 Zeilen ergeben zunächst 22 Zeilen.
-
-## Warum ist das wichtig?
-
-Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Dublettenbereinigung oder Schlüsselzuordnung erwarten.
-
-## Wo taucht das auf?
-
-Power Query in Excel und Power BI.
+K001/Jan/10 und K001/Feb/15; zwei Zeilen.

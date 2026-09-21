@@ -30,8 +30,12 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "problem",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/functions/trim-function",
+    "https://support.microsoft.com/de-de/office/gl%C3%A4tten-funktion-410388fa-c5df-49c6-b16c-9e5630b479f9"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -53,18 +57,33 @@ Vergleiche die beiden Zellen direkt mit =A2=F2 sowie deren LÄNGE.
 
 ## Schritte
 
-1. Erstelle eine Kopie der Auswertung oder beschränke sie auf synthetische Testdaten. Notiere den fehlerhaften Wert.
+1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
 2. Vergleiche die beiden Zellen direkt mit =A2=F2 sowie deren LÄNGE.
 3. Vereinheitliche den Schlüsseltyp an der Quelle. Entferne unerwünschte Leerzeichen mit GLÄTTEN; geschützte Leerzeichen zuerst gezielt ersetzen.
 4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
+5. Den konkreten Bedienweg für die Korrektur findest du unter [Leerzeichen entfernen: GLÄTTEN](#/wissen/glaetten). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
 
 ## Beispiel
 
-"K003 " hat 5 Zeichen, "K003" hat 4: optisch ähnlich, nicht gleich.
+### Vorher · Fehlerbild
+
+| Beobachtung |
+| --- |
+| "K003 " hat 5 Zeichen, "K003" hat 4: optisch ähnlich, nicht gleich. |
+
+### Aktion
+
+Vereinheitliche den Schlüsseltyp an der Quelle. Entferne unerwünschte Leerzeichen mit GLÄTTEN; geschützte Leerzeichen zuerst gezielt ersetzen.
+
+### Nachher · Erwartete Kontrolle
+
+| Prüfergebnis |
+| --- |
+| Exakter Vergleich muss WAHR liefern; anschließend Ergebnis 2.000 prüfen. |
 
 ## Ergebnis
 
-Exakter Vergleich muss WAHR liefern; anschließend Ergebnis 2.000 prüfen.
+Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
 
 ## Typischer Fehler
 
@@ -73,3 +92,7 @@ Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten
 ## Plausibilitätscheck
 
 Exakter Vergleich muss WAHR liefern; anschließend Ergebnis 2.000 prüfen.
+
+## Warum funktioniert das?
+
+GLÄTTEN normalisiert das normale Leerzeichen. Geschützte Leerzeichen aus Webseiten können einen zusätzlichen WECHSELN-Schritt benötigen.

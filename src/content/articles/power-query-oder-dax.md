@@ -27,10 +27,15 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
-  "screenshots": []
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/power-query-ui",
+    "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-measures",
+    "https://learn.microsoft.com/en-us/dax/sum-function-dax"
+  ],
+  "screenshots": [],
+  "praxis": true
 }
 ---
 
@@ -47,7 +52,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Beispiel
 
+### Ausgangslage und Entscheidung
+
 Leerzeichen in Personennummer: Power Query. Anteil der gewählten Personen am Gesamtbestand: DAX.
+
+| Alternative | Geeignet, wenn |
+| --- | --- |
+| Power Query | du Daten vor dem Laden bereinigst, typisierst oder in eine andere Zeilenform bringst. |
+| DAX | das Ergebnis auf Slicer und Visualfilter reagieren soll. |
 
 ## Typischer Fehler
 
@@ -63,3 +75,15 @@ Eine DAX-Spalte repariert keine mangelhafte Importstruktur.
 ## Merksatz
 
 Vorbereiten beim Laden; auswerten im Bericht.
+
+## Warum funktioniert das?
+
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **Power Query**, wenn du Daten vor dem Laden bereinigst, typisierst oder in eine andere Zeilenform bringst. Nimm **DAX**, wenn das Ergebnis auf Slicer und Visualfilter reagieren soll.
+
+## Ergebnis
+
+Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+
+## Plausibilitätscheck
+
+Eine DAX-Spalte repariert keine mangelhafte Importstruktur. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.

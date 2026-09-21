@@ -30,8 +30,13 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "problem",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/guidance/model-date-tables",
+    "https://learn.microsoft.com/en-us/dax/totalytd-function-dax",
+    "https://learn.microsoft.com/en-us/dax/sameperiodlastyear-function-dax"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -53,18 +58,33 @@ Teste Januar allein und Januar bis Februar mit einer bekannten Bewegungsreihe.
 
 ## Schritte
 
-1. Erstelle eine Kopie der Auswertung oder beschränke sie auf synthetische Testdaten. Notiere den fehlerhaften Wert.
+1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
 2. Teste Januar allein und Januar bis Februar mit einer bekannten Bewegungsreihe.
 3. Nutze einen vollständigen Kalender und dessen Felder für Slicer. Prüfe aktive Datumsbeziehung und die gewählte Jahresdefinition.
 4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
+5. Den konkreten Bedienweg für die Korrektur findest du unter [YTD berechnen](#/wissen/ytd). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
 
 ## Beispiel
 
-Januar 10, Februar 15: YTD Februar = 25.
+### Vorher · Fehlerbild
+
+| Beobachtung |
+| --- |
+| Januar 10, Februar 15: YTD Februar = 25. |
+
+### Aktion
+
+Nutze einen vollständigen Kalender und dessen Felder für Slicer. Prüfe aktive Datumsbeziehung und die gewählte Jahresdefinition.
+
+### Nachher · Erwartete Kontrolle
+
+| Prüfergebnis |
+| --- |
+| Vergleiche jeden Monatswert mit der fortlaufenden Handsumme. |
 
 ## Ergebnis
 
-Vergleiche jeden Monatswert mit der fortlaufenden Handsumme.
+Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
 
 ## Typischer Fehler
 
@@ -73,3 +93,7 @@ Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten
 ## Plausibilitätscheck
 
 Vergleiche jeden Monatswert mit der fortlaufenden Handsumme.
+
+## Warum funktioniert das?
+
+TOTALYTD erhält zuerst das Basismeasure, dann die Datumsspalte. Es erweitert die Datumauswahl vom Jahresanfang bis zum letzten sichtbaren Datum.

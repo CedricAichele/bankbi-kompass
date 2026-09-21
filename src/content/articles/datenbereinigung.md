@@ -20,6 +20,9 @@
     "datum falsch"
   ],
   "verwandteThemen": [
+    "csv-import",
+    "pq-datum",
+    "schluessel",
     "nullwerte",
     "dubletten"
   ],
@@ -27,12 +30,44 @@
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-query/data-types"
   ],
   "screenshots": [
+    {
+      "alt": "Bedienort: Power Query-Editor – Datentyp ändern / Daten bereinigen",
+      "caption": "Geplante Aufnahme: Power Query-Editor – Datentyp ändern / Daten bereinigen",
+      "schritt": 3,
+      "schema": false,
+      "status": "todo",
+      "todo": "Auswahl und Ergebnis der beschriebenen Operation nachvollziehbar zeigen.",
+      "aufnahmeplan": {
+        "prioritaet": "Hoch",
+        "werkzeug": "Power BI Desktop",
+        "oberflaeche": "Power Query-Editor – Datentyp ändern / Daten bereinigen",
+        "klickfolge": [
+          "Markiere die betreffende Spalte. Klicke auf das **Datentypsymbol links im Spaltenkopf** oder nutze **Transformieren → Datentyp**.",
+          "Wähle für Schlüssel **Text**, für Beträge einen passenden Zahlentyp und für Kalendertage **Datum**.",
+          "Bei länderspezifischen Texten verwende **Datentyp → Mit Gebietsschema**: hier Dezimalzahl beziehungsweise Datum mit **Deutsch (Deutschland)**."
+        ],
+        "daten": "| Kennung als Zahl | Betrag als Text | Datum als Text |\n| --- | --- | --- |\n| 123 | 1.250,50 | 31.01.2026 |",
+        "sichtbar": [
+          "Ursprüngliche Kennung \"00123\" aus der Quelle als Text erhalten; Betrag und Datum passend interpretieren.",
+          "Spaltenüberschriften und relevante Optionen"
+        ],
+        "ausschnitt": "Power Query-Editor – Datentyp ändern / Daten bereinigen mit Ursprüngliche Kennung \"00123\" aus der Quelle als Text erhalten; Betrag und Datum passend interpretieren., Spaltenüberschriften und relevante Optionen. Auf den relevanten Dialog und die lesbaren Tabellenüberschriften begrenzen.",
+        "dateiname": "pbi-datenbereinigung.webp",
+        "zweck": "Auswahl und Ergebnis der beschriebenen Operation nachvollziehbar zeigen.",
+        "nichtZeigen": [
+          "Lokale Dateipfade",
+          "Benutzername oder Profil",
+          "Andere Programme und Benachrichtigungen",
+          "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
+        ]
+      }
+    },
     {
       "src": "images/power-bi/pbi-datentyp.webp",
       "alt": "Datentyp über das Symbol am Spaltenkopf auswählen.",
@@ -40,7 +75,7 @@
       "schritt": 2,
       "schema": false,
       "status": "bereit",
-      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen."
+      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen. Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen."
     }
   ],
   "praxis": true
@@ -49,41 +84,51 @@
 
 ## Wann brauche ich das?
 
-Kennungen und Zahlen wurden beim Import falsch erkannt.
+Datentypen so einstellen, dass Sortierung, Berechnung und Verknüpfung die beabsichtigte Bedeutung haben.
 
 ## Voraussetzungen
 
-Synthetische Daten; Power Query in Power BI Desktop oder Excel. Die Menübezeichnung kann je Version leicht abweichen.
+Eine vorhandene Abfrage mit den benötigten Spalten.
 
 ## Schritte
 
-1. Öffne in Power BI **Start → Daten transformieren**. In Excel: Quelldaten als Tabelle formatieren und **Daten → Aus Tabelle/Bereich** wählen. Die folgenden Aktionen erfolgen im Power-Query-Editor.
-2. Klicke einen automatisch angelegten Schritt Geänderter Typ an und kontrolliere, ob 00123 schon zu 123 wurde. Wenn ja, entferne diesen Schritt und setze den Typ an der ursprünglichen Textquelle neu.
-3. Markiere Kennung und wähle am Datentypsymbol Text. Eine schon verlorene führende Null entsteht durch Textformatierung nicht wieder.
-4. Klicke Betrag mit rechts an → Typ ändern → Mit Gebietsschema.
-5. Wähle Dezimalzahl und Deutsch (Deutschland). Bestätige und prüfe 1250,50 sowie 75,00.
-6. Aktiviere unter Ansicht die Spaltenqualität und untersuche Fehler sowie leere Werte. Ein falscher Typ darf nicht durch stilles Ersetzen mit 0 verdeckt werden.
-7. Prüfe im rechten Bereich Angewendete Schritte die Vorschau vor und nach der Aktion. In Power BI abschließend Schließen & übernehmen, in Excel Schließen & laden wählen.
+1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
+2. Markiere die betreffende Spalte. Klicke auf das **Datentypsymbol links im Spaltenkopf** oder nutze **Transformieren → Datentyp**.
+3. Wähle für Schlüssel **Text**, für Beträge einen passenden Zahlentyp und für Kalendertage **Datum**.
+4. Bei länderspezifischen Texten verwende **Datentyp → Mit Gebietsschema**: hier Dezimalzahl beziehungsweise Datum mit **Deutsch (Deutschland)**.
+5. Prüfe den Schritt **Geänderter Typ**. Eine bereits als Zahl importierte Kennung hat verlorene führende Nullen; stelle sie aus der ursprünglichen Textquelle wieder her.
+6. Kontrolliere Fehlerzellen, Summen und Datumssortierung.
 
 ## Beispiel
 
-| Kennung als Text | Betrag als Text |
-| --- | --- |
-| 00123 | 1.250,50 |
-| 00456 | 75,00 |
+### Vorher · Beispieldaten
+
+| Kennung als Zahl | Betrag als Text | Datum als Text |
+| --- | --- | --- |
+| 123 | 1.250,50 | 31.01.2026 |
+
+### Aktion
+
+Ursprüngliche Kennung "00123" aus der Quelle als Text erhalten; Betrag und Datum passend interpretieren.
+
+### Nachher · Beispielergebnis
+
+| Kennung (Text) | Betrag (Zahl) | Datum |
+| --- | --- | --- |
+| 00123 | 1250,50 | 31.01.2026 |
 
 ## Ergebnis
 
-Kennungen 00123 und 00456 bleiben erhalten; Summe der Beträge = 1.325,50.
+Jede Spalte erhält einen Typ, der ihre fachliche Verwendung unterstützt.
 
 ## Warum funktioniert das?
 
-Ein Datentyp steuert Interpretation und Berechnung. Das Gebietsschema bestimmt, wie Punkt und Komma beim Umwandeln von Text verstanden werden.
+Zahlentypen ermöglichen Rechnen, Datumstypen zeitliche Vergleiche und Texttypen erhalten Kennungen. Ein Format verändert nur die Anzeige; eine Typumwandlung interpretiert den Inhalt.
 
 ## Typischer Fehler
 
-**Symptom:** 125050 oder Error statt 1250,50. **Ursache:** falsches Gebietsschema. **Lösung:** Umwandlung an der Textquelle mit passender Kultur wiederholen.
+Nachträgliches Formatieren mit Nullen repariert keine verlorene ursprüngliche Kennung. Falsches Gebietsschema kann Zahlen falsch lesen oder Fehler erzeugen.
 
 ## Plausibilitätscheck
 
-Vergleiche mindestens einen Wert mit Tausendertrennzeichen, einen Dezimalwert und eine Kennung mit führender Null.
+00123 enthält fünf Zeichen; der Betrag lässt sich summieren; das Datum nach Monaten sortieren.

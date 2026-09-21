@@ -18,7 +18,8 @@
   ],
   "synonyme": [],
   "verwandteThemen": [
-    "zaehlenwenns"
+    "zaehlenwenns",
+    "summewenns"
   ],
   "kontexte": [
     "Reporting",
@@ -27,8 +28,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "aufgabe",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/functions/sumifs-function"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -38,22 +42,44 @@ Mehrere Kriterien gleichzeitig anwenden.
 
 ## Schritte
 
-1. Definiere Ergebnis und Bezugseinheit vor dem Öffnen des Werkzeugs.
-2. Verwende die vollständig angegebenen Demodaten der [ZÄHLENWENNS-Anleitung](#/wissen/zaehlenwenns).
-3. Führe die dortigen Schritte aus. Erwartetes Ergebnis: Konten-Beispiel: P001 UND Einlagen → nur K001 mit 1.250.
-4. Teste zusätzlich einen nicht passenden Datensatz und kontrolliere, dass er nicht in das Ergebnis einfließt.
+1. Definiere das gewünschte Ergebnis und den fachlichen Schlüssel jeder Ergebniszeile. Notiere Zeilenzahl und eine geeignete Kontrollsumme der Quelle.
+2. Prüfe die Eingabefelder und Datentypen anhand der Ausgangstabelle im Beispiel. Übertrage die dort verwendeten Namen bewusst auf deine Daten.
+3. Nutze die konkrete [SUMMEWENNS-Anleitung](#/wissen/summewenns). Sie zeigt Bedienort, Auswahl und Einstellungen für diese Operation.
+4. Vergleiche das Ergebnis mit den passenden Quellzeilen und der unten genannten Kontrolle. Kläre Mehrfachtreffer oder fehlende Werte vor der Weiterverwendung.
+5. Prüfe auch den im Fehlerabschnitt genannten Gegenfall. Halte eine fachlich begründete Änderung der Zeilenzahl oder Summe fest.
 
 ## Beispiel
 
-Konten-Beispiel: P001 UND Einlagen → nur K001 mit 1.250.
+### Vorher · Beispieldaten
+
+| Zeile | A: Kunde | B: Konto | C: Segment | D: Bestand |
+| --- | --- | --- | --- | --- |
+| 1 | Kunde | Konto | Segment | Bestand |
+| 2 | P001 | K001 | A | 1000 |
+| 3 | P001 | K002 | B | 2000 |
+| 4 | P002 | K003 | A | 500 |
+
+F2 = P001; G2 = A
+
+### Aktion
+
+```excel
+=SUMMEWENNS(D2:D4;A2:A4;F2;C2:C4;G2)
+```
+
+### Nachher · Beispielergebnis
+
+| Ausgabe ab H2 |
+| --- |
+| 1000 |
 
 ## Ergebnis
 
-Konten-Beispiel: P001 UND Einlagen → nur K001 mit 1.250.
+Beträge summieren, deren Zeilen alle Bedingungen erfüllen.
 
 ## Typischer Fehler
 
-P001 ODER Einlagen würde zusätzliche Konten auswählen.
+Zwei Bedingungen als ODER interpretieren oder die Bereiche um eine Zeile verschieben.
 
 ## Vergleich
 
@@ -61,8 +87,12 @@ Excel: ZÄHLENWENNS/SUMMEWENNS. Power Query: verknüpfte Zeilenfilter. Reporting
 
 ## Warum funktioniert das?
 
-Formuliere jede Bedingung und entscheide bewusst zwischen UND und ODER.
+Die Kriterien wirken als UND. Nur K001 gehört zugleich zu P001 und Segment A.
 
 ## Plausibilitätscheck
 
-Konten-Beispiel: P001 UND Einlagen → nur K001 mit 1.250.
+Erwartete Ausgabe: **1000**. Die Ausgangsliste umfasst drei Kontenzeilen, zwei Kunden und insgesamt 3500. Prüfe bei Kriterienwechsel die betreffenden Zeilen erneut.
+
+## Voraussetzungen
+
+Ein vorhandener Datenbestand mit bekannter Zeilenebene und Zugriff auf das gewählte Werkzeug. Die Beispielwerte veranschaulichen ausschließlich den Ablauf.

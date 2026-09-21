@@ -22,16 +22,20 @@
   "verwandteThemen": [
     "sumx",
     "distinctcount",
-    "divide"
+    "divide",
+    "ida-quote"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "problem",
-  "quellen": [],
-  "screenshots": []
+  "quellen": [
+    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=style-summarizing-data-relationally"
+  ],
+  "screenshots": [],
+  "praxis": true
 }
 ---
 
@@ -53,18 +57,33 @@ Zeige Zähler und Nenner neben jeder Quote und bilde deren Summen.
 
 ## Schritte
 
-1. Erstelle eine Kopie der Auswertung oder beschränke sie auf synthetische Testdaten. Notiere den fehlerhaften Wert.
+1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
 2. Zeige Zähler und Nenner neben jeder Quote und bilde deren Summen.
 3. Berechne die Gesamtquote als Gesamtergebnis geteilt durch Gesamtbasis. SUMX nur verwenden, wenn die fachliche Kennzahl tatsächlich additiv über diese Zeilen sein soll.
 4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
+5. Den konkreten Bedienweg für die Korrektur findest du unter [Quote berechnen](#/wissen/ida-quote). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
 
 ## Beispiel
 
-A: 1/2 = 50 %, B: 9/10 = 90 %. Gesamt: 10/12 = 83,33 %, nicht 70 % oder 140 %.
+### Vorher · Fehlerbild
+
+| Beobachtung |
+| --- |
+| A: 1/2 = 50 %, B: 9/10 = 90 %. Gesamt: 10/12 = 83,33 %, nicht 70 % oder 140 %. |
+
+### Aktion
+
+Berechne die Gesamtquote als Gesamtergebnis geteilt durch Gesamtbasis. SUMX nur verwenden, wenn die fachliche Kennzahl tatsächlich additiv über diese Zeilen sein soll.
+
+### Nachher · Erwartete Kontrolle
+
+| Prüfergebnis |
+| --- |
+| Zähler 10 und Nenner 12 müssen in der Gesamtzeile separat sichtbar sein. |
 
 ## Ergebnis
 
-Zähler 10 und Nenner 12 müssen in der Gesamtzeile separat sichtbar sein.
+Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
 
 ## Typischer Fehler
 
@@ -73,3 +92,7 @@ Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten
 ## Plausibilitätscheck
 
 Zähler 10 und Nenner 12 müssen in der Gesamtzeile separat sichtbar sein.
+
+## Warum funktioniert das?
+
+Die Gesamtquote gewichtet nach den Fallzahlen. Ein einfacher Mittelwert der Gruppenquoten würde kleinen und großen Gruppen dasselbe Gewicht geben.

@@ -26,77 +26,120 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
+    "https://support.microsoft.com/en-us/excel/functions/subtotal-function",
     "https://support.microsoft.com/de-DE/Excel/functions/subtotal-function"
   ],
   "screenshots": [
     {
       "src": "images/excel/excel-teilergebnis.webp",
       "alt": "TEILERGEBNIS mit 109: zunächst ungefiltert ergibt die Summe 9.000.",
-      "caption": "TEILERGEBNIS mit 109: zunächst ungefiltert ergibt die Summe 9.000.",
+      "caption": "Ersatzaufnahme: Excel – TEILERGEBNIS: gefilterte Zeilen auswerten",
       "schritt": 5,
       "schema": false,
-      "status": "bereit",
-      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen."
+      "status": "ersetzen",
+      "hinweis": "Ältere Aufnahme: Zeigt nur die ungefilterte Summe; der didaktisch wichtige gefilterte Zustand fehlt. Maßgeblich sind die aktuellen Tabellen und Schritte im Artikel.",
+      "todo": "Zeigt nur die ungefilterte Summe; der didaktisch wichtige gefilterte Zustand fehlt.",
+      "aufnahmeplan": {
+        "prioritaet": "Mittel",
+        "werkzeug": "Excel",
+        "oberflaeche": "Excel – TEILERGEBNIS: gefilterte Zeilen auswerten",
+        "klickfolge": [
+          "Prüfe die benötigten Quellspalten. Im Beispiel stehen Kunde, Konto, Segment und Bestand in **A1:D4**; die Daten beginnen in Zeile 2.",
+          "Lege die Kriterien in eigenen Zellen außerhalb der Quelle ab: **Filter in Spalte C nur A**. Passe diese Bezüge für deine Liste an.",
+          "Aktiviere **Daten → Filter**. Öffne den Filterpfeil von Segment und wähle nur **A**.",
+          "Klicke in eine freie Ergebniszelle, im Beispiel **H2**, und gib die Formel aus dem Beispiel ein. Achte auf gleich große und gleich ausgerichtete Bereiche.",
+          "Bestätige mit Enter. Vergleiche die Ausgabe mit den tatsächlich passenden Ausgangszeilen."
+        ],
+        "daten": "| Zeile | A: Kunde | B: Konto | C: Segment | D: Bestand |\n| --- | --- | --- | --- | --- |\n| 1 | Kunde | Konto | Segment | Bestand |\n| 2 | P001 | K001 | A | 1000 |\n| 3 | P001 | K002 | B | 2000 |\n| 4 | P002 | K003 | A | 500 |\n\nFilter in Spalte C nur A",
+        "sichtbar": [
+          "TEILERGEBNIS: gefilterte Zeilen auswerten",
+          "Gewähltes Feld oder vollständige Formel",
+          "Ergebnis passend zu den Beispieldaten"
+        ],
+        "ausschnitt": "Relevantes Menü beziehungsweise Feldzuweisung und Ergebnis gemeinsam, mit lesbaren Namen. Große freie Flächen ausschließen.",
+        "dateiname": "excel-teilergebnis.webp",
+        "zweck": "Zeigt nur die ungefilterte Summe; der didaktisch wichtige gefilterte Zustand fehlt.",
+        "nichtZeigen": [
+          "Lokale Dateipfade",
+          "Benutzername",
+          "Andere Programme und Benachrichtigungen",
+          "Reale Unternehmensdaten"
+        ]
+      },
+      "bildAnzeigen": false
     }
   ],
   "praxis": true,
-  "kurzformel": "```excel\n=TEILERGEBNIS(109;Konten!D2:D7)\n```",
+  "kurzformel": "```excel\n=TEILERGEBNIS(109;D2:D4)\n```",
   "schnellschritte": [
-    "Quelldaten im Blatt Konten vorbereiten.",
-    "Formel in einer freien Zelle eingeben.",
-    "Ausgabe und Randfälle gegen das Beispiel prüfen."
+    "Quellbereiche und Kriterienzellen festlegen.",
+    "Formel in einer freien Ergebniszelle eingeben.",
+    "Ausgabe anhand der passenden Quellzeilen kontrollieren."
   ]
 }
 ---
 
 ## Wann brauche ich das?
 
-Du willst eine vorhandene Liste ohne manuelle Zuordnung reproduzierbar auswerten.
+Eine Summe für die nach Filterung sichtbaren Zeilen anzeigen.
 
 ## Voraussetzungen
 
-Deutsches Excel; für XVERWEIS und dynamische Arrays Microsoft 365 oder Excel 2021 oder neuer. Andere Sprachversionen verwenden andere Funktionsnamen und Trennzeichen.
+Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. XVERWEIS und dynamische Arrayfunktionen benötigen eine unterstützte Version, zum Beispiel Microsoft 365 oder Excel 2021/2024.
 
 ## Schritte
 
-1. Öffne eine leere Arbeitsmappe und benenne das erste Blatt Konten. Übertrage die Spaltenüberschriften des Beispiels nach A1:D1 und die sechs Datenzeilen nach A2:D7.
-2. Prüfe in D2:D7, dass die Beträge echte Zahlen sind. Gib 1250 ohne Tausenderpunkt ein; formatiere erst danach als Zahl.
-3. Lege über das Plus neben dem Blattregister ein Blatt Auswertung an. Klicke dort A2 an. Für dynamische Arrays müssen mindestens sechs Zeilen und vier Spalten frei sein.
-4. Kopiere die angegebene Formel in A2 und bestätige mit Enter. Nutze die Bereiche einschließlich Blattname exakt wie angegeben.
-5. Vergleiche die Ausgabe mit dem erwarteten Ergebnis. Bei Nachschlag teste zusätzlich den nicht vorhandenen Schlüssel K999.
-6. Ändere in der Quelldatei testweise den Betrag von K001 auf 1300. Beobachte die Neuberechnung, sofern die Funktion Beträge verwendet. Setze ihn anschließend wieder auf 1250.
-7. Prüfe bei neuen Daten, ob sie innerhalb der Formelbereiche liegen. Für dauerhaft wachsende Listen ist eine Excel-Tabelle mit strukturierten Bezügen vorzuziehen.
+1. Prüfe die benötigten Quellspalten. Im Beispiel stehen Kunde, Konto, Segment und Bestand in **A1:D4**; die Daten beginnen in Zeile 2.
+2. Lege die Kriterien in eigenen Zellen außerhalb der Quelle ab: **Filter in Spalte C nur A**. Passe diese Bezüge für deine Liste an.
+3. Aktiviere **Daten → Filter**. Öffne den Filterpfeil von Segment und wähle nur **A**.
+4. Klicke in eine freie Ergebniszelle, im Beispiel **H2**, und gib die Formel aus dem Beispiel ein. Achte auf gleich große und gleich ausgerichtete Bereiche.
+5. Bestätige mit Enter. Vergleiche die Ausgabe mit den tatsächlich passenden Ausgangszeilen.
+6. Prüfe einen zweiten Fall und fehlende Werte. Bei wachsenden Listen verwende Excel-Tabellen mit strukturierten Bezügen oder erweitere alle zusammengehörenden Bereiche.
 
 ## Beispiel
 
-| Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
-| --- | --- | --- | --- |
-| K001 | P001 | Einlagen | 1250 |
-| K002 | P001 | Anlagen | 750 |
-| K003 | P002 | Einlagen | 2000 |
-| K004 | P003 | Kredite | 3200 |
-| K005 | P003 | Einlagen | 800 |
-| K006 | P004 | Kredite | 1000 |
+### Vorher · Beispieldaten
+
+| Zeile | A: Kunde | B: Konto | C: Segment | D: Bestand |
+| --- | --- | --- | --- | --- |
+| 1 | Kunde | Konto | Segment | Bestand |
+| 2 | P001 | K001 | A | 1000 |
+| 3 | P001 | K002 | B | 2000 |
+| 4 | P002 | K003 | A | 500 |
+
+Filter in Spalte C nur A
+
+### Aktion
 
 ```excel
-=TEILERGEBNIS(109;Konten!D2:D7)
+=TEILERGEBNIS(109;D2:D4)
 ```
+
+### Nachher · Beispielergebnis
+
+| Ausgabe ab H2 |
+| --- |
+| 1500 |
 
 ## Ergebnis
 
-Ohne Filter 9.000; mit AutoFilter Personennummer = P001: 2.000.
+Eine Summe für die nach Filterung sichtbaren Zeilen anzeigen.
 
 ## Warum funktioniert das?
 
-109 bedeutet SUMME mit Ausschluss gefilterter und manuell ausgeblendeter Zeilen. 9 schließt nur gefilterte Zeilen aus.
+AutoFilter blendet K002 aus. Nur 1000 und 500 gehen in die sichtbare Summe ein.
 
 ## Typischer Fehler
 
-**Symptom und Ursache:** SUMME reagiert nicht wie TEILERGEBNIS auf ausgefilterte Zeilen. Die Formel muss außerhalb des Filterbereichs stehen. **Lösung:** Vergleiche Datentypen, Schlüssel und die markierten Formelbereiche, bevor du Fehler mit WENNFEHLER verdeckst.
+Eine normale SUMME verwenden und erwarten, dass Filter die Berechnung einschränken.
 
 ## Plausibilitätscheck
 
-P001 kommt genau zweimal vor und hat 1.250 + 750 = 2.000. Alle sechs Beträge ergeben 9.000. Prüfe außerdem einen leeren und einen nicht vorhandenen Suchwert.
+Erwartete Ausgabe: **1500**. Die Ausgangsliste umfasst drei Kontenzeilen, zwei Kunden und insgesamt 3500. Prüfe bei Kriterienwechsel die betreffenden Zeilen erneut.
+
+## Argumente verstehen
+
+**109** bedeutet Summe ohne manuell ausgeblendete Zeilen; **D2:D4** ist der Wertebereich. Gefilterte Zeilen werden auch bei Funktionsnummer 9 ignoriert.

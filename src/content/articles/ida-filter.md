@@ -10,7 +10,7 @@
   "kategorie": "Filter",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein Filter begrenzt die ausgewerteten Zeilen anhand einer ausdrücklich formulierten Bedingung.",
-  "ort": "IDA / Reporting: allgemeines Filterkonzept; Ausdruckssyntax TODO",
+  "ort": "Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt.",
   "tags": [
     "Filter erstellen",
     "Reporting"
@@ -18,16 +18,19 @@
   "synonyme": [],
   "verwandteThemen": [
     "ida-bedingungen",
-    "ida-null",
-    "ida-filter-pruefen"
+    "ida-filtertypen",
+    "ida-filter-pruefen",
+    "ida-null"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
+  "quellen": [
+    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=data-create-detail-summary-filter"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -39,18 +42,19 @@ Eine Liste soll nur Segment A am gewählten Stichtag enthalten.
 
 ## Voraussetzungen
 
-Allgemeines Reportingprinzip. Konkrete IDA-Bedienung nicht öffentlich belegt; Menüpfade und ausführbare Syntax bleiben TODO.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
-1. Formuliere die gewünschte Ergebniszeile: Welche fachliche Einheit soll genau einmal erscheinen?
-2. Übertrage das synthetische Mini-Beispiel in eine eigene Prüfliste. Notiere Zeilenzahl und Betrag vor der Änderung.
-3. Formuliere die Regel zunächst unabhängig vom Werkzeug: Pseudologik: Segment = A UND Stichtag = 31.03.2026.
-4. Lege die Regel in der öffentlich dokumentierten Reportingumgebung an. Für IDA gibt diese Seite bewusst keinen erfundenen Klickpfad vor.
-5. Führe den Bericht zuerst für die kleine Prüfliste aus und vergleiche das konkrete erwartete Ergebnis.
-6. Teste auch den beschriebenen Fehlerfall. Erst bei passender Kontrollsumme die Regel auf weitere synthetische Daten übertragen.
+1. Wähle eine Detailbedingung für Segment und eine echte Datumsbedingung für Stichtag.
+2. Prüfe die UND-Verknüpfung sowie alle bereits vorhandenen Filter.
+3. Notiere die fachliche Regel: **Segment A UND Stichtag 31.03.2026.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
+5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 
 ## Beispiel
+
+### Vorher · Beispieldaten
 
 | Person | Segment | Stichtag | Betrag |
 | --- | --- | --- | --- |
@@ -58,22 +62,30 @@ Allgemeines Reportingprinzip. Konkrete IDA-Bedienung nicht öffentlich belegt; M
 | P002 | B | 31.03.2026 | 80 |
 | P003 | A | 28.02.2026 | 50 |
 
+### Aktion
+
 ```text
-Pseudologik: Segment = A UND Stichtag = 31.03.2026
+Pseudologik: Segment A UND Stichtag 31.03.2026.
 ```
+
+### Nachher · Beispielergebnis
+
+| Person | Betrag |
+| --- | --- |
+| P001 | 120 |
 
 ## Ergebnis
 
-Nur P001, Betrag 120.
+Ein Filter begrenzt die ausgewerteten Zeilen anhand einer ausdrücklich formulierten Bedingung.
 
 ## Warum funktioniert das?
 
-UND verlangt beide Bedingungen. Ein Datumsvergleich benötigt einen Datumswert; ein angezeigtes Format genügt nicht.
+Beide Bedingungen müssen auf dieselbe Detailzeile zutreffen. Ein ODER würde auch die beiden jeweils nur teilweise passenden Datensätze einschließen.
 
 ## Typischer Fehler
 
-**Symptom/Ursache:** ODER würde zusätzlich P002 und P003 zulassen. **Lösung:** Regel auf die gewünschte Zeilenebene zurückführen und den Schnelltest wiederholen.
+**Symptom/Ursache:** ODER würde zusätzlich P002 und P003 zulassen.
 
 ## Plausibilitätscheck
 
-Prüfe einen Treffer sowie je eine Zeile, die an genau einer der beiden Bedingungen scheitert.
+Nur P001 bleibt; Betrag 120.

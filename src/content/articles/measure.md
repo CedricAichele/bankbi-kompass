@@ -17,84 +17,174 @@
   ],
   "synonyme": [],
   "verwandteThemen": [
+    "filterkontext",
+    "calculate",
     "measure-spalte",
     "sum",
-    "filterkontext"
+    "countrows",
+    "distinctcount",
+    "divide"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
-    "https://learn.microsoft.com/en-us/dax/sum-function-dax"
+    "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-measures",
+    "https://learn.microsoft.com/en-us/dax/sum-function-dax",
+    "https://learn.microsoft.com/en-us/dax/countrows-function-dax",
+    "https://learn.microsoft.com/en-us/dax/distinctcount-function-dax",
+    "https://learn.microsoft.com/en-us/dax/divide-function-dax"
   ],
   "screenshots": [
     {
+      "alt": "Bedienort: Power BI – Measures organisieren",
+      "caption": "Geplante Aufnahme: Power BI – Measures organisieren",
+      "schritt": 7,
+      "schema": false,
+      "status": "todo",
+      "todo": "Optionale Organisation ohne technische Pflicht zeigen.",
+      "aufnahmeplan": {
+        "prioritaet": "Mittel",
+        "werkzeug": "Power BI Desktop",
+        "oberflaeche": "Power BI – Measures organisieren",
+        "klickfolge": [
+          "Start → Daten eingeben; Kennzahlen mit einer Hilfsspalte und einer Zeile anlegen.",
+          "Measure Gesamtbestand auswählen.",
+          "Measuretools → Basistabelle → Kennzahlen wählen.",
+          "Hilfsspalte im Modell ausblenden."
+        ],
+        "daten": "| Kunde | Konto | Bestand |\n| --- | --- | --- |\n| P001 | K001 | 1000 |\n| P001 | K002 | 2000 |\n| P002 | K003 | 500 |",
+        "sichtbar": [
+          "Kennzahlen-Tabelle",
+          "Measure-Symbol",
+          "Basistabelle-Einstellung"
+        ],
+        "ausschnitt": "Power BI – Measures organisieren mit Kennzahlen-Tabelle, Measure-Symbol, Basistabelle-Einstellung. Auf den relevanten Dialog und die lesbaren Tabellenüberschriften begrenzen.",
+        "dateiname": "pbi-measure-tabelle.webp",
+        "zweck": "Optionale Organisation ohne technische Pflicht zeigen.",
+        "nichtZeigen": [
+          "Lokale Dateipfade",
+          "Benutzername oder Profil",
+          "Andere Programme und Benachrichtigungen",
+          "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
+        ]
+      }
+    },
+    {
       "src": "images/power-bi/pbi-measure.webp",
       "alt": "Neues Measure: Gesamtbestand = SUM(Konten[Bestand_EUR]).",
-      "caption": "Neues Measure: Gesamtbestand = SUM(Konten[Bestand_EUR]).",
+      "caption": "Ersatzaufnahme: Power BI – Neues Measure",
       "schritt": 2,
       "schema": false,
-      "status": "bereit",
-      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen."
+      "status": "ersetzen",
+      "hinweis": "Ältere Aufnahme: Formelleiste gut erkennbar, aber alte Tabelle Konten statt Fakt und kleine Schrift. An das neue Measure-Beispiel anpassen. Maßgeblich sind die aktuellen Tabellen und Schritte im Artikel.",
+      "todo": "Formelleiste gut erkennbar, aber alte Tabelle Konten statt Fakt und kleine Schrift. An das neue Measure-Beispiel anpassen.",
+      "aufnahmeplan": {
+        "prioritaet": "Hoch",
+        "werkzeug": "Power BI Desktop",
+        "oberflaeche": "Power BI – Neues Measure",
+        "klickfolge": [
+          "Tabelle Fakt mit den Beispieldaten laden.",
+          "Im Datenbereich Fakt auswählen.",
+          "Modellierung → Neues Measure; Gesamtbestand = SUM ( Fakt[Bestand] ) eingeben."
+        ],
+        "daten": "| Kunde | Konto | Bestand |\n| --- | --- | --- |\n| P001 | K001 | 1000 |\n| P001 | K002 | 2000 |\n| P002 | K003 | 500 |",
+        "sichtbar": [
+          "Formelleiste mit Name und Formel",
+          "Tabelle Fakt im Datenbereich"
+        ],
+        "ausschnitt": "Power BI – Neues Measure mit Formelleiste mit Name und Formel, Tabelle Fakt im Datenbereich. Auf den relevanten Dialog und die lesbaren Tabellenüberschriften begrenzen.",
+        "dateiname": "pbi-measure-formelleiste.webp",
+        "zweck": "Bedienort und vollständigen Ausdruck sichtbar machen.",
+        "nichtZeigen": [
+          "Lokale Dateipfade",
+          "Benutzername oder Profil",
+          "Andere Programme und Benachrichtigungen",
+          "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
+        ]
+      },
+      "bildAnzeigen": true
     }
   ],
   "praxis": true,
-  "kurzformel": "```dax\nGesamtbestand = SUM ( Konten[Bestand_EUR] )\n```",
+  "kurzformel": "```dax\nGesamtbestand = SUM ( Fakt[Bestand] )\n```",
   "schnellschritte": [
-    "Tabelle Konten mit synthetischen Daten laden.",
-    "Neues Measure mit der angegebenen Formel erstellen.",
-    "Ergebnis ohne Filter und mit Slicer vergleichen."
+    "Im Datenbereich die gewünschte Basistabelle auswählen.",
+    "Modellierung → Neues Measure; Name und Formel eingeben.",
+    "Im Visual mit und ohne Filter kontrollieren."
   ]
 }
 ---
 
 ## Wann brauche ich das?
 
-Du möchtest eine wiederverwendbare Kennzahl, die auf den Bericht reagiert.
+Eine Kennzahl soll für die aktuelle Auswahl im Bericht berechnet werden.
 
 ## Voraussetzungen
 
-Power BI Desktop im Importmodus. Die Tabelle wird im ersten Schritt angelegt; ein separates Modell ist für dieses Beispiel nicht nötig.
+Eine geladene Faktentabelle mit numerischen Beträgen und geeigneten Schlüsseln.
 
 ## Schritte
 
-1. Lege in Power BI Desktop über **Start → Daten eingeben** die Tabelle `Konten` mit den sechs Zeilen aus dem Beispiel an. Alle Beträge beziehen sich auf denselben Stichtag. Setze Bestand_EUR auf Zahl und die Kennungen auf Text.
-2. Wähle **Modellierung → Neues Measure**. Ersetze den gesamten Vorgabetext in der Formelleiste durch die Formel im Beispiel.
-3. Bestätige mit Enter. Bei lokalisierter DAX-Trennzeicheneinstellung Kommas gegebenenfalls durch Semikolons ersetzen. Prüfe, ob das Measure ohne Fehlermeldung im Datenbereich erscheint.
-4. Füge im Bericht ein Tabellenvisual hinzu. Ziehe `Personennummer` und das neue Measure in die Tabelle. Für die Gesamtprüfung verwende zusätzlich eine Karte mit nur dem Measure.
-5. Füge einen Datenschnitt mit `Konten[Produktgruppe]` hinzu. Wähle zunächst Einlagen und vergleiche mit den erwarteten Zahlen.
-6. Entferne die Auswahl über das Radierersymbol des Datenschnitts. Teste anschließend den beschriebenen Personenfilter und kontrolliere den Unterschied.
+1. Wähle im **Datenbereich** die Tabelle, in der das Measure organisiert werden soll. Im Beispiel heißt sie **Fakt**.
+2. Wähle **Modellierung → Neues Measure**. Ersetze in der Formelleiste den Vorgabetext durch **Gesamtbestand = SUM ( Fakt[Bestand] )**.
+3. Bestätige mit Enter. Der Name vor dem Gleichheitszeichen ist der wiederverwendbare Anzeigename; die Formel dahinter berechnet das Ergebnis.
+4. Ziehe **Gesamtbestand** in ein Karten- oder Tabellenvisual. Im Beispiel ergibt die ungefilterte Karte 3500.
+5. Füge einen Datenschnitt aus **Fakt[Kunde]** hinzu und wähle P001. Das Measure wird im neuen Kontext erneut ausgewertet und liefert 3000.
+6. Lege bei Bedarf weitere Measures jeweils einzeln mit **Neues Measure** an. Passe ihre Namen an die fachliche Bedeutung an.
+7. Optional: Organisiere Measures in einer eigenen Tabelle. Erzeuge über **Start → Daten eingeben** eine kleine Tabelle **Kennzahlen** mit einer Hilfsspalte. Wähle für vorhandene Measures unter **Measuretools → Basistabelle** diese Tabelle und blende die Hilfsspalte aus. Die Tabelle ist nur eine Organisationshilfe.
 
 ## Beispiel
 
-| Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
-| --- | --- | --- | --- |
-| K001 | P001 | Einlagen | 1250 |
-| K002 | P001 | Anlagen | 750 |
-| K003 | P002 | Einlagen | 2000 |
-| K004 | P003 | Kredite | 3200 |
-| K005 | P003 | Einlagen | 800 |
-| K006 | P004 | Kredite | 1000 |
+### Vorher · Beispieldaten
+
+**Fakt**
+
+| Kunde | Konto | Bestand |
+| --- | --- | --- |
+| P001 | K001 | 1000 |
+| P001 | K002 | 2000 |
+| P002 | K003 | 500 |
+
+### Aktion
 
 ```dax
-Gesamtbestand = SUM ( Konten[Bestand_EUR] )
+Gesamtbestand = SUM ( Fakt[Bestand] )
+Anzahl Zeilen = COUNTROWS ( Fakt )
+Kunden = DISTINCTCOUNT ( Fakt[Kunde] )
+
+// Teil und Gesamt müssen bereits vorhandene Measures sein:
+Quote = DIVIDE ( [Teil], [Gesamt] )
 ```
+
+### Nachher · Beispielergebnis
+
+| Kontext | Gesamtbestand | Anzahl Zeilen | Kunden |
+| --- | --- | --- | --- |
+| Keine Auswahl | 3500 | 3 | 2 |
+| Kunde P001 | 3000 | 2 | 1 |
+
+Für Teil = 30 und Gesamt = 100 ergibt Quote 0,3; als Prozent formatiert 30 %.
 
 ## Ergebnis
 
-Eine Karte zeigt 9.000; der Slicer P003 reduziert den Wert auf 4.000.
+Ein benanntes Measure liefert bei jeder Abfrage eine Kennzahl für den jeweiligen Filterkontext.
 
 ## Warum funktioniert das?
 
-Ein Measure speichert die Rechenvorschrift. Es wird für jeden Visualkontext neu ausgewertet und benötigt keine eigene Ergebniszelle je Datenzeile.
+Das Measure speichert keine feste Zahl je Datenzeile. Ein Slicer, eine Visualzeile und aktive Beziehungen bestimmen, welche Daten bei der Auswertung berücksichtigt werden. Darum ändert sich dieselbe Formel mit der Auswahl.
 
 ## Typischer Fehler
 
-**Symptom:** Ein Zahlenfeld mit Summenzeichen statt des gewünschten Measures. **Ursache:** neue Spalte statt neues Measure gewählt. **Lösung:** Modellierung → Neues Measure verwenden.
+Ein Measure mit einer berechneten Spalte verwechseln oder aus der Basistabelle seine Berechnungslogik ableiten: Die Basistabelle organisiert das Measure, sie begrenzt nicht automatisch dessen Daten.
 
 ## Plausibilitätscheck
 
-Stelle Personennummer und Gesamtbestand in eine Tabelle: 2.000, 2.000, 4.000, 1.000.
+Ohne Filter 3500, bei P001 3000; drei Zeilen enthalten nur zwei unterschiedliche Kunden. Ein leerer oder nullwertiger Nenner liefert bei DIVIDE ohne Alternative BLANK.
+
+## Measures organisieren
+
+Eine eigene Kennzahlentabelle erleichtert das Finden, ist aber technisch nicht erforderlich. Alternativ bleiben Measures bei ihrer fachlich passenden Tabelle und werden über Anzeigeordner gruppiert. Ausgeblendete technische Spalten vereinfachen den Datenbereich; sie ändern keine Berechnung.

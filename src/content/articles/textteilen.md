@@ -4,42 +4,86 @@
   "slug": "textteilen",
   "titel": "TEXTTEILEN: Text dynamisch verteilen",
   "bereich": "Excel",
-  "werkzeuge": ["Excel"],
+  "werkzeuge": [
+    "Excel"
+  ],
   "kategorie": "Text",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "TEXTTEILEN teilt Text anhand eines Trennzeichens in mehrere Zellen. Der Ausgabebereich muss frei sein.",
   "ort": "Excel → Formelzelle",
-  "tags": ["TEXTTEILEN: Text dynamisch verteilen"],
-  "synonyme": ["textteilen"],
-  "verwandteThemen": ["excel-text-teilen", "text-trennzeichen"],
-  "kontexte": ["Reporting"],
+  "tags": [
+    "TEXTTEILEN: Text dynamisch verteilen"
+  ],
+  "synonyme": [
+    "textteilen"
+  ],
+  "verwandteThemen": [
+    "excel-text-teilen",
+    "text-trennzeichen"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-17",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen":
-    ["https://support.microsoft.com/de-de/excel/text-functions-reference"],
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/functions/textsplit-function",
+    "https://support.microsoft.com/de-de/excel/text-functions-reference"
+  ],
   "screenshots": [],
+  "praxis": true,
+  "kurzformel": "```excel\n=TEXTTEILEN(A2;\"-\")\n```"
 }
 ---
 
 ## Wann brauche ich das?
 
-Eine Demo-Liste enthält mehrere Produktgruppen in einer Zelle.
+Einen Text an Trennzeichen in mehrere Zellen aufteilen.
+
+## Voraussetzungen
+
+Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Excel angegeben; Hinweise zu neueren Funktionen stehen beim jeweiligen Beispiel.
 
 ## Schritte
 
-1. In Microsoft 365 / Excel 2024 eine freie Ausgabezelle wählen.
-2. Text und Spaltentrennzeichen angeben.
-3. Leere Elemente und die Breite des Ergebnisses prüfen.
+1. Prüfe die Ausgangszellen und ihre Bedeutung: **A2 = P001-K001**. Die Zelladressen dienen als Beispiel und können auf die eigene Liste angepasst werden.
+2. Wähle eine freie Ergebniszelle **H2** und gib die Formel ein. Bei TEXTTEILEN auch I2 freihalten.
+3. Bestätige mit Enter. Für Datumsergebnisse öffne **Start → Zahlenformat** und wähle ein passendes Datumformat.
+4. Vergleiche das Ergebnis mit dem Beispiel und prüfe mindestens einen leeren oder anders aufgebauten Ausgangswert, bevor du die Formel nach unten kopierst.
 
 ## Beispiel
 
+### Vorher · Beispieldaten
+
+| Ausgangswerte |
+| --- |
+| A2 = P001-K001 |
+
+### Aktion
+
 ```excel
-=TEXTTEILEN(A2;";")
+=TEXTTEILEN(A2;"-")
 ```
 
-A;B;C wird zu drei nebeneinanderliegenden Zellen.
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| H2: P001; I2: K001 |
+
+## Ergebnis
+
+Einen Text an Trennzeichen in mehrere Zellen aufteilen.
+
+## Warum funktioniert das?
+
+Das Spaltentrennzeichen - erzeugt zwei benachbarte Ergebniszellen. Die Quelle bleibt erhalten.
 
 ## Typischer Fehler
 
-Die Formel in einer Excel-Tabelle ausgeben, in der dynamische Arrays nicht überlaufen können.
+Den Überlaufbereich blockieren. TEXTTEILEN benötigt Microsoft 365 oder Excel 2024.
+
+## Plausibilitätscheck
+
+Für die genannten Ausgangswerte wird **H2: P001; I2: K001** erwartet. Die Originalzellen bleiben unverändert; ergänzte Ergebniszellen werden separat geprüft.

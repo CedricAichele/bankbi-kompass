@@ -25,7 +25,7 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/removefilters-function-dax"
@@ -34,7 +34,7 @@
   "praxis": true,
   "kurzformel": "```dax\nBestand alle Produkte = CALCULATE ( SUM ( Konten[Bestand_EUR] ), REMOVEFILTERS ( Konten[Produktgruppe] ) )\n```",
   "schnellschritte": [
-    "Tabelle Konten mit synthetischen Daten laden.",
+    "Vorhandene Tabelle und benötigte Datentypen prüfen.",
     "Neues Measure mit der angegebenen Formel erstellen.",
     "Ergebnis ohne Filter und mit Slicer vergleichen."
   ]
@@ -47,11 +47,11 @@ Ein Nenner soll den Produktfilter ignorieren, den Personenfilter aber behalten.
 
 ## Voraussetzungen
 
-Power BI Desktop im Importmodus. Die Tabelle wird im ersten Schritt angelegt; ein separates Modell ist für dieses Beispiel nicht nötig.
+Ein vorhandenes Power-BI-Modell mit den im Ausdruck verwendeten Tabellen, Spalten und gegebenenfalls Basismeasures.
 
 ## Schritte
 
-1. Lege in Power BI Desktop über **Start → Daten eingeben** die Tabelle `Konten` mit den sechs Zeilen aus dem Beispiel an. Alle Beträge beziehen sich auf denselben Stichtag. Setze Bestand_EUR auf Zahl und die Kennungen auf Text.
+1. Verwende eine geladene Tabelle mit den im Ausdruck benötigten Feldern. Prüfe die Datentypen. Die Namen und frei erfundenen Werte im Beispiel illustrieren die Formel; passe Tabellen- und Spaltennamen an dein Modell an.
 2. Wähle **Modellierung → Neues Measure**. Ersetze den gesamten Vorgabetext in der Formelleiste durch die Formel im Beispiel.
 3. Bestätige mit Enter. Bei lokalisierter DAX-Trennzeicheneinstellung Kommas gegebenenfalls durch Semikolons ersetzen. Prüfe, ob das Measure ohne Fehlermeldung im Datenbereich erscheint.
 4. Füge im Bericht ein Tabellenvisual hinzu. Ziehe `Personennummer` und das neue Measure in die Tabelle. Für die Gesamtprüfung verwende zusätzlich eine Karte mit nur dem Measure.
@@ -59,6 +59,8 @@ Power BI Desktop im Importmodus. Die Tabelle wird im ersten Schritt angelegt; ei
 6. Entferne die Auswahl über das Radierersymbol des Datenschnitts. Teste anschließend den beschriebenen Personenfilter und kontrolliere den Unterschied.
 
 ## Beispiel
+
+### Vorher · Beispieldaten
 
 | Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
 | --- | --- | --- | --- |
@@ -69,13 +71,20 @@ Power BI Desktop im Importmodus. Die Tabelle wird im ersten Schritt angelegt; ei
 | K005 | P003 | Einlagen | 800 |
 | K006 | P004 | Kredite | 1000 |
 
+
+### Aktion
+
 ```dax
 Bestand alle Produkte = CALCULATE ( SUM ( Konten[Bestand_EUR] ), REMOVEFILTERS ( Konten[Produktgruppe] ) )
 ```
 
-## Ergebnis
+### Nachher · Beispielergebnis
 
 P003 und Einlagen ausgewählt: 4.000 im Measure, 800 in der ungeänderten Summe.
+
+## Ergebnis
+
+Gezielt ausgewählte Filter werden innerhalb einer Berechnung aufgehoben.
 
 ## Warum funktioniert das?
 

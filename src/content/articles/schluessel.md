@@ -17,6 +17,8 @@
   ],
   "synonyme": [],
   "verwandteThemen": [
+    "kardinalitaet",
+    "pq-text",
     "granularitaet",
     "dubletten"
   ],
@@ -24,46 +26,75 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-bi/guidance/star-schema"
   ],
-  "screenshots": []
+  "screenshots": [],
+  "praxis": true
 }
 ---
 
-
 ## Wann brauche ich das?
 
-Beziehungen oder Nachschlagen ergeben falsche Treffer.
+Datensätze zuverlässig über Tabellen und Aktualisierungen hinweg zuordnen.
+
+## Voraussetzungen
+
+Tabellen mit bekanntem fachlichem Aufbau und passenden Schlüsseln. Das folgende Modell ist ein frei erfundenes Beispiel.
 
 ## Schritte
 
-1. Die gewünschte Einheit bestimmen: Person, Konto oder Konto am Stichtag.
-2. Kennung als konsistenten Datentyp behandeln und Eindeutigkeit prüfen.
-3. Bei zusammengesetzten Schlüsseln Bestandteile eindeutig kombinieren; Kollisionen testen.
+1. Definiere die Identität: Kunde, Konto oder Konto und Stichtag sind verschiedene Schlüsselaufgaben.
+2. Verwende einen stabilen, fachlich passenden Quellschlüssel. Namen oder Zeilenpositionen sind in der Regel ungeeignet.
+3. Vereinheitliche Datentyp, Leerzeichen und erforderlichenfalls Schreibweise vor dem Vergleich. Erhalte führende Nullen.
+4. Prüfe Eindeutigkeit auf der Dimensionsseite und fehlende Gegenstücke auf der Faktseite.
+5. Wenn mehrere Felder gemeinsam eindeutig sind, verwende einen zuverlässig gebildeten kombinierten Schlüssel oder einen gepflegten technischen Schlüssel. Vermeide uneindeutige Verkettungen ohne Trennregel.
 
 ## Beispiel
 
-Konto K001 plus Stichtag 31.03.2026 identifiziert eine Bestandszeile; K001 allein identifiziert das Konto.
+### Vorher · Beispieldaten
+
+**DimKunde**
+
+| Kunde | Segment |
+| --- | --- |
+| P001 | A |
+| P002 | B |
+
+**FaktKonten**
+
+| Kunde | Konto | Bestand |
+| --- | --- | --- |
+| P001 | K001 | 1000 |
+| P001 | K002 | 2000 |
+| P002 | K003 | 500 |
+
+### Aktion
+
+P001 als Kundenschlüssel, K001 als Kontoschlüssel verwenden.
+
+### Nachher · Beispielergebnis
+
+| Feld | Geeignet wofür? |
+| --- | --- |
+| P001 | Kunde über Tabellen zuordnen |
+| K001 + 31.01.2026 | Kontobestand an einem Tag identifizieren |
+| Zeile 1 | Keine dauerhafte fachliche Identität |
+
+## Ergebnis
+
+Jeder Datensatz lässt sich auf der vorgesehenen Ebene verlässlich identifizieren und zuordnen.
+
+## Warum funktioniert das?
+
+Ein Schlüssel trägt Identität, nicht bloß eine optisch eindeutige Beschriftung. Eine Umbenennung oder neue Sortierung darf die Zuordnung nicht verändern.
 
 ## Typischer Fehler
 
-Textteile ohne Trennregel verketten: 1+23 und 12+3 könnten beide 123 ergeben.
+Einen neu berechneten Index als dauerhaft stabilen Kundenschlüssel einsetzen, obwohl sich die Quellsortierung ändern kann.
 
-## Einfach erklärt
+## Plausibilitätscheck
 
-Ein Schlüssel ordnet Datensätze zu. Ein Primärschlüssel ist eindeutig; ein Fremdschlüssel verweist auf diese Kennung in einer anderen Tabelle.
-
-## Mini-Beispiel
-
-Personen.P001 einmal; Konten enthält P001 als Fremdschlüssel zweimal.
-
-## Warum ist das wichtig?
-
-Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Nummerisch aussehende Kennungen als berechenbare Zahlen behandeln und führende Nullen verlieren.
-
-## Wo taucht das auf?
-
-XVERWEIS, Merge und Modellbeziehung.
+Jede Faktkennung findet genau den vorgesehenen Dimensionsdatensatz; neue Lieferungen verändern alte Identitäten nicht.

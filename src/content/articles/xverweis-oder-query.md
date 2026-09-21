@@ -27,10 +27,15 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
-  "screenshots": []
+  "quellen": [
+    "https://support.microsoft.com/en-us/excel/functions/xlookup-function",
+    "https://learn.microsoft.com/en-us/power-query/merge-queries-overview",
+    "https://learn.microsoft.com/en-us/power-query/connectors/folder"
+  ],
+  "screenshots": [],
+  "praxis": true
 }
 ---
 
@@ -47,7 +52,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Beispiel
 
+### Ausgangslage und Entscheidung
+
 Ein Konto im Eingabefeld nachschlagen: XVERWEIS. Jeden Monat fünf Dateien harmonisieren: Power Query.
+
+| Alternative | Geeignet, wenn |
+| --- | --- |
+| XVERWEIS | wenige Werte interaktiv in einer Arbeitsmappe nachgeschlagen werden. |
+| Power Query | regelmäßige Zusammenführungen vieler Zeilen reproduzierbar beim Laden erfolgen sollen. |
 
 ## Typischer Fehler
 
@@ -63,3 +75,15 @@ Keine der Methoden klärt automatisch mehrdeutige Schlüssel.
 ## Merksatz
 
 Zellantwort oder wiederholbarer Datenprozess?
+
+## Warum funktioniert das?
+
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **XVERWEIS**, wenn wenige Werte interaktiv in einer Arbeitsmappe nachgeschlagen werden. Nimm **Power Query**, wenn regelmäßige Zusammenführungen vieler Zeilen reproduzierbar beim Laden erfolgen sollen.
+
+## Ergebnis
+
+Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+
+## Plausibilitätscheck
+
+Keine der Methoden klärt automatisch mehrdeutige Schlüssel. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.

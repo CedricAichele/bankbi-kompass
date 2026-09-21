@@ -26,10 +26,14 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
-  "screenshots": []
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-relationships-understand",
+    "https://learn.microsoft.com/en-us/power-query/merge-queries-overview"
+  ],
+  "screenshots": [],
+  "praxis": true
 }
 ---
 
@@ -46,7 +50,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Beispiel
 
+### Ausgangslage und Entscheidung
+
 Personenslicer filtert Konten über eine Beziehung. Segment in einer exportierbaren Kontenliste wird per Merge ergänzt.
+
+| Alternative | Geeignet, wenn |
+| --- | --- |
+| Beziehung | getrennte Tabellen im Modell über einen eindeutigen Schlüssel filtern sollen. |
+| Merge | ein Attribut beim Laden physisch an die Ergebniszeilen angefügt werden soll. |
 
 ## Typischer Fehler
 
@@ -62,3 +73,15 @@ Mehrere rechte Treffer können beim Merge Zeilen vervielfachen.
 ## Merksatz
 
 Filterweg im Modell oder neue Spalten beim Laden?
+
+## Warum funktioniert das?
+
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **Beziehung**, wenn getrennte Tabellen im Modell über einen eindeutigen Schlüssel filtern sollen. Nimm **Merge**, wenn ein Attribut beim Laden physisch an die Ergebniszeilen angefügt werden soll.
+
+## Ergebnis
+
+Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+
+## Plausibilitätscheck
+
+Mehrere rechte Treffer können beim Merge Zeilen vervielfachen. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.

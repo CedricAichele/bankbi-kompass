@@ -9,8 +9,8 @@ import { parseContent, stepsOf, sectionsOf } from "../content/schema";
 describe("Vertiefte Praxis und Orientierung", () => {
   it("zeigt längere Schrittfolgen, sichtbare Ergebnisse und aufklappbare Erklärungen", () => {
     render(<MemoryRouter initialEntries={["/wissen/xverweis"]}><Routes><Route path="/wissen/:slug" element={<Reference favorites={[]} onToggle={() => {}} />} /></Routes></MemoryRouter>);
-    expect(screen.getByRole("heading", {name:"Ergebnis"})).toBeInTheDocument();
-    expect(screen.getByRole("heading", {name:"Schritt 7"})).toBeInTheDocument();
+    expect(screen.getByRole("heading", {name:"Allgemeines Ergebnis"})).toBeInTheDocument();
+    expect(screen.getByRole("heading", {name:"Schritt 5"})).toBeInTheDocument();
     expect(screen.getByText("Warum funktioniert das?").closest("details")).not.toHaveAttribute("open");
   });
   it("erreichbar macht bestehende Grundbegriffe ohne Kopien derselben Inhalte", () => {

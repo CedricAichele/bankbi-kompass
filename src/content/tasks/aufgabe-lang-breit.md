@@ -28,9 +28,11 @@
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/pivot-columns"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -42,20 +44,37 @@ Eine Person soll je Produktgruppe eine Betragsspalte erhalten.
 
 ## Schritte
 
-1. Zielzeile und Kategorie festlegen.
-2. Überzählige Detailfelder entfernen; Werte fachlich aggregieren.
-3. Pivotieren und Gesamtsumme gegen die Quelle prüfen.
-4. Öffne die [konkrete Pivotieren: von lang nach breit-Anleitung](#/wissen/pivotieren) und baue deren synthetisches Beispiel nach.
-5. Übertrage die dort beschriebene Werkzeugaktion auf die Ausgangsdaten dieser Aufgabe; ersetze Feldnamen bewusst, nicht nur per Textsuche.
-6. Prüfe diesen Gegenfall: Jede Person-Monat-Kombination muss eindeutig sein oder eine explizite Aggregationsregel besitzen.
+1. Definiere das gewünschte Ergebnis und den fachlichen Schlüssel jeder Ergebniszeile. Notiere Zeilenzahl und eine geeignete Kontrollsumme der Quelle.
+2. Prüfe die Eingabefelder und Datentypen anhand der Ausgangstabelle im Beispiel. Übertrage die dort verwendeten Namen bewusst auf deine Daten.
+3. Nutze die konkrete [Pivotieren: von lang nach breit-Anleitung](#/wissen/pivotieren). Sie zeigt Bedienort, Auswahl und Einstellungen für diese Operation.
+4. Vergleiche das Ergebnis mit den passenden Quellzeilen und der unten genannten Kontrolle. Kläre Mehrfachtreffer oder fehlende Werte vor der Weiterverwendung.
+5. Prüfe auch den im Fehlerabschnitt genannten Gegenfall. Halte eine fachlich begründete Änderung der Zeilenzahl oder Summe fest.
 
 ## Beispiel
 
-P001/A/10 und P001/B/20 → P001 mit A=10, B=20.
+### Vorher · Beispieldaten
+
+| Kunde | Monat | Betrag |
+| --- | --- | --- |
+| P001 | Jan | 10 |
+| P001 | Feb | 15 |
+| P002 | Jan | 20 |
+| P002 | Feb | 25 |
+
+### Aktion
+
+Monat pivotieren; Betrag als Wert verwenden.
+
+### Nachher · Beispielergebnis
+
+| Kunde | Jan | Feb |
+| --- | --- | --- |
+| P001 | 10 | 15 |
+| P002 | 20 | 25 |
 
 ## Typischer Fehler
 
-Konto-ID stehen lassen und damit eine Personenverdichtung verhindern.
+Eine zusätzliche Detailspalte unverändert behalten und sich über mehrere Zeilen je Kunde wundern.
 
 ## Vergleich
 
@@ -66,12 +85,16 @@ Konto-ID stehen lassen und damit eine Personenverdichtung verhindern.
 
 ## Ergebnis
 
-P001/Januar/10 und P001/Februar/20 werden zu einer Personenzeile mit zwei Monatsspalten.
+Aus Kategorien in einer Spalte werden mehrere Wertespalten.
 
 ## Warum funktioniert das?
 
-Pivotieren bildet Attributwerte auf Spalten ab.
+Die verbleibenden Spalten identifizieren eine Ergebniszeile. Ein Wert wird am Schnittpunkt aus diesem Schlüssel und der pivotierten Kategorie abgelegt.
 
 ## Plausibilitätscheck
 
-Jede Person-Monat-Kombination muss eindeutig sein oder eine explizite Aggregationsregel besitzen.
+Vier Betragswerte ergeben vier gefüllte Zellen in zwei Kundenzeilen; Summe 70.
+
+## Voraussetzungen
+
+Ein vorhandener Datenbestand mit bekannter Zeilenebene und Zugriff auf das gewählte Werkzeug. Die Beispielwerte veranschaulichen ausschließlich den Ablauf.

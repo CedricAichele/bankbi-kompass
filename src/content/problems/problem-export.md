@@ -32,8 +32,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "problem",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=reports-viewing-interacting"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -55,18 +58,33 @@ Vergleiche Zeilenzahl, Kontrollsumme und eine Kennung mit führenden Nullen vor/
 
 ## Schritte
 
-1. Erstelle eine Kopie der Auswertung oder beschränke sie auf synthetische Testdaten. Notiere den fehlerhaften Wert.
+1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
 2. Vergleiche Zeilenzahl, Kontrollsumme und eine Kennung mit führenden Nullen vor/nach Export.
 3. Importiere CSV über Daten → Aus Text/CSV. Lege Typen und Gebietsschema ausdrücklich fest; prüfe Exportbegrenzungen anhand öffentlicher Werkzeugdokumentation.
 4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
+5. Den konkreten Bedienweg für die Korrektur findest du unter [Excel-Export kontrollieren](#/wissen/ida-excel-export). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
 
 ## Beispiel
 
-00123 wird bei automatischer Zahleninterpretation zu 123.
+### Vorher · Fehlerbild
+
+| Beobachtung |
+| --- |
+| 00123 wird bei automatischer Zahleninterpretation zu 123. |
+
+### Aktion
+
+Importiere CSV über Daten → Aus Text/CSV. Lege Typen und Gebietsschema ausdrücklich fest; prüfe Exportbegrenzungen anhand öffentlicher Werkzeugdokumentation.
+
+### Nachher · Erwartete Kontrolle
+
+| Prüfergebnis |
+| --- |
+| Kennung unverändert fünfstellig, Betrag numerisch und Summe identisch. |
 
 ## Ergebnis
 
-Kennung unverändert fünfstellig, Betrag numerisch und Summe identisch.
+Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
 
 ## Typischer Fehler
 
@@ -75,3 +93,7 @@ Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten
 ## Plausibilitätscheck
 
 Kennung unverändert fünfstellig, Betrag numerisch und Summe identisch.
+
+## Warum funktioniert das?
+
+Die korrekte Bildschirmdarstellung garantiert keinen korrekten Export. Ausgabeformat und spätere Interpretation sind getrennte Verarbeitungsschritte.

@@ -10,7 +10,7 @@
   "kategorie": "Mehrfachzeilen / Joins",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Vergleiche Zeilen, eindeutige Schlüssel, Kontrollsummen und fehlende Treffer vor und nach jeder Verknüpfung.",
-  "ort": "IDA / Reporting: allgemeines Prüfverfahren",
+  "ort": "Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt.",
   "tags": [
     "Ergebnis vor / nach Join plausibilisieren",
     "Datenqualität"
@@ -19,17 +19,21 @@
     "mehr zeilen nach join"
   ],
   "verwandteThemen": [
-    "eins-zu-viele",
     "ida-join-aggregation",
+    "kardinalitaet",
+    "problem-merge-zeilen",
+    "eins-zu-viele",
     "zusammenfuehren"
   ],
   "kontexte": [
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
+  "quellen": [
+    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=relationships-creating-relationship-manually"
+  ],
   "screenshots": [
     {
       "src": "images/ida/eins-zu-viele.svg",
@@ -51,42 +55,54 @@ Nach einer Zuordnung verändern sich Zeilenzahl und Summen.
 
 ## Voraussetzungen
 
-Allgemeines Reportingprinzip. Konkrete IDA-Bedienung nicht öffentlich belegt; Menüpfade und ausführbare Syntax bleiben TODO.
+Allgemeines Cognos-/Reportingprinzip für relationale Daten. Konkreter IDA-Menüweg nicht öffentlich belegt. Beispiele und Feldnamen sind frei erfunden.
 
 ## Schritte
 
-1. Formuliere die gewünschte Ergebniszeile: Welche fachliche Einheit soll genau einmal erscheinen?
-2. Übertrage das synthetische Mini-Beispiel in eine eigene Prüfliste. Notiere Zeilenzahl und Betrag vor der Änderung.
-3. Formuliere die Regel zunächst unabhängig vom Werkzeug: Pseudologik: linker Join über Person, danach rechte Attribute erweitern.
-4. Lege die Regel in der öffentlich dokumentierten Reportingumgebung an. Für IDA gibt diese Seite bewusst keinen erfundenen Klickpfad vor.
-5. Führe den Bericht zuerst für die kleine Prüfliste aus und vergleiche das konkrete erwartete Ergebnis.
-6. Teste auch den beschriebenen Fehlerfall. Erst bei passender Kontrollsumme die Regel auf weitere synthetische Daten übertragen.
+1. Notiere vor dem Join zwei linke Zeilen und Summe 200.
+2. Prüfe rechte Schlüssel auf Mehrfachtreffer und entscheide, ob diese fachlich gewünscht sind.
+3. Notiere die fachliche Regel: **Linker Join über Person; rechte Merkmale ergänzen.**. Syntax und verfügbare Funktionen sind in der Dokumentation der eingesetzten Umgebung zu prüfen.
+4. Wende die Regel auf einen überschaubaren, bekannten Datenbereich an. Vergleiche jede erwartete Ergebniszeile mit der Ausgabe.
+5. Kontrolliere zusätzlich den beschriebenen Grenz- oder Fehlerfall und dokumentiere Zähleinheit, Filter und Aggregation.
 
 ## Beispiel
 
-| Linke Zeile | Person | Betrag |
-| --- | --- | --- |
-| K001 | P001 | 120 |
-| K002 | P002 | 80 |
+### Vorher · Beispieldaten
 
-Rechts steht P001 zweimal und P002 einmal.
+| Seite | Schlüssel | Wert |
+| --- | --- | --- |
+| Links | P001/K001 | 120 |
+| Links | P002/K002 | 80 |
+| Rechts | P001 | A |
+| Rechts | P001 | B |
+| Rechts | P002 | C |
+
+### Aktion
 
 ```text
-Pseudologik: linker Join über Person, danach rechte Attribute erweitern
+Pseudologik: Linker Join über Person; rechte Merkmale ergänzen.
 ```
+
+### Nachher · Beispielergebnis
+
+| Konto | Betrag | Merkmal |
+| --- | --- | --- |
+| K001 | 120 | A |
+| K001 | 120 | B |
+| K002 | 80 | C |
 
 ## Ergebnis
 
-Aus 2 Zeilen / 200 werden 3 Zeilen / 320.
+Vergleiche Zeilen, eindeutige Schlüssel, Kontrollsummen und fehlende Treffer vor und nach jeder Verknüpfung.
 
 ## Warum funktioniert das?
 
-Jede linke Zeile wird mit allen rechten Treffern kombiniert. P001 mit 120 wird deshalb zweimal ausgegeben.
+Jede linke Zeile wird mit allen passenden rechten Zeilen kombiniert. Eine 1:n-Zuordnung kann deshalb linke Beträge wiederholen.
 
 ## Typischer Fehler
 
-**Symptom/Ursache:** Eine anschließende SUMME verdeckt den Fehler nicht, sondern zählt den vervielfachten Betrag. **Lösung:** Regel auf die gewünschte Zeilenebene zurückführen und den Schnelltest wiederholen.
+**Symptom/Ursache:** Eine anschließende SUMME verdeckt den Fehler nicht, sondern zählt den vervielfachten Betrag.
 
 ## Plausibilitätscheck
 
-Zähle rechte Treffer pro Person vor dem Join; für eine reine Anreicherung muss diese Zahl höchstens 1 sein.
+Nachher drei Zeilen und scheinbare Summe 320: Die Erhöhung um 120 ist vollständig durch P001 erklärt.

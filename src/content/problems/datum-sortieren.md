@@ -22,16 +22,21 @@
   ],
   "verwandteThemen": [
     "datumstabelle",
-    "datenbereinigung"
+    "datenbereinigung",
+    "dax-jahr-monat"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "problem",
-  "quellen": [],
-  "screenshots": []
+  "quellen": [
+    "https://learn.microsoft.com/en-us/dax/year-function-dax",
+    "https://learn.microsoft.com/en-us/dax/month-function-dax"
+  ],
+  "screenshots": [],
+  "praxis": true
 }
 ---
 
@@ -53,18 +58,33 @@ Stelle Monatsname und Monatsnummer nebeneinander; jede Bezeichnung muss genau ei
 
 ## Schritte
 
-1. Erstelle eine Kopie der Auswertung oder beschränke sie auf synthetische Testdaten. Notiere den fehlerhaften Wert.
+1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
 2. Stelle Monatsname und Monatsnummer nebeneinander; jede Bezeichnung muss genau einer Nummer entsprechen.
 3. Wähle Monatsname in der Datenansicht → Spaltentools → Nach Spalte sortieren → Monatsnummer. Für mehrere Jahre zusätzlich Jahr verwenden oder JahrMonat mit einem eindeutigen numerischen Sortierschlüssel.
 4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
+5. Den konkreten Bedienweg für die Korrektur findest du unter [YEAR und MONTH: Kalenderattribute](#/wissen/dax-jahr-monat). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
 
 ## Beispiel
 
-Januar → 1, Februar → 2, März → 3. 2026-01 wird nach 2025-12 einsortiert.
+### Vorher · Fehlerbild
+
+| Beobachtung |
+| --- |
+| Januar → 1, Februar → 2, März → 3. 2026-01 wird nach 2025-12 einsortiert. |
+
+### Aktion
+
+Wähle Monatsname in der Datenansicht → Spaltentools → Nach Spalte sortieren → Monatsnummer. Für mehrere Jahre zusätzlich Jahr verwenden oder JahrMonat mit einem eindeutigen numerischen Sortierschlüssel.
+
+### Nachher · Erwartete Kontrolle
+
+| Prüfergebnis |
+| --- |
+| Prüfe Dezember/Januar am Jahreswechsel. |
 
 ## Ergebnis
 
-Prüfe Dezember/Januar am Jahreswechsel.
+Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
 
 ## Typischer Fehler
 
@@ -73,3 +93,7 @@ Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten
 ## Plausibilitätscheck
 
 Prüfe Dezember/Januar am Jahreswechsel.
+
+## Warum funktioniert das?
+
+Jahr × 100 + Monat hält Jahr und Monat in chronologischer Reihenfolge. Ein Monatsname allein unterscheidet keine Jahre.

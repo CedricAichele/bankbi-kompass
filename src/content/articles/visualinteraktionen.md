@@ -18,13 +18,14 @@
   "synonyme": [],
   "verwandteThemen": [
     "slicer",
-    "filter-fehler"
+    "filter-fehler",
+    "measure"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-bi/create-reports/service-reports-visual-interactions"
@@ -40,11 +41,11 @@ Steuern, welche Visuals eine Auswahl beeinflusst.
 
 ## Voraussetzungen
 
-Power BI Desktop; Beispieltabelle Konten über Start → Daten eingeben anlegen.
+Ein vorhandener Datenbestand mit den genannten Feldern. Die Tabelle im Beispiel dient ausschließlich zur Veranschaulichung.
 
 ## Schritte
 
-1. Erstelle mit Konten eine Karte Gesamtbestand, eine Tabelle nach Personennummer und einen Produktgruppen-Slicer.
+1. Prüfe die vorhandenen Quellfelder und Datentypen. Verwende bei Bedarf ein bereits angelegtes Gesamtbestand-Measure; die Erstellung erklärt der verlinkte Measure-Artikel.
 2. Wähle den Slicer und aktiviere im Menü Format → Interaktionen bearbeiten.
 3. Am Zielvisual erscheinen Symbole für die verfügbaren Interaktionen. Wähle für die Karte Filter statt Keine.
 4. Wähle Einlagen und kontrolliere 4.050.
@@ -53,6 +54,8 @@ Power BI Desktop; Beispieltabelle Konten über Start → Daten eingeben anlegen.
 7. Teste jedes Zielvisual; Filterung und Hervorhebung können je Visual unterschiedliche Darstellungen erzeugen.
 
 ## Beispiel
+
+### Vorher · Beispieldaten
 
 | Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
 | --- | --- | --- | --- |
@@ -63,9 +66,17 @@ Power BI Desktop; Beispieltabelle Konten über Start → Daten eingeben anlegen.
 | K005 | P003 | Einlagen | 800 |
 | K006 | P004 | Kredite | 1000 |
 
-## Ergebnis
+### Aktion
+
+Die im Ablauf genannten Felder dem Visual zuweisen und die Auswahl prüfen.
+
+### Nachher · Beispielergebnis
 
 Aktive Filterinteraktion: 4.050 bei Einlagen; deaktiviert: 9.000.
+
+## Ergebnis
+
+Lege je Zielvisual fest, ob eine Auswahl filtern, hervorheben oder keinen Einfluss haben soll.
 
 ## Warum funktioniert das?
 

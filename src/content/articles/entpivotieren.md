@@ -19,60 +19,106 @@
   "synonyme": [],
   "verwandteThemen": [
     "pivotieren",
+    "granularitaet",
+    "pq-datum",
     "datumstabelle"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-query/unpivot-column"
   ],
-  "screenshots": [],
+  "screenshots": [
+    {
+      "alt": "Bedienort: Power Query-Editor – Entpivotieren: von breit nach lang",
+      "caption": "Geplante Aufnahme: Power Query – Entpivotieren: von breit nach lang",
+      "schritt": 3,
+      "schema": false,
+      "status": "todo",
+      "todo": "Bedienort und Auswahl für Entpivotieren: von breit nach lang zeigen.",
+      "aufnahmeplan": {
+        "prioritaet": "Hoch",
+        "werkzeug": "Power BI Desktop",
+        "oberflaeche": "Power Query – Entpivotieren: von breit nach lang",
+        "klickfolge": [
+          "Power BI Desktop öffnen. Die unten aufgeführten Tabellen über Start → Daten eingeben mit exakt diesen Spaltennamen und Werten anlegen; danach Start → Daten transformieren öffnen.",
+          "Kunde als Schlüsselspalte markieren.",
+          "Transformieren → Spalten entpivotieren öffnen, Option Andere Spalten entpivotieren sichtbar lassen."
+        ],
+        "daten": "| Kunde | Jan | Feb |\n| --- | --- | --- |\n| P001 | 10 | 15 |\n| P002 | 20 | 25 |",
+        "sichtbar": [
+          "Kunde markiert; Jan und Feb als Wertespalten; Menüoption"
+        ],
+        "ausschnitt": "Geöffneten Dialog beziehungsweise Menü mit den genannten Einstellungen und den relevanten Spaltenüberschriften aufnehmen. Text bei 100 % lesbar halten; keine unnötige Leerfläche.",
+        "dateiname": "pbi-entpivotieren.webp",
+        "zweck": "Bedienort und Auswahl für Entpivotieren: von breit nach lang zeigen.",
+        "nichtZeigen": [
+          "Lokale Dateipfade",
+          "Benutzername oder Profil",
+          "Andere Programme und Benachrichtigungen",
+          "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
+        ]
+      }
+    }
+  ],
   "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-Monate stehen als Spalten, sollen aber eine filterbare Zeitdimension werden.
+Eine breite Tabelle für flexible Filter und Zeitvergleiche in ein langes Format bringen.
 
 ## Voraussetzungen
 
-Synthetische Daten; Power Query in Power BI Desktop oder Excel. Die Menübezeichnung kann je Version leicht abweichen.
+Eine geladene Abfrage mit den benötigten Spalten. Die folgenden Tabellen sind frei erfundene Beispiele.
 
 ## Schritte
 
-1. Öffne in Power BI **Start → Daten transformieren**. In Excel: Quelldaten als Tabelle formatieren und **Daten → Aus Tabelle/Bereich** wählen. Die folgenden Aktionen erfolgen im Power-Query-Editor.
-2. Erstelle die Beispieltabelle mit Person, Januar und Februar. Prüfe die beiden Wertspalten auf Zahl.
-3. Markiere ausschließlich Person als unveränderliche Kennung.
-4. Wähle Transformieren → Spalten entpivotieren → Andere Spalten entpivotieren.
-5. Benenne Attribut in Monat und Wert in Betrag um. Prüfe Monat auf Text und Betrag auf Zahl.
-6. Kontrolliere vier Zeilen. P001 kommt nun zweimal vor; das ist auf der neuen Ebene Person und Monat richtig.
-7. Ergänze künftig nur echte Wertspalten. Zusätzliche Stammdaten müssen in der Auswahl der ID-Spalten bleiben.
-8. Prüfe im rechten Bereich Angewendete Schritte die Vorschau vor und nach der Aktion. In Power BI abschließend Schließen & übernehmen, in Excel Schließen & laden wählen.
+1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
+2. Markiere die Schlüsselspalte **Kunde**.
+3. Wähle **Transformieren → Spalten entpivotieren → Andere Spalten entpivotieren**. Dadurch werden auch später hinzukommende Monatsspalten erfasst.
+4. Benenne **Attribut** in **Monat** und **Wert** in **Betrag** um.
+5. Prüfe die Datentypen und die Anzahl der erzeugten Zeilen. NULL-Zellen erzeugen beim Entpivotieren keine Wertzeile.
 
 ## Beispiel
 
-| Person | Januar | Februar |
+### Vorher · Beispieldaten
+
+| Kunde | Jan | Feb |
 | --- | --- | --- |
-| P001 | 10 | 20 |
-| P002 | 30 | 40 |
+| P001 | 10 | 15 |
+| P002 | 20 | 25 |
+
+### Aktion
+
+Jan und Feb in Monat/Betrag-Zeilen umformen.
+
+### Nachher · Beispielergebnis
+
+| Kunde | Monat | Betrag |
+| --- | --- | --- |
+| P001 | Jan | 10 |
+| P001 | Feb | 15 |
+| P002 | Jan | 20 |
+| P002 | Feb | 25 |
 
 ## Ergebnis
 
-P001/Januar/10, P001/Februar/20, P002/Januar/30, P002/Februar/40. Summe 100.
+Wertespalten werden zu Attribut-Wert-Paaren untereinander.
 
 ## Warum funktioniert das?
 
-Spaltenüberschriften werden Werte einer Attributspalte. Dadurch können Slicer und Visuals alle Monate über dieselbe Spalte erreichen. Nullwerte können beim Entpivotieren wegfallen.
+Eine bisher in der Überschrift gespeicherte Kategorie wird selbst zu einem Datenwert. Die neue Zeilenebene ist Kunde und Monat.
 
 ## Typischer Fehler
 
-**Symptom:** Segment steht als Monat in den Daten. **Ursache:** Stammdatenspalte mit entpivotiert. **Lösung:** alle Kennungs- und Stammdatenspalten vor Andere Spalten entpivotieren auswählen.
+Schlüsselspalten mit entpivotieren oder aus ausgebliebenen NULL-Zeilen einen Betrag von null ableiten.
 
 ## Plausibilitätscheck
 
-Ohne null: 2 Personen × 2 Monate = 4 Zeilen; Summe vor und nach dem Umbau = 100.
+Zwei Kunden × zwei gefüllte Monatsspalten ergeben vier Zeilen; Summe 70.

@@ -28,8 +28,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/dax/sum-function-dax"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -46,7 +49,14 @@ Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
 
 ## Beispiel
 
+### Ausgangslage und Entscheidung
+
 Vorhandener Bestand_EUR: SUM. Zwei Positionen 2×10 und 3×20: SUMX ergibt 80.
+
+| Alternative | Geeignet, wenn |
+| --- | --- |
+| SUM | eine vorhandene numerische Spalte addiert werden soll. |
+| SUMX | pro Zeile erst ein Ausdruck wie Menge × Preis berechnet werden muss. |
 
 ## Typischer Fehler
 
@@ -62,3 +72,15 @@ SUM(Menge) × SUM(Preis) ergibt hier 150 statt 80.
 ## Merksatz
 
 Eine Spalte addieren oder je Zeile rechnen?
+
+## Warum funktioniert das?
+
+Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **SUM**, wenn eine vorhandene numerische Spalte addiert werden soll. Nimm **SUMX**, wenn pro Zeile erst ein Ausdruck wie Menge × Preis berechnet werden muss.
+
+## Ergebnis
+
+Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+
+## Plausibilitätscheck
+
+SUM(Menge) × SUM(Preis) ergibt hier 150 statt 80. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.

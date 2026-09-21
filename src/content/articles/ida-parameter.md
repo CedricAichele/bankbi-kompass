@@ -10,7 +10,7 @@
   "kategorie": "Parameter / Eingabeaufforderungen",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein Parameter ist eine Eingabe mit festgelegtem Typ und Bedeutung. Er filtert erst, wenn die Auswertung ihn verwendet.",
-  "ort": "IDA / Reporting: allgemeines Parameterkonzept; konkreter Anlagedialog TODO",
+  "ort": "Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt.",
   "tags": [
     "Parameter / Eingabeaufforderung planen",
     "Reporting"
@@ -20,6 +20,7 @@
     "eingabeparameter"
   ],
   "verwandteThemen": [
+    "ida-prompt",
     "ida-parameter-filter",
     "ida-parameter-typ"
   ],
@@ -27,9 +28,11 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
+  "quellen": [
+    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=data-build-your-own-prompt-prompt-page"
+  ],
   "screenshots": [],
   "praxis": true
 }
@@ -41,39 +44,48 @@ Eine fachlich gleiche Liste soll für wechselnde Stichtage nutzbar sein.
 
 ## Voraussetzungen
 
-Allgemeines Reportingprinzip. Konkrete IDA-Bedienung nicht öffentlich belegt; Menüpfade und ausführbare Syntax bleiben TODO.
+Allgemeines Cognos-/Reportingprinzip. Konkreter IDA-Menüweg nicht öffentlich belegt. Die Felder und Daten im Beispiel sind frei erfunden.
 
 ## Schritte
 
-1. Formuliere die gewünschte Ergebniszeile: Welche fachliche Einheit soll genau einmal erscheinen?
-2. Übertrage das synthetische Mini-Beispiel in eine eigene Prüfliste. Notiere Zeilenzahl und Betrag vor der Änderung.
-3. Formuliere die Regel zunächst unabhängig vom Werkzeug: Pseudologik: Daten.Stichtag entspricht Parameter Stichtag.
-4. Lege die Regel in der öffentlich dokumentierten Reportingumgebung an. Für IDA gibt diese Seite bewusst keinen erfundenen Klickpfad vor.
-5. Führe den Bericht zuerst für die kleine Prüfliste aus und vergleiche das konkrete erwartete Ergebnis.
-6. Teste auch den beschriebenen Fehlerfall. Erst bei passender Kontrollsumme die Regel auf weitere synthetische Daten übertragen.
+1. Datentyp Datum, zulässigen Zeitraum und Pflichtangabe festlegen.
+2. Formuliere die gewünschte Regel: **Parameter AuswahlDatum als Datum anlegen und im Stichtagsfilter verwenden.**.
+3. Prüfe die Umsetzungsmöglichkeiten anhand der öffentlichen Dokumentation und der tatsächlich eingesetzten Umgebung. Die Beschreibung ist keine zugesicherte IDA-Klickfolge.
+4. Mit beiden Stichtagen prüfen, ob sich die Ausgabe passend ändert.
+5. Halte Datenstand, Auswahl und fachliche Kontrollwerte gemeinsam mit dem Ergebnis fest.
 
 ## Beispiel
 
-| Parameter | Typ | Beispiel |
-| --- | --- | --- |
-| Stichtag | Datum | 31.03.2026 |
+### Vorher · Beispieldaten
+
+| Ausgangslage |
+| --- |
+| Stichtag 31.01.2026: K001/100; Stichtag 28.02.2026: K001/120. |
+
+### Aktion
 
 ```text
-Pseudologik: Daten.Stichtag entspricht Parameter Stichtag
+Fachliche Regel: Parameter AuswahlDatum als Datum anlegen und im Stichtagsfilter verwenden.
 ```
+
+### Nachher · Beispielergebnis
+
+| Erwartete Ausgabe |
+| --- |
+| Auswahl 28.02.2026 → K001/120. |
 
 ## Ergebnis
 
-Nur Zeilen des ausgewählten Tages, nicht alle Daten.
+Ein Parameter ist eine Eingabe mit festgelegtem Typ und Bedeutung. Er filtert erst, wenn die Auswertung ihn verwendet.
 
 ## Warum funktioniert das?
 
-Ein Parameter ist ein Eingabewert. Erst seine Einbindung in eine Bedingung ändert die Ergebnismenge. Ein Prompt ist eine mögliche Eingabeoberfläche.
+Parameter speichern Eingabewerte. Erst ihre Verwendung in einer Bedingung begrenzt Daten. Ein Prompt ist die Oberfläche für die Eingabe, nicht der Filter selbst.
 
 ## Typischer Fehler
 
-**Symptom/Ursache:** Ein sichtbarer Parameter ohne Filterbindung ändert das Ergebnis nicht. **Lösung:** Regel auf die gewünschte Zeilenebene zurückführen und den Schnelltest wiederholen.
+**Symptom/Ursache:** Ein sichtbarer Parameter ohne Filterbindung ändert das Ergebnis nicht.
 
 ## Plausibilitätscheck
 
-Führe die Liste mit zwei Stichtagen aus und vergleiche die tatsächlich ausgegebenen Datumswerte.
+Auswahl 28.02.2026 → K001/120.

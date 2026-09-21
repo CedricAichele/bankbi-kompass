@@ -19,57 +19,106 @@
   "synonyme": [],
   "verwandteThemen": [
     "entpivotieren",
+    "granularitaet",
     "gruppieren"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
-  "screenshots": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/pivot-columns"
+  ],
+  "screenshots": [
+    {
+      "alt": "Bedienort: Power Query-Editor – Pivotieren: von lang nach breit",
+      "caption": "Geplante Aufnahme: Power Query – Pivotieren: von lang nach breit",
+      "schritt": 3,
+      "schema": false,
+      "status": "todo",
+      "todo": "Bedienort und Auswahl für Pivotieren: von lang nach breit zeigen.",
+      "aufnahmeplan": {
+        "prioritaet": "Hoch",
+        "werkzeug": "Power BI Desktop",
+        "oberflaeche": "Power Query – Pivotieren: von lang nach breit",
+        "klickfolge": [
+          "Power BI Desktop öffnen. Die unten aufgeführten Tabellen über Start → Daten eingeben mit exakt diesen Spaltennamen und Werten anlegen; danach Start → Daten transformieren öffnen.",
+          "Monat markieren → Transformieren → Spalte pivotieren.",
+          "Wertespalte Betrag; erweiterte Optionen Nicht aggregieren für die eindeutigen Beispieldaten. Dialog offen lassen."
+        ],
+        "daten": "| Kunde | Monat | Betrag |\n| --- | --- | --- |\n| P001 | Jan | 10 |\n| P001 | Feb | 15 |\n| P002 | Jan | 20 |\n| P002 | Feb | 25 |",
+        "sichtbar": [
+          "Markierte Monatsspalte; Wertespalte Betrag und Aggregationsoption"
+        ],
+        "ausschnitt": "Geöffneten Dialog beziehungsweise Menü mit den genannten Einstellungen und den relevanten Spaltenüberschriften aufnehmen. Text bei 100 % lesbar halten; keine unnötige Leerfläche.",
+        "dateiname": "pbi-pivotieren.webp",
+        "zweck": "Bedienort und Auswahl für Pivotieren: von lang nach breit zeigen.",
+        "nichtZeigen": [
+          "Lokale Dateipfade",
+          "Benutzername oder Profil",
+          "Andere Programme und Benachrichtigungen",
+          "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
+        ]
+      }
+    }
+  ],
   "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-Eine lange Tabelle wieder in Monatsspalten umformen.
+Kategorien einer langen Tabelle als eigene Spalten darstellen.
 
 ## Voraussetzungen
 
-Power Query in Power BI Desktop oder Excel; nur synthetische Dateien verwenden.
+Eine geladene Abfrage mit den benötigten Spalten. Die folgenden Tabellen sind frei erfundene Beispiele.
 
 ## Schritte
 
-1. Lade die drei Spalten Person, Monat und Betrag aus dem Beispiel in Power Query.
-2. Prüfe Person und Monat auf Text, Betrag auf Zahl.
-3. Gruppiere zur Kontrolle nach Person und Monat mit Zeilen zählen: jede Kombination soll einmal vorkommen.
-4. Wähle Monat → Transformieren → Spalte pivotieren.
-5. Wähle Betrag als Wertspalte. Unter Erweiterte Optionen verwende Nicht aggregieren, wenn jede Kombination eindeutig ist; sonst eine fachlich begründete Aggregation.
-6. Kontrolliere zwei Monatsspalten und eine Personenzeile.
-7. Lade das Ergebnis; notiere, dass neue Monate die Spaltenstruktur erweitern können.
+1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
+2. Markiere **Monat**: Seine Werte sollen zu Spaltenüberschriften werden.
+3. Wähle **Transformieren → Spalte pivotieren**.
+4. Wähle als Wertespalte **Betrag**.
+5. Wähle unter den erweiterten Optionen **Nicht aggregieren**, wenn je Kunde und Monat genau ein Wert existiert. Bei mehreren fachlich addierbaren Werten wähle stattdessen **Summe**.
+6. Bestätige. Prüfe die verbleibenden Schlüsselspalten: Sie bestimmen die Ergebniszeilen.
 
 ## Beispiel
 
-| Person | Monat | Betrag |
+### Vorher · Beispieldaten
+
+| Kunde | Monat | Betrag |
 | --- | --- | --- |
-| P001 | Januar | 10 |
-| P001 | Februar | 20 |
+| P001 | Jan | 10 |
+| P001 | Feb | 15 |
+| P002 | Jan | 20 |
+| P002 | Feb | 25 |
+
+### Aktion
+
+Monat pivotieren; Betrag als Wert verwenden.
+
+### Nachher · Beispielergebnis
+
+| Kunde | Jan | Feb |
+| --- | --- | --- |
+| P001 | 10 | 15 |
+| P002 | 20 | 25 |
 
 ## Ergebnis
 
-P001 | Januar 10 | Februar 20; Gesamtsumme 30.
+Aus Kategorien in einer Spalte werden mehrere Wertespalten.
 
 ## Warum funktioniert das?
 
-Attributwerte werden zu Spaltenüberschriften; andere Spalten bilden die verbleibende Zeilenebene.
+Die verbleibenden Spalten identifizieren eine Ergebniszeile. Ein Wert wird am Schnittpunkt aus diesem Schlüssel und der pivotierten Kategorie abgelegt.
 
 ## Typischer Fehler
 
-**Symptom/Ursache:** Mehrere Werte pro Person und Monat benötigen eine fachliche Regel. Summe darf nicht nur gewählt werden, um einen Fehler zu unterdrücken. **Lösung:** die betroffene Einstellung anhand des Beispiels gezielt korrigieren.
+Eine zusätzliche Detailspalte unverändert behalten und sich über mehrere Zeilen je Kunde wundern.
 
 ## Plausibilitätscheck
 
-Vorher 2 Werte mit Summe 30, nachher dieselben 2 Werte.
+Vier Betragswerte ergeben vier gefüllte Zellen in zwei Kundenzeilen; Summe 70.

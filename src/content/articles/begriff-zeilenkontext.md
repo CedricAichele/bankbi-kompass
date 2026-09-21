@@ -28,8 +28,12 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "artikel",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/dax/dax-overview",
+    "https://learn.microsoft.com/en-us/dax/sumx-function-dax"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -37,32 +41,46 @@
 
 Berechnete Spalten und DAX-Iteratoren.
 
+## Voraussetzungen
+
+Kenntnis der fachlichen Bedeutung der Daten; keine bestimmte Beispieldatei erforderlich.
+
 ## Schritte
 
-1. Benenne das Konzept an einer konkreten Ergebniszeile.
-2. SUMX berechnet für jede Position Menge × Preis und addiert anschließend.
-3. Prüfe vor der Berechnung die genannte Fehlerquelle.
+1. Beschreibe die Ausgangssituation: Menge/Preis: 2/10 und 3/20.
+2. Je Zeile Menge × Preis berechnen, danach addieren.
+3. Prüfe die Unterscheidung am Ergebnis: 20 + 60 = 80.
 
 ## Beispiel
 
-SUMX berechnet für jede Position Menge × Preis und addiert anschließend.
+### Vorher · Beispieldaten
+
+| Ausgangslage |
+| --- |
+| Menge/Preis: 2/10 und 3/20. |
+
+### Aktion
+
+Je Zeile Menge × Preis berechnen, danach addieren.
+
+### Nachher · Beispielergebnis
+
+| Ergebnis |
+| --- |
+| 20 + 60 = 80. |
+
+## Ergebnis
+
+Zeilenkontext bedeutet, dass ein Ausdruck gerade für eine bestimmte Zeile ausgewertet wird.
+
+## Warum funktioniert das?
+
+Der Zeilenkontext liefert Werte der aktuellen Zeile. Er ist von Filtern zu unterscheiden, die festlegen, welche Zeilen überhaupt betrachtet werden.
 
 ## Typischer Fehler
 
 Zeilenkontext als Filter auf andere Tabellen missverstehen; Kontextübergang ist ein eigener Mechanismus.
 
-## Einfach erklärt
+## Plausibilitätscheck
 
-Zeilenkontext bedeutet, dass ein Ausdruck gerade für eine bestimmte Zeile ausgewertet wird.
-
-## Mini-Beispiel
-
-SUMX berechnet für jede Position Menge × Preis und addiert anschließend.
-
-## Warum ist das wichtig?
-
-Die Definition bestimmt, welche Zuordnung oder Berechnung fachlich zulässig ist. Zeilenkontext als Filter auf andere Tabellen missverstehen; Kontextübergang ist ein eigener Mechanismus.
-
-## Wo taucht das auf?
-
-Berechnete Spalten und DAX-Iteratoren.
+20 + 60 = 80.

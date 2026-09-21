@@ -21,59 +21,106 @@
   ],
   "verwandteThemen": [
     "datenbereinigung",
-    "nullwerte"
+    "nullwerte",
+    "pq-duplizieren"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
   "quellen": [
+    "https://learn.microsoft.com/en-us/power-query/dealing-with-errors",
     "https://support.microsoft.com/en-us/excel/handling-data-source-errors-power-query"
   ],
-  "screenshots": [],
+  "screenshots": [
+    {
+      "alt": "Bedienort: Power Query-Editor – Fehlerhafte Werte prüfen",
+      "caption": "Geplante Aufnahme: Power Query – Fehlerhafte Werte prüfen",
+      "schritt": 4,
+      "schema": false,
+      "status": "todo",
+      "todo": "Auswahl und Ergebnis der beschriebenen Operation nachvollziehbar zeigen.",
+      "aufnahmeplan": {
+        "prioritaet": "Hoch",
+        "werkzeug": "Power BI Desktop",
+        "oberflaeche": "Power Query – Fehlerhafte Werte prüfen",
+        "klickfolge": [
+          "Power BI Desktop öffnen. Die unten aufgeführten Tabellen über Start → Daten eingeben mit exakt diesen Spaltennamen und Werten anlegen; danach Start → Daten transformieren öffnen.",
+          "Betrag mit den Textwerten 100 und unbekannt laden; Datentyp auf Zahl ändern.",
+          "Error-Zelle von K002 anklicken und die Fehlerdetails unterhalb der Vorschau sichtbar lassen."
+        ],
+        "daten": "| Konto | Betrag als Text |\n| --- | --- |\n| K001 | 100 |\n| K002 | unbekannt |",
+        "sichtbar": [
+          "Error-Zelle, Ursache der Typumwandlung und Angewendete Schritte"
+        ],
+        "ausschnitt": "Geöffneten Dialog beziehungsweise Menü mit den genannten Einstellungen und den relevanten Spaltenüberschriften aufnehmen. Text bei 100 % lesbar halten; keine unnötige Leerfläche.",
+        "dateiname": "pbi-pq-fehler.webp",
+        "zweck": "Auswahl und Ergebnis der beschriebenen Operation nachvollziehbar zeigen.",
+        "nichtZeigen": [
+          "Lokale Dateipfade",
+          "Benutzername oder Profil",
+          "Andere Programme und Benachrichtigungen",
+          "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
+        ]
+      }
+    }
+  ],
   "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-Fehlerwerte finden und ihre Ursache statt nur ihr Symptom beheben.
+Fehlerhafte Umwandlungen erkennen, Ursachen prüfen und begründet behandeln.
 
 ## Voraussetzungen
 
-Power Query in Power BI Desktop oder Excel; nur synthetische Dateien verwenden.
+Eine vorhandene Abfrage mit den benötigten Spalten.
 
 ## Schritte
 
-1. Öffne die Abfrage im Power-Query-Editor und aktiviere Ansicht → Spaltenqualität.
-2. Wähle im Schrittbereich den ersten Schritt, ab dem Fehler entstehen.
-3. Klicke einen Error-Wert an und lies die Details; notiere betroffene Spalte und Umwandlung.
-4. Prüfe den Wert im vorherigen Schritt. Häufig sind Text, Gebietsschema oder ein fehlender Spaltenname die Ursache.
-5. Korrigiere die Umwandlung. Für dokumentierte Ausnahmen kann Fehler ersetzen sinnvoll sein; Fehlwerte separat zählen.
-6. Prüfe sowohl die ursprünglichen Fehlerzeilen als auch eine zuvor korrekte Zeile.
-7. Lade erst, wenn unerwartete Fehler geklärt sind.
+1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
+2. Suche im Schritt **Geänderter Typ** nach **Error**-Zellen. Klicke auf eine Fehlerzelle, um die Fehlermeldung zu lesen.
+3. Prüfe den vorherigen Schritt: Hier lässt sich unbekannt nicht in eine Zahl umwandeln. Ein Fehler ist etwas anderes als ein fehlender Wert null.
+4. Für eine getrennte Fehlerliste dupliziere oder referenziere die Abfrage und wähle auf der Betragsspalte **Start → Zeilen beibehalten → Fehler beibehalten**.
+5. Korrigiere bevorzugt die Ursache: falscher Datentyp, falsches Gebietsschema oder ungültiger Quelltext.
+6. Wenn fachlich vereinbart, nutze **Transformieren → Werte ersetzen → Fehler ersetzen**, etwa durch null. **Start → Zeilen entfernen → Fehler entfernen** verwirft dagegen ganze Zeilen und braucht einen Ausschlussnachweis.
+7. Vergleiche Fehleranzahl, Zeilenzahl und Summen vor/nach der Behandlung.
 
 ## Beispiel
 
-| Rohwert | Gewünschte Behandlung |
+### Vorher · Beispieldaten
+
+| Konto | Betrag als Text |
 | --- | --- |
-| 1.250,50 | Zahl mit deutschem Gebietsschema |
-| unbekannt | Fehlwert nach dokumentierter Regel |
+| K001 | 100 |
+| K002 | unbekannt |
+
+### Aktion
+
+Ungültigen Text prüfen; gemäß dokumentierter Regel als fehlenden Betrag erhalten.
+
+### Nachher · Beispielergebnis
+
+| Konto | Betrag |
+| --- | --- |
+| K001 | 100 |
+| K002 | null |
 
 ## Ergebnis
 
-1250,50 wird numerisch; unbekannt bleibt als fehlend gekennzeichnet, nicht stillschweigend 0.
+Fehlerursachen sind nachvollziehbar; korrigierte oder ausgeschlossene Werte werden nicht stillschweigend übergangen.
 
 ## Warum funktioniert das?
 
-Fehler enthält eine Information über eine fehlgeschlagene Operation. Seine Ursache liegt oft einen Schritt früher.
+Ein Umwandlungsfehler sagt, dass ein vorhandener Inhalt die verlangte Interpretation nicht erfüllt. Ein Ersatz ist daher eine fachliche Entscheidung und keine automatische Reparatur der Quelle.
 
 ## Typischer Fehler
 
-**Symptom/Ursache:** Fehler entfernen löscht ganze Zeilen und kann dadurch Summen unbemerkt verändern. **Lösung:** die betroffene Einstellung anhand des Beispiels gezielt korrigieren.
+Alle Fehlerzeilen löschen und dadurch vollständige Konten verlieren.
 
 ## Plausibilitätscheck
 
-Anzahl fehlerhafter Zeilen vorher/nachher und erhaltene Zeilenzahl dokumentieren.
+Zwei Konten bleiben; ein Betrag ist 100, einer unbekannt. Fehlerliste enthält genau K002.

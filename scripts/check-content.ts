@@ -29,11 +29,15 @@ for (const [label, selected] of [
 ] as const) if (!selected.length) throw new Error(`Leerer Bereich: ${label}`);
 for (const [i, item] of items.entries()) {
   const sections = sectionsOf(item.body);
+  if (!item.quellen.length)
+    throw new Error(`${item.id}: Passende offizielle Dokumentation fehlt.`);
   if (item.praxis && (!sections.Ergebnis || !sections["Warum funktioniert das?"] || !sections["Plausibilitätscheck"]))
     throw new Error(`${item.id}: Vertiefte Anleitung benötigt Ergebnis, Erklärung und Plausibilitätscheck.`);
   if ((frequent.includes(item.id) || item.art === "aufgabe") && !sections.Ergebnis)
     console.warn(`Redaktioneller Hinweis ${item.id}: konkretes Ergebnis als eigenen Abschnitt ergänzen.`);
   for (const image of item.screenshots) {
+    if ((image.status === "todo" || image.status === "ersetzen") && (!image.aufnahmeplan || !image.schritt))
+      throw new Error(`${item.id}: Offene Aufnahme benötigt einen vollständigen Aufnahmeplan und eine Schrittzuordnung.`);
     if (image.status === "todo") continue;
     const file = join("public", image.src!);
     if (!existsSync(file))

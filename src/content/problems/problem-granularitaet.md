@@ -23,7 +23,8 @@
   "verwandteThemen": [
     "plan-ist",
     "star-schema",
-    "granularitaet"
+    "granularitaet",
+    "fakt-zu-fakt"
   ],
   "kontexte": [
     "Reporting",
@@ -32,8 +33,11 @@
   "quelleTyp": "synthetisches-beispiel",
   "art": "problem",
   "screenshots": [],
-  "quellen": [],
-  "zuletztGeprueft": "2026-09-18"
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/guidance/relationships-many-to-many"
+  ],
+  "zuletztGeprueft": "2026-09-21",
+  "praxis": true
 }
 ---
 
@@ -55,18 +59,33 @@ Zähle pro Monat, wie oft derselbe Planwert im Ergebnis steht.
 
 ## Schritte
 
-1. Erstelle eine Kopie der Auswertung oder beschränke sie auf synthetische Testdaten. Notiere den fehlerhaften Wert.
+1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
 2. Zähle pro Monat, wie oft derselbe Planwert im Ergebnis steht.
 3. Aggregiere Ist zuerst auf die Planebene oder verwende getrennte Fakten mit gemeinsamen Dimensionen.
 4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
+5. Den konkreten Bedienweg für die Korrektur findest du unter [Warum Fakt-zu-Fakt problematisch ist](#/wissen/fakt-zu-fakt). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
 
 ## Beispiel
 
-Monatsplan 100 und drei Kontenzeilen erzeugen nach einem flachen Join dreimal 100. Der Plan bleibt fachlich 100.
+### Vorher · Fehlerbild
+
+| Beobachtung |
+| --- |
+| Monatsplan 100 und drei Kontenzeilen erzeugen nach einem flachen Join dreimal 100. Der Plan bleibt fachlich 100. |
+
+### Aktion
+
+Aggregiere Ist zuerst auf die Planebene oder verwende getrennte Fakten mit gemeinsamen Dimensionen.
+
+### Nachher · Erwartete Kontrolle
+
+| Prüfergebnis |
+| --- |
+| Plan je Monat genau einmal; Ist weiterhin vollständig. |
 
 ## Ergebnis
 
-Plan je Monat genau einmal; Ist weiterhin vollständig.
+Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
 
 ## Typischer Fehler
 
@@ -75,3 +94,7 @@ Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten
 ## Plausibilitätscheck
 
 Plan je Monat genau einmal; Ist weiterhin vollständig.
+
+## Warum funktioniert das?
+
+Ein direkter Join zweier Mehrfachseiten erzeugt alle passenden Kombinationen. Getrennte Fakten vermeiden diese Vervielfachung und bewahren die eigene Bedeutung jeder Messung.

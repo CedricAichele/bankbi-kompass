@@ -26,9 +26,13 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-18",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen": [],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/dax/sumx-function-dax",
+    "https://learn.microsoft.com/en-us/dax/sum-function-dax",
+    "https://learn.microsoft.com/en-us/power-query/group-by"
+  ],
   "screenshots": [],
   "praxis": true,
   "kurzformel": "```dax\nPositionswert = SUMX ( Positionen, Positionen[Menge] * Positionen[Preis] )\n```"
@@ -41,7 +45,7 @@ Ein Betrag muss zuerst je Zeile berechnet und anschließend summiert werden.
 
 ## Voraussetzungen
 
-Power BI Desktop; Tabelle Positionen per Start → Daten eingeben anlegen.
+Ein vorhandenes Power-BI-Modell mit den im Ausdruck verwendeten Tabellen, Spalten und gegebenenfalls Basismeasures.
 
 ## Schritte
 
@@ -54,18 +58,27 @@ Power BI Desktop; Tabelle Positionen per Start → Daten eingeben anlegen.
 
 ## Beispiel
 
+### Vorher · Beispieldaten
+
 | Vorgang | Menge | Preis |
 | --- | --- | --- |
 | V1 | 2 | 10 |
 | V2 | 3 | 20 |
 
+
+### Aktion
+
 ```dax
 Positionswert = SUMX ( Positionen, Positionen[Menge] * Positionen[Preis] )
 ```
 
-## Ergebnis
+### Nachher · Beispielergebnis
 
 20 + 60 = 80. SUM(Menge) × SUM(Preis) wäre dagegen 5 × 30 = 150 und fachlich falsch.
+
+## Ergebnis
+
+Ein Ausdruck wird für jede sichtbare Tabellenzeile ausgewertet; anschließend werden die Einzelergebnisse addiert.
 
 ## Warum funktioniert das?
 
@@ -78,3 +91,10 @@ Argument 1 bestimmt die Zeilen. Argument 2 wird im Zeilenkontext jeder Zeile aus
 ## Plausibilitätscheck
 
 Multipliziere beide Zeilen von Hand und teste den Filter V1.
+
+## Argumente verstehen
+
+| Argument | Bedeutung |
+| --- | --- |
+| Tabelle | Legt die zu durchlaufenden Zeilen fest. |
+| Ausdruck | Wird in jeder Zeile mit deren Werten berechnet. Der Zeilenkontext ist noch kein neuer Berichtsslicer. |

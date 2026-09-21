@@ -4,40 +4,92 @@
   "slug": "beziehung-nm",
   "titel": "n:m-Beziehung fachlich modellieren",
   "bereich": "Power BI",
-  "werkzeuge": ["Power BI"],
+  "werkzeuge": [
+    "Power BI"
+  ],
   "kategorie": "Datenmodell",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Bei einer echten Mehrfachzuordnung kann eine Brückentabelle helfen. Eine direkte n:m-Beziehung löst keine unklare Kennzahlzuordnung.",
   "ort": "Power BI Desktop → Modellansicht",
-  "tags": ["n:m-Beziehung fachlich modellieren"],
-  "synonyme": ["viele zu viele", "n:m"],
-  "verwandteThemen": ["eins-zu-viele", "fakt-zu-fakt", "granularitaet"],
-  "kontexte": ["Reporting"],
+  "tags": [
+    "n:m-Beziehung fachlich modellieren"
+  ],
+  "synonyme": [
+    "viele zu viele",
+    "n:m"
+  ],
+  "verwandteThemen": [
+    "kardinalitaet",
+    "filterrichtung",
+    "summe-zu-hoch",
+    "fakt-zu-fakt",
+    "eins-zu-viele",
+    "granularitaet"
+  ],
+  "kontexte": [
+    "Reporting"
+  ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-17",
+  "zuletztGeprueft": "2026-09-21",
   "art": "artikel",
-  "quellen":
-    [
-      "https://learn.microsoft.com/en-us/power-bi/guidance/relationships-many-to-many",
-    ],
+  "quellen": [
+    "https://learn.microsoft.com/en-us/power-bi/guidance/relationships-many-to-many"
+  ],
   "screenshots": [],
+  "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-Mehrere Personen sind mehreren Konten zugeordnet.
+Mehrere Zuordnungen auf beiden Seiten bewusst modellieren.
+
+## Voraussetzungen
+
+Tabellen mit bekanntem fachlichem Aufbau und passenden Schlüsseln. Das folgende Modell ist ein frei erfundenes Beispiel.
 
 ## Schritte
 
-1. Eine eindeutige Personen- und Kontendimension anlegen.
-2. In einer Brücke je gültiger Person-Konto-Zuordnung eine Zeile führen.
-3. Filterpfade und Zurechnungsregel für gemeinsames Volumen definieren und testen.
+1. Notiere die fachliche Mehrfachzuordnung, beispielsweise eine Person mit mehreren Konten und ein Gemeinschaftskonto mit mehreren Personen.
+2. Erzeuge eindeutige Dimensionen für Personen und Konten sowie eine **Brückentabelle** mit eindeutigen Paaren Person/Konto.
+3. Prüfe die benötigten Filterpfade; bei einer Brücke kann ein gezielt bidirektionaler Pfad nötig sein. Vermeide pauschal bidirektionale Beziehungen im ganzen Modell.
+4. Prüfe Kennzahlen separat: Ein gemeinsames Konto darf in einer Gesamtsumme nicht unabsichtlich je Eigentümer vollständig addiert werden.
+5. Nutze eine direkte n:m-Beziehung nur mit bewusst verstandener Semantik und geeigneten Kontrollen.
 
 ## Beispiel
 
-Ein Gemeinschaftskonto mit 100 Euro darf nicht unbemerkt als 200 Euro Gesamtvolumen erscheinen.
+### Vorher · Beispieldaten
+
+**Personen:** P001 und P002 jeweils einmal.
+
+**Konto:** K001 mit Bestand 1000.
+
+**Zuordnung:** P001/K001 und P002/K001.
+
+### Aktion
+
+Brücke mit P001/K001 und P002/K001 abbilden.
+
+### Nachher · Beispielergebnis
+
+| Person | Konto | Sichtbarer Bestand |
+| --- | --- | --- |
+| P001 | K001 | 1000 |
+| P002 | K001 | 1000 |
+| Gesamt eindeutig | K001 | 1000 |
+
+## Ergebnis
+
+Mehrfachzuordnungen werden explizit abgebildet und ihre Auswirkung auf Kennzahlen ist bekannt.
+
+## Warum funktioniert das?
+
+Dieselbe Faktzeile kann zu mehreren Gruppen gehören. Gruppenergebnisse sind dann nicht zwingend additiv; eine Verteilung auf Personen wäre eine eigene fachliche Regel.
 
 ## Typischer Fehler
 
-Kontovolumen über Personen addieren, obwohl dieselben Konten mehreren Personen zugeordnet sind.
+Die Summe der Personenzeilen 2000 als tatsächlichen Kontenbestand ausweisen.
+
+## Plausibilitätscheck
+
+K001 hat zwei Zuordnungen, aber nur einen Bestand von 1000.
