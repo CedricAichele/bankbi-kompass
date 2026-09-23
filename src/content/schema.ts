@@ -93,6 +93,12 @@ export const schema = z
     praxis: z.boolean().default(false),
     schnellschritte: z.array(z.string().min(10)).min(2).max(4).optional(),
     kurzformel: z.string().max(600).optional(),
+    formelreferenz: z.object({
+      funktion: z.string(),
+      eingabe: z.string(),
+      anpassen: z.string(),
+      version: z.string(),
+    }).optional(),
     screenshots: z.array(imageSchema).default([]),
     quellen: z.array(z.string().url()).default([]),
   })

@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Daten prüfen & bereinigen",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Prüfe Wiederholungen am fachlichen Schlüssel und entferne nur bestätigte doppelte Datensätze. Mehrere Konten eines Kunden bleiben erhalten.",
   "ort": "Excel → Hilfsspalte oder Start → Bedingte Formatierung → Doppelte Werte",
@@ -27,7 +27,7 @@
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/find-and-remove-duplicates"

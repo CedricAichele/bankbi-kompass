@@ -85,6 +85,10 @@
 
 Wähle eine passende Quelle und entscheide vor dem Laden, ob Struktur, Typen oder Zeilen noch aufbereitet werden müssen.
 
+## Grundverständnis
+
+Die Excel-, CSV- und Ordnerbeispiele dieses Projekts verwenden **Import**: Daten werden in das Modell geladen und bei Aktualisierung erneut eingelesen. DirectQuery ist eine Option für unterstützte andere Quellen mit eigenen Anforderungen; [Import oder DirectQuery?](#/wissen/import-oder-directquery) dient der Vertiefung.
+
 ## Voraussetzungen
 
 Zugriff auf deine Datenquelle und Kenntnis ihrer Spalten und Zeilenebene. Die Beispielwerte dienen nur der Erklärung; eine Beispieldatei ist nicht erforderlich.

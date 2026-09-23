@@ -9,8 +9,8 @@
   ],
   "kategorie": "Nachschlagen & Zuordnen",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Kombiniere Kriterien zu einer eindeutigen fachlichen Zuordnung. Mehrere Treffer verlangen eine Aggregation oder eine Ergebnisliste.",
-  "ort": "Excel → Formelzelle",
+  "kurzbeschreibung": "Suche einen Rückgabewert über zwei Merkmale in einer separaten Zuordnungstabelle. XVERWEIS liefert den ersten passenden Treffer; Mehrfachtreffer musst du fachlich klären.",
+  "ort": "Excel → freie Ergebniszelle H2; Kriterien in F2:G2",
   "tags": [
     "Nachschlagen mit mehreren Kriterien"
   ],
@@ -18,75 +18,77 @@
     "mehrere kriterien"
   ],
   "verwandteThemen": [
-    "summewenns",
-    "und",
-    "eindeutig",
     "xverweis",
-    "zaehlenwenns",
-    "excel-filtern"
+    "excel-filtern",
+    "summewenns",
+    "excel-fehlende-treffer"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
-    "https://support.microsoft.com/en-us/excel/functions/and-function"
+    "https://support.microsoft.com/en-us/excel/functions/and-function",
+    "https://support.microsoft.com/de-de/excel/functions/xlookup-function"
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```excel\n=WENN(UND(A2=\"P001\";B2=\"A\");C2;0)\n```"
+  "kurzformel": "```excel\n=XVERWEIS(1;(A2:A5=F2)*(B2:B5=G2);C2:C5;\"Kein Treffer\")\n```",
+  "formelreferenz": {
+    "funktion": "XVERWEIS mit mehreren Kriterien",
+    "eingabe": "A2:C5: Kunde/Produkt/Bestand mit P001/A/1000, P001/B/2000, P002/A/500, P002/B/800. F2=P001, G2=B, Ergebnis H2.",
+    "anpassen": "A/B sind die beiden Suchmerkmale, F2/G2 deren Kriterien; C ist die Rückgabe. Gleich große Bereiche und Eindeutigkeit prüfen.",
+    "version": "Microsoft 365 oder Excel 2021/2024; nicht Excel 2016/2019."
+  }
 }
 ---
 
 ## Wann brauche ich das?
 
-Eine Zeilenentscheidung von mehreren gleichzeitigen Kriterien abhängig machen.
+Suche einen Rückgabewert über zwei Merkmale in einer separaten Zuordnungstabelle. XVERWEIS liefert den ersten passenden Treffer; Mehrfachtreffer musst du fachlich klären.
 
 ## Voraussetzungen
 
-Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Excel angegeben; Hinweise zu neueren Funktionen stehen beim jeweiligen Beispiel.
+Microsoft 365 oder Excel 2021/2024. Nicht in Excel 2016/2019 verfügbar.
 
 ## Schritte
 
-1. Prüfe die Ausgangszellen und ihre Bedeutung: **A2 = P001; B2 = A; C2 = 1000**. Die Zelladressen dienen als Beispiel und können auf die eigene Liste angepasst werden.
-2. Wähle eine freie Ergebniszelle **H2** und gib die Formel ein.
-3. Bestätige mit Enter.
-4. Vergleiche das Ergebnis mit dem Beispiel und prüfe mindestens einen leeren oder anders aufgebauten Ausgangswert, bevor du die Formel nach unten kopierst.
+1. Lege die Zuordnungstabelle in A1:C5 an; A enthält Kunde, B Produkt und C den Rückgabewert Bestand. Alle Werte gehören zum selben Stichtag.
+2. Trage außerhalb der Quelle F2 = P001 und G2 = B ein. Das sind die beiden Suchkriterien.
+3. Gib die Formel in H2 ein. Ersetze Quellbereiche, Kriterienzellen und Rückgabebereich passend zur eigenen Tabelle.
+4. Prüfe H2 = 2000. Teste anschließend G2 = Z: erwartet wird „Kein Treffer“. Prüfe vor produktiver Nutzung die Eindeutigkeit von Kunde + Produkt.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
+| Zeile | A: Kunde | B: Produkt | C: Bestand |
+| --- | --- | --- | ---: |
+| 2 | P001 | A | 1000 |
+| 3 | P001 | B | 2000 |
+| 4 | P002 | A | 500 |
+| 5 | P002 | B | 800 |
 
-| Ausgangswerte |
-| --- |
-| A2 = P001; B2 = A; C2 = 1000 |
-
-### Aktion
+F2 = P001, G2 = B; Formel in H2:
 
 ```excel
-=WENN(UND(A2="P001";B2="A");C2;0)
+=XVERWEIS(1;(A2:A5=F2)*(B2:B5=G2);C2:C5;"Kein Treffer")
 ```
 
-### Nachher · Beispielergebnis
-
-| Ergebnis |
-| --- |
-| 1000 |
+Die beiden Vergleiche erzeugen WAHR/FALSCH je Quellzeile. Die Multiplikation ergibt {0;1;0;0}. **1** ist der Suchwert für eine Zeile, in der beide Merkmale passen. **C2:C5** liefert den Bestand. **"Kein Treffer"** ist das vierte Argument für eine erfolglose Suche. Alle drei Quellbereiche müssen gleich viele und dieselben Zeilen umfassen.
 
 ## Ergebnis
 
-Eine Zeilenentscheidung von mehreren gleichzeitigen Kriterien abhängig machen.
+H2 enthält 2000 für P001 und Produkt B. P002/B ergibt 800; P001/Z ergibt „Kein Treffer“.
 
 ## Warum funktioniert das?
 
-UND bündelt die Prüfungen. Nur wenn beide zutreffen, wird der Betrag übernommen; sonst liefert diese ausdrücklich gewählte Regel 0.
+Die Wahrheitsmatrix bildet eine UND-Verknüpfung über zwei Spalten der Zuordnungstabelle. Sie prüft nicht nur die einzelne Ergebniszeile.
 
 ## Typischer Fehler
 
-Die Zeilenformel mit einer Gesamtaggregation verwechseln; für eine direkte Gesamtsumme SUMMEWENNS nutzen.
+Bei zwei Zeilen mit P001/B liefert XVERWEIS standardmäßig die erste. Das löst keinen Konflikt und summiert keine Werte. Für alle Treffer [FILTER](#/wissen/excel-filtern), für eine Summe [SUMMEWENNS](#/wissen/summewenns) verwenden.
 
 ## Plausibilitätscheck
 
-Für die genannten Ausgangswerte wird **1000** erwartet. Die Originalzellen bleiben unverändert; ergänzte Ergebniszellen werden separat geprüft.
+Vier Quellzeilen, genau ein Treffer für P001/B. Die zugehörige Rückgabe 2000 muss mit C3 übereinstimmen.

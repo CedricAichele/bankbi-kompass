@@ -5,6 +5,7 @@ import { sectionsOf, stepsOf } from "../content/schema";
 import { legacyIds, archivedIdaIds } from "../content/redirects";
 import { toolsCatalog } from "../content/catalog";
 import { Markdown } from "../components/Markdown";
+import { ExcelReference } from "../components/ExcelReference";
 import { MReference } from "../components/MReference";
 import { ReferenceImage } from "../components/ReferenceImage";
 import { DecisionTools } from "../components/DecisionTools";
@@ -30,6 +31,13 @@ export function Reference({
     );
   }
   const sections = sectionsOf(item.body);
+  const sectionId = (name: string) => "article-" + name.toLowerCase().replace(/[^a-z0-9äöüß]+/g, "-");
+  function jumpTo(name: string) {
+    const target = document.getElementById(sectionId(name));
+    if (target instanceof HTMLDetailsElement) target.open = true;
+    target?.scrollIntoView({ block: "start" });
+    target?.focus({ preventScroll: true });
+  }
   const illustrated = item.screenshots.length > 0;
   const path =
     item.art === "problem"
@@ -84,11 +92,12 @@ export function Reference({
             {favorites.includes(item.id) ? "Gemerkt" : "Merken"}
           </button>
         </header>
+        {Object.keys(sections).length >= 10 && <nav className="article-toc" aria-label="Inhaltsnavigation"><label>Direkt zum Abschnitt<select defaultValue="" onChange={e=>{jumpTo(e.target.value);e.target.value="";}}><option value="" disabled>Abschnitt wählen …</option>{Object.keys(sections).map(name=><option key={name} value={name}>{name}</option>)}</select></label></nav>}
         <div className="answer">
           <h2>Kurzantwort</h2>
           <p>{item.kurzbeschreibung}</p>
           {item.kurzformel && <Markdown text={item.kurzformel} />}
-          <div className="use-case">
+          <div className="use-case" id={sectionId("Wann brauche ich das?")} tabIndex={-1}>
             <strong>Wann brauche ich das?</strong>
             <Markdown text={sections["Wann brauche ich das?"]} />
           </div>
@@ -103,16 +112,17 @@ export function Reference({
             <Link to="/ida-hinweise">Geltungsbereich ansehen</Link>
           </p>
         )}
-        {["Voraussetzungen", "Symptom", "Schnelltest"].filter((name) => sections[name]).map((name) => (
-          <section className="practice-section" key={name}><h2>{name}</h2><Markdown text={sections[name]} /></section>
+        {["Grundverständnis", "Voraussetzungen", "Symptom", "Schnelltest"].filter((name) => sections[name]).map((name) => (
+          <section className="practice-section" key={name} id={sectionId(name)} tabIndex={-1}><h2>{name}</h2><Markdown text={sections[name]} /></section>
         ))}
         {item.id === "power-query-m" && <MReference />}
-        {item.id !== "power-query-m" && <div
+        {item.id === "excel-formeln" && <ExcelReference />}
+        {!["power-query-m", "excel-formeln"].includes(item.id) && <div
           className={
             "reference-grid" + (illustrated ? " illustrated-reference" : "") + (["pq-workflow", "pq-benutzerdefiniert", "dateien-kombinieren"].includes(item.id) ? " workflow-reference" : "")
           }
         >
-          <section className="steps">
+          <section className="steps" id={sectionId("Schritte")} tabIndex={-1}>
             <h2>So gehst du vor</h2>
             {illustrated ? (
               stepsOf(sections.Schritte).map((text, index) => (
@@ -139,7 +149,7 @@ export function Reference({
                 <ReferenceImage key={index} image={image} />
               ))}
           </section>
-          <section className="example">
+          <section className="example" id={sectionId("Beispiel")} tabIndex={-1}>
             <h2>
               Beispiel <span>synthetisch</span>
             </h2>
@@ -147,12 +157,13 @@ export function Reference({
           </section>
         </div>}
         {["Ergebnis", "Plausibilitätscheck"].filter((name) => sections[name]).map((name) => (
-          <section className="practice-section" key={name}><h2>{name}</h2><Markdown text={sections[name]} /></section>
+          <section className="practice-section" key={name} id={sectionId(name)} tabIndex={-1}><h2>{name}</h2><Markdown text={sections[name]} /></section>
         ))}
+        {item.formelreferenz && <section className="practice-section"><h2>Anpassen und Verfügbarkeit</h2><p>{item.formelreferenz.anpassen}</p><p><strong>Version:</strong> {item.formelreferenz.version}</p></section>}
         {Object.entries(sections).filter(([name]) => !["Wann brauche ich das?", "Schritte", "Beispiel", "Typischer Fehler", "Vergleich", "Voraussetzungen", "Symptom", "Schnelltest", "Ergebnis", "Plausibilitätscheck"].includes(name)).map(([name, text]) => (
-          <details className="practice-details" key={name}><summary>{name}</summary><Markdown text={text} /></details>
+          name !== "Grundverständnis" && <details className="practice-details" key={name} id={sectionId(name)} tabIndex={-1}><summary>{name}</summary><Markdown text={text} /></details>
         ))}
-        <aside className="pitfall">
+        <aside className="pitfall" id={sectionId("Typischer Fehler")} tabIndex={-1}>
           <Lightbulb size={21} />
           <div>
             <h2>Typischer Fehler</h2>
@@ -160,7 +171,7 @@ export function Reference({
           </div>
         </aside>
         {sections.Vergleich && (
-          <section>
+          <section id={sectionId("Vergleich")} tabIndex={-1}>
             <h2>Werkzeugvergleich</h2>
             <Markdown text={sections.Vergleich} />
           </section>

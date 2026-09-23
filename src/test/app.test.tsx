@@ -109,7 +109,7 @@ describe("Schnelle Bedienung und Routing", () => {
     expect(
       await screen.findByRole("heading", { level: 1, name: "Excel" }),
     ).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: "Daten vorbereiten" }));
+    fireEvent.click(screen.getByRole("button", { name: "Text bearbeiten" }));
     expect(
       screen.getByRole("link", { name: "Leerzeichen entfernen: GLÄTTEN" }),
     ).toBeInTheDocument();

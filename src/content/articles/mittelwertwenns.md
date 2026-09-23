@@ -26,7 +26,7 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/averageifs-function"
@@ -38,7 +38,13 @@
     "Quellbereiche und Kriterienzellen festlegen.",
     "Formel in einer freien Ergebniszelle eingeben.",
     "Ausgabe anhand der passenden Quellzeilen kontrollieren."
-  ]
+  ],
+  "formelreferenz": {
+    "funktion": "MITTELWERTWENNS",
+    "eingabe": "A1:D4: Kunde/Konto/Segment/Bestand; Zeile 2=P001/K001/A/1000, Zeile 3=P001/K002/B/2000, Zeile 4=P002/K003/A/500. Ergebnis in H2. F2=P001, G2=A.",
+    "anpassen": "D2:D4 ist der Mittelwertbereich. A2:A4/F2 und C2:C4/G2 sind die Kriterienpaare.",
+    "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
+  }
 }
 ---
 
@@ -48,7 +54,7 @@ Einen Mittelwert unter mehreren Bedingungen berechnen.
 
 ## Voraussetzungen
 
-Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. XVERWEIS und dynamische Arrayfunktionen benötigen eine unterstützte Version, zum Beispiel Microsoft 365 oder Excel 2021/2024.
+Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. Die hier verwendete klassische Funktion ist in Excel 2016/2019/2021/2024 und Microsoft 365 verfügbar.
 
 ## Schritte
 
@@ -85,7 +91,7 @@ F2 = P001; G2 = A
 
 ## Ergebnis
 
-Einen Mittelwert unter mehreren Bedingungen berechnen.
+Für F2=P001 und G2=A ergibt H2 1000; nur die erste Quellzeile passt.
 
 ## Warum funktioniert das?
 

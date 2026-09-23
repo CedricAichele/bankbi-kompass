@@ -25,7 +25,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/ifs-function"
@@ -37,7 +37,13 @@
     "Quellbereiche und Kriterienzellen festlegen.",
     "Formel in einer freien Ergebniszelle eingeben.",
     "Ausgabe anhand der passenden Quellzeilen kontrollieren."
-  ]
+  ],
+  "formelreferenz": {
+    "funktion": "WENNS",
+    "eingabe": "A1:D4: Kunde/Konto/Segment/Bestand; Zeile 2=P001/K001/A/1000, Zeile 3=P001/K002/B/2000, Zeile 4=P002/K003/A/500. Ergebnis in H2. D2:D4 sind vollständig und numerisch.",
+    "anpassen": "Schwellen, Reihenfolge und Ergebnistexte anpassen. WAHR am Ende ist der Auffangfall, nicht die Regel für unbekannte Bestände.",
+    "version": "Microsoft 365 oder Excel 2019/2021/2024."
+  }
 }
 ---
 
@@ -47,12 +53,14 @@ Mehrere geordnete Bedingungen ohne tiefe WENN-Verschachtelung prüfen.
 
 ## Voraussetzungen
 
-Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. XVERWEIS und dynamische Arrayfunktionen benötigen eine unterstützte Version, zum Beispiel Microsoft 365 oder Excel 2021/2024.
+Bestand D2:D4 ist vollständig und numerisch. Fehlende oder unbekannte Bestände zuerst getrennt kennzeichnen; nicht automatisch als „niedrig“ klassifizieren.
+
+Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. WENNS: Microsoft 365 oder Excel 2019/2021/2024.
 
 ## Schritte
 
 1. Prüfe die benötigten Quellspalten. Im Beispiel stehen Kunde, Konto, Segment und Bestand in **A1:D4**; die Daten beginnen in Zeile 2.
-2. Lege die Kriterien in eigenen Zellen außerhalb der Quelle ab: **D2 = 1000**. Passe diese Bezüge für deine Liste an.
+2. D2 ist Teil der Quelle und enthält den zu prüfenden Bestand 1000. Es ist keine zusätzliche Kriterienzelle.
 3. Klicke in eine freie Ergebniszelle, im Beispiel **H2**, und gib die Formel aus dem Beispiel ein. Achte auf gleich große und gleich ausgerichtete Bereiche.
 4. Bestätige mit Enter. Vergleiche die Ausgabe mit den tatsächlich passenden Ausgangszeilen.
 5. Prüfe einen zweiten Fall und fehlende Werte. Bei wachsenden Listen verwende Excel-Tabellen mit strukturierten Bezügen oder erweitere alle zusammengehörenden Bereiche.
@@ -84,7 +92,7 @@ D2 = 1000
 
 ## Ergebnis
 
-Mehrere geordnete Bedingungen ohne tiefe WENN-Verschachtelung prüfen.
+D2=1000 ergibt „niedrig“. D3=2000 ergibt „hoch“, ein Wert 2500 ergibt „sehr hoch“.
 
 ## Warum funktioniert das?
 
@@ -96,7 +104,7 @@ Die Reihenfolge vertauschen und dadurch einen spezielleren Fall unerreichbar mac
 
 ## Plausibilitätscheck
 
-Erwartete Ausgabe: **niedrig**. Die Ausgangsliste umfasst drei Kontenzeilen, zwei Kunden und insgesamt 3500. Prüfe bei Kriterienwechsel die betreffenden Zeilen erneut.
+D2=1000 ergibt „niedrig“. D3=2000 ergibt „hoch“, ein Wert 2500 ergibt „sehr hoch“. Prüfe insbesondere den Grenzwert: >1000 schließt genau 1000 aus.
 
 ## Argumente verstehen
 

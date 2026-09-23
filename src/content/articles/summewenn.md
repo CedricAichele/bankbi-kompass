@@ -25,7 +25,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/sumif-function"
@@ -37,7 +37,13 @@
     "Quellbereiche und Kriterienzellen festlegen.",
     "Formel in einer freien Ergebniszelle eingeben.",
     "Ausgabe anhand der passenden Quellzeilen kontrollieren."
-  ]
+  ],
+  "formelreferenz": {
+    "funktion": "SUMMEWENN",
+    "eingabe": "A1:D4: Kunde/Konto/Segment/Bestand; Zeile 2=P001/K001/A/1000, Zeile 3=P001/K002/B/2000, Zeile 4=P002/K003/A/500. Ergebnis in H2. F2=A.",
+    "anpassen": "C2:C4 ist der Kriterienbereich, F2 die Auswahl, D2:D4 der Summenbereich. Bereichsgrößen und Zeilen müssen passen.",
+    "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
+  }
 }
 ---
 
@@ -47,7 +53,7 @@ Beträge zu genau einem Kriterium summieren.
 
 ## Voraussetzungen
 
-Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. XVERWEIS und dynamische Arrayfunktionen benötigen eine unterstützte Version, zum Beispiel Microsoft 365 oder Excel 2021/2024.
+Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. Die hier verwendete klassische Funktion ist in Excel 2016/2019/2021/2024 und Microsoft 365 verfügbar.
 
 ## Schritte
 
@@ -84,7 +90,7 @@ F2 = A
 
 ## Ergebnis
 
-Beträge zu genau einem Kriterium summieren.
+Für F2=A ergibt H2 1500 aus den Beständen 1000 und 500.
 
 ## Warum funktioniert das?
 

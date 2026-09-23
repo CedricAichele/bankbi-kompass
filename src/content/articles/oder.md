@@ -25,7 +25,7 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/or-function"
@@ -37,7 +37,13 @@
     "Quellbereiche und Kriterienzellen festlegen.",
     "Formel in einer freien Ergebniszelle eingeben.",
     "Ausgabe anhand der passenden Quellzeilen kontrollieren."
-  ]
+  ],
+  "formelreferenz": {
+    "funktion": "ODER",
+    "eingabe": "A1:D4: Kunde/Konto/Segment/Bestand; Zeile 2=P001/K001/A/1000, Zeile 3=P001/K002/B/2000, Zeile 4=P002/K003/A/500. Ergebnis in H2. F2=P002, G2=A.",
+    "anpassen": "Die beiden Zellvergleiche ersetzen. Mindestens einer muss WAHR sein.",
+    "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
+  }
 }
 ---
 
@@ -47,7 +53,7 @@ Mindestens eine von mehreren Bedingungen zulassen.
 
 ## Voraussetzungen
 
-Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. XVERWEIS und dynamische Arrayfunktionen benötigen eine unterstützte Version, zum Beispiel Microsoft 365 oder Excel 2021/2024.
+Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. Die hier verwendete klassische Funktion ist in Excel 2016/2019/2021/2024 und Microsoft 365 verfügbar.
 
 ## Schritte
 
@@ -84,7 +90,7 @@ F2 = P002; G2 = A
 
 ## Ergebnis
 
-Mindestens eine von mehreren Bedingungen zulassen.
+A2=P001, C2=A, F2=P002 und G2=A ergeben WAHR, weil die Segmentbedingung erfüllt ist.
 
 ## Warum funktioniert das?
 

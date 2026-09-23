@@ -1695,3 +1695,8 @@ footer strong {
 .m-entry dd { margin: .4rem 0 1rem; }
 .m-entry .codeblock { max-width: 100%; }
 .m-note { border-left: 3px solid #648b96; padding-left: 1rem; }
+.code-location { border-left: 3px solid var(--blue); padding: .6rem 1rem; background: #eef4fa; }
+.article-toc { margin: 1rem 0; }
+.article-toc label { display: grid; gap: .4rem; font-weight: 600; }
+.article-toc select { padding: .75rem; width: 100%; max-width: 100%; font: inherit; }
+[id^="article-"] { scroll-margin-top: 5rem; }

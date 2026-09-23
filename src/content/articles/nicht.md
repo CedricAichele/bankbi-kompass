@@ -24,7 +24,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/not-function"
@@ -46,7 +46,7 @@ Eine logische Bedingung umkehren.
 
 ## Voraussetzungen
 
-Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. XVERWEIS und dynamische Arrayfunktionen benötigen eine unterstützte Version, zum Beispiel Microsoft 365 oder Excel 2021/2024.
+Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. Die hier verwendete klassische Funktion ist in Excel 2016/2019/2021/2024 und Microsoft 365 verfügbar.
 
 ## Schritte
 
@@ -83,7 +83,7 @@ F2 = A
 
 ## Ergebnis
 
-Eine logische Bedingung umkehren.
+C2=A und F2=A ergeben FALSCH: Die Gleichheit wird umgekehrt.
 
 ## Warum funktioniert das?
 

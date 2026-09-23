@@ -9,8 +9,8 @@
   ],
   "kategorie": "Filtern & eindeutige Listen",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "SORTIERENNACH erzeugt eine dynamisch sortierte Ergebnisliste anhand separater Sortierbereiche.",
-  "ort": "Excel Desktop → Datenliste / Formelzelle",
+  "kurzbeschreibung": "Sortiere vollständige Zeilen nach Segment aufsteigend und innerhalb jedes Segments nach Bestand absteigend.",
+  "ort": "Excel → freie Formelzelle H2 außerhalb einer Excel-Tabelle",
   "tags": [
     "SORTIERENNACH: nach mehreren Feldern sortieren"
   ],
@@ -25,79 +25,82 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
-    "https://support.microsoft.com/en-us/excel/functions/sortby-function"
+    "https://support.microsoft.com/en-us/excel/functions/sortby-function",
+    "https://support.microsoft.com/de-de/excel/functions/sortby-function"
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```excel\n=SORTIERENNACH(A2:D4;D2:D4;-1)\n```",
+  "kurzformel": "```excel\n=SORTIERENNACH(A2:C5;B2:B5;1;C2:C5;-1)\n```",
   "schnellschritte": [
     "Quellbereiche und Kriterienzellen festlegen.",
     "Formel in einer freien Ergebniszelle eingeben.",
     "Ausgabe anhand der passenden Quellzeilen kontrollieren."
-  ]
+  ],
+  "formelreferenz": {
+    "funktion": "SORTIERENNACH",
+    "eingabe": "A2:C5: Konto/Segment/Bestand, K001/B/1000, K002/A/500, K003/A/2000, K004/B/1500. Ausgabe H2:J5 frei außerhalb einer Excel-Tabelle.",
+    "anpassen": "A2:C5 als Ausgabequelle, B2:B5 als erstes Sortierfeld (1 aufsteigend), C2:C5 als zweites (-1 absteigend) anpassen.",
+    "version": "Microsoft 365 oder Excel 2021/2024; nicht Excel 2016/2019."
+  }
 }
 ---
 
 ## Wann brauche ich das?
 
-Eine Matrix über einen ausdrücklich benannten Sortierbereich ordnen.
+Sortiere vollständige Zeilen nach Segment aufsteigend und innerhalb jedes Segments nach Bestand absteigend.
 
 ## Voraussetzungen
 
-Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. XVERWEIS und dynamische Arrayfunktionen benötigen eine unterstützte Version, zum Beispiel Microsoft 365 oder Excel 2021/2024.
+Microsoft 365 oder Excel 2021/2024. Nicht in Excel 2016/2019 verfügbar.
 
 ## Schritte
 
-1. Prüfe die benötigten Quellspalten. Im Beispiel stehen Kunde, Konto, Segment und Bestand in **A1:D4**; die Daten beginnen in Zeile 2.
-2. Lege die Kriterien in eigenen Zellen außerhalb der Quelle ab: **Keine weitere Eingabezelle**. Passe diese Bezüge für deine Liste an.
-3. Klicke in eine freie Ergebniszelle, im Beispiel **H2**, und gib die Formel aus dem Beispiel ein. Der benötigte Überlaufbereich ab H2 muss frei sein und außerhalb einer Excel-Tabelle liegen.
-4. Bestätige mit Enter. Vergleiche die Ausgabe mit den tatsächlich passenden Ausgangszeilen.
-5. Prüfe einen zweiten Fall und fehlende Werte. Bei wachsenden Listen verwende Excel-Tabellen mit strukturierten Bezügen oder erweitere alle zusammengehörenden Bereiche.
+1. Lege die vier Quellzeilen in A1:C5 mit Konto, Segment und Bestand an.
+2. Halte H2:J5 frei und außerhalb einer Excel-Tabelle. Es gibt keine separate Kriterienzelle.
+3. Gib =SORTIERENNACH(A2:C5;B2:B5;1;C2:C5;-1) in H2 ein.
+4. Prüfe zuerst die Segmentreihenfolge A vor B, dann innerhalb jedes Segments den absteigenden Bestand.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
+### Vorher · A1:C5
 
-| Zeile | A: Kunde | B: Konto | C: Segment | D: Bestand |
-| --- | --- | --- | --- | --- |
-| 1 | Kunde | Konto | Segment | Bestand |
-| 2 | P001 | K001 | A | 1000 |
-| 3 | P001 | K002 | B | 2000 |
-| 4 | P002 | K003 | A | 500 |
-
-Keine weitere Eingabezelle
-
-### Aktion
+| Konto | Segment | Bestand |
+| --- | --- | ---: |
+| K001 | B | 1000 |
+| K002 | A | 500 |
+| K003 | A | 2000 |
+| K004 | B | 1500 |
 
 ```excel
-=SORTIERENNACH(A2:D4;D2:D4;-1)
+=SORTIERENNACH(A2:C5;B2:B5;1;C2:C5;-1)
 ```
 
-### Nachher · Beispielergebnis
+### Nachher · H2:J5
 
-| Ausgabe ab H2 |
-| --- |
-| K002 vor K001 vor K003; vollständige Zeilen bleiben zusammen |
+| Konto | Segment | Bestand |
+| --- | --- | ---: |
+| K003 | A | 2000 |
+| K002 | A | 500 |
+| K004 | B | 1500 |
+| K001 | B | 1000 |
+
+**A2:C5** ist die Ausgabequelle. **B2:B5;1** sortiert zuerst aufsteigend nach Segment, **C2:C5;-1** danach absteigend nach Bestand. Ersetze die Bereiche und Richtungen; jeder Sortierbereich muss dieselben vier Zeilen umfassen. SORTIEREN verwendet im einfachen Fall einen Spaltenindex innerhalb der Ausgabematrix; SORTIERENNACH benennt Sortierbereiche ausdrücklich.
 
 ## Ergebnis
 
-Eine Matrix über einen ausdrücklich benannten Sortierbereich ordnen.
+Vier Zeilen in der Reihenfolge K003, K002, K004, K001. A und B sind jeweils intern nach Bestand absteigend sortiert.
 
 ## Warum funktioniert das?
 
-Der Sortierbereich muss zur Höhe der Ausgabe passen. Er wird direkt referenziert, sodass kein fest codierter Spaltenindex nötig ist.
+Das zweite Sortiermerkmal entscheidet bei gleichen Werten im ersten. Die ganzen Zeilen bleiben zusammen.
 
 ## Typischer Fehler
 
-Sortierbereich mit anderer Zeilenanzahl verwenden.
+Ungleich große Bereiche oder belegte Zellen im Überlaufbereich. Bei gleichen Werten in beiden Kriterien ist für eine fachlich eindeutige Reihenfolge ein weiteres Merkmal nötig.
 
 ## Plausibilitätscheck
 
-Erwartete Ausgabe: **K002 vor K001 vor K003; vollständige Zeilen bleiben zusammen**. Die Ausgangsliste umfasst drei Kontenzeilen, zwei Kunden und insgesamt 3500. Prüfe bei Kriterienwechsel die betreffenden Zeilen erneut.
-
-## Argumente verstehen
-
-**A2:D4** ist die Ausgabe; **D2:D4** liefert die Sortierwerte; **-1** bedeutet absteigend.
+Vorher und nachher vier Zeilen und Summe 5000. Im Segment A kommt 2000 vor 500, im Segment B 1500 vor 1000.

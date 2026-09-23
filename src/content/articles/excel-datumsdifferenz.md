@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Datum & Datentypen",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Enddatum minus Startdatum ergibt bei echten Excel-Datumswerten die verstrichenen Kalendertage.",
   "ort": "Excel → Formelzelle",
@@ -26,7 +26,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/days-function"
@@ -74,7 +74,7 @@ Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Exc
 
 ## Ergebnis
 
-Die verstrichenen Kalendertage zwischen zwei Daten bestimmen.
+Bei A2=01.02.2026 und B2=05.02.2026 ergibt H2 4 verstrichene Kalendertage.
 
 ## Warum funktioniert das?
 

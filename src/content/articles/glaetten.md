@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Text bearbeiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "GLÄTTEN entfernt äußere normale Leerzeichen und reduziert mehrfache innere normale Leerzeichen.",
   "ort": "Excel → Hilfsspalte",
@@ -27,7 +27,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/trim-function",
@@ -36,7 +36,13 @@
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```excel\n=GLÄTTEN(A2)\n```"
+  "kurzformel": "```excel\n=GLÄTTEN(A2)\n```",
+  "formelreferenz": {
+    "funktion": "GLÄTTEN",
+    "eingabe": "A2 enthält den Text „  P001   Nord  “. Formel in H2.",
+    "anpassen": "A2 durch die Textzelle ersetzen. Normale und geschützte Leerzeichen unterscheiden; fachlich bedeutsame Leerzeichen erhalten.",
+    "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
+  }
 }
 ---
 
@@ -77,7 +83,7 @@ Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Exc
 
 ## Ergebnis
 
-Führende und nachgestellte normale Leerzeichen entfernen; innere Folgen auf ein Leerzeichen reduzieren.
+Aus „  P001   Nord  “ wird in H2 „P001 Nord“.
 
 ## Warum funktioniert das?
 

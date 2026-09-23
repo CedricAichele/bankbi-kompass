@@ -9,7 +9,7 @@
   ],
   "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "P001 zeigt 2 statt 2.000. Wertefeld steht auf Anzahl, oft wegen Textbeträgen.",
+  "kurzbeschreibung": "Die Pivot zeigt für P001 die Anzahl 2 statt der Bestandssumme 2000.",
   "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",
   "tags": [
     "Pivot zählt statt summiert"
@@ -33,65 +33,47 @@
   "quellen": [
     "https://support.microsoft.com/de-DE/Excel/get-started/create-a-pivottable-to-analyze-worksheet-data"
   ],
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-P001 zeigt 2 statt 2.000.
+Die Pivot zeigt für P001 die Anzahl 2 statt der Bestandssumme 2000.
 
-## Symptom
+## Voraussetzungen
 
-P001 zeigt 2 statt 2.000.
-
-## Mögliche Ursachen
-
-Wertefeld steht auf Anzahl, oft wegen Textbeträgen.
-
-## Schnelltest
-
-Prüfe ISTZAHL in der Quelle und öffne Wertfeldeinstellungen.
+Arbeite mit einer Kopie oder separaten Ergebniszellen. Die Beispiele sind synthetisch; Formeln gelten für deutsches Excel.
 
 ## Schritte
 
-1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
-2. Prüfe ISTZAHL in der Quelle und öffne Wertfeldeinstellungen.
-3. Korrigiere zuerst die Datentypen; aktualisiere die PivotTable. Wähle im Wertefeld Summe.
-4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
-5. Den konkreten Bedienweg für die Korrektur findest du unter [Pivot zeigt Anzahl statt Summe](#/wissen/pivot-summe-anzahl). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
+1. Prüfe in der Quelle die zwei Zeilen P001/1250 und P001/750. Beide Beträge müssen echte Zahlen sein.
+2. Korrigiere nötigenfalls Textzahlen und aktualisiere die PivotTable.
+3. Öffne das Wertefeld → Wertfeldeinstellungen und wähle Summe statt Anzahl. Nur die Beschriftung zu ändern genügt nicht.
+4. Prüfe P001 = 2000. [Pivot-Aggregation](#/wissen/pivot-summe-anzahl) erklärt die Bedienung an einem weiteren kleinen Beispiel.
 
 ## Beispiel
 
-### Vorher · Fehlerbild
+| Kunde | Bestand |
+| --- | ---: |
+| P001 | 1250 |
+| P001 | 750 |
 
-| Beobachtung |
-| --- |
-| P001 mit 1250 und 750 → Summe 2000, Anzahl 2. |
-
-### Aktion
-
-Korrigiere zuerst die Datentypen; aktualisiere die PivotTable. Wähle im Wertefeld Summe.
-
-### Nachher · Erwartete Kontrolle
-
-| Prüfergebnis |
-| --- |
-| Summe über alle Personen = 9.000. |
+Vorher: Wertefeld Anzahl Bestand zeigt **2**. Nach Auswahl von Summe zeigt dieselbe Gruppe **2000**.
 
 ## Ergebnis
 
-Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
-
-## Typischer Fehler
-
-Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten, Modell oder Formel bestehen.
-
-## Plausibilitätscheck
-
-Summe über alle Personen = 9.000.
+P001 zeigt 2000 als Summe der beiden Zahlen; die Anzahl bleibt als andere Kennzahl 2.
 
 ## Warum funktioniert das?
 
-Prüfe zuerst den Quelldatentyp, dann die Zusammenfassung des Wertfelds.
+Anzahl zählt befüllte Werte, Summe addiert Zahlen. Zahlenformat und Feldbeschriftung ändern die Aggregationsart nicht.
+
+## Typischer Fehler
+
+Textbeträge durch Umbenennen des Wertefelds reparieren wollen.
+
+## Plausibilitätscheck
+
+1250 + 750 = 2000; zwei befüllte Bestandszellen. Das Beispiel enthält nur diesen einen Kunden.

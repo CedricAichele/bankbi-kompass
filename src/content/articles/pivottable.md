@@ -27,7 +27,7 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/get-started/create-a-pivottable-to-analyze-worksheet-data",
@@ -127,7 +127,7 @@ P001 = 2.000; P002 = 2.000; P003 = 4.000; P004 = 1.000. Gesamtergebnis 9.000.
 
 ## Ergebnis
 
-Eine PivotTable verdichtet eine flache Ausgangstabelle nach frei gewählten Merkmalen.
+P001 und P002 ergeben jeweils 2000, P003 ergibt 4000, P004 ergibt 1000. Gesamtergebnis 9000.
 
 ## Warum funktioniert das?
 

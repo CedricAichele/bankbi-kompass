@@ -142,6 +142,12 @@
 
 Neue Daten geladen? Prüfe zuerst Struktur und Qualität, entscheide dann über Bereinigung und Kombination und kontrolliere das Ergebnis vor dem Laden.
 
+## Grundverständnis
+
+Power Query speichert **Transformationsregeln für Spalten oder Tabellen**. Wählst du die Spalte Ort und wendest Trimmen und Großschreibung an, werden ihre Werte über die Zeilen des aktuellen Schritts verarbeitet: „ Mannheim “, „Mannheim“ und „mannheim“ werden zu dreimal MANNHEIM. Zeilenfilter und Gruppierungen verändern dagegen die Tabelle beziehungsweise deren Zeilenumfang.
+
+Bei **Aktualisierung** werden die Regeln auf die dann eingelesenen Quelldaten angewendet. Die Vorschau ist keine manuell gepflegte Excel-Zellliste; die Quelldatei wird dadurch nicht direkt überschrieben. **Profiling der ersten 1000 Zeilen** begrenzt die statistische Vorschau, nicht automatisch die Transformation auf diese 1000 Zeilen.
+
 ## Voraussetzungen
 
 Zugriff auf deine Datenquelle und Kenntnis ihrer Spalten und Zeilenebene. Die Beispielwerte dienen nur der Erklärung; eine Beispieldatei ist nicht erforderlich.
@@ -152,14 +158,14 @@ Zugriff auf deine Datenquelle und Kenntnis ihrer Spalten und Zeilenebene. Die Be
 2. **Vorschau ansehen:** Sind die Überschriften korrekt und wurden Titel, Fußzeilen oder Summenzeilen als Daten eingelesen? Kopfzeilen erst nach Entfernen von Vorspannzeilen verwenden. Spalten sprechend und eindeutig benennen.
 3. **Struktur verstehen:** Formuliere „Eine Zeile beschreibt …“. Im Beispiel ist es ein Konto zu einem Stichtag. [Granularität](#/wissen/granularitaet) entscheidet, ob mehrere Zeilen je Kunde richtig sind.
 4. **Profiling aktivieren:** Unter Ansicht Spaltenqualität, Spaltenverteilung und Spaltenprofil einschalten. Für eine vollständige Prüfung unten von den ersten 1000 Zeilen auf den gesamten Datensatz wechseln. [Profiling lesen](#/wissen/pq-profiling).
-5. **Datentypen prüfen:** Kennungen als Text erhalten, Betrag passend numerisch, Datum als Datum und Zeitstempel als Datum/Uhrzeit. Gebietsschema für Textzahlen und Datumsangaben bewusst wählen. [Datentypen](#/wissen/datenbereinigung).
+5. **Typen und Quellformat untersuchen:** Kennungen als Text schützen; Zahlen- und Datumsformat der Quelle feststellen. Automatische Schritte Geänderter Typ kontrollieren. Enthält eine Zahlenspalte bestätigte Platzhalter wie n/a, den vorzeitigen Typ-Schritt ändern oder entfernen, Platzhalter in einer nachvollziehbaren Regel behandeln und erst danach gezielt mit Gebietsschema konvertieren. Anschließend Fehler prüfen. [Datentypen](#/wissen/datenbereinigung).
 6. **Schlüssel prüfen:** Sind Konto und Stichtag gemeinsam eindeutig und vollständig? Kundennummer allein ist in einer Kontentabelle normalerweise nicht eindeutig. Fehlende Schlüssel separat untersuchen.
 7. **Fehlende Werte entscheiden:** Ein leeres Kündigungsdatum kann korrekt sein; ein unbekannter Bestand bleibt unbekannt. null nur nach fachlicher Regel ersetzen. [Entscheidung bei fehlenden Werten](#/wissen/nullwerte).
 8. **Spalten reduzieren:** Benötigte Schlüssel, Zeitbezug und Messgrößen behalten. Bei breiten Quellen Andere Spalten entfernen verwenden; erwartete Schemaänderungen berücksichtigen. [Spaltenauswahl](#/wissen/spalten-entfernen).
 9. **Text standardisieren:** Führende/nachgestellte Leerzeichen entfernen und relevante Schreibweisen vereinheitlichen. Eine vereinbarte Schreibweise für Segmente hilft bei Vergleichen. [Textbereinigung](#/wissen/pq-text).
 10. **Dubletten untersuchen:** Nach dem fachlichen Schlüssel gruppieren und Häufigkeiten prüfen. Erst bei identischen oder fachlich eindeutig auflösbaren Wiederholungen entfernen. [Dublettenprüfung](#/wissen/dubletten).
 11. **Spalten bei Bedarf teilen oder kombinieren:** Nur wenn ein Feld mehrere Merkmale enthält, etwa Ort und Region mit vereinbartem Trennzeichen. IDs nicht ohne Regel zerlegen. [Text vor/nach Trennzeichen](#/wissen/pq-text).
-12. **Werte gezielt ersetzen:** Fachlich bestätigte Platzhalter wie n/a in einer Datums-/Zahlenspalte in null umwandeln, bevor der Datentyp gesetzt wird. Originalwert und Umfang der Änderung nachvollziehbar halten.
+12. **Weitere Ersetzungen nur bei Bedarf:** Prüfe fachlich bestätigte Textcodes. Platzhalter vor einer Zahl-/Datumskonvertierung gehören in den passenden früheren Schritt (siehe Typprüfung), nicht mechanisch erst an diese Position. Halte Originalwerte und Änderungsumfang nachvollziehbar.
 13. **Datenstruktur prüfen:** Wiederholen Monatsnamen dieselbe Messgröße in vielen Spalten? Dann eine lange Struktur anstreben. Detailspalten nicht vorschnell wegaggregieren.
 14. **Struktur nur bei Bedarf ändern:** [Gruppieren](#/wissen/gruppieren) für eine Zeile je Kunde; [Entpivotieren](#/wissen/entpivotieren) für Monat/Wert; [Pivotieren](#/wissen/pivotieren) für eine bewusst breite Übergabetabelle.
 15. **Tabellen bei Bedarf kombinieren:** [Merge](#/wissen/zusammenfuehren) ergänzt passende Attribute. [Append](#/wissen/anhaengen) ergänzt Zeilen gleicher Struktur. Bei Merge Eindeutigkeit und Trefferzahl, bei Append Zeitraum und Spaltennamen prüfen.

@@ -7,10 +7,10 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Datum & Datentypen",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "MONATSENDE bestimmt den letzten Kalendertag eines Monats. HEUTE liefert das aktuelle Systemdatum, keinen Datenstand.",
-  "ort": "Excel → Formelzelle",
+  "kurzbeschreibung": "Bestimme das Monatsende eines expliziten Stichtags oder des aktuellen Datums. HEUTE ist ein Berechnungsdatum und kein Nachweis des fachlichen Datenstands.",
+  "ort": "Excel → freie Formelzelle H2; Datumsformat wählen",
   "tags": [
     "MONATSENDE und HEUTE"
   ],
@@ -28,64 +28,63 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
-    "https://support.microsoft.com/en-us/excel/functions/eomonth-function"
+    "https://support.microsoft.com/en-us/excel/functions/eomonth-function",
+    "https://support.microsoft.com/de-de/excel/functions/today-function",
+    "https://support.microsoft.com/de-de/excel/functions/eomonth-function"
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```excel\n=MONATSENDE(A2;0)\n```"
+  "kurzformel": "```excel\n=MONATSENDE(A2;0)\n```",
+  "formelreferenz": {
+    "funktion": "MONATSENDE",
+    "eingabe": "A2 ist das echte Datum 15.02.2026. Formel in H2, als Datum formatieren.",
+    "anpassen": "A2 und Monatsversatz 0 anpassen. 1 bedeutet Folgemonat, -1 Vormonat. HEUTE-basierte Alternative im Artikel ist dynamisch.",
+    "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
+  }
 }
 ---
 
 ## Wann brauche ich das?
 
-Den letzten Tag eines Monats bestimmen.
+Bestimme das Monatsende eines expliziten Stichtags oder des aktuellen Datums. HEUTE ist ein Berechnungsdatum und kein Nachweis des fachlichen Datenstands.
 
 ## Voraussetzungen
 
-Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Excel angegeben; Hinweise zu neueren Funktionen stehen beim jeweiligen Beispiel.
+Arbeite mit einer Kopie oder separaten Ergebniszellen. Die Beispiele sind synthetisch; Formeln gelten für deutsches Excel.
 
 ## Schritte
 
-1. Prüfe die Ausgangszellen und ihre Bedeutung: **A2 = echtes Datum 15.02.2026**. Die Zelladressen dienen als Beispiel und können auf die eigene Liste angepasst werden.
-2. Wähle eine freie Ergebniszelle **H2** und gib die Formel ein.
-3. Bestätige mit Enter. Für Datumsergebnisse öffne **Start → Zahlenformat** und wähle ein passendes Datumformat.
-4. Vergleiche das Ergebnis mit dem Beispiel und prüfe mindestens einen leeren oder anders aufgebauten Ausgangswert, bevor du die Formel nach unten kopierst.
+1. Trage in A2 das echte Datum 15.02.2026 ein, wenn der Bericht reproduzierbar bleiben soll.
+2. Berechne in H2 =MONATSENDE(A2;0) und formatiere die Ausgabe als Datum.
+3. Für eine bewusst laufende Tagesübersicht verwende stattdessen =HEUTE() oder =MONATSENDE(HEUTE();0).
+4. Prüfe, ob der feste Berichtsstichtag oder das Datum bei Neuberechnung fachlich gemeint ist.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
+| Eingabe / Zweck | Formel in separater Ergebniszelle | Ergebnis |
+| --- | --- | --- |
+| A2 = 15.02.2026 | `=MONATSENDE(A2;0)` | 28.02.2026 |
+| A2 = 15.02.2026, Folgemonat | `=MONATSENDE(A2;1)` | 31.03.2026 |
+| Laufende Tagesübersicht | `=HEUTE()` | Aktuelles Datum bei Neuberechnung |
+| Monatsende zum Berechnungsdatum | `=MONATSENDE(HEUTE();0)` | Ende des Monats, in dem neu berechnet wird |
 
-| Ausgangswerte |
-| --- |
-| A2 = echtes Datum 15.02.2026 |
-
-### Aktion
-
-```excel
-=MONATSENDE(A2;0)
-```
-
-### Nachher · Beispielergebnis
-
-| Ergebnis |
-| --- |
-| 28.02.2026 |
+Wird beispielsweise am 23.09.2026 neu berechnet, ergeben die letzten beiden Formeln 23.09.2026 und 30.09.2026; an anderen Tagen können die Ergebnisse anders sein. A2 und den Monatsversatz 0 anpassen. Bei manueller Berechnung aktualisiert sich HEUTE erst mit einer Neuberechnung.
 
 ## Ergebnis
 
-Den letzten Tag eines Monats bestimmen.
+Mit dem festen A2 = 15.02.2026 liefert H2 reproduzierbar 28.02.2026. HEUTE-basierte Ausgaben bleiben ausdrücklich dynamisch.
 
 ## Warum funktioniert das?
 
-0 meint den Monat des Ausgangsdatums; 1 den Folgemonat und -1 den Vormonat. Die Funktion berücksichtigt unterschiedliche Monatslängen.
+MONATSENDE berücksichtigt Monatslängen. HEUTE bezieht sich auf den Berechnungszeitpunkt, nicht auf die letzte Datenlieferung.
 
 ## Typischer Fehler
 
-Pauschal 30 oder 31 Tage zum Ausgangsdatum addieren.
+Einen historischen Stichtagsbericht mit HEUTE unbemerkt in den aktuellen Monat verschieben.
 
 ## Plausibilitätscheck
 
-Für die genannten Ausgangswerte wird **28.02.2026** erwartet. Die Originalzellen bleiben unverändert; ergänzte Ergebniszellen werden separat geprüft.
+Für Februar 2026 wird Tag 28 erwartet; für Februar 2028 Tag 29. Prüfe bei dynamischen Ausgaben zusätzlich den tatsächlichen Datenstand.

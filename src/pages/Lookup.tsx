@@ -160,7 +160,7 @@ export function ToolPage() {
       </header>
       <SearchForm />
       {tool.name === "Power BI" && <section className="orientation"><h2>Neu mit Power BI?</h2><p>Eine Orientierung vom Import bis zur verlässlichen Auswertung:</p><ol>{["daten-laden","power-query","pq-workflow","fakt-dimension","beziehungen","measure","filterkontext","balkendiagramm","summe-zu-hoch"].map(id=><li key={id}><Link to={"/wissen/"+id}>{byId(id)!.titel}</Link></li>)}</ol><Link to="/power-query">Power Query & Datenaufbereitung: alle Themen →</Link></section>}
-      {tool.name === "Excel" && <section className="orientation"><h2>Von der Liste zur Auswertung</h2><p><Link to="/wissen/excel-liste-vorbereiten">Daten vorbereiten</Link> → <Link to="/wissen/xverweis">Werte zuordnen</Link> → <Link to="/wissen/pivottable">Auswerten und prüfen</Link>. Wiederkehrende Lieferungen mit <Link to="/wissen/excel-power-query">Excel Power Query</Link> aufbereiten.</p></section>}
+      {tool.name === "Excel" && <section className="orientation"><h2>Von der Liste zur Auswertung</h2><p><Link to="/wissen/excel-formeln">Excel – Formeln & Funktionen: durchsuchbare Schnellreferenz →</Link></p><p><Link to="/wissen/excel-liste-vorbereiten">Daten vorbereiten</Link> → <Link to="/wissen/xverweis">Werte zuordnen</Link> → <Link to="/wissen/pivottable">Auswerten und prüfen</Link>. Wiederkehrende Lieferungen mit <Link to="/wissen/excel-power-query">Excel Power Query</Link> aufbereiten.</p></section>}
       <div className="group-tabs" aria-label="Tätigkeitsgruppen">
         <button aria-pressed={!group} onClick={() => setParams({})}>
           Alle
@@ -190,7 +190,9 @@ export function ToolPage() {
                 <p className="catalog-intro">{({
                   "Daten importieren": "Die passende Quelle wählen und schon vor dem Laden Struktur und Typen prüfen.",
                   "Power Query & Datenaufbereitung": "Neue Daten systematisch verstehen, bereinigen, kombinieren und kontrollieren.",
-                  "Daten vorbereiten": "Listen strukturieren, Text und Datentypen bereinigen und Schlüssel prüfen.",
+                  "Daten prüfen & bereinigen": "Struktur, fehlende Werte, Dubletten und Kontrollsummen nachvollziehbar prüfen.",
+                  "Text bearbeiten": "Leerzeichen bereinigen, Texte zerlegen und gezielt zusammensetzen.",
+                  "Datum & Datentypen": "Zahlen und Datum von Text unterscheiden und mit bekannter Quellkonvention umwandeln.",
                   "Datenmodell": "Eindeutige Schlüssel und verlässliche Filterwege aufbauen.",
                   "DAX & Measures": "Kennzahlen berechnen, die auf die aktuelle Auswahl reagieren.",
                   "Zeitintelligenz": "Zeiträume mit einem gemeinsamen Kalender vergleichen.",
@@ -374,7 +376,7 @@ export function Browse({
         {query && ` für „${query}“`}
       </p>
       {result.length ? (
-        <EntryList items={result} quickView={Boolean(query.trim())} />
+        <EntryList items={result} quickView={Boolean(query.trim())} query={query} />
       ) : (
         <Empty text="Versuche einen kürzeren Begriff oder entferne einzelne Filter." />
       )}

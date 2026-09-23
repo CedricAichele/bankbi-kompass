@@ -8,7 +8,7 @@
   ],
   "kategorie": "Excel Power Query",
   "schwierigkeit": "Grundlage",
-  "ort": "Power Query-Editor",
+  "ort": "Excel → Daten → Aus Tabelle/Bereich oder Daten abrufen → Power Query Editor",
   "tags": [],
   "synonyme": [],
   "verwandteThemen": [
@@ -44,7 +44,7 @@ Excel mit verfügbarem Power Query und Zugriff auf die gewünschte Quelle. Der F
 ## Schritte
 
 1. Für Daten im geöffneten Blatt den Bereich als Tabelle anlegen und **Daten → Aus Tabelle/Bereich** wählen. Für externe Quellen **Daten → Daten abrufen** verwenden; verfügbare Connectoren hängen von Version und Plattform ab.
-2. Im Navigator **Daten transformieren** wählen. Im Editor anhand des [gemeinsamen Workflows](#/wissen/pq-workflow) Profiling, Typen, Schlüssel und fehlende Werte prüfen.
+2. Bei **Aus Tabelle/Bereich** öffnet sich der Editor direkt. Bei externen Quellen im jeweiligen Dialog **Daten transformieren** wählen; nur Quellen mit einer Objektauswahl zeigen einen Navigator. Im Editor anhand des [gemeinsamen Workflows](#/wissen/pq-workflow) Profiling, Typen, Schlüssel und fehlende Werte prüfen.
 3. Gemeinsame Anleitungen für [Textbereinigung](#/wissen/pq-text), [Gruppieren](#/wissen/gruppieren), [Merge](#/wissen/zusammenfuehren) und [Append](#/wissen/anhaengen) verwenden. Sie müssen nicht für jedes Werkzeug neu gelernt werden.
 4. **Start → Schließen & laden in…** legt das Ziel fest: Tabelle auf einem Blatt, nur Verbindung oder bei Bedarf Datenmodell. Hilfsabfragen benötigen keine eigene Arbeitsblatttabelle.
 5. Später über **Daten → Alle aktualisieren** oder die einzelne Abfrage aktualisieren. In Power BI heißt der Abschluss dagegen **Schließen & übernehmen** und lädt ins Modell.
@@ -54,13 +54,13 @@ Excel mit verfügbarem Power Query und Zugriff auf die gewünschte Quelle. Der F
 
 | Ausgang | Aktion | Ergebnis |
 | --- | --- | --- |
-| Monatliche Liste mit Konto und Betrag | Datentypen prüfen, Text standardisieren, nach Kunde gruppieren | Aktualisierbare Kundenübersicht im Arbeitsblatt |
+| Tabelle mit Kunde, Konto und Betrag: P001/K001/100, P001/K002/200, P002/K003/500 | Typen prüfen; nach vorhandener Spalte Kunde gruppieren, Betrag summieren | P001/300 und P002/500 im Arbeitsblatt |
 
 Bei der nächsten Lieferung bleiben die Schritte bestehen. Prüfe Schema und Kontrollsumme nach jeder Aktualisierung.
 
 ## Ergebnis
 
-Eine aktualisierbare Excel-Ausgabe entsteht aus gespeicherten Transformationsschritten. Die Quelle bleibt von der Ergebnistabelle getrennt.
+Aus P001/K001/100, P001/K002/200 und P002/K003/500 entstehen die zwei Kundenzeilen P001/300 und P002/500.
 
 ## Warum funktioniert das?
 
@@ -72,4 +72,4 @@ Geladene Ergebniszellen als dauerhaft manuell pflegbare Quelldaten behandeln.
 
 ## Plausibilitätscheck
 
-Ergebnisumfang stimmt mit den Abfrageschritten überein. Eine Quellenänderung wird nach Aktualisierung sichtbar.
+Drei Kontozeilen werden zu zwei Kundenzeilen. 100 + 200 + 500 = 300 + 500 = 800. Ändere in einer Testkopie den Betrag von K001 auf 150: Erst nach Aktualisierung ergibt P001 350, Gesamtsumme 850. Fehlt Kunde in einer realen Lieferung, muss eine fachlich passende Zuordnung vor der Gruppierung ergänzt werden.

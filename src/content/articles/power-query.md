@@ -85,6 +85,12 @@
 
 Power Query bereitet Daten wiederholbar auf. Das Datenmodell verbindet Tabellen, DAX berechnet Kennzahlen und Visuals stellen Ergebnisse dar.
 
+## Grundverständnis
+
+Power Query speichert **Transformationsregeln für Spalten oder Tabellen**. Wählst du die Spalte Ort und wendest Trimmen und Großschreibung an, werden ihre Werte über die Zeilen des aktuellen Schritts verarbeitet: „ Mannheim “, „Mannheim“ und „mannheim“ werden zu dreimal MANNHEIM. Zeilenfilter und Gruppierungen verändern dagegen die Tabelle beziehungsweise deren Zeilenumfang.
+
+Bei **Aktualisierung** werden die Regeln auf die dann eingelesenen Quelldaten angewendet. Die Vorschau ist keine manuell gepflegte Excel-Zellliste; die Quelldatei wird dadurch nicht direkt überschrieben. **Profiling der ersten 1000 Zeilen** begrenzt die statistische Vorschau, nicht automatisch die Transformation auf diese 1000 Zeilen.
+
 ## Voraussetzungen
 
 Zugriff auf deine Datenquelle und Kenntnis ihrer Spalten und Zeilenebene. Die Beispielwerte dienen nur der Erklärung; eine Beispieldatei ist nicht erforderlich.

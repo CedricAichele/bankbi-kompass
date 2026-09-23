@@ -168,7 +168,8 @@ Text.PadStart([Nummer], 8, "0")
 **Ausgangswert:** Bestand = 25000
 
 ```m
-if [Bestand] > 100000 then "Hoch"
+if [Bestand] = null then "Fehlt"
+else if [Bestand] > 100000 then "Hoch"
 else if [Bestand] > 10000 then "Mittel"
 else "Niedrig"
 ```
@@ -177,7 +178,7 @@ else "Niedrig"
 
 **Was anpassen?** Spalte, Grenzwerte und alle drei Bezeichnungen ersetzen.
 
-**Wann und warum?** Klassen mit klaren Grenzen bilden. Jede if-Bedingung braucht ein else; bei genau 100000 gilt hier Mittel.
+**Wann und warum?** Klassen mit klaren Grenzen bilden. Jede if-Bedingung braucht ein else; bei genau 100000 gilt hier Mittel. Ein fehlender Bestand ergibt ausdrücklich Fehlt.
 
 ### Erlaubte Produkte
 

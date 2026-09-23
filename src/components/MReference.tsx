@@ -15,18 +15,22 @@ export function MReference() {
   return <section className="m-reference" aria-label="M-Funktionsreferenz">
     <p>Power Query verwendet die Formelsprache <strong>M</strong>. Viele Aktionen der Oberfläche erzeugen den Code bereits automatisch. Du musst M nicht auswendig lernen. Eigene Ausdrücke helfen bei Textbereinigung, Datumslogik, komplexeren Bedingungen, Fehlerbehandlung und wiederkehrenden oder dynamischen Transformationen.</p>
     <p>Hier findest du eine praxisorientierte Auswahl häufig benötigter M-Funktionen. Die vollständige Referenz mit mehreren hundert Funktionen findest du bei Microsoft: <a href="https://learn.microsoft.com/en-us/powerquery-m/power-query-m-function-reference" target="_blank" rel="noreferrer">Power Query M Function Reference</a> und <a href="https://learn.microsoft.com/en-us/powerquery-m/understanding-power-query-m-functions" target="_blank" rel="noreferrer">Understanding Power Query M Functions</a>.</p>
+    <p><strong>Drei Eingabeebenen:</strong> Benutzerdefinierte Spalte = einzelner Ausdruck ohne führendes =. Formelleiste = vollständiger Schritt mit =. Erweiterter Editor = komplette let/in-Abfrage. Der passende Eingabeort steht jeweils vor dem Code.</p>
     <details className="practice-details"><summary>Eingabehilfe: Wo gebe ich M-Code ein und was passe ich an?</summary>
     <h2>Wo gebe ich Power-Query-Code ein?</h2>
     <h3>A · Benutzerdefinierte Spalte: nur der Ausdruck</h3>
     <p>Power Query Editor → Spalte hinzufügen → Benutzerdefinierte Spalte. Gib einen neuen Spaltennamen und nur den Ausdruck ein, ohne führendes Gleichheitszeichen. Hier gehört kein vollständiges Table.AddColumn hinein.</p>
+    <p className="code-location"><strong>Ausdruck für Benutzerdefinierte Spalte</strong></p>
     <CodeBlock language="m" code={'Text.Upper([Ort])'} />
     <p><code>[Ort]</code> ist eine vorhandene Spalte. Heißt sie Geschäftsstelle, lautet der Ausdruck <code>Text.Upper([Geschäftsstelle])</code>. Das Ergebnis steht anschließend je Zeile in der neuen Spalte.</p>
     <h3>B · Formelleiste: ein vollständiger Schritt</h3>
     <p>Ansicht → Formelleiste einschalten. Dort siehst du den ganzen M-Schritt. Über fx ergänzt du einen Schritt; beim Bearbeiten ersetzt du den ausgewählten Schritt. Verwende den tatsächlichen Namen seines Vorgängers, nicht den Namen des Schritts selbst.</p>
+    <p className="code-location"><strong>Vollständiger Schritt für die Formelleiste</strong></p>
     <CodeBlock language="m" code={'= Table.AddColumn(\n    #"Vorheriger Schritt",\n    "Ort Groß",\n    each Text.Upper([Ort]),\n    type text\n)'} />
     <p><code>#"Vorheriger Schritt"</code> ist ein Platzhalter für einen vorhandenen Abfrageschritt, etwa <code>#"Geänderter Typ"</code>. <code>each</code> bedeutet hier: den Ausdruck für jede Zeile auswerten.</p>
     <h3>C · Erweiterter Editor: die komplette Abfrage</h3>
     <p>Start → Erweiterter Editor. <code>let</code> definiert die Schritte; <code>in</code> bestimmt den ausgegebenen Schritt. Dieses vollständige synthetische Beispiel kann in eine leere Abfrage eingefügt werden. Eine bestehende Abfrage vorher duplizieren, statt ihren Code ungeprüft zu überschreiben.</p>
+    <p className="code-location"><strong>Komplette Abfrage für den Erweiterten Editor</strong></p>
     <CodeBlock language="m" code={'let\n    Quelle = #table({"Ort"}, {{" mannheim "}, {"Mannheim"}, {"MANNHEIM"}}),\n    #"Geänderter Typ" = Table.TransformColumnTypes(Quelle, {{"Ort", type text}}),\n    #"Neue Spalte" = Table.AddColumn(#"Geänderter Typ", "Ort_bereinigt", each Text.Upper(Text.Trim([Ort])), type text)\nin\n    #"Neue Spalte"'} />
     <p>Ergebnis: drei Zeilen, jeweils <strong>MANNHEIM</strong> in Ort_bereinigt. In deiner Abfrage Quelle, Spaltennamen und Schrittreferenzen anpassen. Schritte innerhalb von let trennt ein Komma; vor in steht kein zusätzliches Komma.</p>
     <h2>Was muss ich anpassen?</h2>
@@ -43,7 +47,7 @@ export function MReference() {
     <p>Wähle eine Aufgabe, um das vollständige Beispiel aufzurufen. Anschließend lassen sich alle Filter zurücksetzen.</p>
     <div className="m-shortcuts">{["Text.Trim", "Text.Upper", "Text.Replace", "Date.Year", "Date.EndOfMonth", "Number.Round", "if … then … else", "try … otherwise", "Table.SelectRows", "Table.Group", "Table.Combine", "Table.NestedJoin"].map(name => {
       const entry = mEntries.find(x => x.name === name)!;
-      return <button key={name} onClick={() => setParams({funktion: name}, {replace: true, preventScrollReset: true})}><strong>{entry.name}</strong><span>{entry.use}</span><code>{entry.code}</code></button>;
+      return <button key={name} onClick={() => setParams({funktion: name}, {replace: true, preventScrollReset: true})}><strong>{entry.name}</strong><span>{entry.use}</span><span>{entry.name.startsWith("Table.") ? "Vollständiger Schritt für die Formelleiste" : "Ausdruck für Benutzerdefinierte Spalte"}</span><code>{entry.code}</code></button>;
     })}</div></details>
     <h2>Funktion oder Arbeitsproblem finden</h2>
     <div className="filters m-filters"><label>Funktion oder Aufgabe<input type="search" value={query} onChange={e => update("funktion", e.target.value)} placeholder="z. B. text trim, Monatsultimo, filtern" /></label><label>Kategorie<select value={category} onChange={e => update("gruppe", e.target.value)}><option value="">Alle Kategorien</option>{mCategories.map(x => <option key={x}>{x}</option>)}</select></label><button onClick={() => setParams({}, {replace: true, preventScrollReset: true})}>Filter zurücksetzen</button></div>
@@ -52,8 +56,10 @@ export function MReference() {
     <div className="m-results">{matches.map(entry => <details className="m-entry" key={entry.name} open={query ? true : undefined}>
       <summary><strong>{entry.name}</strong><span>{entry.category} · {entry.use}</span></summary>
       <dl><dt>Ausgangswert</dt><dd>{entry.input}</dd></dl>
+      <p className="code-location"><strong>{entry.name.startsWith("Table.") ? "Vollständiger Schritt für die Formelleiste" : "Ausdruck für Benutzerdefinierte Spalte"}</strong><br/>{entry.where}</p>
       <CodeBlock language="m" code={entry.code} />
-      <dl><dt>Ergebnis</dt><dd>{entry.result}</dd><dt>Was muss ich anpassen?</dt><dd>{entry.adapt}</dd><dt>Wo eingeben?</dt><dd>{entry.where}</dd></dl>
+      <dl><dt>Ergebnis</dt><dd>{entry.result}</dd><dt>Was muss ich anpassen?</dt><dd>{entry.adapt}</dd></dl>
+      {entry.name.startsWith("List.") && <p>Eine Liste entsteht etwa durch eine Spaltenauswahl innerhalb einer Gruppierung: <Link to="/wissen/power-query-m?funktion=Table.Group">Table.Group mit List.Sum nachvollziehen</Link>. [Werte] im Beispiel bezeichnet dagegen eine Zelle mit einer Liste wie {"{10, 20, 30}"}; eine einzelne Zahl 10 ist keine Liste.</p>}
       {entry.note && <p className="m-note">{entry.note}</p>}
       <a href={entry.source} target="_blank" rel="noreferrer">Microsoft: Syntax und Details zu {entry.name}</a>
     </details>)}</div>

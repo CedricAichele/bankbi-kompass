@@ -9,7 +9,7 @@
   ],
   "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Fehlt oder #NV trotz scheinbar vorhandener Kennung. Text/Zahl unterschiedlich oder unsichtbare Leerzeichen.",
+  "kurzbeschreibung": "XVERWEIS meldet einen fehlenden Treffer, obwohl die Kennung optisch passt. Prüfe Typ und unerwünschte Leerzeichen.",
   "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",
   "tags": [
     "XVERWEIS findet Wert nicht"
@@ -34,65 +34,48 @@
     "https://support.microsoft.com/en-us/excel/functions/trim-function",
     "https://support.microsoft.com/de-de/office/gl%C3%A4tten-funktion-410388fa-c5df-49c6-b16c-9e5630b479f9"
   ],
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-Fehlt oder #NV trotz scheinbar vorhandener Kennung.
+XVERWEIS meldet einen fehlenden Treffer, obwohl die Kennung optisch passt. Prüfe Typ und unerwünschte Leerzeichen.
 
-## Symptom
+## Voraussetzungen
 
-Fehlt oder #NV trotz scheinbar vorhandener Kennung.
-
-## Mögliche Ursachen
-
-Text/Zahl unterschiedlich oder unsichtbare Leerzeichen.
-
-## Schnelltest
-
-Vergleiche die beiden Zellen direkt mit =A2=F2 sowie deren LÄNGE.
+XVERWEIS benötigt Microsoft 365 oder Excel 2021/2024.
 
 ## Schritte
 
-1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
-2. Vergleiche die beiden Zellen direkt mit =A2=F2 sowie deren LÄNGE.
-3. Vereinheitliche den Schlüsseltyp an der Quelle. Entferne unerwünschte Leerzeichen mit GLÄTTEN; geschützte Leerzeichen zuerst gezielt ersetzen.
-4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
-5. Den konkreten Bedienweg für die Korrektur findest du unter [Leerzeichen entfernen: GLÄTTEN](#/wissen/glaetten). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
+1. A2 enthält den Text „K003 “ mit abschließendem Leerzeichen, B2 den Bestand 2000. F2 enthält „K003“ ohne Leerzeichen. Original erhalten.
+2. Prüfe =A2=F2 (FALSCH), =LÄNGE(A2) (5) und =LÄNGE(F2) (4). Bei numerischen Kennungen zusätzlich ISTTEXT und ISTZAHL auf beiden Seiten vergleichen.
+3. Bereinige das bestätigte äußere Leerzeichen in G2 mit =GLÄTTEN(A2). Die [Textbereinigung](#/wissen/glaetten) erklärt auch geschützte Leerzeichen.
+4. Suche in H2 mit =XVERWEIS(F2;G2;B2;"Fehlt") über den bereinigten Schlüssel. Für mehrere Zeilen beide Bereiche passend erweitern.
 
 ## Beispiel
 
-### Vorher · Fehlerbild
+Vorher liefert =XVERWEIS(F2;A2;B2;"Fehlt") den Text **Fehlt**. Nach =GLÄTTEN(A2) in G2:
 
-| Beobachtung |
-| --- |
-| "K003 " hat 5 Zeichen, "K003" hat 4: optisch ähnlich, nicht gleich. |
+```excel
+=XVERWEIS(F2;G2;B2;"Fehlt")
+```
 
-### Aktion
-
-Vereinheitliche den Schlüsseltyp an der Quelle. Entferne unerwünschte Leerzeichen mit GLÄTTEN; geschützte Leerzeichen zuerst gezielt ersetzen.
-
-### Nachher · Erwartete Kontrolle
-
-| Prüfergebnis |
-| --- |
-| Exakter Vergleich muss WAHR liefern; anschließend Ergebnis 2.000 prüfen. |
+H2 ergibt **2000**. F2 ist das Suchkriterium, G2 die bereinigte Suchzelle und B2 die positionsgleiche Rückgabe. Diese Bezüge anpassen.
 
 ## Ergebnis
 
-Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
-
-## Typischer Fehler
-
-Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten, Modell oder Formel bestehen.
-
-## Plausibilitätscheck
-
-Exakter Vergleich muss WAHR liefern; anschließend Ergebnis 2.000 prüfen.
+Der bereinigte Schlüssel K003 stimmt mit F2 überein; H2 liefert 2000.
 
 ## Warum funktioniert das?
 
-GLÄTTEN normalisiert das normale Leerzeichen. Geschützte Leerzeichen aus Webseiten können einen zusätzlichen WECHSELN-Schritt benötigen.
+Das normale äußere Leerzeichen wurde entfernt, ohne die Originalkennung zu überschreiben.
+
+## Typischer Fehler
+
+Kennungen pauschal in Zahlen umwandeln oder fachlich bedeutsame Leerzeichen entfernen.
+
+## Plausibilitätscheck
+
+=G2=F2 ergibt WAHR, beide Längen sind 4 und H2 ist 2000.

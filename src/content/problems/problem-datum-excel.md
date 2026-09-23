@@ -9,8 +9,8 @@
   ],
   "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Datumsfilter oder zeitliche Sortierung funktionieren nicht. Datumszeichenfolge wurde als Text oder mit falschem Gebietsschema interpretiert.",
-  "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",
+  "kurzbeschreibung": "Datumssortierung oder Datumsfilter funktionieren nicht, weil Text oder falsch interpretierte Datumswerte vorliegen.",
+  "ort": "Excel → Hilfszelle DATWERT; alternativ Power Query mit Gebietsschema",
   "tags": [
     "Datum wird nicht erkannt"
   ],
@@ -32,65 +32,48 @@
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/datevalue-function"
   ],
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-Datumsfilter oder zeitliche Sortierung funktionieren nicht.
+Datumssortierung oder Datumsfilter funktionieren nicht, weil Text oder falsch interpretierte Datumswerte vorliegen.
 
-## Symptom
+## Voraussetzungen
 
-Datumsfilter oder zeitliche Sortierung funktionieren nicht.
-
-## Mögliche Ursachen
-
-Datumszeichenfolge wurde als Text oder mit falschem Gebietsschema interpretiert.
-
-## Schnelltest
-
-Prüfe ISTZAHL; formatiere eine Kopie als Zahl und vergleiche Tag und Monat.
+Arbeite mit einer Kopie oder separaten Ergebniszellen. Die Beispiele sind synthetisch; Formeln gelten für deutsches Excel.
 
 ## Schritte
 
-1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
-2. Prüfe ISTZAHL; formatiere eine Kopie als Zahl und vergleiche Tag und Monat.
-3. Importiere über Power Query mit explizitem Datentyp Datum und richtigem Gebietsschema. Bei mehrdeutigen Daten die Quelle klären.
-4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
-5. Den konkreten Bedienweg für die Korrektur findest du unter [Datumswerte korrigieren](#/wissen/excel-datum). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
+1. Prüfe =ISTZAHL(A2). Ein Datum ist eine Zahl, aber nicht jede Zahl ein gültiger fachlicher Stichtag.
+2. Bei bestätigtem deutschen Text „31.01.2026“ in A2 verwende =DATWERT(A2) in H2 und formatiere H2 als Datum.
+3. Bei 03/04/2026 ohne bestätigte Herkunft stoppe die Umwandlung und kläre Tag/Monat-Reihenfolge. Für wiederkehrende Importe das bestätigte Gebietsschema in Power Query setzen.
+4. Prüfe Tag, Monat und Jahr. [Datumswerte korrigieren](#/wissen/excel-datum) zeigt DATWERT, die Datumsreihenfolge bei Text in Spalten und den Power-Query-Weg.
 
 ## Beispiel
 
-### Vorher · Fehlerbild
+Vorher: A2 enthält Text „31.01.2026“, ISTZAHL(A2) ist FALSCH. In H2:
 
-| Beobachtung |
-| --- |
-| 03/04/2026 kann je Kultur 3. April oder 4. März bedeuten. |
+```excel
+=DATWERT(A2)
+```
 
-### Aktion
-
-Importiere über Power Query mit explizitem Datentyp Datum und richtigem Gebietsschema. Bei mehrdeutigen Daten die Quelle klären.
-
-### Nachher · Erwartete Kontrolle
-
-| Prüfergebnis |
-| --- |
-| Teste einen eindeutigen Tag wie 31.03.2026 und den mehrdeutigen Wert. |
+Nachher bei passender deutscher Interpretation: Datumswert **31.01.2026**, ISTZAHL(H2) ist WAHR. Bei 03/04/2026 ist ohne Quellkonvention kein eindeutiges erwartetes Datum festgelegt.
 
 ## Ergebnis
 
-Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
-
-## Typischer Fehler
-
-Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten, Modell oder Formel bestehen.
-
-## Plausibilitätscheck
-
-Teste einen eindeutigen Tag wie 31.03.2026 und den mehrdeutigen Wert.
+Der eindeutige Datumstext wird zu 31.01.2026. Mehrdeutige Werte bleiben bis zur Quellenklärung als Prüffälle erhalten.
 
 ## Warum funktioniert das?
 
-Excel speichert Datumswerte als fortlaufende Zahlen. DATWERT interpretiert einen passenden Datumstext; das Zellformat macht den Wert als Datum lesbar.
+Erst die Interpretation erzeugt eine Datumszahl; ein Datumsformat allein macht aus Text kein Datum.
+
+## Typischer Fehler
+
+Ein erfolgreich umgewandeltes, aber fachlich falsches Datum ungeprüft akzeptieren.
+
+## Plausibilitätscheck
+
+=H2=DATUM(2026;1;31) ergibt WAHR. Tag=31, Monat=1 und Jahr=2026 kontrollieren.

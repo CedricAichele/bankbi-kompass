@@ -31,7 +31,7 @@
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/unique-function"
@@ -80,7 +80,13 @@
     "Quellbereiche und Kriterienzellen festlegen.",
     "Formel in einer freien Ergebniszelle eingeben.",
     "Ausgabe anhand der passenden Quellzeilen kontrollieren."
-  ]
+  ],
+  "formelreferenz": {
+    "funktion": "EINDEUTIG",
+    "eingabe": "A1:D4: Kunde/Konto/Segment/Bestand; Zeile 2=P001/K001/A/1000, Zeile 3=P001/K002/B/2000, Zeile 4=P002/K003/A/500. Ergebnis in H2. H2:H3 frei und außerhalb einer Excel-Tabelle.",
+    "anpassen": "A2:A4 durch die Spalte für unterschiedliche Werte ersetzen. Mehrere Quellspalten würden eindeutige Kombinationen bilden.",
+    "version": "Microsoft 365 oder Excel 2021/2024; nicht Excel 2016/2019."
+  }
 }
 ---
 
@@ -90,7 +96,7 @@ Eine Liste unterschiedlicher Werte erzeugen.
 
 ## Voraussetzungen
 
-Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. XVERWEIS und dynamische Arrayfunktionen benötigen eine unterstützte Version, zum Beispiel Microsoft 365 oder Excel 2021/2024.
+Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. Diese Funktion benötigt Microsoft 365 oder Excel 2021/2024.
 
 ## Schritte
 
@@ -111,7 +117,6 @@ Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Fo
 | 3 | P001 | K002 | B | 2000 |
 | 4 | P002 | K003 | A | 500 |
 
-Keine weitere Eingabezelle
 
 ### Aktion
 
@@ -128,7 +133,7 @@ Keine weitere Eingabezelle
 
 ## Ergebnis
 
-Eine Liste unterschiedlicher Werte erzeugen.
+H2:H3 enthält P001 und P002: zwei unterschiedliche Kunden aus drei Kontenzeilen.
 
 ## Warum funktioniert das?
 

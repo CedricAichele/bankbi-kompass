@@ -1,6 +1,8 @@
 import Fuse from "fuse.js";
 import type { Content } from "../content/schema";
 import { toolsCatalog } from "../content/catalog";
+import { mEntries } from "../content/m-reference";
+import { excelEntries } from "../content/excel-reference";
 export type Filters = {
   bereich?: string;
   schwierigkeit?: string;
@@ -47,6 +49,7 @@ export function searchContent(
     description: normalize(item.kurzbeschreibung),
     category: normalize(item.kategorie),
     body: normalize(item.body),
+    tasks: item.id === "power-query-m" ? mEntries.map(x=>normalize([x.name,x.category,x.use,x.adapt,x.note].join(" "))) : item.id === "excel-formeln" ? excelEntries(items).map(x=>normalize([x.name,x.category,x.use,x.adapt].join(" "))) : [],
   }));
   const fuse = new Fuse(indexed, {
     includeScore: true,
@@ -59,9 +62,14 @@ export function searchContent(
       { name: "description", weight: 2 },
       "category",
       "body",
+      { name: "tasks", weight: 0.5 },
     ],
   });
   const matches = fuse.search(q);
+  // Require every meaningful term within one reference entry, never across unrelated cards.
+  const taskTerms=q.split(" ").filter(w=>!["in","im","der","die","das","einer","einem","mit","von","und","zu"].includes(w));
+  const taskHit=(x:typeof indexed[number])=>taskTerms.length>0 && x.tasks.some(t=>taskTerms.every(w=>t.includes(w)));
+  for (const entry of indexed.filter(taskHit)) if(!matches.some(x=>x.item===entry)) matches.push({item:entry,refIndex:indexed.indexOf(entry),score:0.3});
   if (!matches.length) {
     // Longer questions can fail phrase matching despite containing useful terms.
     // Keep negations and compare all remaining terms, independent of word order.
@@ -91,7 +99,7 @@ export function searchContent(
               ? 2
               : x.item.title.includes(q)
                 ? 3
-                : 4;
+                : taskHit(x.item) ? 3.5 : 4;
       return (
         priority(a) - priority(b) ||
         (a.score ?? 1) - (b.score ?? 1) ||
@@ -99,4 +107,13 @@ export function searchContent(
       );
     })
     .map((x) => x.item.item);
+}
+/** Exact function searches can open the matching reference card without duplicating articles. */
+export function searchTarget(item: Content, query = "") {
+  const base="/wissen/"+item.slug;
+  if(item.id === "power-query-m") {
+    const exact=mEntries.find(x=>normalize(x.name)===normalize(query));
+    if(exact) return base+"?funktion="+encodeURIComponent(exact.name);
+  }
+  return base;
 }

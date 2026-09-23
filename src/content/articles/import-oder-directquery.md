@@ -9,9 +9,9 @@
     "Excel"
   ],
   "kategorie": "Werkzeugwahl",
-  "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Speicher- und Aktualisierungsbedarf gemeinsam entscheiden. Import und DirectQuery lösen unterschiedliche Anforderungen.",
-  "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",
+  "schwierigkeit": "Fortgeschritten",
+  "kurzbeschreibung": "Ordne den Speichermodus einer unterstützten Datenquelle ein. Für die Excel-, CSV- und Ordnerfälle dieses Projekts ist Import der passende Ausgangspunkt.",
+  "ort": "Power BI Desktop → Verbindung zu einer unterstützten Datenquelle",
   "tags": [
     "Import oder DirectQuery?"
   ],
@@ -32,49 +32,45 @@
     "https://learn.microsoft.com/en-us/power-query/connectors/excel",
     "https://learn.microsoft.com/en-us/power-query/connectors/text-csv"
   ],
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-Du entscheidest, welche Umsetzung zur gewünschten Ergebnisform passt.
+Ordne den Speichermodus einer unterstützten Datenquelle ein. Für die Excel-, CSV- und Ordnerfälle dieses Projekts ist Import der passende Ausgangspunkt.
+
+## Voraussetzungen
+
+Die Quelle und ihre unterstützten Verbindungsarten sind bekannt. Nicht jeder Connector bietet DirectQuery.
 
 ## Schritte
 
-1. Formuliere die Einheit einer Ergebniszeile und den Aktualisierungsbedarf.
-2. Nimm **Import**, wenn eine lokale Modellkopie mit geplanter Aktualisierung genügt und Volumen/Regeln dies erlauben.
-3. Nimm **DirectQuery**, wenn Abfragen an eine unterstützte Quelle fachlich und technisch erforderlich sind.
-4. Baue das Mini-Beispiel mit der gewählten Methode nach und prüfe die beschriebene Fehlerquelle.
+1. Prüfe zuerst die verfügbaren Modi der konkreten Quelle. Excel-, CSV- und lokale Ordnerdateien werden in den hier beschriebenen Workflows importiert.
+2. Kläre Aktualitätsbedarf, Datenmenge und Berechtigungen. Beim Import wird eine Kopie im semantischen Modell gespeichert und durch Datenaktualisierung erneuert.
+3. Bei einer unterstützten DirectQuery-Quelle teste Antwortzeiten und Einschränkungen der benötigten Abfragen und Modellfunktionen.
+4. Vergleiche mit einer bekannten Quellzahl und einem dokumentierten Stichtag. Entscheide anhand der Anforderungen; dieser Artikel ist eine Entscheidungshilfe, kein nachzubauender Verbindungsversuch.
 
 ## Beispiel
 
-### Ausgangslage und Entscheidung
-
-Ein kleiner Datenbestand passt in Import. DirectQuery erfordert eine passende Quelle, getestete Antwortzeiten und Berechtigungen.
-
-| Alternative | Geeignet, wenn |
+| Fall | Einordnung |
 | --- | --- |
-| Import | eine lokale Modellkopie mit geplanter Aktualisierung genügt und Volumen/Regeln dies erlauben. |
-| DirectQuery | Abfragen an eine unterstützte Quelle fachlich und technisch erforderlich sind. |
-
-## Typischer Fehler
-
-DirectQuery bedeutet nicht uneingeschränkt Echtzeit; Quelle, Caches und Modellbeschränkungen bleiben relevant.
-
-## Merksatz
-
-Speicher- und Aktualisierungsbedarf gemeinsam entscheiden.
-
-## Warum funktioniert das?
-
-Die Entscheidung richtet sich nach dem benötigten Ergebnis. Nimm **Import**, wenn eine lokale Modellkopie mit geplanter Aktualisierung genügt und Volumen/Regeln dies erlauben. Nimm **DirectQuery**, wenn Abfragen an eine unterstützte Quelle fachlich und technisch erforderlich sind.
+| Monatliche XLSX-Dateien im Ordner | Import; neue Datei ablegen und danach aktualisieren. |
+| Unterstützte Datenbankquelle mit verbindlichem Aktualitätsbedarf | DirectQuery kann geprüft werden; Quelle, Abfragen, Berechtigungen und Leistung gemeinsam testen. |
 
 ## Ergebnis
 
-Das gewählte Verfahren liefert die benötigte Ergebnisform; Detailtiefe und Aktualisierungsbedarf sind ausdrücklich berücksichtigt.
+Die dateibasierten Beispiele verwenden Import. Für andere unterstützte Quellen bleibt DirectQuery eine bewusst zu prüfende Option.
+
+## Warum funktioniert das?
+
+Import speichert Daten im Modell; DirectQuery fragt bei Bedarf die unterstützte Quelle ab. Abfrageverhalten und Caches beeinflussen die sichtbare Aktualität.
+
+## Typischer Fehler
+
+DirectQuery pauschal mit Echtzeit gleichsetzen. Quelle, Cache, Berichtsausführung und Infrastruktur müssen zum Aktualitätsbedarf passen.
 
 ## Plausibilitätscheck
 
-DirectQuery bedeutet nicht uneingeschränkt Echtzeit; Quelle, Caches und Modellbeschränkungen bleiben relevant. Prüfe die Entscheidung an einer bekannten Eingabe, bevor du den Umfang erweiterst.
+Beim Import eine bekannte Quelländerung erst nach Datenaktualisierung erwarten. Bei DirectQuery Aktualität und Antwortzeit mit der konkreten Quelle messen; keine allgemeine feste Sekundenangabe zusagen.

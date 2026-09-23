@@ -9,7 +9,7 @@
   ],
   "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Ein Ergebnis erscheint, aber gehört zur falschen Zuordnung. Schlüssel doppelt oder Such- und Ergebnisbereiche gegeneinander verschoben.",
+  "kurzbeschreibung": "XVERWEIS liefert einen Wert, obwohl der Schlüssel mehrfach und widersprüchlich zugeordnet ist.",
   "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",
   "tags": [
     "XVERWEIS liefert falschen Datensatz"
@@ -33,65 +33,48 @@
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/xlookup-function"
   ],
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-Ein Ergebnis erscheint, aber gehört zur falschen Zuordnung.
+XVERWEIS liefert einen Wert, obwohl der Schlüssel mehrfach und widersprüchlich zugeordnet ist.
 
-## Symptom
+## Voraussetzungen
 
-Ein Ergebnis erscheint, aber gehört zur falschen Zuordnung.
-
-## Mögliche Ursachen
-
-Schlüssel doppelt oder Such- und Ergebnisbereiche gegeneinander verschoben.
-
-## Schnelltest
-
-Zähle den Schlüssel mit ZÄHLENWENN und markiere die beiden Formelbereiche.
+XVERWEIS und FILTER benötigen Microsoft 365 oder Excel 2021/2024.
 
 ## Schritte
 
-1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
-2. Zähle den Schlüssel mit ZÄHLENWENN und markiere die beiden Formelbereiche.
-3. Korrigiere Bereichsgrenzen. Verwende bei echten Mehrfachtreffern FILTER oder ergänze ein fachlich erforderliches Kriterium.
-4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
-5. Den konkreten Bedienweg für die Korrektur findest du unter [XVERWEIS](#/wissen/xverweis). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
+1. Lege A1:B3 mit Konto/Bestand und K003/2000, K003/2100 an. F2 enthält K003.
+2. Prüfe in G2 =ZÄHLENWENN(A2:A3;F2): zwei Treffer. Markiere außerdem Such- und Rückgabebereich, um versetzte Grenzen auszuschließen.
+3. =XVERWEIS(F2;A2:A3;B2:B3;"Fehlt") in H2 liefert standardmäßig 2000. Das ist der erste Wert, keine Konfliktentscheidung.
+4. Lasse die Zuordnung fachlich klären oder gib mit FILTER alle Treffer aus. Zusätzliche Merkmale nur bei begründetem [Mehrkriterien-Nachschlag](#/wissen/excel-mehrere-kriterien) verwenden.
 
 ## Beispiel
 
-### Vorher · Fehlerbild
+Vorher: K003 ist in A2:B3 mit **2000** und **2100** vorhanden. XVERWEIS gibt 2000 zurück.
 
-| Beobachtung |
-| --- |
-| K003 zweimal mit 2.000 und 2.100: der erste Treffer löst den Konflikt nicht. |
+```excel
+=FILTER(A2:B3;A2:A3=F2;"Fehlt")
+```
 
-### Aktion
-
-Korrigiere Bereichsgrenzen. Verwende bei echten Mehrfachtreffern FILTER oder ergänze ein fachlich erforderliches Kriterium.
-
-### Nachher · Erwartete Kontrolle
-
-| Prüfergebnis |
-| --- |
-| Suchschlüssel genau einmal oder vollständige Mehrfachausgabe explizit erwartet. |
+In J2 eingeben, J2:K3 außerhalb einer Excel-Tabelle freihalten: Beide Zeilen K003/2000 und K003/2100 werden sichtbar. Quellbereiche und F2 anpassen.
 
 ## Ergebnis
 
-Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
-
-## Typischer Fehler
-
-Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten, Modell oder Formel bestehen.
-
-## Plausibilitätscheck
-
-Suchschlüssel genau einmal oder vollständige Mehrfachausgabe explizit erwartet.
+Die Trefferzahl 2 und die vollständige Ausgabe zeigen den Konflikt. Kein Wert wird ungeprüft als fachlich richtig freigegeben.
 
 ## Warum funktioniert das?
 
-Excel ermittelt die Position des passenden Kontos und übernimmt den Betrag derselben Position aus der Rückgabematrix. Standardmäßig wird der erste Treffer geliefert.
+Der standardmäßige erste Treffer ist eine Suchregel, keine Prüfung auf fachliche Eindeutigkeit.
+
+## Typischer Fehler
+
+Eine Rückwärtssuche als allgemeine Lösung verwenden und damit nur den anderen Konfliktwert auswählen.
+
+## Plausibilitätscheck
+
+ZÄHLENWENN = 2; FILTER gibt zwei Zeilen zurück. Erst nach Quellenklärung ist ein einzelner freigegebener Rückgabewert möglich.

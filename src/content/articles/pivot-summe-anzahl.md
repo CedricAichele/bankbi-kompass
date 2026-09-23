@@ -24,7 +24,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/get-started/create-a-pivottable-to-analyze-worksheet-data",
@@ -38,7 +38,8 @@
       "schritt": 3,
       "schema": false,
       "status": "bereit",
-      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen. Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen."
+      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen. Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen.",
+      "bildAnzeigen": false
     }
   ],
   "praxis": true
@@ -83,7 +84,7 @@ Betrag als Summe aggregieren.
 
 ## Ergebnis
 
-Prüfe zuerst den Quelldatentyp, dann die Zusammenfassung des Wertfelds.
+Nach Auswahl von Summe beträgt das Gesamtergebnis 200 statt der Anzahl 3.
 
 ## Warum funktioniert das?
 
@@ -95,4 +96,4 @@ Nur den angezeigten Namen in Summe ändern; die tatsächliche Einstellung muss p
 
 ## Plausibilitätscheck
 
-Vergleiche die oben angegebenen Ergebniswerte mit der Quelle. Entferne für die Gesamtkontrolle alle nicht beabsichtigten Filter.
+100 + 50 + 50 = 200; die Anzahl befüllter Betragszellen ist 3. Entferne für diese Gesamtkontrolle alle nicht beabsichtigten Filter.

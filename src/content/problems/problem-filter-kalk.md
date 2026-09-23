@@ -9,8 +9,8 @@
   ],
   "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Eine FILTER-Formel scheitert bei leerer Auswahl. Kein Treffer und kein Ersatzwert für eine leere Ergebnismenge.",
-  "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",
+  "kurzbeschreibung": "FILTER liefert #KALK!, weil keine Zeile passt und das Argument für ein leeres Ergebnis fehlt.",
+  "ort": "Excel → freie Formelzelle H2; Filterkriterium F2",
   "tags": [
     "FILTER liefert #KALK!"
   ],
@@ -32,65 +32,64 @@
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/filter-function"
   ],
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-Eine FILTER-Formel scheitert bei leerer Auswahl.
+FILTER liefert #KALK!, weil keine Zeile passt und das Argument für ein leeres Ergebnis fehlt.
 
-## Symptom
+## Voraussetzungen
 
-Eine FILTER-Formel scheitert bei leerer Auswahl.
-
-## Mögliche Ursachen
-
-Kein Treffer und kein Ersatzwert für eine leere Ergebnismenge.
-
-## Schnelltest
-
-Teste dieselbe Formel mit einem sicher vorhandenen und einem fehlenden Schlüssel.
+FILTER benötigt Microsoft 365 oder Excel 2021/2024; die freie Ausgabe liegt außerhalb einer Excel-Tabelle.
 
 ## Schritte
 
-1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
-2. Teste dieselbe Formel mit einem sicher vorhandenen und einem fehlenden Schlüssel.
-3. Ergänze das dritte Argument, beispielsweise "Keine Treffer". Bei #ÜBERLAUF! stattdessen blockierende Zellen unter/neben der Ausgabe prüfen.
-4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
-5. Den konkreten Bedienweg für die Korrektur findest du unter [FILTER: passende Zeilen ausgeben](#/wissen/excel-filtern). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
+1. Lege die drei Quellzeilen in A1:B4 an: Kunde und Bestand. Setze F2=P999.
+2. Teste in H2 die ursprüngliche Formel ohne drittes Argument; sie liefert bei dieser leeren Auswahl #KALK!.
+3. Ergänze „Keine Treffer“ als drittes Argument. Ein #ÜBERLAUF! ist ein anderes Problem: den Ausgabebereich freihalten.
+4. Wechsle F2 auf P001 und prüfe, dass beide passenden Zeilen erscheinen. Siehe [FILTER](#/wissen/excel-filtern) für mehr Details.
 
 ## Beispiel
 
+| Zeile | A: Kunde | B: Bestand |
+| --- | --- | ---: |
+| 2 | P001 | 100 |
+| 3 | P001 | 200 |
+| 4 | P002 | 500 |
+
 ### Vorher · Fehlerbild
 
-| Beobachtung |
-| --- |
-| FILTER(A2:D7;B2:B7="P999";"Keine Treffer") liefert den Ersatztext. |
+F2=P999; H2 enthält:
 
-### Aktion
+```excel
+=FILTER(A2:B4;A2:A4=F2)
+```
 
-Ergänze das dritte Argument, beispielsweise "Keine Treffer". Bei #ÜBERLAUF! stattdessen blockierende Zellen unter/neben der Ausgabe prüfen.
+Ergebnis: **#KALK!**, weil kein Kunde P999 existiert.
 
-### Nachher · Erwartete Kontrolle
+### Nachher
 
-| Prüfergebnis |
-| --- |
-| P001 muss weiterhin zwei Zeilen liefern; P999 den Ersatztext. |
+```excel
+=FILTER(A2:B4;A2:A4=F2;"Keine Treffer")
+```
+
+Ergebnis: **Keine Treffer**. Ersetze Ausgabequelle A2:B4, Kriterienbereich A2:A4 und Auswahlzelle F2; beide Quellbereiche umfassen dieselben Zeilen.
 
 ## Ergebnis
 
-Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
-
-## Typischer Fehler
-
-Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten, Modell oder Formel bestehen.
-
-## Plausibilitätscheck
-
-P001 muss weiterhin zwei Zeilen liefern; P999 den Ersatztext.
+P999 liefert „Keine Treffer“. P001 liefert zwei Zeilen mit Bestand 100 und 200.
 
 ## Warum funktioniert das?
 
-Eine Wahrheitsliste entscheidet für jede Ausgangszeile, ob sie in die Ausgabe gelangt. Mehrere Treffer bleiben als mehrere Zeilen erhalten.
+Das dritte Argument definiert die Ausgabe bei leerer Ergebnismenge und verändert die Trefferbedingung nicht.
+
+## Typischer Fehler
+
+Den Fehler durch 0 verdecken oder eine blockierte Ausgabe mit einem fehlenden Treffer verwechseln.
+
+## Plausibilitätscheck
+
+Bei F2=P001 stehen in H2:I3 die Zeilen P001/100 und P001/200; die Bestandssumme ist 300.

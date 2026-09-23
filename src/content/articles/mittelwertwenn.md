@@ -24,7 +24,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/averageif-function"
@@ -36,7 +36,13 @@
     "Quellbereiche und Kriterienzellen festlegen.",
     "Formel in einer freien Ergebniszelle eingeben.",
     "Ausgabe anhand der passenden Quellzeilen kontrollieren."
-  ]
+  ],
+  "formelreferenz": {
+    "funktion": "MITTELWERTWENN",
+    "eingabe": "A1:D4: Kunde/Konto/Segment/Bestand; Zeile 2=P001/K001/A/1000, Zeile 3=P001/K002/B/2000, Zeile 4=P002/K003/A/500. Ergebnis in H2. F2=A.",
+    "anpassen": "C2:C4 prüft das Kriterium F2; D2:D4 enthält die Zahlen für den Mittelwert. Textwerte und leere Zellen nicht als 0 interpretieren.",
+    "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
+  }
 }
 ---
 
@@ -46,7 +52,7 @@ Den Durchschnitt für eine ausgewählte Gruppe berechnen.
 
 ## Voraussetzungen
 
-Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. XVERWEIS und dynamische Arrayfunktionen benötigen eine unterstützte Version, zum Beispiel Microsoft 365 oder Excel 2021/2024.
+Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. Die hier verwendete klassische Funktion ist in Excel 2016/2019/2021/2024 und Microsoft 365 verfügbar.
 
 ## Schritte
 
@@ -83,7 +89,7 @@ F2 = A
 
 ## Ergebnis
 
-Den Durchschnitt für eine ausgewählte Gruppe berechnen.
+Für F2=A ergibt H2 den Mittelwert 750 aus (1000 + 500) / 2.
 
 ## Warum funktioniert das?
 

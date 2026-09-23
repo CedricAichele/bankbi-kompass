@@ -28,7 +28,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/xlookup-function"
@@ -79,7 +79,7 @@ Suchwert F2 = K999; Daten in Zeile 2 und 3.
 
 ## Ergebnis
 
-Fehlende Treffer sind als eigene Prüffälle erkennbar.
+K999 wird als fehlender Treffer gekennzeichnet; K001 liefert den Bestand 100.
 
 ## Warum funktioniert das?
 

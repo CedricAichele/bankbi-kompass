@@ -5,15 +5,17 @@ import { contents } from "../content";
 import type { Content } from "../content/schema";
 import { sectionsOf, stepsOf } from "../content/schema";
 import { Markdown } from "./Markdown";
-import { searchContent } from "../lib/search";
+import { searchContent, searchTarget } from "../lib/search";
 export function EntryList({
   items,
   compact = false,
   quickView = false,
+  query = "",
 }: {
   items: Content[];
   compact?: boolean;
   quickView?: boolean;
+  query?: string;
 }) {
   return (
     <div className="entry-list">
@@ -21,7 +23,7 @@ export function EntryList({
         <article className="entry-card" key={item.id}>
           <Link
             className={"entry-link " + (compact ? "compact" : "")}
-            to={"/wissen/" + item.slug}
+            to={searchTarget(item, query)}
             key={item.id}
           >
             <div>
@@ -54,7 +56,7 @@ export function EntryList({
                 <ol>{(item.schnellschritte || stepsOf(sectionsOf(item.body).Schritte).slice(0, 3)).map((step, index) => <li key={index}><Markdown text={step} /></li>)}</ol>
                 <strong>Beispiel</strong>
                 {item.kurzformel ? <Markdown text={item.kurzformel} /> : <p>{sectionsOf(item.body).Ergebnis || "Daten und vollständiges Beispiel in der Anleitung."}</p>}
-                <Link to={"/wissen/" + item.slug}>
+                <Link to={searchTarget(item, query)}>
                   Vollständige Anleitung →
                 </Link>
               </div>
@@ -121,7 +123,7 @@ export function SearchForm({ prominent = false }: { prominent?: boolean }) {
             live.map((item) => (
               <Link
                 key={item.id}
-                to={"/wissen/" + item.slug}
+                to={searchTarget(item, query)}
                 onClick={() => setFocused(false)}
               >
                 <span>

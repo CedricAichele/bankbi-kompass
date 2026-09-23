@@ -78,7 +78,13 @@
       "bildAnzeigen": false
     }
   ],
-  "praxis": true
+  "praxis": true,
+  "formelreferenz": {
+    "funktion": "XVERWEIS",
+    "eingabe": "Blatt Stammdaten A1:B4: Kundennummer/Segment, 1001/Privat, 1002/Gewerbe, 1003/Privat. Blatt Auswertung: A2=1002, B2=500; Formel in C2.",
+    "anpassen": "A2 ist der Suchwert; Stammdaten!A:A die Suchspalte und Stammdaten!B:B die Rückgabe. Blattnamen und Bereiche ersetzen; für große Listen begrenzte Bereiche bevorzugen.",
+    "version": "Microsoft 365 oder Excel 2021/2024; nicht Excel 2016/2019."
+  }
 }
 ---
 

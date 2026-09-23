@@ -25,7 +25,7 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/get-started/create-a-pivottable-to-analyze-worksheet-data",
@@ -74,7 +74,7 @@ Pivotwerte als Balken darstellen.
 
 ## Ergebnis
 
-Ein PivotChart visualisiert die zugehörige Pivot-Auswertung und reagiert auf deren Filter.
+Zwei Balken zeigen Segment A mit 150 und Segment B mit 50.
 
 ## Warum funktioniert das?
 
@@ -86,4 +86,4 @@ Diagramm und PivotTable als unabhängig gepflegte Datenstände behandeln.
 
 ## Plausibilitätscheck
 
-Vergleiche die oben angegebenen Ergebniswerte mit der Quelle. Entferne für die Gesamtkontrolle alle nicht beabsichtigten Filter.
+100 + 50 = 150 für A; B = 50. Ohne Filter insgesamt 200, bei Filter A nur der Balken 150.

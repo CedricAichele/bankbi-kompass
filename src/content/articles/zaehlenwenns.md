@@ -70,7 +70,13 @@
       "bildAnzeigen": false
     }
   ],
-  "praxis": true
+  "praxis": true,
+  "formelreferenz": {
+    "funktion": "ZÄHLENWENNS",
+    "eingabe": "A1:C5: Geschäftsstelle/Produkt/Bestand: Nord/Einlagen/100, Nord/Einlagen/200, Nord/Kredit/500, Süd/Einlagen/400. E2=Nord, F2=Einlagen; Ergebnis G2.",
+    "anpassen": "Die Paare A2:A5/E2 und B2:B5/F2 durch deine gleich großen Kriterienbereiche und Auswahlzellen ersetzen.",
+    "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
+  }
 }
 ---
 

@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Text bearbeiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "WECHSELN tauscht gefundenen Text, ERSETZEN ersetzt Zeichen anhand ihrer Position.",
   "ort": "Excel → Formelzelle",
@@ -25,7 +25,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/substitute-function",
@@ -33,7 +33,13 @@
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```excel\n=WECHSELN(A2;\"_alt\";\"_neu\")\n```"
+  "kurzformel": "```excel\n=WECHSELN(A2;\"_alt\";\"_neu\")\n```",
+  "formelreferenz": {
+    "funktion": "WECHSELN",
+    "eingabe": "A2=P001_alt. Ergebnis H2.",
+    "anpassen": "A2 ist der Ausgangstext, _alt der Suchtext, _neu der Ersatz. Positionsersatz steht separat im Artikel.",
+    "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
+  }
 }
 ---
 
@@ -74,7 +80,7 @@ Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Exc
 
 ## Ergebnis
 
-Bekannten Teiltext durch anderen Text ersetzen.
+H2 enthält P001_neu.
 
 ## Warum funktioniert das?
 

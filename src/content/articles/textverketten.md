@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Text bearbeiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "TEXTVERKETTEN verbindet Textwerte mit einem gemeinsamen Trennzeichen und kann leere Zellen auslassen.",
   "ort": "Excel → Formelzelle",
@@ -28,7 +28,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/textjoin-function",
@@ -36,7 +36,13 @@
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```excel\n=TEXTVERKETTEN(\"-\";WAHR;A2:B2)\n```"
+  "kurzformel": "```excel\n=TEXTVERKETTEN(\"-\";WAHR;A2:B2)\n```",
+  "formelreferenz": {
+    "funktion": "TEXTVERKETTEN",
+    "eingabe": "A2=P001 und B2=K001. Ergebnis H2.",
+    "anpassen": "Trennzeichen -, WAHR zum Überspringen leerer Zellen und Quellbereich A2:B2 anpassen.",
+    "version": "Microsoft 365 oder Excel 2019/2021/2024."
+  }
 }
 ---
 
@@ -77,7 +83,7 @@ Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Exc
 
 ## Ergebnis
 
-Mehrere Textwerte mit einem festgelegten Trennzeichen verbinden.
+H2 enthält P001-K001.
 
 ## Warum funktioniert das?
 
@@ -90,3 +96,7 @@ Eine Verkettung ohne Trennregel als eindeutigen Schlüssel nutzen: AB+C und A+BC
 ## Plausibilitätscheck
 
 Für die genannten Ausgangswerte wird **P001-K001** erwartet. Die Originalzellen bleiben unverändert; ergänzte Ergebniszellen werden separat geprüft.
+
+## Verfügbarkeit
+
+TEXTVERKETTEN: Microsoft 365 oder Excel 2019/2021/2024.

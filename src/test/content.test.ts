@@ -56,7 +56,7 @@ describe("Kurze, vollständige Schnellreferenzen", () => {
       "Berichte & Visualisierung",
       "Fehler & Plausibilitätsprüfung",
     ]);
-    expect(toolsCatalog[1].groups).toHaveLength(8);
+    expect(toolsCatalog[1].groups.map(x=>x.title)).toEqual(expect.arrayContaining(["Daten prüfen & bereinigen", "Text bearbeiten", "Datum & Datentypen"]));
     expect(toolsCatalog[2].groups).toHaveLength(0);
   });
   it("enthält eigenständige Aufgaben ohne doppelte Funktionsanleitungen", () => {

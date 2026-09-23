@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Text bearbeiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "TEXTVOR und TEXTNACH extrahieren Text vor oder nach einem Trennzeichen. Verfügbar in Microsoft 365 und Excel 2024.",
   "ort": "Excel → Formelzelle",
@@ -26,7 +26,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/textbefore-function",
@@ -34,7 +34,13 @@
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```excel\n=TEXTVOR(A2;\"-\")\n```"
+  "kurzformel": "```excel\n=TEXTVOR(A2;\"-\")\n```",
+  "formelreferenz": {
+    "funktion": "TEXTVOR",
+    "eingabe": "A2 enthält P001-K001. Formel in H2.",
+    "anpassen": "Textzelle und Trennzeichen - ersetzen; fehlende und mehrfach vorhandene Trennzeichen prüfen.",
+    "version": "Microsoft 365 oder Excel 2024."
+  }
 }
 ---
 
@@ -75,7 +81,7 @@ Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Exc
 
 ## Ergebnis
 
-Den Teil vor einem bekannten Trennzeichen entnehmen.
+H2 enthält P001; TEXTNACH(A2;"-") ergibt K001.
 
 ## Warum funktioniert das?
 
@@ -88,3 +94,7 @@ Fehlende oder mehrfach auftretende Trennzeichen nicht testen. TEXTVOR/TEXTNACH b
 ## Plausibilitätscheck
 
 Für die genannten Ausgangswerte wird **P001** erwartet. Die Originalzellen bleiben unverändert; ergänzte Ergebniszellen werden separat geprüft.
+
+## Verfügbarkeit
+
+TEXTVOR und TEXTNACH: Microsoft 365 oder Excel 2024.

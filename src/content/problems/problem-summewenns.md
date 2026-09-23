@@ -9,8 +9,8 @@
   ],
   "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Summe bleibt 0 oder ist unerwartet hoch. Kriterien greifen nicht, Beträge sind Text oder Zeitkriterium fehlt.",
-  "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",
+  "kurzbeschreibung": "Eine SUMMEWENNS-Auswertung liefert 0 oder einen zu hohen Bestand. Prüfe Trefferzahl, Datentyp und Stichtag anhand derselben Ausgangszeilen.",
+  "ort": "Excel → Kriterien F2:H2; Kontrollformeln J2:J4",
   "tags": [
     "SUMMEWENNS stimmt nicht"
   ],
@@ -33,65 +33,69 @@
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/sumifs-function"
   ],
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-Summe bleibt 0 oder ist unerwartet hoch.
+Eine SUMMEWENNS-Auswertung liefert 0 oder einen zu hohen Bestand. Prüfe Trefferzahl, Datentyp und Stichtag anhand derselben Ausgangszeilen.
 
-## Symptom
+## Voraussetzungen
 
-Summe bleibt 0 oder ist unerwartet hoch.
-
-## Mögliche Ursachen
-
-Kriterien greifen nicht, Beträge sind Text oder Zeitkriterium fehlt.
-
-## Schnelltest
-
-Prüfe zuerst ZÄHLENWENNS mit identischen Kriterien. Zeige die passenden Zeilen mit Filter an.
+Arbeite mit einer Kopie oder separaten Ergebniszellen. Die Beispiele sind synthetisch; Formeln gelten für deutsches Excel.
 
 ## Schritte
 
-1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
-2. Prüfe zuerst ZÄHLENWENNS mit identischen Kriterien. Zeige die passenden Zeilen mit Filter an.
-3. Gleiche Bereichsgrößen, Kriterien und Datentypen ab. Nutze bei mehreren Stichtagen ein zusätzliches Datumskriterium.
-4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
-5. Den konkreten Bedienweg für die Korrektur findest du unter [SUMMEWENNS](#/wissen/summewenns). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
+1. Lege die untenstehenden vier Zeilen in A1:D5 an. A ist Kunde, B Stichtag, C Produkt und D Bestand; alle Bestände sind Zahlen und alle Stichtage echte Daten.
+2. Trage F2 = P001, G2 = A und H2 = 31.01.2026 außerhalb der Quelle ein. Prüfe, welche Ausgangszeilen alle drei Kriterien erfüllen.
+3. Ergänze das Stichtagskriterium in SUMMEWENNS und prüfe ZÄHLENWENNS mit genau denselben Kriterienbereichen.
+4. Prüfe bei 0 Treffern Kriterien auf Schreibweise und Typ. Bei richtigen Treffern, aber falscher Summe, prüfe die Beträge mit ISTZAHL. [SUMMEWENNS](#/wissen/summewenns) erklärt die Argumente ausführlich.
 
 ## Beispiel
 
+| Zeile | A: Kunde | B: Stichtag | C: Produkt | D: Bestand |
+| --- | --- | --- | --- | ---: |
+| 2 | P001 | 31.01.2026 | A | 1250 |
+| 3 | P001 | 31.01.2026 | A | 750 |
+| 4 | P001 | 28.02.2026 | A | 2200 |
+| 5 | P002 | 31.01.2026 | A | 500 |
+
 ### Vorher · Fehlerbild
 
-| Beobachtung |
-| --- |
-| P001 hat 1.250 und 750 am selben Stichtag → 2.000; bei zwei Stichtagen dürfen nicht beide Bestände einfließen. |
+F2=P001, G2=A und H2=31.01.2026. In J2 steht ohne Stichtagsprüfung:
 
-### Aktion
+```excel
+=SUMMEWENNS(D2:D5;A2:A5;F2;C2:C5;G2)
+```
 
-Gleiche Bereichsgrößen, Kriterien und Datentypen ab. Nutze bei mehreren Stichtagen ein zusätzliches Datumskriterium.
+Das ergibt **4200** und vermischt Januar und Februar.
 
-### Nachher · Erwartete Kontrolle
+### Korrektur · J3 und J4
 
-| Prüfergebnis |
-| --- |
-| Trefferzahl 2 und Summe 2.000 gemeinsam plausibilisieren. |
+```excel
+=SUMMEWENNS(D2:D5;A2:A5;F2;C2:C5;G2;B2:B5;H2)
+```
+
+```excel
+=ZÄHLENWENNS(A2:A5;F2;C2:C5;G2;B2:B5;H2)
+```
+
+D2:D5 ist der Summenbereich, A/C/B sind die Kriterienbereiche für Kunde/Produkt/Stichtag; F2/G2/H2 enthalten die Auswahl. Bereiche und Kriterienzellen passend zur Quelle ersetzen.
 
 ## Ergebnis
 
-Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
-
-## Typischer Fehler
-
-Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten, Modell oder Formel bestehen.
-
-## Plausibilitätscheck
-
-Trefferzahl 2 und Summe 2.000 gemeinsam plausibilisieren.
+J3 ergibt 2000 und J4 ergibt 2 Treffer. Nur Zeilen 2 und 3 erfüllen Kunde, Produkt und Januar-Stichtag zugleich.
 
 ## Warum funktioniert das?
 
-Die Kriterien wirken als UND. Nur K001 gehört zugleich zu P001 und Segment A.
+Die Kriterien wirken als UND. Die zusätzliche Datumsprüfung schließt den Februar-Bestand 2200 aus.
+
+## Typischer Fehler
+
+Bestände verschiedener Monate summieren oder Textbeträge für numerisch halten.
+
+## Plausibilitätscheck
+
+1250 + 750 = 2000. Februar mit H2=28.02.2026 ergibt 2200 bei einem Treffer; P999 ergibt 0 Treffer und Summe 0.

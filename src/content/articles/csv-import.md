@@ -31,7 +31,7 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-query/connectors/text-csv"
@@ -93,7 +93,7 @@ Zugriff auf die gewünschte Quelle und Kenntnis ihres fachlichen Aufbaus.
 4. Prüfe, ob Konto, Betrag und Datum bereits Überschriften sind. Nur sonst **Erste Zeile als Überschriften verwenden**.
 5. Prüfe automatische Schritte **Geänderter Typ**. Entferne eine verfrühte Zahlenumwandlung der Kennung und setze Konto direkt vom Quelltext auf Text.
 6. Wandle Betrag und Datum mit passendem **Gebietsschema Deutsch (Deutschland)** in Zahl und Datum um.
-7. Prüfe Zeilenanzahl, Umlaute, Nullen und Summen; anschließend **Schließen & übernehmen**.
+7. Prüfe Zeilenanzahl, Umlaute, Nullen und Summen. Power BI: **Schließen & übernehmen**, später **Start → Aktualisieren**. Excel: **Schließen & laden** beziehungsweise **Schließen & laden in…**, später **Daten → Alle aktualisieren** oder die einzelne Abfrage.
 
 ## Beispiel
 

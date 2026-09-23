@@ -20,10 +20,6 @@ export const toolsCatalog: Tool[] = [
           {
             "id": "dateien-kombinieren",
             "label": "Ordnerimport · wiederkehrende Dateien"
-          },
-          {
-            "id": "import-oder-directquery",
-            "label": "Import oder DirectQuery?"
           }
         ]
       },
@@ -377,7 +373,7 @@ export const toolsCatalog: Tool[] = [
     "description": "Aktive Praxishilfe: Listen vorbereiten, Werte zuordnen, Formeln einsetzen und Ergebnisse auswerten.",
     "groups": [
       {
-        "title": "Daten vorbereiten",
+        "title": "Daten prüfen & bereinigen",
         "items": [
           {
             "id": "excel-liste-vorbereiten",
@@ -388,20 +384,17 @@ export const toolsCatalog: Tool[] = [
             "label": "Duplikate finden"
           },
           {
-            "id": "glaetten",
-            "label": "Leerzeichen entfernen: GLÄTTEN"
-          },
-          {
-            "id": "excel-zahl-text",
-            "label": "Zahlen als Text erkennen"
-          },
-          {
-            "id": "excel-datum",
-            "label": "Datumswerte korrigieren"
-          },
-          {
             "id": "excel-leere-zellen",
             "label": "Leere Zellen und Fehlerwerte prüfen"
+          }
+        ]
+      },
+      {
+        "title": "Text bearbeiten",
+        "items": [
+          {
+            "id": "glaetten",
+            "label": "Leerzeichen entfernen: GLÄTTEN"
           },
           {
             "id": "text-ausschnitt",
@@ -422,6 +415,19 @@ export const toolsCatalog: Tool[] = [
           {
             "id": "wechseln-ersetzen",
             "label": "WECHSELN oder ERSETZEN?"
+          }
+        ]
+      },
+      {
+        "title": "Datum & Datentypen",
+        "items": [
+          {
+            "id": "excel-zahl-text",
+            "label": "Zahlen als Text erkennen und umwandeln"
+          },
+          {
+            "id": "excel-datum",
+            "label": "Datumswerte korrigieren"
           },
           {
             "id": "excel-kalender",
@@ -440,6 +446,10 @@ export const toolsCatalog: Tool[] = [
       {
         "title": "Nachschlagen & Zuordnen",
         "items": [
+          {
+            "id": "excel-formeln",
+            "label": "Excel – Formeln & Funktionen"
+          },
           {
             "id": "xverweis",
             "label": "XVERWEIS: Segment aus Stammdaten holen"

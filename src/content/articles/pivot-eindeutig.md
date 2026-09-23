@@ -27,7 +27,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/ways-to-count-values-in-a-worksheet",
@@ -77,7 +77,7 @@ Kunde eindeutig zählen.
 
 ## Ergebnis
 
-Eindeutige Anzahl steht bei geeigneten datenmodellbasierten PivotTables zur Verfügung. Eine normale Anzahl zählt Detailzeilen.
+Die normale Anzahl ergibt 3, die eindeutige Kundenanzahl 2.
 
 ## Warum funktioniert das?
 
@@ -89,4 +89,4 @@ Die normale Anzahl als eindeutige Kundenanzahl beschriften.
 
 ## Plausibilitätscheck
 
-Vergleiche die oben angegebenen Ergebniswerte mit der Quelle. Entferne für die Gesamtkontrolle alle nicht beabsichtigten Filter.
+P001 kommt zweimal und P002 einmal vor. 3 befüllte Zeilen entsprechen 2 unterschiedlichen Kunden.

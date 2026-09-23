@@ -109,8 +109,8 @@ Du bekommst regelmäßig eine neue Datei mit gleichem Aufbau und möchtest die P
 4. Im Filterweg klicke anschließend auf **Dateien kombinieren** im Kopf der Spalte Content. Wähle die Beispieldatei und darin die Tabelle **Monatsbestand**. Nicht nur einen einzelnen Binary-Wert öffnen: Das navigiert zu einer Datei, statt alle zu kombinieren.
 5. Bearbeite **Beispieldatei transformieren / Transform Sample File**: richtige Tabelle beziehungsweise richtiges Arbeitsblatt auswählen, Überschriften kontrollieren, unnötige Spalten entfernen und weitere Bereinigung definieren. Bei einer strukturierten Excel-Tabelle sind Überschriften bereits vorhanden; nicht versehentlich die erste Datenzeile zu Überschriften machen.
 6. Setze die Datentypen: Kundennummer und Produkt als Text, Bestand als passende Zahl, Stichtag als Datum. Prüfe auch automatisch erzeugte Typ-Schritte in der finalen Abfrage. Behalte den Quelldateinamen, oft Source.Name, optional zur Nachverfolgung.
-7. Prüfe die kombinierte Tabelle: verarbeitete Dateien, Zeilen je Datei, Stichtage, Schlüssel und Fehlerwerte. Lade erst danach über **Schließen & übernehmen**.
-8. Lege später die nächste gleich strukturierte Datei in denselben Ordner. Wähle in Power BI Desktop **Start → Aktualisieren**. Prüfe die hinzugekommenen Daten mit denselben Kontrollen. Es sind keine neuen Power-Query-Schritte nötig, solange Schema und Filter passen.
+7. Prüfe die kombinierte Tabelle: verarbeitete Dateien, Zeilen je Datei, Stichtage, Schlüssel und Fehlerwerte. Lade erst danach: **Power BI → Schließen & übernehmen**; **Excel → Schließen & laden** beziehungsweise **Schließen & laden in…** für das gewünschte Ziel.
+8. Lege später die nächste gleich strukturierte Datei in denselben Ordner. Wähle in Power BI Desktop **Start → Aktualisieren**, in Excel **Daten → Alle aktualisieren** oder aktualisiere gezielt die einzelne Abfrage. Prüfe die hinzugekommenen Daten mit denselben Kontrollen. Es sind keine neuen Power-Query-Schritte nötig, solange Schema und Filter passen.
 
 ## Beispiel
 
@@ -185,7 +185,9 @@ Ein alter Pfad findet einen umbenannten Ordner nicht mehr. In Power Query unter 
 
 Für lokale Arbeit passt der Ordner-Connector. Für gemeinsam bereitgestellte Dateien kann **SharePoint Folder / SharePoint-Ordner** geeigneter sein. Ein lokal synchronisierter OneDrive-Ordner, der über seinen lokalen Pfad verbunden wird, bleibt für die Abfrage eine lokale Ordnerquelle.
 
-**Power BI Desktop:** manuell über Aktualisieren. Eine Datei nur abzulegen aktualisiert den geladenen Bericht nicht.
+**Excel:** Daten → Alle aktualisieren oder einzelne Abfrage aktualisieren; Abschluss im Editor über Schließen & laden beziehungsweise Schließen & laden in….
+
+**Power BI Desktop:** manuell über Start → Aktualisieren. Eine Datei nur abzulegen aktualisiert den geladenen Bericht nicht.
 
 **Power BI Service:** Geplante Aktualisierung muss eingerichtet sein und hängt von Quelle, Berechtigungen und Infrastruktur ab. Für einen lokalen beziehungsweise on-premises Ordner ist bei Online-Aktualisierung in der Regel ein erreichbares Gateway mit Zugriff auf diesen Ordner nötig. Hochladen der PBIX-Datei allein schafft diesen Zugriff nicht. Details: [Microsoft zur Datenaktualisierung](https://learn.microsoft.com/en-us/power-bi/connect-data/refresh-data).
 

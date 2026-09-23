@@ -24,7 +24,7 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/index-function",
@@ -74,7 +74,13 @@
     "Quellbereiche und Kriterienzellen festlegen.",
     "Formel in einer freien Ergebniszelle eingeben.",
     "Ausgabe anhand der passenden Quellzeilen kontrollieren."
-  ]
+  ],
+  "formelreferenz": {
+    "funktion": "INDEX / VERGLEICH",
+    "eingabe": "A1:D4: Kunde/Konto/Segment/Bestand; Zeile 2=P001/K001/A/1000, Zeile 3=P001/K002/B/2000, Zeile 4=P002/K003/A/500. Ergebnis in H2. F2=K002.",
+    "anpassen": "D2:D4 ist die Rückgabe, B2:B4 die Suchspalte und F2 der gesuchte Schlüssel. 0 verlangt exakte Übereinstimmung.",
+    "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
+  }
 }
 ---
 
@@ -121,7 +127,7 @@ F2 = K002
 
 ## Ergebnis
 
-Einen exakten Nachschlag auch mit klassischen Excel-Funktionen aufbauen.
+Für F2=K002 ergibt H2 den Bestand 2000.
 
 ## Warum funktioniert das?
 

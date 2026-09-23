@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Text bearbeiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Diese Funktionen schneiden Text nach festen Zeichenpositionen aus. Bei variabler Länge eignen sich Trennzeichenfunktionen besser.",
   "ort": "Excel → Formelzelle",
@@ -27,7 +27,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/left-function",
@@ -35,7 +35,13 @@
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```excel\n=LINKS(A2;4)\n```"
+  "kurzformel": "```excel\n=LINKS(A2;4)\n```",
+  "formelreferenz": {
+    "funktion": "LINKS",
+    "eingabe": "A2 enthält P001-K001. Formel in H2.",
+    "anpassen": "A2 ist die Textzelle, 4 die Zahl der Zeichen vom Anfang. Für variable Längen Trennzeichen statt fester Position prüfen.",
+    "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
+  }
 }
 ---
 
@@ -76,7 +82,7 @@ Eine Arbeitsmappe mit bekannten Quelldatentypen. Formeln sind für deutsches Exc
 
 ## Ergebnis
 
-Eine feste Anzahl Zeichen vom Textanfang entnehmen.
+H2 enthält P001. RECHTS(A2;4) und TEIL(A2;6;4) liefern für denselben Eingang P001-K001 jeweils K001.
 
 ## Warum funktioniert das?
 

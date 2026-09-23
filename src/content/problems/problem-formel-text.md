@@ -9,8 +9,8 @@
   ],
   "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Die Zelle zeigt =SUMME(...) statt eines Ergebnisses. Zellformat Text, führendes Apostroph oder Formeln-anzeigen-Modus.",
-  "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",
+  "kurzbeschreibung": "Die Zelle zeigt die eingegebene Formel statt ihres berechneten Ergebnisses. Unterscheide Textformat, ein führendes Apostroph und die Anzeige aller Formeln.",
+  "ort": "Excel → Start → Zahlenformat; Formel bearbeiten; Formeln → Formeln anzeigen",
   "tags": [
     "Formel wird als Text angezeigt"
   ],
@@ -19,7 +19,6 @@
     "Die Zelle zeigt =SUMME(...) statt eines Ergebnisses."
   ],
   "verwandteThemen": [
-    "excel-zahl-text",
     "excel-fehler"
   ],
   "kontexte": [
@@ -33,65 +32,52 @@
     "https://support.microsoft.com/en-us/excel/how-to-avoid-broken-formulas-in-excel",
     "https://support.microsoft.com/en-us/excel/display-or-hide-formulas"
   ],
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-Die Zelle zeigt =SUMME(...) statt eines Ergebnisses.
+Die Zelle zeigt die eingegebene Formel statt ihres berechneten Ergebnisses. Unterscheide Textformat, ein führendes Apostroph und die Anzeige aller Formeln.
 
-## Symptom
+## Voraussetzungen
 
-Die Zelle zeigt =SUMME(...) statt eines Ergebnisses.
-
-## Mögliche Ursachen
-
-Zellformat Text, führendes Apostroph oder Formeln-anzeigen-Modus.
-
-## Schnelltest
-
-Prüfe, ob alle Formeln sichtbar sind oder nur eine einzelne Zelle.
+Arbeite mit einer Kopie oder separaten Ergebniszellen. Die Beispiele sind synthetisch; Formeln gelten für deutsches Excel.
 
 ## Schritte
 
-1. Arbeite in einer Kopie der betroffenen Auswertung. Notiere den fehlerhaften Wert, die aktuelle Auswahl und den zugrunde liegenden Datenstand.
-2. Prüfe, ob alle Formeln sichtbar sind oder nur eine einzelne Zelle.
-3. Bei einzelnen Zellen Format auf Standard setzen, führendes Apostroph entfernen und mit F2 → Enter neu bestätigen. Bei allen Formeln Formeln → Formeln anzeigen ausschalten.
-4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
-5. Den konkreten Bedienweg für die Korrektur findest du unter [Zahlen als Text erkennen](#/wissen/excel-zahl-text). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
+1. Prüfe, ob alle Formelzellen oder nur einzelne betroffen sind. Bei allen: Formeln → Formeln anzeigen ausschalten. Das ändert nur die Darstellung.
+2. Bei einer einzelnen Zelle prüfe in der Bearbeitungsleiste ein führendes Apostroph. Es macht die Eingabe zu Text; entferne es, wenn eine Formel gemeint ist.
+3. War die Zelle beim Eingeben als Text formatiert, stelle Start → Zahlenformat auf Standard. Bestätige die vorhandene Eingabe danach mit F2 → Enter erneut.
+4. Kontrolliere in einer separaten Testzelle =1+1. Nach der Korrektur muss dort 2 stehen; in der Bearbeitungsleiste bleibt die Formel sichtbar.
 
 ## Beispiel
 
 ### Vorher · Fehlerbild
 
-| Beobachtung |
-| --- |
-| Die Eingabe =1+1 muss danach 2 ergeben. |
+A2 wurde als Text formatiert. Die danach eingegebene Zeichenfolge **=1+1** erscheint unverändert in A2. Alternativ führt ein Apostroph vor =1+1 zum gleichen sichtbaren Text.
 
-### Aktion
+### Korrektur
 
-Bei einzelnen Zellen Format auf Standard setzen, führendes Apostroph entfernen und mit F2 → Enter neu bestätigen. Bei allen Formeln Formeln → Formeln anzeigen ausschalten.
+Textformat: Standard wählen → F2 → Enter. Apostroph: führendes Apostroph entfernen und bestätigen. Sind alle Formeln eingeblendet, nur den Anzeigemodus ausschalten.
 
-### Nachher · Erwartete Kontrolle
+### Nachher
 
-| Prüfergebnis |
-| --- |
-| Nicht nur das Format ändern: Die vorhandene Texteingabe muss erneut interpretiert werden. |
+A2 zeigt **2**. Die Bearbeitungsleiste zeigt weiterhin **=1+1**.
 
 ## Ergebnis
 
-Die Abweichung ist auf eine konkrete Ursache zurückgeführt; die Korrektur wird mit unveränderter Auswahl gegen die Quelle geprüft.
-
-## Typischer Fehler
-
-Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten, Modell oder Formel bestehen.
-
-## Plausibilitätscheck
-
-Nicht nur das Format ändern: Die vorhandene Texteingabe muss erneut interpretiert werden.
+Die reparierte Formelzelle zeigt 2 statt =1+1.
 
 ## Warum funktioniert das?
 
-Die Trennzeichen werden ausdrücklich vorgegeben. Die Darstellung als Zahl allein würde den zugrunde liegenden Text nicht umwandeln.
+Die erneute Bestätigung lässt Excel eine bisherige Texteingabe als Formel interpretieren. Formeln anzeigen verändert dagegen keine Berechnung und keinen Zelltyp.
+
+## Typischer Fehler
+
+Nur das Zahlenformat ändern oder eine Zahltext-Umwandlung wie ZAHLENWERT auf Formeltext anwenden.
+
+## Plausibilitätscheck
+
+=1+1 zeigt 2; eine weitere funktionierende Formel bleibt korrekt. Bei ausgeschaltetem Formeln-anzeigen-Modus werden wieder die Ergebnisse angezeigt.

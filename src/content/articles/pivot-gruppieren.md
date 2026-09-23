@@ -26,7 +26,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/get-started/group-or-ungroup-data-in-a-pivottable",
@@ -75,7 +75,7 @@ Datum nach Jahr und Monat gruppieren.
 
 ## Ergebnis
 
-Gruppieren fasst passende Detailwerte zu Intervallen zusammen. Die Quelldaten bleiben erhalten.
+Januar 2025 ergibt 100 und Januar 2026 ergibt 150 in getrennten Gruppen.
 
 ## Warum funktioniert das?
 
@@ -87,4 +87,4 @@ Nur Monate gruppieren und Januar verschiedener Jahre als einen Zeitraum lesen.
 
 ## Plausibilitätscheck
 
-Vergleiche die oben angegebenen Ergebniswerte mit der Quelle. Entferne für die Gesamtkontrolle alle nicht beabsichtigten Filter.
+Zwei Jahr-Monat-Gruppen; 100 + 150 = 250 insgesamt. Beide Januare nicht als eine Periode lesen.
