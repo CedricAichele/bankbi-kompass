@@ -597,12 +597,15 @@ main {
   border-color: #244d76;
 }
 .catalog-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  align-items: start;
+  column-count: 2;
+  column-gap: 20px;
 }
 .catalog-group {
+  display: flow-root;
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 20px;
+  break-inside: avoid;
   background: white;
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -1422,7 +1425,7 @@ footer strong {
     grid-template-columns: 1fr;
   }
   .catalog-grid {
-    grid-template-columns: 1fr;
+    column-count: 1;
   }
   .help-strip {
     flex-wrap: wrap;
