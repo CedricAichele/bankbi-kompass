@@ -39,7 +39,7 @@ describe("Kurze, vollständige Schnellreferenzen", () => {
     for (const id of targets) expect(byId(id), id).toBeDefined();
     for (const item of contents)
       for (const match of item.body.matchAll(/\]\(#\/wissen\/([^)]+)\)/g))
-        expect(byId(match[1]), item.id).toBeDefined();
+          expect(byId(match[1].split("?")[0]), item.id).toBeDefined();
   });
   it("führt die Tätigkeitsgruppen für alle drei Werkzeuge", () => {
     expect(toolsCatalog.map((t) => t.name)).toEqual([

@@ -19,7 +19,7 @@ export const toolsCatalog: Tool[] = [
           },
           {
             "id": "dateien-kombinieren",
-            "label": "Mehrere Dateien kombinieren"
+            "label": "Ordnerimport · wiederkehrende Dateien"
           },
           {
             "id": "import-oder-directquery",
@@ -734,6 +734,7 @@ export const powerQueryGroups: Group[] = [
       }
     ]
   },
+  { title: "M / Code", items: [{id: "power-query-m", label: "M-Grundlagen · Formeln & Funktionen"}] },
   {
     "title": "Tabellen kombinieren",
     "items": [
@@ -747,7 +748,7 @@ export const powerQueryGroups: Group[] = [
       },
       {
         "id": "dateien-kombinieren",
-        "label": "Mehrere Dateien kombinieren"
+        "label": "Ordnerimport · wiederkehrende Dateien"
       }
     ]
   },

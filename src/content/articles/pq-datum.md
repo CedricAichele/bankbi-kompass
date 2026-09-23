@@ -125,3 +125,7 @@ Eine Datumstabelle an einen Zeitstempel mit Uhrzeit anbinden oder Januar verschi
 ## Plausibilitätscheck
 
 Beide Uhrzeiten bleiben in der Quelle erhalten; die Datumsspalte enthält nur die jeweiligen Kalendertage.
+
+## Passender M-Code
+
+[Monatsultimo mit Date.EndOfMonth: Beispiel, Ergebnis und Anpassung](#/wissen/power-query-m?funktion=Date.EndOfMonth) in der praktischen M-Referenz.

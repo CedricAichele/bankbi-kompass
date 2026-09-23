@@ -182,3 +182,7 @@ Nach einem Expand nur die neuen Attribute anschauen und vervielfachte Beträge u
 ## Plausibilitätscheck
 
 Im Segmentbeispiel 2 → 2 Zeilen und Summe 800. Für jeden fehlenden oder mehrfachen Treffer liegt eine Erklärung vor. Prüfe zusätzlich [Mehr Zeilen nach Merge](#/wissen/problem-merge-zeilen).
+
+## Passender M-Code
+
+[Merge mit Table.NestedJoin: Beispiel, Ergebnis und Anpassung](#/wissen/power-query-m?funktion=Table.NestedJoin) in der praktischen M-Referenz.

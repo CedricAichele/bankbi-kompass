@@ -98,3 +98,7 @@ EOMONTH berechnet Kalendergrenzen unabhängig davon, ob für dieses Datum bereit
 ## Plausibilitätscheck
 
 17.03.2026 mit Versatz 0 → 31.03.2026. Prüfe außerdem einen Zeitraum ohne Daten.
+
+## Passender M-Code
+
+[Monatsende mit Date.EndOfMonth](#/wissen/power-query-m?funktion=Date.EndOfMonth): Ausgangswert, Formel, Ergebnis und Anpassung in der praktischen M-Referenz.

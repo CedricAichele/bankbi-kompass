@@ -53,7 +53,7 @@ for (const [i, item] of items.entries()) {
       throw new Error(`${item.id}: SVG enthält aktive oder externe Inhalte.`);
   }
   for (const match of item.body.matchAll(/\]\(#\/wissen\/([^)]+)\)/g))
-    if (!ids.has(match[1]))
+    if (!ids.has(match[1].split("?")[0]))
       throw new Error(`Ungültiger Markdown-Link in ${files[i]}: ${match[1]}`);
   const findings = scanContent(readFileSync(files[i], "utf8"));
   for (const finding of findings)

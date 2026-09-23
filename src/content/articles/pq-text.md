@@ -146,3 +146,7 @@ Teiltext ersetzen und dadurch gültige Namen verändern; nach einer Aufteilung K
 ## Plausibilitätscheck
 
 Drei Zeilen bleiben drei Zeilen, Ort hat einen verschiedenen Wert, Standortnummer behält zwei Zeichen. Jede ersetzte Variante ist fachlich bestätigt.
+
+## Passender M-Code
+
+[Text.Trim, Text.Clean und Text.Upper: Beispiel, Ergebnis und Anpassung](#/wissen/power-query-m?gruppe=Text) in der praktischen M-Referenz.

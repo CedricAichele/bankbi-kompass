@@ -807,11 +807,11 @@ Konto;Betrag;Datum
 
 ### Synthetische Daten und erwartetes Ergebnis
 
-Januar.csv: Konto/Betrag mit K001/10 und K002/20. Februar.csv: dieselben Spalten mit K001/15.
+Bestand_2026-01.xlsx und Bestand_2026-02.xlsx: jeweils Tabelle Monatsbestand mit Kundennummer, Produkt, Bestand, Stichtag; je zwei synthetische Zeilen gemäß Artikel.
 
 **Sichtbar:** Klicke auf **Dateien kombinieren** am Kopf der Spalte **Content**. Wähle eine repräsentative Beispieldatei und den darin benötigten Tabellenbereich.; Spaltenüberschriften und zugehörige Ausgangswerte
 
-**Ausschnitt:** Importdialog – Mehrere Dateien kombinieren mit Alle passenden CSV-Dateien mit derselben Transformation lesen und anfügen., Spaltenüberschriften und relevante Optionen. Auf den relevanten Dialog und die lesbaren Tabellenüberschriften begrenzen.
+**Ausschnitt:** Importdialog – Mehrere Dateien kombinieren mit Passende XLSX-Dateien filtern und die Tabelle Monatsbestand kombinieren., Spaltenüberschriften und relevante Optionen. Auf den relevanten Dialog und die lesbaren Tabellenüberschriften begrenzen.
 
 **Zweck:** Auswahl und Ergebnis der beschriebenen Operation nachvollziehbar zeigen.
 

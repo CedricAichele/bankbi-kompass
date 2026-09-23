@@ -134,3 +134,7 @@ Pauschal jede leere Spalte mit 0 füllen oder wegen eines optionalen Datums ganz
 ## Plausibilitätscheck
 
 Aus 3 Quellzeilen werden 2 zuordenbare Zeilen plus 1 Prüfzeile. Bekannter Bestand 150 = 100 im Ergebnis + 50 in der Prüfmenge. Der Gesamtbestand aller Verträge bleibt wegen des fehlenden Werts unbekannt.
+
+## Passender M-Code
+
+[NULL und Fehler: Beispiel, Ergebnis und Anpassung](#/wissen/power-query-m?gruppe=NULL%20und%20Fehler) in der praktischen M-Referenz.

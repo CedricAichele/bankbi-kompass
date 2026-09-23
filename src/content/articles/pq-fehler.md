@@ -124,3 +124,7 @@ Alle Fehlerzeilen löschen und dadurch vollständige Konten verlieren.
 ## Plausibilitätscheck
 
 Zwei Konten bleiben; ein Betrag ist 100, einer unbekannt. Die getrennte Prüf-Abfrage auf dem Stand vor der Ersetzung enthält genau K002. Eine Referenz auf das bereits bereinigte Endergebnis würde diese Fehler nicht mehr zeigen.
+
+## Passender M-Code
+
+[Fehlerbehandlung: Beispiel, Ergebnis und Anpassung](#/wissen/power-query-m?funktion=try%20%E2%80%A6%20otherwise) in der praktischen M-Referenz.

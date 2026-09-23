@@ -133,3 +133,7 @@ Monat weglassen, abweichende Spaltennamen übersehen oder erwarten, dass Append 
 ## Plausibilitätscheck
 
 1 + 1 = 2 Zeilen. Pro Monat bleibt der Bestand 100 bzw. 120. Die Summe 220 ist keine sinnvolle Bestandskennzahl über beide Stichtage.
+
+## Passender M-Code
+
+[Append mit Table.Combine: Beispiel, Ergebnis und Anpassung](#/wissen/power-query-m?funktion=Table.Combine) in der praktischen M-Referenz.

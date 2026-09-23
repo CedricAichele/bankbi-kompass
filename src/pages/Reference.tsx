@@ -5,6 +5,7 @@ import { sectionsOf, stepsOf } from "../content/schema";
 import { legacyIds, archivedIdaIds } from "../content/redirects";
 import { toolsCatalog } from "../content/catalog";
 import { Markdown } from "../components/Markdown";
+import { MReference } from "../components/MReference";
 import { ReferenceImage } from "../components/ReferenceImage";
 import { DecisionTools } from "../components/DecisionTools";
 import { documentationLabel } from "../lib/sources";
@@ -105,9 +106,10 @@ export function Reference({
         {["Voraussetzungen", "Symptom", "Schnelltest"].filter((name) => sections[name]).map((name) => (
           <section className="practice-section" key={name}><h2>{name}</h2><Markdown text={sections[name]} /></section>
         ))}
-        <div
+        {item.id === "power-query-m" && <MReference />}
+        {item.id !== "power-query-m" && <div
           className={
-            "reference-grid" + (illustrated ? " illustrated-reference" : "") + (item.id === "pq-workflow" ? " workflow-reference" : "")
+            "reference-grid" + (illustrated ? " illustrated-reference" : "") + (["pq-workflow", "pq-benutzerdefiniert", "dateien-kombinieren"].includes(item.id) ? " workflow-reference" : "")
           }
         >
           <section className="steps">
@@ -143,7 +145,7 @@ export function Reference({
             </h2>
             <Markdown text={sections.Beispiel} />
           </section>
-        </div>
+        </div>}
         {["Ergebnis", "Plausibilitätscheck"].filter((name) => sections[name]).map((name) => (
           <section className="practice-section" key={name}><h2>{name}</h2><Markdown text={sections[name]} /></section>
         ))}

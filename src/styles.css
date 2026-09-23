@@ -1680,3 +1680,18 @@ footer strong {
     width: 100%;
   }
 }
+/* Practical M reference: readable cards instead of a wide code table. */
+.m-reference { min-width: 0; }
+.m-reference h2 { margin-top: 2rem; }
+.m-shortcuts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: .75rem; }
+.m-shortcuts button { text-align: left; padding: 1rem; border: 1px solid #cad5df; border-radius: 10px; background: transparent; color: inherit; min-width: 0; cursor: pointer; }
+.m-shortcuts strong, .m-shortcuts span, .m-shortcuts code { display: block; margin-bottom: .5rem; overflow-wrap: anywhere; white-space: normal; }
+.m-filters { margin: 1.5rem 0; }
+.m-filters input { width: 100%; min-width: 0; padding: .75rem; border: 1px solid #cad5df; border-radius: 8px; font: inherit; }
+.m-entry { border: 1px solid #cad5df; border-radius: 10px; padding: 1rem; margin: .75rem 0; min-width: 0; overflow-wrap: anywhere; }
+.m-entry summary { cursor: pointer; }
+.m-entry summary span { display: block; margin-top: .4rem; }
+.m-entry dt { font-weight: 700; margin-top: 1rem; }
+.m-entry dd { margin: .4rem 0 1rem; }
+.m-entry .codeblock { max-width: 100%; }
+.m-note { border-left: 3px solid #648b96; padding-left: 1rem; }

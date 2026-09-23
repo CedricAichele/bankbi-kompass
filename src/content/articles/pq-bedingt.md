@@ -123,3 +123,7 @@ Größer als mit größer oder gleich verwechseln oder NULL ungeklärt einer Kat
 ## Plausibilitätscheck
 
 500 und 1000 sind niedrig, nur 1500 ist hoch. Die Ausgangsspalte bleibt erhalten.
+
+## Passender M-Code
+
+[if / then / else und mehrere Bedingungen](#/wissen/power-query-m?gruppe=Bedingungen): Ausgangswert, Formel, Ergebnis und Anpassung in der praktischen M-Referenz.
