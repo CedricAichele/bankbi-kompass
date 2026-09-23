@@ -148,12 +148,23 @@ Eine geladene Faktentabelle mit numerischen Beträgen und geeigneten Schlüsseln
 
 ### Aktion
 
+Lege jedes Measure einzeln über **Neues Measure** an. Jeder Codeblock enthält genau eine Definition.
+
 ```dax
 Gesamtbestand = SUM ( Fakt[Bestand] )
-Anzahl Zeilen = COUNTROWS ( Fakt )
-Kunden = DISTINCTCOUNT ( Fakt[Kunde] )
+```
 
-// Teil und Gesamt müssen bereits vorhandene Measures sein:
+```dax
+Anzahl Zeilen = COUNTROWS ( Fakt )
+```
+
+```dax
+Kunden = DISTINCTCOUNT ( Fakt[Kunde] )
+```
+
+Optionales Quotenschema: Hierfür müssen die Measures **Teil** und **Gesamt** bereits vorhanden sein. Sie gehören nicht zu den drei Measures des Beispiels oben.
+
+```dax
 Quote = DIVIDE ( [Teil], [Gesamt] )
 ```
 

@@ -90,7 +90,7 @@ Eine Division behandelt einen leeren oder nullwertigen Nenner ausdrücklich.
 
 ## Warum funktioniert das?
 
-Erstes Argument: Zähler. Zweites: Nenner. DIVIDE liefert bei Nenner null oder BLANK standardmäßig BLANK; ein optionales drittes konstantes Argument kann einen Ersatzwert festlegen. Hier entfernt nur der Nenner den Produktfilter.
+Erstes Argument: Zähler. Zweites: Nenner. DIVIDE liefert bei Nenner 0 oder BLANK standardmäßig BLANK; ein optionales drittes konstantes Argument kann einen Ersatzwert festlegen. Hier setzt der Zähler den Filter auf Konten[Produktgruppe] auf Einlagen; der Nenner hebt den Filter auf dieser Spalte auf. Andere Filter, etwa auf Personennummer, bleiben bestehen.
 
 ## Typischer Fehler
 

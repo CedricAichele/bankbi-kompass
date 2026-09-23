@@ -55,7 +55,7 @@ export function MReference() {
       <h3>Typische Fehler und relevante Grenzfälle</h3>
       {entry.note && <p className="m-note">{entry.note}</p>}
       <p>Teste das Beispiel und zusätzlich fehlende Werte, leeren Text und unerwartete Datentypen. null ist kein leerer Text und keine 0; ein Ersatzwert braucht eine fachliche Begründung. Vergleiche das Ergebnis mit dem angegebenen Sollwert, bevor du die Regel auf weitere Daten überträgst.</p>
-      {entry.name.startsWith("List.") && <p>Eine Liste entsteht etwa durch eine Spaltenauswahl innerhalb einer Gruppierung: <Link to="/wissen/power-query-m?funktion=Table.Group">Table.Group mit List.Sum nachvollziehen</Link>. [Werte] bezeichnet hier eine Zelle mit einer Liste wie {"{10, 20, 30}"}; eine einzelne Zahl ist keine Liste.</p>}
+      {entry.name.startsWith("List.") && <p>Eine Liste kann direkt mit geschweiften Klammern angegeben werden oder aus einer Spaltenauswahl innerhalb einer Gruppierung entstehen: <Link to="/wissen/power-query-m?funktion=Table.Group">Table.Group mit List.Sum nachvollziehen</Link>. {entry.name === "List.Contains" ? "Hier steht die Liste zulässiger Kategorien direkt im Code; [Kategorie] enthält den einzelnen Wert, den du darin suchst." : "Die im Beispiel referenzierte Zelle muss bereits eine Liste enthalten. Ein einzelner Zahlen- oder Textwert ist keine Liste."}</p>}
       <h3>Weiterführende Anleitung</h3><p><Link to={"/wissen/"+mRelated(entry)}>Passende Praxisanleitung →</Link></p>
       <a href={entry.source} target="_blank" rel="noreferrer">Microsoft: Syntax und Details zu {entry.name}</a>
     </details>)}</div>

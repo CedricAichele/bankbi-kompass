@@ -45,7 +45,7 @@ Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits a
 
 1. Visual markieren → Drei-Punkte-Menü (…) → Achse sortieren beziehungsweise Sortieren nach. Wähle Betrag und Absteigend. Für Monatsnamen: Feld markieren → Spaltentools → Nach Spalte sortieren → Monatsnummer.
 2. Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.
-3. Kontrolliere am Beispiel die Darstellung: **Absteigend: B vor A.**.
+3. Kontrolliere am Beispiel die Darstellung: **Absteigend: B vor A.**
 4. Teste eine andere Auswahl und prüfe Titel, Einheit, Sortierung sowie lesbare Beschriftungen.
 
 ## Beispiel

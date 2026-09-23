@@ -48,7 +48,7 @@ Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits a
 
 1. Ein unterstütztes Säulen- oder Linienvisual markieren → Analysebereich → Konstante Linie hinzufügen. Setze Wert 100 und aktiviere die Beschriftung Ziel 100 EUR. Die verfügbaren Linien hängen vom Visual ab.
 2. Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.
-3. Kontrolliere am Beispiel die Darstellung: **Januar liegt unter, Februar über der beschrifteten Linie bei 100.**.
+3. Kontrolliere am Beispiel die Darstellung: **Januar liegt unter, Februar über der beschrifteten Linie bei 100.**
 4. Teste eine andere Auswahl und prüfe Titel, Einheit, Sortierung sowie lesbare Beschriftungen.
 
 ## Beispiel

@@ -46,7 +46,7 @@ Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits a
 
 1. Freie Berichtsfläche → Liniendiagramm. Ziehe das vollständige Datum auf die X-Achse und das passende Measure auf die Y-Achse. Verwende für mehrere Jahre keinen Monatsnamen allein.
 2. Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.
-3. Kontrolliere am Beispiel die Darstellung: **Drei chronologisch verbundene Punkte: 100 → 104 → 101.**.
+3. Kontrolliere am Beispiel die Darstellung: **Drei chronologisch verbundene Punkte: 100 → 104 → 101.**
 4. Teste eine andere Auswahl und prüfe Titel, Einheit, Sortierung sowie lesbare Beschriftungen.
 
 ## Beispiel

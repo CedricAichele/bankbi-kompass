@@ -1,6 +1,8 @@
 import type { MEntry } from "../content/m-reference";
 
 export function mUseContext(entry:MEntry) {
+  if(entry.name === "Record.FieldOrDefault") return "Wenn ein Datensatz ein optionales Feld enthalten kann. Fehlt das Feld, liefert die Funktion einen festgelegten Ersatzwert; ein vorhandener null-Wert wird dadurch nicht ersetzt.";
+  if(entry.name === "Table.AddIndexColumn") return "Wenn eine Transformation eine technische Zeilennummer benötigt. Reihenfolge zuerst festlegen; die Nummer ersetzt keinen fachlichen Schlüssel.";
   const contexts:Record<string,string> = {
     Text: "Bei Exportspalten, Kennungen oder Bezeichnungen, deren Schreibweise vor einem Vergleich, Filter oder Merge vereinheitlicht werden muss.",
     Zahlen: "Wenn eine numerische Auswertung einen gerundeten, konvertierten oder abgeleiteten Wert benötigt. Rechengenauigkeit und fachliche Rundungsregel vorher festlegen.",
@@ -12,11 +14,11 @@ export function mUseContext(entry:MEntry) {
     Tabellen: "Wenn du Zeilen aus vorhandenen Abfragen organisieren oder zusammenführen möchtest. Vorher festlegen, was eine Zeile fachlich beschreibt.",
     Filtern: "Wenn nur die Zeilen, die eine festgelegte Bedingung erfüllen, in die weitere Auswertung eingehen sollen.",
     Gruppieren: "Wenn mehrere Einzelzeilen zu einer Kennzahl je fachlichem Schlüssel und Stichtag zusammengefasst werden sollen.",
-    Listen: "Wenn mehrere Werte gemeinsam ausgewertet werden, etwa die Bestände innerhalb einer Gruppe. Eine einzelne Zelle muss dafür tatsächlich eine Liste enthalten.",
+    Listen: "Wenn mehrere Werte gemeinsam ausgewertet werden, etwa Bestände innerhalb einer Gruppe oder eine Liste zulässiger Kategorien. Eine Liste kann direkt im Code stehen oder aus einer Spalte beziehungsweise Gruppierung stammen.",
     "Merge / Join": "Wenn du zu einer Bestandstabelle Merkmale aus einer zweiten Tabelle über gemeinsame Schlüssel ergänzen möchtest.",
     Datentypen: "Wenn Werte korrekt als Kennung, Zahl oder Datum interpretiert werden müssen, bevor Filter, Berechnungen oder Verknüpfungen folgen.",
   };
-  return contexts[entry.category] || "Wenn eine Transformation eine technische Zeilennummer benötigt. Reihenfolge zuerst festlegen; die Nummer ersetzt keinen fachlichen Schlüssel.";
+  return contexts[entry.category] || entry.use;
 }
 
 export function mRelated(entry:MEntry) {
@@ -30,6 +32,7 @@ export function mRelated(entry:MEntry) {
 }
 
 export function mInputType(entry:MEntry) {
+  if(entry.name === "Record.FieldOrDefault") return "Das erste Argument ist ein Record, also ein Datensatz mit benannten Feldern. Im Beispiel enthält die Spalte [Datensatz] solche Records. Der gesuchte Feldname ist Text; der Ersatzwert muss zur fachlichen Verwendung passen.";
   if(entry.name.startsWith("Table.")) return "Eingabe ist eine Tabelle beziehungsweise eine vorhandene Abfrage. Schlüsselspalten müssen beim Kombinieren kompatible Typen haben; Bestände sind Zahlen, Stichtage Datumswerte. Typkonvertierungen richten sich nach den im Code angegebenen Spalten und Typen.";
   if(entry.name === "Text.From") return "Der Beispielwert ist eine Zahl und wird zu Text. Das Gebietsschema kann die Darstellung beeinflussen; eine bereits verlorene führende Null entsteht dadurch nicht neu.";
   if(entry.name === "Number.FromText" || entry.name === "try … otherwise") return "[Wert] beziehungsweise die angegebene Quellspalte enthält Text. Dezimal- und Tausendertrennzeichen müssen zum angegebenen Gebietsschema passen.";

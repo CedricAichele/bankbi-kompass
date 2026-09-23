@@ -60,15 +60,40 @@ Tabellen mit bekanntem fachlichem Aufbau und passenden Schlüsseln. Das folgende
 
 ### Vorher · Beispieldaten
 
-**Personen:** P001 und P002 jeweils einmal.
+**Personen**
 
-**Konto:** K001 mit Bestand 1000.
+| Person |
+| --- |
+| P001 |
+| P002 |
 
-**Zuordnung:** P001/K001 und P002/K001.
+**Konten**
+
+| Konto | Bestand |
+| --- | --- |
+| K001 | 1000 |
+
+**Zuordnung**
+
+| Person | Konto |
+| --- | --- |
+| P001 | K001 |
+| P002 | K001 |
 
 ### Aktion
 
-Brücke mit P001/K001 und P002/K001 abbilden.
+Nenne die Tabellen **Personen**, **Konten** und **Zuordnung**. Erstelle diese aktiven Beziehungen:
+
+- Personen[Person] (1) → Zuordnung[Person] (*), Filterrichtung **Einfach**.
+- Konten[Konto] (1) → Zuordnung[Konto] (*), Filterrichtung **Beide**. Nur dieser gezielte Rückweg lässt die Personenauswahl über Zuordnung die Kontentabelle filtern.
+
+Lege das Measure in Konten an:
+
+```dax
+Sichtbarer Bestand = SUM ( Konten[Bestand] )
+```
+
+Verwende Personen[Person] als Zeilenfeld und das Measure als Wert. In diesem kleinen Beispiel liegen die Bestände direkt in Konten; bei mehreren Stichtagen gehört der Bestand in eine eigene Faktentabelle mit geklärtem Zeitbezug. Prüfe zusätzliche Beziehungen auf mehrdeutige Filterwege.
 
 ### Nachher · Beispielergebnis
 

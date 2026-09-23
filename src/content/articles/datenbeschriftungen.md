@@ -48,7 +48,7 @@ Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits a
 
 1. Visual markieren → Visual formatieren → Datenbeschriftungen aktivieren. Stelle Anzeigeeinheiten und Dezimalstellen passend zur Achse ein.
 2. Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.
-3. Kontrolliere am Beispiel die Darstellung: **Beschriftung 120 Tsd. bei entsprechender Einheit.**.
+3. Kontrolliere am Beispiel die Darstellung: **Beschriftung 120 Tsd. bei entsprechender Einheit.**
 4. Teste eine andere Auswahl und prüfe Titel, Einheit, Sortierung sowie lesbare Beschriftungen.
 
 ## Beispiel

@@ -49,7 +49,7 @@ Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits a
 
 1. Measure im Datenbereich markieren → Measuretools → Format → Prozent. Wähle die benötigten Dezimalstellen; prüfe anschließend das Visual.
 2. Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.
-3. Kontrolliere am Beispiel die Darstellung: **Anzeige 95 %.**.
+3. Kontrolliere am Beispiel die Darstellung: **Anzeige 95 %.**
 4. Teste eine andere Auswahl und prüfe Titel, Einheit, Sortierung sowie lesbare Beschriftungen.
 
 ## Beispiel

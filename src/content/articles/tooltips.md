@@ -47,7 +47,7 @@ Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits a
 
 1. Visual markieren → Visual erstellen → Tooltips. Ziehe eine geeignete zusätzliche Kennzahl in diesen Bereich. Bewege den Mauszeiger im Bericht über einen Datenpunkt.
 2. Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.
-3. Kontrolliere am Beispiel die Darstellung: **Tooltip am Datenpunkt A: Bestand 200 und 2 Konten.**.
+3. Kontrolliere am Beispiel die Darstellung: **Tooltip am Datenpunkt A: Bestand 200 und 2 Konten.**
 4. Teste eine andere Auswahl und prüfe Titel, Einheit, Sortierung sowie lesbare Beschriftungen.
 
 ## Beispiel

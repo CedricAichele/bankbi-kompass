@@ -59,6 +59,8 @@ Du vergleichst Neugeschäft für denselben Zeitraum.
 
 ### Vorher · Beispieldaten
 
+**Bewegungen** – Datum als Datum, Neugeschäft und Bestand als Zahlen laden. Verbinde eine vollständige, markierte Datumstabelle **DimDatum** aktiv über **DimDatum[Datum] (1) → Bewegungen[Datum] (*)**. Der Kalender muss 2025 und 2026 vollständig abdecken. Für den Vergleich wählst du Februar 2026 über **DimDatum[Datum]** aus.
+
 | Datum | Neugeschäft | Bestand |
 | --- | --- | --- |
 | 28.02.2025 | 9 | 90 |
@@ -67,11 +69,25 @@ Du vergleichst Neugeschäft für denselben Zeitraum.
 
 ### Aktion
 
+Lege zuerst das Basismeasure über **Neues Measure** an:
+
+```dax
+Neugeschaeft = SUM ( Bewegungen[Neugeschäft] )
+```
+
+Lege anschließend das folgende Vergleichsmeasure separat an.
+
 Die Datumsauswahl um ein Jahr verschieben und die Basiskennzahl dort erneut berechnen.
 
 ```dax
 Neugeschaeft VJ = CALCULATE ( [Neugeschaeft],
- DATEADD ( Demo_Datum[Date], -1, YEAR ) )
+ DATEADD ( DimDatum[Datum], -1, YEAR ) )
+```
+
+Für den Vorjahresvergleich kannst du alternativ dieses eigene Measure verwenden:
+
+```dax
+Neugeschaeft VJ alternativ = CALCULATE ( [Neugeschaeft], SAMEPERIODLASTYEAR ( DimDatum[Datum] ) )
 ```
 
 ### Nachher · Beispielergebnis

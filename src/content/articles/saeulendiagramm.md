@@ -45,7 +45,7 @@ Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits a
 
 1. Freie Berichtsfläche → Gruppiertes Säulendiagramm. Ziehe Jahr-Monat auf X-Achse und ein additives Neugeschäft-Measure auf Y-Achse.
 2. Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.
-3. Kontrolliere am Beispiel die Darstellung: **Drei Säulen in zeitlicher Reihenfolge; Februar am höchsten.**.
+3. Kontrolliere am Beispiel die Darstellung: **Drei Säulen in zeitlicher Reihenfolge; Februar am höchsten.**
 4. Teste eine andere Auswahl und prüfe Titel, Einheit, Sortierung sowie lesbare Beschriftungen.
 
 ## Beispiel

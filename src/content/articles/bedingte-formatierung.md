@@ -46,7 +46,7 @@ Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits a
 
 1. Tabelle oder Matrix markieren → Menü am numerischen Wertefeld → Bedingte Formatierung → Symbole. Wähle Regeln für Werte kleiner 0 und ab 0; lasse die Zahl zusätzlich sichtbar.
 2. Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.
-3. Kontrolliere am Beispiel die Darstellung: **-20 erhält die definierte Negativmarkierung; 0 und 30 nicht.**.
+3. Kontrolliere am Beispiel die Darstellung: **-20 erhält die definierte Negativmarkierung; 0 und 30 nicht.**
 4. Teste eine andere Auswahl und prüfe Titel, Einheit, Sortierung sowie lesbare Beschriftungen.
 
 ## Beispiel

@@ -46,7 +46,7 @@
         "klickfolge": [
           "Freie Berichtsfläche → Visualisierungen → Karte. Ziehe eine vorhandene Kennzahl in das Wertefeld. Unter Visual formatieren Titel, Anzeigeeinheit und Dezimalstellen setzen.",
           "Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.",
-          "Kontrolliere am Beispiel die Darstellung: **Karte Gesamtbestand: 3500.**."
+          "Kontrolliere am Beispiel die Darstellung: **Karte Gesamtbestand: 3500.**"
         ],
         "daten": "| Ausgangswerte |\n| --- |\n| K001: 1000; K002: 2000; K003: 500 |",
         "sichtbar": [
@@ -83,7 +83,7 @@ Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits a
 
 1. Freie Berichtsfläche → Visualisierungen → Karte. Ziehe eine vorhandene Kennzahl in das Wertefeld. Unter Visual formatieren Titel, Anzeigeeinheit und Dezimalstellen setzen.
 2. Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.
-3. Kontrolliere am Beispiel die Darstellung: **Karte Gesamtbestand: 3500.**.
+3. Kontrolliere am Beispiel die Darstellung: **Karte Gesamtbestand: 3500.**
 4. Teste eine andere Auswahl und prüfe Titel, Einheit, Sortierung sowie lesbare Beschriftungen.
 
 ## Beispiel

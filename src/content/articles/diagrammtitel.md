@@ -55,7 +55,7 @@ Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits a
 
 1. Visual markieren → Visual formatieren → Allgemein → Titel aktivieren. Trage Kennzahl, Einheit und Zeitraum ein; für einen dynamischen Titel verwende bei Text das fx-Feld und ein Textmeasure.
 2. Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.
-3. Kontrolliere am Beispiel die Darstellung: **Titel: Bestand EUR · 31.03.2026.**.
+3. Kontrolliere am Beispiel die Darstellung: **Titel: Bestand EUR · 31.03.2026.**
 4. Teste eine andere Auswahl und prüfe Titel, Einheit, Sortierung sowie lesbare Beschriftungen.
 
 ## Beispiel

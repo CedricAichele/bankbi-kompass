@@ -58,21 +58,37 @@ Monate sollen chronologisch über Jahresgrenzen laufen.
 
 ### Vorher · Beispieldaten
 
-| Datum | Neugeschäft | Bestand |
-| --- | --- | --- |
-| 28.02.2025 | 9 | 90 |
-| 31.01.2026 | 10 | 100 |
-| 28.02.2026 | 15 | 120 |
+**DimDatum**, Ausschnitt aus der vollständigen Datumstabelle der verlinkten Anleitung:
+
+| Datum |
+| --- |
+| 28.02.2025 |
+| 31.01.2026 |
+| 28.02.2026 |
 
 ### Aktion
 
-Jahr, Monat und jahresübergreifenden Sortierschlüssel aus dem Datum ableiten.
+Wähle DimDatum und lege jede der folgenden Definitionen einzeln über **Modellierung → Neue Spalte** an. Die Datumsspalte heißt hier **Datum**.
 
 ```dax
-Jahr = YEAR ( Demo_Datum[Date] )
-MonatNr = MONTH ( Demo_Datum[Date] )
-JahrMonatSort = YEAR ( Demo_Datum[Date] ) * 100 + MONTH ( Demo_Datum[Date] )
+Jahr = YEAR ( DimDatum[Datum] )
 ```
+
+```dax
+MonatNr = MONTH ( DimDatum[Datum] )
+```
+
+```dax
+JahrMonatSort = YEAR ( DimDatum[Datum] ) * 100 + MONTH ( DimDatum[Datum] )
+```
+
+Für die sichtbare Monatsachse ergänze eine weitere Spalte:
+
+```dax
+JahrMonat = FORMAT ( DimDatum[Datum], "yyyy-MM" )
+```
+
+Markiere JahrMonat und wähle **Spaltentools → Nach Spalte sortieren → JahrMonatSort**. Verwende JahrMonat anschließend auf der Achse.
 
 ### Nachher · Beispielergebnis
 

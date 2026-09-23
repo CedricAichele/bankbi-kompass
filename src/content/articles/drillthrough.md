@@ -47,7 +47,7 @@ Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits a
 
 1. Neue Berichtsseite anlegen. Ziehe Segment in den Bereich Drillthrough-Felder der Zielseite. Füge dort die benötigte Detailliste hinzu. Rechtsklick auf Segment A im Quellvisual → Drillthrough → Zielseite.
 2. Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.
-3. Kontrolliere am Beispiel die Darstellung: **Die Zielseite zeigt für A K001 und K002.**.
+3. Kontrolliere am Beispiel die Darstellung: **Die Zielseite zeigt für A K001 und K002.**
 4. Teste eine andere Auswahl und prüfe Titel, Einheit, Sortierung sowie lesbare Beschriftungen.
 
 ## Beispiel

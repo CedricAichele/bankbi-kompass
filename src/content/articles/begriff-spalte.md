@@ -53,9 +53,9 @@ Kenntnis der fachlichen Bedeutung der Daten; keine bestimmte Beispieldatei erfor
 
 ### Vorher · Beispieldaten
 
-| Ausgangslage |
-| --- |
-| K001 | P001 | 1000. |
+| Konto | Kunde | Bestand |
+| --- | --- | --- |
+| K001 | P001 | 1000 |
 
 ### Aktion
 

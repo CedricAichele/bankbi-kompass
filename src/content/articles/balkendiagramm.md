@@ -46,7 +46,7 @@
         "klickfolge": [
           "Freie Berichtsfläche → Visualisierungen → Gruppiertes Balkendiagramm. Ziehe Segment auf die Y-Achse und die Betragssumme auf die X-Achse.",
           "Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.",
-          "Kontrolliere am Beispiel die Darstellung: **Zwei horizontale Balken mit Längen 120 und 80.**."
+          "Kontrolliere am Beispiel die Darstellung: **Zwei horizontale Balken mit Längen 120 und 80.**"
         ],
         "daten": "| Ausgangswerte |\n| --- |\n| Segment A: 120; B: 80 |",
         "sichtbar": [
@@ -83,7 +83,7 @@ Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits a
 
 1. Freie Berichtsfläche → Visualisierungen → Gruppiertes Balkendiagramm. Ziehe Segment auf die Y-Achse und die Betragssumme auf die X-Achse.
 2. Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.
-3. Kontrolliere am Beispiel die Darstellung: **Zwei horizontale Balken mit Längen 120 und 80.**.
+3. Kontrolliere am Beispiel die Darstellung: **Zwei horizontale Balken mit Längen 120 und 80.**
 4. Teste eine andere Auswahl und prüfe Titel, Einheit, Sortierung sowie lesbare Beschriftungen.
 
 ## Beispiel

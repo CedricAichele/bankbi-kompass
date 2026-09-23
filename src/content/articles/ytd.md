@@ -38,7 +38,7 @@
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```dax\nNeugeschaeft YTD = TOTALYTD ( [Neugeschaeft], Kalender[Date] )\n```"
+  "kurzformel": "```dax\nNeugeschaeft YTD = TOTALYTD ( [Neugeschaeft], DimDatum[Datum] )\n```"
 }
 ---
 
@@ -55,12 +55,14 @@ Eine vorhandene Faktentabelle mit Bewegungsbeträgen, ein additives Basismeasure
 1. Prüfe das Basismeasure zunächst für einen einzelnen Monat. Verwende Datumsfelder aus der Datumstabelle für Filter und Achsen.
 2. Wähle **Modellierung → Neues Measure** und gib die TOTALYTD-Formel aus dem Beispiel ein. Passe Basismeasure und Datumsspalte an dein Modell an.
 3. TOTALYTD erhält als erstes Argument die zu kumulierende Kennzahl, als zweites die Kalenderspalte. Prüfe die Jahresdefinition; das Beispiel verwendet das Kalenderjahr.
-4. Zeige Basismeasure und Vergleichsmeasure gemeinsam. Wähle im Beispiel über **Kalender[Date]** den Zeitraum 01.02.2026 bis 28.02.2026.
+4. Zeige Basismeasure und Vergleichsmeasure gemeinsam. Wähle im Beispiel über **DimDatum[Datum]** den Zeitraum 01.02.2026 bis 28.02.2026.
 5. Vergleiche das Ergebnis mit den unten angegebenen Kontrollwerten. Teste anschließend März sowie einen Zeitraum ohne Daten.
 
 ## Beispiel
 
 ### Vorher · Beispieldaten
+
+**Bewegungen** – Datum als Datum, Betrag als Zahl laden. Verbinde die vollständige, markierte Datumstabelle **DimDatum** aktiv über **DimDatum[Datum] (1) → Bewegungen[Datum] (*)**. Der Kalender muss 2025 und 2026 vollständig abdecken.
 
 | Datum | Betrag |
 | --- | --- |
@@ -78,7 +80,7 @@ Neugeschaeft = SUM ( Bewegungen[Betrag] )
 ```
 
 ```dax
-Neugeschaeft YTD = TOTALYTD ( [Neugeschaeft], Kalender[Date] )
+Neugeschaeft YTD = TOTALYTD ( [Neugeschaeft], DimDatum[Datum] )
 ```
 
 ### Nachher · Beispielergebnis

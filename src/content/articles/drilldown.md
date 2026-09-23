@@ -46,7 +46,7 @@ Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits a
 
 1. Säulenvisual markieren. Lege Jahr, Quartal und Monat in dieser Reihenfolge auf die X-Achse. Aktiviere im Visualkopf den Drilldown-Modus und wähle ein Jahr.
 2. Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.
-3. Kontrolliere am Beispiel die Darstellung: **Innerhalb 2026 werden die tieferen Ebenen angezeigt; Q1 ergibt 37.**.
+3. Kontrolliere am Beispiel die Darstellung: **Innerhalb 2026 werden die tieferen Ebenen angezeigt; Q1 ergibt 37.**
 4. Teste eine andere Auswahl und prüfe Titel, Einheit, Sortierung sowie lesbare Beschriftungen.
 
 ## Beispiel

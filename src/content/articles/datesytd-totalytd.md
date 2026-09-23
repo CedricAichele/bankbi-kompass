@@ -59,6 +59,8 @@ Du möchtest Neugeschäft seit Jahresbeginn kumulieren.
 
 ### Vorher · Beispieldaten
 
+**Bewegungen** – Datum als Datum, Neugeschäft und Bestand als Zahlen laden. Verbinde eine vollständige, markierte Datumstabelle **DimDatum** aktiv über **DimDatum[Datum] (1) → Bewegungen[Datum] (*)**. Der Kalender muss 2025 und 2026 vollständig abdecken. Für den Vergleich wählst du Februar 2026 über **DimDatum[Datum]** aus.
+
 | Datum | Neugeschäft | Bestand |
 | --- | --- | --- |
 | 28.02.2025 | 9 | 90 |
@@ -67,13 +69,27 @@ Du möchtest Neugeschäft seit Jahresbeginn kumulieren.
 
 ### Aktion
 
+Lege zuerst das Basismeasure über **Neues Measure** an:
+
+```dax
+Neugeschaeft = SUM ( Bewegungen[Neugeschäft] )
+```
+
+Lege anschließend das folgende Vergleichsmeasure separat an.
+
 Neugeschäft seit Jahresbeginn bis zum gewählten Tagesende berechnen.
 
 ```dax
-Neugeschaeft YTD = TOTALYTD ( [Neugeschaeft], Demo_Datum[Date] )
+Neugeschaeft YTD = TOTALYTD ( [Neugeschaeft], DimDatum[Datum] )
 ```
 
-Januar 10, Februar 15 → Februar-YTD 25.
+Die entsprechende Variante mit DATESYTD wird als separates Measure angelegt:
+
+```dax
+Neugeschaeft YTD alternativ = CALCULATE ( [Neugeschaeft], DATESYTD ( DimDatum[Datum] ) )
+```
+
+Beide Varianten liefern im gezeigten Kalenderjahr: Januar 10, Februar 15 → Februar-YTD 25.
 
 ### Nachher · Beispielergebnis
 

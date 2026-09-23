@@ -44,20 +44,22 @@ Du möchtest RELATED an einem überschaubaren Beispiel verstehen.
 
 ## Voraussetzungen
 
-Ein vorhandenes Power-BI-Modell mit den im Ausdruck verwendeten Tabellen, Spalten und gegebenenfalls Basismeasures.
+Lade die beiden Beispieltabellen **Konten** und **Personen** ins Modell. Personennummer ist in beiden Tabellen Text und in Personen eindeutig. Erstelle eine aktive reguläre 1:n-Beziehung von Personen[Personennummer] zu Konten[Personennummer]. Für dieses Beispiel ist kein Measure erforderlich.
 
 ## Schritte
 
-1. Prüfe die benötigten Tabellen, Textschlüssel und numerischen Beträge im vorhandenen Modell. Die Tabellen im Beispiel illustrieren den Aufbau.
+1. Lege die beiden Tabellen aus dem Beispiel an und prüfe die oben beschriebene Beziehung in der Modellansicht.
 2. Wähle in Konten Modellierung → Neue Spalte.
 3. Gib die Formel aus dem Beispiel ein und bestätige mit Enter.
-4. Füge ein Tabellenvisual mit Personennummer und dem berechneten Ergebnis hinzu.
-5. Teste ungefiltert, dann mit Person P003 und Produktgruppe Einlagen.
+4. Füge ein Tabellenvisual mit Kontonummer, Personennummer und Segment aus Konten hinzu.
+5. Prüfe zunächst alle sechs Konten und filtere anschließend auf Person P003: Beide Konten müssen Segment A zeigen.
 6. Vergleiche den Wert mit dem erwarteten Ergebnis und untersuche den beschriebenen Fehlerfall.
 
 ## Beispiel
 
 ### Vorher · Beispieldaten
+
+**Konten**
 
 | Kontonummer | Personennummer | Produktgruppe | Bestand_EUR |
 | --- | --- | --- | --- |
@@ -68,6 +70,14 @@ Ein vorhandenes Power-BI-Modell mit den im Ausdruck verwendeten Tabellen, Spalte
 | K005 | P003 | Einlagen | 800 |
 | K006 | P004 | Kredite | 1000 |
 
+**Personen** – eine Zeile je Person
+
+| Personennummer | Segment |
+| --- | --- |
+| P001 | A |
+| P002 | B |
+| P003 | A |
+| P004 | B |
 
 ### Aktion
 
@@ -77,7 +87,7 @@ Segment = RELATED ( Personen[Segment] )
 
 ### Nachher · Beispielergebnis
 
-P001-Konten erhalten A, P002-Konto B.
+K001, K002, K004 und K005 erhalten A; K003 und K006 erhalten B. Die Kontentabelle behält ihre sechs Zeilen.
 
 ## Ergebnis
 
@@ -89,8 +99,8 @@ RELATED benötigt Zeilenkontext und eine geeignete Beziehung zur eindeutigen Sei
 
 ## Typischer Fehler
 
-Ein Measure ohne passenden Zeilenkontext kann nicht einfach jeden Kontenwert zuordnen.
+Ein Measure ohne passenden Zeilenkontext kann nicht einfach jeden Kontenwert zuordnen. Doppelte Personennummern in Personen verhindern die geforderte eindeutige Beziehungsseite. Ein Kontenschlüssel ohne passenden Personeneintrag liefert bei dieser Zuordnung BLANK; solche fehlenden Zuordnungen gesondert prüfen.
 
 ## Plausibilitätscheck
 
-Prüfe Filter einzeln und gemeinsam. Die Ausgangssumme beträgt 9.000 und Einlagen allein 4.050.
+Alle sechs Konten haben im vollständigen Beispiel ein Segment. Für P003 tragen K004 und K005 jeweils A. Die neue Spalte verändert weder Zeilenzahl noch Bestände; die Bestandssumme bleibt 9.000.

@@ -60,7 +60,9 @@ Die neueste Monatslieferung liegt noch nicht vor.
 
 ### Vorher · Beispieldaten
 
-| Datum | Neugeschäft | Bestand |
+**Demo_Bestand** – STICHTAG als Datum, Bestand als Zahl laden.
+
+| STICHTAG | Neugeschäft | Bestand |
 | --- | --- | --- |
 | 28.02.2025 | 9 | 90 |
 | 31.01.2026 | 10 | 100 |
@@ -68,7 +70,13 @@ Die neueste Monatslieferung liegt noch nicht vor.
 
 ### Aktion
 
-Letzten sichtbaren Faktentag bestimmen und Bestand für diesen Tag berechnen.
+Lege zunächst dieses Basismeasure über **Neues Measure** an. Es ist eine Summe im jeweiligen Kontext; als Bestand über mehrere Stichtage ist diese Summe fachlich nicht geeignet.
+
+```dax
+Bestand = SUM ( Demo_Bestand[Bestand] )
+```
+
+Lege dann ein zweites Measure an, das den letzten sichtbaren Faktentag bestimmt und den Bestand ausschließlich für diesen Tag berechnet.
 
 ```dax
 Bestand letzter sichtbarer Stichtag =

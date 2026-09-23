@@ -47,7 +47,7 @@
         "klickfolge": [
           "Freie Berichtsfläche → Tabelle. Ziehe Konto und Bestand in die Spalten. Prüfe im Feldmenü von Bestand die gewünschte Zusammenfassung und ergänze bei mehreren Stichtagen das Datum.",
           "Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.",
-          "Kontrolliere am Beispiel die Darstellung: **Drei Kontenzeilen und Gesamtsumme 3500.**."
+          "Kontrolliere am Beispiel die Darstellung: **Drei Kontenzeilen und Gesamtsumme 3500.**"
         ],
         "daten": "| Ausgangswerte |\n| --- |\n| K001: 1000; K002: 2000; K003: 500 |",
         "sichtbar": [
@@ -88,7 +88,7 @@ Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits a
 
 1. Freie Berichtsfläche → Tabelle. Ziehe Konto und Bestand in die Spalten. Prüfe im Feldmenü von Bestand die gewünschte Zusammenfassung und ergänze bei mehreren Stichtagen das Datum.
 2. Prüfe die Felder und ihre Aggregation. Verwende für Dimensionen eindeutige Gruppierungsmerkmale und für Kennzahlen die fachlich passende Berechnung.
-3. Kontrolliere am Beispiel die Darstellung: **Drei Kontenzeilen und Gesamtsumme 3500.**.
+3. Kontrolliere am Beispiel die Darstellung: **Drei Kontenzeilen und Gesamtsumme 3500.**
 4. Teste eine andere Auswahl und prüfe Titel, Einheit, Sortierung sowie lesbare Beschriftungen.
 
 ## Beispiel

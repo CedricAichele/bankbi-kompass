@@ -38,7 +38,7 @@
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```dax\nNeugeschaeft = SUM ( Bewegungen[Betrag] )\n```"
+  "kurzformel": "```dax\nDimDatum = CALENDAR ( DATE ( 2025, 1, 1 ), DATE ( 2026, 12, 31 ) )\n```"
 }
 ---
 
