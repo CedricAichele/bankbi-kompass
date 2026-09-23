@@ -18,13 +18,14 @@
   "synonyme": [],
   "verwandteThemen": [
     "granularitaet",
-    "matrix"
+    "matrix",
+    "power-bi-csv-export"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-tables"
@@ -78,6 +79,10 @@ Du willst einzelne Konten und Beträge nachvollziehen.
 ## Voraussetzungen
 
 Ein bestehender Bericht mit passenden Feldern und gegebenenfalls einem bereits angelegten Measure. Bedienbezeichnungen können je Desktop-Version oder Visual leicht abweichen.
+
+## CSV in Excel weiterverwenden
+
+[Tabelle als CSV exportieren und in Excel korrekt öffnen](#/wissen/power-bi-csv-export) erklärt den passenden Klickweg. Bei einer CSV in nur einer Spalte zuerst das Trennzeichen korrigieren, dann Kennungen, Beträge und Datum prüfen.
 
 ## Schritte
 

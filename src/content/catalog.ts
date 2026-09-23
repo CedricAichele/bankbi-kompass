@@ -251,6 +251,7 @@ export const toolsCatalog: Tool[] = [
       {
         "title": "Berichte & Visualisierung",
         "items": [
+          {"id":"power-bi-csv-export","label":"Tabelle als CSV exportieren → Excel"},
           {
             "id": "karte",
             "label": "Karte: eine Kennzahl anzeigen"
@@ -376,6 +377,7 @@ export const toolsCatalog: Tool[] = [
       {
         "title": "Daten prüfen & bereinigen",
         "items": [
+          {"id":"excel-csv-spalten","label":"CSV in einer Spalte? Richtig trennen und laden"},
           {
             "id": "excel-liste-vorbereiten",
             "label": "Excel-Liste für Auswertung vorbereiten"

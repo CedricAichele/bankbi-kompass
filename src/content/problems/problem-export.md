@@ -20,7 +20,8 @@
     "Kennungen, Datum oder Summe ändern sich in Excel."
   ],
   "verwandteThemen": [
-    "daten-laden"
+    "daten-laden",
+    "excel-csv-spalten"
   ],
   "kontexte": [
     "Reporting",
@@ -30,9 +31,10 @@
   "art": "problem",
   "screenshots": [],
   "quellen": [
-    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=reports-viewing-interacting"
+    "https://learn.microsoft.com/de-de/power-bi/visuals/power-bi-visualization-export-data",
+    "https://support.microsoft.com/en-us/excel/get-started/import-or-export-text-txt-or-csv-files"
   ],
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "praxis": true
 }
 ---
@@ -52,6 +54,10 @@ Importinterpretation, Rundung oder unvollständiger Export.
 ## Schnelltest
 
 Vergleiche Zeilenzahl, Kontrollsumme und eine Kennung mit führenden Nullen vor/nach Export.
+
+## CSV in Excel weiterverwenden
+
+[CSV in Excel: alle Werte stehen in einer Spalte](#/wissen/excel-csv-spalten) erklärt den passenden Klickweg. Bei einer CSV in nur einer Spalte zuerst das Trennzeichen korrigieren, dann Kennungen, Beträge und Datum prüfen.
 
 ## Schritte
 

@@ -25,7 +25,8 @@
     "daten-laden",
     "datenbereinigung",
     "pq-workflow",
-    "excel-zahl-text"
+    "excel-zahl-text",
+    "excel-csv-spalten"
   ],
   "kontexte": [
     "Reporting"
@@ -84,6 +85,10 @@ Eine Textdatei ohne falsch getrennte Spalten, verlorene Nullen oder falsch geles
 ## Voraussetzungen
 
 Zugriff auf die gewünschte Quelle und Kenntnis ihres fachlichen Aufbaus.
+
+## CSV in Excel weiterverwenden
+
+[CSV in Excel: alles in einer Spalte – Import und Text in Spalten](#/wissen/excel-csv-spalten) erklärt den passenden Klickweg. Bei einer CSV in nur einer Spalte zuerst das Trennzeichen korrigieren, dann Kennungen, Beträge und Datum prüfen.
 
 ## Schritte
 
