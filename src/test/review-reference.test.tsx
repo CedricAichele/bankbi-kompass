@@ -52,7 +52,7 @@ describe("Review: Suche und praktische Referenzen",()=>{
     const card=document.querySelector(".m-results .m-entry")! as HTMLElement;
     const label=card.querySelector(".code-location")!, block=card.querySelector(".codeblock")!;
     expect(label.compareDocumentPosition(block)&Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(label).toHaveTextContent(name.startsWith("Table.")?"Vollständiger Schritt für die Formelleiste":"Ausdruck für Benutzerdefinierte Spalte");
+    expect(label).toHaveTextContent(name.startsWith("Table.")?"Formelleiste – vollständiger Abfrageschritt":"Benutzerdefinierte Spalte – nur den Ausdruck eingeben");
     fireEvent.click(within(card).getByRole("button",{name:"Kopieren"}));
     expect(copy).toHaveBeenCalledWith(code);
     expect(await within(card).findByText("Kopiert")).toBeVisible();

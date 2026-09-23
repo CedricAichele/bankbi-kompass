@@ -1700,3 +1700,33 @@ footer strong {
 .article-toc label { display: grid; gap: .4rem; font-weight: 600; }
 .article-toc select { padding: .75rem; width: 100%; max-width: 100%; font: inherit; }
 [id^="article-"] { scroll-margin-top: 5rem; }
+/* M workbench: one width for filters, overview and selected details. */
+.m-reference-page { max-width: 1120px; min-width: 0; }
+.m-workbench > *, .m-workbench .m-filters > *, .m-workbench .m-entry > * { min-width: 0; max-width: 100%; }
+.m-workbench .m-filters { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto; align-items: end; }
+.m-workbench .m-filters select { width: 100%; min-width: 0; }
+.m-workbench .m-filters button, .m-overview button { padding: .65rem; border: 1px solid var(--border); border-radius: 5px; background: white; color: var(--blue); cursor: pointer; font: inherit; }
+.m-overview-scroll, .m-example-scroll { width: 100%; max-width: 100%; overflow-x: auto; margin: 1rem 0; }
+.m-overview, .m-example-scroll table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.m-overview caption, .m-example-scroll caption { text-align: left; padding: .6rem 0; font-weight: 600; }
+.m-overview th, .m-overview td, .m-example-scroll th, .m-example-scroll td { text-align: left; vertical-align: top; padding: .85rem; border-bottom: 1px solid var(--border); overflow-wrap: anywhere; }
+.m-overview thead, .m-example-scroll thead { background: #eef4fa; }
+.m-overview th:nth-child(1) { width: 19%; }
+.m-overview th:nth-child(2) { width: 25%; }
+.m-overview th:nth-child(3) { width: 27%; }
+.m-overview th:nth-child(4) { width: 16%; }
+.m-overview th:nth-child(5) { width: 13%; }
+.m-overview code { white-space: normal; overflow-wrap: anywhere; font-size: .85rem; }
+.m-workbench .m-entry { scroll-margin-top: 5rem; }
+.m-workbench .m-entry h3 { margin: 1.2rem 0 .5rem; }
+.m-workbench .m-entry p { margin: .6rem 0; }
+.m-workbench :focus-visible { outline: 3px solid #087f8c; outline-offset: 3px; }
+@media (max-width: 700px) {
+  .m-workbench .m-filters { grid-template-columns: minmax(0, 1fr); }
+  .m-overview, .m-overview tbody, .m-overview tr, .m-overview th, .m-overview td { display: block; width: 100% !important; }
+  .m-overview thead { display: none; }
+  .m-overview tr { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 1rem; }
+  .m-overview th, .m-overview td { border-bottom: 0; padding: .5rem .75rem; }
+  .m-overview td[data-label]::before { content: attr(data-label); display: block; font-weight: 600; margin-bottom: .25rem; }
+  .m-example-scroll table { min-width: 440px; }
+}

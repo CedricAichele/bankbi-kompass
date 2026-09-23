@@ -36,6 +36,7 @@ const nav = [
   ["/", "Start", Home],
   ["/aufgaben", "Typische Aufgaben", Check],
   ["/bereich/power-bi", "Power BI", ChartNoAxesColumnIncreasing],
+  ["/power-query", "Power Query", Layers],
   ["/bereich/excel", "Excel", Table2],
   ["/bereich/ida", "IDA", ListFilter],
   ["/probleme", "Probleme & Lösungen", Lightbulb],

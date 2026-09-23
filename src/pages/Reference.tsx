@@ -66,9 +66,9 @@ export function Reference({
               : item.bereich}
         </Link>
         <ChevronRight size={13} />
-        <span>{item.kategorie}</span>
+        {item.id === "power-query-m" ? <><Link to="/power-query">Power Query</Link><ChevronRight size={13}/><span>M-Formeln & Funktionen</span></> : <span>{item.kategorie}</span>}
       </div>
-      <article className="reference">
+      <article className={"reference" + (item.id === "power-query-m" ? " m-reference-page" : "")}>
         <header className="reference-header">
           <div>
             <span className="eyebrow">
@@ -93,7 +93,7 @@ export function Reference({
           </button>
         </header>
         {Object.keys(sections).length >= 10 && <nav className="article-toc" aria-label="Inhaltsnavigation"><label>Direkt zum Abschnitt<select defaultValue="" onChange={e=>{jumpTo(e.target.value);e.target.value="";}}><option value="" disabled>Abschnitt wählen …</option>{Object.keys(sections).map(name=><option key={name} value={name}>{name}</option>)}</select></label></nav>}
-        <div className="answer">
+        {item.id !== "power-query-m" && <div className="answer">
           <h2>Kurzantwort</h2>
           <p>{item.kurzbeschreibung}</p>
           {item.kurzformel && <Markdown text={item.kurzformel} />}
@@ -102,7 +102,8 @@ export function Reference({
             <Markdown text={sections["Wann brauche ich das?"]} />
           </div>
         </div>
-        {item.bereich !== "IDA" && <div className="location">
+        }
+        {item.bereich !== "IDA" && item.id !== "power-query-m" && <div className="location">
           <span>WO FINDE ICH DAS?</span>
           <p>{item.ort}</p>
         </div>}

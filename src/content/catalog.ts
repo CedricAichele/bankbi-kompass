@@ -26,6 +26,7 @@ export const toolsCatalog: Tool[] = [
       {
         "title": "Power Query & Datenaufbereitung",
         "items": [
+          {"id":"power-query-m", "label":"M-Formeln & Funktionen für Power Query"},
           {
             "id": "power-query",
             "label": "Was ist Power Query?"

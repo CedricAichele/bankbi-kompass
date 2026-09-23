@@ -12,6 +12,7 @@ Ein Arbeitswerkzeug für konkrete Fragen: Die Kurzantwort bietet schnelle Orient
 
 - Zentrale Suche nach Funktionen, Begriffen und Aufgaben.
 - Aktive Kataloge für Power BI und Excel; IDA mit eigener Entwicklungsübersicht.
+- Durchsuchbare Power-Query-M-Referenz mit Funktionsübersicht, Eingabeorten und ausführlichen Beispielen.
 - Power-Query-Workflow für neue Daten und eine gemeinsame Transformationsbasis für Power BI und Excel.
 - Typische Aufgaben, Probleme & Lösungen, Werkzeugwahl und Datenbegriffe.
 - Schritt-für-Schritt-Anleitungen mit Vorher-/Nachher-Beispielen sowie DAX- und Excel-Formeln.
@@ -33,6 +34,8 @@ Die Kurzantwort steht oben. Danach folgen Anlass und Voraussetzungen, konkrete S
 ## Inhaltsschwerpunkte
 
 **Power BI:** Power Query, Datenmodellierung, DAX, Zeitintelligenz, Visualisierung und Fehlersuche.
+
+**Power Query:** Datenaufbereitung, wiederkehrende Dateien und die M-Referenz „Formeln & Funktionen“ mit Suche, Kategorien und übertragbaren Codebeispielen.
 
 **Excel:** Formeln, Datenbereinigung, PivotTables, Power Query und Analyse.
 
