@@ -2,31 +2,32 @@
 {
   "id": "pivotieren",
   "slug": "pivotieren",
-  "titel": "Pivotieren: von lang nach breit",
+  "titel": "Pivotieren: eine breite Übergabetabelle erstellen",
   "bereich": "Power BI",
   "werkzeuge": [
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Pivotieren macht Werte einer Spalte zu neuen Spaltenüberschriften.",
+  "kurzbeschreibung": "Erzeuge eine Spalte je Merkmalswert, wenn eine Übergabe bewusst eine breite Tabelle benötigt. Für ein Datenmodell ist die lange Ausgangsstruktur häufig geeigneter.",
   "ort": "Power Query → Transformieren → Spalte pivotieren",
   "tags": [
     "Pivotieren: von lang nach breit",
     "Reporting"
   ],
-  "synonyme": [],
+  "synonyme": [
+    "Pivotieren: von lang nach breit"
+  ],
   "verwandteThemen": [
     "entpivotieren",
-    "granularitaet",
     "gruppieren"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-query/pivot-columns"
@@ -42,26 +43,29 @@
       "aufnahmeplan": {
         "prioritaet": "Hoch",
         "werkzeug": "Power BI Desktop",
-        "oberflaeche": "Power Query – Pivotieren: von lang nach breit",
+        "oberflaeche": "Pivotieren: eine breite Übergabetabelle erstellen",
         "klickfolge": [
-          "Power BI Desktop öffnen. Die unten aufgeführten Tabellen über Start → Daten eingeben mit exakt diesen Spaltennamen und Werten anlegen; danach Start → Daten transformieren öffnen.",
-          "Monat markieren → Transformieren → Spalte pivotieren.",
-          "Wertespalte Betrag; erweiterte Optionen Nicht aggregieren für die eindeutigen Beispieldaten. Dialog offen lassen."
+          "Festlegen, welche Spalten die Ergebniszeile identifizieren. Im Beispiel nur Kunde; unnötige Detailspalten vorher entfernen.",
+          "Monat markieren → **Transformieren → Spalte pivotieren**; als Wertespalte Wert auswählen.",
+          "Unter erweiterten Optionen **Nicht aggregieren** wählen, wenn jede Kombination Kunde/Monat genau einen Wert hat. Bei mehreren Werten zunächst deren Ursache klären; nur bei fachlicher Additivität Summe wählen.",
+          "Neue Spalten und ihre Typen prüfen. Neue oder fehlende Monatswerte verändern das Schema und können spätere Schritte beeinflussen.",
+          "Jeden Schnittpunkt gegen die lange Quelle prüfen, einschließlich fehlender Kombinationen."
         ],
-        "daten": "| Kunde | Monat | Betrag |\n| --- | --- | --- |\n| P001 | Jan | 10 |\n| P001 | Feb | 15 |\n| P002 | Jan | 20 |\n| P002 | Feb | 25 |",
+        "daten": "### Vorher\n| Kunde | Monat | Wert |\n| --- | --- | --- |\n| 1001 | Jan | 100 |\n| 1001 | Feb | 120 |\n| 1001 | Mär | 130 |\n\n### Aktion\nMonat pivotieren, Wertespalte Wert, Nicht aggregieren.\n\n### Nachher\n| Kunde | Jan | Feb | Mär |\n| --- | --- | --- | --- |\n| 1001 | 100 | 120 | 130 |",
         "sichtbar": [
-          "Markierte Monatsspalte; Wertespalte Betrag und Aggregationsoption"
+          "Überschriften und Werte des aktuellen Artikelbeispiels",
+          "Einstellung und Ergebnis des zugeordneten Schritts"
         ],
-        "ausschnitt": "Geöffneten Dialog beziehungsweise Menü mit den genannten Einstellungen und den relevanten Spaltenüberschriften aufnehmen. Text bei 100 % lesbar halten; keine unnötige Leerfläche.",
+        "ausschnitt": "Nur relevante Editorbereiche, Datenvorschau und beschriebene Einstellung lesbar aufnehmen.",
         "dateiname": "pbi-pivotieren.webp",
-        "zweck": "Bedienort und Auswahl für Pivotieren: von lang nach breit zeigen.",
+        "zweck": "Erzeuge eine Spalte je Merkmalswert, wenn eine Übergabe bewusst eine breite Tabelle benötigt. Für ein Datenmodell ist die lange Ausgangsstruktur häufig geeigneter.",
         "nichtZeigen": [
           "Lokale Dateipfade",
-          "Benutzername oder Profil",
-          "Andere Programme und Benachrichtigungen",
+          "Benutzerprofile und Benachrichtigungen",
           "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
         ]
-      }
+      },
+      "bildAnzeigen": false
     }
   ],
   "praxis": true
@@ -70,55 +74,49 @@
 
 ## Wann brauche ich das?
 
-Kategorien einer langen Tabelle als eigene Spalten darstellen.
+Erzeuge eine Spalte je Merkmalswert, wenn eine Übergabe bewusst eine breite Tabelle benötigt. Für ein Datenmodell ist die lange Ausgangsstruktur häufig geeigneter.
 
 ## Voraussetzungen
 
-Eine geladene Abfrage mit den benötigten Spalten. Die folgenden Tabellen sind frei erfundene Beispiele.
+Zugriff auf deine Datenquelle und Kenntnis ihrer Spalten und Zeilenebene. Die Beispielwerte dienen nur der Erklärung; eine Beispieldatei ist nicht erforderlich.
 
 ## Schritte
 
-1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
-2. Markiere **Monat**: Seine Werte sollen zu Spaltenüberschriften werden.
-3. Wähle **Transformieren → Spalte pivotieren**.
-4. Wähle als Wertespalte **Betrag**.
-5. Wähle unter den erweiterten Optionen **Nicht aggregieren**, wenn je Kunde und Monat genau ein Wert existiert. Bei mehreren fachlich addierbaren Werten wähle stattdessen **Summe**.
-6. Bestätige. Prüfe die verbleibenden Schlüsselspalten: Sie bestimmen die Ergebniszeilen.
+1. Festlegen, welche Spalten die Ergebniszeile identifizieren. Im Beispiel nur Kunde; unnötige Detailspalten vorher entfernen.
+2. Monat markieren → **Transformieren → Spalte pivotieren**; als Wertespalte Wert auswählen.
+3. Unter erweiterten Optionen **Nicht aggregieren** wählen, wenn jede Kombination Kunde/Monat genau einen Wert hat. Bei mehreren Werten zunächst deren Ursache klären; nur bei fachlicher Additivität Summe wählen.
+4. Neue Spalten und ihre Typen prüfen. Neue oder fehlende Monatswerte verändern das Schema und können spätere Schritte beeinflussen.
+5. Jeden Schnittpunkt gegen die lange Quelle prüfen, einschließlich fehlender Kombinationen.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
-
-| Kunde | Monat | Betrag |
+### Vorher
+| Kunde | Monat | Wert |
 | --- | --- | --- |
-| P001 | Jan | 10 |
-| P001 | Feb | 15 |
-| P002 | Jan | 20 |
-| P002 | Feb | 25 |
+| 1001 | Jan | 100 |
+| 1001 | Feb | 120 |
+| 1001 | Mär | 130 |
 
 ### Aktion
+Monat pivotieren, Wertespalte Wert, Nicht aggregieren.
 
-Monat pivotieren; Betrag als Wert verwenden.
-
-### Nachher · Beispielergebnis
-
-| Kunde | Jan | Feb |
-| --- | --- | --- |
-| P001 | 10 | 15 |
-| P002 | 20 | 25 |
+### Nachher
+| Kunde | Jan | Feb | Mär |
+| --- | --- | --- | --- |
+| 1001 | 100 | 120 | 130 |
 
 ## Ergebnis
 
-Aus Kategorien in einer Spalte werden mehrere Wertespalten.
+Eine breite Übergabetabelle enthält je Kunde die Spalten Jan, Feb und Mär.
 
 ## Warum funktioniert das?
 
-Die verbleibenden Spalten identifizieren eine Ergebniszeile. Ein Wert wird am Schnittpunkt aus diesem Schlüssel und der pivotierten Kategorie abgelegt.
+Merkmalswerte werden Spaltenüberschriften. „Nicht aggregieren“ benötigt einen einzelnen Wert je Schnittpunkt; mehrere Werte verursachen Fehler, statt automatisch den richtigen Datensatz auszuwählen.
 
 ## Typischer Fehler
 
-Eine zusätzliche Detailspalte unverändert behalten und sich über mehrere Zeilen je Kunde wundern.
+Mit Summe widersprüchliche Mehrfachwerte verdecken oder Pivotieren mit einer normalen Gruppierung gleichsetzen.
 
 ## Plausibilitätscheck
 
-Vier Betragswerte ergeben vier gefüllte Zellen in zwei Kundenzeilen; Summe 70.
+Drei Wertezeilen ergeben eine Kundenzeile mit den unveränderten Monatswerten 100, 120, 130.

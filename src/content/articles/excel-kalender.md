@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Datum",
+  "kategorie": "Daten vorbereiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Kalenderfunktionen zerlegen echte Datumswerte oder bauen ein Datum aus Jahr, Monat und Tag auf.",
   "ort": "Excel → Formelzelle",

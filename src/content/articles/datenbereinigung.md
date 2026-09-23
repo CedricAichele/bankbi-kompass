@@ -2,35 +2,38 @@
 {
   "id": "datenbereinigung",
   "slug": "datenbereinigung",
-  "titel": "Datentyp ändern / Daten bereinigen",
+  "titel": "Datentypen fachlich richtig festlegen",
   "bereich": "Power BI",
   "werkzeuge": [
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Setze Datentypen ausdrücklich: Schlüssel häufig als Text, Stichtage als Datum und Beträge als passende Zahl.",
+  "kurzbeschreibung": "Kennungen sind meist Text, Beträge Zahlen und Datumsangaben echte Datumswerte. Der passende Typ erhält Informationen und ermöglicht Berechnungen, Sortierung und Beziehungen.",
   "ort": "Power Query → Typsymbol links am Spaltennamen",
   "tags": [
     "Datentyp ändern / Daten bereinigen",
     "Datenqualität"
   ],
   "synonyme": [
-    "datum falsch"
+    "Datentyp",
+    "führende nullen",
+    "Datum falsch",
+    "Typ ändern",
+    "datum falsch",
+    "Datentyp ändern / Daten bereinigen"
   ],
   "verwandteThemen": [
     "csv-import",
-    "pq-datum",
-    "schluessel",
-    "nullwerte",
-    "dubletten"
+    "pq-profiling",
+    "pq-fehler"
   ],
   "kontexte": [
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-query/data-types"
@@ -39,43 +42,47 @@
     {
       "alt": "Bedienort: Power Query-Editor – Datentyp ändern / Daten bereinigen",
       "caption": "Geplante Aufnahme: Power Query-Editor – Datentyp ändern / Daten bereinigen",
-      "schritt": 3,
+      "schritt": 5,
       "schema": false,
       "status": "todo",
       "todo": "Auswahl und Ergebnis der beschriebenen Operation nachvollziehbar zeigen.",
       "aufnahmeplan": {
         "prioritaet": "Hoch",
         "werkzeug": "Power BI Desktop",
-        "oberflaeche": "Power Query-Editor – Datentyp ändern / Daten bereinigen",
+        "oberflaeche": "Datentypen fachlich richtig festlegen",
         "klickfolge": [
-          "Markiere die betreffende Spalte. Klicke auf das **Datentypsymbol links im Spaltenkopf** oder nutze **Transformieren → Datentyp**.",
-          "Wähle für Schlüssel **Text**, für Beträge einen passenden Zahlentyp und für Kalendertage **Datum**.",
-          "Bei länderspezifischen Texten verwende **Datentyp → Mit Gebietsschema**: hier Dezimalzahl beziehungsweise Datum mit **Deutsch (Deutschland)**."
+          "Automatisch eingefügte Schritte **Geänderter Typ** prüfen. Wurde eine Kennung bereits zur Zahl, gehe vor diesen Schritt zurück und verhindere die Umwandlung; nachträgliches Textformat stellt verlorene Nullen nicht wieder her.",
+          "Kunden- und Kontonummern als **Text** setzen, wenn sie Identifikatoren und keine Rechengrößen sind. Einheitliche Typen auch in späteren Join- und Beziehungsspalten verwenden.",
+          "Betrag als **Dezimalzahl** oder **Feste Dezimalzahl** wählen. Festkomma hat vier Nachkommastellen; für Geld geeignet, wenn diese Genauigkeit ausreicht. Nicht als bloße Anzeigeformatierung verstehen.",
+          "Datum als **Datum**, Zeitstempel als **Datum/Uhrzeit** setzen. Falls Zeitzonen fachlich relevant sind, nicht unbeabsichtigt entfernen.",
+          "Bei Textzahlen und Textdaten **Rechtsklick auf Spalte → Typ ändern → Mit Gebietsschema** verwenden, etwa Deutsch (Deutschland) für 1.250,50 und 31.01.2026.",
+          "Spaltenqualität nach der Umwandlung prüfen. Fehlerzeilen mit Originalwerten vergleichen, bevor sie ersetzt oder ausgeschlossen werden."
         ],
-        "daten": "| Kennung als Zahl | Betrag als Text | Datum als Text |\n| --- | --- | --- |\n| 123 | 1.250,50 | 31.01.2026 |",
+        "daten": "### Vorher\n| Kennung (Text) | Betrag (Text) | Datum (Text) |\n| --- | --- | --- |\n| 00123 | 1.250,50 | 31.01.2026 |\n\n### Aktion\nKennung als Text behalten. Betrag und Datum mit deutschem Gebietsschema konvertieren.\n\n### Nachher\n| Kennung (Text) | Betrag (Festkomma) | Datum |\n| --- | --- | --- |\n| 00123 | 1250,50 | 31.01.2026 |\n\nDer Betrag ist jetzt summierbar. Das Datum lässt sich chronologisch sortieren. Die fünfstellige Kennung bleibt unverändert.",
         "sichtbar": [
-          "Ursprüngliche Kennung \"00123\" aus der Quelle als Text erhalten; Betrag und Datum passend interpretieren.",
-          "Spaltenüberschriften und relevante Optionen"
+          "Überschriften und Werte des aktuellen Artikelbeispiels",
+          "Einstellung und Ergebnis des zugeordneten Schritts"
         ],
-        "ausschnitt": "Power Query-Editor – Datentyp ändern / Daten bereinigen mit Ursprüngliche Kennung \"00123\" aus der Quelle als Text erhalten; Betrag und Datum passend interpretieren., Spaltenüberschriften und relevante Optionen. Auf den relevanten Dialog und die lesbaren Tabellenüberschriften begrenzen.",
+        "ausschnitt": "Nur relevante Editorbereiche, Datenvorschau und beschriebene Einstellung lesbar aufnehmen.",
         "dateiname": "pbi-datenbereinigung.webp",
-        "zweck": "Auswahl und Ergebnis der beschriebenen Operation nachvollziehbar zeigen.",
+        "zweck": "Kennungen sind meist Text, Beträge Zahlen und Datumsangaben echte Datumswerte. Der passende Typ erhält Informationen und ermöglicht Berechnungen, Sortierung und Beziehungen.",
         "nichtZeigen": [
           "Lokale Dateipfade",
-          "Benutzername oder Profil",
-          "Andere Programme und Benachrichtigungen",
+          "Benutzerprofile und Benachrichtigungen",
           "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
         ]
-      }
+      },
+      "bildAnzeigen": false
     },
     {
       "src": "images/power-bi/pbi-datentyp.webp",
       "alt": "Datentyp über das Symbol am Spaltenkopf auswählen.",
       "caption": "Datentyp über das Symbol am Spaltenkopf auswählen.",
-      "schritt": 2,
+      "schritt": 5,
       "schema": false,
       "status": "bereit",
-      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen. Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen."
+      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen. Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen.",
+      "bildAnzeigen": false
     }
   ],
   "praxis": true
@@ -84,51 +91,50 @@
 
 ## Wann brauche ich das?
 
-Datentypen so einstellen, dass Sortierung, Berechnung und Verknüpfung die beabsichtigte Bedeutung haben.
+Kennungen sind meist Text, Beträge Zahlen und Datumsangaben echte Datumswerte. Der passende Typ erhält Informationen und ermöglicht Berechnungen, Sortierung und Beziehungen.
 
 ## Voraussetzungen
 
-Eine vorhandene Abfrage mit den benötigten Spalten.
+Zugriff auf deine Datenquelle und Kenntnis ihrer Spalten und Zeilenebene. Die Beispielwerte dienen nur der Erklärung; eine Beispieldatei ist nicht erforderlich.
 
 ## Schritte
 
-1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
-2. Markiere die betreffende Spalte. Klicke auf das **Datentypsymbol links im Spaltenkopf** oder nutze **Transformieren → Datentyp**.
-3. Wähle für Schlüssel **Text**, für Beträge einen passenden Zahlentyp und für Kalendertage **Datum**.
-4. Bei länderspezifischen Texten verwende **Datentyp → Mit Gebietsschema**: hier Dezimalzahl beziehungsweise Datum mit **Deutsch (Deutschland)**.
-5. Prüfe den Schritt **Geänderter Typ**. Eine bereits als Zahl importierte Kennung hat verlorene führende Nullen; stelle sie aus der ursprünglichen Textquelle wieder her.
-6. Kontrolliere Fehlerzellen, Summen und Datumssortierung.
+1. Automatisch eingefügte Schritte **Geänderter Typ** prüfen. Wurde eine Kennung bereits zur Zahl, gehe vor diesen Schritt zurück und verhindere die Umwandlung; nachträgliches Textformat stellt verlorene Nullen nicht wieder her.
+2. Kunden- und Kontonummern als **Text** setzen, wenn sie Identifikatoren und keine Rechengrößen sind. Einheitliche Typen auch in späteren Join- und Beziehungsspalten verwenden.
+3. Betrag als **Dezimalzahl** oder **Feste Dezimalzahl** wählen. Festkomma hat vier Nachkommastellen; für Geld geeignet, wenn diese Genauigkeit ausreicht. Nicht als bloße Anzeigeformatierung verstehen.
+4. Datum als **Datum**, Zeitstempel als **Datum/Uhrzeit** setzen. Falls Zeitzonen fachlich relevant sind, nicht unbeabsichtigt entfernen.
+5. Bei Textzahlen und Textdaten **Rechtsklick auf Spalte → Typ ändern → Mit Gebietsschema** verwenden, etwa Deutsch (Deutschland) für 1.250,50 und 31.01.2026.
+6. Spaltenqualität nach der Umwandlung prüfen. Fehlerzeilen mit Originalwerten vergleichen, bevor sie ersetzt oder ausgeschlossen werden.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
-
-| Kennung als Zahl | Betrag als Text | Datum als Text |
+### Vorher
+| Kennung (Text) | Betrag (Text) | Datum (Text) |
 | --- | --- | --- |
-| 123 | 1.250,50 | 31.01.2026 |
+| 00123 | 1.250,50 | 31.01.2026 |
 
 ### Aktion
+Kennung als Text behalten. Betrag und Datum mit deutschem Gebietsschema konvertieren.
 
-Ursprüngliche Kennung "00123" aus der Quelle als Text erhalten; Betrag und Datum passend interpretieren.
-
-### Nachher · Beispielergebnis
-
-| Kennung (Text) | Betrag (Zahl) | Datum |
+### Nachher
+| Kennung (Text) | Betrag (Festkomma) | Datum |
 | --- | --- | --- |
 | 00123 | 1250,50 | 31.01.2026 |
 
+Der Betrag ist jetzt summierbar. Das Datum lässt sich chronologisch sortieren. Die fünfstellige Kennung bleibt unverändert.
+
 ## Ergebnis
 
-Jede Spalte erhält einen Typ, der ihre fachliche Verwendung unterstützt.
+Kennung 00123 bleibt Text, der Betrag ist numerisch und das Datum als echtes Datum nutzbar.
 
 ## Warum funktioniert das?
 
-Zahlentypen ermöglichen Rechnen, Datumstypen zeitliche Vergleiche und Texttypen erhalten Kennungen. Ein Format verändert nur die Anzeige; eine Typumwandlung interpretiert den Inhalt.
+Typumwandlung interpretiert Werte; ein Zahlenformat ändert nur die Anzeige. Falsche Typen können Ladefehler, unpassende Sortierung, erfolglose Zuordnungen und nicht nutzbare Datumsfunktionen verursachen.
 
 ## Typischer Fehler
 
-Nachträgliches Formatieren mit Nullen repariert keine verlorene ursprüngliche Kennung. Falsches Gebietsschema kann Zahlen falsch lesen oder Fehler erzeugen.
+Eine numerisch eingelesene 123 ohne Kenntnis der Ursprungslänge pauschal mit Nullen auffüllen.
 
 ## Plausibilitätscheck
 
-00123 enthält fünf Zeichen; der Betrag lässt sich summieren; das Datum nach Monaten sortieren.
+Kennung hat weiterhin fünf Zeichen, Betrag beträgt 1250,50 und Datum ist der 31. Januar. Anzahl Fehler vor/nach Konvertierung vergleichen.

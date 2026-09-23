@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "DAX & Measures",
+  "kategorie": "Zeitintelligenz",
   "schwierigkeit": "Fortgeschritten",
   "kurzbeschreibung": "Verschiebe den aktuellen Datumsbereich ins Vorjahr und werte dort dieselbe Kennzahl aus.",
   "ort": "Power BI → Neues Measure; markierte Datumstabelle mit aktiver Beziehung",

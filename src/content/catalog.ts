@@ -1,1105 +1,785 @@
 export type Group = { title: string; items: { label: string; id: string }[] };
-export type Tool = {
-  name: "Power BI" | "Excel" | "IDA";
-  slug: string;
-  description: string;
-  groups: Group[];
-};
+export type Tool = { name: "Power BI" | "Excel" | "IDA"; slug: string; description: string; groups: Group[] };
 export const toolsCatalog: Tool[] = [
   {
-    name: "Power BI",
-    slug: "power-bi",
-    description: "Daten vorbereiten, Kennzahlen berechnen, Berichte prüfen.",
-    groups: [
+    "name": "Power BI",
+    "slug": "power-bi",
+    "description": "Unser aktueller Schwerpunkt: von der Datenquelle über Power Query und das Modell bis zur geprüften Kennzahl.",
+    "groups": [
       {
-        title: "Daten vorbereiten",
-        items: [
+        "title": "Daten importieren",
+        "items": [
           {
-            label: "Daten laden",
-            id: "daten-laden",
+            "id": "daten-laden",
+            "label": "Daten in Power BI laden"
           },
           {
-            label: "Power Query",
-            id: "power-query",
+            "id": "csv-import",
+            "label": "CSV korrekt importieren"
           },
           {
-            label: "Datentyp ändern",
-            id: "datenbereinigung",
+            "id": "dateien-kombinieren",
+            "label": "Mehrere Dateien kombinieren"
           },
           {
-            label: "Spalten entfernen",
-            id: "spalten-entfernen",
-          },
-          {
-            label: "Spalten teilen",
-            id: "spalten-teilen",
-          },
-          {
-            label: "Werte ersetzen",
-            id: "werte-ersetzen",
-          },
-          {
-            label: "Nullwerte behandeln",
-            id: "nullwerte",
-          },
-          {
-            label: "Duplikate entfernen",
-            id: "dubletten",
-          },
-          {
-            label: "Gruppieren",
-            id: "gruppieren",
-          },
-          {
-            label: "Pivotieren",
-            id: "pivotieren",
-          },
-          {
-            label: "Entpivotieren",
-            id: "entpivotieren",
-          },
-          {
-            label: "Tabellen zusammenführen",
-            id: "zusammenfuehren",
-          },
-          {
-            label: "Tabellen anhängen",
-            id: "anhaengen",
-          },
-          {
-            id: "csv-import",
-            label: "CSV korrekt importieren",
-          },
-          {
-            id: "dateien-kombinieren",
-            label: "Mehrere Dateien kombinieren",
-          },
-          {
-            id: "excel-import",
-            label: "Excel-Datei importieren",
-          },
-          {
-            id: "pq-bedingt",
-            label: "Bedingte Spalte",
-          },
-          {
-            id: "pq-benutzerdefiniert",
-            label: "Benutzerdefinierte Spalte",
-          },
-          {
-            id: "pq-datum",
-            label: "Datum in Power Query transformieren",
-          },
-          {
-            id: "pq-duplizieren",
-            label: "Abfrage duplizieren oder referenzieren",
-          },
-          {
-            id: "pq-fehler",
-            label: "Fehlerhafte Werte prüfen",
-          },
-          {
-            id: "pq-laden",
-            label: "Laden einer Hilfsabfrage steuern",
-          },
-          {
-            id: "pq-text",
-            label: "Text in Power Query bereinigen",
-          },
-          {
-            id: "pq-ueberschriften",
-            label: "Erste Zeile als Überschrift verwenden",
-          },
-          {
-            id: "pq-umbenennen",
-            label: "Spalten umbenennen",
-          },
-        ],
+            "id": "import-oder-directquery",
+            "label": "Import oder DirectQuery?"
+          }
+        ]
       },
       {
-        title: "Datenmodell",
-        items: [
+        "title": "Power Query & Datenaufbereitung",
+        "items": [
           {
-            label: "Beziehung erstellen",
-            id: "beziehungen",
+            "id": "power-query",
+            "label": "Was ist Power Query?"
           },
           {
-            label: "1:n verstehen",
-            id: "eins-zu-viele",
+            "id": "pq-workflow",
+            "label": "Daten in Power Query aufbereiten"
           },
           {
-            label: "Filterrichtung verstehen",
-            id: "filterrichtung",
+            "id": "pq-profiling",
+            "label": "Spaltenqualität, Spaltenverteilung und Spaltenprofil"
           },
           {
-            label: "Fakt- und Dimensionstabelle",
-            id: "fakt-dimension",
+            "id": "nullwerte",
+            "label": "Was mache ich mit fehlenden Werten?"
           },
           {
-            label: "Star Schema",
-            id: "star-schema",
+            "id": "zusammenfuehren",
+            "label": "Merge: Tabellen über Schlüssel zusammenführen"
           },
           {
-            label: "Datumstabelle",
-            id: "datumstabelle",
-          },
-          {
-            label: "Granularität",
-            id: "granularitaet",
-          },
-          {
-            id: "aktive-beziehung",
-            label: "Aktive und inaktive Beziehung",
-          },
-          {
-            id: "beziehung-eins-eins",
-            label: "1:1-Beziehung richtig einordnen",
-          },
-          {
-            id: "beziehung-nm",
-            label: "n:m-Beziehung fachlich modellieren",
-          },
-          {
-            id: "fakt-zu-fakt",
-            label: "Warum Fakt-zu-Fakt problematisch ist",
-          },
-          {
-            id: "kardinalitaet",
-            label: "Kardinalität prüfen: 1:1, 1:n oder n:m",
-          },
-          {
-            id: "modellansicht",
-            label: "Modellansicht lesen",
-          },
-          {
-            id: "schluessel",
-            label: "Stabile Schlüssel verwenden",
-          },
-        ],
+            "id": "anhaengen",
+            "label": "Append: Tabellen untereinander anhängen"
+          }
+        ]
       },
       {
-        title: "DAX & Measures",
-        items: [
+        "title": "Datenmodell",
+        "items": [
           {
-            label: "Measure erstellen",
-            id: "measure",
+            "id": "beziehungen",
+            "label": "Beziehung erstellen"
           },
           {
-            label: "Berechnete Spalte erstellen",
-            id: "berechnete-spalte",
+            "id": "eins-zu-viele",
+            "label": "1:n: Warum entstehen mehrere Zeilen?"
           },
           {
-            label: "Measure oder Spalte?",
-            id: "measure-spalte",
+            "id": "filterrichtung",
+            "label": "Filterrichtung verstehen"
           },
           {
-            label: "SUM",
-            id: "sum",
+            "id": "fakt-dimension",
+            "label": "Fakt- und Dimensionstabelle"
           },
           {
-            label: "DIVIDE",
-            id: "divide",
+            "id": "star-schema",
+            "label": "Star Schema aufbauen"
           },
           {
-            label: "CALCULATE",
-            id: "calculate",
+            "id": "granularitaet",
+            "label": "Granularität: Was bedeutet eine Zeile?"
           },
           {
-            label: "DISTINCTCOUNT",
-            id: "distinctcount",
+            "id": "aktive-beziehung",
+            "label": "Aktive und inaktive Beziehung"
           },
           {
-            label: "COUNTROWS",
-            id: "countrows",
+            "id": "beziehung-eins-eins",
+            "label": "1:1-Beziehung richtig einordnen"
           },
           {
-            label: "SUMX",
-            id: "sumx",
+            "id": "beziehung-nm",
+            "label": "n:m-Beziehung fachlich modellieren"
           },
           {
-            label: "FILTER",
-            id: "dax-filter",
+            "id": "fakt-zu-fakt",
+            "label": "Warum Fakt-zu-Fakt problematisch ist"
           },
           {
-            label: "REMOVEFILTERS",
-            id: "removefilters",
+            "id": "kardinalitaet",
+            "label": "Kardinalität prüfen: 1:1, 1:n oder n:m"
           },
           {
-            label: "SELECTEDVALUE",
-            id: "selectedvalue",
+            "id": "modellansicht",
+            "label": "Modellansicht lesen"
           },
           {
-            label: "RELATED",
-            id: "related",
-          },
-          {
-            label: "Vorjahr",
-            id: "vorjahr",
-          },
-          {
-            label: "YTD",
-            id: "ytd",
-          },
-          {
-            label: "Filterkontext",
-            id: "filterkontext",
-          },
-          {
-            id: "count",
-            label: "COUNT: nichtleere Werte zählen",
-          },
-          {
-            id: "dax-all",
-            label: "ALL oder REMOVEFILTERS?",
-          },
-          {
-            id: "dax-average",
-            label: "AVERAGE: Durchschnitt je Datenzeile",
-          },
-          {
-            id: "dax-coalesce",
-            label: "COALESCE und ISBLANK: fehlende Ergebnisse behandeln",
-          },
-          {
-            id: "dax-if",
-            label: "IF: zwei Ergebnisse unterscheiden",
-          },
-          {
-            id: "dax-median",
-            label: "MEDIAN: mittleren Wert bestimmen",
-          },
-          {
-            id: "dax-min-max",
-            label: "MIN und MAX: kleinster oder größter Wert",
-          },
-          {
-            id: "dax-switch",
-            label: "SWITCH: mehrere Fälle verständlich ordnen",
-          },
-          {
-            id: "dax-values",
-            label: "VALUES und HASONEVALUE: Auswahl prüfen",
-          },
-        ],
+            "id": "schluessel",
+            "label": "Stabile Schlüssel verwenden"
+          }
+        ]
       },
       {
-        title: "Zeitintelligenz",
-        items: [
+        "title": "DAX & Measures",
+        "items": [
           {
-            id: "ytd",
-            label: "YTD berechnen",
+            "id": "measure",
+            "label": "Measure erstellen"
           },
           {
-            id: "vorjahr",
-            label: "Vorjahr berechnen",
+            "id": "berechnete-spalte",
+            "label": "Berechnete Spalte erstellen"
           },
           {
-            id: "datumstabelle",
-            label: "Datumstabelle erstellen",
+            "id": "measure-spalte",
+            "label": "Measure oder Spalte?"
           },
           {
-            id: "aktueller-stichtag",
-            label: "Letzten verfügbaren Stichtag bestimmen",
+            "id": "sum",
+            "label": "SUM: Spalte summieren"
           },
           {
-            id: "bestand-bewegung",
-            label: "Bestandskennzahl oder Bewegungskennzahl?",
+            "id": "divide",
+            "label": "DIVIDE: Quote berechnen"
           },
           {
-            id: "dateadd",
-            label: "DATEADD und SAMEPERIODLASTYEAR",
+            "id": "calculate",
+            "label": "CALCULATE"
           },
           {
-            id: "datesytd-totalytd",
-            label: "DATESYTD oder TOTALYTD",
+            "id": "distinctcount",
+            "label": "DISTINCTCOUNT: eindeutige Personen zählen"
           },
           {
-            id: "dax-jahr-monat",
-            label: "YEAR und MONTH: Kalenderattribute",
+            "id": "countrows",
+            "label": "COUNTROWS: Zeilen zählen"
           },
           {
-            id: "monatsultimo",
-            label: "EOMONTH: Monatsultimo bestimmen",
+            "id": "sumx",
+            "label": "SUMX: zeilenweise rechnen und summieren"
           },
-        ],
+          {
+            "id": "dax-filter",
+            "label": "FILTER: eine Teilmenge bilden"
+          },
+          {
+            "id": "removefilters",
+            "label": "REMOVEFILTERS: Filter gezielt aufheben"
+          },
+          {
+            "id": "selectedvalue",
+            "label": "SELECTEDVALUE: eindeutige Auswahl lesen"
+          },
+          {
+            "id": "related",
+            "label": "RELATED: Wert aus einer Beziehung holen"
+          },
+          {
+            "id": "filterkontext",
+            "label": "Filterkontext prüfen"
+          },
+          {
+            "id": "count",
+            "label": "COUNT: nichtleere Werte zählen"
+          },
+          {
+            "id": "dax-all",
+            "label": "ALL oder REMOVEFILTERS?"
+          },
+          {
+            "id": "dax-average",
+            "label": "AVERAGE: Durchschnitt je Datenzeile"
+          },
+          {
+            "id": "dax-coalesce",
+            "label": "COALESCE und ISBLANK: fehlende Ergebnisse behandeln"
+          },
+          {
+            "id": "dax-if",
+            "label": "IF: zwei Ergebnisse unterscheiden"
+          },
+          {
+            "id": "dax-median",
+            "label": "MEDIAN: mittleren Wert bestimmen"
+          },
+          {
+            "id": "dax-min-max",
+            "label": "MIN und MAX: kleinster oder größter Wert"
+          },
+          {
+            "id": "dax-switch",
+            "label": "SWITCH: mehrere Fälle verständlich ordnen"
+          },
+          {
+            "id": "dax-values",
+            "label": "VALUES und HASONEVALUE: Auswahl prüfen"
+          }
+        ]
       },
       {
-        title: "Bericht",
-        items: [
+        "title": "Zeitintelligenz",
+        "items": [
           {
-            label: "Karte",
-            id: "karte",
+            "id": "ytd",
+            "label": "YTD berechnen"
           },
           {
-            label: "Tabelle",
-            id: "tabelle",
+            "id": "vorjahr",
+            "label": "Vorjahr berechnen"
           },
           {
-            label: "Matrix",
-            id: "matrix",
+            "id": "datumstabelle",
+            "label": "Datumstabelle erstellen"
           },
           {
-            label: "Balkendiagramm",
-            id: "balkendiagramm",
+            "id": "aktueller-stichtag",
+            "label": "Letzten verfügbaren Stichtag bestimmen"
           },
           {
-            label: "Liniendiagramm",
-            id: "liniendiagramm",
+            "id": "bestand-bewegung",
+            "label": "Bestandskennzahl oder Bewegungskennzahl?"
           },
           {
-            label: "Slicer",
-            id: "slicer",
+            "id": "dateadd",
+            "label": "DATEADD und SAMEPERIODLASTYEAR"
           },
           {
-            label: "Drilldown",
-            id: "drilldown",
+            "id": "datesytd-totalytd",
+            "label": "DATESYTD oder TOTALYTD"
           },
           {
-            label: "Visualinteraktionen",
-            id: "visualinteraktionen",
+            "id": "dax-jahr-monat",
+            "label": "YEAR und MONTH: Kalenderattribute"
           },
           {
-            label: "Bedingte Formatierung",
-            id: "bedingte-formatierung",
-          },
-          {
-            label: "Datenbeschriftungen",
-            id: "datenbeschriftungen",
-          },
-          {
-            id: "anzeigeeinheiten",
-            label: "Anzeigeeinheiten und Dezimalstellen",
-          },
-          {
-            id: "diagrammtitel",
-            label: "Diagrammtitel mit Kontext",
-          },
-          {
-            id: "drillthrough",
-            label: "Drillthrough: zur Detailseite wechseln",
-          },
-          {
-            id: "prozentformat",
-            label: "0,95 als 95 % anzeigen",
-          },
-          {
-            id: "referenzlinie",
-            label: "Referenzlinie im Diagramm",
-          },
-          {
-            id: "saeulendiagramm",
-            label: "Säulendiagramm erstellen",
-          },
-          {
-            id: "tooltips",
-            label: "Tooltip gezielt ergänzen",
-          },
-          {
-            id: "visual-sortieren",
-            label: "Visual nach Wert oder Kategorie sortieren",
-          },
-        ],
+            "id": "monatsultimo",
+            "label": "EOMONTH: Monatsultimo bestimmen"
+          }
+        ]
       },
       {
-        title: "Fehler",
-        items: [
+        "title": "Berichte & Visualisierung",
+        "items": [
           {
-            label: "Falsche Summe",
-            id: "summe-zu-hoch",
+            "id": "karte",
+            "label": "Karte: eine Kennzahl anzeigen"
           },
           {
-            label: "Doppelte Werte",
-            id: "dubletten",
+            "id": "tabelle",
+            "label": "Tabelle: Details prüfen"
           },
           {
-            label: "BLANK",
-            id: "blank",
+            "id": "matrix",
+            "label": "Matrix: nach Dimensionen auswerten"
           },
           {
-            label: "Filter funktioniert nicht",
-            id: "filter-fehler",
+            "id": "balkendiagramm",
+            "label": "Balkendiagramm: Kategorien vergleichen"
           },
           {
-            label: "Beziehung lässt sich nicht erstellen",
-            id: "beziehung-fehler",
+            "id": "liniendiagramm",
+            "label": "Liniendiagramm: Zeitverlauf zeigen"
           },
           {
-            label: "Datum falsch sortiert",
-            id: "datum-sortieren",
+            "id": "slicer",
+            "label": "Slicer: Auswahl anbieten"
           },
           {
-            label: "Measure reagiert unerwartet",
-            id: "measure-fehler",
+            "id": "drilldown",
+            "label": "Drilldown: Detailstufe wechseln"
           },
           {
-            id: "bestand-monate",
-            label: "Bestand wird über Monate aufsummiert",
+            "id": "visualinteraktionen",
+            "label": "Visualinteraktionen einstellen"
           },
           {
-            id: "mehrere-datumsbeziehungen",
-            label: "Mehrere Datumsbeziehungen prüfen",
+            "id": "bedingte-formatierung",
+            "label": "Bedingte Formatierung verwenden"
           },
           {
-            id: "visual-gesamtsumme",
-            label: "Warum die Gesamtsumme anders ausfällt",
+            "id": "datenbeschriftungen",
+            "label": "Datenbeschriftungen einschalten"
           },
-        ],
+          {
+            "id": "anzeigeeinheiten",
+            "label": "Anzeigeeinheiten und Dezimalstellen"
+          },
+          {
+            "id": "diagrammtitel",
+            "label": "Diagrammtitel mit Kontext"
+          },
+          {
+            "id": "drillthrough",
+            "label": "Drillthrough: zur Detailseite wechseln"
+          },
+          {
+            "id": "prozentformat",
+            "label": "0,95 als 95 % anzeigen"
+          },
+          {
+            "id": "referenzlinie",
+            "label": "Referenzlinie im Diagramm"
+          },
+          {
+            "id": "saeulendiagramm",
+            "label": "Säulendiagramm erstellen"
+          },
+          {
+            "id": "tooltips",
+            "label": "Tooltip gezielt ergänzen"
+          },
+          {
+            "id": "visual-sortieren",
+            "label": "Visual nach Wert oder Kategorie sortieren"
+          }
+        ]
       },
-    ],
+      {
+        "title": "Fehler & Plausibilitätsprüfung",
+        "items": [
+          {
+            "id": "summe-zu-hoch",
+            "label": "Falsche Summe prüfen"
+          },
+          {
+            "id": "blank",
+            "label": "BLANK: Warum bleibt die Kennzahl leer?"
+          },
+          {
+            "id": "filter-fehler",
+            "label": "Filter funktioniert nicht"
+          },
+          {
+            "id": "beziehung-fehler",
+            "label": "Beziehung lässt sich nicht erstellen"
+          },
+          {
+            "id": "datum-sortieren",
+            "label": "Datum / Monat falsch sortiert"
+          },
+          {
+            "id": "measure-fehler",
+            "label": "Measure reagiert unerwartet"
+          },
+          {
+            "id": "bestand-monate",
+            "label": "Bestand wird über Monate aufsummiert"
+          },
+          {
+            "id": "mehrere-datumsbeziehungen",
+            "label": "Datumsfilter wirkt auf das falsche Datum"
+          },
+          {
+            "id": "visual-gesamtsumme",
+            "label": "Warum die Gesamtsumme anders ausfällt"
+          }
+        ]
+      }
+    ]
   },
   {
-    name: "Excel",
-    slug: "excel",
-    description:
-      "Formeln finden, Listen bereinigen und Ergebnisse weiterverarbeiten.",
-    groups: [
+    "name": "Excel",
+    "slug": "excel",
+    "description": "Aktive Praxishilfe: Listen vorbereiten, Werte zuordnen, Formeln einsetzen und Ergebnisse auswerten.",
+    "groups": [
       {
-        title: "Nachschlagen",
-        items: [
+        "title": "Daten vorbereiten",
+        "items": [
           {
-            label: "XVERWEIS",
-            id: "xverweis",
+            "id": "excel-liste-vorbereiten",
+            "label": "Excel-Liste für Auswertung vorbereiten"
           },
           {
-            label: "INDEX / VERGLEICH",
-            id: "index-vergleich",
+            "id": "excel-dubletten-finden",
+            "label": "Duplikate finden"
           },
           {
-            id: "excel-fehlende-treffer",
-            label: "Fehlende Treffer gezielt behandeln",
+            "id": "glaetten",
+            "label": "Leerzeichen entfernen: GLÄTTEN"
           },
           {
-            id: "excel-index",
-            label: "INDEX und VERGLEICH einzeln verstehen",
+            "id": "excel-zahl-text",
+            "label": "Zahlen als Text erkennen"
           },
           {
-            id: "excel-mehrere-kriterien",
-            label: "Nachschlagen mit mehreren Kriterien",
+            "id": "excel-datum",
+            "label": "Datumswerte korrigieren"
           },
-        ],
+          {
+            "id": "excel-leere-zellen",
+            "label": "Leere Zellen und Fehlerwerte prüfen"
+          },
+          {
+            "id": "text-ausschnitt",
+            "label": "LINKS, RECHTS und TEIL"
+          },
+          {
+            "id": "text-trennzeichen",
+            "label": "TEXTVOR und TEXTNACH"
+          },
+          {
+            "id": "textteilen",
+            "label": "TEXTTEILEN: Text dynamisch verteilen"
+          },
+          {
+            "id": "textverketten",
+            "label": "TEXTVERKETTEN: Werte mit Trennzeichen verbinden"
+          },
+          {
+            "id": "wechseln-ersetzen",
+            "label": "WECHSELN oder ERSETZEN?"
+          },
+          {
+            "id": "excel-kalender",
+            "label": "JAHR, MONAT, TAG und DATUM"
+          },
+          {
+            "id": "excel-datumsdifferenz",
+            "label": "Differenz zwischen Datumswerten"
+          },
+          {
+            "id": "excel-monatsende",
+            "label": "MONATSENDE und HEUTE"
+          }
+        ]
       },
       {
-        title: "Filtern und Listen",
-        items: [
+        "title": "Nachschlagen & Zuordnen",
+        "items": [
           {
-            label: "FILTER",
-            id: "excel-filtern",
+            "id": "xverweis",
+            "label": "XVERWEIS: Segment aus Stammdaten holen"
           },
           {
-            label: "EINDEUTIG",
-            id: "eindeutig",
+            "id": "index-vergleich",
+            "label": "INDEX / VERGLEICH"
           },
           {
-            label: "SORTIEREN",
-            id: "sortieren",
+            "id": "excel-fehlende-treffer",
+            "label": "Fehlende Treffer gezielt behandeln"
           },
           {
-            id: "excel-kombinationen",
-            label: "Eindeutige Kombinationen erzeugen",
-          },
-          {
-            id: "excel-sichtbare",
-            label: "Nur sichtbare Zeilen kopieren oder bearbeiten",
-          },
-          {
-            id: "sortierennach",
-            label: "SORTIERENNACH: nach mehreren Feldern sortieren",
-          },
-        ],
+            "id": "excel-mehrere-kriterien",
+            "label": "Nachschlagen mit mehreren Kriterien"
+          }
+        ]
       },
       {
-        title: "Aggregieren",
-        items: [
+        "title": "Filtern & eindeutige Listen",
+        "items": [
           {
-            label: "SUMMEWENNS",
-            id: "summewenns",
+            "id": "excel-filtern",
+            "label": "FILTER: passende Zeilen ausgeben"
           },
           {
-            label: "ZÄHLENWENNS",
-            id: "zaehlenwenns",
+            "id": "eindeutig",
+            "label": "EINDEUTIG: Liste ohne Wiederholungen"
           },
           {
-            label: "MITTELWERTWENNS",
-            id: "mittelwertwenns",
+            "id": "sortieren",
+            "label": "SORTIEREN: dynamische Liste ordnen"
           },
           {
-            id: "aggregat",
-            label: "AGGREGAT: Fehler gezielt auslassen",
+            "id": "excel-sichtbare",
+            "label": "Nur sichtbare Zeilen kopieren oder bearbeiten"
           },
           {
-            id: "mittelwertwenn",
-            label: "MITTELWERTWENN: bedingt mitteln",
-          },
-          {
-            id: "summewenn",
-            label: "SUMMEWENN: ein Kriterium",
-          },
-          {
-            id: "teilergebnis",
-            label: "TEILERGEBNIS: gefilterte Zeilen auswerten",
-          },
-          {
-            id: "zaehlenwenn",
-            label: "ZÄHLENWENN: Treffer zählen",
-          },
-        ],
+            "id": "sortierennach",
+            "label": "SORTIERENNACH: nach mehreren Feldern sortieren"
+          }
+        ]
       },
       {
-        title: "Logik und Fehler",
-        items: [
+        "title": "Aggregieren",
+        "items": [
           {
-            label: "WENN",
-            id: "excel-fehler",
+            "id": "summewenns",
+            "label": "SUMMEWENNS: nach Geschäftsstelle und Produkt auswerten"
           },
           {
-            label: "UND",
-            id: "und",
+            "id": "zaehlenwenns",
+            "label": "ZÄHLENWENNS: nach Geschäftsstelle und Produkt auswerten"
           },
           {
-            label: "ODER",
-            id: "oder",
+            "id": "mittelwertwenns",
+            "label": "MITTELWERTWENNS"
           },
           {
-            label: "WENNFEHLER",
-            id: "wennfehler",
+            "id": "aggregat",
+            "label": "AGGREGAT: Fehler gezielt auslassen"
           },
           {
-            label: "WENNNV",
-            id: "wennnv",
+            "id": "mittelwertwenn",
+            "label": "MITTELWERTWENN: bedingt mitteln"
           },
           {
-            id: "nicht",
-            label: "NICHT: Bedingung umkehren",
+            "id": "summewenn",
+            "label": "SUMMEWENN: ein Kriterium"
           },
           {
-            id: "wenns",
-            label: "WENNS: geordnete Regeln",
+            "id": "teilergebnis",
+            "label": "TEILERGEBNIS: gefilterte Zeilen auswerten"
           },
-        ],
+          {
+            "id": "zaehlenwenn",
+            "label": "ZÄHLENWENN: Treffer zählen"
+          }
+        ]
       },
       {
-        title: "Daten bereinigen",
-        items: [
+        "title": "Logik & Fehlerbehandlung",
+        "items": [
           {
-            label: "Duplikate finden",
-            id: "excel-dubletten-finden",
+            "id": "excel-fehler",
+            "label": "WENN: zwischen zwei Ergebnissen wählen"
           },
           {
-            label: "Duplikate entfernen",
-            id: "excel-dubletten-entfernen",
+            "id": "und",
+            "label": "UND: alle Bedingungen erfüllen"
           },
           {
-            label: "Leerzeichen entfernen",
-            id: "glaetten",
+            "id": "oder",
+            "label": "ODER: mindestens eine Bedingung erfüllen"
           },
           {
-            label: "Text bereinigen",
-            id: "saeubern",
+            "id": "wennfehler",
+            "label": "WENNFEHLER: Fehler bewusst abfangen"
           },
           {
-            label: "Werte ersetzen",
-            id: "excel-ersetzen",
+            "id": "wennnv",
+            "label": "WENNNV: fehlende Treffer kennzeichnen"
           },
           {
-            label: "Text aufteilen",
-            id: "excel-text-teilen",
+            "id": "nicht",
+            "label": "NICHT: Bedingung umkehren"
           },
           {
-            label: "Zahlen als Text erkennen",
-            id: "excel-zahl-text",
-          },
-          {
-            label: "Datumswerte korrigieren",
-            id: "excel-datum",
-          },
-          {
-            id: "excel-leere-zellen",
-            label: "Leere Zellen und Fehlerwerte prüfen",
-          },
-          {
-            id: "excel-liste-vorbereiten",
-            label: "Excel-Liste für Auswertung vorbereiten",
-          },
-        ],
+            "id": "wenns",
+            "label": "WENNS: geordnete Regeln"
+          }
+        ]
       },
       {
-        title: "Daten auswerten",
-        items: [
+        "title": "PivotTables & Auswertung",
+        "items": [
           {
-            label: "PivotTable",
-            id: "pivottable",
+            "id": "pivottable",
+            "label": "PivotTable erstellen"
           },
           {
-            label: "PivotChart",
-            id: "pivotchart",
+            "id": "pivotchart",
+            "label": "PivotChart erstellen"
           },
           {
-            label: "Eine Zeile je Schlüssel erzeugen",
-            id: "eine-zeile-je-person",
+            "id": "pivot-eindeutig",
+            "label": "Eindeutige Anzahl in einer PivotTable"
           },
           {
-            label: "Mehrere Werte je Person zusammenfassen",
-            id: "gruppieren",
+            "id": "pivot-gruppieren",
+            "label": "Pivot nach Datum oder Zahlen gruppieren"
           },
           {
-            label: "Daten von lang nach breit",
-            id: "pivotieren",
-          },
-          {
-            label: "Daten von breit nach lang",
-            id: "entpivotieren",
-          },
-        ],
+            "id": "pivot-summe-anzahl",
+            "label": "Pivot zeigt Anzahl statt Summe"
+          }
+        ]
       },
       {
-        title: "Power Query",
-        items: [
+        "title": "Excel Power Query",
+        "items": [
           {
-            label: "Daten importieren",
-            id: "daten-laden",
+            "id": "excel-power-query",
+            "label": "Power Query in Excel verwenden"
           },
           {
-            label: "Dateien kombinieren",
-            id: "dateien-kombinieren",
+            "id": "pq-excel-oder-powerbi",
+            "label": "Power Query in Excel oder Power BI?"
           },
           {
-            label: "Gruppieren",
-            id: "gruppieren",
+            "id": "xverweis-oder-query",
+            "label": "XVERWEIS oder Power Query?"
           },
           {
-            label: "Zusammenführen",
-            id: "zusammenfuehren",
-          },
-          {
-            label: "Anhängen",
-            id: "anhaengen",
-          },
-          {
-            label: "Spalten transformieren",
-            id: "power-query",
-          },
-          {
-            id: "csv-import",
-            label: "CSV korrekt importieren",
-          },
-          {
-            id: "datenbereinigung",
-            label: "Datentyp ändern / Daten bereinigen",
-          },
-          {
-            id: "dubletten",
-            label: "Dubletten prüfen und entfernen",
-          },
-          {
-            id: "entpivotieren",
-            label: "Entpivotieren: von breit nach lang",
-          },
-          {
-            id: "excel-import",
-            label: "Excel-Datei importieren",
-          },
-          {
-            id: "nullwerte",
-            label: "Nullwerte behandeln",
-          },
-          {
-            id: "pivotieren",
-            label: "Pivotieren: von lang nach breit",
-          },
-          {
-            id: "pq-bedingt",
-            label: "Bedingte Spalte",
-          },
-          {
-            id: "pq-benutzerdefiniert",
-            label: "Benutzerdefinierte Spalte",
-          },
-          {
-            id: "pq-datum",
-            label: "Datum in Power Query transformieren",
-          },
-          {
-            id: "pq-duplizieren",
-            label: "Abfrage duplizieren oder referenzieren",
-          },
-          {
-            id: "pq-fehler",
-            label: "Fehlerhafte Werte prüfen",
-          },
-          {
-            id: "pq-laden",
-            label: "Laden einer Hilfsabfrage steuern",
-          },
-          {
-            id: "pq-text",
-            label: "Text in Power Query bereinigen",
-          },
-          {
-            id: "pq-ueberschriften",
-            label: "Erste Zeile als Überschrift verwenden",
-          },
-          {
-            id: "pq-umbenennen",
-            label: "Spalten umbenennen",
-          },
-          {
-            id: "spalten-entfernen",
-            label: "Spalten entfernen",
-          },
-          {
-            id: "spalten-teilen",
-            label: "Spalten teilen",
-          },
-          {
-            id: "werte-ersetzen",
-            label: "Werte ersetzen",
-          },
-        ],
+            "id": "pivot-oder-query",
+            "label": "PivotTable oder Power Query?"
+          }
+        ]
       },
       {
-        title: "Datum",
-        items: [
+        "title": "Typische Probleme",
+        "items": [
           {
-            id: "excel-datumsdifferenz",
-            label: "Differenz zwischen Datumswerten",
+            "id": "problem-xverweis-fehlt",
+            "label": "XVERWEIS findet Wert nicht"
           },
           {
-            id: "excel-kalender",
-            label: "JAHR, MONAT, TAG und DATUM",
+            "id": "problem-xverweis-falsch",
+            "label": "XVERWEIS liefert falschen Datensatz"
           },
           {
-            id: "excel-monatsende",
-            label: "MONATSENDE und HEUTE",
-          },
-        ],
-      },
-      {
-        title: "Pivot",
-        items: [
-          {
-            id: "pivot-aktualisieren",
-            label: "PivotTable aktualisieren",
+            "id": "problem-summewenns",
+            "label": "SUMMEWENNS stimmt nicht"
           },
           {
-            id: "pivot-eindeutig",
-            label: "Eindeutige Anzahl in einer PivotTable",
+            "id": "problem-pivot-alt",
+            "label": "Pivot zeigt alte Daten"
           },
           {
-            id: "pivot-felder",
-            label: "Pivot-Felder zuordnen: Zeilen, Spalten, Werte",
+            "id": "problem-pivot-anzahl",
+            "label": "Pivot zählt statt summiert"
           },
           {
-            id: "pivot-filtern",
-            label: "PivotTable filtern",
+            "id": "problem-filter-kalk",
+            "label": "FILTER liefert #KALK!"
           },
           {
-            id: "pivot-gruppieren",
-            label: "Pivot nach Datum oder Zahlen gruppieren",
+            "id": "problem-formel-text",
+            "label": "Formel wird als Text angezeigt"
           },
           {
-            id: "pivot-summe-anzahl",
-            label: "Pivot zeigt Anzahl statt Summe",
-          },
-        ],
-      },
-      {
-        title: "Text",
-        items: [
-          {
-            id: "text-ausschnitt",
-            label: "LINKS, RECHTS und TEIL",
+            "id": "problem-zahl-text",
+            "label": "Zahl ist als Text gespeichert"
           },
           {
-            id: "text-trennzeichen",
-            label: "TEXTVOR und TEXTNACH",
-          },
-          {
-            id: "textteilen",
-            label: "TEXTTEILEN: Text dynamisch verteilen",
-          },
-          {
-            id: "textverketten",
-            label: "TEXTVERKETTEN: Werte mit Trennzeichen verbinden",
-          },
-          {
-            id: "wechseln-ersetzen",
-            label: "WECHSELN oder ERSETZEN?",
-          },
-        ],
-      },
-    ],
+            "id": "problem-datum-excel",
+            "label": "Datum wird nicht erkannt"
+          }
+        ]
+      }
+    ]
   },
   {
-    name: "IDA",
-    slug: "ida",
-    description:
-      "Reporting mit IDA/Cognos: übertragbare Prinzipien für Listen, Filter, Parameter, Berechnungen, Joins und Exporte.",
-    groups: [
+    "name": "IDA",
+    "slug": "ida",
+    "description": "In Entwicklung. Allgemeine Reporting- und Analysehilfen; der Bereich wird derzeit neu aufgebaut.",
+    "groups": []
+  }
+];
+export const powerQueryGroups: Group[] = [
+  {
+    "title": "Einstieg",
+    "items": [
       {
-        title: "Listen",
-        items: [
-          {
-            label: "Liste erstellen",
-            id: "reporting",
-          },
-          {
-            label: "Datenelement hinzufügen",
-            id: "ida-datenelement",
-          },
-          {
-            label: "Sortieren",
-            id: "ida-sortieren",
-          },
-          {
-            label: "Gruppierung",
-            id: "ida-gruppieren",
-          },
-          {
-            label: "Aggregation",
-            id: "ida-aggregation",
-          },
-          {
-            label: "Detail- vs. Gruppierungsebene",
-            id: "ida-ebene",
-          },
-          {
-            id: "ida-konto",
-            label: "Eine Zeile je Konto und Stichtag",
-          },
-          {
-            id: "ida-spalten",
-            label: "Datenelemente entfernen und umordnen",
-          },
-        ],
+        "id": "power-query",
+        "label": "Was ist Power Query?"
       },
       {
-        title: "Filter",
-        items: [
-          {
-            label: "Filter erstellen",
-            id: "ida-filter",
-          },
-          {
-            label: "Mehrere Bedingungen",
-            id: "ida-bedingungen",
-          },
-          {
-            label: "UND / ODER",
-            id: "ida-bedingungen",
-          },
-          {
-            label: "NULL",
-            id: "ida-null",
-          },
-          {
-            label: "Mehrfachauswahl",
-            id: "ida-mehrfachauswahl",
-          },
-          {
-            label: "Filterlogik prüfen",
-            id: "ida-filter-pruefen",
-          },
-          {
-            id: "ida-filterebene",
-            label: "Filter vor oder nach Aggregation",
-          },
-          {
-            id: "ida-filtertypen",
-            label: "Text-, Zahlen- und Datumsfilter",
-          },
-          {
-            id: "ida-not-null",
-            label: "NULL und NOT NULL unterscheiden",
-          },
-        ],
+        "id": "daten-laden",
+        "label": "Daten in Power BI laden"
       },
       {
-        title: "Parameter / Eingabeaufforderungen",
-        items: [
-          {
-            label: "Parameter anlegen",
-            id: "ida-parameter",
-          },
-          {
-            label: "Parameter im Filter einsetzen",
-            id: "ida-parameter-filter",
-          },
-          {
-            label: "Mehrere Werte",
-            id: "ida-parameter-mehrfach",
-          },
-          {
-            label: "Datentypen",
-            id: "ida-parameter-typ",
-          },
-          {
-            label: "Parameterwert anzeigen",
-            id: "ida-parameter-anzeigen",
-          },
-          {
-            id: "ida-parameter-optional",
-            label: "Optionaler Parameter",
-          },
-          {
-            id: "ida-prompt",
-            label: "Parameter und Eingabeaufforderung unterscheiden",
-          },
-        ],
-      },
-      {
-        title: "Berechnungen",
-        items: [
-          {
-            label: "Berechnetes Datenelement",
-            id: "ida-berechnung",
-          },
-          {
-            label: "Summe",
-            id: "ida-summe",
-          },
-          {
-            label: "Anzahl",
-            id: "ida-anzahl",
-          },
-          {
-            label: "Durchschnitt",
-            id: "ida-durchschnitt",
-          },
-          {
-            label: "Median",
-            id: "median",
-          },
-          {
-            label: "Quote",
-            id: "ida-quote",
-          },
-          {
-            label: "NULL-Behandlung",
-            id: "ida-null",
-          },
-          {
-            label: "Maximum",
-            id: "ida-extrema",
-          },
-          {
-            label: "Minimum",
-            id: "ida-extrema",
-          },
-          {
-            id: "ida-falllogik",
-            label: "Bedingte Berechnung: CASE-/IF-Prinzip",
-          },
-        ],
-      },
-      {
-        title: "Mehrfachzeilen / Joins",
-        items: [
-          {
-            label: "Warum entstehen mehrere Zeilen?",
-            id: "eins-zu-viele",
-          },
-          {
-            label: "1:n",
-            id: "eins-zu-viele",
-          },
-          {
-            label: "Granularität",
-            id: "granularitaet",
-          },
-          {
-            label: "Eine Zeile je Person",
-            id: "eine-zeile-je-person",
-          },
-          {
-            label: "Eine Zeile je Vorgang",
-            id: "ida-vorgang",
-          },
-          {
-            label: "Aggregation nach Join",
-            id: "ida-join-aggregation",
-          },
-          {
-            label: "Dubletten erkennen",
-            id: "ida-dubletten",
-          },
-          {
-            label: "Ergebnis vor/nach Join plausibilisieren",
-            id: "ida-join-pruefen",
-          },
-          {
-            id: "ida-mehrere-joins",
-            label: "Mehrere 1:n-Joins plausibilisieren",
-          },
-          {
-            id: "ida-statusverlauf",
-            label: "Mehrere Status je Vorgang",
-          },
-          {
-            id: "ida-zielgranularitaet",
-            label: "Zielgranularität vor dem Join festlegen",
-          },
-        ],
-      },
-      {
-        title: "Ausgabe",
-        items: [
-          {
-            label: "Excel-Export",
-            id: "ida-excel-export",
-          },
-          {
-            label: "CSV",
-            id: "ida-csv",
-          },
-          {
-            label: "Liste sinnvoll für Excel aufbauen",
-            id: "ida-excel-liste",
-          },
-          {
-            label: "Datums- und Zahlenformate prüfen",
-            id: "ida-formate",
-          },
-          {
-            id: "ida-nullstellen",
-            label: "Führende Nullen beim Export erhalten",
-          },
-        ],
-      },
-      {
-        title: "Berichtsbetrieb",
-        items: [
-          {
-            label: "Ergebnisse reproduzierbar prüfen",
-            id: "ida-betrieb",
-          },
-          {
-            id: "ida-ausfuehren",
-            label: "Bericht ausführen und Ausgabeformat wählen",
-          },
-          {
-            id: "ida-performance",
-            label: "Langsame Liste eingrenzen",
-          },
-          {
-            id: "ida-speichern",
-            label: "Berichtdefinition und Ausgabe unterscheiden",
-          },
-          {
-            id: "ida-zeitplanung",
-            label: "Zeitplanung fachlich vorbereiten",
-          },
-        ],
-      },
-    ],
+        "id": "pq-workflow",
+        "label": "Daten in Power Query aufbereiten"
+      }
+    ]
   },
+  {
+    "title": "Daten verstehen",
+    "items": [
+      {
+        "id": "pq-profiling",
+        "label": "Spaltenqualität, Spaltenverteilung und Spaltenprofil"
+      },
+      {
+        "id": "datenbereinigung",
+        "label": "Datentypen fachlich richtig festlegen"
+      },
+      {
+        "id": "granularitaet",
+        "label": "Granularität: Was bedeutet eine Zeile?"
+      }
+    ]
+  },
+  {
+    "title": "Daten bereinigen",
+    "items": [
+      {
+        "id": "nullwerte",
+        "label": "Was mache ich mit fehlenden Werten?"
+      },
+      {
+        "id": "dubletten",
+        "label": "Dubletten anhand der richtigen Zeilenebene prüfen"
+      },
+      {
+        "id": "pq-text",
+        "label": "Text bereinigen, ersetzen und teilen"
+      },
+      {
+        "id": "spalten-entfernen",
+        "label": "Benötigte Spalten bewusst auswählen"
+      }
+    ]
+  },
+  {
+    "title": "Struktur verändern",
+    "items": [
+      {
+        "id": "gruppieren",
+        "label": "Gruppieren: eine Zeile je Kunde"
+      },
+      {
+        "id": "pivotieren",
+        "label": "Pivotieren: eine breite Übergabetabelle erstellen"
+      },
+      {
+        "id": "entpivotieren",
+        "label": "Entpivotieren: Monate von breit nach lang"
+      },
+      {
+        "id": "pq-bedingt",
+        "label": "Bedingte Spalte"
+      },
+      {
+        "id": "pq-benutzerdefiniert",
+        "label": "Benutzerdefinierte Spalte"
+      },
+      {
+        "id": "pq-datum",
+        "label": "Datum in Power Query transformieren"
+      }
+    ]
+  },
+  {
+    "title": "Tabellen kombinieren",
+    "items": [
+      {
+        "id": "zusammenfuehren",
+        "label": "Merge: Tabellen über Schlüssel zusammenführen"
+      },
+      {
+        "id": "anhaengen",
+        "label": "Append: Tabellen untereinander anhängen"
+      },
+      {
+        "id": "dateien-kombinieren",
+        "label": "Mehrere Dateien kombinieren"
+      }
+    ]
+  },
+  {
+    "title": "Abfragen organisieren",
+    "items": [
+      {
+        "id": "pq-duplizieren",
+        "label": "Referenz oder Duplikat einer Abfrage?"
+      },
+      {
+        "id": "pq-laden",
+        "label": "Laden einer Hilfsabfrage steuern"
+      }
+    ]
+  },
+  {
+    "title": "Fehler & Kontrolle",
+    "items": [
+      {
+        "id": "pq-fehler",
+        "label": "Fehlerhafte Werte prüfen"
+      },
+      {
+        "id": "problem-merge-zeilen",
+        "label": "Mehr Zeilen nach Merge"
+      },
+      {
+        "id": "schluessel",
+        "label": "Stabile Schlüssel verwenden"
+      }
+    ]
+  }
 ];
-export const frequent = [
-  "calculate",
-  "xverweis",
-  "power-query",
-  "datenbereinigung",
-  "beziehungen",
-  "dubletten",
-  "measure-spalte",
-  "distinctcount",
-];
+export const frequent = ["pq-workflow", "pq-profiling", "calculate", "xverweis", "beziehungen", "dubletten", "measure-spalte", "distinctcount"];

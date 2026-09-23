@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Fehler & Plausibilitätsprüfung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Datentyp und Sortierspalte bestimmen die Reihenfolge; Monatsnamen allein reichen nicht.",
   "ort": "Power BI → Monatsnamenspalte → Spaltentools → Nach Spalte sortieren",

@@ -6,8 +6,7 @@
   "bereich": "Datenanalyse",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Fehler",
   "schwierigkeit": "Grundlage",
@@ -21,9 +20,7 @@
     "Kennungen, Datum oder Summe ändern sich in Excel."
   ],
   "verwandteThemen": [
-    "ida-excel-export",
-    "ida-nullstellen",
-    "excel-import"
+    "daten-laden"
   ],
   "kontexte": [
     "Reporting",
@@ -62,7 +59,6 @@ Vergleiche Zeilenzahl, Kontrollsumme und eine Kennung mit führenden Nullen vor/
 2. Vergleiche Zeilenzahl, Kontrollsumme und eine Kennung mit führenden Nullen vor/nach Export.
 3. Importiere CSV über Daten → Aus Text/CSV. Lege Typen und Gebietsschema ausdrücklich fest; prüfe Exportbegrenzungen anhand öffentlicher Werkzeugdokumentation.
 4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
-5. Den konkreten Bedienweg für die Korrektur findest du unter [Excel-Export kontrollieren](#/wissen/ida-excel-export). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
 
 ## Beispiel
 

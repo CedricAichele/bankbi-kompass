@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Text",
+  "kategorie": "Daten vorbereiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "WECHSELN tauscht gefundenen Text, ERSETZEN ersetzt Zeichen anhand ihrer Position.",
   "ort": "Excel → Formelzelle",
@@ -19,9 +19,7 @@
     "ersetzen funktion"
   ],
   "verwandteThemen": [
-    "excel-ersetzen",
-    "glaetten",
-    "saeubern"
+    "glaetten"
   ],
   "kontexte": [
     "Reporting"

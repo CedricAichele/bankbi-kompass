@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Fehler & Plausibilitätsprüfung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "BLANK kann fehlende Daten oder ein bewusst nicht berechenbares Ergebnis bedeuten.",
   "ort": "Power BI → Measure und Filterbereich",

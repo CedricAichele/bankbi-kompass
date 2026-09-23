@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "P001 zeigt 2 statt 2.000. Wertefeld steht auf Anzahl, oft wegen Textbeträgen.",
   "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",

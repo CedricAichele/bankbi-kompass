@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Fehler & Plausibilitätsprüfung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Prüfe zuerst Zeilenebene, Mehrfachtreffer und Stichtage, bevor du die Formel änderst.",
   "ort": "Power Query und Power BI → kleine Kontrolltabelle",
@@ -28,7 +28,6 @@
     "eins-zu-viele",
     "dubletten",
     "filterkontext",
-    "ida-aggregation",
     "zusammenfuehren"
   ],
   "kontexte": [

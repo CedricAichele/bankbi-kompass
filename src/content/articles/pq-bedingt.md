@@ -8,9 +8,9 @@
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Eine bedingte Spalte ordnet Zeilen anhand geordneter Regeln eine Kategorie zu.",
+  "kurzbeschreibung": "Markiere Datensätze anhand einer vereinbarten Schwelle, etwa für eine Prüfübersicht. Die Reihenfolge der Regeln und der Umgang mit fehlenden Werten bestimmen das Ergebnis.",
   "ort": "Power Query → Spalte hinzufügen → Bedingte Spalte",
   "tags": [
     "Bedingte Spalte"
@@ -71,7 +71,7 @@
 
 ## Wann brauche ich das?
 
-Werte anhand einer einfachen Wenn-dann-Regel kategorisieren.
+Für eine Prüfübersicht sollen Zeilen oberhalb einer vereinbarten Betragsschwelle gesondert markiert werden. Im Beispiel ist 1000 eine frei gewählte Demonstrationsgrenze, keine fachliche Vorgabe.
 
 ## Voraussetzungen
 

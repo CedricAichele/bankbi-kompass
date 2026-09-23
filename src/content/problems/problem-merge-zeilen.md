@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Nach Erweiterung einer Tabellenspalte steigt die Zeilenzahl. Mehrere rechte Treffer je Join-Schlüssel.",
   "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",

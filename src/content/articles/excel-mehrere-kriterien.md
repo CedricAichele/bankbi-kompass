@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Nachschlagen",
+  "kategorie": "Nachschlagen & Zuordnen",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Kombiniere Kriterien zu einer eindeutigen fachlichen Zuordnung. Mehrere Treffer verlangen eine Aggregation oder eine Ergebnisliste.",
   "ort": "Excel → Formelzelle",
@@ -20,7 +20,7 @@
   "verwandteThemen": [
     "summewenns",
     "und",
-    "excel-kombinationen",
+    "eindeutig",
     "xverweis",
     "zaehlenwenns",
     "excel-filtern"

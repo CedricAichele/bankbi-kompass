@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Filtern und Listen",
+  "kategorie": "Filtern & eindeutige Listen",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Wähle sichtbare Zellen ausdrücklich aus, wenn ausgeblendete Zeilen unverändert bleiben sollen.",
   "ort": "Excel Desktop → Datenliste / Formelzelle",

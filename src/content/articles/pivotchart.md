@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten auswerten",
+  "kategorie": "PivotTables & Auswertung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein PivotChart visualisiert die zugehörige Pivot-Auswertung und reagiert auf deren Filter.",
   "ort": "Excel → PivotTable auswählen → PivotChart",

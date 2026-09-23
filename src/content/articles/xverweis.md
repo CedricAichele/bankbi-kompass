@@ -2,14 +2,14 @@
 {
   "id": "xverweis",
   "slug": "xverweis",
-  "titel": "XVERWEIS",
+  "titel": "XVERWEIS: Segment aus Stammdaten holen",
   "bereich": "Excel",
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Nachschlagen",
+  "kategorie": "Nachschlagen & Zuordnen",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "XVERWEIS sucht einen Schlüssel und liefert den passenden Wert aus einem anderen Bereich. Standard ist exakte Übereinstimmung.",
+  "kurzbeschreibung": "Ergänze zu einer Kundennummer das passende Segment. XVERWEIS vergleicht standardmäßig exakt und liefert bei Mehrfachtreffern den ersten Treffer.",
   "ort": "Excel → Formelzelle; Microsoft 365 / Excel 2021 oder neuer",
   "tags": [
     "XVERWEIS",
@@ -22,20 +22,20 @@
     "werte holen",
     "werte aus anderer tabelle",
     "zwei tabellen zusammen",
-    "wert aus anderer tabelle"
+    "wert aus anderer tabelle",
+    "XVERWEIS"
   ],
   "verwandteThemen": [
     "excel-fehlende-treffer",
     "index-vergleich",
     "zaehlenwenn",
-    "zusammenfuehren",
-    "beziehungen"
+    "zusammenfuehren"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/xlookup-function"
@@ -53,98 +53,91 @@
       "aufnahmeplan": {
         "prioritaet": "Hoch",
         "werkzeug": "Excel",
-        "oberflaeche": "Excel – XVERWEIS",
+        "oberflaeche": "XVERWEIS: Segment aus Stammdaten holen",
         "klickfolge": [
-          "Beispieltabelle in A1:D4 eintragen.",
-          "F2 = K002",
-          "Zelle H2 auswählen und =XVERWEIS(F2;B2:B4;D2:D4;\"Fehlt\";0) eingeben."
+          "Suchschlüssel in beiden Tabellen auf gleichen Datentyp und störende Leerzeichen prüfen. Stammdaten sollten pro Kundennummer genau ein gültiges Segment enthalten.",
+          "Im Auswertungsblatt die Ergebniszelle C2 wählen. A2 enthält die Kundennummer, B2 den Bestand.",
+          "=XVERWEIS(A2;Stammdaten!A:A;Stammdaten!B:B;\"nicht gefunden\") eingeben. Die Bereiche liegen auf dem Blatt Stammdaten; für große Listen besser benannte Tabellen oder begrenzte Bereiche verwenden.",
+          "Ergebnis mit der Stammdatenzeile vergleichen und Formel nach unten kopieren. Fehlende Zuordnungen gezielt prüfen.",
+          "Mehrfachtreffer zum Beispiel mit ZÄHLENWENN auf der Suchspalte kontrollieren. XVERWEIS summiert sie nicht und liefert nicht automatisch den neuesten Datensatz."
         ],
-        "daten": "| Zeile | A: Kunde | B: Konto | C: Segment | D: Bestand |\n| --- | --- | --- | --- | --- |\n| 1 | Kunde | Konto | Segment | Bestand |\n| 2 | P001 | K001 | A | 1000 |\n| 3 | P001 | K002 | B | 2000 |\n| 4 | P002 | K003 | A | 500 |\nF2 = K002",
+        "daten": "### Vorher · Blatt Stammdaten, A1:B4\n| Kundennummer | Segment |\n| --- | --- |\n| 1001 | Privat |\n| 1002 | Gewerbe |\n| 1003 | Privat |\n\n**Blatt Auswertung, A1:C2**\n| Kundennummer | Bestand | Segment |\n| --- | --- | --- |\n| 1002 | 500 | ? |\n\n### Aktion · in C2\n~~~excel\n=XVERWEIS(A2;Stammdaten!A:A;Stammdaten!B:B;\"nicht gefunden\")\n~~~\n\n### Nachher\n| Kundennummer | Bestand | Segment |\n| --- | --- | --- |\n| 1002 | 500 | Gewerbe |",
         "sichtbar": [
-          "Quelltabelle A1:D4",
-          "Kriterienzellen F2/G2 soweit genutzt",
-          "Formelleiste und Ausgabe ab H2"
+          "Überschriften und Werte des aktuellen Artikelbeispiels",
+          "Einstellung und Ergebnis des zugeordneten Schritts"
         ],
-        "ausschnitt": "Excel – XVERWEIS mit Quelltabelle A1:D4, Kriterienzellen F2/G2 soweit genutzt, Formelleiste und Ausgabe ab H2. Auf den relevanten Dialog und die lesbaren Tabellenüberschriften begrenzen.",
+        "ausschnitt": "Nur relevante Editorbereiche, Datenvorschau und beschriebene Einstellung lesbar aufnehmen.",
         "dateiname": "excel-xverweis.webp",
-        "zweck": "Zusammenhang zwischen Eingabezellen, Formelargumenten und Ergebnis zeigen.",
+        "zweck": "Ergänze zu einer Kundennummer das passende Segment. XVERWEIS vergleicht standardmäßig exakt und liefert bei Mehrfachtreffern den ersten Treffer.",
         "nichtZeigen": [
           "Lokale Dateipfade",
-          "Benutzername oder Profil",
-          "Andere Programme und Benachrichtigungen",
+          "Benutzerprofile und Benachrichtigungen",
           "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
         ]
       },
       "bildAnzeigen": false
     }
   ],
-  "praxis": true,
-  "kurzformel": "```excel\n=XVERWEIS(F2;B2:B4;D2:D4;\"Fehlt\";0)\n```",
-  "schnellschritte": [
-    "Quellbereiche und Kriterienzellen festlegen.",
-    "Formel in einer freien Ergebniszelle eingeben.",
-    "Ausgabe anhand der passenden Quellzeilen kontrollieren."
-  ]
+  "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-Einen Wert über einen eindeutigen Schlüssel nachschlagen.
+Ergänze zu einer Kundennummer das passende Segment. XVERWEIS vergleicht standardmäßig exakt und liefert bei Mehrfachtreffern den ersten Treffer.
 
 ## Voraussetzungen
 
-Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen. XVERWEIS und dynamische Arrayfunktionen benötigen eine unterstützte Version, zum Beispiel Microsoft 365 oder Excel 2021/2024.
+Eine vorhandene Tabelle mit bekannten Spalten und geklärter Zeilenebene. Die Formeln verwenden deutsches Excel und Semikolon.
 
 ## Schritte
 
-1. Prüfe die benötigten Quellspalten. Im Beispiel stehen Kunde, Konto, Segment und Bestand in **A1:D4**; die Daten beginnen in Zeile 2.
-2. Lege die Kriterien in eigenen Zellen außerhalb der Quelle ab: **F2 = K002**. Passe diese Bezüge für deine Liste an.
-3. Klicke in eine freie Ergebniszelle, im Beispiel **H2**, und gib die Formel aus dem Beispiel ein. Achte auf gleich große und gleich ausgerichtete Bereiche.
-4. Bestätige mit Enter. Vergleiche die Ausgabe mit den tatsächlich passenden Ausgangszeilen.
-5. Prüfe einen zweiten Fall und fehlende Werte. Bei wachsenden Listen verwende Excel-Tabellen mit strukturierten Bezügen oder erweitere alle zusammengehörenden Bereiche.
+1. Suchschlüssel in beiden Tabellen auf gleichen Datentyp und störende Leerzeichen prüfen. Stammdaten sollten pro Kundennummer genau ein gültiges Segment enthalten.
+2. Im Auswertungsblatt die Ergebniszelle C2 wählen. A2 enthält die Kundennummer, B2 den Bestand.
+3. =XVERWEIS(A2;Stammdaten!A:A;Stammdaten!B:B;"nicht gefunden") eingeben. Die Bereiche liegen auf dem Blatt Stammdaten; für große Listen besser benannte Tabellen oder begrenzte Bereiche verwenden.
+4. Ergebnis mit der Stammdatenzeile vergleichen und Formel nach unten kopieren. Fehlende Zuordnungen gezielt prüfen.
+5. Mehrfachtreffer zum Beispiel mit ZÄHLENWENN auf der Suchspalte kontrollieren. XVERWEIS summiert sie nicht und liefert nicht automatisch den neuesten Datensatz.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
+### Vorher · Blatt Stammdaten, A1:B4
+| Kundennummer | Segment |
+| --- | --- |
+| 1001 | Privat |
+| 1002 | Gewerbe |
+| 1003 | Privat |
 
-| Zeile | A: Kunde | B: Konto | C: Segment | D: Bestand |
-| --- | --- | --- | --- | --- |
-| 1 | Kunde | Konto | Segment | Bestand |
-| 2 | P001 | K001 | A | 1000 |
-| 3 | P001 | K002 | B | 2000 |
-| 4 | P002 | K003 | A | 500 |
+**Blatt Auswertung, A1:C2**
+| Kundennummer | Bestand | Segment |
+| --- | --- | --- |
+| 1002 | 500 | ? |
 
-F2 = K002
+### Aktion · in C2
+~~~excel
+=XVERWEIS(A2;Stammdaten!A:A;Stammdaten!B:B;"nicht gefunden")
+~~~
 
-### Aktion
-
-```excel
-=XVERWEIS(F2;B2:B4;D2:D4;"Fehlt";0)
-```
-
-### Nachher · Beispielergebnis
-
-| Ausgabe ab H2 |
-| --- |
-| 2000 |
+### Nachher
+| Kundennummer | Bestand | Segment |
+| --- | --- | --- |
+| 1002 | 500 | Gewerbe |
 
 ## Ergebnis
 
-Einen Wert über einen eindeutigen Schlüssel nachschlagen.
+Die Auswertung enthält für Kundennummer 1002 das Segment Gewerbe neben dem unveränderten Bestand 500.
 
 ## Warum funktioniert das?
 
-Excel ermittelt die Position des passenden Kontos und übernimmt den Betrag derselben Position aus der Rückgabematrix. Standardmäßig wird der erste Treffer geliefert.
+A2 ist der Suchwert, Stammdaten!A:A die Suchmatrix und Stammdaten!B:B die positionsgleiche Rückgabematrix. „nicht gefunden“ behandelt fehlende Treffer. Ohne weitere Argumente gelten exakter Vergleich und Suche von oben nach unten.
 
 ## Typischer Fehler
 
-Ein nicht eindeutiger Schlüssel liefert nur einen Treffer. Prüfe mit ZÄHLENWENN, ob die Kontonummer genau einmal existiert.
+Doppelte Kundennummern ungeprüft akzeptieren oder Such- und Rückgabebereich gegeneinander verschieben.
 
 ## Plausibilitätscheck
 
-Erwartete Ausgabe: **2000**. Die Ausgangsliste umfasst drei Kontenzeilen, zwei Kunden und insgesamt 3500. Prüfe bei Kriterienwechsel die betreffenden Zeilen erneut.
+1002 → Gewerbe; 1003 → Privat; eine nicht vorhandene Nummer → nicht gefunden. Bestand 500 bleibt unverändert.
 
-## Argumente verstehen
+## Version
 
-Suchwert **F2** enthält die gewünschte Kennung. **B2:B4** ist die Suchmatrix; **D2:D4** die gleich lange Rückgabematrix. **"Fehlt"** ist Wenn_nicht_gefunden; **0** erzwingt einen exakten Vergleich.
+XVERWEIS benötigt eine unterstützte Excel-Version, etwa Microsoft 365 oder Excel 2021/2024. Für ältere Versionen eignet sich INDEX/VERGLEICH.

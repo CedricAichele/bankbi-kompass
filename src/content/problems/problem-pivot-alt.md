@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Änderung oder neue Quellzeile fehlt. Cache nicht aktualisiert oder Quellbereich endet zu früh.",
   "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",
@@ -19,8 +19,7 @@
     "Änderung oder neue Quellzeile fehlt."
   ],
   "verwandteThemen": [
-    "pivottable",
-    "pivot-aktualisieren"
+    "pivottable"
   ],
   "kontexte": [
     "Reporting",
@@ -59,7 +58,7 @@ Cache nicht aktualisiert oder Quellbereich endet zu früh.
 2. Ändere einen bestehenden Betrag kontrolliert und aktualisiere. Prüfe danach eine neu angefügte Zeile.
 3. Rechtsklick → Aktualisieren; unter Datenquelle ändern den Bereich prüfen. Für wachsende Daten eine Excel-Tabelle als Quelle nutzen.
 4. Wiederhole den Schnelltest mit genau derselben Auswahl. Prüfe zusätzlich einen Gegenfall ohne den Fehler.
-5. Den konkreten Bedienweg für die Korrektur findest du unter [PivotTable aktualisieren](#/wissen/pivot-aktualisieren). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
+5. Den konkreten Bedienweg für die Korrektur findest du unter [PivotTable aktualisieren](#/wissen/pivottable). Prüfe danach erneut denselben Datenbereich, damit der Vergleich aussagekräftig bleibt.
 
 ## Beispiel
 

@@ -16,10 +16,7 @@ describe("Öffentliche Referenzansicht", () => {
       expect(html, item.id).not.toMatch(/\bTODO\b|Screenshot ersetzen|Ersatzaufnahme|Geplante Aufnahme|Aufnahmeplan|Arbeitsauftrag|Cedric soll|noch aufnehmen|in diesem Pass|in diesem Durchlauf|Codex|Cleanup|Qualitätspass/i);
       expect(html, item.id).toContain("Beispiele: generisch oder synthetisch");
       expect(html, item.id).toContain("Offizielle Dokumentation");
-      if (item.bereich === "IDA") {
-        expect(html, item.id).toContain("Bedienung kann je IDA-Umgebung abweichen.");
-        expect(html, item.id).not.toContain("Konkreter IDA-Menüweg nicht öffentlich belegt");
-      }
+      expect(item.bereich).not.toBe("IDA");
     }
   });
 });

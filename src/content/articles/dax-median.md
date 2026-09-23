@@ -20,8 +20,7 @@
   "verwandteThemen": [
     "measure",
     "filterkontext",
-    "median",
-    "ida-vorgang"
+    "median"
   ],
   "kontexte": [
     "Reporting"

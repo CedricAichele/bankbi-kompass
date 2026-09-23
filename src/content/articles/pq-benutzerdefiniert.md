@@ -8,9 +8,9 @@
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Eine benutzerdefinierte Spalte berechnet mit M einen Wert je Zeile während der Aktualisierung.",
+  "kurzbeschreibung": "Berechne beispielsweise einen Zeilenbetrag aus Menge und Preis. Ein M-Ausdruck ergänzt den Wert bei der Datenaufbereitung; er reagiert später nicht auf Slicer.",
   "ort": "Power Query → Spalte hinzufügen → Benutzerdefinierte Spalte",
   "tags": [
     "Benutzerdefinierte Spalte"
@@ -72,7 +72,7 @@
 
 ## Wann brauche ich das?
 
-Eine neue Spalte mit einem frei formulierten M-Ausdruck berechnen.
+Eine Mengen-/Preisliste enthält noch keinen Zeilenwert. Berechne Menge × Preis einmal pro Datensatz, damit die vorbereitete Tabelle einen auswertbaren Betrag enthält.
 
 ## Voraussetzungen
 

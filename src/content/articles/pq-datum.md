@@ -8,7 +8,7 @@
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Leite Jahr, Monat oder Monatsende aus einer echten Datumsspalte ab. Erhalte das Originaldatum.",
   "ort": "Power Query → Spalte hinzufügen → Datum",

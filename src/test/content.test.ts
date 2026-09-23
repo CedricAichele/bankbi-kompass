@@ -48,29 +48,27 @@ describe("Kurze, vollständige Schnellreferenzen", () => {
       "IDA",
     ]);
     expect(toolsCatalog[0].groups.map((g) => g.title)).toEqual([
-      "Daten vorbereiten",
+      "Daten importieren",
+      "Power Query & Datenaufbereitung",
       "Datenmodell",
       "DAX & Measures",
       "Zeitintelligenz",
-      "Bericht",
-      "Fehler",
+      "Berichte & Visualisierung",
+      "Fehler & Plausibilitätsprüfung",
     ]);
-    expect(toolsCatalog[1].groups).toHaveLength(10);
-    expect(toolsCatalog[2].groups).toHaveLength(7);
+    expect(toolsCatalog[1].groups).toHaveLength(8);
+    expect(toolsCatalog[2].groups).toHaveLength(0);
   });
-  it("enthält 26 Aufgaben und keine veröffentlichten Prozessaufsätze", () => {
+  it("enthält eigenständige Aufgaben ohne doppelte Funktionsanleitungen", () => {
     const tasks = contents.filter((x) => x.art === "aufgabe");
-    expect(tasks).toHaveLength(26);
+    expect(tasks.length).toBeGreaterThan(0);
+    expect(tasks.some(x => x.id === "aufgabe-null")).toBe(false);
     expect(tasks.every((x) => x.bereich === "Werkzeugübergreifend")).toBe(true);
     expect(contents.some((x) => x.id === "kundenstruktur")).toBe(false);
   });
-  it("IDA erklärt nur generische Prinzipien und markiert offene Bedienhinweise", () => {
-    const ida = contents.filter((x) => x.bereich === "IDA");
-    expect(ida.length).toBeGreaterThan(20);
-    for (const item of ida) {
-      expect(item.body).not.toMatch(/~~~(?:sql|dax|m)\n/);
-      expect(item.screenshots.every((x) => x.schema)).toBe(true);
-    }
+  it("enthält keine öffentlichen IDA-Altartikel", () => {
+    expect(contents.filter(x => x.bereich === "IDA")).toEqual([]);
+    expect(contents.some(x => x.werkzeuge.includes("IDA"))).toBe(false);
   });
   it("weist fehlende Module, ungültige Quellentypen und tote Verweise zurück", () => {
     expect(() => parseContent("Kein Frontmatter")).toThrow();
@@ -119,7 +117,6 @@ describe("Aufgabensuche", () => {
         "eins-zu-viele",
         "dubletten",
         "filterkontext",
-        "ida-aggregation",
       ],
     ],
     [
@@ -187,7 +184,7 @@ describe("Aufgabensuche", () => {
   it("behandelt Leerraum, leere Treffer und Aufgabenfilter", () => {
     expect(searchContent(contents, "   ")).toHaveLength(contents.length);
     expect(searchContent(contents, "zxqvvvxyz123")).toEqual([]);
-    expect(searchContent(contents, "", { art: "aufgabe" })).toHaveLength(26);
+    expect(searchContent(contents, "", { art: "aufgabe" })).toEqual(contents.filter(x => x.art === "aufgabe"));
   });
 });
 describe("Bild- und Inhaltsschutz", () => {
@@ -214,11 +211,11 @@ describe("Bild- und Inhaltsschutz", () => {
   });
   it("verweigert IDA-Screenshots, akzeptiert aber deklarierte Mock-ups", () => {
     expect(
-      schema.safeParse({ ...byId("reporting"), screenshots: [image] }).success,
+      schema.safeParse({ ...byId("power-query"), bereich: "IDA", screenshots: [image] }).success,
     ).toBe(false);
     expect(
       schema.safeParse({
-        ...byId("reporting"),
+        ...byId("power-query"), bereich: "IDA",
         screenshots: [{ ...image, src: "images/ida/liste.svg", schema: true }],
       }).success,
     ).toBe(true);

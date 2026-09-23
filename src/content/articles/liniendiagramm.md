@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Eine Linie zeigt die Entwicklung einer Kennzahl über eine geordnete Zeitachse.",
   "ort": "Power BI → Berichtsansicht → Liniendiagramm",

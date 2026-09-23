@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Logik und Fehler",
+  "kategorie": "Logik & Fehlerbehandlung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "ODER ist WAHR, sobald mindestens eine Bedingung WAHR ist.",
   "ort": "Excel → Formelzelle",
@@ -18,7 +18,7 @@
   "synonyme": [],
   "verwandteThemen": [
     "und",
-    "excel-kombinationen",
+    "eindeutig",
     "excel-fehler"
   ],
   "kontexte": [

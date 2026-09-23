@@ -6,13 +6,12 @@
   "bereich": "Werkzeugübergreifend",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Typische Aufgaben",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Zähle unterschiedliche Personenkennungen, nicht alle Kontenzeilen.",
-  "ort": "Power BI: DISTINCTCOUNT · Excel: EINDEUTIG · IDA: eindeutiges Zählkonzept",
+  "ort": "Power BI: DISTINCTCOUNT · Excel: EINDEUTIG ·",
   "tags": [
     "Eindeutige Personen zählen",
     "Kundenanalyse",
@@ -23,8 +22,7 @@
   ],
   "verwandteThemen": [
     "distinctcount",
-    "eindeutig",
-    "ida-anzahl"
+    "eindeutig"
   ],
   "kontexte": [
     "Kundenanalyse",

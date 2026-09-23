@@ -6,8 +6,7 @@
   "bereich": "Werkzeugübergreifend",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Typische Aufgaben",
   "schwierigkeit": "Grundlage",
@@ -22,8 +21,7 @@
   ],
   "verwandteThemen": [
     "divide",
-    "prozentformat",
-    "ida-quote"
+    "prozentformat"
   ],
   "kontexte": [
     "Reporting",
@@ -33,7 +31,7 @@
   "zuletztGeprueft": "2026-09-21",
   "art": "aufgabe",
   "quellen": [
-    "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=style-summarizing-data-relationally"
+    "https://learn.microsoft.com/en-us/dax/divide-function-dax"
   ],
   "screenshots": [],
   "praxis": true
@@ -46,11 +44,11 @@ Du brauchst Planerreichung oder den Anteil einer Produktgruppe.
 
 ## Schritte
 
-1. Definiere das gewünschte Ergebnis und den fachlichen Schlüssel jeder Ergebniszeile. Notiere Zeilenzahl und eine geeignete Kontrollsumme der Quelle.
-2. Prüfe die Eingabefelder und Datentypen anhand der Ausgangstabelle im Beispiel. Übertrage die dort verwendeten Namen bewusst auf deine Daten.
-3. Nutze die konkrete [Quote berechnen-Anleitung](#/wissen/ida-quote). Sie zeigt Bedienort, Auswahl und Einstellungen für diese Operation.
-4. Vergleiche das Ergebnis mit den passenden Quellzeilen und der unten genannten Kontrolle. Kläre Mehrfachtreffer oder fehlende Werte vor der Weiterverwendung.
-5. Prüfe auch den im Fehlerabschnitt genannten Gegenfall. Halte eine fachlich begründete Änderung der Zeilenzahl oder Summe fest.
+1. Definiere Zähler und Nenner auf derselben Grundgesamtheit und demselben Zeitraum.
+2. Summiere erfüllte Fälle und alle Fälle getrennt.
+3. Berechne Gesamtzähler geteilt durch Gesamtnenner, etwa mit [DIVIDE](#/wissen/divide). Bei Nenner 0 eine fachliche Regel für ein fehlendes Ergebnis festlegen.
+4. Formatiere die Ergebniszahl als Prozent; nicht zusätzlich mit 100 multiplizieren.
+5. Prüfe Gruppen und Gesamtquote separat. Gruppenquoten nicht ungewichtet mitteln.
 
 ## Beispiel
 
@@ -85,7 +83,6 @@ Pseudologik: Erfüllte Fälle und alle Fälle summieren; anschließend dividiere
 | --------------- | --------------------------------------------------------------------------------------------- |
 | Power BI        | [DIVIDE: Quote berechnen](#/wissen/divide) · [0,95 als 95 % anzeigen](#/wissen/prozentformat) |
 | Excel           | [SUMMEWENNS](#/wissen/summewenns)                                                             |
-| IDA / Reporting | [Quote berechnen](#/wissen/ida-quote); generisches Konzept                                    |
 
 ## Ergebnis
 

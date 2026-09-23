@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Filtern und Listen",
+  "kategorie": "Filtern & eindeutige Listen",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "SORTIEREN gibt einen geordneten Ergebnisbereich aus, ohne die Quelltabelle umzubauen.",
   "ort": "Excel → freie Formelzelle; dynamische Arrays erforderlich",

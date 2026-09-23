@@ -16,7 +16,8 @@
   ],
   "synonyme": [
     "datesytd",
-    "totalytd"
+    "totalytd",
+    "DATESYTD oder TOTALYTD"
   ],
   "verwandteThemen": [
     "ytd",

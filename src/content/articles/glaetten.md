@@ -2,12 +2,12 @@
 {
   "id": "glaetten",
   "slug": "glaetten",
-  "titel": "Leerzeichen entfernen: GLÄTTEN",
+  "titel": "Text bereinigen: GLÄTTEN und SÄUBERN",
   "bereich": "Excel",
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten bereinigen",
+  "kategorie": "Daten vorbereiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "GLÄTTEN entfernt äußere normale Leerzeichen und reduziert mehrfache innere normale Leerzeichen.",
   "ort": "Excel → Hilfsspalte",
@@ -15,9 +15,11 @@
     "Leerzeichen entfernen: GLÄTTEN",
     "Reporting"
   ],
-  "synonyme": [],
+  "synonyme": [
+    "SÄUBERN",
+    "Text bereinigen"
+  ],
   "verwandteThemen": [
-    "saeubern",
     "pq-text",
     "xverweis"
   ],
@@ -29,7 +31,8 @@
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/trim-function",
-    "https://support.microsoft.com/de-de/office/gl%C3%A4tten-funktion-410388fa-c5df-49c6-b16c-9e5630b479f9"
+    "https://support.microsoft.com/de-de/office/gl%C3%A4tten-funktion-410388fa-c5df-49c6-b16c-9e5630b479f9",
+    "https://support.microsoft.com/en-us/excel/functions/clean-function"
   ],
   "screenshots": [],
   "praxis": true,
@@ -87,3 +90,12 @@ Kennungen nicht durch ungeprüftes Entfernen fachlich bedeutsamer Leerzeichen ve
 ## Plausibilitätscheck
 
 Für die genannten Ausgangswerte wird **P001 Nord** erwartet. Die Originalzellen bleiben unverändert; ergänzte Ergebniszellen werden separat geprüft.
+
+
+## SÄUBERN und Schreibweisen
+
+GLÄTTEN entfernt überflüssige normale Leerzeichen und reduziert mehrere innere Leerzeichen auf eines. SÄUBERN entfernt bestimmte nicht druckbare Steuerzeichen; geschützte Leerzeichen werden dadurch nicht zuverlässig beseitigt.
+
+Für bestätigte geschützte Leerzeichen hilft etwa =GLÄTTEN(SÄUBERN(WECHSELN(A2;ZEICHEN(160);" "))). Schreibe Vergleichstexte bei Bedarf mit GROSS einheitlich. Originalwerte behalten und nur fachlich gleichbedeutende Varianten zusammenführen.
+
+Vorher: " Mannheim ", "MANNHEIM", "mannheim". Aktion: Leerzeichen bereinigen und GROSS anwenden. Nachher: dreimal MANNHEIM. Die Bereinigung verändert die Schreibweise, nicht die Zeilenzahl.

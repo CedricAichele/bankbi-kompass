@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Eine Tabelle zeigt Felder nebeneinander und eignet sich zur Kontrolle von Detailwerten.",
   "ort": "Power BI → Berichtsansicht → Tabellenvisual",

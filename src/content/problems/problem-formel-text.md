@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Die Zelle zeigt =SUMME(...) statt eines Ergebnisses. Zellformat Text, führendes Apostroph oder Formeln-anzeigen-Modus.",
   "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",

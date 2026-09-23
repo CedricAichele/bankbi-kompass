@@ -2,34 +2,40 @@
 {
   "id": "anhaengen",
   "slug": "anhaengen",
-  "titel": "Tabellen anhängen",
+  "titel": "Append: Tabellen untereinander anhängen",
   "bereich": "Power BI",
   "werkzeuge": [
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Anhängen setzt gleichartige Tabellen untereinander. Die Zuordnung erfolgt über Spaltennamen.",
+  "kurzbeschreibung": "Append ergänzt Zeilen gleicher fachlicher Struktur. Monat oder Herkunft muss vor dem Anhängen vorhanden sein, damit wiederkehrende Schlüssel unterscheidbar bleiben.",
   "ort": "Power Query → Start → Abfragen anfügen / anhängen",
   "tags": [
     "Tabellen anhängen",
-    "Reporting"
+    "Reporting",
+    "Grundbegriff"
   ],
   "synonyme": [
+    "tabellen untereinander",
+    "Append",
+    "Anfügen",
+    "Zeilen ergänzen",
     "zwei tabellen",
-    "untereinander"
+    "untereinander",
+    "Tabellen anhängen"
   ],
   "verwandteThemen": [
     "zusammenfuehren",
     "dateien-kombinieren",
-    "merge-oder-append"
+    "bestand-bewegung"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-query/append-queries"
@@ -45,26 +51,29 @@
       "aufnahmeplan": {
         "prioritaet": "Hoch",
         "werkzeug": "Power BI Desktop",
-        "oberflaeche": "Power Query – Tabellen anhängen",
+        "oberflaeche": "Append: Tabellen untereinander anhängen",
         "klickfolge": [
-          "Power BI Desktop öffnen. Die unten aufgeführten Tabellen über Start → Daten eingeben mit exakt diesen Spaltennamen und Werten anlegen; danach Start → Daten transformieren öffnen.",
-          "Januar und Februar als getrennte Abfragen laden.",
-          "Start → Abfragen anfügen → Abfragen als neue Abfrage anfügen. Zwei Tabellen wählen, Januar und Februar einstellen. Vor OK aufnehmen."
+          "Prüfe Bedeutung, Spaltennamen und Datentypen beider Tabellen. Gleicher Name muss auch dieselbe Bedeutung haben.",
+          "Zeitbezug oder Dateiquelle vorab als Spalte aufnehmen. Append erfindet keinen Monat aus dem Abfragenamen.",
+          "**Start → Abfragen anfügen/anhängen → Als neue Abfrage** wählen, Tabellen auswählen und bestätigen.",
+          "Spalten werden nach Namen zugeordnet, nicht nach Position. Eine in einer Quelle fehlende Spalte erhält dort null; abweichende Namen können zwei getrennte Spalten erzeugen.",
+          "Zeilenzahl gegen die Summe der Quellen prüfen. Append entfernt keine Dubletten; Überschneidungen der Lieferungen gezielt untersuchen."
         ],
-        "daten": "**Januar**\n\n| Konto | Monat | Betrag |\n| --- | --- | --- |\n| K001 | Jan | 10 |\n| K002 | Jan | 20 |\n| K003 | Jan | 30 |\n\n**Februar**\n\n| Konto | Monat | Betrag |\n| --- | --- | --- |\n| K001 | Feb | 15 |\n| K002 | Feb | 25 |",
+        "daten": "### Vorher\n**Januar**\n| Monat | Kunde | Bestand |\n| --- | --- | --- |\n| 2026-01 | 1001 | 100 |\n\n**Februar**\n| Monat | Kunde | Bestand |\n| --- | --- | --- |\n| 2026-02 | 1001 | 120 |\n\n### Aktion\nJanuar und Februar anhängen.\n\n### Nachher\n| Monat | Kunde | Bestand |\n| --- | --- | --- |\n| 2026-01 | 1001 | 100 |\n| 2026-02 | 1001 | 120 |",
         "sichtbar": [
-          "Beide Abfragen und Auswahl Zwei Tabellen"
+          "Überschriften und Werte des aktuellen Artikelbeispiels",
+          "Einstellung und Ergebnis des zugeordneten Schritts"
         ],
-        "ausschnitt": "Geöffneten Dialog beziehungsweise Menü mit den genannten Einstellungen und den relevanten Spaltenüberschriften aufnehmen. Text bei 100 % lesbar halten; keine unnötige Leerfläche.",
+        "ausschnitt": "Nur relevante Editorbereiche, Datenvorschau und beschriebene Einstellung lesbar aufnehmen.",
         "dateiname": "pbi-anhaengen.webp",
-        "zweck": "Auswahl und Ergebnis der beschriebenen Operation nachvollziehbar zeigen.",
+        "zweck": "Append ergänzt Zeilen gleicher fachlicher Struktur. Monat oder Herkunft muss vor dem Anhängen vorhanden sein, damit wiederkehrende Schlüssel unterscheidbar bleiben.",
         "nichtZeigen": [
           "Lokale Dateipfade",
-          "Benutzername oder Profil",
-          "Andere Programme und Benachrichtigungen",
+          "Benutzerprofile und Benachrichtigungen",
           "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
         ]
-      }
+      },
+      "bildAnzeigen": false
     }
   ],
   "praxis": true
@@ -73,66 +82,54 @@
 
 ## Wann brauche ich das?
 
-Gleichartige Datensätze aus mehreren Tabellen untereinander sammeln.
+Append ergänzt Zeilen gleicher fachlicher Struktur. Monat oder Herkunft muss vor dem Anhängen vorhanden sein, damit wiederkehrende Schlüssel unterscheidbar bleiben.
 
 ## Voraussetzungen
 
-Mindestens zwei vorhandene Abfragen mit gleichartigen Datensätzen und abgestimmten Spaltennamen.
+Zugriff auf deine Datenquelle und Kenntnis ihrer Spalten und Zeilenebene. Die Beispielwerte dienen nur der Erklärung; eine Beispieldatei ist nicht erforderlich.
 
 ## Schritte
 
-1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
-2. Prüfe, dass die Spalten dieselbe Bedeutung und dieselben Namen besitzen. Die Reihenfolge der Spalten ist nicht entscheidend.
-3. Wähle **Start → Abfragen anfügen → Abfragen als neue Abfrage anfügen**. Je Sprachversion heißt die Funktion auch Anhängen.
-4. Wähle **Zwei Tabellen**, dann Januar und Februar. Für mehr Tabellen wähle die entsprechende Mehrfachoption.
-5. Bestätige und kontrolliere alle Spalten. Fehlt eine Spalte in einer Quelle, entstehen dort null-Werte.
-6. Prüfe Zeilenzahl, Datentypen und doppelt gelieferte Datensätze.
+1. Prüfe Bedeutung, Spaltennamen und Datentypen beider Tabellen. Gleicher Name muss auch dieselbe Bedeutung haben.
+2. Zeitbezug oder Dateiquelle vorab als Spalte aufnehmen. Append erfindet keinen Monat aus dem Abfragenamen.
+3. **Start → Abfragen anfügen/anhängen → Als neue Abfrage** wählen, Tabellen auswählen und bestätigen.
+4. Spalten werden nach Namen zugeordnet, nicht nach Position. Eine in einer Quelle fehlende Spalte erhält dort null; abweichende Namen können zwei getrennte Spalten erzeugen.
+5. Zeilenzahl gegen die Summe der Quellen prüfen. Append entfernt keine Dubletten; Überschneidungen der Lieferungen gezielt untersuchen.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
-
+### Vorher
 **Januar**
-
-| Konto | Monat | Betrag |
+| Monat | Kunde | Bestand |
 | --- | --- | --- |
-| K001 | Jan | 10 |
-| K002 | Jan | 20 |
-| K003 | Jan | 30 |
+| 2026-01 | 1001 | 100 |
 
 **Februar**
-
-| Konto | Monat | Betrag |
+| Monat | Kunde | Bestand |
 | --- | --- | --- |
-| K001 | Feb | 15 |
-| K002 | Feb | 25 |
+| 2026-02 | 1001 | 120 |
 
 ### Aktion
+Januar und Februar anhängen.
 
-Januar und Februar untereinander anfügen.
-
-### Nachher · Beispielergebnis
-
-| Konto | Monat | Betrag |
+### Nachher
+| Monat | Kunde | Bestand |
 | --- | --- | --- |
-| K001 | Jan | 10 |
-| K002 | Jan | 20 |
-| K003 | Jan | 30 |
-| K001 | Feb | 15 |
-| K002 | Feb | 25 |
+| 2026-01 | 1001 | 100 |
+| 2026-02 | 1001 | 120 |
 
 ## Ergebnis
 
-Die Zeilen mehrerer Tabellen stehen untereinander in einer gemeinsamen Tabelle.
+Eine Tabelle enthält beide Monatslieferungen untereinander. Der Monat hält die zwei Bestände desselben Kunden unterscheidbar.
 
 ## Warum funktioniert das?
 
-Append ordnet Spalten nach Namen zu und fügt Datensätze hinzu. Es sucht keine Schlüsselübereinstimmung und entfernt auch keine Duplikate. Merge ergänzt dagegen passende Informationen über Schlüssel.
+Append stapelt Zeilen. Merge ordnet Treffer zu und ergänzt Spalten. Der wiederkehrende Kunde ist hier kein Duplikat: die beiden Zeilen beschreiben unterschiedliche Monate.
 
 ## Typischer Fehler
 
-Betrag und Bestand_EUR trotz gleicher Bedeutung unvereinheitlicht lassen: Dann entstehen getrennte Spalten.
+Monat weglassen, abweichende Spaltennamen übersehen oder erwarten, dass Append doppelte Lieferungen entfernt.
 
 ## Plausibilitätscheck
 
-3 + 2 = 5 Zeilen; 60 + 40 = 100 Gesamtsumme. Monat bleibt zur Unterscheidung erhalten.
+1 + 1 = 2 Zeilen. Pro Monat bleibt der Bestand 100 bzw. 120. Die Summe 220 ist keine sinnvolle Bestandskennzahl über beide Stichtage.

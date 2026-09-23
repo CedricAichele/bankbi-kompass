@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Datenmodell",
+  "kategorie": "Zeitintelligenz",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Eine vollständige Datumstabelle liefert eine gemeinsame Zeitachse für Vorjahr und YTD.",
   "ort": "Power BI → Modellierung → Neue Tabelle",

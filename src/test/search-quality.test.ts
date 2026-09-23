@@ -22,7 +22,6 @@ describe("Suchqualität für den Arbeitsalltag", () => {
     ["duplikate", ["dubletten", "dubletten-entfernen"]],
     ["xverweis", ["xverweis"]],
     ["summe wenn", ["summewenn", "summewenns"]],
-    ["parameter", ["ida-parameter", "ida-prompt"]],
     ["nullwerte", ["nullwerte", "ida-null", "aufgabe-null"]],
     ["eine zeile je person", ["eine-zeile-je-person", "gruppieren"]],
     ["csv", ["csv-import", "excel-csv", "aufgabe-csv"]],
@@ -44,7 +43,7 @@ describe("Suchqualität für den Arbeitsalltag", () => {
     ["datum falsch", ["problem-datum-excel", "datum-sortieren", "excel-datum", "datenbereinigung"]],
     ["beziehung geht nicht", ["beziehung-fehler", "beziehungen", "kardinalitaet"]],
     ["eine zeile pro person", ["eine-zeile-je-person", "gruppieren", "ida-eine-zeile"]],
-    ["mehrere dateien zusammenführen", ["dateien-zusammenfassen", "dateien-kombinieren"]],
+    ["mehrere dateien zusammenführen", ["dateien-kombinieren"]],
     ["mein Slicer hat keine Wirkung", ["problem-visual-slicer", "filter-fehler", "visualinteraktionen"]],
     ["warum gibt es nach dem Join mehr Zeilen", ["problem-merge-zeilen", "ida-join-pruefen", "zusammenfuehren"]],
   ])(

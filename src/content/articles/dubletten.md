@@ -2,15 +2,15 @@
 {
   "id": "dubletten",
   "slug": "dubletten",
-  "titel": "Dubletten prüfen und entfernen",
+  "titel": "Dubletten anhand der richtigen Zeilenebene prüfen",
   "bereich": "Power BI",
   "werkzeuge": [
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Erst die fachliche Schlüsselkombination bestimmt, ob zwei Zeilen wirklich doppelt sind.",
+  "kurzbeschreibung": "Erst festlegen, was eine Zeile beschreibt, dann Wiederholungen beurteilen. Mehrere Konten eines Kunden sind in einer Kontentabelle keine Dubletten.",
   "ort": "Power Query → Schlüsselspalten markieren → Zeilen entfernen → Duplikate entfernen",
   "tags": [
     "Dubletten prüfen und entfernen",
@@ -19,29 +19,30 @@
     "Grundbegriff"
   ],
   "synonyme": [
+    "doppelte kunden",
+    "dubletten",
+    "duplikate",
+    "doppelte Zeilen",
     "mehrere konten pro kunde",
     "falsche summe",
     "eine Liste ohne doppelte Werte",
     "mehrere Zeilen",
     "Dubletten",
-    "doppelte kunden",
-    "duplikate",
     "doppelte personen",
-    "summe stimmt nicht"
+    "summe stimmt nicht",
+    "Dubletten prüfen und entfernen"
   ],
   "verwandteThemen": [
     "granularitaet",
-    "schluessel",
     "gruppieren",
-    "eins-zu-viele",
-    "excel-dubletten-finden"
+    "pq-profiling"
   ],
   "kontexte": [
     "Kundenanalyse",
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-query/working-with-duplicates"
@@ -50,33 +51,37 @@
     {
       "alt": "Bedienort: Power Query-Editor – Dubletten prüfen und entfernen",
       "caption": "Geplante Aufnahme: Power Query – Dubletten prüfen und entfernen",
-      "schritt": 5,
+      "schritt": 4,
       "schema": false,
       "status": "todo",
       "todo": "Bedienort und Auswahl für Dubletten prüfen und entfernen zeigen.",
       "aufnahmeplan": {
         "prioritaet": "Hoch",
         "werkzeug": "Power BI Desktop",
-        "oberflaeche": "Power Query – Dubletten prüfen und entfernen",
+        "oberflaeche": "Dubletten anhand der richtigen Zeilenebene prüfen",
         "klickfolge": [
-          "Power BI Desktop öffnen. Die unten aufgeführten Tabellen über Start → Daten eingeben mit exakt diesen Spaltennamen und Werten anlegen; danach Start → Daten transformieren öffnen.",
-          "Konto und Stichtag mit Strg gemeinsam markieren.",
-          "Start → Zeilen entfernen öffnen; Duplikate entfernen noch nicht ausführen."
+          "Die [Granularität](#/wissen/granularitaet) notieren: eine Zeile je Konto, Kunde oder Konto und Stichtag? Daraus ergibt sich der zu prüfende Schlüssel.",
+          "Die relevanten Schlüsselspalten gemeinsam markieren. Power Query prüft Duplikate über **die ausgewählten Spalten**, nicht automatisch über die ganze Zeile.",
+          "Für die Prüfung eine Referenz der Abfrage erstellen und nach dem Schlüssel gruppieren, Aggregation **Anzahl Zeilen**. Gruppen größer 1 untersuchen, einschließlich fehlender Schlüssel.",
+          "Sind vollständige Zeilen versehentlich identisch doppelt geliefert, alle fachlich relevanten Spalten auswählen und **Start → Zeilen entfernen → Duplikate entfernen** verwenden.",
+          "Bei gleichem Schlüssel und unterschiedlichen Werten zuerst eine fachliche Auswahlregel klären. Nicht voraussetzen, dass ein vorheriges Sortieren zuverlässig die gewünschte Zeile beim Entfernen bewahrt.",
+          "Zeilenzahl und Summenabgang gegen die identifizierten Wiederholungen prüfen. Für eine Kundensumme [gruppieren](#/wissen/gruppieren) statt ein Konto wegzulöschen."
         ],
-        "daten": "| Kunde | Konto | Stichtag | Bestand |\n| --- | --- | --- | --- |\n| P001 | K001 | 31.01.2026 | 1000 |\n| P001 | K001 | 31.01.2026 | 1000 |\n| P001 | K002 | 31.01.2026 | 2000 |",
+        "daten": "### Vorher\n| Personennummer | Konto | Bestand |\n| --- | --- | --- |\n| 1001 | A | 100 |\n| 1001 | B | 200 |\n| 1002 | C | 500 |\n| 1002 | C | 500 |\n\n### Aktion\nPersonennummer allein würde A/B fälschlich zusammenfallen lassen. Personennummer + Konto zeigt nur die wiederholte Kombination 1002/C. Hier sind auch alle übrigen Werte identisch; die doppelte Lieferung kann entfernt werden.\n\n### Nachher\n| Personennummer | Konto | Bestand |\n| --- | --- | --- |\n| 1001 | A | 100 |\n| 1001 | B | 200 |\n| 1002 | C | 500 |",
         "sichtbar": [
-          "Beide markierten Schlüsselspalten; Option Duplikate entfernen"
+          "Überschriften und Werte des aktuellen Artikelbeispiels",
+          "Einstellung und Ergebnis des zugeordneten Schritts"
         ],
-        "ausschnitt": "Geöffneten Dialog beziehungsweise Menü mit den genannten Einstellungen und den relevanten Spaltenüberschriften aufnehmen. Text bei 100 % lesbar halten; keine unnötige Leerfläche.",
+        "ausschnitt": "Nur relevante Editorbereiche, Datenvorschau und beschriebene Einstellung lesbar aufnehmen.",
         "dateiname": "pbi-dubletten.webp",
-        "zweck": "Bedienort und Auswahl für Dubletten prüfen und entfernen zeigen.",
+        "zweck": "Erst festlegen, was eine Zeile beschreibt, dann Wiederholungen beurteilen. Mehrere Konten eines Kunden sind in einer Kontentabelle keine Dubletten.",
         "nichtZeigen": [
           "Lokale Dateipfade",
-          "Benutzername oder Profil",
-          "Andere Programme und Benachrichtigungen",
+          "Benutzerprofile und Benachrichtigungen",
           "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
         ]
-      }
+      },
+      "bildAnzeigen": false
     }
   ],
   "praxis": true
@@ -85,54 +90,53 @@
 
 ## Wann brauche ich das?
 
-Nach einer fachlich definierten Schlüsselkombination doppelte Datensätze entfernen.
+Erst festlegen, was eine Zeile beschreibt, dann Wiederholungen beurteilen. Mehrere Konten eines Kunden sind in einer Kontentabelle keine Dubletten.
 
 ## Voraussetzungen
 
-Eine geladene Abfrage mit den benötigten Spalten. Die folgenden Tabellen sind frei erfundene Beispiele.
+Zugriff auf deine Datenquelle und Kenntnis ihrer Spalten und Zeilenebene. Die Beispielwerte dienen nur der Erklärung; eine Beispieldatei ist nicht erforderlich.
 
 ## Schritte
 
-1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
-2. Lege zuerst fest, was eine Zeile eindeutig macht: hier **Konto und Stichtag**, nicht Kunde.
-3. Prüfe wiederholte Schlüssel vor dem Löschen: Stimmen auch die übrigen Werte überein? Bei Abweichungen ist eine fachliche Auswahlregel nötig.
-4. Markiere **Konto** und mit Strg zusätzlich **Stichtag**.
-5. Wähle **Start → Zeilen entfernen → Duplikate entfernen**.
-6. Prüfe die Anzahl und Summe nach dem Entfernen. Verlasse dich bei unterschiedlichen Datensätzen nicht darauf, welche Zeile Power Query behält.
+1. Die [Granularität](#/wissen/granularitaet) notieren: eine Zeile je Konto, Kunde oder Konto und Stichtag? Daraus ergibt sich der zu prüfende Schlüssel.
+2. Die relevanten Schlüsselspalten gemeinsam markieren. Power Query prüft Duplikate über **die ausgewählten Spalten**, nicht automatisch über die ganze Zeile.
+3. Für die Prüfung eine Referenz der Abfrage erstellen und nach dem Schlüssel gruppieren, Aggregation **Anzahl Zeilen**. Gruppen größer 1 untersuchen, einschließlich fehlender Schlüssel.
+4. Sind vollständige Zeilen versehentlich identisch doppelt geliefert, alle fachlich relevanten Spalten auswählen und **Start → Zeilen entfernen → Duplikate entfernen** verwenden.
+5. Bei gleichem Schlüssel und unterschiedlichen Werten zuerst eine fachliche Auswahlregel klären. Nicht voraussetzen, dass ein vorheriges Sortieren zuverlässig die gewünschte Zeile beim Entfernen bewahrt.
+6. Zeilenzahl und Summenabgang gegen die identifizierten Wiederholungen prüfen. Für eine Kundensumme [gruppieren](#/wissen/gruppieren) statt ein Konto wegzulöschen.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
-
-| Kunde | Konto | Stichtag | Bestand |
-| --- | --- | --- | --- |
-| P001 | K001 | 31.01.2026 | 1000 |
-| P001 | K001 | 31.01.2026 | 1000 |
-| P001 | K002 | 31.01.2026 | 2000 |
+### Vorher
+| Personennummer | Konto | Bestand |
+| --- | --- | --- |
+| 1001 | A | 100 |
+| 1001 | B | 200 |
+| 1002 | C | 500 |
+| 1002 | C | 500 |
 
 ### Aktion
+Personennummer allein würde A/B fälschlich zusammenfallen lassen. Personennummer + Konto zeigt nur die wiederholte Kombination 1002/C. Hier sind auch alle übrigen Werte identisch; die doppelte Lieferung kann entfernt werden.
 
-Identisches Duplikat nach Konto + Stichtag entfernen.
-
-### Nachher · Beispielergebnis
-
-| Kunde | Konto | Stichtag | Bestand |
-| --- | --- | --- | --- |
-| P001 | K001 | 31.01.2026 | 1000 |
-| P001 | K002 | 31.01.2026 | 2000 |
+### Nachher
+| Personennummer | Konto | Bestand |
+| --- | --- | --- |
+| 1001 | A | 100 |
+| 1001 | B | 200 |
+| 1002 | C | 500 |
 
 ## Ergebnis
 
-Pro gewählter Schlüsselkombination bleibt eine Zeile übrig.
+Die bereinigte Tabelle enthält drei gültige Konten. Kunde 1001 hat weiterhin zwei Konten; nur die zusätzliche identische C-Zeile entfällt.
 
 ## Warum funktioniert das?
 
-Die markierten Spalten definieren Gleichheit. Kunde allein wäre zu grob: Eine Person kann mehrere gültige Konten besitzen. Das Entfernen ist keine fachliche Entscheidung über den neuesten Datensatz.
+Eindeutigkeit ist relativ zum gewählten Schlüssel. Deduplizieren zählt keine Konten zusammen und legt ohne weitere Regel nicht fachlich fest, welche widersprüchliche Zeile gültig ist. Power Query unterscheidet außerdem Groß-/Kleinschreibung; standardisiere Schlüssel nur nach vereinbarter Regel.
 
 ## Typischer Fehler
 
-Eine vorherige Sortierung garantiert nicht allgemein, welcher Datensatz beim Entfernen erhalten bleibt. Unterschiedliche Versionen zuerst fachlich auflösen.
+Blind Kunden deduplizieren, damit die Zeilenzahl kleiner wird. Dadurch verschwinden korrekte Konten und Beträge.
 
 ## Plausibilitätscheck
 
-Drei Zeilen werden zwei; die um ein Duplikat erhöhte Summe 4.000 wird korrekt zu 3.000.
+4 → 3 Zeilen; Summe 1300 → 800. Genau die bestätigte zusätzliche C-Zeile mit 500 wurde entfernt; beide Konten von 1001 bleiben bestehen.

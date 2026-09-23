@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Pivot",
+  "kategorie": "PivotTables & Auswertung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Prüfe zuerst den Quelldatentyp, dann die Zusammenfassung des Wertfelds.",
   "ort": "Excel → PivotTable-Analyse / Rechtsklick in PivotTable",
@@ -18,8 +18,7 @@
   "verwandteThemen": [
     "pivottable",
     "excel-liste-vorbereiten",
-    "excel-zahl-text",
-    "pivot-aktualisieren"
+    "excel-zahl-text"
   ],
   "kontexte": [
     "Reporting"

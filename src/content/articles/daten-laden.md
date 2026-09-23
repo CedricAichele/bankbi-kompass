@@ -2,24 +2,27 @@
 {
   "id": "daten-laden",
   "slug": "daten-laden",
-  "titel": "Daten laden / importieren",
+  "titel": "Daten in Power BI laden",
   "bereich": "Power BI",
   "werkzeuge": [
-    "Power BI",
-    "Excel"
+    "Power BI"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Daten importieren",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Öffne die Quelle zuerst in Power Query, prüfe Typen und Zeilen und lade erst dann das Ergebnis.",
+  "kurzbeschreibung": "Wähle eine passende Quelle und entscheide vor dem Laden, ob Struktur, Typen oder Zeilen noch aufbereitet werden müssen.",
   "ort": "Power BI: Start → Daten abrufen · Excel: Daten → Daten abrufen",
   "tags": [
     "Daten laden / importieren",
     "Reporting"
   ],
-  "synonyme": [],
+  "synonyme": [
+    "neue daten power bi",
+    "daten importieren",
+    "Excel-Datei importieren",
+    "Daten laden / importieren"
+  ],
   "verwandteThemen": [
     "csv-import",
-    "excel-import",
     "dateien-kombinieren",
     "power-query",
     "import-oder-directquery",
@@ -29,45 +32,49 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
-    "https://learn.microsoft.com/en-us/power-bi/connect-data/desktop-data-sources",
     "https://learn.microsoft.com/en-us/power-query/connectors/excel",
-    "https://learn.microsoft.com/en-us/power-query/connectors/text-csv"
+    "https://learn.microsoft.com/en-us/power-query/connectors/text-csv",
+    "https://learn.microsoft.com/en-us/power-query/connectors/folder"
   ],
   "screenshots": [
     {
       "alt": "Bedienort: Power BI – Daten abrufen",
       "caption": "Geplante Aufnahme: Power BI – Daten abrufen",
-      "schritt": 2,
+      "schritt": 6,
       "schema": false,
       "status": "todo",
       "todo": "Zeigen, dass zahlreiche Quelltypen verfügbar sind.",
       "aufnahmeplan": {
         "prioritaet": "Hoch",
         "werkzeug": "Power BI Desktop",
-        "oberflaeche": "Power BI – Daten abrufen",
+        "oberflaeche": "Daten in Power BI laden",
         "klickfolge": [
-          "Power BI Desktop öffnen.",
-          "Start → Daten abrufen → Mehr… öffnen."
+          "**Power BI Desktop → Start → Daten abrufen** öffnen. Wähle die Quelle nach Herkunft der Daten, nicht nach dem gewünschten Diagramm.",
+          "**Excel:** Datei wählen und im Navigator möglichst eine benannte Tabelle auswählen. Ein Arbeitsblatt kann zusätzliche Titel, Leerzeilen oder Summen enthalten. Kontrolliere den tatsächlich erkannten Bereich.",
+          "**Text/CSV:** Trennzeichen, Dateiursprung/Encoding und Vorschau prüfen. Kennungen mit führenden Nullen vor einer automatischen Zahlumwandlung schützen. Vertiefung: [CSV korrekt importieren](#/wissen/csv-import).",
+          "**Ordner:** Gleich aufgebaute Dateien gemeinsam einlesen. Dateiliste vor dem Kombinieren nach Endung und fachlichem Umfang filtern; temporäre Dateien und alte Versionen ausschließen. [Ordnerimport](#/wissen/dateien-kombinieren).",
+          "**Datenbank:** Den passenden Connector verwenden, berechtigte Verbindung und benötigte Tabellen/Views wählen. Import liest Daten ein; DirectQuery fragt die Quelle zur Berichtszeit ab und hat andere Anforderungen. [Modus auswählen](#/wissen/import-oder-directquery).",
+          "**Laden** wählen, wenn die Vorschau bereits eine saubere Tabelle zeigt. **Daten transformieren** wählen, wenn Typen, Kopfzeile, fehlende Werte oder Struktur geprüft und bearbeitet werden müssen.",
+          "Nach dem Import mit dem [Power-Query-Workflow](#/wissen/pq-workflow) weiterarbeiten. Anschließend im Modell Beziehungen und Kennzahlen aufbauen."
         ],
-        "daten": "| Konto | Bestand |\n| --- | --- |\n| K001 | 1000 |\n| K002 | 2000 |",
+        "daten": "| Quelle | Beobachtung | Entscheidung |\n| --- | --- | --- |\n| Excel-Tabelle Konten | Eine Kopfzeile, Kennung als Text, Betrag numerisch | Laden nach Kontrolle möglich |\n| CSV-Auszug | 00123 und 1.250,50 als Text | Transformieren und Typen bewusst festlegen |\n| Monatsordner | Mehrere gleich aufgebaute Dateien | Dateiliste prüfen, dann kombinieren |",
         "sichtbar": [
-          "Connectorliste",
-          "Suchfeld",
-          "Excel, Text/CSV und Datenbankkategorien"
+          "Überschriften und Werte des aktuellen Artikelbeispiels",
+          "Einstellung und Ergebnis des zugeordneten Schritts"
         ],
-        "ausschnitt": "Power BI – Daten abrufen mit Connectorliste, Suchfeld, Excel, Text/CSV und Datenbankkategorien. Auf den relevanten Dialog und die lesbaren Tabellenüberschriften begrenzen.",
+        "ausschnitt": "Nur relevante Editorbereiche, Datenvorschau und beschriebene Einstellung lesbar aufnehmen.",
         "dateiname": "pbi-daten-abrufen.webp",
-        "zweck": "Zeigen, dass zahlreiche Quelltypen verfügbar sind.",
+        "zweck": "Wähle eine passende Quelle und entscheide vor dem Laden, ob Struktur, Typen oder Zeilen noch aufbereitet werden müssen.",
         "nichtZeigen": [
           "Lokale Dateipfade",
-          "Benutzername oder Profil",
-          "Andere Programme und Benachrichtigungen",
+          "Benutzerprofile und Benachrichtigungen",
           "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
         ]
-      }
+      },
+      "bildAnzeigen": false
     }
   ],
   "praxis": true
@@ -76,52 +83,42 @@
 
 ## Wann brauche ich das?
 
-Daten aus einer neuen Quelle in Power BI verwenden.
+Wähle eine passende Quelle und entscheide vor dem Laden, ob Struktur, Typen oder Zeilen noch aufbereitet werden müssen.
 
 ## Voraussetzungen
 
-Berechtigter Zugriff auf die Datenquelle; gegebenenfalls Servername, Datenbank und passende Anmeldung.
+Zugriff auf deine Datenquelle und Kenntnis ihrer Spalten und Zeilenebene. Die Beispielwerte dienen nur der Erklärung; eine Beispieldatei ist nicht erforderlich.
 
 ## Schritte
 
-1. Öffne **Power BI Desktop → Start → Daten abrufen → Mehr…**.
-2. Wähle den passenden Connector: beispielsweise Excel, Text/CSV, SQL Server, Ordner, SharePoint oder eine unterstützte Onlinedatenquelle. Suche nach dem tatsächlichen Quellsystem.
-3. Trage die vom Connector geforderten Verbindungsangaben ein und melde dich mit dem dafür vorgesehenen Konto an. Gib keine Kennwörter in Abfrageformeln ein.
-4. Wähle, falls angeboten, im **Navigator** die benötigten Tabellen. Prüfe die Vorschau statt pauschal alles auszuwählen.
-5. Wähle **Daten transformieren**, um Spaltennamen, Datentypen und Zeilen vor dem Laden zu prüfen.
-6. Wähle im Editor **Schließen & übernehmen**. Bei geeigneten Quellen kann Import oder DirectQuery angeboten werden; die Betriebsfolgen behandelt der verlinkte Entscheidungsartikel.
+1. **Power BI Desktop → Start → Daten abrufen** öffnen. Wähle die Quelle nach Herkunft der Daten, nicht nach dem gewünschten Diagramm.
+2. **Excel:** Datei wählen und im Navigator möglichst eine benannte Tabelle auswählen. Ein Arbeitsblatt kann zusätzliche Titel, Leerzeilen oder Summen enthalten. Kontrolliere den tatsächlich erkannten Bereich.
+3. **Text/CSV:** Trennzeichen, Dateiursprung/Encoding und Vorschau prüfen. Kennungen mit führenden Nullen vor einer automatischen Zahlumwandlung schützen. Vertiefung: [CSV korrekt importieren](#/wissen/csv-import).
+4. **Ordner:** Gleich aufgebaute Dateien gemeinsam einlesen. Dateiliste vor dem Kombinieren nach Endung und fachlichem Umfang filtern; temporäre Dateien und alte Versionen ausschließen. [Ordnerimport](#/wissen/dateien-kombinieren).
+5. **Datenbank:** Den passenden Connector verwenden, berechtigte Verbindung und benötigte Tabellen/Views wählen. Import liest Daten ein; DirectQuery fragt die Quelle zur Berichtszeit ab und hat andere Anforderungen. [Modus auswählen](#/wissen/import-oder-directquery).
+6. **Laden** wählen, wenn die Vorschau bereits eine saubere Tabelle zeigt. **Daten transformieren** wählen, wenn Typen, Kopfzeile, fehlende Werte oder Struktur geprüft und bearbeitet werden müssen.
+7. Nach dem Import mit dem [Power-Query-Workflow](#/wissen/pq-workflow) weiterarbeiten. Anschließend im Modell Beziehungen und Kennzahlen aufbauen.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
-
-| Quelle | Enthaltener Bereich |
-| --- | --- |
-| Excel-Arbeitsmappe | Tabelle Konten: K001/1000, K002/2000 |
-
-### Aktion
-
-Excel-Connector wählen und ausschließlich Tabelle Konten übernehmen.
-
-### Nachher · Beispielergebnis
-
-| Konto | Bestand |
-| --- | --- |
-| K001 | 1000 |
-| K002 | 2000 |
+| Quelle | Beobachtung | Entscheidung |
+| --- | --- | --- |
+| Excel-Tabelle Konten | Eine Kopfzeile, Kennung als Text, Betrag numerisch | Laden nach Kontrolle möglich |
+| CSV-Auszug | 00123 und 1.250,50 als Text | Transformieren und Typen bewusst festlegen |
+| Monatsordner | Mehrere gleich aufgebaute Dateien | Dateiliste prüfen, dann kombinieren |
 
 ## Ergebnis
 
-Eine Verbindung und die ausgewählten Daten stehen für die weitere Aufbereitung beziehungsweise das Modell bereit.
+Die ausgewählte Quelle steht als Abfrage bereit. Du weißt, ob sie direkt geladen werden kann oder zuerst im Editor geprüft werden muss.
 
 ## Warum funktioniert das?
 
-Ein Connector übersetzt das jeweilige Quellformat in eine tabellarische Vorschau. Die Auswahl begrenzt den Umfang; Transformationen machen die Daten anschließend fachlich nutzbar.
+Ein Connector liefert die Quelldaten. Die gespeicherten Abfrageschritte legen fest, wie sie bei jeder Aktualisierung aufbereitet werden. Laden erzeugt noch kein fachlich korrektes Datenmodell.
 
 ## Typischer Fehler
 
-Daten abrufen auf Excel und CSV reduzieren oder alle Tabellen ungeprüft laden.
+Ein ganzes Arbeitsblatt einschließlich Titel- und Summenzeilen importieren oder mit einer automatisch erkannten Zahlkennung Nullen verlieren.
 
 ## Plausibilitätscheck
 
-Der gewählte Bereich liefert zwei Konten und Summe 3000. Verbindungsart und Aktualisierungszugriff sind bekannt.
+Prüfe Tabellenname, Zeilenzahl, Zeitraum und eine Kontrollsumme gegen die Quelle. Eine Vorschau allein beweist keine Vollständigkeit.

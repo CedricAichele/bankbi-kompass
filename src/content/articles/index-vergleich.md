@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Nachschlagen",
+  "kategorie": "Nachschlagen & Zuordnen",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "VERGLEICH findet eine Position; INDEX liefert den Wert an dieser Position.",
   "ort": "Excel → Formelzelle",
@@ -17,7 +17,6 @@
   ],
   "synonyme": [],
   "verwandteThemen": [
-    "excel-index",
     "xverweis",
     "wennnv"
   ],

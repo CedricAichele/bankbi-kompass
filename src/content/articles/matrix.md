@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Eine Matrix gliedert Measures nach Zeilen- und Spaltendimensionen.",
   "ort": "Power BI → Berichtsansicht → Matrixvisual",

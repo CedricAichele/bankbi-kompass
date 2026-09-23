@@ -1,6 +1,6 @@
 # BankBI Kompass
 
-BankBI Kompass ist ein praxisorientiertes Wissens- und Nachschlagewerk für Datenanalyse, Business Intelligence und Reporting. Der aktuelle Schwerpunkt liegt auf Power BI, Excel und IDA/Cognos-basiertem Reporting. Die Inhalte helfen dabei, typische Aufgaben aus Datenaufbereitung, Analyse, Datenmodellierung, Reporting und Controlling schnell nachzuschlagen und praktisch nachzuvollziehen.
+BankBI Kompass ist ein praxisorientiertes Wissens- und Nachschlagewerk für Datenanalyse, Business Intelligence und Reporting. Der aktuelle Schwerpunkt liegt auf Power BI, Power Query und Excel. IDA ist in Entwicklung und soll langfristig ein wichtiger Bereich werden. Die Inhalte helfen dabei, typische Aufgaben aus Datenaufbereitung, Analyse, Datenmodellierung, Reporting und Controlling schnell nachzuschlagen und praktisch nachzuvollziehen.
 
 **[BankBI Kompass öffnen](https://cedricaichele.github.io/bankbi-kompass/)**
 
@@ -11,7 +11,8 @@ Ein Arbeitswerkzeug für konkrete Fragen: Die Kurzantwort bietet schnelle Orient
 ## Was bietet die Anwendung?
 
 - Zentrale Suche nach Funktionen, Begriffen und Aufgaben.
-- Kataloge für Power BI, Excel und IDA/Cognos-Reportinggrundlagen.
+- Aktive Kataloge für Power BI und Excel; IDA mit eigener Entwicklungsübersicht.
+- Power-Query-Workflow für neue Daten und eine gemeinsame Transformationsbasis für Power BI und Excel.
 - Typische Aufgaben, Probleme & Lösungen, Werkzeugwahl und Datenbegriffe.
 - Schritt-für-Schritt-Anleitungen mit Vorher-/Nachher-Beispielen sowie DAX- und Excel-Formeln.
 - Typische Fehler, Plausibilitätschecks, verwandte Themen und offizielle Dokumentationslinks.
@@ -35,7 +36,7 @@ Die Kurzantwort steht oben. Danach folgen Anlass und Voraussetzungen, konkrete S
 
 **Excel:** Formeln, Datenbereinigung, PivotTables, Power Query und Analyse.
 
-**IDA/Cognos:** Listen, Filter, Parameter, Berechnungen, Aggregationen, Mehrfachzeilen, Joins, Export und übertragbare Reportingprinzipien. Konkrete Bedienmöglichkeiten hängen von Umgebung und Version ab.
+**IDA/Cognos:** In Entwicklung. Der Bereich wird neu aufgebaut; frühere Artikel sind archiviert und nicht Teil des öffentlichen Katalogs. Geplant sind allgemein gehaltene Reporting- und Analysehilfen.
 
 ## Langfristige Entwicklung
 

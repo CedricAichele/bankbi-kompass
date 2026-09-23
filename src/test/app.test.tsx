@@ -109,26 +109,20 @@ describe("Schnelle Bedienung und Routing", () => {
     expect(
       await screen.findByRole("heading", { level: 1, name: "Excel" }),
     ).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: "Daten bereinigen" }));
+    fireEvent.click(screen.getByRole("button", { name: "Daten vorbereiten" }));
     expect(
-      screen.getByRole("link", { name: "Leerzeichen entfernen" }),
+      screen.getByRole("link", { name: "Leerzeichen entfernen: GLÄTTEN" }),
     ).toBeInTheDocument();
     expect(
       screen.queryByRole("link", { name: "SUMMEWENNS" }),
     ).not.toBeInTheDocument();
   });
-  it("IDA öffnet Listenhilfe und kennzeichnet offene Bedienhinweise", async () => {
+  it("IDA zeigt den Entwicklungsstand ohne Artikel", async () => {
     window.location.hash = "/bereich/ida";
     render(<App />);
-    fireEvent.click(
-      await screen.findByRole("link", { name: "Liste erstellen" }),
-    );
-    expect(
-      await screen.findByRole("heading", { level: 1, name: "Liste erstellen" }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("link", { name: "Geltungsbereich ansehen" }),
-    ).toBeInTheDocument();
+    expect(await screen.findByRole("heading", {level: 1, name: "IDA"})).toBeVisible();
+    expect(screen.getByText("In Entwicklung")).toBeVisible();
+    expect(screen.queryByRole("link", {name: "Liste erstellen"})).not.toBeInTheDocument();
   });
   it("erhält alte Direktlinks und migriert alte Favoriten", async () => {
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(["kundenstruktur"]));

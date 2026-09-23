@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Fehler & Plausibilitätsprüfung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Startdatum und Enddatum sind unterschiedliche Rollen. Ein einzelner aktiver Filterweg erklärt nicht beide gleichzeitig.",
   "ort": "Power BI → Kontrolltabelle mit Stichtag, Schlüssel und Measure",

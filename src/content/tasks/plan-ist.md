@@ -6,13 +6,12 @@
   "bereich": "Werkzeugübergreifend",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Typische Aufgaben",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Stimme Plan und Ist auf dieselbe Ebene und denselben Zeitraum ab; zeige dann Abweichung und Planerreichung.",
-  "ort": "Power BI: DIVIDE und Karte · Excel: PivotTable / Formeln · IDA: Gruppenquote",
+  "ort": "Power BI: DIVIDE und Karte · Excel: PivotTable / Formeln ·",
   "tags": [
     "Plan/Ist darstellen",
     "Marktsteuerung",
@@ -21,8 +20,7 @@
   "synonyme": [],
   "verwandteThemen": [
     "divide",
-    "bedingte-formatierung",
-    "ida-quote"
+    "bedingte-formatierung"
   ],
   "kontexte": [
     "Marktsteuerung",

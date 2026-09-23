@@ -2,31 +2,37 @@
 {
   "id": "zusammenfuehren",
   "slug": "zusammenfuehren",
-  "titel": "Tabellen zusammenführen",
+  "titel": "Merge: Tabellen über Schlüssel zusammenführen",
   "bereich": "Power BI",
   "werkzeuge": [
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Zusammenführen ergänzt passende Daten anhand eines Schlüssels. Mehrere rechte Treffer können linke Zeilen vervielfachen.",
+  "kurzbeschreibung": "Merge ergänzt zu einer Tabelle passende Werte einer zweiten Tabelle. Prüfe vor dem Erweitern, wie viele Treffer je Schlüssel erwartet werden.",
   "ort": "Power Query → Start → Abfragen zusammenführen",
   "tags": [
     "Tabellen zusammenführen",
-    "Reporting"
+    "Reporting",
+    "Grundbegriff"
   ],
   "synonyme": [
+    "tabellen verbinden",
+    "mehr zeilen nach merge",
     "zwei tabellen",
+    "Merge",
+    "Join",
     "Werte aus anderer Tabelle holen",
     "zwei Tabellen verbinden",
     "mehrere Zeilen",
     "zwei tabellen zusammen",
-    "wert aus anderer tabelle"
+    "wert aus anderer tabelle",
+    "Tabellen zusammenführen"
   ],
   "verwandteThemen": [
-    "schluessel",
-    "kardinalitaet",
+    "anhaengen",
+    "granularitaet",
     "problem-merge-zeilen",
     "beziehung-oder-merge"
   ],
@@ -34,7 +40,7 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-query/merge-queries-overview"
@@ -43,69 +49,72 @@
     {
       "alt": "Bedienort: Power Query-Editor – Tabellen zusammenführen",
       "caption": "Geplante Aufnahme: Power Query-Editor – Tabellen zusammenführen",
-      "schritt": 5,
+      "schritt": 4,
       "schema": false,
       "status": "todo",
       "todo": "Auswahl und Ergebnis der beschriebenen Operation nachvollziehbar zeigen.",
       "aufnahmeplan": {
         "prioritaet": "Hoch",
         "werkzeug": "Power BI Desktop",
-        "oberflaeche": "Power Query-Editor – Tabellen zusammenführen",
+        "oberflaeche": "Merge: Tabellen über Schlüssel zusammenführen",
         "klickfolge": [
-          "Power BI Desktop → Start → Daten eingeben: Konten und Kunden getrennt mit den unten genannten Daten anlegen.",
-          "Start → Daten transformieren → Konten auswählen.",
-          "Start → Abfragen zusammenführen → Abfragen als neue Abfrage zusammenführen.",
-          "Oben Konten, unten Kunden wählen; jeweils Kunde markieren. Join-Art Linker äußerer Join wählen. Vor OK aufnehmen."
+          "Ziel festlegen: Bestand soll das Segment aus Kunden erhalten. Kunden muss dafür genau eine gültige Segmentzeile je Kundennummer enthalten.",
+          "Schlüssel beider Tabellen auf gleichen Datentyp, Leerzeichen, führende Nullen, fehlende Werte und Eindeutigkeit prüfen. Mehrteilige Schlüssel in derselben Reihenfolge auswählen.",
+          "Bestand auswählen → **Start → Abfragen zusammenführen**. Kunden als rechte Tabelle wählen, Kundennummer in beiden Vorschauen markieren. **Links außen** erhält alle Bestandszeilen.",
+          "Ergebnisspalte über das Doppelpfeil-Symbol **erweitern** und nur Segment auswählen. Erst beim Erweitern können mehrere Treffer mehrere Ergebniszeilen erzeugen.",
+          "Zeilenzahl und Summe vorher/nachher vergleichen. Fehlendes Segment bedeutet hier keinen passenden Treffer; Ursache prüfen, nicht automatisch als gültiges Segment behandeln.",
+          "Bei Mehrfachtreffern prüfen, ob die neue Zeilenebene gewünscht ist. Wenn nur ein Attribut gebraucht wird, rechte Tabelle fachlich eindeutig machen; bei benötigten Details deren Granularität bewusst übernehmen."
         ],
-        "daten": "**Konten**\n\n| Kunde | Konto | Bestand |\n| --- | --- | --- |\n| P001 | K001 | 1000 |\n| P001 | K002 | 2000 |\n| P002 | K003 | 500 |\n\n**Kunden**\n\n| Kunde | Segment |\n| --- | --- |\n| P001 | A |\n| P002 | B |",
+        "daten": "### Vorher\n**Bestand**\n| Kundennummer | Bestand |\n| --- | --- |\n| 1001 | 300 |\n| 1002 | 500 |\n\n**Kunden**\n| Kundennummer | Segment |\n| --- | --- |\n| 1001 | Privat |\n| 1002 | Gewerbe |\n\n### Aktion\nLinks außen verbinden, Segment erweitern.\n\n### Nachher\n| Kundennummer | Bestand | Segment |\n| --- | --- | --- |\n| 1001 | 300 | Privat |\n| 1002 | 500 | Gewerbe |\n\n### Warum entstehen plötzlich mehr Zeilen?\nEine linke Kundenzeile 1001 mit Kundenbestand 300 trifft rechts auf Konten A, B und C. Nach Expand entstehen **3 Zeilen**. Der Kundenbestand 300 steht nun dreimal; eine Summe 900 wäre falsch. Das zusätzliche Kontodetail kann gewünscht sein, die wiederholte Kundenkennzahl ist aber nicht auf dieser Ebene additiv.\n\nBei zwei linken und drei rechten Zeilen desselben Schlüssels entstehen **2 × 3 = 6** Trefferkombinationen. Bei 1:1 bleibt je Treffer eine Zeile, bei 1:n wächst die Zeilenmenge, bei n:m können sich beide Seiten vervielfachen.",
         "sichtbar": [
-          "Konten oben und Kunden unten",
-          "Kunde in beiden Tabellen markiert",
-          "Linker äußerer Join sichtbar"
+          "Überschriften und Werte des aktuellen Artikelbeispiels",
+          "Einstellung und Ergebnis des zugeordneten Schritts"
         ],
-        "ausschnitt": "Power Query-Editor – Tabellen zusammenführen mit Konten mit Kunden über Kunde verbinden; Segment erweitern., Spaltenüberschriften und relevante Optionen. Auf den relevanten Dialog und die lesbaren Tabellenüberschriften begrenzen.",
+        "ausschnitt": "Nur relevante Editorbereiche, Datenvorschau und beschriebene Einstellung lesbar aufnehmen.",
         "dateiname": "pbi-zusammenfuehren.webp",
-        "zweck": "Auswahl und Ergebnis der beschriebenen Operation nachvollziehbar zeigen.",
+        "zweck": "Merge ergänzt zu einer Tabelle passende Werte einer zweiten Tabelle. Prüfe vor dem Erweitern, wie viele Treffer je Schlüssel erwartet werden.",
         "nichtZeigen": [
           "Lokale Dateipfade",
-          "Benutzername oder Profil",
-          "Andere Programme und Benachrichtigungen",
+          "Benutzerprofile und Benachrichtigungen",
           "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
         ]
-      }
+      },
+      "bildAnzeigen": false
     },
     {
       "alt": "Bedienort: Power Query – Tabellenspalte erweitern",
       "caption": "Geplante Aufnahme: Power Query – Tabellenspalte erweitern",
-      "schritt": 6,
+      "schritt": 4,
       "schema": false,
       "status": "todo",
       "todo": "Den zweiten notwendigen Schritt nach dem Merge zeigen.",
       "aufnahmeplan": {
         "prioritaet": "Hoch",
         "werkzeug": "Power BI Desktop",
-        "oberflaeche": "Power Query – Tabellenspalte erweitern",
+        "oberflaeche": "Merge: Tabellen über Schlüssel zusammenführen",
         "klickfolge": [
-          "Konten und Kunden wie im Beispiel laden.",
-          "Merge nach Kunde als linken äußeren Join durchführen.",
-          "Am Kopf der neuen Tabellenspalte das Erweitern-Symbol öffnen und Segment auswählen."
+          "Ziel festlegen: Bestand soll das Segment aus Kunden erhalten. Kunden muss dafür genau eine gültige Segmentzeile je Kundennummer enthalten.",
+          "Schlüssel beider Tabellen auf gleichen Datentyp, Leerzeichen, führende Nullen, fehlende Werte und Eindeutigkeit prüfen. Mehrteilige Schlüssel in derselben Reihenfolge auswählen.",
+          "Bestand auswählen → **Start → Abfragen zusammenführen**. Kunden als rechte Tabelle wählen, Kundennummer in beiden Vorschauen markieren. **Links außen** erhält alle Bestandszeilen.",
+          "Ergebnisspalte über das Doppelpfeil-Symbol **erweitern** und nur Segment auswählen. Erst beim Erweitern können mehrere Treffer mehrere Ergebniszeilen erzeugen.",
+          "Zeilenzahl und Summe vorher/nachher vergleichen. Fehlendes Segment bedeutet hier keinen passenden Treffer; Ursache prüfen, nicht automatisch als gültiges Segment behandeln.",
+          "Bei Mehrfachtreffern prüfen, ob die neue Zeilenebene gewünscht ist. Wenn nur ein Attribut gebraucht wird, rechte Tabelle fachlich eindeutig machen; bei benötigten Details deren Granularität bewusst übernehmen."
         ],
-        "daten": "| Kunde | Konto | Bestand |\n| --- | --- | --- |\n| P001 | K001 | 1000 |\n| P001 | K002 | 2000 |\n| P002 | K003 | 500 |\nKunden: P001/A, P002/B",
+        "daten": "### Vorher\n**Bestand**\n| Kundennummer | Bestand |\n| --- | --- |\n| 1001 | 300 |\n| 1002 | 500 |\n\n**Kunden**\n| Kundennummer | Segment |\n| --- | --- |\n| 1001 | Privat |\n| 1002 | Gewerbe |\n\n### Aktion\nLinks außen verbinden, Segment erweitern.\n\n### Nachher\n| Kundennummer | Bestand | Segment |\n| --- | --- | --- |\n| 1001 | 300 | Privat |\n| 1002 | 500 | Gewerbe |\n\n### Warum entstehen plötzlich mehr Zeilen?\nEine linke Kundenzeile 1001 mit Kundenbestand 300 trifft rechts auf Konten A, B und C. Nach Expand entstehen **3 Zeilen**. Der Kundenbestand 300 steht nun dreimal; eine Summe 900 wäre falsch. Das zusätzliche Kontodetail kann gewünscht sein, die wiederholte Kundenkennzahl ist aber nicht auf dieser Ebene additiv.\n\nBei zwei linken und drei rechten Zeilen desselben Schlüssels entstehen **2 × 3 = 6** Trefferkombinationen. Bei 1:1 bleibt je Treffer eine Zeile, bei 1:n wächst die Zeilenmenge, bei n:m können sich beide Seiten vervielfachen.",
         "sichtbar": [
-          "Neue Tabellenspalte",
-          "Erweitern-Dialog",
-          "Nur Segment ausgewählt"
+          "Überschriften und Werte des aktuellen Artikelbeispiels",
+          "Einstellung und Ergebnis des zugeordneten Schritts"
         ],
-        "ausschnitt": "Power Query – Tabellenspalte erweitern mit Neue Tabellenspalte, Erweitern-Dialog, Nur Segment ausgewählt. Auf den relevanten Dialog und die lesbaren Tabellenüberschriften begrenzen.",
+        "ausschnitt": "Nur relevante Editorbereiche, Datenvorschau und beschriebene Einstellung lesbar aufnehmen.",
         "dateiname": "pbi-merge-erweitern.webp",
-        "zweck": "Den zweiten notwendigen Schritt nach dem Merge zeigen.",
+        "zweck": "Merge ergänzt zu einer Tabelle passende Werte einer zweiten Tabelle. Prüfe vor dem Erweitern, wie viele Treffer je Schlüssel erwartet werden.",
         "nichtZeigen": [
           "Lokale Dateipfade",
-          "Benutzername oder Profil",
-          "Andere Programme und Benachrichtigungen",
+          "Benutzerprofile und Benachrichtigungen",
           "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
         ]
-      }
+      },
+      "bildAnzeigen": false
     }
   ],
   "praxis": true
@@ -114,65 +123,62 @@
 
 ## Wann brauche ich das?
 
-Eine Tabelle anhand passender Schlüssel um Angaben einer anderen Tabelle ergänzen.
+Merge ergänzt zu einer Tabelle passende Werte einer zweiten Tabelle. Prüfe vor dem Erweitern, wie viele Treffer je Schlüssel erwartet werden.
 
 ## Voraussetzungen
 
-Zwei vorhandene Abfragen mit fachlich passenden Schlüsselspalten. Für eine eindeutige Ergänzung muss der Schlüssel in der nachgeschlagenen Tabelle einmalig sein.
+Zugriff auf deine Datenquelle und Kenntnis ihrer Spalten und Zeilenebene. Die Beispielwerte dienen nur der Erklärung; eine Beispieldatei ist nicht erforderlich.
 
 ## Schritte
 
-1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
-2. Prüfe beide Schlüsselspalten **Kunde** auf gleiche Datentypen und Schreibweise. In Kunden muss jeder Schlüssel für dieses Ziel genau einmal vorkommen.
-3. Wähle links **Konten**, dann **Start → Abfragen zusammenführen → Abfragen als neue Abfrage zusammenführen**.
-4. Wähle im Dialog oben Konten, unten Kunden. Markiere in beiden Vorschauen **Kunde**; bei mehreren Schlüsseln gilt dieselbe Auswahlreihenfolge.
-5. Wähle **Linker äußerer Join**: Alle Kontenzeilen sollen bleiben, auch ohne passenden Kunden. Bestätige.
-6. Klicke an der neuen Tabellenspalte auf das **Erweitern-Symbol mit zwei Pfeilen**. Wähle nur **Segment** und bestätige.
-7. Vergleiche Zeilenzahl und Bestandssumme vor/nach dem Erweitern. Prüfe fehlende Segmente sowie mehrfach vorkommende Kundenschlüssel.
+1. Ziel festlegen: Bestand soll das Segment aus Kunden erhalten. Kunden muss dafür genau eine gültige Segmentzeile je Kundennummer enthalten.
+2. Schlüssel beider Tabellen auf gleichen Datentyp, Leerzeichen, führende Nullen, fehlende Werte und Eindeutigkeit prüfen. Mehrteilige Schlüssel in derselben Reihenfolge auswählen.
+3. Bestand auswählen → **Start → Abfragen zusammenführen**. Kunden als rechte Tabelle wählen, Kundennummer in beiden Vorschauen markieren. **Links außen** erhält alle Bestandszeilen.
+4. Ergebnisspalte über das Doppelpfeil-Symbol **erweitern** und nur Segment auswählen. Erst beim Erweitern können mehrere Treffer mehrere Ergebniszeilen erzeugen.
+5. Zeilenzahl und Summe vorher/nachher vergleichen. Fehlendes Segment bedeutet hier keinen passenden Treffer; Ursache prüfen, nicht automatisch als gültiges Segment behandeln.
+6. Bei Mehrfachtreffern prüfen, ob die neue Zeilenebene gewünscht ist. Wenn nur ein Attribut gebraucht wird, rechte Tabelle fachlich eindeutig machen; bei benötigten Details deren Granularität bewusst übernehmen.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
-
-**Konten**
-
-| Kunde | Konto | Bestand |
-| --- | --- | --- |
-| P001 | K001 | 1000 |
-| P001 | K002 | 2000 |
-| P002 | K003 | 500 |
+### Vorher
+**Bestand**
+| Kundennummer | Bestand |
+| --- | --- |
+| 1001 | 300 |
+| 1002 | 500 |
 
 **Kunden**
-
-| Kunde | Segment |
+| Kundennummer | Segment |
 | --- | --- |
-| P001 | A |
-| P002 | B |
+| 1001 | Privat |
+| 1002 | Gewerbe |
 
 ### Aktion
+Links außen verbinden, Segment erweitern.
 
-Konten mit Kunden über Kunde verbinden; Segment erweitern.
+### Nachher
+| Kundennummer | Bestand | Segment |
+| --- | --- | --- |
+| 1001 | 300 | Privat |
+| 1002 | 500 | Gewerbe |
 
-### Nachher · Beispielergebnis
+### Warum entstehen plötzlich mehr Zeilen?
+Eine linke Kundenzeile 1001 mit Kundenbestand 300 trifft rechts auf Konten A, B und C. Nach Expand entstehen **3 Zeilen**. Der Kundenbestand 300 steht nun dreimal; eine Summe 900 wäre falsch. Das zusätzliche Kontodetail kann gewünscht sein, die wiederholte Kundenkennzahl ist aber nicht auf dieser Ebene additiv.
 
-| Kunde | Konto | Bestand | Segment |
-| --- | --- | --- | --- |
-| P001 | K001 | 1000 | A |
-| P001 | K002 | 2000 | A |
-| P002 | K003 | 500 | B |
+Bei zwei linken und drei rechten Zeilen desselben Schlüssels entstehen **2 × 3 = 6** Trefferkombinationen. Bei 1:1 bleibt je Treffer eine Zeile, bei 1:n wächst die Zeilenmenge, bei n:m können sich beide Seiten vervielfachen.
 
 ## Ergebnis
 
-Passende Datensätze werden per Schlüssel zugeordnet; ausgewählte Felder der zweiten Tabelle ergänzen die erste.
+Die beiden Bestandszeilen erhalten ihr Segment aus den Stammdaten. Die Tabellen wurden über den Kundenschlüssel zugeordnet.
 
 ## Warum funktioniert das?
 
-Ein Join findet alle passenden Zeilen, nicht automatisch genau eine. Zwei Kundentreffer würden jede betroffene Kontenzeile beim Erweitern verdoppeln. Die Join-Art bestimmt zusätzlich, welche nicht passenden Zeilen erhalten bleiben.
+Ein Join ordnet jede passende Kombination von Schlüsselwerten zu. Die Kardinalität bestimmt die Zahl der Treffer; „Merge = Spalten ergänzen“ bedeutet daher keine Garantie unveränderter Zeilenzahl.
 
 ## Typischer Fehler
 
-Mehrfachtreffer mit Duplikate entfernen nachträglich verstecken oder inneren Join wählen und fehlende Schlüssel unbemerkt verlieren.
+Nach einem Expand nur die neuen Attribute anschauen und vervielfachte Beträge unbemerkt summieren.
 
 ## Plausibilitätscheck
 
-Drei Konten bleiben drei Zeilen und Summe 3500. Für P001 zweimal Segment A, für P002 B.
+Im Segmentbeispiel 2 → 2 Zeilen und Summe 800. Für jeden fehlenden oder mehrfachen Treffer liegt eine Erklärung vor. Prüfe zusätzlich [Mehr Zeilen nach Merge](#/wissen/problem-merge-zeilen).

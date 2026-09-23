@@ -17,7 +17,8 @@
   "synonyme": [
     "sameperiodlastyear",
     "dateadd",
-    "vorjahreswert"
+    "vorjahreswert",
+    "DATEADD und SAMEPERIODLASTYEAR"
   ],
   "verwandteThemen": [
     "vorjahr",

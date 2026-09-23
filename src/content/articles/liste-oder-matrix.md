@@ -20,8 +20,7 @@
   ],
   "verwandteThemen": [
     "tabelle",
-    "matrix",
-    "ida-excel-liste"
+    "matrix"
   ],
   "kontexte": [
     "Reporting"

@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Filtern und Listen",
+  "kategorie": "Filtern & eindeutige Listen",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "EINDEUTIG gibt unterschiedliche Werte oder Zeilenkombinationen als Liste aus.",
   "ort": "Excel → freie Formelzelle; Microsoft 365 / Excel 2021 oder neuer",
@@ -22,7 +22,7 @@
   ],
   "verwandteThemen": [
     "zaehlenwenn",
-    "excel-dubletten-entfernen",
+    "excel-dubletten-finden",
     "distinctcount",
     "eine-zeile-je-person"
   ],
@@ -145,3 +145,8 @@ Erwartete Ausgabe: **P001; P002**. Die Ausgangsliste umfasst drei Kontenzeilen, 
 ## Argumente verstehen
 
 **A2:A4** ist die Ausgangsmatrix. Ohne weitere Argumente werden unterschiedliche Zeilen zurückgegeben.
+
+
+## Eindeutige Kombinationen
+
+EINDEUTIG(A2:B4) betrachtet die gesamte Kombination aus beiden Spalten. Bei Kunde/Konto mit 1001/A, 1001/B und 1002/C bleiben drei Kombinationen erhalten. EINDEUTIG(A2:A4) liefert dagegen nur die zwei Kunden. Wähle den Bereich passend zum Ziel; eine Kontenliste und eine Kundenliste haben unterschiedliche Granularität.

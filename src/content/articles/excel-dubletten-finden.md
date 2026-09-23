@@ -2,14 +2,14 @@
 {
   "id": "excel-dubletten-finden",
   "slug": "excel-dubletten-finden",
-  "titel": "Duplikate finden",
+  "titel": "Duplikate in Excel prüfen und gezielt entfernen",
   "bereich": "Excel",
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten bereinigen",
+  "kategorie": "Daten vorbereiten",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Markiere Wiederholungen anhand des fachlichen Schlüssels, bevor du Zeilen löschst.",
+  "kurzbeschreibung": "Prüfe Wiederholungen am fachlichen Schlüssel und entferne nur bestätigte doppelte Datensätze. Mehrere Konten eines Kunden bleiben erhalten.",
   "ort": "Excel → Hilfsspalte oder Start → Bedingte Formatierung → Doppelte Werte",
   "tags": [
     "Duplikate finden",
@@ -20,7 +20,6 @@
     "Dubletten"
   ],
   "verwandteThemen": [
-    "excel-dubletten-entfernen",
     "granularitaet"
   ],
   "kontexte": [
@@ -84,34 +83,36 @@ Eine vorhandene Excel-Liste mit geklärter Zeilenebene und bekanntem Aufbau.
 
 ## Schritte
 
-1. Markiere die zu prüfende Schlüsselspalte ohne Überschrift, im Beispiel **A2:A4**.
-2. Wähle **Start → Bedingte Formatierung → Regeln zum Hervorheben von Zellen → Doppelte Werte**.
-3. Wähle eine gut erkennbare Formatierung und bestätige.
-4. Prüfe, ob die mehrfach markierten Werte fachlich erlaubt sind. Kunde P001 mit zwei verschiedenen Konten ist kein doppelter Kontodatensatz.
+1. Lege die Zeilenebene fest: bei einer Kontenliste identifizieren Konto und gegebenenfalls Stichtag den Datensatz, nicht Kunde allein.
+2. Markiere die Kontoschlüssel und wähle **Start → Bedingte Formatierung → Regeln zum Hervorheben von Zellen → Doppelte Werte**. Bei mehrteiligen Schlüsseln mit ZÄHLENWENNS die Kombination prüfen.
+3. Vergleiche die vollständigen auffälligen Zeilen. Gleicher Kunde mit anderem Konto ist zulässig; gleicher Schlüssel mit unterschiedlichen Beträgen benötigt eine fachliche Klärung.
+4. Nur für bestätigte Duplikate: sichere die Ausgangsliste, markiere die gesamte Tabelle und wähle **Daten → Duplikate entfernen**. Die gewählten Prüfspalten bestimmen die Gleichheit; die übrigen Spalten werden mit der Zeile entfernt.
+5. Bei vollständig identischen Zeilen alle fachlich relevanten Spalten prüfen. Bei widersprüchlichen Versionen zuerst eine Auswahlregel festlegen, statt einfach die erste Zeile zu behalten.
+6. Notiere entfernte Zeilenzahl und Summendifferenz und vergleiche sie mit den bestätigten Duplikaten.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
-
+### Vorher
 | Kunde | Konto | Bestand |
 | --- | --- | --- |
-| P001 | K001 | 1000 |
-| P001 | K002 | 2000 |
-| P002 | K003 | 500 |
+| 1001 | A | 100 |
+| 1001 | B | 200 |
+| 1002 | C | 500 |
+| 1002 | C | 500 |
 
 ### Aktion
+Konto C als Wiederholung markieren. Beide Zeilen sind vollständig identisch; die zusätzliche Lieferung entfernen. Beide Konten von 1001 behalten.
 
-Kundenspalte auf doppelte Werte markieren.
-
-### Nachher · Beispielergebnis
-
-| Beispielergebnis |
-| --- |
-| P001 in beiden Zeilen markiert; P002 nicht markiert. |
+### Nachher
+| Kunde | Konto | Bestand |
+| --- | --- | --- |
+| 1001 | A | 100 |
+| 1001 | B | 200 |
+| 1002 | C | 500 |
 
 ## Ergebnis
 
-Gleiche Zellwerte werden hervorgehoben; die Datensätze bleiben unverändert.
+Eine bestätigte Doppelzeile wurde entfernt; mehrere gültige Konten eines Kunden bleiben erhalten.
 
 ## Warum funktioniert das?
 
@@ -123,4 +124,4 @@ Markierte Kundenzeilen ungeprüft löschen.
 
 ## Plausibilitätscheck
 
-Zwei Markierungen zeigen einen zweimal vorkommenden Kunden, nicht zwei fehlerhafte Konten.
+4 → 3 Zeilen; 1300 → 800 Bestand. Der Abgang 500 entspricht genau der zusätzlichen C-Zeile.

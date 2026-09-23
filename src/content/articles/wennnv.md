@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Logik und Fehler",
+  "kategorie": "Logik & Fehlerbehandlung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "WENNNV behandelt gezielt #NV und lässt andere Fehler sichtbar.",
   "ort": "Excel → Formelzelle",

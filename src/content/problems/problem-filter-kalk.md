@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Eine FILTER-Formel scheitert bei leerer Auswahl. Kein Treffer und kein Ersatzwert für eine leere Ergebnismenge.",
   "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",

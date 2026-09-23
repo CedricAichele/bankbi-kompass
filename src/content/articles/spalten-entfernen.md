@@ -2,32 +2,32 @@
 {
   "id": "spalten-entfernen",
   "slug": "spalten-entfernen",
-  "titel": "Spalten entfernen",
+  "titel": "Benötigte Spalten bewusst auswählen",
   "bereich": "Power BI",
   "werkzeuge": [
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Entferne nur Spalten, die weder für Beziehungen noch für spätere Analysen benötigt werden.",
+  "kurzbeschreibung": "Reduziere eine breite Tabelle auf relevante Felder, ohne Schlüssel, Zeitbezug oder später benötigte Prüfwerte zu verlieren.",
   "ort": "Power Query → Spalten markieren → Spalten entfernen",
   "tags": [
     "Spalten entfernen",
     "Reporting"
   ],
-  "synonyme": [],
+  "synonyme": [
+    "Spalten entfernen"
+  ],
   "verwandteThemen": [
-    "power-query",
-    "schluessel",
-    "granularitaet",
-    "beziehungen"
+    "pq-workflow",
+    "schluessel"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-query/choose-remove-columns"
@@ -43,26 +43,29 @@
       "aufnahmeplan": {
         "prioritaet": "Hoch",
         "werkzeug": "Power BI Desktop",
-        "oberflaeche": "Power Query – Spalten entfernen",
+        "oberflaeche": "Benötigte Spalten bewusst auswählen",
         "klickfolge": [
-          "Power BI Desktop öffnen. Die unten aufgeführten Tabellen über Start → Daten eingeben mit exakt diesen Spaltennamen und Werten anlegen; danach Start → Daten transformieren öffnen.",
-          "Notiz im Spaltenkopf markieren.",
-          "Start → Spalten entfernen: das Auswahlmenü öffnen. Noch keine Option anklicken."
+          "Auswertungsziel festlegen und benötigte Schlüssel, Merkmale, Messgrößen und Zeitspalten auswählen.",
+          "**Spalten entfernen** löscht markierte Spalten. Geeignet, wenn wenige eindeutig unnötige Spalten entfallen sollen.",
+          "**Andere Spalten entfernen** behält ausschließlich markierte Spalten. Geeignet für sehr breite Quellen, wenn nur wenige Felder gebraucht werden.",
+          "Schemaänderungen bedenken: Bei einer Auswahl bleiben neue Quellspalten außen vor. Fehlt eine erwartete Spalte oder wird sie umbenannt, kann die Aktualisierung fehlschlagen. Eine reine Löschliste kann neue, unerwünschte Spalten mitladen.",
+          "Spaltennamen und letzte Abfrageschritte prüfen; bei einer Quellenänderung bewusst entscheiden, ob die Auswahl angepasst werden muss."
         ],
-        "daten": "| Konto | Bestand | Notiz |\n| --- | --- | --- |\n| K001 | 1000 | alt |\n| K002 | 2000 | alt |",
+        "daten": "### Vorher\n| Konto | Stichtag | Bestand | Importnotiz |\n| --- | --- | --- | --- |\n| A | 31.01.2026 | 100 | Datei 1 |\n\n### Aktion\nKonto, Stichtag und Bestand markieren → Andere Spalten entfernen.\n\n### Nachher\n| Konto | Stichtag | Bestand |\n| --- | --- | --- |\n| A | 31.01.2026 | 100 |",
         "sichtbar": [
-          "Markierte Notiz-Spalte und Optionen Spalten entfernen / Andere Spalten entfernen"
+          "Überschriften und Werte des aktuellen Artikelbeispiels",
+          "Einstellung und Ergebnis des zugeordneten Schritts"
         ],
-        "ausschnitt": "Geöffneten Dialog beziehungsweise Menü mit den genannten Einstellungen und den relevanten Spaltenüberschriften aufnehmen. Text bei 100 % lesbar halten; keine unnötige Leerfläche.",
+        "ausschnitt": "Nur relevante Editorbereiche, Datenvorschau und beschriebene Einstellung lesbar aufnehmen.",
         "dateiname": "pbi-spalten-entfernen.webp",
-        "zweck": "Bedienort und Auswahl für Spalten entfernen zeigen.",
+        "zweck": "Reduziere eine breite Tabelle auf relevante Felder, ohne Schlüssel, Zeitbezug oder später benötigte Prüfwerte zu verlieren.",
         "nichtZeigen": [
           "Lokale Dateipfade",
-          "Benutzername oder Profil",
-          "Andere Programme und Benachrichtigungen",
+          "Benutzerprofile und Benachrichtigungen",
           "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
         ]
-      }
+      },
+      "bildAnzeigen": false
     }
   ],
   "praxis": true
@@ -71,52 +74,47 @@
 
 ## Wann brauche ich das?
 
-Nicht benötigte Felder aus einer Abfrage entfernen.
+Reduziere eine breite Tabelle auf relevante Felder, ohne Schlüssel, Zeitbezug oder später benötigte Prüfwerte zu verlieren.
 
 ## Voraussetzungen
 
-Eine geladene Abfrage mit den benötigten Spalten. Die folgenden Tabellen sind frei erfundene Beispiele.
+Zugriff auf deine Datenquelle und Kenntnis ihrer Spalten und Zeilenebene. Die Beispielwerte dienen nur der Erklärung; eine Beispieldatei ist nicht erforderlich.
 
 ## Schritte
 
-1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
-2. Markiere die Überschrift **Notiz**. Mehrere Spalten markierst du mit gedrückter Strg-Taste.
-3. Wähle **Start → Spalten entfernen → Spalten entfernen**. Die markierten Spalten verschwinden.
-4. Alternative: Markiere **Konto** und **Bestand** und wähle **Andere Spalten entfernen**. Damit bleiben ausschließlich die markierten Spalten erhalten.
-5. Kontrolliere die verbliebenen Überschriften und die unveränderte Zeilenzahl.
+1. Auswertungsziel festlegen und benötigte Schlüssel, Merkmale, Messgrößen und Zeitspalten auswählen.
+2. **Spalten entfernen** löscht markierte Spalten. Geeignet, wenn wenige eindeutig unnötige Spalten entfallen sollen.
+3. **Andere Spalten entfernen** behält ausschließlich markierte Spalten. Geeignet für sehr breite Quellen, wenn nur wenige Felder gebraucht werden.
+4. Schemaänderungen bedenken: Bei einer Auswahl bleiben neue Quellspalten außen vor. Fehlt eine erwartete Spalte oder wird sie umbenannt, kann die Aktualisierung fehlschlagen. Eine reine Löschliste kann neue, unerwünschte Spalten mitladen.
+5. Spaltennamen und letzte Abfrageschritte prüfen; bei einer Quellenänderung bewusst entscheiden, ob die Auswahl angepasst werden muss.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
-
-| Konto | Bestand | Notiz |
-| --- | --- | --- |
-| K001 | 1000 | alt |
-| K002 | 2000 | alt |
+### Vorher
+| Konto | Stichtag | Bestand | Importnotiz |
+| --- | --- | --- | --- |
+| A | 31.01.2026 | 100 | Datei 1 |
 
 ### Aktion
+Konto, Stichtag und Bestand markieren → Andere Spalten entfernen.
 
-Notiz entfernen.
-
-### Nachher · Beispielergebnis
-
-| Konto | Bestand |
-| --- | --- |
-| K001 | 1000 |
-| K002 | 2000 |
+### Nachher
+| Konto | Stichtag | Bestand |
+| --- | --- | --- |
+| A | 31.01.2026 | 100 |
 
 ## Ergebnis
 
-Die Abfrage enthält nur noch die benötigten Spalten.
+Das Ergebnis enthält nur Konto, Stichtag und Bestand. Die unnötige Importnotiz ist entfernt.
 
 ## Warum funktioniert das?
 
-Eine Spaltenauswahl ändert die Breite einer Tabelle, nicht die Ebene ihrer Zeilen. Schlüssel müssen erhalten bleiben, solange spätere Verknüpfungen sie benötigen.
+Eine explizite Spaltenauswahl definiert den erwarteten Aufbau des Ergebnisses. Sie ersetzt keine Prüfung auf Änderungen des Quellschemas.
 
 ## Typischer Fehler
 
-Andere Spalten entfernen behält die Auswahl; Spalten entfernen löscht sie. Nicht verwechseln.
+Stichtag entfernen, obwohl dieselben Konten monatlich wiederkehren.
 
 ## Plausibilitätscheck
 
-Zwei Zeilen und Bestandssumme 3.000 bleiben erhalten.
+Zeilenzahl und Bestandssumme bleiben identisch, der fachliche Schlüssel ist vollständig.

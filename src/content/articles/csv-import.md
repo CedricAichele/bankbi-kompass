@@ -8,7 +8,7 @@
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Daten importieren",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Lade CSV über den Importdialog und prüfe Trennzeichen, Zeichencodierung und Datentypen.",
   "ort": "Power BI: Daten abrufen → Text/CSV · Excel: Daten → Aus Text/CSV",
@@ -18,14 +18,14 @@
   "synonyme": [
     "csv",
     "csv öffnen",
-    "csv korrekt laden"
+    "csv korrekt laden",
+    "CSV korrekt importieren"
   ],
   "verwandteThemen": [
     "daten-laden",
     "datenbereinigung",
-    "pq-ueberschriften",
-    "excel-zahl-text",
-    "ida-csv"
+    "pq-workflow",
+    "excel-zahl-text"
   ],
   "kontexte": [
     "Reporting"
@@ -87,7 +87,7 @@ Zugriff auf die gewünschte Quelle und Kenntnis ihres fachlichen Aufbaus.
 
 ## Schritte
 
-1. Wähle in Power BI **Start → Daten abrufen → Text/CSV** und die gewünschte Datei.
+1. In Excel: **Daten → Daten abrufen → Aus Datei → Aus Text/CSV**; Abschluss über **Schließen & laden**. Wähle in Power BI **Start → Daten abrufen → Text/CSV** und die gewünschte Datei.
 2. Prüfe die Vorschau. Wähle **Semikolon** als Trennzeichen für das Beispiel. Stelle den Dateiursprung passend zur tatsächlichen Codierung ein, zum Beispiel **UTF-8**, wenn die Datei so gespeichert wurde.
 3. Setze die Datentyperkennung möglichst auf **Datentypen nicht erkennen**, damit Kennungen zunächst Text bleiben. Wähle **Daten transformieren**.
 4. Prüfe, ob Konto, Betrag und Datum bereits Überschriften sind. Nur sonst **Erste Zeile als Überschriften verwenden**.

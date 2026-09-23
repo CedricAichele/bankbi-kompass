@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Filtern und Listen",
+  "kategorie": "Filtern & eindeutige Listen",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "SORTIERENNACH erzeugt eine dynamisch sortierte Ergebnisliste anhand separater Sortierbereiche.",
   "ort": "Excel Desktop → Datenliste / Formelzelle",

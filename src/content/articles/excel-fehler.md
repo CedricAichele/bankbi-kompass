@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Logik und Fehler",
+  "kategorie": "Logik & Fehlerbehandlung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "WENN liefert je nach wahrer oder falscher Bedingung eines von zwei Ergebnissen.",
   "ort": "Excel → Formelzelle",

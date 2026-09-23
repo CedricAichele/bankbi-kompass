@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "DAX & Measures",
+  "kategorie": "Zeitintelligenz",
   "schwierigkeit": "Fortgeschritten",
   "kurzbeschreibung": "YTD kumuliert eine Bewegungskennzahl seit Jahresbeginn bis zum letzten Datum der Auswahl.",
   "ort": "Power BI → Neues Measure; markierte Datumstabelle mit aktiver Beziehung",

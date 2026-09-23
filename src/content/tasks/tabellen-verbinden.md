@@ -6,13 +6,12 @@
   "bereich": "Werkzeugübergreifend",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Typische Aufgaben",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Wähle nach dem Ziel: Filterweg im Modell, Spalten über Schlüssel ergänzen oder gleichartige Zeilen untereinander setzen.",
-  "ort": "Power BI / Excel / IDA: zuerst gewünschte Ergebnisform festlegen",
+  "ort": "Power BI / Excel",
   "tags": [
     "Zwei Tabellen verbinden",
     "Reporting"
@@ -26,8 +25,7 @@
     "zusammenfuehren",
     "anhaengen",
     "beziehungen",
-    "xverweis",
-    "ida-join-pruefen"
+    "xverweis"
   ],
   "kontexte": [
     "Reporting"

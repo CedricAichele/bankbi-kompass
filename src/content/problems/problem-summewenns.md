@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Summe bleibt 0 oder ist unerwartet hoch. Kriterien greifen nicht, Beträge sind Text oder Zeitkriterium fehlt.",
   "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",

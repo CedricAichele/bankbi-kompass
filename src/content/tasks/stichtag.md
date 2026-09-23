@@ -6,13 +6,12 @@
   "bereich": "Werkzeugübergreifend",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Typische Aufgaben",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein Bestand ist eine Momentaufnahme. Wähle einen definierten Stichtag; addiere nicht mehrere Monatsbestände.",
-  "ort": "Power BI: Stichtags-Slicer · Excel: Datumskriterium · IDA: Stichtagsfilter",
+  "ort": "Power BI: Stichtags-Slicer · Excel: Datumskriterium ·",
   "tags": [
     "Bestand zum Stichtag",
     "Bestandsanalyse",
@@ -27,8 +26,7 @@
   "verwandteThemen": [
     "datumstabelle",
     "sum",
-    "summewenns",
-    "ida-filter"
+    "summewenns"
   ],
   "kontexte": [
     "Bestandsanalyse",

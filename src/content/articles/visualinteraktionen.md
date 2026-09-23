@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Lege je Zielvisual fest, ob eine Auswahl filtern, hervorheben oder keinen Einfluss haben soll.",
   "ort": "Power BI Desktop → Quellvisual wählen → Format → Interaktionen bearbeiten",

@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein Prozentformat stellt den Dezimalwert 0,95 als 95 % dar. Die Formel bleibt numerisch.",
   "ort": "Power BI Desktop → Berichtsansicht",

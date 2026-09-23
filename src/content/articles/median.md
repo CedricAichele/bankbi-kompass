@@ -6,22 +6,19 @@
   "bereich": "Datenanalyse",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Berechnungen",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Der Median ist der mittlere Wert der sortierten Liste und reagiert weniger stark auf einzelne Ausreißer.",
-  "ort": "Excel: MEDIAN · IDA: allgemeines Konzept; native Funktion ungeprüft",
+  "ort": "Excel: MEDIAN ·; native Funktion ungeprüft",
   "tags": [
     "Median statt Durchschnitt?",
     "Prozessanalyse"
   ],
   "synonyme": [],
   "verwandteThemen": [
-    "dax-median",
-    "ida-durchschnitt",
-    "ida-vorgang"
+    "dax-median"
   ],
   "kontexte": [
     "Prozessanalyse"
@@ -79,7 +76,7 @@ Der Median teilt die geordnete Beobachtungsmenge in zwei Hälften und wird durch
 
 ## Typischer Fehler
 
-Ohne Beleg behaupten, dass IDA eine bestimmte MEDIAN-Funktion anbietet. Bei Bedarf geprüfte Excel-Weiterverarbeitung nutzen.
+Median mit Durchschnitt gleichsetzen oder unterschiedlich große Gruppenmediane ungewichtet zu einem Gesamtmedian zusammenrechnen.
 
 ## Plausibilitätscheck
 

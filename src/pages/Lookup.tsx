@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, Navigate, useParams, useSearchParams } from "react-router-dom";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -10,14 +10,19 @@ import {
   Table2,
   ListFilter,
   Lightbulb,
-  ShieldCheck,
 } from "lucide-react";
 import { contents, byId } from "../content";
-import { toolsCatalog, frequent, type Tool } from "../content/catalog";
+import { toolsCatalog, powerQueryGroups, frequent, type Tool } from "../content/catalog";
 import { contexts } from "../content/schema";
 import { searchContent } from "../lib/search";
 import { EntryList, SearchForm, Empty } from "../components/ReferenceLists";
 import { DecisionTools } from "../components/DecisionTools";
+export function IdaPage() {
+  return <article className="note-list"><header className="page-heading"><span className="eyebrow">In Entwicklung</span><h1>IDA</h1><p>Der IDA-Bereich wird derzeit neu aufgebaut.</p></header><h2>Geplante Themen</h2><p>Hier sollen allgemein gehaltene Inhalte zu folgenden Themen entstehen:</p><ul>{["Listen und Auswertungen","Filterlogik","Parameter","Berechnungen","Aggregationen","Mehrfachzeilen und Joins","Export","Plausibilitätsprüfung","Berichtsbetrieb"].map(x=><li key={x}>{x}</li>)}</ul><p>IDA soll langfristig ein wichtiger Teil von BankBI Kompass werden. Aktuell sind hier noch keine Anleitungen veröffentlicht.</p><p><Link to="/bereich/power-bi">Zum Power-BI-Katalog</Link> · <Link to="/bereich/excel">Zum Excel-Katalog</Link></p></article>;
+}
+export function PowerQueryPage() {
+  return <><header className="page-heading"><span className="eyebrow">POWER BI · GEMEINSAME TRANSFORMATIONSLOGIK MIT EXCEL</span><h1>Power Query & Datenaufbereitung</h1><p>Von einer neuen Quelle zu einer nachvollziehbar aufbereiteten Tabelle. Wähle einen Arbeitsablauf oder schlage eine konkrete Transformation nach.</p></header><SearchForm /><section className="orientation"><h2>Neue Daten geladen? Starte hier.</h2><p><Link to="/wissen/pq-workflow">Daten in Power Query aufbereiten: der vollständige Workflow →</Link></p><ol><li>Profiling einschalten und Datentypen prüfen</li><li>Schlüssel, NULL-Werte und Dubletten verstehen</li><li>Spalten reduzieren und Text bereinigen</li><li>Struktur prüfen, Tabellen bei Bedarf kombinieren</li><li>Ergebnis plausibilisieren und laden</li></ol><p>In Excel unterscheiden sich Einstieg und Ladeziel: <Link to="/wissen/excel-power-query">Power Query in Excel verwenden</Link>.</p></section><div className="catalog-grid">{powerQueryGroups.map(g=><section className="catalog-group" key={g.title}><h2>{g.title}</h2><ul>{g.items.map(x=><li key={x.id}><Link to={"/wissen/"+x.id}><span>{x.label}</span><ChevronRight size={16}/></Link></li>)}</ul>{g.title === "Abfragen organisieren" && <p><Link to="/wissen/power-query">Angewendete Schritte verstehen und bearbeiten</Link></p>}{g.title === "Daten bereinigen" && <p>Werte ersetzen und Spalten teilen findest du in der Textbereinigung; Überschriften im Workflow.</p>}{g.title === "Fehler & Kontrolle" && <p><Link to="/wissen/pq-workflow">Abschlusskontrolle: Zeilen, Schlüssel, Fehler und Summen</Link></p>}</section>)}</div></>;
+}
 export function HomePage() {
   return (
     <>
@@ -25,6 +30,7 @@ export function HomePage() {
         <span className="eyebrow">DATENANALYSE · BUSINESS INTELLIGENCE · REPORTING</span>
         <h1>Was möchtest du machen oder finden?</h1>
         <p>BankBI Kompass hilft dir, Daten aufzubereiten, Auswertungen zu verstehen und Fehler zu lösen – mit konkreten Schritten und nachvollziehbaren Beispielen.</p>
+        <p><strong>Aktueller Schwerpunkt: Power BI und Power Query.</strong> Excel ist als Praxiskatalog verfügbar; IDA wird neu aufgebaut.</p>
         <SearchForm prominent />
         <p>Suche nach einer Funktion oder deiner Frage, etwa „summe stimmt nicht“ oder „zwei tabellen verbinden“.</p>
         <p>Ein unabhängiges Praxisprojekt von <Link to="/ueber">Cedric Aichele</Link> – Wirtschaftsingenieur mit Schwerpunkt Controlling und Datenanalyse.</p>
@@ -70,8 +76,8 @@ export function HomePage() {
             "eine-zeile-je-person",
             "personen-zaehlen",
             "stichtag",
-            "datenqualitaet",
-            "dateien-zusammenfassen",
+            "pq-workflow",
+            "dateien-kombinieren",
           ].map((id) => byId(id)!)}
         />
       </section>
@@ -93,7 +99,7 @@ export function HomePage() {
 function ToolOverview({ tool }: { tool: Tool }) {
   const picks =
     tool.name === "Power BI"
-      ? ["daten-laden", "beziehungen", "measure", "summe-zu-hoch"]
+      ? ["pq-workflow", "pq-profiling", "beziehungen", "measure"]
       : tool.name === "Excel"
         ? [
             "xverweis",
@@ -101,7 +107,7 @@ function ToolOverview({ tool }: { tool: Tool }) {
             "pivottable",
             "dateien-kombinieren",
           ]
-        : ["reporting", "ida-filter", "ida-join-pruefen", "ida-excel-export"];
+        : [];
   return (
     <div className={"tool-panel " + tool.slug}>
       <div className="tool-title">
@@ -120,6 +126,7 @@ function ToolOverview({ tool }: { tool: Tool }) {
         </Link>
       </div>
       <p>{tool.description}</p>
+      {tool.name === "Power BI" && <Link className="tool-all" to="/power-query">Power Query & Datenaufbereitung <ArrowRight size={15} /></Link>}
       <div className="quick-links">
         {picks.map((id) => (
           <Link key={id} to={"/wissen/" + id}>
@@ -129,7 +136,7 @@ function ToolOverview({ tool }: { tool: Tool }) {
         ))}
       </div>
       <Link className="tool-all" to={"/bereich/" + tool.slug}>
-        Alle Themen <ArrowRight size={15} />
+        {tool.name === "IDA" ? "Entwicklungsstand ansehen" : "Alle Themen"} <ArrowRight size={15} />
       </Link>
     </div>
   );
@@ -143,6 +150,7 @@ export function ToolPage() {
     return (
       <Empty text="Dieses Werkzeug gibt es nicht. Nutze die Navigation oder Suche." />
     );
+  if (tool.name === "IDA") return <IdaPage />;
   return (
     <>
       <header className="page-heading">
@@ -151,16 +159,8 @@ export function ToolPage() {
         <p>{tool.description}</p>
       </header>
       <SearchForm />
-      {tool.name === "IDA" && (
-        <div className="scope-note">
-          <ShieldCheck size={19} />
-          <p>
-            Konkrete Menübezeichnungen können je Umgebung und Version abweichen.
-            Interne Systemdetails und nicht öffentlich belegbare Bedienwege werden nicht veröffentlicht.{" "}
-            <Link to="/ida-hinweise">Geltungsbereich ansehen</Link>.
-          </p>
-        </div>
-      )}
+      {tool.name === "Power BI" && <section className="orientation"><h2>Neu mit Power BI?</h2><p>Eine Orientierung vom Import bis zur verlässlichen Auswertung:</p><ol>{["daten-laden","power-query","pq-workflow","fakt-dimension","beziehungen","measure","filterkontext","balkendiagramm","summe-zu-hoch"].map(id=><li key={id}><Link to={"/wissen/"+id}>{byId(id)!.titel}</Link></li>)}</ol><Link to="/power-query">Power Query & Datenaufbereitung: alle Themen →</Link></section>}
+      {tool.name === "Excel" && <section className="orientation"><h2>Von der Liste zur Auswertung</h2><p><Link to="/wissen/excel-liste-vorbereiten">Daten vorbereiten</Link> → <Link to="/wissen/xverweis">Werte zuordnen</Link> → <Link to="/wissen/pivottable">Auswerten und prüfen</Link>. Wiederkehrende Lieferungen mit <Link to="/wissen/excel-power-query">Excel Power Query</Link> aufbereiten.</p></section>}
       <div className="group-tabs" aria-label="Tätigkeitsgruppen">
         <button aria-pressed={!group} onClick={() => setParams({})}>
           Alle
@@ -185,21 +185,24 @@ export function ToolPage() {
               <section key={g.title} className="catalog-group">
                 <h2>
                   {g.title}
-                  <span>{g.items.length}</span>
                 </h2>
+                {g.title === "Power Query & Datenaufbereitung" && <p><Link to="/power-query">Zur vollständigen Power-Query-Übersicht →</Link></p>}
                 <p className="catalog-intro">{({
-                  "Daten vorbereiten": "Importieren, bereinigen und Daten in eine auswertbare Form bringen.",
+                  "Daten importieren": "Die passende Quelle wählen und schon vor dem Laden Struktur und Typen prüfen.",
+                  "Power Query & Datenaufbereitung": "Neue Daten systematisch verstehen, bereinigen, kombinieren und kontrollieren.",
+                  "Daten vorbereiten": "Listen strukturieren, Text und Datentypen bereinigen und Schlüssel prüfen.",
                   "Datenmodell": "Eindeutige Schlüssel und verlässliche Filterwege aufbauen.",
                   "DAX & Measures": "Kennzahlen berechnen, die auf die aktuelle Auswahl reagieren.",
                   "Zeitintelligenz": "Zeiträume mit einem gemeinsamen Kalender vergleichen.",
-                  "Bericht": "Die passende Darstellung wählen und ihre Filterwirkung prüfen.",
-                  "Fehler": "Vom sichtbaren Symptom zum überprüfbaren Schnelltest.",
-                  "Nachschlagen": "Werte sicher über passende Schlüssel zuordnen.",
-                  "Filtern und Listen": "Treffer auswählen und dynamische Ergebnislisten erstellen.",
+                  "Berichte & Visualisierung": "Die passende Darstellung wählen und ihre Filterwirkung prüfen.",
+                  "Fehler & Plausibilitätsprüfung": "Vom sichtbaren Symptom zum überprüfbaren Schnelltest.",
+                  "Nachschlagen & Zuordnen": "Werte sicher über passende Schlüssel zuordnen.",
+                  "Filtern & eindeutige Listen": "Treffer auswählen und dynamische Ergebnislisten erstellen.",
                   "Aggregieren": "Summen, Anzahlen und Quoten auf der richtigen Ebene bilden.",
-                  "Listen": "Detailzeilen und gewünschte Ergebnisgranularität festlegen.",
-                  "Filter": "Bedingungen, Klammern und fehlende Werte bewusst behandeln.",
-                  "Mehrfachzeilen / Joins": "Zuordnungen kontrollieren und Zeilenvervielfachung erkennen.",
+                  "Logik & Fehlerbehandlung": "Bedingungen ordnen und fehlende Treffer von echten Fehlern unterscheiden.",
+                  "PivotTables & Auswertung": "Quelldaten verdichten, Felder zuordnen und Ergebnisse nach Aktualisierung prüfen.",
+                  "Excel Power Query": "Wiederkehrende Aufbereitung mit der gemeinsamen Transformationsbasis aufbauen.",
+                  "Typische Probleme": "Fehler in Formeln, Datentypen und Auswertungen gezielt eingrenzen.",
                 } as Record<string, string>)[g.title] || `${g.title}: passende Funktion auswählen und am Beispiel nachvollziehen.`}</p>
                 {["Grundlage", "Fortgeschritten"].map((level) => {
                   const entries = g.items.filter((x) => byId(x.id)?.schwierigkeit === level);
@@ -274,6 +277,7 @@ export function Browse({
           : area === "Datenanalyse"
             ? "Datenbegriffe"
             : "Suchen & finden";
+  if (selected === "IDA" || /\b(?:ida|cognos)\b/i.test(query)) return <Navigate replace to="/bereich/ida" />;
   return (
     <>
       <header className="page-heading">
@@ -285,7 +289,7 @@ export function Browse({
         <h1>{title}</h1>
         <p>
           {kind === "aufgabe"
-            ? "Wähle dein Vorhaben. Die Aufgabe zeigt passende Wege in Power BI, Excel und IDA."
+            ? "Wähle dein Vorhaben. Die Aufgabe zeigt passende Wege in Power BI und Excel."
             : kind === "problem"
               ? "Symptom finden, Ursache prüfen, nächsten Schritt ausführen."
               : "Suche auch nach deiner Aufgabe – du musst den Funktionsnamen nicht kennen."}

@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten bereinigen",
+  "kategorie": "Daten vorbereiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Mit ISTZAHL prüfst du den Typ. Eine Zahlformatierung allein wandelt Text nicht in Zahlen um.",
   "ort": "Excel → Hilfsspalte; Fehlerindikator / ZAHLENWERT",

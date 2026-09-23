@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Logik und Fehler",
+  "kategorie": "Logik & Fehlerbehandlung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "UND ist nur WAHR, wenn jede Bedingung WAHR ist.",
   "ort": "Excel → Formelzelle",

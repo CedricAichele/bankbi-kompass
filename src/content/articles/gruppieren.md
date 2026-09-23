@@ -2,35 +2,40 @@
 {
   "id": "gruppieren",
   "slug": "gruppieren",
-  "titel": "Gruppieren: Werte je Schlüssel zusammenfassen",
+  "titel": "Gruppieren: eine Zeile je Kunde",
   "bereich": "Power BI",
   "werkzeuge": [
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Gruppieren erzeugt eine Zeile je Schlüsselkombination und berechnet dazu passende Aggregationen.",
+  "kurzbeschreibung": "Eine Kontentabelle soll eine Kundenübersicht werden. Gruppiere nach Kunde und berechne Bestandssumme und Kontenzahl, wenn die Detailzeilen im Ergebnis nicht mehr gebraucht werden.",
   "ort": "Power Query → Start → Gruppieren nach",
   "tags": [
     "Gruppieren: Werte je Schlüssel zusammenfassen",
     "Reporting"
   ],
   "synonyme": [
+    "eine zeile pro kunde",
+    "eine zeile je kunde",
+    "mehrere konten pro kunde",
+    "Gruppieren",
     "eine Zeile je Person",
-    "nur eindeutige kunden"
+    "eine zeile pro person",
+    "nur eindeutige kunden",
+    "Gruppieren: Werte je Schlüssel zusammenfassen"
   ],
   "verwandteThemen": [
     "granularitaet",
-    "ida-aggregation",
-    "distinct-oder-gruppieren",
-    "eine-zeile-je-person"
+    "dubletten",
+    "pq-workflow"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-query/group-by"
@@ -40,7 +45,7 @@
       "src": "images/power-bi/pbi-gruppieren.webp",
       "alt": "Alternative Aggregation: Kontenzeilen je Person zählen. Für einen Bestand stattdessen Summe und die Betragsspalte wählen.",
       "caption": "Gruppieren nach im Power Query-Editor.",
-      "schritt": 3,
+      "schritt": 4,
       "schema": false,
       "status": "ersetzen",
       "hinweis": "Der Dialog zeigt die Alternative Anzahl Zeilen. Für die Bestandssumme im Textbeispiel wähle Summe und die Spalte Bestand.",
@@ -48,27 +53,30 @@
       "aufnahmeplan": {
         "prioritaet": "Hoch",
         "werkzeug": "Power BI Desktop",
-        "oberflaeche": "Power Query – Gruppieren: Werte je Schlüssel zusammenfassen",
+        "oberflaeche": "Gruppieren: eine Zeile je Kunde",
         "klickfolge": [
-          "Power BI Desktop öffnen. Die unten aufgeführten Tabellen über Start → Daten eingeben mit exakt diesen Spaltennamen und Werten anlegen; danach Start → Daten transformieren öffnen.",
-          "Start → Gruppieren nach öffnen.",
-          "Kunde wählen; neuer Spaltenname Gesamtbestand; Vorgang Summe; Spalte Bestand. Vor OK aufnehmen."
+          "Ziel festlegen: vorher eine Zeile je Konto, nachher eine Zeile je Kunde. Alle Bestände müssen zum gleichen Stichtag gehören; sonst den Stichtag zusätzlich gruppieren.",
+          "Kunde auswählen → **Start/Transformieren → Gruppieren nach**. Für mehrere Kennzahlen auf **Erweitert** wechseln.",
+          "Ausgabespalte **Summe Bestand**, Operation **Summe**, Quellspalte **Bestand** wählen.",
+          "Zweite Aggregation **Konten**, Operation **Anzahl Zeilen** hinzufügen. Das zählt nur dann Konten, wenn vorher tatsächlich genau eine Zeile je Konto vorhanden ist.",
+          "Bei Bedarf andere Aggregationen wählen: **Durchschnitt**, **Minimum**, **Maximum** oder **Alle Zeilen**. Alle Zeilen bewahrt Detailtabellen pro Gruppe, statt direkt eine Kennzahl zu liefern.",
+          "Ergebnis gegen die Quellgruppen und Gesamtsumme prüfen. Für spätere Kontodetails die Quellabfrage behalten oder im Modell mit Measures aggregieren."
         ],
-        "daten": "| Kunde | Konto | Bestand |\n| --- | --- | --- |\n| P001 | K001 | 1000 |\n| P001 | K002 | 2000 |\n| P002 | K003 | 500 |",
+        "daten": "### Vorher\n| Kunde | Konto | Bestand |\n| --- | --- | --- |\n| 1001 | A | 100 |\n| 1001 | B | 200 |\n| 1002 | C | 500 |\n\n### Aktion\nNach Kunde gruppieren; Summe von Bestand und Anzahl Zeilen bilden.\n\n### Nachher\n| Kunde | Summe Bestand | Konten |\n| --- | --- | --- |\n| 1001 | 300 | 2 |\n| 1002 | 500 | 1 |",
         "sichtbar": [
-          "Kunde, Gesamtbestand, Summe, Bestand im Dialog"
+          "Überschriften und Werte des aktuellen Artikelbeispiels",
+          "Einstellung und Ergebnis des zugeordneten Schritts"
         ],
-        "ausschnitt": "Geöffneten Dialog beziehungsweise Menü mit den genannten Einstellungen und den relevanten Spaltenüberschriften aufnehmen. Text bei 100 % lesbar halten; keine unnötige Leerfläche.",
+        "ausschnitt": "Nur relevante Editorbereiche, Datenvorschau und beschriebene Einstellung lesbar aufnehmen.",
         "dateiname": "pbi-gruppieren.webp",
-        "zweck": "Bedienort und Auswahl für Gruppieren: Werte je Schlüssel zusammenfassen zeigen.",
+        "zweck": "Eine Kontentabelle soll eine Kundenübersicht werden. Gruppiere nach Kunde und berechne Bestandssumme und Kontenzahl, wenn die Detailzeilen im Ergebnis nicht mehr gebraucht werden.",
         "nichtZeigen": [
           "Lokale Dateipfade",
-          "Benutzername oder Profil",
-          "Andere Programme und Benachrichtigungen",
+          "Benutzerprofile und Benachrichtigungen",
           "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
         ]
       },
-      "bildAnzeigen": true
+      "bildAnzeigen": false
     }
   ],
   "praxis": true
@@ -77,64 +85,51 @@
 
 ## Wann brauche ich das?
 
-Mehrere Detailzeilen zu einer Zeile pro Gruppe verdichten.
+Eine Kontentabelle soll eine Kundenübersicht werden. Gruppiere nach Kunde und berechne Bestandssumme und Kontenzahl, wenn die Detailzeilen im Ergebnis nicht mehr gebraucht werden.
 
 ## Voraussetzungen
 
-Eine geladene Abfrage mit den benötigten Spalten. Die folgenden Tabellen sind frei erfundene Beispiele.
+Zugriff auf deine Datenquelle und Kenntnis ihrer Spalten und Zeilenebene. Die Beispielwerte dienen nur der Erklärung; eine Beispieldatei ist nicht erforderlich.
 
 ## Schritte
 
-1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
-2. Wähle **Start → Gruppieren nach**.
-3. Wähle als Gruppierung **Kunde**, als neuen Spaltennamen **Gesamtbestand**, als Vorgang **Summe** und als Wertespalte **Bestand**.
-4. Für mehrere Gruppenschlüssel oder Kennzahlen schalte auf **Erweitert**. Ergänze beispielsweise **Anzahl Zeilen** als Kontenanzahl.
-5. Bestätige und kontrolliere eine Gruppe gegen ihre Detailzeilen.
+1. Ziel festlegen: vorher eine Zeile je Konto, nachher eine Zeile je Kunde. Alle Bestände müssen zum gleichen Stichtag gehören; sonst den Stichtag zusätzlich gruppieren.
+2. Kunde auswählen → **Start/Transformieren → Gruppieren nach**. Für mehrere Kennzahlen auf **Erweitert** wechseln.
+3. Ausgabespalte **Summe Bestand**, Operation **Summe**, Quellspalte **Bestand** wählen.
+4. Zweite Aggregation **Konten**, Operation **Anzahl Zeilen** hinzufügen. Das zählt nur dann Konten, wenn vorher tatsächlich genau eine Zeile je Konto vorhanden ist.
+5. Bei Bedarf andere Aggregationen wählen: **Durchschnitt**, **Minimum**, **Maximum** oder **Alle Zeilen**. Alle Zeilen bewahrt Detailtabellen pro Gruppe, statt direkt eine Kennzahl zu liefern.
+6. Ergebnis gegen die Quellgruppen und Gesamtsumme prüfen. Für spätere Kontodetails die Quellabfrage behalten oder im Modell mit Measures aggregieren.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
-
+### Vorher
 | Kunde | Konto | Bestand |
 | --- | --- | --- |
-| P001 | K001 | 1000 |
-| P001 | K002 | 2000 |
-| P002 | K003 | 500 |
+| 1001 | A | 100 |
+| 1001 | B | 200 |
+| 1002 | C | 500 |
 
 ### Aktion
+Nach Kunde gruppieren; Summe von Bestand und Anzahl Zeilen bilden.
 
-Nach Kunde gruppieren; Bestand summieren.
-
-### Nachher · Beispielergebnis
-
-| Kunde | Gesamtbestand |
-| --- | --- |
-| P001 | 3000 |
-| P002 | 500 |
+### Nachher
+| Kunde | Summe Bestand | Konten |
+| --- | --- | --- |
+| 1001 | 300 | 2 |
+| 1002 | 500 | 1 |
 
 ## Ergebnis
 
-Eine Zeile je Gruppenschlüsselkombination ersetzt die Detailzeilen.
+Die Kundenübersicht hat zwei Zeilen: 1001 mit Bestand 300 und zwei Konten, 1002 mit Bestand 500 und einem Konto.
 
 ## Warum funktioniert das?
 
-Die Granularität wechselt hier von Konto zu Kunde. Die Aggregation bestimmt, wie die Bestände innerhalb jeder Gruppe zu einem Ergebnis werden. Summe erhält additive Gesamtbeträge; Durchschnitt teilt dagegen durch die Anzahl vorhandener Zahlen.
+Die Gruppierung verändert die Granularität: aus Kontenzeilen werden Kundenzeilen. Einzelne Kontonummern und andere nicht gruppierte bzw. aggregierte Spalten sind im Ergebnis nicht mehr direkt vorhanden.
 
 ## Typischer Fehler
 
-Nach zu vielen Spalten gruppieren oder Anzahl Zeilen mit Anzahl eindeutiger Kunden verwechseln.
+Mehrere Monatsbestände je Kunde summieren oder Anzahl Zeilen mit eindeutiger Kontenanzahl verwechseln.
 
 ## Plausibilitätscheck
 
-Drei Kontozeilen ergeben zwei Kundenzeilen. 3000 + 500 = 3500 bleibt die Gesamtsumme.
-
-## Aggregationen im Vergleich
-
-| Vorgang | Für P001 im Beispiel | Bedeutung |
-| --- | --- | --- |
-| Anzahl Zeilen | 2 | Zählt Datensätze unabhängig vom Betrag |
-| Summe | 3000 | Addiert vorhandene Beträge |
-| Durchschnitt | 1500 | Arithmetisches Mittel vorhandener Zahlen |
-| Minimum | 1000 | Kleinster vorhandener Betrag |
-| Maximum | 2000 | Größter vorhandener Betrag |
-| Alle Zeilen | Zwei Detailzeilen als Tabelle | Erhält Details in einer verschachtelten Tabelle |
+3 Kontenzeilen → 2 Kundenzeilen; Summe bleibt 800, Summe der Kontenzahlen bleibt 3.

@@ -8,7 +8,7 @@
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Daten importieren",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Der Ordnerimport kombiniert gleich aufgebaute Dateien mit derselben Transformationsregel.",
   "ort": "Power Query → Daten abrufen → Aus Ordner",
@@ -17,7 +17,8 @@
     "Reporting"
   ],
   "synonyme": [
-    "mehrere Dateien zusammenführen"
+    "mehrere Dateien zusammenführen",
+    "Mehrere Dateien kombinieren"
   ],
   "verwandteThemen": [
     "anhaengen",
@@ -84,7 +85,7 @@ Zugriff auf die gewünschte Quelle und Kenntnis ihres fachlichen Aufbaus.
 ## Schritte
 
 1. Prüfe den Ordner: Dateien müssen denselben fachlichen Aufbau, passende Spaltennamen und ein kompatibles Format besitzen. Entferne keine Originaldateien; schließe unpassende Dateien in der Abfrage aus.
-2. Wähle **Start → Daten abrufen → Ordner** und den Ordner, der die zu kombinierenden Dateien enthält.
+2. In Excel liegt der Einstieg unter **Daten → Daten abrufen → Aus Datei → Aus Ordner**. In Power BI wähle **Start → Daten abrufen → Ordner** und den Ordner, der die zu kombinierenden Dateien enthält.
 3. Wähle **Daten transformieren**. Filtere die Dateiliste nach Erweiterung, Ordnerpfad und bei Bedarf Namen; schließe temporäre Dateien aus.
 4. Klicke auf **Dateien kombinieren** am Kopf der Spalte **Content**. Wähle eine repräsentative Beispieldatei und den darin benötigten Tabellenbereich.
 5. Prüfe die erzeugte Hilfsabfrage **Beispieldatei transformieren**. Ihre Schritte werden über eine Funktion auf jede Datei angewandt.

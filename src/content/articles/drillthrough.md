@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Drillthrough öffnet eine vorbereitete Detailseite mit dem Kontext eines ausgewählten Datenpunkts.",
   "ort": "Power BI Desktop → Berichtsansicht",

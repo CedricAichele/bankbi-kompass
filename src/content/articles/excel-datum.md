@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten bereinigen",
+  "kategorie": "Daten vorbereiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein Datum muss als echter Datumswert vorliegen; mehrdeutige Textformate brauchen eine bekannte Herkunft.",
   "ort": "Excel → Daten → Text in Spalten / Power Query → Datentyp mit Gebietsschema",

@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten bereinigen",
+  "kategorie": "Daten vorbereiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Leer, 0 und ein Formelergebnis mit leerem Text sind verschiedene Zustände. Ersetze sie nicht pauschal.",
   "ort": "Excel → Datenbereich prüfen",

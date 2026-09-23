@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Fehler & Plausibilitätsprüfung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein Filter braucht einen wirksamen Modellweg und die vorgesehene Visualinteraktion.",
   "ort": "Power BI → Modellansicht, Filterbereich, Interaktionen",

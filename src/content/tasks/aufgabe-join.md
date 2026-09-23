@@ -6,8 +6,7 @@
   "bereich": "Werkzeugübergreifend",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Typische Aufgaben",
   "schwierigkeit": "Grundlage",
@@ -20,9 +19,7 @@
     "join prüfen"
   ],
   "verwandteThemen": [
-    "zusammenfuehren",
-    "ida-join-pruefen",
-    "ida-mehrere-joins"
+    "zusammenfuehren"
   ],
   "kontexte": [
     "Reporting",
@@ -92,7 +89,6 @@ Mehrfachtreffer mit Duplikate entfernen nachträglich verstecken oder inneren Jo
 | --------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | Power BI        | [Tabellen zusammenführen](#/wissen/zusammenfuehren) · [Granularität: Was bedeutet eine Zeile?](#/wissen/granularitaet) |
 | Excel           | [XVERWEIS](#/wissen/xverweis)                                                                                          |
-| IDA / Reporting | [Ergebnis vor / nach Join plausibilisieren](#/wissen/ida-join-pruefen); generisches Konzept                            |
 
 ## Ergebnis
 

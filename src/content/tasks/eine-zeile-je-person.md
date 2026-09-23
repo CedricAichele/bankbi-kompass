@@ -6,13 +6,12 @@
   "bereich": "Werkzeugübergreifend",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Typische Aufgaben",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Eine reine Personenliste braucht eindeutige IDs. Für zusätzliche Messwerte musst du je Person fachlich passend aggregieren.",
-  "ort": "Power Query: Gruppieren · Excel: EINDEUTIG / PivotTable · IDA: Gruppierungskonzept",
+  "ort": "Power Query: Gruppieren · Excel: EINDEUTIG / PivotTable ·",
   "tags": [
     "Eine Zeile je Person",
     "Kundenanalyse",
@@ -106,5 +105,3 @@ Gruppieren fasst Kontenzeilen zusammen. DISTINCT über die gesamte Tabelle würd
 Vorher 6 Konten; nachher 4 Personen; Summe vorher = nachher = 9.000.
 
 ## Vergleich
-
-Excel: Pivot mit Person in Zeilen und Summe Bestand. Power BI: Matrix + Measure erhält die Details im Modell. IDA: allgemeine Gruppenaggregation.

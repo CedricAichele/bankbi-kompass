@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Text",
+  "kategorie": "Daten vorbereiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "TEXTVOR und TEXTNACH extrahieren Text vor oder nach einem Trennzeichen. Verfügbar in Microsoft 365 und Excel 2024.",
   "ort": "Excel → Formelzelle",

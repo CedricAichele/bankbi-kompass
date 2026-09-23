@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Drilldown wechselt innerhalb einer Hierarchie von einer Übersicht zur nächsten Detailstufe.",
   "ort": "Power BI → Visual mit Hierarchie → Drill-Steuerelemente",

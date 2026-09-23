@@ -6,8 +6,7 @@
   "bereich": "Werkzeugübergreifend",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Typische Aufgaben",
   "schwierigkeit": "Grundlage",
@@ -24,8 +23,7 @@
   "verwandteThemen": [
     "eins-zu-viele",
     "distinctcount",
-    "gruppieren",
-    "ida-zielgranularitaet"
+    "gruppieren"
   ],
   "kontexte": [
     "Reporting",
@@ -85,7 +83,6 @@ Nach zu vielen Spalten gruppieren oder Anzahl Zeilen mit Anzahl eindeutiger Kund
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | Power BI        | [1:n: Warum entstehen mehrere Zeilen?](#/wissen/eins-zu-viele) · [DISTINCTCOUNT: eindeutige Personen zählen](#/wissen/distinctcount) |
 | Excel           | [PivotTable erstellen](#/wissen/pivottable)                                                                                          |
-| IDA / Reporting | [Eine Zeile je Konto und Stichtag](#/wissen/ida-konto); generisches Konzept                                                          |
 
 ## Ergebnis
 

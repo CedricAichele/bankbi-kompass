@@ -1642,6 +1642,12 @@ footer strong {
 .practice-details summary { cursor: pointer; font-weight: 650; }
 .practice-details[open] summary { margin-bottom: 14px; }
 .reference-grid, .reference-grid > *, .markdown, .quick-preview { min-width: 0; }
+.orientation { margin: 1.5rem 0; padding: 1.25rem; border: 1px solid var(--border, #d8e2e8); border-left: 4px solid #137d91; border-radius: 12px; background: #f3f8fa; }
+.orientation h2 { margin-top: 0; }
+.orientation li { margin-block: .45rem; }
+.orientation a { text-underline-offset: .2em; }
+.reference-grid.workflow-reference { grid-template-columns: 1fr; }
+.workflow-reference .steps li { margin-bottom: 1rem; }
 .markdown { overflow-wrap: anywhere; }
 .markdown table { display: block; max-width: 100%; overflow-x: auto; }
 .catalog-intro { color: #526575; margin: 0 0 10px; padding: 0 18px; font-size: 14px; }

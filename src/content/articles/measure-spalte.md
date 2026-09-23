@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Werkzeugwahl",
+  "kategorie": "DAX & Measures",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Dynamische Kennzahl: Measure. Festes Merkmal je Zeile: Power Query oder berechnete Spalte.",
   "ort": "Vor der Umsetzung: Ergebnis und Einsatzort bestimmen",

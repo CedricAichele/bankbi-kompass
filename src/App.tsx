@@ -28,7 +28,7 @@ import { contents } from "./content";
 import { migrateIds } from "./content/redirects";
 import { FAVORITES_KEY, readIds, saveIds, toggleId } from "./lib/storage";
 import { SearchForm, EntryList } from "./components/ReferenceLists";
-import { HomePage, ToolPage, Browse } from "./pages/Lookup";
+import { HomePage, ToolPage, Browse, PowerQueryPage } from "./pages/Lookup";
 import { Reference } from "./pages/Reference";
 import { Imprint, Privacy } from "./pages/Legal";
 export { DecisionTools } from "./components/DecisionTools";
@@ -71,54 +71,12 @@ function Favorites({ ids }: { ids: string[] }) {
     </>
   );
 }
-function IdaNotes() {
-  return (
-    <>
-      <header className="page-heading">
-        <span className="eyebrow">INHALTSGRENZEN</span>
-        <h1>IDA: Geltungsbereich der Anleitungen</h1>
-        <p>
-          Die Einträge helfen dir, Listen, Filter, Parameter und Auswertungen
-          fachlich aufzubauen und Ergebnisse zu prüfen. Die Prinzipien sind
-          auf unterschiedliche Reportingumgebungen übertragbar.
-        </p>
-      </header>
-      <div className="note-list">
-        <h2>Bedienung in deiner Umgebung</h2>
-        <p>Menübezeichnungen und verfügbare Funktionen hängen von Version und Konfiguration ab. Nutze für die folgenden Details die Dokumentation deiner Umgebung; die Artikel beschreiben dazu die fachlichen Regeln und Kontrollen.</p>
-        <ul>
-          <li>
-            Konkrete Menüpfade für Listen, Filter und berechnete Datenelemente.
-          </li>
-          <li>
-            Parameterdialoge, Mehrfachwerte, Übergabe und Parameteranzeige.
-          </li>
-          <li>
-            Genaue Ausdruckssyntax, NULL-Funktionen und verfügbare
-            Median-Funktion.
-          </li>
-          <li>Exportdialoge, CSV-Optionen und mögliche Mengenbegrenzungen.</li>
-          <li>
-            Ausführung, Aktualisierung und Berichtsbetrieb, soweit öffentlich
-            dokumentierbar.
-          </li>
-        </ul>
-        <h2>Geeignete Abbildungen</h2>
-        <p>
-          Die Abbildungen zeigen allgemeine Schemata mit erfundenen Daten.
-          Sie bilden keine interne IDA-Oberfläche ab.
-        </p>
-        <Link to="/bereich/ida">Zu den allgemeinen IDA-Hilfen →</Link>
-      </div>
-    </>
-  );
-}
 function About() {
   return (
     <article className="note-list">
       <h1>Über BankBI Kompass</h1>
       <p>BankBI Kompass ist mein persönliches Wissens-, Nachschlage- und Portfolio-Projekt zu Datenanalyse, Business Intelligence und Reporting. Ich bin Cedric Aichele und sammle hier Methoden, Zusammenhänge und praktische Hilfen, die ich strukturiert aufbereiten und langfristig weiterentwickeln möchte.</p>
-      <p>Im Mittelpunkt steht die Verbindung fachlicher Fragen mit ihrer technischen Umsetzung: Welche Daten brauche ich, wie lassen sie sich sinnvoll modellieren und wie entsteht daraus eine nachvollziehbare Auswertung? Power BI, Excel und IDA/Cognos bilden den heutigen Schwerpunkt innerhalb dieser breiteren Ausrichtung.</p>
+      <p>Im Mittelpunkt steht die Verbindung fachlicher Fragen mit ihrer technischen Umsetzung: Welche Daten brauche ich, wie lassen sie sich sinnvoll modellieren und wie entsteht daraus eine nachvollziehbare Auswertung? Der öffentliche Schwerpunkt liegt heute auf Power BI, Power Query und Excel. Der IDA-Bereich ist in Entwicklung und soll langfristig ein wichtiger Teil dieser breiteren Ausrichtung werden.</p>
       <p>Als Arbeitswerkzeug begleitet es dich bei einer konkreten Frage: Eine Kurzantwort gibt Orientierung, darunter folgen Schritte, Beispiel, Ergebnis, fachliche Erklärung und typische Fehler. Offizielle Dokumentationslinks ermöglichen die Vertiefung.</p>
       <p>Die <Link to="/suche">Suche</Link> versteht auch typische Fragestellungen wie „kunde mehrfach“, „summe stimmt nicht“, „zwei tabellen verbinden“, „wert aus anderer tabelle“, „vorjahr“ oder „dubletten“. Du musst den Funktionsnamen nicht kennen. Favoriten bleiben lokal in deinem Browser gespeichert – ohne Anmeldung und ohne Synchronisierung zwischen Geräten.</p>
       <h2>Warum gibt es das Projekt?</h2>
@@ -128,8 +86,8 @@ function About() {
       <p>Für mich dient BankBI Kompass als persönliche Wissensbasis und Nachschlagewerk. Gleichzeitig soll die Seite Kolleginnen und Kollegen sowie anderen Anwendern helfen, typische Analyse- und Reportingfragen schnell zu klären. Einsteiger erhalten konkrete Anleitung; erfahrene Anwender finden Formeln, Entscheidungsregeln und Kontrollfragen zum schnellen Nachschlagen.</p>
       <p>Für interessierte Besucher macht das Projekt außerdem meine fachliche und technische Entwicklung sichtbar: wie ich Themen erschließe, Datenfragen strukturiere und Lösungen dokumentiere.</p>
       <h2>Welche Themen stehen heute im Mittelpunkt?</h2>
-      <p>Der aktuelle Katalog konzentriert sich auf Power BI, Excel und allgemeines IDA-/Cognos-basiertes Reporting. Dazu gehören Datenaufbereitung mit Power Query, Datenmodellierung, DAX, Excel-Formeln und PivotTables sowie Visualisierung, Filter, Aggregation und Fehlersuche.</p>
-      <p>Übergreifende Datenbegriffe und Entscheidungshilfen verbinden diese Werkzeuge. Die IDA-/Cognos-Inhalte beschreiben öffentlich belegbare Reportingprinzipien und übertragbare Konzepte.</p>
+      <p>Der aktuelle Katalog konzentriert sich auf Power BI und Excel, mit einem ausführlichen Arbeitsablauf für die Datenaufbereitung in Power Query. Dazu gehören Datenaufbereitung mit Power Query, Datenmodellierung, DAX, Excel-Formeln und PivotTables sowie Visualisierung, Filter, Aggregation und Fehlersuche.</p>
+      <p>Übergreifende Datenbegriffe und Entscheidungshilfen verbinden diese Werkzeuge. IDA/Cognos ist als künftiger Schwerpunkt vorgesehen; der Bereich wird derzeit neu aufgebaut und bietet noch keine öffentlichen Anleitungen.</p>
       <h2>Wohin soll sich das Projekt entwickeln?</h2>
       <p>BankBI Kompass soll mit meinem beruflichen und fachlichen Wissen wachsen. Die langfristige Ausrichtung umfasst neben Datenanalyse und Business Intelligence auch bankfachliche Analyse, Vertriebsmanagement, Vertriebssteuerung sowie weitere Steuerungs- und Reportingthemen.</p>
       <p>Auch allgemeine Datenverarbeitungs- und Batchprozesse, Datenqualität, Automatisierung und weitere Analysewerkzeuge können künftig hinzukommen. Dabei interessieren mich besonders wiederkehrende Verarbeitungen mit nachvollziehbaren Prüfungen und ihre Bedeutung für verlässliches Reporting. Diese Themen werden schrittweise aufgenommen, wenn ich sie verständlich und öffentlich geeignet aufbereiten kann. Die genannten Bereiche beschreiben die Entwicklungsrichtung und sind noch kein Versprechen eines vollständigen Katalogs.</p>
@@ -174,13 +132,13 @@ function Shell() {
     );
     const title =
       item?.titel ||
-      ({ "/impressum": "Impressum", "/datenschutz": "Datenschutz" } as Record<string, string>)[location.pathname] ||
+      ({ "/impressum": "Impressum", "/datenschutz": "Datenschutz", "/power-query": "Power Query & Datenaufbereitung" } as Record<string, string>)[location.pathname] ||
       nav.find((x) => x[0] === location.pathname)?.[1] ||
       "Suchen & finden";
     document.title = title + " – BankBI Kompass";
     const description =
       item?.kurzbeschreibung ||
-      "Schnelle Hilfe zu Power BI, Excel und IDA: Aufgaben, Funktionen, Schritte und synthetische Beispiele.";
+      "Schnelle Hilfe zu Power BI, Power Query und Excel. IDA ist in Entwicklung.";
     document
       .querySelector('meta[name="description"]')
       ?.setAttribute("content", description);
@@ -344,7 +302,8 @@ function Shell() {
               element={<Reference favorites={favorites} onToggle={toggle} />}
             />
             <Route path="/favoriten" element={<Favorites ids={favorites} />} />
-            <Route path="/ida-hinweise" element={<IdaNotes />} />
+            <Route path="/ida-hinweise" element={<Navigate replace to="/bereich/ida" />} />
+            <Route path="/power-query" element={<PowerQueryPage />} />
             <Route path="/ueber" element={<About />} />
             <Route path="/impressum" element={<Imprint />} />
             <Route path="/datenschutz" element={<Privacy />} />

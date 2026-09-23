@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Text",
+  "kategorie": "Daten vorbereiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "TEXTVERKETTEN verbindet Textwerte mit einem gemeinsamen Trennzeichen und kann leere Zellen auslassen.",
   "ort": "Excel → Formelzelle",

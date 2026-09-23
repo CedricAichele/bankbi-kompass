@@ -6,13 +6,12 @@
   "bereich": "Werkzeugübergreifend",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Typische Aufgaben",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Für einen Zellwert: XVERWEIS. Für zusätzliche Spalten: Zusammenführen. Für Modellfilter: Beziehung.",
-  "ort": "Excel / Power Query / Power-BI-Modell; IDA nur allgemeines Join-Konzept",
+  "ort": "Excel / Power Query / Power-BI-Modell",
   "tags": [
     "Werte aus anderer Tabelle holen",
     "Reporting"
@@ -86,7 +85,6 @@ Ein nicht eindeutiger Schlüssel liefert nur einen Treffer. Prüfe mit ZÄHLENWE
 | --------------- | ------------------------------------------------------------------------------------------------- |
 | Power BI        | [Beziehung erstellen](#/wissen/beziehungen) · [Tabellen zusammenführen](#/wissen/zusammenfuehren) |
 | Excel           | [XVERWEIS](#/wissen/xverweis)                                                                     |
-| IDA / Reporting | [Ergebnis vor / nach Join plausibilisieren](#/wissen/ida-join-pruefen); generisches Konzept       |
 
 ## Ergebnis
 

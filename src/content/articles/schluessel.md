@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Datenmodell",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein Schlüssel identifiziert eine fachliche Einheit. Namen und Beschreibungen sind meist ungeeignete Verknüpfungsschlüssel.",
   "ort": "Power BI Desktop → Modellansicht",

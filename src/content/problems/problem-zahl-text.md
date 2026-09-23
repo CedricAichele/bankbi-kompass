@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "SUMME ignoriert einen angezeigten Betrag. Import hat Zahlen als Text geliefert.",
   "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",

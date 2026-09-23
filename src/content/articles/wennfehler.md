@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Logik und Fehler",
+  "kategorie": "Logik & Fehlerbehandlung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "WENNFEHLER ersetzt Formelfehler durch ein definiertes Ergebnis. Erst die Ursache prüfen, dann den Ersatz festlegen.",
   "ort": "Excel → Formelzelle",

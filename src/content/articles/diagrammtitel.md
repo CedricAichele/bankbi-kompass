@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein Titel sollte Kennzahl, Einheit und Zeitraum eindeutig machen. Dynamische Titel müssen Mehrfachauswahl berücksichtigen.",
   "ort": "Power BI Desktop → Berichtsansicht",

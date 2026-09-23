@@ -8,7 +8,7 @@
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Lade nur benötigte Ergebnistabellen. Eine Hilfsabfrage kann weiterhin andere Abfragen versorgen.",
   "ort": "Power Query → Abfragekontextmenü / Excel: Laden in",

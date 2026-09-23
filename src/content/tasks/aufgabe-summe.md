@@ -6,8 +6,7 @@
   "bereich": "Werkzeugübergreifend",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Typische Aufgaben",
   "schwierigkeit": "Grundlage",
@@ -22,7 +21,6 @@
   ],
   "verwandteThemen": [
     "summe-zu-hoch",
-    "ida-join-pruefen",
     "granularitaet"
   ],
   "kontexte": [
@@ -80,7 +78,6 @@ Nur den sichtbaren Ergebniswert korrigieren. Dadurch bleibt die Ursache in Daten
 | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | Power BI        | [Falsche Summe prüfen](#/wissen/summe-zu-hoch) · [Granularität: Was bedeutet eine Zeile?](#/wissen/granularitaet) |
 | Excel           | [TEILERGEBNIS: gefilterte Zeilen auswerten](#/wissen/teilergebnis)                                                |
-| IDA / Reporting | [Ergebnis vor / nach Join plausibilisieren](#/wissen/ida-join-pruefen); generisches Konzept                       |
 
 ## Ergebnis
 

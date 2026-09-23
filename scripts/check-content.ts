@@ -2,7 +2,7 @@ import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { parseContent, validateLinks, sectionsOf } from "../src/content/schema";
 import { scanContent } from "../src/lib/content-safety";
-import { toolsCatalog, frequent } from "../src/content/catalog";
+import { toolsCatalog, powerQueryGroups, frequent } from "../src/content/catalog";
 const files = ["articles", "problems", "tasks"].flatMap((dir) =>
   readdirSync(join("src/content", dir))
     .filter((x) => x.endsWith(".md"))
@@ -10,9 +10,11 @@ const files = ["articles", "problems", "tasks"].flatMap((dir) =>
 );
 const items = files.map((file) => parseContent(readFileSync(file, "utf8")));
 validateLinks(items);
+if (items.some(x => x.bereich === "IDA")) throw new Error("Archivierte IDA-Inhalte dürfen nicht öffentlich indexiert werden.");
 const ids = new Set(items.map((x) => x.slug));
 for (const id of [
   ...frequent,
+  ...powerQueryGroups.flatMap(g => g.items.map(x => x.id)),
   ...toolsCatalog.flatMap((t) =>
     t.groups.flatMap((g) => g.items.map((x) => x.id)),
   ),

@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Nachschlagen",
+  "kategorie": "Nachschlagen & Zuordnen",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Kennzeichne nicht gefundene Schlüssel ausdrücklich. Ein fehlender Treffer ist nicht automatisch ein Betrag von 0.",
   "ort": "Excel → Formelzelle",

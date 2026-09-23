@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Fehler & Plausibilitätsprüfung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein Measure wird in der Gesamtzeile im gesamten Filterkontext neu berechnet. Das ist nicht automatisch die Summe sichtbarer Zeilen.",
   "ort": "Power BI → Kontrolltabelle mit Stichtag, Schlüssel und Measure",

@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Beschrifte Datenpunkte mit der benötigten Genauigkeit und Einheit.",
   "ort": "Power BI → Visual auswählen → Formatbereich → Datenbeschriftungen",
@@ -15,7 +15,9 @@
     "Datenbeschriftungen einschalten",
     "Reporting"
   ],
-  "synonyme": [],
+  "synonyme": [
+    "Datenbeschriftungen einschalten"
+  ],
   "verwandteThemen": [
     "balkendiagramm",
     "liniendiagramm"

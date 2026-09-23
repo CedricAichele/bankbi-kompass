@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Eine Referenzlinie macht Ziel oder Vergleichswert sichtbar. Verfügbarkeit und Einstellungen hängen vom Visual ab.",
   "ort": "Power BI Desktop → Berichtsansicht",

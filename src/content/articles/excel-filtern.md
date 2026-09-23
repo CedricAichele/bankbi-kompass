@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Filtern und Listen",
+  "kategorie": "Filtern & eindeutige Listen",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "FILTER gibt alle Zeilen aus, die eine Bedingung erfüllen.",
   "ort": "Excel → freie Formelzelle außerhalb einer Tabelle; dynamische Arrays erforderlich",

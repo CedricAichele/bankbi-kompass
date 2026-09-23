@@ -2,68 +2,72 @@
 {
   "id": "pq-duplizieren",
   "slug": "pq-duplizieren",
-  "titel": "Abfrage duplizieren oder referenzieren",
+  "titel": "Referenz oder Duplikat einer Abfrage?",
   "bereich": "Power BI",
   "werkzeuge": [
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Duplizieren kopiert die bisherigen Schritte. Ein Verweis beginnt beim Ergebnis einer anderen Abfrage.",
+  "kurzbeschreibung": "Nutze eine Referenz für gemeinsame Bereinigungslogik und ein Duplikat für eine unabhängig weiterentwickelte Schrittkopie. Beide bleiben Abfragen ihrer Datenquellen.",
   "ort": "Power Query → Rechtsklick auf Abfrage → Duplizieren / Verweis",
   "tags": [
     "Abfrage duplizieren oder referenzieren"
   ],
   "synonyme": [
     "abfrage referenzieren",
-    "abfrage duplizieren"
+    "abfrage duplizieren",
+    "Abfrage duplizieren oder referenzieren"
   ],
   "verwandteThemen": [
     "pq-laden",
-    "power-query",
-    "gruppieren"
+    "power-query"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
-    "https://learn.microsoft.com/en-us/power-query/queries-pane"
+    "https://learn.microsoft.com/en-us/power-query/manage-queries",
+    "https://learn.microsoft.com/en-us/power-bi/guidance/power-query-referenced-queries"
   ],
   "screenshots": [
     {
       "alt": "Bedienort: Power Query-Editor – Abfrage duplizieren oder referenzieren",
       "caption": "Geplante Aufnahme: Power Query – Abfrage duplizieren oder referenzieren",
-      "schritt": 3,
+      "schritt": 2,
       "schema": false,
       "status": "todo",
       "todo": "Auswahl und Ergebnis der beschriebenen Operation nachvollziehbar zeigen.",
       "aufnahmeplan": {
         "prioritaet": "Hoch",
         "werkzeug": "Power BI Desktop",
-        "oberflaeche": "Power Query – Abfrage duplizieren oder referenzieren",
+        "oberflaeche": "Referenz oder Duplikat einer Abfrage?",
         "klickfolge": [
-          "Power BI Desktop öffnen. Die unten aufgeführten Tabellen über Start → Daten eingeben mit exakt diesen Spaltennamen und Werten anlegen; danach Start → Daten transformieren öffnen.",
-          "Eine Abfrage Konten auswählen.",
-          "Rechtsklick auf Konten; Menü mit Duplizieren und Verweis geöffnet lassen."
+          "Eine gemeinsame Basisabfrage so weit bereinigen, dass mehrere Ergebnisse darauf aufbauen können.",
+          "Rechtsklick auf die Abfrage → **Verweis/Referenz** erzeugt eine Abfrage, deren Quelle das Ergebnis der ursprünglichen Abfrage ist. Änderungen an der Basis wirken auf abhängige Abfragen.",
+          "**Duplizieren** kopiert die bisherige Schrittkette. Spätere Änderungen an dieser Kette sind unabhängig; ein Duplikat kann aber weiterhin dieselbe Datenquelle oder andere referenzierte Abfragen verwenden.",
+          "Basis, Ergebnis und Prüf-Abfrage sinnvoll benennen. Über **Ansicht → Abfrageabhängigkeiten** die Verbindungen prüfen.",
+          "Laden nur für benötigte Endtabellen aktivieren. Eine Referenz garantiert keine einmalige Quellabfrage und ist kein dauerhafter Cache."
         ],
-        "daten": "| Abfrage | Schritte |\n| --- | --- |\n| Konten | Quelle → Typen → Filter |",
+        "daten": "~~~text\nQuelle → Basis bereinigt → Referenz Kundenübersicht\n                       → Referenz Fehlerprüfung\nQuelle → Duplikat mit eigener Schrittkette\n~~~\n\nEine Korrektur der Textbereinigung in Basis erreicht beide Referenzen. Die unabhängig duplizierte Schrittkette muss separat korrigiert werden.",
         "sichtbar": [
-          "Abfragename, Duplizieren und Verweis gleichzeitig"
+          "Überschriften und Werte des aktuellen Artikelbeispiels",
+          "Einstellung und Ergebnis des zugeordneten Schritts"
         ],
-        "ausschnitt": "Geöffneten Dialog beziehungsweise Menü mit den genannten Einstellungen und den relevanten Spaltenüberschriften aufnehmen. Text bei 100 % lesbar halten; keine unnötige Leerfläche.",
+        "ausschnitt": "Nur relevante Editorbereiche, Datenvorschau und beschriebene Einstellung lesbar aufnehmen.",
         "dateiname": "pbi-pq-duplizieren.webp",
-        "zweck": "Auswahl und Ergebnis der beschriebenen Operation nachvollziehbar zeigen.",
+        "zweck": "Nutze eine Referenz für gemeinsame Bereinigungslogik und ein Duplikat für eine unabhängig weiterentwickelte Schrittkopie. Beide bleiben Abfragen ihrer Datenquellen.",
         "nichtZeigen": [
           "Lokale Dateipfade",
-          "Benutzername oder Profil",
-          "Andere Programme und Benachrichtigungen",
+          "Benutzerprofile und Benachrichtigungen",
           "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
         ]
-      }
+      },
+      "bildAnzeigen": false
     },
     {
       "src": "images/power-bi/pbi-abfragen.webp",
@@ -72,7 +76,8 @@
       "schritt": 2,
       "schema": false,
       "status": "bereit",
-      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen. Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen."
+      "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen. Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen.",
+      "bildAnzeigen": false
     }
   ],
   "praxis": true
@@ -81,52 +86,42 @@
 
 ## Wann brauche ich das?
 
-Eine alternative Transformationsfolge ausprobieren oder eine gemeinsame Basis referenzieren.
+Nutze eine Referenz für gemeinsame Bereinigungslogik und ein Duplikat für eine unabhängig weiterentwickelte Schrittkopie. Beide bleiben Abfragen ihrer Datenquellen.
 
 ## Voraussetzungen
 
-Eine vorhandene Abfrage mit den benötigten Spalten.
+Zugriff auf deine Datenquelle und Kenntnis ihrer Spalten und Zeilenebene. Die Beispielwerte dienen nur der Erklärung; eine Beispieldatei ist nicht erforderlich.
 
 ## Schritte
 
-1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
-2. Klicke im linken Abfragebereich mit der rechten Maustaste auf **Konten**.
-3. Wähle **Duplizieren** für eine Kopie der vorhandenen Schritte und benenne sie aussagekräftig um.
-4. Ändere einen Filter in der Kopie. Prüfe, dass der ursprüngliche Abfrageplan unverändert bleibt.
-5. Wähle stattdessen **Verweis**, wenn die neue Abfrage auf dem Ergebnis der bestehenden aufbauen soll. Änderungen an der Basis wirken dann weiter.
+1. Eine gemeinsame Basisabfrage so weit bereinigen, dass mehrere Ergebnisse darauf aufbauen können.
+2. Rechtsklick auf die Abfrage → **Verweis/Referenz** erzeugt eine Abfrage, deren Quelle das Ergebnis der ursprünglichen Abfrage ist. Änderungen an der Basis wirken auf abhängige Abfragen.
+3. **Duplizieren** kopiert die bisherige Schrittkette. Spätere Änderungen an dieser Kette sind unabhängig; ein Duplikat kann aber weiterhin dieselbe Datenquelle oder andere referenzierte Abfragen verwenden.
+4. Basis, Ergebnis und Prüf-Abfrage sinnvoll benennen. Über **Ansicht → Abfrageabhängigkeiten** die Verbindungen prüfen.
+5. Laden nur für benötigte Endtabellen aktivieren. Eine Referenz garantiert keine einmalige Quellabfrage und ist kein dauerhafter Cache.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
+~~~text
+Quelle → Basis bereinigt → Referenz Kundenübersicht
+                       → Referenz Fehlerprüfung
+Quelle → Duplikat mit eigener Schrittkette
+~~~
 
-| Abfrage | Schritte |
-| --- | --- |
-| Konten | Quelle → Typen → Filter |
-
-### Aktion
-
-Konten duplizieren und nur in Konten_Alternative einen anderen Filter verwenden.
-
-### Nachher · Beispielergebnis
-
-| Abfrage | Abhängigkeit |
-| --- | --- |
-| Konten | Eigene Schritte zur Quelle |
-| Konten_Alternative | Kopierte, danach unabhängig bearbeitete Schritte |
-| Konten_Verweis | Beginnt mit dem Ergebnis von Konten |
+Eine Korrektur der Textbereinigung in Basis erreicht beide Referenzen. Die unabhängig duplizierte Schrittkette muss separat korrigiert werden.
 
 ## Ergebnis
 
-Duplizieren erzeugt einen unabhängig bearbeitbaren Abfrageplan; ein Verweis verwendet eine bestehende Abfrage als Ausgangspunkt.
+Gemeinsame Logik liegt in der Basisabfrage; Referenzen verwenden deren Ergebnis. Ein Duplikat kann unabhängig weiterentwickelte Schritte enthalten.
 
 ## Warum funktioniert das?
 
-Unabhängig sind die Schritte, nicht zwangsläufig die Datenquelle: Beide Kopien können dieselbe Datei lesen. Ein Verweis bildet dagegen eine logische Abhängigkeit von der Basis.
+Die Referenz verweist auf ein Abfrageergebnis; das Duplikat übernimmt Definitionen zum Kopierzeitpunkt. Keines ist ein eingefrorener Datenstand.
 
 ## Typischer Fehler
 
-Duplizieren als eingefrorene Datenkopie oder Verweis als garantierten Ausführungscache verstehen.
+Eine Referenz als Leistungsversprechen oder Snapshot verwenden.
 
 ## Plausibilitätscheck
 
-Ein Filterwechsel in der Kopie verändert die Basis nicht; ein Wechsel in der Basis kann das Verweisergebnis verändern.
+Änderung an Basis in beiden Referenzen nachvollziehen; unabhängig duplizierte Schritte und Ladeziele separat prüfen.

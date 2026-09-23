@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Fehlt oder #NV trotz scheinbar vorhandener Kennung. Text/Zahl unterschiedlich oder unsichtbare Leerzeichen.",
   "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",

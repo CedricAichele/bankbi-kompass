@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Logik und Fehler",
+  "kategorie": "Logik & Fehlerbehandlung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "WENNS gibt das Ergebnis der ersten wahren Bedingung zurück. Ein abschließender WAHR-Fall kann den Rest abdecken.",
   "ort": "Excel → Formelzelle",

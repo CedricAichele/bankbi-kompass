@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Datum",
+  "kategorie": "Daten vorbereiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Enddatum minus Startdatum ergibt bei echten Excel-Datumswerten die verstrichenen Kalendertage.",
   "ort": "Excel → Formelzelle",
@@ -20,8 +20,7 @@
   ],
   "verwandteThemen": [
     "excel-datum",
-    "excel-kalender",
-    "ida-vorgang"
+    "excel-kalender"
   ],
   "kontexte": [
     "Reporting"

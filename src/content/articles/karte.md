@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Eine Karte zeigt einen einzelnen Kennzahlenwert mit eindeutiger Einheit und Zeitraum.",
   "ort": "Power BI → Berichtsansicht → Kartenvisual",

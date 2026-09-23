@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Fehler & Plausibilitätsprüfung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Vergleiche das Measure mit einer einfachen Basiskennzahl und prüfe den Kontext jeder Visualzelle.",
   "ort": "Power BI → Kontrollmatrix und DAX-Formel",

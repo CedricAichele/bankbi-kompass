@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Daten bereinigen",
+  "kategorie": "Daten vorbereiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Eine Auswertung braucht eine rechteckige Liste mit einer Kopfzeile, konsistenten Typen und einer klaren Zeilenebene.",
   "ort": "Excel → Datenbereich prüfen",
@@ -20,10 +20,10 @@
   ],
   "verwandteThemen": [
     "pivottable",
-    "excel-import",
+    "daten-laden",
     "xverweis",
     "csv-import",
-    "datenqualitaet"
+    "pq-workflow"
   ],
   "kontexte": [
     "Reporting"
@@ -41,7 +41,41 @@
       "caption": "Echter Excel-Dialog der synthetischen Demo: Bereich A1:D7, Tabelle hat Überschriften.",
       "schema": false,
       "schritt": 2,
-      "hinweis": "undefined Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen."
+      "hinweis": "Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen."
+    },
+    {
+      "alt": "Excel-Datenprüfung vor der Auswertung mit vollständig erfundenen Daten",
+      "caption": "Excel-Datenprüfung vor der Auswertung",
+      "schritt": 4,
+      "schema": false,
+      "status": "todo",
+      "todo": "Passende Aufnahme zum aktuellen Ablauf mit frei erfundenen Daten ergänzen.",
+      "aufnahmeplan": {
+        "prioritaet": "Hoch",
+        "werkzeug": "Excel",
+        "oberflaeche": "Excel-Datenprüfung vor der Auswertung",
+        "klickfolge": [
+          "Ziel und Zeilenebene festlegen. Entferne Titel, Leer- und Summenzeilen aus dem Datenbereich; verwende eine eindeutige Überschriftenzeile ohne verbundene Zellen.",
+          "Innerhalb des zusammenhängenden Bereichs **Einfügen → Tabelle** oder **Strg+T** wählen, Bereich und Tabelle hat Überschriften bestätigen.",
+          "Unter **Tabellenentwurf → Tabellenname** einen sprechenden Namen vergeben. Neue Zeilen innerhalb der Tabelle ergänzen.",
+          "Kennungen als Text erhalten, Beträge als Zahlen und Datum als Datum prüfen. **[Textzahlen erkennen](#/wissen/excel-zahl-text)** und **[Datumswerte korrigieren](#/wissen/excel-datum)** zeigen die unterschiedlichen Fehlerbilder.",
+          "**[Leerzeichen und Steuerzeichen bereinigen](#/wissen/glaetten)** und **[Duplikate prüfen](#/wissen/excel-dubletten-finden)**. Fehlende Pflichtschlüssel getrennt untersuchen; leere optionale Felder nicht blind durch 0 ersetzen.",
+          "Zeilenzahl und eine Kontrollsumme festhalten. Für wiederkehrende Lieferungen **[Excel Power Query](#/wissen/excel-power-query)** verwenden, für die anschließende flexible Auswertung eine **[PivotTable](#/wissen/pivottable)**."
+        ],
+        "daten": "### Vorher · Beispieldaten\n\n| Kunde | Konto | Bestand |\n| --- | --- | --- |\n| P001 | K001 | 1000 |\n| P001 | K002 | 2000 |\n| P002 | K003 | 500 |\n\n### Aktion\n\nA1:C4 in die Excel-Tabelle Konten umwandeln.\n\n### Nachher · Beispielergebnis\n\n| Beispielergebnis |\n| --- |\n| Dieselben drei Datenzeilen mit Tabellenüberschriften und Filterpfeilen. |",
+        "sichtbar": [
+          "Überschriften und Werte des aktuellen Artikelbeispiels",
+          "Einstellung und Ergebnis des zugeordneten Schritts"
+        ],
+        "ausschnitt": "Nur relevante Editorbereiche, Datenvorschau und beschriebene Einstellung lesbar aufnehmen.",
+        "dateiname": "excel-liste-vorbereiten-4.webp",
+        "zweck": "Eine Auswertung braucht eine rechteckige Liste mit einer Kopfzeile, konsistenten Typen und einer klaren Zeilenebene.",
+        "nichtZeigen": [
+          "Lokale Dateipfade",
+          "Benutzerprofile und Benachrichtigungen",
+          "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
+        ]
+      }
     }
   ],
   "praxis": true,
@@ -63,11 +97,12 @@ Eine vorhandene Excel-Liste mit geklärter Zeilenebene und bekanntem Aufbau.
 
 ## Schritte
 
-1. Prüfe eine einzige Überschriftenzeile mit eindeutigen Namen. Entferne Zwischensummen und verbundene Zellen aus dem Datenbereich.
-2. Klicke in den zusammenhängenden Bereich und wähle **Einfügen → Tabelle** oder **Strg+T**.
-3. Prüfe den Bereich und aktiviere **Tabelle hat Überschriften**.
-4. Vergib unter **Tabellenentwurf → Tabellenname** einen eindeutigen Namen, zum Beispiel Konten.
-5. Prüfe Datentypen und ergänze neue Zeilen innerhalb der Tabelle.
+1. Ziel und Zeilenebene festlegen. Entferne Titel, Leer- und Summenzeilen aus dem Datenbereich; verwende eine eindeutige Überschriftenzeile ohne verbundene Zellen.
+2. Innerhalb des zusammenhängenden Bereichs **Einfügen → Tabelle** oder **Strg+T** wählen, Bereich und Tabelle hat Überschriften bestätigen.
+3. Unter **Tabellenentwurf → Tabellenname** einen sprechenden Namen vergeben. Neue Zeilen innerhalb der Tabelle ergänzen.
+4. Kennungen als Text erhalten, Beträge als Zahlen und Datum als Datum prüfen. **[Textzahlen erkennen](#/wissen/excel-zahl-text)** und **[Datumswerte korrigieren](#/wissen/excel-datum)** zeigen die unterschiedlichen Fehlerbilder.
+5. **[Leerzeichen und Steuerzeichen bereinigen](#/wissen/glaetten)** und **[Duplikate prüfen](#/wissen/excel-dubletten-finden)**. Fehlende Pflichtschlüssel getrennt untersuchen; leere optionale Felder nicht blind durch 0 ersetzen.
+6. Zeilenzahl und eine Kontrollsumme festhalten. Für wiederkehrende Lieferungen **[Excel Power Query](#/wissen/excel-power-query)** verwenden, für die anschließende flexible Auswertung eine **[PivotTable](#/wissen/pivottable)**.
 
 ## Beispiel
 

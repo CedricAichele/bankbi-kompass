@@ -6,8 +6,7 @@
   "bereich": "Werkzeugübergreifend",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Werkzeugwahl",
   "schwierigkeit": "Grundlage",

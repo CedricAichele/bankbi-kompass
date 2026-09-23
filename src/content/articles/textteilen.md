@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Text",
+  "kategorie": "Daten vorbereiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "TEXTTEILEN teilt Text anhand eines Trennzeichens in mehrere Zellen. Der Ausgabebereich muss frei sein.",
   "ort": "Excel → Formelzelle",
@@ -18,7 +18,6 @@
     "textteilen"
   ],
   "verwandteThemen": [
-    "excel-text-teilen",
     "text-trennzeichen"
   ],
   "kontexte": [

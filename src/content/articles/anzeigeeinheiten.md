@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Anzeigeeinheiten verkürzen die Darstellung, verändern aber nicht den gespeicherten Wert. Einheit und Rundung müssen erkennbar sein.",
   "ort": "Power BI Desktop → Berichtsansicht",

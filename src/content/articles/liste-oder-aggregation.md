@@ -6,8 +6,7 @@
   "bereich": "Werkzeugübergreifend",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Werkzeugwahl",
   "schwierigkeit": "Grundlage",
@@ -17,10 +16,7 @@
     "Liste oder aggregierter Bericht?"
   ],
   "synonyme": [],
-  "verwandteThemen": [
-    "reporting",
-    "ida-zielgranularitaet"
-  ],
+  "verwandteThemen": [],
   "kontexte": [
     "Reporting",
     "Datenqualität"

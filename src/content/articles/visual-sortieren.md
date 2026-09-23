@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Die Sortierung eines Visuals und die Sortierspalte im Modell erfüllen unterschiedliche Aufgaben.",
   "ort": "Power BI Desktop → Berichtsansicht",

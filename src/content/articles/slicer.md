@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein Slicer stellt eine sichtbare Filterauswahl für verbundene Visuals bereit.",
   "ort": "Power BI → Berichtsansicht → Datenschnitt / Slicer",

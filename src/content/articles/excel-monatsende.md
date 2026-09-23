@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Datum",
+  "kategorie": "Daten vorbereiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "MONATSENDE bestimmt den letzten Kalendertag eines Monats. HEUTE liefert das aktuelle Systemdatum, keinen Datenstand.",
   "ort": "Excel → Formelzelle",

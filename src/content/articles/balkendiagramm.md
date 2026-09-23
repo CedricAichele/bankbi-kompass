@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Balken machen Größenunterschiede zwischen Kategorien schnell sichtbar.",
   "ort": "Power BI → Berichtsansicht → Balkendiagramm",

@@ -38,7 +38,7 @@
       "caption": "Echter Laufzeitcheck in Power BI Desktop: COUNT 6, COUNTROWS 6, DISTINCTCOUNT 4, SUM 9000, Einlagen 4050, Quote 0,45 und SUMX 80. Der SUMX-Wert nutzt die separate Positionsdemo.",
       "schema": false,
       "schritt": 1,
-      "hinweis": "undefined Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen."
+      "hinweis": "Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen."
     }
   ],
   "praxis": true,

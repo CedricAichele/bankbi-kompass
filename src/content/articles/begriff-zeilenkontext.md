@@ -6,8 +6,7 @@
   "bereich": "Datenanalyse",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Grundbegriffe",
   "schwierigkeit": "Grundlage",

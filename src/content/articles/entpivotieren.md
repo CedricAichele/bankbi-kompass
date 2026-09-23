@@ -2,32 +2,33 @@
 {
   "id": "entpivotieren",
   "slug": "entpivotieren",
-  "titel": "Entpivotieren: von breit nach lang",
+  "titel": "Entpivotieren: Monate von breit nach lang",
   "bereich": "Power BI",
   "werkzeuge": [
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Entpivotieren wandelt viele gleichartige Wertspalten in eine Kategorie- und eine Wertspalte um.",
+  "kurzbeschreibung": "Wiederkehrende Monatsspalten werden zu den Merkmalen Monat und Wert. Die lange Struktur lässt sich leichter filtern, mit einem Kalender verbinden und visualisieren.",
   "ort": "Power Query → Transformieren → Spalten entpivotieren",
   "tags": [
     "Entpivotieren: von breit nach lang",
     "Reporting"
   ],
-  "synonyme": [],
+  "synonyme": [
+    "Entpivotieren: von breit nach lang"
+  ],
   "verwandteThemen": [
     "pivotieren",
-    "granularitaet",
-    "pq-datum",
-    "datumstabelle"
+    "bestand-bewegung",
+    "pq-workflow"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/power-query/unpivot-column"
@@ -36,33 +37,36 @@
     {
       "alt": "Bedienort: Power Query-Editor – Entpivotieren: von breit nach lang",
       "caption": "Geplante Aufnahme: Power Query – Entpivotieren: von breit nach lang",
-      "schritt": 3,
+      "schritt": 2,
       "schema": false,
       "status": "todo",
       "todo": "Bedienort und Auswahl für Entpivotieren: von breit nach lang zeigen.",
       "aufnahmeplan": {
         "prioritaet": "Hoch",
         "werkzeug": "Power BI Desktop",
-        "oberflaeche": "Power Query – Entpivotieren: von breit nach lang",
+        "oberflaeche": "Entpivotieren: Monate von breit nach lang",
         "klickfolge": [
-          "Power BI Desktop öffnen. Die unten aufgeführten Tabellen über Start → Daten eingeben mit exakt diesen Spaltennamen und Werten anlegen; danach Start → Daten transformieren öffnen.",
-          "Kunde als Schlüsselspalte markieren.",
-          "Transformieren → Spalten entpivotieren öffnen, Option Andere Spalten entpivotieren sichtbar lassen."
+          "Identifikatoren von Messspalten trennen. Kunde bleibt Schlüsselmerkmal, Jan/Feb/Mär enthalten dieselbe Messgröße.",
+          "Kunde und weitere zu behaltende Identifikatoren markieren → **Transformieren → Andere Spalten entpivotieren**. So werden auch neue Monatsspalten erfasst; unerwartete Textspalten würden ebenfalls erfasst und müssen kontrolliert werden.",
+          "Attribut in Monat und Wert in den fachlichen Messnamen umbenennen. Datentypen prüfen.",
+          "Für mehrere Jahre Monat und Jahr in einen echten Monats-/Datumsbezug überführen. Nur Jan als Text reicht für ein dauerhaftes Zeitmodell nicht aus.",
+          "Zeilenzahl, fehlende Werte und Zuordnung prüfen. null-Zellen werden beim Entpivotieren nicht als normale Wertezeilen ausgegeben; eine vollständige Zeitreihe gegebenenfalls über einen Kalender herstellen."
         ],
-        "daten": "| Kunde | Jan | Feb |\n| --- | --- | --- |\n| P001 | 10 | 15 |\n| P002 | 20 | 25 |",
+        "daten": "### Vorher\n| Kunde | Jan | Feb | Mär |\n| --- | --- | --- | --- |\n| 1001 | 100 | 120 | 130 |\n\n### Aktion\nMonatsspalten entpivotieren.\n\n### Nachher\n| Kunde | Monat | Wert |\n| --- | --- | --- |\n| 1001 | Jan | 100 |\n| 1001 | Feb | 120 |\n| 1001 | Mär | 130 |",
         "sichtbar": [
-          "Kunde markiert; Jan und Feb als Wertespalten; Menüoption"
+          "Überschriften und Werte des aktuellen Artikelbeispiels",
+          "Einstellung und Ergebnis des zugeordneten Schritts"
         ],
-        "ausschnitt": "Geöffneten Dialog beziehungsweise Menü mit den genannten Einstellungen und den relevanten Spaltenüberschriften aufnehmen. Text bei 100 % lesbar halten; keine unnötige Leerfläche.",
+        "ausschnitt": "Nur relevante Editorbereiche, Datenvorschau und beschriebene Einstellung lesbar aufnehmen.",
         "dateiname": "pbi-entpivotieren.webp",
-        "zweck": "Bedienort und Auswahl für Entpivotieren: von breit nach lang zeigen.",
+        "zweck": "Wiederkehrende Monatsspalten werden zu den Merkmalen Monat und Wert. Die lange Struktur lässt sich leichter filtern, mit einem Kalender verbinden und visualisieren.",
         "nichtZeigen": [
           "Lokale Dateipfade",
-          "Benutzername oder Profil",
-          "Andere Programme und Benachrichtigungen",
+          "Benutzerprofile und Benachrichtigungen",
           "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
         ]
-      }
+      },
+      "bildAnzeigen": false
     }
   ],
   "praxis": true
@@ -71,54 +75,49 @@
 
 ## Wann brauche ich das?
 
-Eine breite Tabelle für flexible Filter und Zeitvergleiche in ein langes Format bringen.
+Wiederkehrende Monatsspalten werden zu den Merkmalen Monat und Wert. Die lange Struktur lässt sich leichter filtern, mit einem Kalender verbinden und visualisieren.
 
 ## Voraussetzungen
 
-Eine geladene Abfrage mit den benötigten Spalten. Die folgenden Tabellen sind frei erfundene Beispiele.
+Zugriff auf deine Datenquelle und Kenntnis ihrer Spalten und Zeilenebene. Die Beispielwerte dienen nur der Erklärung; eine Beispieldatei ist nicht erforderlich.
 
 ## Schritte
 
-1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
-2. Markiere die Schlüsselspalte **Kunde**.
-3. Wähle **Transformieren → Spalten entpivotieren → Andere Spalten entpivotieren**. Dadurch werden auch später hinzukommende Monatsspalten erfasst.
-4. Benenne **Attribut** in **Monat** und **Wert** in **Betrag** um.
-5. Prüfe die Datentypen und die Anzahl der erzeugten Zeilen. NULL-Zellen erzeugen beim Entpivotieren keine Wertzeile.
+1. Identifikatoren von Messspalten trennen. Kunde bleibt Schlüsselmerkmal, Jan/Feb/Mär enthalten dieselbe Messgröße.
+2. Kunde und weitere zu behaltende Identifikatoren markieren → **Transformieren → Andere Spalten entpivotieren**. So werden auch neue Monatsspalten erfasst; unerwartete Textspalten würden ebenfalls erfasst und müssen kontrolliert werden.
+3. Attribut in Monat und Wert in den fachlichen Messnamen umbenennen. Datentypen prüfen.
+4. Für mehrere Jahre Monat und Jahr in einen echten Monats-/Datumsbezug überführen. Nur Jan als Text reicht für ein dauerhaftes Zeitmodell nicht aus.
+5. Zeilenzahl, fehlende Werte und Zuordnung prüfen. null-Zellen werden beim Entpivotieren nicht als normale Wertezeilen ausgegeben; eine vollständige Zeitreihe gegebenenfalls über einen Kalender herstellen.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
-
-| Kunde | Jan | Feb |
-| --- | --- | --- |
-| P001 | 10 | 15 |
-| P002 | 20 | 25 |
+### Vorher
+| Kunde | Jan | Feb | Mär |
+| --- | --- | --- | --- |
+| 1001 | 100 | 120 | 130 |
 
 ### Aktion
+Monatsspalten entpivotieren.
 
-Jan und Feb in Monat/Betrag-Zeilen umformen.
-
-### Nachher · Beispielergebnis
-
-| Kunde | Monat | Betrag |
+### Nachher
+| Kunde | Monat | Wert |
 | --- | --- | --- |
-| P001 | Jan | 10 |
-| P001 | Feb | 15 |
-| P002 | Jan | 20 |
-| P002 | Feb | 25 |
+| 1001 | Jan | 100 |
+| 1001 | Feb | 120 |
+| 1001 | Mär | 130 |
 
 ## Ergebnis
 
-Wertespalten werden zu Attribut-Wert-Paaren untereinander.
+Die lange Tabelle enthält je Kunde und Monat eine Wertezeile statt separater Monatsspalten.
 
 ## Warum funktioniert das?
 
-Eine bisher in der Überschrift gespeicherte Kategorie wird selbst zu einem Datenwert. Die neue Zeilenebene ist Kunde und Monat.
+Die Spaltennamen werden Werte einer Attributspalte. Ein Visual kann Monat auf der Achse und Wert als Messgröße nutzen, ohne jeden Monat als eigenes Feld zu behandeln.
 
 ## Typischer Fehler
 
-Schlüsselspalten mit entpivotieren oder aus ausgebliebenen NULL-Zeilen einen Betrag von null ableiten.
+Monatsbestände nach der Umformung über die Zeit addieren oder verschwundene null-Zellen übersehen.
 
 ## Plausibilitätscheck
 
-Zwei Kunden × zwei gefüllte Monatsspalten ergeben vier Zeilen; Summe 70.
+Eine Quellzeile ergibt hier drei Wertezeilen. Die Werte 100, 120 und 130 sind unverändert; bei Beständen sind sie drei Stichtage und keine fachliche Jahressumme.

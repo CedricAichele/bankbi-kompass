@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Logik und Fehler",
+  "kategorie": "Logik & Fehlerbehandlung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "NICHT kehrt WAHR und FALSCH um. Formuliere Ausschlüsse so, dass fehlende Werte bewusst behandelt werden.",
   "ort": "Excel → Formelzelle",

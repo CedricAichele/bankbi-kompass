@@ -6,8 +6,7 @@
   "bereich": "Datenanalyse",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Fehler",
   "schwierigkeit": "Grundlage",
@@ -22,7 +21,6 @@
   ],
   "verwandteThemen": [
     "nullwerte",
-    "ida-null",
     "blank"
   ],
   "kontexte": [

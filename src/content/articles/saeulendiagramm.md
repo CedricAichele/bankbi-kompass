@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Säulen vergleichen Beträge entlang einer kurzen Kategorie- oder Zeitachse. Für lange Beschriftungen sind Balken meist lesbarer.",
   "ort": "Power BI Desktop → Berichtsansicht",

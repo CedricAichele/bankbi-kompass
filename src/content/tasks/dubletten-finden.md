@@ -6,13 +6,12 @@
   "bereich": "Werkzeugübergreifend",
   "werkzeuge": [
     "Power BI",
-    "Excel",
-    "IDA"
+    "Excel"
   ],
   "kategorie": "Typische Aufgaben",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Definiere zuerst die Kombination, die eindeutig sein muss. Dann markiere Mehrfachvorkommen und untersuche sie.",
-  "ort": "Power Query: Gruppieren / Duplikate · Excel: ZÄHLENWENNS · IDA: Schlüsselprüfung",
+  "ort": "Power Query: Gruppieren / Duplikate · Excel: ZÄHLENWENNS ·",
   "tags": [
     "Dubletten finden",
     "Kundenanalyse",
@@ -23,8 +22,7 @@
   ],
   "verwandteThemen": [
     "dubletten",
-    "excel-dubletten-finden",
-    "ida-dubletten"
+    "excel-dubletten-finden"
   ],
   "kontexte": [
     "Kundenanalyse",
@@ -83,7 +81,6 @@ Markierte Kundenzeilen ungeprüft löschen.
 | --------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | Power BI        | [Dubletten prüfen und entfernen](#/wissen/dubletten) · [Granularität: Was bedeutet eine Zeile?](#/wissen/granularitaet) |
 | Excel           | [Duplikate finden](#/wissen/excel-dubletten-finden)                                                                     |
-| IDA / Reporting | [Dubletten erkennen](#/wissen/ida-dubletten); generisches Konzept                                                       |
 
 ## Ergebnis
 

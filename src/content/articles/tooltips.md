@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein Tooltip ergänzt einen Datenpunkt beim Darüberfahren. Wesentliche Informationen müssen auch ohne Hover erreichbar bleiben.",
   "ort": "Power BI Desktop → Berichtsansicht",

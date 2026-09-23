@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Text",
+  "kategorie": "Daten vorbereiten",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Diese Funktionen schneiden Text nach festen Zeichenpositionen aus. Bei variabler Länge eignen sich Trennzeichenfunktionen besser.",
   "ort": "Excel → Formelzelle",
@@ -21,8 +21,7 @@
   ],
   "verwandteThemen": [
     "text-trennzeichen",
-    "textteilen",
-    "excel-text-teilen"
+    "textteilen"
   ],
   "kontexte": [
     "Reporting"

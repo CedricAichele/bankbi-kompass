@@ -27,7 +27,7 @@ describe("Screenshot-Anleitungen", () => {
     expect(container).toBeEmptyDOMElement();
     expect(screen.queryByRole("img")).not.toBeInTheDocument();
     expect(replacement.aufnahmeplan?.klickfolge.length).toBeGreaterThan(0);
-    expect(replacement.aufnahmeplan?.daten).toContain("K002");
+    expect(replacement.aufnahmeplan?.daten).toContain("1002");
     expect(screen.queryByText("Aufnahmeplan für diesen Screenshot")).not.toBeInTheDocument();
     expect(screen.queryByText("Synthetische Aufnahmedaten")).not.toBeInTheDocument();
   });

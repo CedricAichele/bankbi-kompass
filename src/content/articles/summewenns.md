@@ -2,14 +2,14 @@
 {
   "id": "summewenns",
   "slug": "summewenns",
-  "titel": "SUMMEWENNS",
+  "titel": "SUMMEWENNS: nach Geschäftsstelle und Produkt auswerten",
   "bereich": "Excel",
   "werkzeuge": [
     "Excel"
   ],
   "kategorie": "Aggregieren",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "SUMMEWENNS summiert Zahlen aus Zeilen, die alle angegebenen Bedingungen erfüllen.",
+  "kurzbeschreibung": "Wie hoch ist der Einlagenbestand der Geschäftsstelle Nord? Summiere nur Zeilen, die beide Kriterien erfüllen.",
   "ort": "Excel → Formelzelle",
   "tags": [
     "SUMMEWENNS",
@@ -17,21 +17,20 @@
     "Reporting"
   ],
   "synonyme": [
-    "SUMME"
+    "SUMME",
+    "SUMMEWENNS"
   ],
   "verwandteThemen": [
-    "summewenn",
-    "zaehlenwenns",
+    "pivottable",
     "excel-mehrere-kriterien",
-    "calculate",
-    "stichtag"
+    "zaehlenwenns"
   ],
   "kontexte": [
     "Bestandsanalyse",
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-09-23",
   "art": "artikel",
   "quellen": [
     "https://support.microsoft.com/en-us/excel/functions/sumifs-function"
@@ -49,98 +48,83 @@
       "aufnahmeplan": {
         "prioritaet": "Hoch",
         "werkzeug": "Excel",
-        "oberflaeche": "Excel – SUMMEWENNS",
+        "oberflaeche": "SUMMEWENNS: nach Geschäftsstelle und Produkt auswerten",
         "klickfolge": [
-          "Beispieltabelle in A1:D4 eintragen.",
-          "F2 = P001; G2 = A",
-          "Zelle H2 auswählen und =SUMMEWENNS(D2:D4;A2:A4;F2;C2:C4;G2) eingeben."
+          "Quelle mit einer Kopfzeile in A1:C5 prüfen. Eine Zeile steht im Beispiel für einen Datensatz zu einem gemeinsamen Stichtag; Bestand muss numerisch sein.",
+          "Außerhalb der Liste E2 = Nord und F2 = Einlagen als Kriterien setzen.",
+          "In G2 die Formel =SUMMEWENNS(C2:C5;A2:A5;E2;B2:B5;F2) eingeben. Alle Kriterienbereiche müssen dieselben Zeilen abdecken.",
+          "Ergebnis gegen die zwei passenden Quellzeilen kontrollieren. E2 testweise auf Süd ändern und erneut vergleichen.",
+          "Für wachsende Listen Excel-Tabellen mit strukturierten Bezügen nutzen. Bei einem Zeitverlauf ein Stichtagskriterium ergänzen."
         ],
-        "daten": "| Zeile | A: Kunde | B: Konto | C: Segment | D: Bestand |\n| --- | --- | --- | --- | --- |\n| 1 | Kunde | Konto | Segment | Bestand |\n| 2 | P001 | K001 | A | 1000 |\n| 3 | P001 | K002 | B | 2000 |\n| 4 | P002 | K003 | A | 500 |\nF2 = P001; G2 = A",
+        "daten": "### Vorher · A1:C5\n| Geschäftsstelle | Produkt | Bestand |\n| --- | --- | --- |\n| Nord | Einlagen | 100 |\n| Nord | Einlagen | 200 |\n| Nord | Kredit | 500 |\n| Süd | Einlagen | 400 |\n\nE2 = Nord; F2 = Einlagen.\n\n### Aktion · G2\n~~~excel\n=SUMMEWENNS(C2:C5;A2:A5;E2;B2:B5;F2)\n~~~\n\n### Nachher\nG2 = **300**. Die passende Teilmenge besteht aus den ersten beiden Datenzeilen mit Bestand 100 und 200.",
         "sichtbar": [
-          "Quelltabelle A1:D4",
-          "Kriterienzellen F2/G2 soweit genutzt",
-          "Formelleiste und Ausgabe ab H2"
+          "Überschriften und Werte des aktuellen Artikelbeispiels",
+          "Einstellung und Ergebnis des zugeordneten Schritts"
         ],
-        "ausschnitt": "Excel – SUMMEWENNS mit Quelltabelle A1:D4, Kriterienzellen F2/G2 soweit genutzt, Formelleiste und Ausgabe ab H2. Auf den relevanten Dialog und die lesbaren Tabellenüberschriften begrenzen.",
+        "ausschnitt": "Nur relevante Editorbereiche, Datenvorschau und beschriebene Einstellung lesbar aufnehmen.",
         "dateiname": "excel-summewenns.webp",
-        "zweck": "Zusammenhang zwischen Eingabezellen, Formelargumenten und Ergebnis zeigen.",
+        "zweck": "Wie hoch ist der Einlagenbestand der Geschäftsstelle Nord? Summiere nur Zeilen, die beide Kriterien erfüllen.",
         "nichtZeigen": [
           "Lokale Dateipfade",
-          "Benutzername oder Profil",
-          "Andere Programme und Benachrichtigungen",
+          "Benutzerprofile und Benachrichtigungen",
           "Reale Unternehmens-, Kunden- oder Mitarbeiterdaten"
         ]
       },
       "bildAnzeigen": false
     }
   ],
-  "praxis": true,
-  "kurzformel": "```excel\n=SUMMEWENNS(D2:D4;A2:A4;F2;C2:C4;G2)\n```",
-  "schnellschritte": [
-    "Quellbereiche und Kriterienzellen festlegen.",
-    "Formel in einer freien Ergebniszelle eingeben.",
-    "Ausgabe anhand der passenden Quellzeilen kontrollieren."
-  ]
+  "praxis": true
 }
 ---
 
 ## Wann brauche ich das?
 
-Beträge summieren, deren Zeilen alle Bedingungen erfüllen.
+Wie hoch ist der Einlagenbestand der Geschäftsstelle Nord? Summiere nur Zeilen, die beide Kriterien erfüllen.
 
 ## Voraussetzungen
 
-Eine zusammenhängende Liste mit Überschriften und passenden Datentypen. Die Formeln verwenden deutsches Excel und Semikolon als Trennzeichen.
+Eine vorhandene Tabelle mit bekannten Spalten und geklärter Zeilenebene. Die Formeln verwenden deutsches Excel und Semikolon.
 
 ## Schritte
 
-1. Prüfe die benötigten Quellspalten. Im Beispiel stehen Kunde, Konto, Segment und Bestand in **A1:D4**; die Daten beginnen in Zeile 2.
-2. Lege die Kriterien in eigenen Zellen außerhalb der Quelle ab: **F2 = P001; G2 = A**. Passe diese Bezüge für deine Liste an.
-3. Klicke in eine freie Ergebniszelle, im Beispiel **H2**, und gib die Formel aus dem Beispiel ein. Achte auf gleich große und gleich ausgerichtete Bereiche.
-4. Bestätige mit Enter. Vergleiche die Ausgabe mit den tatsächlich passenden Ausgangszeilen.
-5. Prüfe einen zweiten Fall und fehlende Werte. Bei wachsenden Listen verwende Excel-Tabellen mit strukturierten Bezügen oder erweitere alle zusammengehörenden Bereiche.
+1. Quelle mit einer Kopfzeile in A1:C5 prüfen. Eine Zeile steht im Beispiel für einen Datensatz zu einem gemeinsamen Stichtag; Bestand muss numerisch sein.
+2. Außerhalb der Liste E2 = Nord und F2 = Einlagen als Kriterien setzen.
+3. In G2 die Formel =SUMMEWENNS(C2:C5;A2:A5;E2;B2:B5;F2) eingeben. Alle Kriterienbereiche müssen dieselben Zeilen abdecken.
+4. Ergebnis gegen die zwei passenden Quellzeilen kontrollieren. E2 testweise auf Süd ändern und erneut vergleichen.
+5. Für wachsende Listen Excel-Tabellen mit strukturierten Bezügen nutzen. Bei einem Zeitverlauf ein Stichtagskriterium ergänzen.
 
 ## Beispiel
 
-### Vorher · Beispieldaten
+### Vorher · A1:C5
+| Geschäftsstelle | Produkt | Bestand |
+| --- | --- | --- |
+| Nord | Einlagen | 100 |
+| Nord | Einlagen | 200 |
+| Nord | Kredit | 500 |
+| Süd | Einlagen | 400 |
 
-| Zeile | A: Kunde | B: Konto | C: Segment | D: Bestand |
-| --- | --- | --- | --- | --- |
-| 1 | Kunde | Konto | Segment | Bestand |
-| 2 | P001 | K001 | A | 1000 |
-| 3 | P001 | K002 | B | 2000 |
-| 4 | P002 | K003 | A | 500 |
+E2 = Nord; F2 = Einlagen.
 
-F2 = P001; G2 = A
+### Aktion · G2
+~~~excel
+=SUMMEWENNS(C2:C5;A2:A5;E2;B2:B5;F2)
+~~~
 
-### Aktion
-
-```excel
-=SUMMEWENNS(D2:D4;A2:A4;F2;C2:C4;G2)
-```
-
-### Nachher · Beispielergebnis
-
-| Ausgabe ab H2 |
-| --- |
-| 1000 |
+### Nachher
+G2 = **300**. Die passende Teilmenge besteht aus den ersten beiden Datenzeilen mit Bestand 100 und 200.
 
 ## Ergebnis
 
-Beträge summieren, deren Zeilen alle Bedingungen erfüllen.
+Für Nord und Einlagen ergibt die Formel einen Bestand von 300.
 
 ## Warum funktioniert das?
 
-Die Kriterien wirken als UND. Nur K001 gehört zugleich zu P001 und Segment A.
+Der erste Bereich C2:C5 enthält die Beträge. Die Paare A2:A5/E2 und B2:B5/F2 filtern Geschäftsstelle und Produkt. Nur Zeilen, die beide Bedingungen erfüllen, tragen zur Summe bei.
 
 ## Typischer Fehler
 
-Zwei Bedingungen als ODER interpretieren oder die Bereiche um eine Zeile verschieben.
+Kriterien als ODER lesen, versetzte Bereiche nutzen oder mehrere Stichtage unbemerkt gemeinsam auswerten.
 
 ## Plausibilitätscheck
 
-Erwartete Ausgabe: **1000**. Die Ausgangsliste umfasst drei Kontenzeilen, zwei Kunden und insgesamt 3500. Prüfe bei Kriterienwechsel die betreffenden Zeilen erneut.
-
-## Argumente verstehen
-
-**D2:D4** ist der Summenbereich. **A2:A4/F2** prüft Kunde, **C2:C4/G2** Segment. Alle Bereiche müssen dieselben Zeilen abdecken.
+Nord/Einlagen: 300. Süd/Einlagen: 400. Alle vier Quellzeilen zusammen haben Bestand 1200.

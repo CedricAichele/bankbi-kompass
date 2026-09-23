@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Fehler & Plausibilitätsprüfung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Filtere auf einen fachlich festgelegten Stichtag, bevor du Bestände addierst.",
   "ort": "Power BI → Kontrolltabelle mit Stichtag, Schlüssel und Measure",

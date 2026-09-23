@@ -21,8 +21,7 @@
   "verwandteThemen": [
     "measure",
     "filterkontext",
-    "aktueller-stichtag",
-    "ida-extrema"
+    "aktueller-stichtag"
   ],
   "kontexte": [
     "Reporting"

@@ -8,7 +8,7 @@
     "Power BI",
     "Excel"
   ],
-  "kategorie": "Daten vorbereiten",
+  "kategorie": "Power Query & Datenaufbereitung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein Konvertierungsfehler ist ein Hinweis auf unpassende Daten oder Typen. Untersuche die Ursache, bevor du Werte ersetzt.",
   "ort": "Power Query → Fehlerzelle / Spaltenkontextmenü",
@@ -84,7 +84,7 @@ Eine vorhandene Abfrage mit den benötigten Spalten.
 1. Öffne den **Power Query-Editor**: in Power BI über **Start → Daten transformieren**, in Excel über **Daten → Abfragen und Verbindungen → Rechtsklick auf die Abfrage → Bearbeiten**. Wähle links die zu bearbeitende Abfrage.
 2. Suche im Schritt **Geänderter Typ** nach **Error**-Zellen. Klicke auf eine Fehlerzelle, um die Fehlermeldung zu lesen.
 3. Prüfe den vorherigen Schritt: Hier lässt sich unbekannt nicht in eine Zahl umwandeln. Ein Fehler ist etwas anderes als ein fehlender Wert null.
-4. Für eine getrennte Fehlerliste dupliziere oder referenziere die Abfrage und wähle auf der Betragsspalte **Start → Zeilen beibehalten → Fehler beibehalten**.
+4. Für eine getrennte Fehlerliste dupliziere die Abfrage **vor der Fehlerbehandlung** und wähle in der Kopie auf der Betragsspalte **Start → Zeilen beibehalten → Fehler beibehalten**.
 5. Korrigiere bevorzugt die Ursache: falscher Datentyp, falsches Gebietsschema oder ungültiger Quelltext.
 6. Wenn fachlich vereinbart, nutze **Transformieren → Werte ersetzen → Fehler ersetzen**, etwa durch null. **Start → Zeilen entfernen → Fehler entfernen** verwirft dagegen ganze Zeilen und braucht einen Ausschlussnachweis.
 7. Vergleiche Fehleranzahl, Zeilenzahl und Summen vor/nach der Behandlung.
@@ -123,4 +123,4 @@ Alle Fehlerzeilen löschen und dadurch vollständige Konten verlieren.
 
 ## Plausibilitätscheck
 
-Zwei Konten bleiben; ein Betrag ist 100, einer unbekannt. Fehlerliste enthält genau K002.
+Zwei Konten bleiben; ein Betrag ist 100, einer unbekannt. Die getrennte Prüf-Abfrage auf dem Stand vor der Ersetzung enthält genau K002. Eine Referenz auf das bereits bereinigte Endergebnis würde diese Fehler nicht mehr zeigen.

@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Pivot",
+  "kategorie": "PivotTables & Auswertung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Gruppieren fasst passende Detailwerte zu Intervallen zusammen. Die Quelldaten bleiben erhalten.",
   "ort": "Excel → PivotTable-Analyse / Rechtsklick in PivotTable",
@@ -20,8 +20,7 @@
   "verwandteThemen": [
     "pivottable",
     "excel-liste-vorbereiten",
-    "excel-datum",
-    "pivot-felder"
+    "excel-datum"
   ],
   "kontexte": [
     "Reporting"

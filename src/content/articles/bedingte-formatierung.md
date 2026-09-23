@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Bericht",
+  "kategorie": "Berichte & Visualisierung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Farben oder Symbole kennzeichnen fachlich definierte Abweichungen.",
   "ort": "Power BI → Formatbereich des Visuals → passende Eigenschaft / fx",

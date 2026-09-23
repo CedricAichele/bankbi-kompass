@@ -1,19 +1,41 @@
-export const legacyIds: Record<string, string> = {
-  kundenstruktur: "eine-zeile-je-person",
-  stichtagsreporting: "stichtag",
-  vertriebssteuerung: "plan-ist",
-  produktanalyse: "stichtag",
-  laufzeitanalyse: "ida-vorgang",
-  kundenansprache: "personen-zaehlen",
+export const legacyIds: Record<string,string> = {
+  "kundenstruktur": "eine-zeile-je-person",
+  "stichtagsreporting": "stichtag",
+  "vertriebssteuerung": "plan-ist",
+  "produktanalyse": "stichtag",
+  "kundenansprache": "personen-zaehlen",
   "management-reporting": "plan-ist",
-  visualisierung: "matrix",
+  "visualisierung": "matrix",
   "power-bi": "power-query",
   "erster-bericht": "measure",
+  "excel-import": "daten-laden",
+  "pq-umbenennen": "pq-workflow",
+  "pq-ueberschriften": "pq-workflow",
+  "spalten-teilen": "pq-text",
+  "werte-ersetzen": "pq-text",
+  "excel-index": "index-vergleich",
+  "pivot-felder": "pivottable",
+  "pivot-aktualisieren": "pivottable",
+  "pivot-filtern": "pivottable",
+  "excel-ersetzen": "wechseln-ersetzen",
+  "excel-text-teilen": "textteilen",
+  "excel-dubletten-entfernen": "excel-dubletten-finden",
+  "saeubern": "glaetten",
+  "excel-kombinationen": "eindeutig",
+  "aufgabe-breit-lang": "entpivotieren",
+  "aufgabe-lang-breit": "pivotieren",
+  "aufgabe-null": "nullwerte",
+  "aufgabe-csv": "csv-import",
+  "aufgabe-excel-liste": "excel-liste-vorbereiten",
+  "aufgabe-dubletten-entfernen": "dubletten",
+  "aufgabe-ytd": "ytd",
+  "aufgabe-vorjahr": "vorjahr",
+  "aufgabe-datum-sortieren": "datum-sortieren",
+  "daten-gruppieren": "gruppieren",
+  "dateien-zusammenfassen": "dateien-kombinieren",
+  "datenqualitaet": "pq-workflow",
+  "begriff-append": "anhaengen",
+  "begriff-join": "zusammenfuehren"
 };
-export function migrateIds(ids: string[], valid: Set<string>) {
-  return [
-    ...new Set(
-      ids.map((id) => legacyIds[id] || id).filter((id) => valid.has(id)),
-    ),
-  ];
-}
+export const archivedIdaIds = new Set(["ida-aggregation","ida-anzahl","ida-ausfuehren","ida-bedingungen","ida-berechnung","ida-betrieb","ida-csv","ida-datenelement","ida-dubletten","ida-durchschnitt","ida-ebene","ida-excel-export","ida-excel-liste","ida-extrema","ida-falllogik","ida-filter-pruefen","ida-filter","ida-filterebene","ida-filtertypen","ida-formate","ida-gruppieren","ida-join-aggregation","ida-join-pruefen","ida-konto","ida-mehrere-joins","ida-mehrfachauswahl","ida-not-null","ida-null","ida-nullstellen","ida-parameter-anzeigen","ida-parameter-filter","ida-parameter-mehrfach","ida-parameter-optional","ida-parameter-typ","ida-parameter","ida-performance","ida-prompt","ida-quote","ida-sortieren","ida-spalten","ida-speichern","ida-statusverlauf","ida-summe","ida-vorgang","ida-zeitplanung","ida-zielgranularitaet","reporting","laufzeitanalyse"]);
+export function migrateIds(ids:string[], valid:Set<string>) { return [...new Set(ids.map(id=>legacyIds[id]||id).filter(id=>valid.has(id)))]; }

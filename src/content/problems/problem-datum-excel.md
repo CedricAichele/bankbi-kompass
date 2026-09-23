@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Datumsfilter oder zeitliche Sortierung funktionieren nicht. Datumszeichenfolge wurde als Text oder mit falschem Gebietsschema interpretiert.",
   "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",

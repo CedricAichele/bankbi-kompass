@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Power BI"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Fehler & Plausibilitätsprüfung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Prüfe eindeutige Schlüssel auf der 1-Seite und kompatible Datentypen auf beiden Seiten.",
   "ort": "Power Query → Schlüsselprüfung; Power BI → Modellansicht",

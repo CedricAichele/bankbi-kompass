@@ -2,7 +2,7 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { Star, ChevronRight, Lightbulb, ArrowUpRight } from "lucide-react";
 import { contents, byId } from "../content";
 import { sectionsOf, stepsOf } from "../content/schema";
-import { legacyIds } from "../content/redirects";
+import { legacyIds, archivedIdaIds } from "../content/redirects";
 import { toolsCatalog } from "../content/catalog";
 import { Markdown } from "../components/Markdown";
 import { ReferenceImage } from "../components/ReferenceImage";
@@ -16,6 +16,7 @@ export function Reference({
   onToggle: (id: string) => void;
 }) {
   const { slug } = useParams();
+  if (slug && archivedIdaIds.has(slug)) return <Navigate replace to="/bereich/ida" />;
   const item = contents.find((x) => x.slug === slug);
   if (!item) {
     if (slug && legacyIds[slug])
@@ -102,11 +103,11 @@ export function Reference({
           </p>
         )}
         {["Voraussetzungen", "Symptom", "Schnelltest"].filter((name) => sections[name]).map((name) => (
-          <section className="practice-section" key={name}><h2>{name === "Ergebnis" ? "Allgemeines Ergebnis" : name}</h2><Markdown text={sections[name]} /></section>
+          <section className="practice-section" key={name}><h2>{name}</h2><Markdown text={sections[name]} /></section>
         ))}
         <div
           className={
-            "reference-grid" + (illustrated ? " illustrated-reference" : "")
+            "reference-grid" + (illustrated ? " illustrated-reference" : "") + (item.id === "pq-workflow" ? " workflow-reference" : "")
           }
         >
           <section className="steps">
@@ -144,7 +145,7 @@ export function Reference({
           </section>
         </div>
         {["Ergebnis", "Plausibilitätscheck"].filter((name) => sections[name]).map((name) => (
-          <section className="practice-section" key={name}><h2>{name === "Ergebnis" ? "Allgemeines Ergebnis" : name}</h2><Markdown text={sections[name]} /></section>
+          <section className="practice-section" key={name}><h2>{name}</h2><Markdown text={sections[name]} /></section>
         ))}
         {Object.entries(sections).filter(([name]) => !["Wann brauche ich das?", "Schritte", "Beispiel", "Typischer Fehler", "Vergleich", "Voraussetzungen", "Symptom", "Schnelltest", "Ergebnis", "Plausibilitätscheck"].includes(name)).map(([name, text]) => (
           <details className="practice-details" key={name}><summary>{name}</summary><Markdown text={text} /></details>

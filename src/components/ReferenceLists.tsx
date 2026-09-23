@@ -69,6 +69,7 @@ export function SearchForm({ prominent = false }: { prominent?: boolean }) {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [focused, setFocused] = useState(false);
+  const idaQuery = /\b(?:ida|cognos)\b/i.test(query);
   const live = useMemo(
     () => (query.trim() ? searchContent(contents, query).slice(0, 6) : []),
     [query],
@@ -81,7 +82,7 @@ export function SearchForm({ prominent = false }: { prominent?: boolean }) {
         onSubmit={(e) => {
           e.preventDefault();
           setFocused(false);
-          navigate("/suche?q=" + encodeURIComponent(query));
+          navigate(idaQuery ? "/bereich/ida" : "/suche?q=" + encodeURIComponent(query));
         }}
       >
         <Search size={prominent ? 23 : 18} />
@@ -116,7 +117,7 @@ export function SearchForm({ prominent = false }: { prominent?: boolean }) {
               <X size={16} />
             </button>
           </div>
-          {live.length ? (
+          {idaQuery ? <Link to="/bereich/ida" onClick={() => setFocused(false)}>IDA · In Entwicklung <ArrowUpRight size={17} /></Link> : live.length ? (
             live.map((item) => (
               <Link
                 key={item.id}

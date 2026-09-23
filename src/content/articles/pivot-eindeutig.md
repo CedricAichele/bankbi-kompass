@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Pivot",
+  "kategorie": "PivotTables & Auswertung",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Eindeutige Anzahl steht bei geeigneten datenmodellbasierten PivotTables zur Verfügung. Eine normale Anzahl zählt Detailzeilen.",
   "ort": "Excel → PivotTable-Analyse / Rechtsklick in PivotTable",

@@ -7,7 +7,7 @@
   "werkzeuge": [
     "Excel"
   ],
-  "kategorie": "Fehler",
+  "kategorie": "Typische Probleme",
   "schwierigkeit": "Grundlage",
   "kurzbeschreibung": "Ein Ergebnis erscheint, aber gehört zur falschen Zuordnung. Schlüssel doppelt oder Such- und Ergebnisbereiche gegeneinander verschoben.",
   "ort": "Siehe konkrete Vorgehensweise und Werkzeugvergleich.",
