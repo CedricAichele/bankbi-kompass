@@ -10,6 +10,7 @@ import { MReference } from "../components/MReference";
 describe("Praktische M-Referenz", () => {
   it("zeigt eine datenbasierte Übersicht und öffnet mehrere gewählte Details", () => {
     render(<MemoryRouter><MReference/></MemoryRouter>);
+    fireEvent.click(screen.getByText("Alle Funktionen & Muster anzeigen"));
     const overview=screen.getByRole("region",{name:"Formelübersicht"});
     expect(within(overview).getAllByRole("button")).toHaveLength(mEntries.length);
     expect(within(overview).getByText("Text.Trim([Ort])")).toBeVisible();

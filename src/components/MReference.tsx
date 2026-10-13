@@ -2,6 +2,8 @@ import { useState } from "react";
 import { MDetailContext, mInputType, mRelated, mUseContext } from "./MDetailContext";
 import { useSearchParams, Link } from "react-router-dom";
 import { mCategories, mEntries, findMEntries, mSyntax } from "../content/m-reference";
+import { SectionJump } from "./ArticleToc";
+import { commonMEntries } from "../content/discovery";
 import { CodeBlock } from "./CodeBlock";
 import { SyntaxBlock } from "./SyntaxBlock";
 
@@ -24,21 +26,24 @@ export function MReference() {
   function update(key: string, value: string) {
     const next = new URLSearchParams(params);
     value ? next.set(key, value) : next.delete(key);
+    next.delete("abschnitt");
     setParams(next, { replace: true, preventScrollReset: true });
   }
   return <section className="m-reference m-workbench" aria-label="M-Funktionsreferenz">
-    <p>Power Query verwendet die Formelsprache <strong>M</strong>. Viele Aktionen der Oberfläche erzeugen den Code bereits automatisch. Du musst M nicht auswendig lernen. Eigene Ausdrücke helfen bei Textbereinigung, Datumslogik, komplexeren Bedingungen, Fehlerbehandlung und wiederkehrenden oder dynamischen Transformationen.</p>
+    <SectionJump targets={{detail:detailId(exact?.name || query)}}/>
+    <p id="m-intro" tabIndex={-1}>Power Query verwendet die Formelsprache <strong>M</strong>. Viele Aktionen der Oberfläche erzeugen den Code bereits automatisch. Du musst M nicht auswendig lernen. Eigene Ausdrücke helfen bei Textbereinigung, Datumslogik, komplexeren Bedingungen, Fehlerbehandlung und wiederkehrenden oder dynamischen Transformationen.</p>
     <p>Hier findest du eine praxisorientierte Auswahl häufig benötigter M-Funktionen. Die vollständige Referenz mit mehreren hundert Funktionen findest du bei Microsoft: <a href="https://learn.microsoft.com/en-us/powerquery-m/power-query-m-function-reference" target="_blank" rel="noreferrer">Power Query M Function Reference</a> und <a href="https://learn.microsoft.com/en-us/powerquery-m/understanding-power-query-m-functions" target="_blank" rel="noreferrer">Understanding Power Query M Functions</a>.</p>
     <p><strong>Drei Eingabeebenen:</strong> Benutzerdefinierte Spalte = einzelner Ausdruck ohne führendes =. Formelleiste = vollständiger Schritt mit =. Erweiterter Editor = komplette let/in-Abfrage. Der passende Eingabeort steht jeweils vor dem Code.</p>
-    <h2>Funktion oder Arbeitsproblem finden</h2>
-    <div className="filters m-filters"><label>Funktion oder Aufgabe<input type="search" value={query} onChange={e => update("funktion", e.target.value)} placeholder="z. B. text trim, Monatsultimo, filtern" /></label><label>Kategorie<select value={category} onChange={e => update("gruppe", e.target.value)}><option value="">Alle Kategorien</option>{mCategories.map(x => <option key={x}>{x}</option>)}</select></label><button onClick={() => {setOpened([]); setParams({}, {replace: true, preventScrollReset: true});}}>Filter zurücksetzen</button></div>
+    <section id="m-common" tabIndex={-1} className="discovery-section" aria-label="Häufige M-Funktionen"><h2>Häufig gebraucht</h2><p>Für typische Bereinigungs- und Transformationsfragen direkt zum Beispiel.</p><ul className="common-m-functions">{commonMEntries.map(entry=><li key={entry.name}><Link to={"/wissen/power-query-m?funktion="+encodeURIComponent(entry.name)+"&abschnitt=detail"}><strong>{entry.name}</strong><span>{entry.use}</span></Link></li>)}</ul></section>
+    <h2 id="m-search" tabIndex={-1}>Funktion oder Aufgabe suchen</h2>
+    <div className="filters m-filters"><label>Funktion oder Aufgabe<input type="search" value={query} onChange={e => update("funktion", e.target.value)} placeholder="z. B. text trim, Monatsultimo, filtern" /></label><label id="m-categories" tabIndex={-1}>Kategorie<select value={category} onChange={e => update("gruppe", e.target.value)}><option value="">Alle Kategorien</option>{mCategories.map(x => <option key={x}>{x}</option>)}</select></label><button onClick={() => {setOpened([]); setParams({}, {replace: true, preventScrollReset: true});}}>Filter zurücksetzen</button></div>
     <p role="status">{matches.length} von {mEntries.length} Funktionen und Mustern</p>
     {matches.length === 0 && <p>Kein Treffer. Verwende einen kürzeren Begriff oder setze die Filter zurück.</p>}
-    {matches.length > 0 && <div className="m-overview-scroll" role="region" aria-label="Formelübersicht" tabIndex={0}><table className="m-overview">
+    {matches.length > 0 && <details className="m-catalog" open={Boolean(query || category) ? true : undefined}><summary>Alle Funktionen &amp; Muster anzeigen</summary><div className="m-overview-scroll" role="region" aria-label="Formelübersicht" tabIndex={0}><table className="m-overview">
       <caption>Funktionen vergleichen · Codevorschauen dienen der Orientierung; vollständigen Code unter Details kopieren.</caption>
       <thead><tr><th scope="col">Funktion oder Muster</th><th scope="col">Wann brauche ich das?</th><th scope="col">Codevorschau</th><th scope="col">Eingabeort</th><th scope="col">Details</th></tr></thead>
       <tbody>{matches.map(entry=><tr key={entry.name}><th scope="row">{entry.name}</th><td data-label="Wann brauche ich das?">{entry.use}</td><td data-label="Codevorschau"><code>{entry.code.replace(/\s+/g," ").slice(0,82)}{entry.code.replace(/\s+/g," ").length>82 ? " … (gekürzt)" : ""}</code></td><td data-label="Eingabeort">{entry.code.startsWith("= ") ? "Formelleiste" : "Benutzerdefinierte Spalte"}</td><td><button aria-label={"Details zu " + entry.name} onClick={()=>show(entry.name)}>Details öffnen</button></td></tr>)}</tbody>
-    </table></div>}
+    </table></div></details>}
     <div className="m-results" aria-label="Ausgewählte Funktionsdetails">
     {selected.length>0 && <h2>Ausgewählte Funktionen im Detail</h2>}
     {selected.map(entry => <details className="m-entry" key={entry.name} id={detailId(entry.name)} tabIndex={-1} open>
@@ -61,7 +66,7 @@ export function MReference() {
       <h3>Weiterführende Anleitung</h3><p><Link to={"/wissen/"+mRelated(entry)}>Passende Praxisanleitung →</Link></p>
       <a href={entry.source} target="_blank" rel="noreferrer">Microsoft: Syntax und Details zu {entry.name}</a>
     </details>)}</div>
-    <h2>M-Code verstehen und übertragen</h2>
+    <h2 id="m-input" tabIndex={-1}>M-Code verstehen und übertragen</h2>
     <details className="practice-details"><summary>Eingabehilfe: Wo gebe ich M-Code ein und was passe ich an?</summary>
     <h2>Wo gebe ich Power-Query-Code ein?</h2>
     <h3>A · Benutzerdefinierte Spalte: nur der Ausdruck</h3>

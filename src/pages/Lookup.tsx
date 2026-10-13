@@ -12,7 +12,11 @@ import {
   Lightbulb,
 } from "lucide-react";
 import { contents, byId } from "../content";
-import { toolsCatalog, powerQueryGroups, daxGroups, frequent, type Tool } from "../content/catalog";
+import { toolsCatalog, powerQueryGroups, frequent, type Tool, type Group } from "../content/catalog";
+import { powerBiAreas, excelAreas, powerQueryAreas, commonDaxGroups, daxTasks, daxDestination, type DiscoveryArea } from "../content/discovery";
+import { daxEntries } from "../content/dax-reference";
+import { SectionJump } from "../components/ArticleToc";
+import { Breadcrumbs } from "../components/Breadcrumbs";
 import { contexts } from "../content/schema";
 import { searchContent } from "../lib/search";
 import { EntryList, SearchForm, Empty } from "../components/ReferenceLists";
@@ -21,7 +25,7 @@ export function IdaPage() {
   return <article className="note-list"><header className="page-heading"><span className="eyebrow">In Entwicklung</span><h1>IDA</h1><p>Der IDA-Bereich wird derzeit neu aufgebaut.</p></header><h2>Geplante Themen</h2><p>Hier sollen allgemein gehaltene Inhalte zu folgenden Themen entstehen:</p><ul>{["Listen und Auswertungen","Filterlogik","Parameter","Berechnungen","Aggregationen","Mehrfachzeilen und Joins","Export","Plausibilitätsprüfung","Berichtsbetrieb"].map(x=><li key={x}>{x}</li>)}</ul><p>IDA soll langfristig ein wichtiger Teil von BankBI Kompass werden. Aktuell sind hier noch keine Anleitungen veröffentlicht.</p><p><Link to="/bereich/power-bi">Zum Power-BI-Katalog</Link> · <Link to="/bereich/excel">Zum Excel-Katalog</Link></p></article>;
 }
 export function PowerQueryPage() {
-  return <><header className="page-heading"><span className="eyebrow">AUSGEBAUT · POWER BI UND EXCEL</span><h1>Power Query & Datenaufbereitung</h1><p>Von einer neuen Quelle zu einer nachvollziehbar aufbereiteten Tabelle. Wähle einen Arbeitsablauf oder schlage eine konkrete Transformation nach.</p></header><section className="orientation m-entrypoint"><h2><Link to="/wissen/power-query-m">M-Formeln &amp; Funktionen</Link></h2><p>Power-Query-Code nachschlagen: passende Funktion finden, Beispiel verstehen und auf eigene Daten übertragen.</p></section><SearchForm /><section className="orientation"><h2>Neue Daten geladen? Starte hier.</h2><p><Link to="/wissen/pq-workflow">Daten in Power Query aufbereiten: der vollständige Workflow →</Link></p><ol><li>Profiling einschalten und Datentypen prüfen</li><li>Schlüssel, NULL-Werte und Dubletten verstehen</li><li>Spalten reduzieren und Text bereinigen</li><li>Struktur prüfen, Tabellen bei Bedarf kombinieren</li><li>Ergebnis plausibilisieren und laden</li></ol><p>In Excel unterscheiden sich Einstieg und Ladeziel: <Link to="/wissen/excel-power-query">Power Query in Excel verwenden</Link>.</p></section><div className="catalog-grid">{powerQueryGroups.map(g=><section className="catalog-group" key={g.title}><h2>{g.title}</h2><ul>{g.items.map(x=><li key={x.id}><Link to={"/wissen/"+x.id}><span>{x.label}</span><ChevronRight size={16}/></Link></li>)}</ul>{g.title === "M / Code" && <ul>{[["if / then / else", "Bedingungen"], ["try / otherwise und NULL", "NULL und Fehler"], ["Textfunktionen", "Text"], ["Datumsfunktionen", "Datum"]].map(([label,category]) => <li key={category}><Link to={"/wissen/power-query-m?gruppe=" + encodeURIComponent(category)}>{label}</Link></li>)}</ul>}{g.title === "Abfragen organisieren" && <p><Link to="/wissen/power-query">Angewendete Schritte verstehen und bearbeiten</Link></p>}{g.title === "Daten bereinigen" && <p>Werte ersetzen und Spalten teilen findest du in der Textbereinigung; Überschriften im Workflow.</p>}{g.title === "Fehler & Kontrolle" && <p><Link to="/wissen/pq-workflow">Abschlusskontrolle: Zeilen, Schlüssel, Fehler und Summen</Link></p>}</section>)}</div></>;
+  return <><Breadcrumbs items={[{label:"Start",to:"/"},{label:"Power BI",to:"/bereich/power-bi"},{label:"Power Query"}]} /><header className="page-heading"><span className="eyebrow">AUSGEBAUT</span><h1>Power Query & Datenaufbereitung</h1><p>Daten laden, prüfen und für die Analyse vorbereiten. Die Transformationen gelten für Power BI und Excel.</p></header><SearchForm /><DiscoveryCards areas={powerQueryAreas} /><p className="secondary-links"><Link to="/wissen/excel-power-query">Einstieg in Excel</Link> · <Link to="/bereich/datenanalyse">Grundbegriffe verstehen</Link></p></>;
 }
 export function HomePage() {
   return (
@@ -65,7 +69,7 @@ export function HomePage() {
             <h2>Typische Aufgaben</h2>
           </div>
           <Link to="/aufgaben">
-            Alle {contents.filter((x) => x.art === "aufgabe").length} Aufgaben{" "}
+            Alle Aufgaben{" "}
             <ArrowRight size={16} />
           </Link>
         </div>
@@ -81,6 +85,7 @@ export function HomePage() {
           ].map((id) => byId(id)!)}
         />
       </section>
+      <p className="secondary-links"><Link to="/aufgaben">Typische Aufgaben</Link> · <Link to="/werkzeugwahl">Welches Werkzeug brauche ich?</Link></p>
       <div className="help-strip">
         <Lightbulb size={21} />
         <div>
@@ -141,95 +146,37 @@ function ToolOverview({ tool }: { tool: Tool }) {
     </div>
   );
 }
+export function DiscoveryCards({areas}:{areas:DiscoveryArea[]}) {
+  return <div className="discovery-grid" aria-label="Themenbereiche">{areas.map(area=><section className="discovery-card" key={area.title}><h2>{area.title}</h2><p>{area.description}</p><ul className="primary-links">{area.links.map(link=><li key={link.label}><Link to={link.to}>{link.label}<ChevronRight size={15}/></Link></li>)}</ul><Link className="discovery-more" to={area.more.to}>{area.more.label}<ArrowRight size={16}/></Link></section>)}</div>;
+}
+function TopicList({groups}:{groups:Group[]}) {
+  return <div className="catalog-grid">{groups.map(g=><section className="catalog-group" key={g.title}><h2>{g.title}</h2><ul>{g.items.map(x=><li key={x.id}><Link to={"/wissen/"+x.id}>{x.label}<ChevronRight size={15}/></Link></li>)}</ul></section>)}</div>;
+}
 export function ToolPage() {
-  const { slug } = useParams();
-  const [params, setParams] = useSearchParams();
-  const tool = toolsCatalog.find((x) => x.slug === slug);
-  const group = params.get("gruppe") || "";
-  if (!tool)
-    return (
-      <Empty text="Dieses Werkzeug gibt es nicht. Nutze die Navigation oder Suche." />
-    );
-  if (tool.name === "IDA") return <IdaPage />;
-  return (
-    <>
-      <header className="page-heading">
-        <span className="eyebrow">AKTIV · KERNWISSEN, PRAXIS UND REFERENZEN</span>
-        <h1>{tool.name}</h1>
-        <p>{tool.description}</p>
-      </header>
-      <ContentLevels />
-      <SearchForm />
-      {tool.name === "Power BI" && <section className="orientation"><h2>Neu mit Power BI?</h2><p>Eine Orientierung vom Import bis zur verlässlichen Auswertung:</p><ol>{["daten-laden","pq-workflow","star-schema","beziehungen","measure","visualwahl"].map(id=><li key={id}><Link to={"/wissen/"+id}>{byId(id)!.titel}</Link></li>)}</ol><Link to="/power-query">Power Query & Datenaufbereitung: alle Themen →</Link> · <Link to="/dax">DAX: Grundlagen und Praxis →</Link> · <Link to="/wissen/dax-formeln">DAX-Funktionsreferenz →</Link></section>}
-      {tool.name === "Excel" && <section className="orientation"><h2>Von der Liste zur Auswertung</h2><p><Link to="/wissen/excel-formeln">Excel – Formeln & Funktionen: durchsuchbare Schnellreferenz →</Link></p><p><Link to="/wissen/excel-liste-vorbereiten">Daten vorbereiten</Link> → <Link to="/wissen/xverweis">Werte zuordnen</Link> → <Link to="/wissen/pivottable">Auswerten und prüfen</Link>. Wiederkehrende Lieferungen mit <Link to="/wissen/excel-power-query">Excel Power Query</Link> aufbereiten.</p></section>}
-      <div className="group-tabs" aria-label="Tätigkeitsgruppen">
-        <button aria-pressed={!group} onClick={() => setParams({})}>
-          Alle
-        </button>
-        {tool.groups.map((g) => (
-          <button
-            key={g.title}
-            aria-pressed={group === g.title}
-            onClick={() => setParams({ gruppe: g.title })}
-          >
-            {g.title}
-          </button>
-        ))}
-      </div>
-      {group && !tool.groups.some((g) => g.title === group) ? (
-        <Empty text="Diese Tätigkeitsgruppe gibt es nicht. Wähle „Alle“." />
-      ) : (
-        <div className="catalog-grid">
-          {tool.groups
-            .filter((g) => !group || g.title === group)
-            .map((g) => (
-              <section key={g.title} className="catalog-group">
-                <h2>
-                  {g.title}
-                </h2>
-                {g.status && <p className="area-status">{g.status}{g.status === "In Ausbau" ? " · Dieser Bereich wird derzeit erweitert." : ""}</p>}
-                {g.title === "Power Query & Datenaufbereitung" && <p><Link to="/power-query">Zur vollständigen Power-Query-Übersicht →</Link></p>}
-                <p className="catalog-intro">{({
-                  "Start": "Datenquelle verbinden und die erste Kennzahl auf der passenden Ebene berechnen.",
-                  "DAX": "Kennzahlen im Filterkontext verstehen und passende Formeln nachschlagen.",
-                  "Fehlersuche": "Vom sichtbaren Symptom zum überprüfbaren Schnelltest.",
-                  "Daten importieren": "Die passende Quelle wählen und schon vor dem Laden Struktur und Typen prüfen.",
-                  "Power Query & Datenaufbereitung": "Neue Daten systematisch verstehen, bereinigen, kombinieren und kontrollieren.",
-                  "Daten prüfen & bereinigen": "Struktur, fehlende Werte, Dubletten und Kontrollsummen nachvollziehbar prüfen.",
-                  "Text bearbeiten": "Leerzeichen bereinigen, Texte zerlegen und gezielt zusammensetzen.",
-                  "Datum & Datentypen": "Zahlen und Datum von Text unterscheiden und mit bekannter Quellkonvention umwandeln.",
-                  "Datenmodell": "Eindeutige Schlüssel und verlässliche Filterwege aufbauen.",
-                  "DAX & Measures": "Kennzahlen berechnen, die auf die aktuelle Auswahl reagieren.",
-                  "Zeitintelligenz": "Zeiträume mit einem gemeinsamen Kalender vergleichen.",
-                  "Berichte & Visualisierung": "Die passende Darstellung wählen und ihre Filterwirkung prüfen.",
-                  "Fehler & Plausibilitätsprüfung": "Vom sichtbaren Symptom zum überprüfbaren Schnelltest.",
-                  "Nachschlagen & Zuordnen": "Werte sicher über passende Schlüssel zuordnen.",
-                  "Filtern & eindeutige Listen": "Treffer auswählen und dynamische Ergebnislisten erstellen.",
-                  "Aggregieren": "Summen, Anzahlen und Quoten auf der richtigen Ebene bilden.",
-                  "Logik & Fehlerbehandlung": "Bedingungen ordnen und fehlende Treffer von echten Fehlern unterscheiden.",
-                  "PivotTables & Auswertung": "Quelldaten verdichten, Felder zuordnen und Ergebnisse nach Aktualisierung prüfen.",
-                  "Excel Power Query": "Wiederkehrende Aufbereitung mit der gemeinsamen Transformationsbasis aufbauen.",
-                  "Typische Probleme": "Fehler in Formeln, Datentypen und Auswertungen gezielt eingrenzen.",
-                } as Record<string, string>)[g.title] || `${g.title}: passende Funktion auswählen und am Beispiel nachvollziehen.`}</p>
-                {["Kernwissen", "Praxisartikel", "Referenz"].map((level) => {
-                  const entries = g.items.filter((x) => (byId(x.id)?.ebene || "Praxisartikel") === level);
-                  return entries.length ? <div key={level}><strong className="catalog-level">{level}</strong><ul>
-                  {entries.map((x) => (
-                    <li key={x.label}>
-                      <Link to={"/wissen/" + x.id}>
-                        <span>{x.label}</span>
-                        <ChevronRight size={16} />
-                      </Link>
-                    </li>
-                  ))}
-                </ul></div> : null;
-                })}
-              </section>
-            ))}
-        </div>
-      )}
-    </>
-  );
+  const {slug}=useParams();
+  const [params]=useSearchParams();
+  const tool=toolsCatalog.find(x=>x.slug===slug);
+  if(!tool) return <Empty text="Dieses Werkzeug gibt es nicht. Nutze die Navigation oder Suche."/>;
+  if(tool.name==="IDA") return <IdaPage/>;
+  const legacyGroup=params.get("gruppe");
+  if(legacyGroup) {
+    const selected=tool.groups.filter(g=>g.title===legacyGroup);
+    return <><Breadcrumbs items={[{label:"Start",to:"/"},{label:tool.name,to:"/bereich/"+tool.slug},{label:legacyGroup}]} /><header className="page-heading"><h1>{legacyGroup}</h1><p>Alle Themen in diesem Bereich.</p></header><SearchForm/>{selected.length ? <TopicList groups={selected}/> : <Empty text="Diese Tätigkeitsgruppe gibt es nicht."/>}<Link className="discovery-more" to={"/bereich/"+tool.slug}>Zur Übersicht</Link></>;
+  }
+  return <><header className="page-heading"><h1>{tool.name}</h1><p>{tool.name==="Power BI" ? "Von der Datenquelle zur verständlichen Auswertung. Wähle den Bereich, in dem du gerade Unterstützung brauchst." : "Daten vorbereiten, die passende Formel finden und Ergebnisse auswerten."}</p></header><SearchForm/><DiscoveryCards areas={tool.name==="Power BI" ? powerBiAreas : excelAreas}/>{tool.name==="Excel" && <p className="secondary-links"><Link to="/wissen/excel-formeln">Erweiterte Formelreferenz →</Link></p>}</>;
+}
+export function TopicPage() {
+  const {slug,topic}=useParams();
+  const tool=toolsCatalog.find(x=>x.slug===slug);
+  const areas=slug==="excel" ? excelAreas : [...powerBiAreas,...powerQueryAreas];
+  const area=areas.find(x=>x.more.to==="/bereich/"+slug+"/themen/"+topic);
+  if(!tool || !area) return <Empty text="Dieses Thema gibt es nicht. Wähle einen Bereich in der Übersicht."/>;
+  const source=topic?.startsWith("pq-") ? powerQueryGroups : tool.groups;
+  const groups=source.filter(g=>area.groups?.includes(g.title));
+  const seen=new Set<string>();
+  const completeGroups=groups.map(g=>({...g,items:[...g.items,...contents.filter(x=>x.art==="artikel" && x.kategorie===g.title && (x.bereich===tool.name || x.werkzeuge.includes(tool.name))).map(x=>({id:x.id,label:x.titel}))].filter(x=>{if(seen.has(x.id))return false;seen.add(x.id);return true;})}));
+  const parent=topic?.startsWith("pq-") ? {label:"Power Query",to:"/power-query"} : {label:tool.name,to:"/bereich/"+tool.slug};
+  return <><Breadcrumbs items={[{label:"Start",to:"/"},...(topic?.startsWith("pq-") ? [{label:"Power BI",to:"/bereich/power-bi"}] : []),parent,{label:area.title}]} /><header className="page-heading">{topic==="berichte" && <span className="eyebrow">In Ausbau</span>}<h1>{area.title}</h1><p>{area.description}</p></header><SearchForm/>{topic==="nachschlagen" && <section className="orientation"><h2>Formeln und Grundbegriffe</h2><p><Link to="/wissen/power-query-m">M-Formeln & Funktionen</Link> · <Link to="/dax?abschnitt=funktionen">Wichtige DAX-Funktionen</Link> · <Link to="/wissen/dax-formeln">Erweiterter DAX-Katalog</Link> · <Link to="/bereich/datenanalyse">Datenbegriffe</Link> · <Link to="/werkzeugwahl">Werkzeugwahl</Link></p></section>}<TopicList groups={completeGroups}/>{slug==="excel" && topic==="formeln" && <p><Link className="discovery-more" to="/wissen/excel-formeln">Erweiterte Formelreferenz →</Link></p>}<Link className="discovery-more" to={parent.to}>Zur Übersicht</Link></>;
 }
 export function Browse({
   kind,
@@ -395,9 +342,11 @@ export function Browse({
   );
 }
 
-function ContentLevels() {
-  return <div className="content-levels" aria-label="Drei Wege zum Wissen"><p><strong>Kernwissen</strong><span>Arbeitsabläufe verstehen</span></p><p><strong>Praxisartikel</strong><span>Eine konkrete Frage lösen</span></p><p><strong>Referenzen</strong><span>Eine Funktion nachschlagen</span></p></div>;
-}
 export function DaxPage() {
-  return <><header className="page-heading"><span className="eyebrow">AUSGEBAUT · POWER BI</span><h1>DAX: Kennzahlen verstehen und berechnen</h1><p>Beginne mit dem Filterkontext und einer passenden Datenebene. Die Praxisartikel verbinden Funktionen mit konkreten Analysefragen.</p></header><ContentLevels /><SearchForm /><section className="orientation"><h2>Eine Funktion gesucht?</h2><p><Link to="/wissen/dax-formeln">DAX – Funktionen &amp; Formeln: vollständiger Index mit Kategorie und Praxisrelevanz →</Link></p><p>Neu in DAX? <Link to="/wissen/dax-grundlagen">Measures, Zeilenkontext, Filterkontext und Iteratoren am Beispiel verstehen →</Link></p></section><div className="catalog-grid">{daxGroups.map(g=><section className="catalog-group" key={g.title}><h2>{g.title}</h2><ul>{g.items.map(x=><li key={x.id}><Link to={"/wissen/"+x.id}>{x.label}<ChevronRight size={15}/></Link></li>)}</ul></section>)}</div></>;
+  return <><SectionJump targets={{funktionen:"dax-common"}}/><Breadcrumbs items={[{label:"Start",to:"/"},{label:"Power BI",to:"/bereich/power-bi"},{label:"DAX"}]}/><header className="page-heading"><h1>DAX</h1><p>Berechne Kennzahlen passend zu deiner Frage. Wähle eine Aufgabe oder eine häufig benötigte Funktion.</p></header><SearchForm/>
+    <section className="discovery-section" aria-label="DAX-Aufgaben"><h2>Was möchtest du berechnen?</h2><p>Ich möchte …</p><div className="task-grid">{daxTasks.map(task=><Link key={task.label} to={daxDestination(task.names[0])}><strong>{task.label}</strong><span>{task.names.join(" / ")}</span><ArrowUpRight size={15}/></Link>)}</div></section>
+    <section id="dax-common" tabIndex={-1} className="discovery-section" aria-label="Wichtige DAX-Funktionen"><h2>Häufig verwendete Funktionen</h2><div className="common-function-groups">{commonDaxGroups.map(group=><section key={group.title}><h3>{group.title}</h3><ul>{group.names.map(name=>{const entry=daxEntries.find(e=>e.name===name)!;return <li key={name}><Link to={daxDestination(name)}><strong>{name}</strong><span>{entry.description}</span><ChevronRight size={14}/></Link></li>;})}</ul></section>)}</div></section>
+    <section className="orientation"><h2>DAX verstehen</h2><p>Die Formel allein erklärt noch nicht, welche Daten deine Kennzahl sieht.</p><div className="foundation-links">{["dax-grundlagen","measure-spalte","filterkontext","dax-variablen"].map(id=><Link key={id} to={"/wissen/"+id}>{byId(id)!.titel}<ArrowRight size={15}/></Link>)}</div></section>
+    <section className="advanced-catalog"><h2>Erweiterter Funktionskatalog</h2><p>Der vollständige Katalog enthält auch Spezialfunktionen für Finanzmathematik, Modellinformationen und seltene Szenarien.</p><Link className="catalog-button" to="/wissen/dax-formeln">Alle DAX-Funktionen öffnen<ArrowRight size={17}/></Link></section>
+  </>;
 }

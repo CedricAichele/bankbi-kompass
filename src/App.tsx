@@ -16,35 +16,28 @@ import {
   Star,
   Menu,
   X,
-  ChevronRight,
   ShieldCheck,
   Lightbulb,
   Home,
-  Check,
-  Layers,
   Info,
 } from "lucide-react";
 import { contents } from "./content";
+import { powerBiAreas, excelAreas, powerQueryAreas } from "./content/discovery";
 import { migrateIds } from "./content/redirects";
 import { FAVORITES_KEY, readIds, saveIds, toggleId } from "./lib/storage";
 import { SearchForm, EntryList } from "./components/ReferenceLists";
-import { HomePage, ToolPage, Browse, PowerQueryPage, DaxPage } from "./pages/Lookup";
+import { HomePage, ToolPage, TopicPage, Browse, PowerQueryPage, DaxPage } from "./pages/Lookup";
 import { Reference } from "./pages/Reference";
 import { Imprint, Privacy } from "./pages/Legal";
 export { DecisionTools } from "./components/DecisionTools";
 const nav = [
   ["/", "Start", Home],
-  ["/aufgaben", "Typische Aufgaben", Check],
   ["/bereich/power-bi", "Power BI", ChartNoAxesColumnIncreasing],
-  ["/power-query", "Power Query", Layers],
-  ["/dax", "DAX", Layers],
   ["/bereich/excel", "Excel", Table2],
   ["/bereich/ida", "IDA", ListFilter],
   ["/probleme", "Probleme & Lösungen", Lightbulb],
-  ["/werkzeugwahl", "Werkzeugwahl", Compass],
-  ["/bereich/datenanalyse", "Datenbegriffe", Layers],
   ["/favoriten", "Favoriten", Star],
-  ["/ueber", "Über das Projekt", Info],
+  ["/ueber", "Über", Info],
 ] as const;
 const disclaimer =
   "BankBI Kompass ist ein unabhängiges Wissensprojekt für Business Intelligence und Datenanalyse im Bankkontext. Alle Beispiele sind generisch oder vollständig synthetisch. Es werden keine realen Unternehmens-, Kunden- oder Mitarbeiterdaten verarbeitet.";
@@ -136,7 +129,8 @@ function Shell() {
     );
     const title =
       item?.titel ||
-      ({ "/impressum": "Impressum", "/datenschutz": "Datenschutz", "/power-query": "Power Query & Datenaufbereitung" } as Record<string, string>)[location.pathname] ||
+      [...powerBiAreas,...excelAreas,...powerQueryAreas].find(x=>x.more.to===location.pathname)?.title ||
+      ({ "/impressum": "Impressum", "/datenschutz": "Datenschutz", "/power-query": "Power Query & Datenaufbereitung", "/dax": "DAX", "/aufgaben": "Typische Aufgaben", "/werkzeugwahl": "Werkzeugwahl", "/bereich/datenanalyse": "Datenbegriffe" } as Record<string, string>)[location.pathname] ||
       nav.find((x) => x[0] === location.pathname)?.[1] ||
       "Suchen & finden";
     document.title = title + " – BankBI Kompass";
@@ -210,7 +204,7 @@ function Shell() {
         <span className="nav-label">SCHNELL ZUM ZIEL</span>
         <nav aria-label="Hauptnavigation">
           {nav.map(([path, label, Icon]) => (
-            <NavLink key={path} to={path} end={path === "/"}>
+            <NavLink key={path} to={path} end={path === "/"} className={({isActive}) => isActive || (path === "/bereich/power-bi" && (location.pathname === "/dax" || location.pathname === "/power-query" || contents.some(x => "/wissen/"+x.slug === location.pathname && x.bereich === "Power BI"))) || (path === "/bereich/excel" && contents.some(x => "/wissen/"+x.slug === location.pathname && x.bereich === "Excel")) ? "active" : undefined}>
               <Icon size={18} />
               <span>{label}</span>
               {label === "Favoriten" && favorites.length > 0 && (
@@ -219,15 +213,6 @@ function Shell() {
             </NavLink>
           ))}
         </nav>
-        <div className="sidebar-context">
-          <span className="nav-label">KONTEXTE</span>
-          {["Bestandsanalyse", "Kundenanalyse", "Datenqualität"].map((c) => (
-            <Link key={c} to={"/suche?kontext=" + encodeURIComponent(c)}>
-              {c}
-              <ChevronRight size={13} />
-            </Link>
-          ))}
-        </div>
         <div className="sidebar-note">
           <ShieldCheck size={18} />
           <p>
@@ -301,6 +286,7 @@ function Shell() {
               path="/bereich/:slug"
               element={<ToolPage key={location.pathname} />}
             />
+            <Route path="/bereich/:slug/themen/:topic" element={<TopicPage />} />
             <Route
               path="/wissen/:slug"
               element={<Reference favorites={favorites} onToggle={toggle} />}

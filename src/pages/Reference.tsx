@@ -1,9 +1,11 @@
 import { Link, Navigate, useParams } from "react-router-dom";
-import { Star, ChevronRight, Lightbulb, ArrowUpRight } from "lucide-react";
+import { Star, Lightbulb, ArrowUpRight } from "lucide-react";
 import { contents, byId } from "../content";
 import { sectionsOf, stepsOf } from "../content/schema";
 import { legacyIds, archivedIdaIds, consolidatedRoutes } from "../content/redirects";
-import { toolsCatalog } from "../content/catalog";
+import { articleToc, articleBreadcrumbs, sectionId, workflowPhases } from "../lib/article-navigation";
+import { Breadcrumbs } from "../components/Breadcrumbs";
+import { ArticleToc, SectionJump } from "../components/ArticleToc";
 import { Markdown } from "../components/Markdown";
 import { ExcelReference } from "../components/ExcelReference";
 import { MReference } from "../components/MReference";
@@ -33,50 +35,22 @@ export function Reference({
     );
   }
   const sections = sectionsOf(item.body);
-  const sectionId = (name: string) => "article-" + name.toLowerCase().replace(/[^a-z0-9äöüß]+/g, "-");
-  function jumpTo(name: string) {
-    const target = document.getElementById(sectionId(name));
-    if (target instanceof HTMLDetailsElement) target.open = true;
-    target?.scrollIntoView({ block: "start" });
-    target?.focus({ preventScroll: true });
-  }
   const illustrated = item.screenshots.length > 0;
-  const path =
-    item.art === "problem"
-      ? "/probleme"
-      : item.art === "aufgabe"
-      ? "/aufgaben"
-      : item.kategorie === "Werkzeugwahl"
-        ? "/werkzeugwahl"
-        : item.bereich === "Datenanalyse"
-          ? "/bereich/datenanalyse"
-          : item.bereich === "Werkzeugübergreifend"
-            ? "/suche"
-            : "/bereich/" + toolsCatalog.find((t) => t.name === item.bereich)?.slug;
+  const toc = articleToc(item);
+  const phaseTargets = Object.fromEntries(workflowPhases.map(p=>[p.label,sectionId(p.label)]));
   return (
     <>
-      <div className="breadcrumbs">
-        <Link to="/">Start</Link>
-        <ChevronRight size={13} />
-        <Link to={path}>
-          {item.art === "problem"
-            ? "Problemlösungen"
-            : item.art === "aufgabe"
-            ? "Typische Aufgaben"
-            : item.kategorie === "Werkzeugwahl"
-              ? "Werkzeugwahl"
-              : item.bereich}
-        </Link>
-        <ChevronRight size={13} />
-        {item.id === "power-query-m" ? <><Link to="/power-query">Power Query</Link><ChevronRight size={13}/><span>M-Formeln & Funktionen</span></> : <span>{item.kategorie}</span>}
-      </div>
+      <Breadcrumbs items={articleBreadcrumbs(item)} />
+      <SectionJump targets={{kontrolle: item.id === "pq-workflow" ? sectionId("Ergebnis kontrollieren") : sectionId("Plausibilitätscheck"),haeufig:"m-common",eingabe:"m-input"}} />
+      <div className={toc.length ? "reference-layout with-toc" : "reference-layout"}>
+      {toc.length > 0 && <ArticleToc entries={toc}/>}
       <article className={"reference" + (item.id === "power-query-m" ? " m-reference-page" : "")}>
         <header className="reference-header">
           <div>
             <span className="eyebrow">
               {item.art === "aufgabe"
                 ? "WERKZEUGÜBERGREIFENDE AUFGABE"
-                : item.bereich + " · " + (item.ebene || "Praxisartikel").toLocaleUpperCase("de")}
+                : item.bereich}
             </span>
             <h1>{item.titel}</h1>
           </div>
@@ -94,7 +68,6 @@ export function Reference({
             {favorites.includes(item.id) ? "Gemerkt" : "Merken"}
           </button>
         </header>
-        {Object.keys(sections).length >= 10 && <nav className="article-toc" aria-label="Inhaltsnavigation"><label>Direkt zum Abschnitt<select defaultValue="" onChange={e=>{jumpTo(e.target.value);e.target.value="";}}><option value="" disabled>Abschnitt wählen …</option>{Object.keys(sections).map(name=><option key={name} value={name}>{name}</option>)}</select></label></nav>}
         {!["power-query-m", "dax-formeln"].includes(item.id) && <div className="answer">
           <h2>Kurzantwort</h2>
           <p>{item.kurzbeschreibung}</p>
@@ -120,7 +93,7 @@ export function Reference({
         ))}
         {item.id === "power-query-m" && <MReference />}
         {item.id === "dax-formeln" && <DaxReference />}
-        {item.id === "excel-formeln" && <ExcelReference />}
+        {item.id === "excel-formeln" && <div id="excel-reference" tabIndex={-1}><ExcelReference /></div>}
         {!["power-query-m", "excel-formeln", "dax-formeln"].includes(item.id) && <div
           className={
             "reference-grid" + (illustrated ? " illustrated-reference" : "") + (["pq-workflow", "pq-benutzerdefiniert", "dateien-kombinieren"].includes(item.id) ? " workflow-reference" : "")
@@ -133,9 +106,11 @@ export function Reference({
                 <section
                   className="illustrated-step"
                   key={index}
+                  id={"article-step-"+(index+1)} tabIndex={-1}
                   aria-label={"Schritt " + (index + 1)}
                 >
-                  <h3>Schritt {index + 1}</h3>
+                  {item.id === "pq-workflow" && workflowPhases.find(p=>p.start===index+1) && <h3 className="workflow-phase" id={phaseTargets[workflowPhases.find(p=>p.start===index+1)!.label]} tabIndex={-1}>{workflowPhases.find(p=>p.start===index+1)!.label}</h3>}
+                  {item.id === "pq-workflow" ? <h4>Schritt {index + 1}</h4> : <h3>Schritt {index + 1}</h3>}
                   <Markdown text={text} />
                   {item.screenshots
                     .filter((image) => image.schritt === index + 1)
@@ -222,6 +197,7 @@ export function Reference({
           ))}
         </div>
       </article>
+      </div>
     </>
   );
 }

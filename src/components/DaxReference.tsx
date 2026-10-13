@@ -21,24 +21,24 @@ export function DaxReference() {
     setParams(next, { replace: true, preventScrollReset: true });
   }
   return <section className="dax-reference" aria-label="DAX-Funktionsreferenz">
-    <p>DAX berechnet Kennzahlen im Datenmodell. Diese Referenz enthält den am {daxChecked.split("-").reverse().join(".")} abgeglichenen Funktionsbestand der <a href={daxSource} target="_blank" rel="noreferrer">Microsoft DAX Function Reference</a>: {daxEntries.length} Funktionen in 15 Kategorien. Die Kurzbeschreibungen ordnen die Funktionen für den Analysealltag ein; Syntax und Produktgrenzen kannst du an der jeweiligen offiziellen Quelle prüfen.</p>
-    <section className="orientation"><h2>DAX verstehen, bevor du eine Formel kopierst</h2>
+    <p id="dax-intro" tabIndex={-1}>DAX berechnet Kennzahlen im Datenmodell. Diese Referenz enthält den am {daxChecked.split("-").reverse().join(".")} abgeglichenen Funktionsbestand der <a href={daxSource} target="_blank" rel="noreferrer">Microsoft DAX Function Reference</a>: {daxEntries.length} Funktionen in 15 Kategorien. Die Kurzbeschreibungen ordnen die Funktionen für den Analysealltag ein; Syntax und Produktgrenzen kannst du an der jeweiligen offiziellen Quelle prüfen.</p>
+    <section id="dax-reference-common" tabIndex={-1} className="orientation"><p><Link to="/dax?abschnitt=funktionen">Häufig verwendete Funktionen nach Aufgabe →</Link></p><h2>DAX verstehen, bevor du eine Formel kopierst</h2>
       <p><strong>Measure oder berechnete Spalte?</strong> Ein Measure wird für die aktuelle Auswahl berechnet. Eine berechnete Spalte speichert beim Verarbeiten des Modells einen Wert je Zeile.</p>
       <p><strong>Filterkontext</strong> entsteht etwa durch Slicer, Visualzeilen und Beziehungen. <strong>Zeilenkontext</strong> bezeichnet die aktuelle Zeile einer berechneten Spalte oder eines Iterators. Er filtert eine Aggregation nicht automatisch. <strong>CALCULATE</strong> verändert Filter und kann Zeilenkontext in Filterkontext überführen (Kontextübergang).</p>
       <p><strong>Skalar oder Tabelle?</strong> SUM liefert eine Zahl; FILTER liefert eine Tabelle, die z. B. als Filter verwendet wird. Ein Measure muss am Ende einen skalaren Wert liefern. <strong>Iteratoren</strong> wie SUMX berechnen zuerst einen Ausdruck je Zeile und aggregieren ihn anschließend.</p>
       <p><Link to="/wissen/dax-grundlagen">Grundlagen am vollständigen Beispiel →</Link> · <Link to="/wissen/measure-spalte">Measure und Spalte auswählen</Link> · <Link to="/wissen/calculate">CALCULATE</Link></p>
     </section>
-    <details className="practice-details"><summary>Syntax und Eingabeort: Tabelle, Spalte, Measure, VAR / RETURN</summary>
+    <details id="dax-input" tabIndex={-1} className="practice-details"><summary>Syntax und Eingabeort: Tabelle, Spalte, Measure, VAR / RETURN</summary>
       <p>Power BI Desktop → Modellierung → Neues Measure. Diesen Code als Measure anlegen:</p>
       <CodeBlock language="dax" code={'Bestand = SUM(Konten[Bestand])'} />
       <p><code>Konten</code> ist der Tabellenname, <code>Konten[Bestand]</code> eine Spalte und <code>[Bestand]</code> das neu angelegte Measure. Eigene Tabellen und Spalten einsetzen; Tabellennamen mit Leerzeichen in einfache Anführungszeichen setzen, etwa <code>'Monatsbestand'[Betrag]</code>.</p>
       <p>Die offizielle Syntax zeigt Platzhalter in spitzen Klammern. Eckige Klammern in einer Syntaxbeschreibung kennzeichnen oft optionale Argumente; im ausführbaren Code kennzeichnen sie Spalten oder Measures. Platzhalter und Auslassungspunkte nicht kopieren. Beispiele verwenden Kommas; aktivierte lokalisierte DAX-Trennzeichen können Semikolons erfordern.</p>
       <p><code>VAR</code> benennt einen Zwischenwert, <code>RETURN</code> gibt das Ergebnis aus. Beides sind Sprachbestandteile, keine Funktionen im Index. <Link to="/wissen/dax-variablen">VAR / RETURN mit einer Quote nachvollziehen →</Link></p>
     </details>
-    <h2>Funktion oder Arbeitsproblem finden</h2>
+    <h2 id="dax-search" tabIndex={-1}>Referenz durchsuchen</h2>
     <div className="filters reference-filters">
       <label>Funktion oder Aufgabe<input type="search" value={query} onChange={e => update("funktion", e.target.value)} placeholder="z. B. eindeutige Kunden, filter ändern, rang" /></label>
-      <label>Kategorie<select value={group} onChange={e => update("gruppe", e.target.value)}><option value="">Alle Kategorien</option>{daxCategories.map(c => <option key={c}>{c}</option>)}</select></label>
+      <label id="dax-categories" tabIndex={-1}>Kategorie<select value={group} onChange={e => update("gruppe", e.target.value)}><option value="">Alle Kategorien</option>{daxCategories.map(c => <option key={c}>{c}</option>)}</select></label>
       <label>Praxisrelevanz<select value={relevance} onChange={e => update("relevanz", e.target.value)}><option value="">Alle Relevanzen</option>{["Sehr häufig", "Häufig", "Situativ", "Spezial"].map(r => <option key={r}>{r}</option>)}</select></label>
       <label className="checkbox-filter"><input type="checkbox" checked={frequent} onChange={e => update("haeufig", e.target.checked ? "1" : "")} />Nur häufig verwendete</label>
       <button onClick={() => setParams({}, { replace: true, preventScrollReset: true })}>Filter zurücksetzen</button>
