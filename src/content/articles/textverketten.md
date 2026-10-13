@@ -20,7 +20,7 @@
   ],
   "verwandteThemen": [
     "schluessel",
-    "textteilen",
+    "excel-text-zerlegen",
     "eindeutig",
     "gruppieren"
   ],
@@ -42,7 +42,8 @@
     "eingabe": "A2=P001 und B2=K001. Ergebnis H2.",
     "anpassen": "Trennzeichen -, WAHR zum Überspringen leerer Zellen und Quellbereich A2:B2 anpassen.",
     "version": "Microsoft 365 oder Excel 2019/2021/2024."
-  }
+  },
+  "ebene": "Praxisartikel"
 }
 ---
 

@@ -35,7 +35,8 @@
     "https://learn.microsoft.com/en-us/dax/divide-function-dax"
   ],
   "zuletztGeprueft": "2026-09-21",
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

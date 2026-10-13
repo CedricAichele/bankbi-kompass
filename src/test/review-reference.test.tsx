@@ -25,7 +25,8 @@ describe("Review: Suche und praktische Referenzen",()=>{
   });
   it("hält die Excel-Karten an die ausführlichen Artikel gebunden",()=>{
     for(const entry of excelEntries(contents)) {
-      expect(byId(entry.id)?.formelreferenz).toBeDefined();
+      const item=byId(entry.id)!;
+      expect(item.formelreferenz || item.formelreferenzen).toBeDefined();
       expect(entry.code).toMatch(/^=/);
       expect(entry.code).not.toMatch(/Table\.|Text\.|CALCULATE/);
       expect(entry.result).toBeTruthy();
@@ -41,7 +42,7 @@ describe("Review: Suche und praktische Referenzen",()=>{
     const card=document.querySelector(".excel-results .m-entry")! as HTMLElement;
     expect(within(card).getByText("Eingabezellen und Ausgangswerte")).toBeVisible();
     expect(within(card).getByRole("link")).toHaveAttribute("href","/wissen/sortierennach");
-    fireEvent.change(screen.getByRole("combobox",{name:"Kategorie"}),{target:{value:"Datum & Datentypen"}});
+    fireEvent.change(screen.getByRole("combobox",{name:"Kategorie"}),{target:{value:"Datum"}});
     expect(screen.getByText(/Kein Treffer/)).toBeVisible();
     fireEvent.click(screen.getByRole("button",{name:"Filter zurücksetzen"}));
     expect(document.querySelectorAll(".excel-results .m-entry")).toHaveLength(excelEntries(contents).length);

@@ -16,17 +16,20 @@
     "Bestandsanalyse",
     "Reporting"
   ],
-  "synonyme": [],
+  "synonyme": [
+    "sumx"
+  ],
   "verwandteThemen": [
     "sum",
-    "granularitaet"
+    "granularitaet",
+    "dax-formeln"
   ],
   "kontexte": [
     "Bestandsanalyse",
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/sumx-function-dax",
@@ -35,7 +38,8 @@
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```dax\nPositionswert = SUMX ( Positionen, Positionen[Menge] * Positionen[Preis] )\n```"
+  "kurzformel": "```dax\nPositionswert = SUMX ( Positionen, Positionen[Menge] * Positionen[Preis] )\n```",
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -98,3 +102,8 @@ Multipliziere beide Zeilen von Hand und teste den Filter V1.
 | --- | --- |
 | Tabelle | Legt die zu durchlaufenden Zeilen fest. |
 | Ausdruck | Wird in jeder Zeile mit deren Werten berechnet. Der Zeilenkontext ist noch kein neuer Berichtsslicer. |
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

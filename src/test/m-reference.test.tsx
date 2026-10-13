@@ -35,7 +35,7 @@ describe("Praktische M-Referenz", () => {
     expect(findMEntries("unbekanntefunktionxyz")).toEqual([]);
     expect(new Set(mEntries.map(x=>x.name)).size).toBe(mEntries.length);
     expect(mEntries.length).toBeGreaterThanOrEqual(50);
-    expect(mEntries.length).toBeLessThanOrEqual(80);
+    expect(mEntries.length).toBeLessThan(150);
     for(const category of mCategories) expect(findMEntries("", category).length).toBeGreaterThan(0);
   });
   it.each([

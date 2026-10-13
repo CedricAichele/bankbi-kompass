@@ -17,19 +17,21 @@
     "Reporting"
   ],
   "synonyme": [
-    "SUMME"
+    "SUMME",
+    "sum"
   ],
   "verwandteThemen": [
     "sumx",
     "calculate",
-    "stichtag"
+    "stichtag",
+    "dax-formeln"
   ],
   "kontexte": [
     "Bestandsanalyse",
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/sum-function-dax"
@@ -41,7 +43,8 @@
     "Vorhandene Tabelle und benötigte Datentypen prüfen.",
     "Neues Measure mit der angegebenen Formel erstellen.",
     "Ergebnis ohne Filter und mit Slicer vergleichen."
-  ]
+  ],
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -101,3 +104,8 @@ SUM erhält genau eine numerische Spalte. Das Measure addiert nur Zeilen im aktu
 ## Plausibilitätscheck
 
 1.250 + 750 + 2.000 + 3.200 + 800 + 1.000 = 9.000.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

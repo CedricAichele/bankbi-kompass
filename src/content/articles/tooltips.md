@@ -18,7 +18,7 @@
     "tooltip"
   ],
   "verwandteThemen": [
-    "karte",
+    "visualwahl",
     "filterkontext"
   ],
   "kontexte": [
@@ -31,7 +31,8 @@
     "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-tooltips"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

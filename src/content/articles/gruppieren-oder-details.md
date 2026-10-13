@@ -21,7 +21,7 @@
   "verwandteThemen": [
     "gruppieren",
     "granularitaet",
-    "matrix"
+    "visualwahl"
   ],
   "kontexte": [
     "Reporting"
@@ -34,7 +34,8 @@
     "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-matrix-visual"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

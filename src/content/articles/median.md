@@ -18,7 +18,7 @@
   ],
   "synonyme": [],
   "verwandteThemen": [
-    "dax-median"
+    "dax-formeln"
   ],
   "kontexte": [
     "Prozessanalyse"
@@ -30,7 +30,8 @@
     "https://learn.microsoft.com/en-us/dax/median-function-dax"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

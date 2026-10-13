@@ -134,7 +134,8 @@
   "titel": "Daten in Power Query aufbereiten",
   "kurzbeschreibung": "Neue Daten geladen? Prüfe zuerst Struktur und Qualität, entscheide dann über Bereinigung und Kombination und kontrolliere das Ergebnis vor dem Laden.",
   "praxis": true,
-  "zuletztGeprueft": "2026-09-23"
+  "zuletztGeprueft": "2026-09-23",
+  "ebene": "Kernwissen"
 }
 ---
 

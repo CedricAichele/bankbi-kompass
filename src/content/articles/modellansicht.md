@@ -66,7 +66,8 @@
       }
     }
   ],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

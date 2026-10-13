@@ -15,30 +15,34 @@
     "FILTER: eine Teilmenge bilden",
     "Reporting"
   ],
-  "synonyme": [],
+  "synonyme": [
+    "filter"
+  ],
   "verwandteThemen": [
     "calculate",
     "countrows",
-    "calculate-filterwahl"
+    "calculate-filterwahl",
+    "dax-formeln"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/filter-function-dax"
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```dax\nEinlagenzeilen = COUNTROWS ( FILTER ( Konten, Konten[Produktgruppe] = \"Einlagen\" ) )\n```"
+  "kurzformel": "```dax\nEinlagenzeilen = COUNTROWS ( FILTER ( Konten, Konten[Produktgruppe] = \"Einlagen\" ) )\n```",
+  "ebene": "Praxisartikel"
 }
 ---
 
 ## Wann brauche ich das?
 
-Du möchtest FILTER an einem überschaubaren Beispiel verstehen.
+Du brauchst eine Teilmenge mit einer Bedingung, die pro Datenzeile geprüft wird. FILTER liefert dafür eine Tabelle; COUNTROWS, SUMX oder CALCULATE wertet sie anschließend aus.
 
 ## Voraussetzungen
 
@@ -99,3 +103,8 @@ Ohne Auswahl zählt das Measure drei Einlagenzeilen. Mit Person P003 bleibt eine
 | --- | --- |
 | Tabelle | Ausgangsmenge der zu prüfenden Zeilen. |
 | Bedingung | Wird je Zeile geprüft. FILTER liefert eine Tabelle, keinen fertigen Summenwert. |
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

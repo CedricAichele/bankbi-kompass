@@ -19,7 +19,7 @@
   ],
   "verwandteThemen": [
     "drilldown",
-    "tabelle"
+    "visualwahl"
   ],
   "kontexte": [
     "Reporting"
@@ -31,7 +31,8 @@
     "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-drillthrough"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

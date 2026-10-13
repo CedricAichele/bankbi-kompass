@@ -20,7 +20,7 @@
   ],
   "verwandteThemen": [
     "pivotchart",
-    "matrix",
+    "visualwahl",
     "excel-zahl-text"
   ],
   "kontexte": [
@@ -80,7 +80,8 @@
       }
     }
   ],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Kernwissen"
 }
 ---
 

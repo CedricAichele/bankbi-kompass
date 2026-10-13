@@ -21,26 +21,29 @@
   ],
   "verwandteThemen": [
     "blank",
-    "dax-if"
+    "dax-if",
+    "dax-formeln"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
-    "https://learn.microsoft.com/en-us/dax/coalesce-function-dax"
+    "https://learn.microsoft.com/en-us/dax/coalesce-function-dax",
+    "https://learn.microsoft.com/en-us/dax/isblank-function-dax"
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```dax\nAnzeige = COALESCE ( SUM ( Konten[Bestand_EUR] ), 0 )\n```"
+  "kurzformel": "```dax\nAnzeige = COALESCE ( SUM ( Konten[Bestand_EUR] ), 0 )\n```",
+  "ebene": "Praxisartikel"
 }
 ---
 
 ## Wann brauche ich das?
 
-Du möchtest COALESCE an einem überschaubaren Beispiel verstehen.
+Eine Kennzahl ist in bestimmten Ausschnitten leer. Du willst BLANK erkennen und nur dann einen Ersatz anzeigen, wenn er fachlich sinnvoll ist.
 
 ## Voraussetzungen
 
@@ -94,3 +97,16 @@ Die Ersatzanzeige behebt keine fehlende Datenlieferung.
 ## Plausibilitätscheck
 
 Prüfe Filter einzeln und gemeinsam. Die Ausgangssumme beträgt 9.000 und Einlagen allein 4.050.
+
+
+## ISBLANK: fehlendes Ergebnis ausdrücklich erkennen
+**Neues Measure**:
+```dax
+Lieferstatus = IF(ISBLANK(SUM(Konten[Bestand_EUR])), "Kein Betrag im Kontext", "Betrag vorhanden")
+```
+Ohne Filter ergibt das **Betrag vorhanden**. Bei einer Auswahl ohne Treffer ergibt es **Kein Betrag im Kontext**. Ein echter Gesamtbetrag 0 gilt weiterhin als vorhanden. Ersetze Tabelle, Betragsspalte und Texte. Diese Prüfung sagt noch nicht, ob eine erwartete Lieferung vollständig ist; dafür Zeilen, Stichtage und erwartete Quellen zusätzlich vergleichen. COALESCE(..., 0) eignet sich nur, wenn 0 als Darstellungsersatz fachlich stimmt. Behalte zur Kontrolle das ursprüngliche Measure neben der Ersatzanzeige.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

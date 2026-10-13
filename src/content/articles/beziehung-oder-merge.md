@@ -33,7 +33,8 @@
     "https://learn.microsoft.com/en-us/power-query/merge-queries-overview"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

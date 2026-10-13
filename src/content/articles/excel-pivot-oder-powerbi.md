@@ -31,7 +31,8 @@
     "https://learn.microsoft.com/en-us/power-bi/guidance/star-schema"
   ],
   "zuletztGeprueft": "2026-09-21",
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

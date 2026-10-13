@@ -15,30 +15,33 @@
     "IF: zwei Ergebnisse unterscheiden"
   ],
   "synonyme": [
-    "if dax"
+    "if dax",
+    "if"
   ],
   "verwandteThemen": [
     "dax-coalesce",
-    "dax-switch"
+    "dax-switch",
+    "dax-formeln"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/if-function-dax"
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```dax\nHinweis = IF ( SUM ( Konten[Bestand_EUR] ) > 3000, \"Über 3.000\", \"Bis 3.000\" )\n```"
+  "kurzformel": "```dax\nHinweis = IF ( SUM ( Konten[Bestand_EUR] ) > 3000, \"Über 3.000\", \"Bis 3.000\" )\n```",
+  "ebene": "Praxisartikel"
 }
 ---
 
 ## Wann brauche ich das?
 
-Du möchtest IF an einem überschaubaren Beispiel verstehen.
+Eine Kennzahl soll abhängig von einer Grenze einen Hinweis liefern. Entscheide, ob die Regel auf der aktuellen Auswahl als Measure oder dauerhaft je Zeile als Spalte gelten soll.
 
 ## Voraussetzungen
 
@@ -92,3 +95,12 @@ Ein Measure ist kein zeilenweise gespeichertes Merkmal für einen Slicer.
 ## Plausibilitätscheck
 
 Prüfe Filter einzeln und gemeinsam. Die Ausgangssumme beträgt 9.000 und Einlagen allein 4.050.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.
+
+## Grenzen und fehlende Ergebnisse
+
+Bei der gezeigten Regel ist genau 3000 noch „Bis 3.000“; erst ein größerer Wert ergibt „Über 3.000“. SUM ohne Treffer ergibt BLANK und kann im numerischen Vergleich wie 0 behandelt werden. Wenn fehlende Daten einen eigenen Hinweis benötigen, prüfe zuerst ISBLANK. Ein Text-Measure eignet sich zur Anzeige, nicht als gespeicherte Slicer-Spalte. Teste zusätzlich 3000, 3001 und einen Kontext ohne Zeilen.

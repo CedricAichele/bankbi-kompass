@@ -20,7 +20,7 @@
     "aktueller monat"
   ],
   "verwandteThemen": [
-    "monatsultimo",
+    "dax-jahr-monat",
     "stichtag",
     "bestand-bewegung",
     "datumstabelle",
@@ -40,7 +40,8 @@
     "https://learn.microsoft.com/en-us/dax/max-function-dax"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

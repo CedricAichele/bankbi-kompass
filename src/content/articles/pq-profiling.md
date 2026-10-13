@@ -138,7 +138,8 @@
   "titel": "Spaltenqualität, Spaltenverteilung und Spaltenprofil",
   "kurzbeschreibung": "Profiling zeigt Fehler, Lücken und Häufigkeiten vor einer Transformation. Prüfe die vollständige Datenmenge, bevor du aus einer sauberen Vorschau auf eine saubere Quelle schließt.",
   "praxis": true,
-  "zuletztGeprueft": "2026-09-23"
+  "zuletztGeprueft": "2026-09-23",
+  "ebene": "Kernwissen"
 }
 ---
 

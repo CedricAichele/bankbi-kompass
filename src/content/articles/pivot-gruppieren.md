@@ -34,7 +34,8 @@
     "https://support.microsoft.com/de-de/excel/get-started/group-or-ungroup-data-in-a-pivottable"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

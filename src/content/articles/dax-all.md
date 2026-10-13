@@ -16,30 +16,34 @@
   ],
   "synonyme": [
     "all",
-    "filter entfernen"
+    "filter entfernen",
+    "allexcept"
   ],
   "verwandteThemen": [
     "removefilters",
-    "calculate"
+    "calculate",
+    "dax-formeln"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
-    "https://learn.microsoft.com/en-us/dax/all-function-dax"
+    "https://learn.microsoft.com/en-us/dax/all-function-dax",
+    "https://learn.microsoft.com/en-us/dax/allexcept-function-dax"
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```dax\nAlle Produktarten = COUNTROWS ( ALL ( Konten[Produktgruppe] ) )\n```"
+  "kurzformel": "```dax\nAlle Produktarten = COUNTROWS ( ALL ( Konten[Produktgruppe] ) )\n```",
+  "ebene": "Praxisartikel"
 }
 ---
 
 ## Wann brauche ich das?
 
-Du möchtest ALL an einem überschaubaren Beispiel verstehen.
+Du vergleichst eine gefilterte Auswahl mit einem bewusst definierten Gesamtwert. Kläre zuerst, welche Filter bleiben sollen und welche entfernt werden dürfen.
 
 ## Voraussetzungen
 
@@ -93,3 +97,21 @@ ALL(gesamte Tabelle) ist oft breiter als die eigentlich zu entfernende Auswahl.
 ## Plausibilitätscheck
 
 Prüfe Filter einzeln und gemeinsam. Die Ausgangssumme beträgt 9.000 und Einlagen allein 4.050.
+
+
+## ALLEXCEPT: bestimmte Tabellenfilter behalten
+Mit den oben gezeigten Konten als **neues Measure**:
+```dax
+Bestand ohne weitere Kontenfilter = CALCULATE(
+    SUM(Konten[Bestand_EUR]),
+    ALLEXCEPT(Konten, Konten[Produktgruppe])
+)
+```
+Wähle Produktgruppe Einlagen und Person P001. Die normale Summe beträgt **1250**; die ALLEXCEPT-Variante ergibt **4050**, weil der Personenfilter entfernt und der vorhandene Produktgruppenfilter behalten wird.
+
+Ersetze Tabelle, Betragsspalte und zu behaltende Spalten. ALLEXCEPT verlangt eine Basistabelle und Basisspalten. Seine Wirkung kann auch Filter aus der erweiterten Tabelle betreffen; in einem Sternschema deshalb alle Dimensionen prüfen. ALLEXCEPT erzeugt keinen nicht vorhandenen Produktfilter. REMOVEFILTERS auf einer einzelnen Dimension ist oft leichter zu begrenzen. Teste Produkt und Person einzeln sowie gemeinsam; verwende ALLEXCEPT nicht als pauschale Lösung für eine falsch gefilterte Summe.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

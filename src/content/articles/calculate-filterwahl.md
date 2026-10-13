@@ -32,7 +32,8 @@
     "https://learn.microsoft.com/en-us/dax/filter-function-dax"
   ],
   "zuletztGeprueft": "2026-09-21",
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

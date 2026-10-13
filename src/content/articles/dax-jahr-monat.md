@@ -16,14 +16,18 @@
   ],
   "synonyme": [
     "year",
-    "month"
+    "month",
+    "date",
+    "day",
+    "eomonth"
   ],
   "verwandteThemen": [
     "datum-sortieren",
     "datumstabelle",
     "pq-datum",
     "ytd",
-    "vorjahr"
+    "vorjahr",
+    "dax-formeln"
   ],
   "kontexte": [
     "Bestandsanalyse",
@@ -31,14 +35,18 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/year-function-dax",
-    "https://learn.microsoft.com/en-us/dax/month-function-dax"
+    "https://learn.microsoft.com/en-us/dax/month-function-dax",
+    "https://learn.microsoft.com/en-us/dax/date-function-dax",
+    "https://learn.microsoft.com/en-us/dax/day-function-dax",
+    "https://learn.microsoft.com/en-us/dax/eomonth-function-dax"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -113,3 +121,27 @@ Jahr × 100 + Monat hält Jahr und Monat in chronologischer Reihenfolge. Ein Mon
 ## Plausibilitätscheck
 
 28.02.2026 → Jahr 2026, Monat 2, Sortierschlüssel 202602. Prüfe außerdem einen Zeitraum ohne Daten.
+
+
+## DATE, DAY und EOMONTH am konkreten Datum
+DATE baut ein Datum aus Jahr, Monat und Tag. Separates **neues Measure**:
+```dax
+Testdatum = DATE(2026, 9, 23)
+```
+Als Datum formatiert: **23.09.2026**. Jahr, Monat und Tag ersetzen; DATE kann überlaufende Komponenten in Folgemonate verschieben. Solche Eingaben nicht ungeprüft als gültiges fachliches Datum übernehmen.
+
+In DimDatum als **neue Spalten**, einzeln anlegen:
+```dax
+TagNr = DAY(DimDatum[Datum])
+```
+```dax
+Monatsultimo = EOMONTH(DimDatum[Datum], 0)
+```
+23.09.2026 → TagNr **23**, Monatsultimo **30.09.2026**. Im bisherigen Beispieldatum 28.02.2026 bleiben TagNr 28 und Monatsultimo 28.02.2026. Der zweite Parameter von EOMONTH ist die Monatsverschiebung: 1 liefert für 23.09.2026 den 31.10.2026, -1 den 31.08.2026. DimDatum/Datum und den Versatz ersetzen.
+
+EOMONTH erzeugt keinen neuen Datenbestand am Monatsende; es berechnet einen Kalenderwert. Prüfe, ob die Quelle den fachlichen Monatsultimo tatsächlich enthält. Februar, Schaltjahr und Jahreswechsel sind wichtige Kontrollfälle. [M: Date.EndOfMonth](#/wissen/power-query-m?funktion=Date.EndOfMonth) erledigt die entsprechende Ableitung bereits in Power Query.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

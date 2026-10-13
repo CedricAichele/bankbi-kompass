@@ -39,7 +39,8 @@
     "eingabe": "A2=P001_alt. Ergebnis H2.",
     "anpassen": "A2 ist der Ausgangstext, _alt der Suchtext, _neu der Ersatz. Positionsersatz steht separat im Artikel.",
     "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
-  }
+  },
+  "ebene": "Praxisartikel"
 }
 ---
 

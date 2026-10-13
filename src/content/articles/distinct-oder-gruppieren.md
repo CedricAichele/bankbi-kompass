@@ -32,7 +32,8 @@
     "https://learn.microsoft.com/en-us/power-query/group-by"
   ],
   "zuletztGeprueft": "2026-09-21",
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

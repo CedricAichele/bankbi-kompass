@@ -28,7 +28,7 @@ import { contents } from "./content";
 import { migrateIds } from "./content/redirects";
 import { FAVORITES_KEY, readIds, saveIds, toggleId } from "./lib/storage";
 import { SearchForm, EntryList } from "./components/ReferenceLists";
-import { HomePage, ToolPage, Browse, PowerQueryPage } from "./pages/Lookup";
+import { HomePage, ToolPage, Browse, PowerQueryPage, DaxPage } from "./pages/Lookup";
 import { Reference } from "./pages/Reference";
 import { Imprint, Privacy } from "./pages/Legal";
 export { DecisionTools } from "./components/DecisionTools";
@@ -37,6 +37,7 @@ const nav = [
   ["/aufgaben", "Typische Aufgaben", Check],
   ["/bereich/power-bi", "Power BI", ChartNoAxesColumnIncreasing],
   ["/power-query", "Power Query", Layers],
+  ["/dax", "DAX", Layers],
   ["/bereich/excel", "Excel", Table2],
   ["/bereich/ida", "IDA", ListFilter],
   ["/probleme", "Probleme & Lösungen", Lightbulb],
@@ -307,6 +308,7 @@ function Shell() {
             <Route path="/favoriten" element={<Favorites ids={favorites} />} />
             <Route path="/ida-hinweise" element={<Navigate replace to="/bereich/ida" />} />
             <Route path="/power-query" element={<PowerQueryPage />} />
+            <Route path="/dax" element={<DaxPage />} />
             <Route path="/ueber" element={<About />} />
             <Route path="/impressum" element={<Imprint />} />
             <Route path="/datenschutz" element={<Privacy />} />

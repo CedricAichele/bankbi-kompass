@@ -48,13 +48,12 @@ describe("Kurze, vollständige Schnellreferenzen", () => {
       "IDA",
     ]);
     expect(toolsCatalog[0].groups.map((g) => g.title)).toEqual([
-      "Daten importieren",
+      "Start",
       "Power Query & Datenaufbereitung",
       "Datenmodell",
-      "DAX & Measures",
-      "Zeitintelligenz",
+      "DAX",
       "Berichte & Visualisierung",
-      "Fehler & Plausibilitätsprüfung",
+      "Fehlersuche",
     ]);
     expect(toolsCatalog[1].groups.map(x=>x.title)).toEqual(expect.arrayContaining(["Daten prüfen & bereinigen", "Text bearbeiten", "Datum & Datentypen"]));
     expect(toolsCatalog[2].groups).toHaveLength(0);

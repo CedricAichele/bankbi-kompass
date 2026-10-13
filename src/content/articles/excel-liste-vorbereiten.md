@@ -85,7 +85,8 @@
     "Rechteckigen Datenbereich mit einer Kopfzeile vorbereiten.",
     "Mit Strg+T als Tabelle anlegen und benennen.",
     "Zeilenzahl und Kontrollsumme vor der Weiterverarbeitung prüfen."
-  ]
+  ],
+  "ebene": "Kernwissen"
 }
 ---
 

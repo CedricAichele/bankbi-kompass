@@ -40,7 +40,8 @@
     "eingabe": "A2 ist Text „1.250,50“, A3 Zahl 750. Umwandlung in D2, D3=A3.",
     "anpassen": "A2 und die bestätigten Dezimal-/Gruppentrennzeichen ersetzen; anschließend ISTZAHL(D2) prüfen. Kennungen bleiben Text.",
     "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
-  }
+  },
+  "ebene": "Praxisartikel"
 }
 ---
 

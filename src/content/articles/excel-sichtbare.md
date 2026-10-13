@@ -34,7 +34,8 @@
     "https://support.microsoft.com/de-de/office/ausschlie%C3%9Fliches-kopieren-sichtbarer-zellen-6e3a1f01-2884-4332-b262-8b814412847e"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

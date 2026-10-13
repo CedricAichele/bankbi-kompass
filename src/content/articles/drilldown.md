@@ -17,7 +17,7 @@
   ],
   "synonyme": [],
   "verwandteThemen": [
-    "matrix",
+    "visualwahl",
     "datumstabelle"
   ],
   "kontexte": [
@@ -30,7 +30,8 @@
     "https://learn.microsoft.com/en-us/power-bi/consumer/end-user-drill"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

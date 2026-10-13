@@ -42,7 +42,8 @@
     "https://learn.microsoft.com/en-us/power-query/group-by"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Kernwissen"
 }
 ---
 

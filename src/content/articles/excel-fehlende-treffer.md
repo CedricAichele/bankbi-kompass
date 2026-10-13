@@ -34,7 +34,8 @@
     "https://support.microsoft.com/en-us/excel/functions/xlookup-function"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

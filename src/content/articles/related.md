@@ -16,31 +16,34 @@
     "Reporting"
   ],
   "synonyme": [
-    "wert aus anderer tabelle"
+    "wert aus anderer tabelle",
+    "related"
   ],
   "verwandteThemen": [
     "beziehungen",
     "berechnete-spalte",
-    "xverweis"
+    "xverweis",
+    "dax-formeln"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/related-function-dax"
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```dax\nSegment = RELATED ( Personen[Segment] )\n```"
+  "kurzformel": "```dax\nSegment = RELATED ( Personen[Segment] )\n```",
+  "ebene": "Praxisartikel"
 }
 ---
 
 ## Wann brauche ich das?
 
-Du möchtest RELATED an einem überschaubaren Beispiel verstehen.
+Eine Kontenzeile soll ein beschreibendes Merkmal aus der eindeutig verknüpften Kundentabelle erhalten. Prüfe zuerst die vorhandene n:1-Beziehung und die Schlüssel.
 
 ## Voraussetzungen
 
@@ -104,3 +107,8 @@ Ein Measure ohne passenden Zeilenkontext kann nicht einfach jeden Kontenwert zuo
 ## Plausibilitätscheck
 
 Alle sechs Konten haben im vollständigen Beispiel ein Segment. Für P003 tragen K004 und K005 jeweils A. Die neue Spalte verändert weder Zeilenzahl noch Bestände; die Bestandssumme bleibt 9.000.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

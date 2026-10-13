@@ -33,7 +33,8 @@
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```excel\n=B2-A2\n```"
+  "kurzformel": "```excel\n=B2-A2\n```",
+  "ebene": "Praxisartikel"
 }
 ---
 

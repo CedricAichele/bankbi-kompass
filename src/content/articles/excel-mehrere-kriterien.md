@@ -41,7 +41,8 @@
     "eingabe": "A2:C5: Kunde/Produkt/Bestand mit P001/A/1000, P001/B/2000, P002/A/500, P002/B/800. F2=P001, G2=B, Ergebnis H2.",
     "anpassen": "A/B sind die beiden Suchmerkmale, F2/G2 deren Kriterien; C ist die Rückgabe. Gleich große Bereiche und Eindeutigkeit prüfen.",
     "version": "Microsoft 365 oder Excel 2021/2024; nicht Excel 2016/2019."
-  }
+  },
+  "ebene": "Praxisartikel"
 }
 ---
 

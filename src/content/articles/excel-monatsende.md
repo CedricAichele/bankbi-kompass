@@ -21,7 +21,7 @@
   "verwandteThemen": [
     "excel-datum",
     "excel-kalender",
-    "monatsultimo",
+    "dax-jahr-monat",
     "aktueller-stichtag"
   ],
   "kontexte": [
@@ -43,7 +43,8 @@
     "eingabe": "A2 ist das echte Datum 15.02.2026. Formel in H2, als Datum formatieren.",
     "anpassen": "A2 und Monatsversatz 0 anpassen. 1 bedeutet Folgemonat, -1 Vormonat. HEUTE-basierte Alternative im Artikel ist dynamisch.",
     "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
-  }
+  },
+  "ebene": "Praxisartikel"
 }
 ---
 

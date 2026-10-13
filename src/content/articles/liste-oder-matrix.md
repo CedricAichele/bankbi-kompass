@@ -19,8 +19,7 @@
     "liste oder matrix"
   ],
   "verwandteThemen": [
-    "tabelle",
-    "matrix"
+    "visualwahl"
   ],
   "kontexte": [
     "Reporting"
@@ -34,7 +33,8 @@
     "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=reports-viewing-interacting"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

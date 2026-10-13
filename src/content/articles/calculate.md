@@ -15,18 +15,21 @@
     "CALCULATE",
     "Reporting"
   ],
-  "synonyme": [],
+  "synonyme": [
+    "calculate"
+  ],
   "verwandteThemen": [
     "filterkontext",
     "dax-filter",
     "removefilters",
-    "measure"
+    "measure",
+    "dax-formeln"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/calculate-function-dax"
@@ -38,7 +41,8 @@
     "Vorhandene Tabelle und benötigte Datentypen prüfen.",
     "Neues Measure mit der angegebenen Formel erstellen.",
     "Ergebnis ohne Filter und mit Slicer vergleichen."
-  ]
+  ],
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -105,3 +109,8 @@ Wähle anschließend Einlagen: 1.250 + 2.000 + 800 = 4.050. Lösche den Slicer u
 | --- | --- |
 | Ausdruck | Berechnung, die nach der Filteränderung ausgewertet wird. |
 | Filterargumente | Ändern Filter auf den angesprochenen Spalten; andere Filter bleiben grundsätzlich erhalten. |
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

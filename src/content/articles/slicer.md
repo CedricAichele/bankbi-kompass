@@ -31,7 +31,8 @@
     "https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-slicers"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

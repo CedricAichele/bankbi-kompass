@@ -2,6 +2,7 @@ import type { MEntry } from "../content/m-reference";
 
 export function mUseContext(entry:MEntry) {
   if(entry.name === "Record.FieldOrDefault") return "Wenn ein Datensatz ein optionales Feld enthalten kann. Fehlt das Feld, liefert die Funktion einen festgelegten Ersatzwert; ein vorhandener null-Wert wird dadurch nicht ersetzt.";
+  if(entry.category === "Dateien") return "Wenn lokale Dateien als Binärinhalt gelesen oder zu Tabellen dekodiert werden sollen. Für Ordner zuerst Dateiliste filtern und das erwartete Format prüfen.";
   if(entry.name === "Table.AddIndexColumn") return "Wenn eine Transformation eine technische Zeilennummer benötigt. Reihenfolge zuerst festlegen; die Nummer ersetzt keinen fachlichen Schlüssel.";
   const contexts:Record<string,string> = {
     Text: "Bei Exportspalten, Kennungen oder Bezeichnungen, deren Schreibweise vor einem Vergleich, Filter oder Merge vereinheitlicht werden muss.",
@@ -22,7 +23,8 @@ export function mUseContext(entry:MEntry) {
 }
 
 export function mRelated(entry:MEntry) {
-  if(entry.name === "Table.NestedJoin") return "zusammenfuehren";
+  if(entry.category === "Dateien") return "dateien-kombinieren";
+  if(entry.category === "Merge / Join") return "zusammenfuehren";
   if(entry.name === "Table.Combine") return "anhaengen";
   if(entry.name === "Table.Group" || entry.category === "Listen") return "gruppieren";
   if(entry.category === "Text") return "pq-text";
@@ -32,7 +34,8 @@ export function mRelated(entry:MEntry) {
 }
 
 export function mInputType(entry:MEntry) {
-  if(entry.name === "Record.FieldOrDefault") return "Das erste Argument ist ein Record, also ein Datensatz mit benannten Feldern. Im Beispiel enthält die Spalte [Datensatz] solche Records. Der gesuchte Feldname ist Text; der Ersatzwert muss zur fachlichen Verwendung passen.";
+  if(entry.category === "Dateien") return "File.Contents und Folder.Files benötigen einen erreichbaren Pfad als Text. Excel.Workbook verarbeitet Binärdaten, z. B. aus File.Contents. Csv.Document liest Binärdaten oder Text; Trennzeichen, Codierung, Überschriften und anschließende Datentypen bewusst festlegen.";
+  if(entry.name.startsWith("Record.")) return "Das erste Argument ist ein Record, also ein Datensatz mit benannten Feldern. Die im jeweiligen Beispiel genannte Spalte enthält solche Records. Der gesuchte Feldname ist Text; der Ersatzwert muss zur fachlichen Verwendung passen.";
   if(entry.name.startsWith("Table.")) return "Eingabe ist eine Tabelle beziehungsweise eine vorhandene Abfrage. Schlüsselspalten müssen beim Kombinieren kompatible Typen haben; Bestände sind Zahlen, Stichtage Datumswerte. Typkonvertierungen richten sich nach den im Code angegebenen Spalten und Typen.";
   if(entry.name === "Text.From") return "Der Beispielwert ist eine Zahl und wird zu Text. Das Gebietsschema kann die Darstellung beeinflussen; eine bereits verlorene führende Null entsteht dadurch nicht neu.";
   if(entry.name === "Number.FromText" || entry.name === "try … otherwise") return "[Wert] beziehungsweise die angegebene Quellspalte enthält Text. Dezimal- und Tausendertrennzeichen müssen zum angegebenen Gebietsschema passen.";

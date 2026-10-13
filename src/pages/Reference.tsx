@@ -2,11 +2,12 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import { Star, ChevronRight, Lightbulb, ArrowUpRight } from "lucide-react";
 import { contents, byId } from "../content";
 import { sectionsOf, stepsOf } from "../content/schema";
-import { legacyIds, archivedIdaIds } from "../content/redirects";
+import { legacyIds, archivedIdaIds, consolidatedRoutes } from "../content/redirects";
 import { toolsCatalog } from "../content/catalog";
 import { Markdown } from "../components/Markdown";
 import { ExcelReference } from "../components/ExcelReference";
 import { MReference } from "../components/MReference";
+import { DaxReference } from "../components/DaxReference";
 import { ReferenceImage } from "../components/ReferenceImage";
 import { DecisionTools } from "../components/DecisionTools";
 import { documentationLabel } from "../lib/sources";
@@ -18,6 +19,7 @@ export function Reference({
   onToggle: (id: string) => void;
 }) {
   const { slug } = useParams();
+  if (slug && consolidatedRoutes[slug]) return <Navigate replace to={consolidatedRoutes[slug]} />;
   if (slug && archivedIdaIds.has(slug)) return <Navigate replace to="/bereich/ida" />;
   const item = contents.find((x) => x.slug === slug);
   if (!item) {
@@ -74,7 +76,7 @@ export function Reference({
             <span className="eyebrow">
               {item.art === "aufgabe"
                 ? "WERKZEUGÜBERGREIFENDE AUFGABE"
-                : item.bereich + " · SCHNELLREFERENZ"}
+                : item.bereich + " · " + (item.ebene || "Praxisartikel").toLocaleUpperCase("de")}
             </span>
             <h1>{item.titel}</h1>
           </div>
@@ -93,7 +95,7 @@ export function Reference({
           </button>
         </header>
         {Object.keys(sections).length >= 10 && <nav className="article-toc" aria-label="Inhaltsnavigation"><label>Direkt zum Abschnitt<select defaultValue="" onChange={e=>{jumpTo(e.target.value);e.target.value="";}}><option value="" disabled>Abschnitt wählen …</option>{Object.keys(sections).map(name=><option key={name} value={name}>{name}</option>)}</select></label></nav>}
-        {item.id !== "power-query-m" && <div className="answer">
+        {!["power-query-m", "dax-formeln"].includes(item.id) && <div className="answer">
           <h2>Kurzantwort</h2>
           <p>{item.kurzbeschreibung}</p>
           {item.kurzformel && <Markdown text={item.kurzformel} />}
@@ -103,7 +105,7 @@ export function Reference({
           </div>
         </div>
         }
-        {item.bereich !== "IDA" && item.id !== "power-query-m" && <div className="location">
+        {item.bereich !== "IDA" && !["power-query-m", "dax-formeln"].includes(item.id) && <div className="location">
           <span>WO FINDE ICH DAS?</span>
           <p>{item.ort}</p>
         </div>}
@@ -117,8 +119,9 @@ export function Reference({
           <section className="practice-section" key={name} id={sectionId(name)} tabIndex={-1}><h2>{name}</h2><Markdown text={sections[name]} /></section>
         ))}
         {item.id === "power-query-m" && <MReference />}
+        {item.id === "dax-formeln" && <DaxReference />}
         {item.id === "excel-formeln" && <ExcelReference />}
-        {!["power-query-m", "excel-formeln"].includes(item.id) && <div
+        {!["power-query-m", "excel-formeln", "dax-formeln"].includes(item.id) && <div
           className={
             "reference-grid" + (illustrated ? " illustrated-reference" : "") + (["pq-workflow", "pq-benutzerdefiniert", "dateien-kombinieren"].includes(item.id) ? " workflow-reference" : "")
           }

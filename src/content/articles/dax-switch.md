@@ -20,26 +20,28 @@
   ],
   "verwandteThemen": [
     "dax-if",
-    "divide"
+    "divide",
+    "dax-formeln"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/switch-function-dax"
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```dax\nKlasse = SWITCH ( TRUE(), SUM ( Konten[Bestand_EUR] ) > 5000, \"Groß\", SUM ( Konten[Bestand_EUR] ) > 3000, \"Mittel\", \"Klein\" )\n```"
+  "kurzformel": "```dax\nKlasse = SWITCH ( TRUE(), SUM ( Konten[Bestand_EUR] ) > 5000, \"Groß\", SUM ( Konten[Bestand_EUR] ) > 3000, \"Mittel\", \"Klein\" )\n```",
+  "ebene": "Praxisartikel"
 }
 ---
 
 ## Wann brauche ich das?
 
-Du möchtest SWITCH an einem überschaubaren Beispiel verstehen.
+Du ordnest eine Kennzahl mehreren Größenklassen zu. Die Bedingungen überschneiden sich; deshalb bestimmen Reihenfolge und Grenzwerte das Ergebnis.
 
 ## Voraussetzungen
 
@@ -93,3 +95,12 @@ Die Reihenfolge überlappender Bedingungen verändert das Ergebnis.
 ## Plausibilitätscheck
 
 Prüfe Filter einzeln und gemeinsam. Die Ausgangssumme beträgt 9.000 und Einlagen allein 4.050.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.
+
+## Reihenfolge und Grenzen prüfen
+
+SWITCH(TRUE(), ...) prüft Bedingungen von oben nach unten. Bei den Grenzen 5000 und 3000 gilt: 5000 → Mittel, 5001 → Groß, 3000 → Klein, 3001 → Mittel. Stünde > 3000 zuerst, würde auch 9000 schon „Mittel“ ergeben. Ein Kontext ohne Betrag darf nicht unbemerkt als „Klein“ gelten; füge bei Bedarf vor den Größenvergleichen ISBLANK als eigenen Fall hinzu. Alle Ergebnistexte besitzen hier denselben Datentyp.

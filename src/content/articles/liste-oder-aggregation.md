@@ -29,7 +29,8 @@
     "https://www.ibm.com/docs/en/cognos-analytics/12.0.x?topic=relationships-creating-relationship-manually"
   ],
   "zuletztGeprueft": "2026-09-21",
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { MDetailContext, mInputType, mRelated, mUseContext } from "./MDetailContext";
 import { useSearchParams, Link } from "react-router-dom";
-import { mCategories, mEntries, findMEntries } from "../content/m-reference";
+import { mCategories, mEntries, findMEntries, mSyntax } from "../content/m-reference";
 import { CodeBlock } from "./CodeBlock";
+import { SyntaxBlock } from "./SyntaxBlock";
 
 export function MReference() {
   const [params, setParams] = useSearchParams();
@@ -36,7 +37,7 @@ export function MReference() {
     {matches.length > 0 && <div className="m-overview-scroll" role="region" aria-label="Formelübersicht" tabIndex={0}><table className="m-overview">
       <caption>Funktionen vergleichen · Codevorschauen dienen der Orientierung; vollständigen Code unter Details kopieren.</caption>
       <thead><tr><th scope="col">Funktion oder Muster</th><th scope="col">Wann brauche ich das?</th><th scope="col">Codevorschau</th><th scope="col">Eingabeort</th><th scope="col">Details</th></tr></thead>
-      <tbody>{matches.map(entry=><tr key={entry.name}><th scope="row">{entry.name}</th><td data-label="Wann brauche ich das?">{entry.use}</td><td data-label="Codevorschau"><code>{entry.code.replace(/\s+/g," ").slice(0,82)}{entry.code.replace(/\s+/g," ").length>82 ? " … (gekürzt)" : ""}</code></td><td data-label="Eingabeort">{entry.name.startsWith("Table.") ? "Formelleiste" : "Benutzerdefinierte Spalte"}</td><td><button aria-label={"Details zu " + entry.name} onClick={()=>show(entry.name)}>Details öffnen</button></td></tr>)}</tbody>
+      <tbody>{matches.map(entry=><tr key={entry.name}><th scope="row">{entry.name}</th><td data-label="Wann brauche ich das?">{entry.use}</td><td data-label="Codevorschau"><code>{entry.code.replace(/\s+/g," ").slice(0,82)}{entry.code.replace(/\s+/g," ").length>82 ? " … (gekürzt)" : ""}</code></td><td data-label="Eingabeort">{entry.code.startsWith("= ") ? "Formelleiste" : "Benutzerdefinierte Spalte"}</td><td><button aria-label={"Details zu " + entry.name} onClick={()=>show(entry.name)}>Details öffnen</button></td></tr>)}</tbody>
     </table></div>}
     <div className="m-results" aria-label="Ausgewählte Funktionsdetails">
     {selected.length>0 && <h2>Ausgewählte Funktionen im Detail</h2>}
@@ -44,10 +45,11 @@ export function MReference() {
       <summary><strong>{entry.name}</strong><span>{entry.category}</span></summary>
       <h3>Was macht die Funktion?</h3><p>{entry.use}</p>
       <h3>Wann brauche ich sie?</h3><p>{mUseContext(entry)}</p>
-      <h3>Wo gebe ich den Code ein?</h3><p>{entry.where} {entry.name.startsWith("Table.") ? "Der Schritt liefert eine neue Ergebnistabelle; die Quelldatei bleibt unverändert." : "Der Ausdruck berechnet den Wert einer neuen Spalte je Zeile; die Quellspalte bleibt erhalten."}</p>
+      <h3>Wo gebe ich den Code ein?</h3><p>{entry.where} {entry.code.startsWith("= ") ? "Der Schritt gibt das angegebene Ergebnis zurück: meist eine Tabelle, bei Table.RowCount eine Zahl, bei Table.ColumnNames eine Liste. Die Quelldatei bleibt unverändert." : "Der Ausdruck berechnet den Wert einer neuen Spalte je Zeile; die Quellspalte bleibt erhalten."}</p>
       <h3>Ausgangsdaten und benötigte Datentypen</h3><dl><dt>Ausgangswert</dt><dd>{entry.input}</dd></dl><p>{mInputType(entry)}</p>
-      <p className="code-location"><strong>{entry.name.startsWith("Table.") ? "Formelleiste – vollständiger Abfrageschritt" : "Benutzerdefinierte Spalte – nur den Ausdruck eingeben"}</strong></p>
-      <CodeBlock language="m" code={entry.code} />
+      {mSyntax.get(entry.name) && <><h3>Kurzsyntax aus der offiziellen Referenz</h3><SyntaxBlock code={mSyntax.get(entry.name)!} /></>}
+      <h3>Mini-Beispiel zum Übertragen</h3><p>Die Syntax oben beschreibt Parameter und Typen. Für den Eingabeort unten das konkrete Beispiel verwenden und die eigenen Namen einsetzen.</p>
+      <p className="code-location"><strong>{entry.code.startsWith("= ") ? "Formelleiste – vollständiger Abfrageschritt" : "Benutzerdefinierte Spalte – nur den Ausdruck eingeben"}</strong></p><CodeBlock language="m" code={entry.code} />
       <h3>Erwartetes Ergebnis</h3><p>{entry.result}</p>
       <MDetailContext name={entry.name}/>
       <h3>Was muss ich anpassen?</h3><p>{entry.adapt}</p>

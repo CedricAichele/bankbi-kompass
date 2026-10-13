@@ -23,7 +23,7 @@
     "measure",
     "calculate",
     "filterrichtung",
-    "begriff-zeilenkontext",
+    "dax-grundlagen",
     "measure-fehler"
   ],
   "kontexte": [
@@ -47,7 +47,8 @@
       "hinweis": "Echte Aufnahme mit vollständig synthetischen Demodaten. Bedienoberfläche und Bezeichnungen können je Version abweichen. Die Aufnahme illustriert den Bedienort; Feldnamen und Werte können vom aktuellen Textbeispiel abweichen."
     }
   ],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Kernwissen"
 }
 ---
 

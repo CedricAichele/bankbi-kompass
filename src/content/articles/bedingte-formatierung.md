@@ -18,7 +18,7 @@
   "synonyme": [],
   "verwandteThemen": [
     "plan-ist",
-    "datenbeschriftungen"
+    "visual-formatierung"
   ],
   "kontexte": [
     "Reporting"
@@ -30,7 +30,8 @@
     "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-conditional-table-formatting"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

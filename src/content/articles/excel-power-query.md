@@ -29,7 +29,8 @@
   "titel": "Power Query in Excel verwenden",
   "kurzbeschreibung": "Bereite wiederkehrende Listen mit Power Query auf und lade das Ergebnis als Excel-Tabelle oder ins Datenmodell. Die Transformationslogik ist dieselbe wie in Power BI.",
   "praxis": true,
-  "zuletztGeprueft": "2026-09-23"
+  "zuletztGeprueft": "2026-09-23",
+  "ebene": "Kernwissen"
 }
 ---
 

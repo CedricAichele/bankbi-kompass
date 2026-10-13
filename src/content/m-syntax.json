@@ -1,0 +1,779 @@
+[
+  {
+    "name": "and / or",
+    "syntax": "",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/m-spec-operators",
+    "title": "Operator behavior",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Csv.Document",
+    "syntax": "Csv.Document( source as any, optional columns as any, optional delimiter as any, optional extraValues as nullable number, optional encoding as nullable number ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/csv-document",
+    "title": "Csv.Document",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.AddDays",
+    "syntax": "Date.AddDays( dateTime as any, numberOfDays as number) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-adddays",
+    "title": "Date.AddDays",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.AddMonths",
+    "syntax": "Date.AddMonths( dateTime as any, numberOfMonths as number) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-addmonths",
+    "title": "Date.AddMonths",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.AddYears",
+    "syntax": "Date.AddYears( dateTime as any, numberOfYears as number) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-addyears",
+    "title": "Date.AddYears",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.Day",
+    "syntax": "Date.Day( dateTime as any) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-day",
+    "title": "Date.Day",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.DayOfWeek",
+    "syntax": "Date.DayOfWeek( dateTime as any, optional firstDayOfWeek as nullable number) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-dayofweek",
+    "title": "Date.DayOfWeek",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.DayOfWeekName",
+    "syntax": "Date.DayOfWeekName( date as any, optional culture as nullable text) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-dayofweekname",
+    "title": "Date.DayOfWeekName",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.EndOfMonth",
+    "syntax": "Date.EndOfMonth( dateTime as any) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-endofmonth",
+    "title": "Date.EndOfMonth",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.EndOfYear",
+    "syntax": "Date.EndOfYear( dateTime as any) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-endofyear",
+    "title": "Date.EndOfYear",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.From",
+    "syntax": "Date.From( value as any, optional culture as nullable text) as nullable date",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-from",
+    "title": "Date.From",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.Month",
+    "syntax": "Date.Month( dateTime as any) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-month",
+    "title": "Date.Month",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.MonthName",
+    "syntax": "Date.MonthName( date as any, optional culture as nullable text) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-monthname",
+    "title": "Date.MonthName",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.QuarterOfYear",
+    "syntax": "Date.QuarterOfYear( dateTime as any) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-quarterofyear",
+    "title": "Date.QuarterOfYear",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.StartOfMonth",
+    "syntax": "Date.StartOfMonth( dateTime as any) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-startofmonth",
+    "title": "Date.StartOfMonth",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.StartOfYear",
+    "syntax": "Date.StartOfYear( dateTime as any) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-startofyear",
+    "title": "Date.StartOfYear",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.WeekOfYear",
+    "syntax": "Date.WeekOfYear( dateTime as any, optional firstDayOfWeek as nullable number) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-weekofyear",
+    "title": "Date.WeekOfYear",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Date.Year",
+    "syntax": "Date.Year( dateTime as any) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/date-year",
+    "title": "Date.Year",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "DateTime.Date",
+    "syntax": "DateTime.Date( dateTime as any) as nullable date",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/datetime-date",
+    "title": "DateTime.Date",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "DateTime.LocalNow",
+    "syntax": "DateTime.LocalNow() as datetime",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/datetime-localnow",
+    "title": "DateTime.LocalNow",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "DateTime.Time",
+    "syntax": "DateTime.Time( dateTime as any) as nullable time",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/datetime-time",
+    "title": "DateTime.Time",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Duration.Days",
+    "syntax": "Duration.Days( duration as nullable duration) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/duration-days",
+    "title": "Duration.Days",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Duration.TotalDays",
+    "syntax": "Duration.TotalDays( duration as nullable duration) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/duration-totaldays",
+    "title": "Duration.TotalDays",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Duration.TotalHours",
+    "syntax": "Duration.TotalHours( duration as nullable duration) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/duration-totalhours",
+    "title": "Duration.TotalHours",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Duration.TotalMinutes",
+    "syntax": "Duration.TotalMinutes( duration as nullable duration) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/duration-totalminutes",
+    "title": "Duration.TotalMinutes",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Error.Record",
+    "syntax": "Error.Record( reason as text, optional message as nullable text, optional detail as any, optional parameters as nullable list, optional errorCode as nullable text ) as record",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/error-record",
+    "title": "Error.Record",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Excel.Workbook",
+    "syntax": "Excel.Workbook( workbook as binary, optional useHeaders as any, optional delayTypes as nullable logical ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/excel-workbook",
+    "title": "Excel.Workbook",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "File.Contents",
+    "syntax": "File.Contents( path as text, optional options as nullable record) as binary",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/file-contents",
+    "title": "File.Contents",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Folder.Files",
+    "syntax": "Folder.Files( path as text, optional options as nullable record) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/folder-files",
+    "title": "Folder.Files",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "if … then … else",
+    "syntax": "",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/m-spec-conditionals",
+    "title": "Conditionals",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "List.Average",
+    "syntax": "List.Average( list as list, optional precision as nullable number) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/list-average",
+    "title": "List.Average",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "List.Contains",
+    "syntax": "List.Contains( list as list, value as any, optional equationCriteria as any ) as logical",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/list-contains",
+    "title": "List.Contains",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "List.Count",
+    "syntax": "List.Count( list as list) as number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/list-count",
+    "title": "List.Count",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "List.Distinct",
+    "syntax": "List.Distinct( list as list, optional equationCriteria as any) as list",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/list-distinct",
+    "title": "List.Distinct",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "List.First",
+    "syntax": "List.First( list as list, optional defaultValue as any) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/list-first",
+    "title": "List.First",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "List.Last",
+    "syntax": "List.Last( list as list, optional defaultValue as any) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/list-last",
+    "title": "List.Last",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "List.Max",
+    "syntax": "List.Max( list as list, optional default as any, optional comparisonCriteria as any, optional includeNulls as nullable logical ) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/list-max",
+    "title": "List.Max",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "List.Min",
+    "syntax": "List.Min( list as list, optional default as any, optional comparisonCriteria as any, optional includeNulls as nullable logical ) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/list-min",
+    "title": "List.Min",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "List.Select",
+    "syntax": "List.Select( list as list, selection as function) as list",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/list-select",
+    "title": "List.Select",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "List.Sort",
+    "syntax": "List.Sort( list as list, optional comparisonCriteria as any) as list",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/list-sort",
+    "title": "List.Sort",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "List.Sum",
+    "syntax": "List.Sum( list as list, optional precision as nullable number) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/list-sum",
+    "title": "List.Sum",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "List.Transform",
+    "syntax": "List.Transform( list as list, transform as function) as list",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/list-transform",
+    "title": "List.Transform",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "not",
+    "syntax": "",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/m-spec-operators",
+    "title": "Operator behavior",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "null prüfen",
+    "syntax": "",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/m-spec-values",
+    "title": "Values",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Number.Abs",
+    "syntax": "Number.Abs( number as nullable number) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/number-abs",
+    "title": "Number.Abs",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Number.FromText",
+    "syntax": "Number.FromText( text as nullable text, optional culture as nullable text) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/number-fromtext",
+    "title": "Number.FromText",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Number.IntegerDivide",
+    "syntax": "Number.IntegerDivide( number1 as nullable number, number2 as nullable number, optional precision as nullable number ) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/number-integerdivide",
+    "title": "Number.IntegerDivide",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Number.Mod",
+    "syntax": "Number.Mod( number as nullable number, divisor as nullable number, optional precision as nullable number ) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/number-mod",
+    "title": "Number.Mod",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Number.Round",
+    "syntax": "Number.Round( number as nullable number, optional digits as nullable number, optional roundingMode as nullable number ) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/number-round",
+    "title": "Number.Round",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Number.RoundDown",
+    "syntax": "Number.RoundDown( number as nullable number, optional digits as nullable number) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/number-rounddown",
+    "title": "Number.RoundDown",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Number.RoundUp",
+    "syntax": "Number.RoundUp( number as nullable number, optional digits as nullable number) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/number-roundup",
+    "title": "Number.RoundUp",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Record.Field",
+    "syntax": "Record.Field( record as record, field as text) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/record-field",
+    "title": "Record.Field",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Record.FieldOrDefault",
+    "syntax": "Record.FieldOrDefault( record as nullable record, field as text, optional defaultValue as any ) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/record-fieldordefault",
+    "title": "Record.FieldOrDefault",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Record.HasFields",
+    "syntax": "Record.HasFields( record as record, fields as any) as logical",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/record-hasfields",
+    "title": "Record.HasFields",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Record.SelectFields",
+    "syntax": "Record.SelectFields( record as record, fields as any, optional missingField as nullable number ) as record",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/record-selectfields",
+    "title": "Record.SelectFields",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.AddColumn",
+    "syntax": "Table.AddColumn( table as table, newColumnName as text, columnGenerator as function, optional columnType as nullable type ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-addcolumn",
+    "title": "Table.AddColumn",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.AddIndexColumn",
+    "syntax": "Table.AddIndexColumn( table as table, newColumnName as text, optional initialValue as nullable number, optional increment as nullable number, optional columnType as nullable type ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-addindexcolumn",
+    "title": "Table.AddIndexColumn",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.Buffer",
+    "syntax": "Table.Buffer( table as table, optional options as nullable record) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-buffer",
+    "title": "Table.Buffer",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.ColumnNames",
+    "syntax": "Table.ColumnNames( table as table) as list",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-columnnames",
+    "title": "Table.ColumnNames",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.Combine",
+    "syntax": "Table.Combine( tables as list, optional columns as any) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-combine",
+    "title": "Table.Combine",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.Distinct",
+    "syntax": "Table.Distinct( table as table, optional equationCriteria as any) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-distinct",
+    "title": "Table.Distinct",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.ExpandRecordColumn",
+    "syntax": "Table.ExpandRecordColumn( table as table, column as text, fieldNames as list, optional newColumnNames as nullable list ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-expandrecordcolumn",
+    "title": "Table.ExpandRecordColumn",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.ExpandTableColumn",
+    "syntax": "Table.ExpandTableColumn( table as table, column as text, columnNames as list, optional newColumnNames as nullable list ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-expandtablecolumn",
+    "title": "Table.ExpandTableColumn",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.FillDown",
+    "syntax": "Table.FillDown( table as table, columns as list) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-filldown",
+    "title": "Table.FillDown",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.FillUp",
+    "syntax": "Table.FillUp( table as table, columns as list) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-fillup",
+    "title": "Table.FillUp",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.FirstN",
+    "syntax": "Table.FirstN( table as table, countOrCondition as any) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-firstn",
+    "title": "Table.FirstN",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.Group",
+    "syntax": "Table.Group( table as table, key as any, aggregatedColumns as list, optional groupKind as nullable number, optional comparer as nullable function ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-group",
+    "title": "Table.Group",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.Join",
+    "syntax": "Table.Join( table1 as table, key1 as any, table2 as table, key2 as any, optional joinKind as nullable number, optional joinAlgorithm as nullable number, optional keyEqualityComparers as nullable list ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-join",
+    "title": "Table.Join",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.LastN",
+    "syntax": "Table.LastN( table as table, countOrCondition as any) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-lastn",
+    "title": "Table.LastN",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.NestedJoin",
+    "syntax": "Table.NestedJoin( table1 as table, key1 as any, table2 as any, key2 as any, newColumnName as text, optional joinKind as nullable number, optional keyEqualityComparers as nullable list ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-nestedjoin",
+    "title": "Table.NestedJoin",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.Pivot",
+    "syntax": "Table.Pivot( table as table, pivotValues as list, attributeColumn as text, valueColumn as text, optional aggregationFunction as nullable function ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-pivot",
+    "title": "Table.Pivot",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.RemoveColumns",
+    "syntax": "Table.RemoveColumns( table as table, columns as any, optional missingField as nullable number ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-removecolumns",
+    "title": "Table.RemoveColumns",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.RenameColumns",
+    "syntax": "Table.RenameColumns( table as table, renames as list, optional missingField as nullable number ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-renamecolumns",
+    "title": "Table.RenameColumns",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.ReorderColumns",
+    "syntax": "Table.ReorderColumns( table as table, columnOrder as list, optional missingField as nullable number ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-reordercolumns",
+    "title": "Table.ReorderColumns",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.ReplaceValue",
+    "syntax": "Table.ReplaceValue( table as table, oldValue as any, newValue as any, replacer as function, columnsToSearch as list ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-replacevalue",
+    "title": "Table.ReplaceValue",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.RowCount",
+    "syntax": "Table.RowCount( table as table) as number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-rowcount",
+    "title": "Table.RowCount",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.Schema",
+    "syntax": "Table.Schema( table as table) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-schema",
+    "title": "Table.Schema",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.SelectColumns",
+    "syntax": "Table.SelectColumns( table as table, columns as any, optional missingField as nullable number ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-selectcolumns",
+    "title": "Table.SelectColumns",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.SelectRows",
+    "syntax": "Table.SelectRows( table as table, condition as function) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-selectrows",
+    "title": "Table.SelectRows",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.Skip",
+    "syntax": "Table.Skip( table as table, optional countOrCondition as any) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-skip",
+    "title": "Table.Skip",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.Sort",
+    "syntax": "Table.Sort( table as table, comparisonCriteria as any) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-sort",
+    "title": "Table.Sort",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.TransformColumns",
+    "syntax": "Table.TransformColumns( table as table, transformOperations as list, optional defaultTransformation as nullable function, optional missingField as nullable number ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-transformcolumns",
+    "title": "Table.TransformColumns",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.TransformColumnTypes",
+    "syntax": "Table.TransformColumnTypes( table as table, typeTransformations as list, optional culture as any ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-transformcolumntypes",
+    "title": "Table.TransformColumnTypes",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.Unpivot",
+    "syntax": "Table.Unpivot( table as table, pivotColumns as list, attributeColumn as text, valueColumn as text ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-unpivot",
+    "title": "Table.Unpivot",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Table.UnpivotOtherColumns",
+    "syntax": "Table.UnpivotOtherColumns( table as table, pivotColumns as list, attributeColumn as text, valueColumn as text ) as table",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/table-unpivotothercolumns",
+    "title": "Table.UnpivotOtherColumns",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.AfterDelimiter",
+    "syntax": "Text.AfterDelimiter( text as nullable text, delimiter as text, optional index as any ) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-afterdelimiter",
+    "title": "Text.AfterDelimiter",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.BeforeDelimiter",
+    "syntax": "Text.BeforeDelimiter( text as nullable text, delimiter as text, optional index as any ) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-beforedelimiter",
+    "title": "Text.BeforeDelimiter",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.BetweenDelimiters",
+    "syntax": "Text.BetweenDelimiters( text as nullable text, startDelimiter as text, endDelimiter as text, optional startIndex as any, optional endIndex as any ) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-betweendelimiters",
+    "title": "Text.BetweenDelimiters",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Clean",
+    "syntax": "Text.Clean( text as nullable text) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-clean",
+    "title": "Text.Clean",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Combine",
+    "syntax": "Text.Combine( texts as list, optional separator as nullable text) as text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-combine",
+    "title": "Text.Combine",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Contains",
+    "syntax": "Text.Contains( text as nullable text, substring as text, optional comparer as nullable function ) as nullable logical",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-contains",
+    "title": "Text.Contains",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.End",
+    "syntax": "Text.End( text as nullable text, count as number) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-end",
+    "title": "Text.End",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.EndsWith",
+    "syntax": "Text.EndsWith( text as nullable text, substring as text, optional comparer as nullable function ) as nullable logical",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-endswith",
+    "title": "Text.EndsWith",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.From",
+    "syntax": "Text.From( value as any, optional culture as nullable text) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-from",
+    "title": "Text.From",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Length",
+    "syntax": "Text.Length( text as nullable text) as nullable number",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-length",
+    "title": "Text.Length",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Lower",
+    "syntax": "Text.Lower( text as nullable text, optional culture as nullable text) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-lower",
+    "title": "Text.Lower",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Middle",
+    "syntax": "Text.Middle( text as nullable text, start as number, optional count as nullable number ) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-middle",
+    "title": "Text.Middle",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.PadEnd",
+    "syntax": "Text.PadEnd( text as nullable text, count as number, optional character as nullable text ) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-padend",
+    "title": "Text.PadEnd",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.PadStart",
+    "syntax": "Text.PadStart( text as nullable text, count as number, optional character as nullable text ) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-padstart",
+    "title": "Text.PadStart",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.PositionOf",
+    "syntax": "Text.PositionOf( text as text, substring as text, optional occurrence as nullable number, optional comparer as nullable function ) as any",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-positionof",
+    "title": "Text.PositionOf",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Proper",
+    "syntax": "Text.Proper( text as nullable text, optional culture as nullable text) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-proper",
+    "title": "Text.Proper",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Range",
+    "syntax": "Text.Range( text as nullable text, offset as number, optional count as nullable number ) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-range",
+    "title": "Text.Range",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Remove",
+    "syntax": "Text.Remove( text as nullable text, removeChars as any) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-remove",
+    "title": "Text.Remove",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Replace",
+    "syntax": "Text.Replace( text as nullable text, old as text, new as text ) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-replace",
+    "title": "Text.Replace",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Select",
+    "syntax": "Text.Select( text as nullable text, selectChars as any) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-select",
+    "title": "Text.Select",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Split",
+    "syntax": "Text.Split( text as text, separator as text) as list",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-split",
+    "title": "Text.Split",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Start",
+    "syntax": "Text.Start( text as nullable text, count as number) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-start",
+    "title": "Text.Start",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.StartsWith",
+    "syntax": "Text.StartsWith( text as nullable text, substring as text, optional comparer as nullable function ) as nullable logical",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-startswith",
+    "title": "Text.StartsWith",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Trim",
+    "syntax": "Text.Trim( text as nullable text, optional trim as any) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-trim",
+    "title": "Text.Trim",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "Text.Upper",
+    "syntax": "Text.Upper( text as nullable text, optional culture as nullable text) as nullable text",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/text-upper",
+    "title": "Text.Upper",
+    "checked": "2026-10-13"
+  },
+  {
+    "name": "try … otherwise",
+    "syntax": "",
+    "source": "https://learn.microsoft.com/en-us/powerquery-m/m-spec-error-handling",
+    "title": "Error Handling",
+    "checked": "2026-10-13"
+  }
+]

@@ -85,7 +85,8 @@
       }
     }
   ],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Kernwissen"
 }
 ---
 

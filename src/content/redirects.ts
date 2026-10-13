@@ -5,7 +5,7 @@ export const legacyIds: Record<string,string> = {
   "produktanalyse": "stichtag",
   "kundenansprache": "personen-zaehlen",
   "management-reporting": "plan-ist",
-  "visualisierung": "matrix",
+  "visualisierung": "visualwahl",
   "power-bi": "power-query",
   "erster-bericht": "measure",
   "excel-import": "daten-laden",
@@ -18,7 +18,7 @@ export const legacyIds: Record<string,string> = {
   "pivot-aktualisieren": "pivottable",
   "pivot-filtern": "pivottable",
   "excel-ersetzen": "wechseln-ersetzen",
-  "excel-text-teilen": "textteilen",
+  "excel-text-teilen": "excel-text-zerlegen",
   "excel-dubletten-entfernen": "excel-dubletten-finden",
   "saeubern": "glaetten",
   "excel-kombinationen": "eindeutig",
@@ -38,4 +38,23 @@ export const legacyIds: Record<string,string> = {
   "begriff-join": "zusammenfuehren"
 };
 export const archivedIdaIds = new Set(["ida-aggregation","ida-anzahl","ida-ausfuehren","ida-bedingungen","ida-berechnung","ida-betrieb","ida-csv","ida-datenelement","ida-dubletten","ida-durchschnitt","ida-ebene","ida-excel-export","ida-excel-liste","ida-extrema","ida-falllogik","ida-filter-pruefen","ida-filter","ida-filterebene","ida-filtertypen","ida-formate","ida-gruppieren","ida-join-aggregation","ida-join-pruefen","ida-konto","ida-mehrere-joins","ida-mehrfachauswahl","ida-not-null","ida-null","ida-nullstellen","ida-parameter-anzeigen","ida-parameter-filter","ida-parameter-mehrfach","ida-parameter-optional","ida-parameter-typ","ida-parameter","ida-performance","ida-prompt","ida-quote","ida-sortieren","ida-spalten","ida-speichern","ida-statusverlauf","ida-summe","ida-vorgang","ida-zeitplanung","ida-zielgranularitaet","reporting","laufzeitanalyse"]);
-export function migrateIds(ids:string[], valid:Set<string>) { return [...new Set(ids.map(id=>legacyIds[id]||id).filter(id=>valid.has(id)))]; }
+export const consolidatedRoutes: Record<string,string> = {
+  "karte": "/wissen/visualwahl",
+  "tabelle": "/wissen/visualwahl",
+  "matrix": "/wissen/visualwahl",
+  "balkendiagramm": "/wissen/visualwahl",
+  "saeulendiagramm": "/wissen/visualwahl",
+  "liniendiagramm": "/wissen/visualwahl",
+  "anzeigeeinheiten": "/wissen/visual-formatierung",
+  "datenbeschriftungen": "/wissen/visual-formatierung",
+  "diagrammtitel": "/wissen/visual-formatierung",
+  "prozentformat": "/wissen/visual-formatierung",
+  "visual-sortieren": "/wissen/visual-formatierung",
+  "text-ausschnitt": "/wissen/excel-text-zerlegen",
+  "text-trennzeichen": "/wissen/excel-text-zerlegen",
+  "textteilen": "/wissen/excel-text-zerlegen",
+  "dax-median": "/wissen/dax-formeln?funktion=MEDIAN",
+  "monatsultimo": "/wissen/dax-jahr-monat",
+  "begriff-zeilenkontext": "/wissen/dax-grundlagen"
+};
+export function migrateIds(ids:string[], valid:Set<string>) { return [...new Set(ids.map(id=>{ const mapped=legacyIds[id]||id; return consolidatedRoutes[mapped]?.split("/").pop()?.split("?")[0] || mapped; }).filter(id=>valid.has(id)))]; }

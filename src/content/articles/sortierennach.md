@@ -44,7 +44,8 @@
     "eingabe": "A2:C5: Konto/Segment/Bestand, K001/B/1000, K002/A/500, K003/A/2000, K004/B/1500. Ausgabe H2:J5 frei außerhalb einer Excel-Tabelle.",
     "anpassen": "A2:C5 als Ausgabequelle, B2:B5 als erstes Sortierfeld (1 aufsteigend), C2:C5 als zweites (-1 absteigend) anpassen.",
     "version": "Microsoft 365 oder Excel 2021/2024; nicht Excel 2016/2019."
-  }
+  },
+  "ebene": "Praxisartikel"
 }
 ---
 

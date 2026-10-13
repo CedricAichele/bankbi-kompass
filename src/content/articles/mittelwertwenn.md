@@ -42,7 +42,8 @@
     "eingabe": "A1:D4: Kunde/Konto/Segment/Bestand; Zeile 2=P001/K001/A/1000, Zeile 3=P001/K002/B/2000, Zeile 4=P002/K003/A/500. Ergebnis in H2. F2=A.",
     "anpassen": "C2:C4 prüft das Kriterium F2; D2:D4 enthält die Zahlen für den Mittelwert. Textwerte und leere Zellen nicht als 0 interpretieren.",
     "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
-  }
+  },
+  "ebene": "Praxisartikel"
 }
 ---
 

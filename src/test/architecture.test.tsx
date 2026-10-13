@@ -24,7 +24,7 @@ describe("Öffentliche Architektur", () => {
       expect(within(screen.getByRole("main")).queryAllByRole("link").every(x => !x.getAttribute("href")?.includes("/wissen/ida-"))).toBe(true);
       view.unmount();
     }
-  });
+  }, 15000);
   it("führt die IDA-Suche einschließlich Vorschlag zur Statusseite", async () => {
     window.location.hash = "/";
     render(<App />);

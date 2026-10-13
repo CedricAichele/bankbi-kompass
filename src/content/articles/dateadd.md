@@ -24,7 +24,8 @@
     "vorjahr",
     "datumstabelle",
     "pq-datum",
-    "ytd"
+    "ytd",
+    "dax-formeln"
   ],
   "kontexte": [
     "Bestandsanalyse",
@@ -32,14 +33,15 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/dateadd-function-dax",
     "https://learn.microsoft.com/en-us/dax/sameperiodlastyear-function-dax"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -113,3 +115,8 @@ DATEADD liefert eine verschobene Datumsmenge; CALCULATE wertet die Kennzahl in d
 ## Plausibilitätscheck
 
 Februar 2026: Neugeschäft 15; Vorjahres-Februar: 9. Prüfe außerdem einen Zeitraum ohne Daten.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

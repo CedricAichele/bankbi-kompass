@@ -33,7 +33,8 @@
     "https://learn.microsoft.com/en-us/dax/if-function-dax"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

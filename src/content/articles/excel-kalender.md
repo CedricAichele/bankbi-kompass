@@ -42,7 +42,8 @@
     "eingabe": "B2=2026, C2=9, D2=23. Formel in E2, als Datum formatiert.",
     "anpassen": "B2/C2/D2 sind Jahr/Monat/Tag; die drei Zahlenzellen ersetzen. JAHR, MONAT und TAG zum Zerlegen stehen im Artikel.",
     "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
-  }
+  },
+  "ebene": "Praxisartikel"
 }
 ---
 

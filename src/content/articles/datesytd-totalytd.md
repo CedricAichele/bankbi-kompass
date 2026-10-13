@@ -24,7 +24,8 @@
     "bestand-bewegung",
     "datumstabelle",
     "pq-datum",
-    "vorjahr"
+    "vorjahr",
+    "dax-formeln"
   ],
   "kontexte": [
     "Bestandsanalyse",
@@ -32,14 +33,15 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/totalytd-function-dax",
     "https://learn.microsoft.com/en-us/dax/datesytd-function-dax"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -114,3 +116,8 @@ DATESYTD liefert die Datumsmenge, TOTALYTD wertet einen Ausdruck innerhalb diese
 ## Plausibilitätscheck
 
 Februar 2026: YTD 10 + 15 = 25. Prüfe außerdem einen Zeitraum ohne Daten.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

@@ -34,7 +34,8 @@
     "https://learn.microsoft.com/en-us/dax/sameperiodlastyear-function-dax"
   ],
   "zuletztGeprueft": "2026-09-21",
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

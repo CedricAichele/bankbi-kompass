@@ -184,7 +184,7 @@ export const decisions = [
         label: "Gruppen auf zwei Achsen vergleichen",
         answer:
           "Eine Matrix stellt aggregierte Werte nach Zeilen- und Spaltengruppen gegenüber.",
-        link: "matrix",
+        link: "visualwahl",
       },
     ],
   },

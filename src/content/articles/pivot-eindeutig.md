@@ -35,7 +35,8 @@
     "https://support.microsoft.com/de-DE/Excel/create-a-data-model-in-excel"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

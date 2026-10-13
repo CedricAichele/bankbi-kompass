@@ -42,7 +42,8 @@
     "eingabe": "A2 enthält den Text „  P001   Nord  “. Formel in H2.",
     "anpassen": "A2 durch die Textzelle ersetzen. Normale und geschützte Leerzeichen unterscheiden; fachlich bedeutsame Leerzeichen erhalten.",
     "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
-  }
+  },
+  "ebene": "Praxisartikel"
 }
 ---
 

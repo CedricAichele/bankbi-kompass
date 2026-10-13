@@ -15,20 +15,24 @@
     "COUNT: nichtleere Werte zählen"
   ],
   "synonyme": [
-    "anzahl nichtleer"
+    "anzahl nichtleer",
+    "count",
+    "counta"
   ],
   "verwandteThemen": [
     "countrows",
-    "distinctcount"
+    "distinctcount",
+    "dax-formeln"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
-    "https://learn.microsoft.com/en-us/dax/count-function-dax"
+    "https://learn.microsoft.com/en-us/dax/count-function-dax",
+    "https://learn.microsoft.com/en-us/dax/counta-function-dax"
   ],
   "screenshots": [],
   "praxis": true,
@@ -37,7 +41,8 @@
     "Vorhandene Tabelle und benötigte Datentypen prüfen.",
     "Neues Measure mit der angegebenen Formel erstellen.",
     "Ergebnis ohne Filter und mit Slicer vergleichen."
-  ]
+  ],
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -97,3 +102,18 @@ Das Argument ist eine Spalte, keine Tabelle. COUNT überspringt BLANK, berücksi
 ## Plausibilitätscheck
 
 Ersetze den leeren Testwert durch 0: Die Anzahl muss wieder 6 sein.
+
+
+## COUNT oder COUNTA?
+COUNT zählt nichtleere Werte einer unterstützten Spalte; Wahrheitswerte werden nicht unterstützt. COUNTA berücksichtigt auch true/false. Für eine Zeilenzahl unabhängig von der Befüllung einer Spalte verwende COUNTROWS.
+
+Separater synthetischer Test: Tabelle Pruefung mit Flag = TRUE, FALSE, BLANK. **Neues Measure**:
+```dax
+Vorhandene Flags = COUNTA(Pruefung[Flag])
+```
+Ergebnis **2**. COUNTROWS(Pruefung) wäre **3**. Ein FALSE ist ein vorhandener Wert, kein fehlender Wert. Ersetze Tabelle und Flag durch deine Spalte; befüllte Beträge oder Flags sind noch keine eindeutige Kundenzahl.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

@@ -31,7 +31,8 @@
     "https://learn.microsoft.com/en-us/power-query/power-query-ui"
   ],
   "zuletztGeprueft": "2026-09-21",
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

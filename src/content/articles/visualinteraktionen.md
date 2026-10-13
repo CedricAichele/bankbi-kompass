@@ -31,7 +31,8 @@
     "https://learn.microsoft.com/en-us/power-bi/create-reports/service-reports-visual-interactions"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

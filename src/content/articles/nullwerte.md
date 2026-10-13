@@ -77,7 +77,8 @@
       "bildAnzeigen": false
     }
   ],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -138,3 +139,7 @@ Aus 3 Quellzeilen werden 2 zuordenbare Zeilen plus 1 Prüfzeile. Bekannter Besta
 ## Passender M-Code
 
 [NULL und Fehler: Beispiel, Ergebnis und Anpassung](#/wissen/power-query-m?gruppe=NULL%20und%20Fehler) in der praktischen M-Referenz.
+
+## Passende M-Funktion nachschlagen
+
+[Syntax, Mini-Beispiel und Anpassungen: try … otherwise](#/wissen/power-query-m?funktion=try%20%E2%80%A6%20otherwise).

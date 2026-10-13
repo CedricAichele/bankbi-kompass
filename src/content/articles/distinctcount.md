@@ -24,19 +24,21 @@
     "COUNT vs DISTINCTCOUNT",
     "einzigartige kunden",
     "eindeutige kunden",
-    "nur eindeutige kunden"
+    "nur eindeutige kunden",
+    "distinctcount"
   ],
   "verwandteThemen": [
     "countrows",
     "granularitaet",
-    "eine-zeile-je-person"
+    "eine-zeile-je-person",
+    "dax-formeln"
   ],
   "kontexte": [
     "Kundenanalyse",
     "Datenqualität"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/distinctcount-function-dax"
@@ -48,7 +50,8 @@
     "Vorhandene Tabelle und benötigte Datentypen prüfen.",
     "Neues Measure mit der angegebenen Formel erstellen.",
     "Ergebnis ohne Filter und mit Slicer vergleichen."
-  ]
+  ],
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -114,3 +117,8 @@ Liste P001, P002, P003, P004 manuell auf. Einlagen haben 3 Personen, Anlagen 1, 
 | Argument | Bedeutung |
 | --- | --- |
 | Spalte | Spalte, deren unterschiedliche Werte gezählt werden. BLANK kann als eigener Wert mitzählen; für Ausschluss DISTINCTCOUNTNOBLANK prüfen. |
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

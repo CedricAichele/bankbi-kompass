@@ -35,7 +35,8 @@
     "https://learn.microsoft.com/en-us/dax/userelationship-function-dax"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

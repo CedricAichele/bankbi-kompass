@@ -90,6 +90,7 @@ export const schema = z
     ]),
     zuletztGeprueft: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     art: z.enum(["artikel", "problem", "aufgabe"]),
+    ebene: z.enum(["Kernwissen", "Praxisartikel", "Referenz"]).optional(),
     praxis: z.boolean().default(false),
     schnellschritte: z.array(z.string().min(10)).min(2).max(4).optional(),
     kurzformel: z.string().max(600).optional(),
@@ -99,6 +100,10 @@ export const schema = z
       anpassen: z.string(),
       version: z.string(),
     }).optional(),
+    formelreferenzen: z.array(z.object({
+      funktion: z.string(), eingabe: z.string(), anpassen: z.string(), version: z.string(),
+      code: z.string(), ergebnis: z.string(), zweck: z.string(), falle: z.string(),
+    })).optional(),
     screenshots: z.array(imageSchema).default([]),
     quellen: z.array(z.string().url()).default([]),
   })

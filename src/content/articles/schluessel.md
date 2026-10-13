@@ -32,7 +32,8 @@
     "https://learn.microsoft.com/en-us/power-bi/guidance/star-schema"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

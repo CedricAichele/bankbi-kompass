@@ -74,7 +74,8 @@
       "bildAnzeigen": false
     }
   ],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

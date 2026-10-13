@@ -31,7 +31,8 @@
     "https://support.microsoft.com/en-us/excel/functions/sumifs-function"
   ],
   "zuletztGeprueft": "2026-09-21",
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

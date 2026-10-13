@@ -35,7 +35,8 @@
     "https://learn.microsoft.com/en-us/power-query/connectors/folder"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

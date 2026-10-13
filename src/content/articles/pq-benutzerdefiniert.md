@@ -67,7 +67,8 @@
       }
     }
   ],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -257,3 +258,7 @@ Eine Formel mit fremden Spaltennamen blind kopieren, Table.AddColumn in den Spal
 ## Plausibilitätscheck
 
 Vergleiche Ausgangswerte und Ergebnis in mehreren Zeilen. Prüfe null, leere Texte, falsche Typen, Grenzwerte und Nenner 0. Die Zeilenzahl sollte durch das Hinzufügen einer Spalte unverändert bleiben. Kontrolliere den Ergebnistyp und neue Fehlerwerte im gesamten Datensatz.
+
+## Passende M-Funktion nachschlagen
+
+[Syntax, Mini-Beispiel und Anpassungen: Table.AddColumn](#/wissen/power-query-m?funktion=Table.AddColumn).

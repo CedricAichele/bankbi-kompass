@@ -21,7 +21,7 @@
   ],
   "verwandteThemen": [
     "divide",
-    "prozentformat"
+    "visual-formatierung"
   ],
   "kontexte": [
     "Reporting",
@@ -81,7 +81,7 @@ Pseudologik: Erfüllte Fälle und alle Fälle summieren; anschließend dividiere
 
 | Werkzeug        | Passender Einstieg                                                                            |
 | --------------- | --------------------------------------------------------------------------------------------- |
-| Power BI        | [DIVIDE: Quote berechnen](#/wissen/divide) · [0,95 als 95 % anzeigen](#/wissen/prozentformat) |
+| Power BI        | [DIVIDE: Quote berechnen](#/wissen/divide) · [0,95 als 95 % anzeigen](#/wissen/visual-formatierung) |
 | Excel           | [SUMMEWENNS](#/wissen/summewenns)                                                             |
 
 ## Ergebnis

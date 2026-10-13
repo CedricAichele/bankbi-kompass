@@ -112,7 +112,8 @@
     "Im Datenbereich die gewünschte Basistabelle auswählen.",
     "Modellierung → Neues Measure; Name und Formel eingeben.",
     "Im Visual mit und ohne Filter kontrollieren."
-  ]
+  ],
+  "ebene": "Kernwissen"
 }
 ---
 

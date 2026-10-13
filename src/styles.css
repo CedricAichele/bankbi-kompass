@@ -1733,3 +1733,25 @@ footer strong {
   .m-overview td[data-label]::before { content: attr(data-label); display: block; font-weight: 600; margin-bottom: .25rem; }
   .m-example-scroll table { min-width: 440px; }
 }
+
+/* Compact reference cards and explicit learning levels. */
+.syntax-block { max-width:100%; white-space:pre-wrap; overflow-wrap:anywhere; background:#f0f4f8; padding:12px; border-radius:6px; font-size:.86rem; }
+.content-levels { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:16px 0 22px; }
+.content-levels p { margin:0; padding:12px 16px; background:var(--surface, #fff); border:1px solid var(--border, #d9e2ed); border-radius:8px; }
+.content-levels strong, .content-levels span { display:block; }
+.content-levels span { font-size:.88rem; margin-top:4px; }
+.area-status { font-size:.86rem; color:#405b75; margin:4px 0 12px; }
+.reference-filters { flex-wrap:wrap; align-items:end; }
+.reference-filters label { min-width:160px; flex:1; }
+.reference-filters .checkbox-filter { display:flex; flex-direction:row; align-items:center; gap:8px; flex:0 1 auto; padding:10px 0; }
+.checkbox-filter input { width:auto; }
+.function-cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; align-items:start; }
+.function-card { min-width:0; padding:14px 18px; border:1px solid var(--border, #d9e2ed); border-radius:8px; background:#fff; }
+.function-card summary { cursor:pointer; overflow-wrap:anywhere; }
+.function-card summary strong { color:#174a78; }
+.function-card summary span { display:block; font-size:.85rem; margin-top:6px; }
+.function-card[open] { grid-column:1 / -1; }
+.function-card h3 { font-size:1rem; margin:18px 0 6px; }
+.function-card p { overflow-wrap:anywhere; }
+.reference-pagination { display:flex; gap:16px; justify-content:center; align-items:center; flex-wrap:wrap; margin:24px 0; }
+@media(max-width:700px) { .content-levels, .function-cards { grid-template-columns:1fr; } .reference-filters label { min-width:0; width:100%; flex-basis:100%; } .function-card { padding:12px; } }

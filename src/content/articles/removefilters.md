@@ -15,17 +15,20 @@
     "REMOVEFILTERS: Filter gezielt aufheben",
     "Reporting"
   ],
-  "synonyme": [],
+  "synonyme": [
+    "removefilters"
+  ],
   "verwandteThemen": [
     "calculate",
     "filterkontext",
-    "divide"
+    "divide",
+    "dax-formeln"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/removefilters-function-dax"
@@ -37,7 +40,8 @@
     "Vorhandene Tabelle und benötigte Datentypen prüfen.",
     "Neues Measure mit der angegebenen Formel erstellen.",
     "Ergebnis ohne Filter und mit Slicer vergleichen."
-  ]
+  ],
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -97,3 +101,8 @@ REMOVEFILTERS entfernt im CALCULATE-Kontext die Einschränkung der angegebenen S
 ## Plausibilitätscheck
 
 Wechsle P003 zu P001: der Nenner muss auf 2.000 wechseln.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

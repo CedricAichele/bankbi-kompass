@@ -41,7 +41,8 @@
     "https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-relationships-understand"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

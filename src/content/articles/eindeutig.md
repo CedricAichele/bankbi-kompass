@@ -86,7 +86,8 @@
     "eingabe": "A1:D4: Kunde/Konto/Segment/Bestand; Zeile 2=P001/K001/A/1000, Zeile 3=P001/K002/B/2000, Zeile 4=P002/K003/A/500. Ergebnis in H2. H2:H3 frei und außerhalb einer Excel-Tabelle.",
     "anpassen": "A2:A4 durch die Spalte für unterschiedliche Werte ersetzen. Mehrere Quellspalten würden eindeutige Kombinationen bilden.",
     "version": "Microsoft 365 oder Excel 2021/2024; nicht Excel 2016/2019."
-  }
+  },
+  "ebene": "Praxisartikel"
 }
 ---
 

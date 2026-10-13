@@ -43,7 +43,8 @@
   ],
   "screenshots": [],
   "praxis": true,
-  "zuletztGeprueft": "2026-09-23"
+  "zuletztGeprueft": "2026-09-23",
+  "ebene": "Praxisartikel"
 }
 ---
 

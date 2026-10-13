@@ -48,14 +48,15 @@
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-23",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/powerquery-m/power-query-m-function-reference",
     "https://learn.microsoft.com/en-us/powerquery-m/understanding-power-query-m-functions"
   ],
   "screenshots": [],
-  "praxis": false
+  "praxis": false,
+  "ebene": "Referenz"
 }
 ---
 

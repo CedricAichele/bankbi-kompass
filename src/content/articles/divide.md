@@ -16,18 +16,21 @@
     "Marktsteuerung",
     "Neugeschäft"
   ],
-  "synonyme": [],
+  "synonyme": [
+    "divide"
+  ],
   "verwandteThemen": [
     "plan-ist",
     "blank",
-    "measure"
+    "measure",
+    "dax-formeln"
   ],
   "kontexte": [
     "Marktsteuerung",
     "Neugeschäft"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/divide-function-dax"
@@ -39,7 +42,8 @@
     "Vorhandene Tabelle und benötigte Datentypen prüfen.",
     "Neues Measure mit der angegebenen Formel erstellen.",
     "Ergebnis ohne Filter und mit Slicer vergleichen."
-  ]
+  ],
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -107,3 +111,8 @@ Prüfe Zähler und Nenner zunächst als zwei getrennte Karten. Ein Anteil über 
 | Zähler | Die zu teilende Kennzahl. |
 | Nenner | Die Bezugsgröße. |
 | Alternativergebnis | Optionaler konstanter Wert bei Nenner 0/BLANK; ohne Angabe BLANK. |
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

@@ -1,7 +1,8 @@
 import Fuse from "fuse.js";
 import type { Content } from "../content/schema";
 import { toolsCatalog } from "../content/catalog";
-import { mEntries } from "../content/m-reference";
+import { mEntries, mAliases } from "../content/m-reference";
+import { daxEntries } from "../content/dax-reference";
 import { excelEntries } from "../content/excel-reference";
 export type Filters = {
   bereich?: string;
@@ -49,7 +50,7 @@ export function searchContent(
     description: normalize(item.kurzbeschreibung),
     category: normalize(item.kategorie),
     body: normalize(item.body),
-    tasks: item.id === "power-query-m" ? mEntries.map(x=>normalize([x.name,x.category,x.use,x.adapt,x.note].join(" "))) : item.id === "excel-formeln" ? excelEntries(items).map(x=>normalize([x.name,x.category,x.use,x.adapt].join(" "))) : [],
+    tasks: item.id === "power-query-m" ? mEntries.map(x=>normalize([x.name,x.category,x.use,x.adapt,x.note,...(mAliases[x.name]||[])].join(" "))) : item.id === "dax-formeln" ? daxEntries.map(x=>normalize([x.name,x.category,x.description,...x.synonyms].join(" "))) : item.id === "excel-formeln" ? excelEntries(items).map(x=>normalize([x.name,x.category,x.use,x.adapt].join(" "))) : [],
   }));
   const fuse = new Fuse(indexed, {
     includeScore: true,
@@ -112,8 +113,13 @@ export function searchContent(
 export function searchTarget(item: Content, query = "") {
   const base="/wissen/"+item.slug;
   if(item.id === "power-query-m") {
-    const exact=mEntries.find(x=>normalize(x.name)===normalize(query));
+    const exact=mEntries.find(x=>normalize(x.name)===normalize(query) || mAliases[x.name]?.some(a=>normalize(a)===normalize(query)));
     if(exact) return base+"?funktion="+encodeURIComponent(exact.name);
   }
+  if(item.id === "dax-formeln") {
+    const exact=daxEntries.find(x=>normalize(x.name)===normalize(query) || x.synonyms.some(a=>normalize(a)===normalize(query)));
+    if(exact) return base+"?funktion="+encodeURIComponent(exact.name);
+  }
+  if(item.id === "excel-formeln") return base+"?funktion="+encodeURIComponent(query.trim());
   return base;
 }

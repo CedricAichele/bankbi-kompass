@@ -41,7 +41,8 @@
     "eingabe": "A2 unbefüllt; A3 Formel =\"\"; A4 Zahl 0; A5 ein Leerzeichen; A6 Formel =1/0. ISTLEER-Prüfung in B2 und nach unten kopieren.",
     "anpassen": "A2 durch die Prüfadresse ersetzen. Zusätzliche Vergleiche mit leerem Text und ISTFEHLER sind im Artikel vollständig gegenübergestellt.",
     "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
-  }
+  },
+  "ebene": "Praxisartikel"
 }
 ---
 

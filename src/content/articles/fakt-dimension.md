@@ -69,7 +69,8 @@
       "bildAnzeigen": false
     }
   ],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Kernwissen"
 }
 ---
 

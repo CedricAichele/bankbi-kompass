@@ -16,25 +16,34 @@
   ],
   "synonyme": [
     "minimum",
-    "maximum"
+    "maximum",
+    "max",
+    "maxx",
+    "min",
+    "minx"
   ],
   "verwandteThemen": [
     "measure",
     "filterkontext",
-    "aktueller-stichtag"
+    "aktueller-stichtag",
+    "dax-formeln"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
-    "https://learn.microsoft.com/en-us/dax/max-function-dax"
+    "https://learn.microsoft.com/en-us/dax/max-function-dax",
+    "https://learn.microsoft.com/en-us/dax/maxx-function-dax",
+    "https://learn.microsoft.com/en-us/dax/min-function-dax",
+    "https://learn.microsoft.com/en-us/dax/minx-function-dax"
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```dax\nLetztes Datum = MAX ( Fakt[Datum] )\n```"
+  "kurzformel": "```dax\nLetztes Datum = MAX ( Fakt[Datum] )\n```",
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -88,3 +97,21 @@ MAX(Status) als „letzten Status“ verwenden; Textreihenfolge ist keine zeitli
 ## Plausibilitätscheck
 
 Ungefiltert 28.02.2026. Ein Filter begrenzt die ausgewerteten Zeilen und kann deshalb das Ergebnis verändern.
+
+
+## MIN, MAX, MINX und MAXX gegenüberstellen
+Eine Zahlenspalte Fakt[Bestand] mit 100, 0 und BLANK liefert als Measures MIN(Fakt[Bestand]) = **0**, MAX(Fakt[Bestand]) = **100**. Eine vorhandene 0 unterscheidet sich fachlich von einem fehlenden Betrag. Das Zwei-Argument-Muster hat andere BLANK-Regeln; diese Ergebnisse gelten für die Spaltenaggregation.
+
+Für eine **Berechnung je Zeile** verwende Iteratoren. Separate Tabelle Positionen: Menge/Einzelpreis = 2/10 und 3/5. Lege zwei Measures einzeln an:
+```dax
+Kleinster Positionswert = MINX(Positionen, Positionen[Menge] * Positionen[Einzelpreis])
+```
+```dax
+Groesster Positionswert = MAXX(Positionen, Positionen[Menge] * Positionen[Einzelpreis])
+```
+Die Positionswerte sind 20 und 15, Ergebnis **15** beziehungsweise **20**. Ersetze Tabelle und beide Zahlenspalten. MINX/MAXX liefern den Extremwert des Ausdrucks, keine vollständige Zeile und keinen automatisch zugeordneten Kundennamen. Für die Zeile zum Extremwert eine eigene Auswahlregel mit Gleichstandsbehandlung definieren. Prüfe auch gleiche Werte und Filter auf nur eine Position.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

@@ -16,17 +16,19 @@
     "Reporting"
   ],
   "synonyme": [
-    "COUNT vs DISTINCTCOUNT"
+    "COUNT vs DISTINCTCOUNT",
+    "countrows"
   ],
   "verwandteThemen": [
     "distinctcount",
-    "granularitaet"
+    "granularitaet",
+    "dax-formeln"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/countrows-function-dax"
@@ -47,7 +49,8 @@
     "Vorhandene Tabelle und benötigte Datentypen prüfen.",
     "Neues Measure mit der angegebenen Formel erstellen.",
     "Ergebnis ohne Filter und mit Slicer vergleichen."
-  ]
+  ],
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -107,3 +110,8 @@ COUNTROWS erhält eine Tabelle. Es zählt deren sichtbare Zeilen unabhängig dav
 ## Plausibilitätscheck
 
 Vergleiche die sechs Kontonummern mit den vier verschiedenen Personen.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

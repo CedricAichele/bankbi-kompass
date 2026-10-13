@@ -38,7 +38,8 @@
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```dax\nDimDatum = CALENDAR ( DATE ( 2025, 1, 1 ), DATE ( 2026, 12, 31 ) )\n```"
+  "kurzformel": "```dax\nDimDatum = CALENDAR ( DATE ( 2025, 1, 1 ), DATE ( 2026, 12, 31 ) )\n```",
+  "ebene": "Kernwissen"
 }
 ---
 

@@ -32,14 +32,16 @@
     "Reporting"
   ],
   "quelleTyp": "oeffentliche-dokumentation",
-  "zuletztGeprueft": "2026-09-23",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
+    "https://support.microsoft.com/de-de/excel/excel-functions-by-category",
     "https://support.microsoft.com/en-us/excel/functions/and-function",
     "https://support.microsoft.com/de-de/excel/functions/xlookup-function"
   ],
   "screenshots": [],
-  "praxis": false
+  "praxis": false,
+  "ebene": "Referenz"
 }
 ---
 

@@ -33,7 +33,8 @@
     "https://learn.microsoft.com/en-us/power-query/connectors/text-csv"
   ],
   "zuletztGeprueft": "2026-09-23",
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

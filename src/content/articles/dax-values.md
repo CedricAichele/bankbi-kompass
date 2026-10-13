@@ -20,26 +20,29 @@
   ],
   "verwandteThemen": [
     "selectedvalue",
-    "filterkontext"
+    "filterkontext",
+    "dax-formeln"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
-    "https://learn.microsoft.com/en-us/dax/values-function-dax"
+    "https://learn.microsoft.com/en-us/dax/values-function-dax",
+    "https://learn.microsoft.com/en-us/dax/hasonevalue-function-dax"
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```dax\nSichtbare Produktarten = COUNTROWS ( VALUES ( Konten[Produktgruppe] ) )\n```"
+  "kurzformel": "```dax\nSichtbare Produktarten = COUNTROWS ( VALUES ( Konten[Produktgruppe] ) )\n```",
+  "ebene": "Praxisartikel"
 }
 ---
 
 ## Wann brauche ich das?
 
-Du möchtest VALUES an einem überschaubaren Beispiel verstehen.
+Du möchtest prüfen, welche unterschiedlichen Werte die aktuelle Auswahl enthält und ob daraus ein eindeutiger Anzeigetext abgeleitet werden kann.
 
 ## Voraussetzungen
 
@@ -93,3 +96,18 @@ VALUES ist eine Tabelle, nicht automatisch ein einzelner Textwert.
 ## Plausibilitätscheck
 
 Prüfe Filter einzeln und gemeinsam. Die Ausgangssumme beträgt 9.000 und Einlagen allein 4.050.
+
+
+## HASONEVALUE als skalare Prüfung
+**Neues Measure**:
+```dax
+Genau eine Produktart = HASONEVALUE(Konten[Produktgruppe])
+```
+Ohne Filter: **FALSE** (3 Produktarten). Nur Einlagen: **TRUE**. Ein Filter ohne sichtbaren Wert: **FALSE**. Ersetze die Spalte, deren aktuelle Wertemenge du prüfen willst. HASONEVALUE prüft nicht, ob eine Visualzeile gerade diese Dimension gruppiert; dafür kann ISINSCOPE passender sein.
+
+VALUES liefert eine Tabelle. Erst COUNTROWS, CONCATENATEX oder eine andere skalare Auswertung macht sie zum Measure-Ergebnis. Ein BLANK-Wert zählt zur Wertemenge; eine unbekannte Leerzeile kann bei fehlenden Beziehungsschlüsseln hinzukommen. [DISTINCT und weitere Tabellenmuster](#/wissen/dax-tabellen) erklären den Unterschied.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

@@ -31,7 +31,8 @@
     "https://learn.microsoft.com/en-us/power-bi/guidance/relationships-one-to-one"
   ],
   "screenshots": [],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 

@@ -38,7 +38,8 @@
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```dax\nNeugeschaeft Vorjahr = CALCULATE ( [Neugeschaeft], SAMEPERIODLASTYEAR ( DimDatum[Datum] ) )\n```"
+  "kurzformel": "```dax\nNeugeschaeft Vorjahr = CALCULATE ( [Neugeschaeft], SAMEPERIODLASTYEAR ( DimDatum[Datum] ) )\n```",
+  "ebene": "Praxisartikel"
 }
 ---
 

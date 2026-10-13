@@ -1,13 +1,14 @@
-export type Group = { title: string; items: { label: string; id: string }[] };
-export type Tool = { name: "Power BI" | "Excel" | "IDA"; slug: string; description: string; groups: Group[] };
+export type Group = { title: string; status?: string; items: { label: string; id: string }[] };
+export type Tool = { name: "Power BI" | "Excel" | "IDA"; slug: string; description?: string; groups: Group[] };
 export const toolsCatalog: Tool[] = [
   {
     "name": "Power BI",
     "slug": "power-bi",
-    "description": "Unser aktueller Schwerpunkt: von der Datenquelle über Power Query und das Modell bis zur geprüften Kennzahl.",
+    "description": "Aktiv: zusammenhängende Arbeitsabläufe für Power Query, Datenmodell und DAX. Der Berichtsbereich wird gezielt erweitert.",
     "groups": [
       {
-        "title": "Daten importieren",
+        "title": "Start",
+        "status": "Aktiv",
         "items": [
           {
             "id": "daten-laden",
@@ -18,19 +19,15 @@ export const toolsCatalog: Tool[] = [
             "label": "CSV korrekt importieren"
           },
           {
-            "id": "dateien-kombinieren",
-            "label": "Ordnerimport · wiederkehrende Dateien"
+            "id": "measure-spalte",
+            "label": "Measure oder Spalte?"
           }
         ]
       },
       {
         "title": "Power Query & Datenaufbereitung",
+        "status": "Ausgebaut",
         "items": [
-          {"id":"power-query-m", "label":"M-Formeln & Funktionen für Power Query"},
-          {
-            "id": "power-query",
-            "label": "Was ist Power Query?"
-          },
           {
             "id": "pq-workflow",
             "label": "Daten in Power Query aufbereiten"
@@ -40,8 +37,8 @@ export const toolsCatalog: Tool[] = [
             "label": "Spaltenqualität, Spaltenverteilung und Spaltenprofil"
           },
           {
-            "id": "nullwerte",
-            "label": "Was mache ich mit fehlenden Werten?"
+            "id": "pq-text",
+            "label": "Text bereinigen, ersetzen und teilen"
           },
           {
             "id": "zusammenfuehren",
@@ -50,23 +47,24 @@ export const toolsCatalog: Tool[] = [
           {
             "id": "anhaengen",
             "label": "Append: Tabellen untereinander anhängen"
+          },
+          {
+            "id": "dateien-kombinieren",
+            "label": "Wiederkehrende Dateien automatisch einlesen – Ordnerimport"
+          },
+          {
+            "id": "power-query-m",
+            "label": "Power Query M – Formeln & Funktionen"
           }
         ]
       },
       {
         "title": "Datenmodell",
+        "status": "Aktiv · Grundlagen",
         "items": [
           {
-            "id": "beziehungen",
-            "label": "Beziehung erstellen"
-          },
-          {
-            "id": "eins-zu-viele",
-            "label": "1:n: Warum entstehen mehrere Zeilen?"
-          },
-          {
-            "id": "filterrichtung",
-            "label": "Filterrichtung verstehen"
+            "id": "granularitaet",
+            "label": "Granularität: Was bedeutet eine Zeile?"
           },
           {
             "id": "fakt-dimension",
@@ -77,208 +75,84 @@ export const toolsCatalog: Tool[] = [
             "label": "Star Schema aufbauen"
           },
           {
-            "id": "granularitaet",
-            "label": "Granularität: Was bedeutet eine Zeile?"
-          },
-          {
-            "id": "aktive-beziehung",
-            "label": "Aktive und inaktive Beziehung"
-          },
-          {
-            "id": "beziehung-eins-eins",
-            "label": "1:1-Beziehung richtig einordnen"
-          },
-          {
-            "id": "beziehung-nm",
-            "label": "n:m-Beziehung fachlich modellieren"
-          },
-          {
-            "id": "fakt-zu-fakt",
-            "label": "Warum Fakt-zu-Fakt problematisch ist"
+            "id": "beziehungen",
+            "label": "Beziehung erstellen"
           },
           {
             "id": "kardinalitaet",
             "label": "Kardinalität prüfen: 1:1, 1:n oder n:m"
           },
           {
-            "id": "modellansicht",
-            "label": "Modellansicht lesen"
+            "id": "filterrichtung",
+            "label": "Filterrichtung verstehen"
           },
           {
             "id": "schluessel",
             "label": "Stabile Schlüssel verwenden"
+          },
+          {
+            "id": "datumstabelle",
+            "label": "Datumstabelle erstellen"
           }
         ]
       },
       {
-        "title": "DAX & Measures",
+        "title": "DAX",
+        "status": "Ausgebaut",
         "items": [
+          {
+            "id": "dax-grundlagen",
+            "label": "DAX verstehen: Measures, Kontexte und Iteratoren"
+          },
           {
             "id": "measure",
             "label": "Measure erstellen"
-          },
-          {
-            "id": "berechnete-spalte",
-            "label": "Berechnete Spalte erstellen"
-          },
-          {
-            "id": "measure-spalte",
-            "label": "Measure oder Spalte?"
-          },
-          {
-            "id": "sum",
-            "label": "SUM: Spalte summieren"
-          },
-          {
-            "id": "divide",
-            "label": "DIVIDE: Quote berechnen"
           },
           {
             "id": "calculate",
             "label": "CALCULATE"
           },
           {
-            "id": "distinctcount",
-            "label": "DISTINCTCOUNT: eindeutige Personen zählen"
-          },
-          {
-            "id": "countrows",
-            "label": "COUNTROWS: Zeilen zählen"
-          },
-          {
             "id": "sumx",
             "label": "SUMX: zeilenweise rechnen und summieren"
           },
           {
-            "id": "dax-filter",
-            "label": "FILTER: eine Teilmenge bilden"
+            "id": "dax-variablen",
+            "label": "VAR / RETURN: DAX verständlich aufbauen"
           },
           {
-            "id": "removefilters",
-            "label": "REMOVEFILTERS: Filter gezielt aufheben"
+            "id": "dax-perioden",
+            "label": "Monat, Quartal und Vorperiode in DAX vergleichen"
           },
           {
-            "id": "selectedvalue",
-            "label": "SELECTEDVALUE: eindeutige Auswahl lesen"
-          },
-          {
-            "id": "related",
-            "label": "RELATED: Wert aus einer Beziehung holen"
-          },
-          {
-            "id": "filterkontext",
-            "label": "Filterkontext prüfen"
-          },
-          {
-            "id": "count",
-            "label": "COUNT: nichtleere Werte zählen"
-          },
-          {
-            "id": "dax-all",
-            "label": "ALL oder REMOVEFILTERS?"
-          },
-          {
-            "id": "dax-average",
-            "label": "AVERAGE: Durchschnitt je Datenzeile"
-          },
-          {
-            "id": "dax-coalesce",
-            "label": "COALESCE und ISBLANK: fehlende Ergebnisse behandeln"
-          },
-          {
-            "id": "dax-if",
-            "label": "IF: zwei Ergebnisse unterscheiden"
-          },
-          {
-            "id": "dax-median",
-            "label": "MEDIAN: mittleren Wert bestimmen"
-          },
-          {
-            "id": "dax-min-max",
-            "label": "MIN und MAX: kleinster oder größter Wert"
-          },
-          {
-            "id": "dax-switch",
-            "label": "SWITCH: mehrere Fälle verständlich ordnen"
-          },
-          {
-            "id": "dax-values",
-            "label": "VALUES und HASONEVALUE: Auswahl prüfen"
-          }
-        ]
-      },
-      {
-        "title": "Zeitintelligenz",
-        "items": [
-          {
-            "id": "ytd",
-            "label": "YTD berechnen"
-          },
-          {
-            "id": "vorjahr",
-            "label": "Vorjahr berechnen"
-          },
-          {
-            "id": "datumstabelle",
-            "label": "Datumstabelle erstellen"
-          },
-          {
-            "id": "aktueller-stichtag",
-            "label": "Letzten verfügbaren Stichtag bestimmen"
-          },
-          {
-            "id": "bestand-bewegung",
-            "label": "Bestandskennzahl oder Bewegungskennzahl?"
-          },
-          {
-            "id": "dateadd",
-            "label": "DATEADD und SAMEPERIODLASTYEAR"
-          },
-          {
-            "id": "datesytd-totalytd",
-            "label": "DATESYTD oder TOTALYTD"
-          },
-          {
-            "id": "dax-jahr-monat",
-            "label": "YEAR und MONTH: Kalenderattribute"
-          },
-          {
-            "id": "monatsultimo",
-            "label": "EOMONTH: Monatsultimo bestimmen"
+            "id": "dax-formeln",
+            "label": "DAX – Funktionen & Formeln"
           }
         ]
       },
       {
         "title": "Berichte & Visualisierung",
+        "status": "In Ausbau",
         "items": [
-          {"id":"power-bi-csv-export","label":"Tabelle als CSV exportieren → Excel"},
           {
-            "id": "karte",
-            "label": "Karte: eine Kennzahl anzeigen"
+            "id": "visualwahl",
+            "label": "Welches Power-BI-Visual brauche ich?"
           },
           {
-            "id": "tabelle",
-            "label": "Tabelle: Details prüfen"
-          },
-          {
-            "id": "matrix",
-            "label": "Matrix: nach Dimensionen auswerten"
-          },
-          {
-            "id": "balkendiagramm",
-            "label": "Balkendiagramm: Kategorien vergleichen"
-          },
-          {
-            "id": "liniendiagramm",
-            "label": "Liniendiagramm: Zeitverlauf zeigen"
+            "id": "visual-formatierung",
+            "label": "Visuals lesbar formatieren und sortieren"
           },
           {
             "id": "slicer",
             "label": "Slicer: Auswahl anbieten"
           },
           {
-            "id": "drilldown",
-            "label": "Drilldown: Detailstufe wechseln"
+            "id": "drillthrough",
+            "label": "Drillthrough: zur Detailseite wechseln"
+          },
+          {
+            "id": "tooltips",
+            "label": "Tooltip gezielt ergänzen"
           },
           {
             "id": "visualinteraktionen",
@@ -289,45 +163,14 @@ export const toolsCatalog: Tool[] = [
             "label": "Bedingte Formatierung verwenden"
           },
           {
-            "id": "datenbeschriftungen",
-            "label": "Datenbeschriftungen einschalten"
-          },
-          {
-            "id": "anzeigeeinheiten",
-            "label": "Anzeigeeinheiten und Dezimalstellen"
-          },
-          {
-            "id": "diagrammtitel",
-            "label": "Diagrammtitel mit Kontext"
-          },
-          {
-            "id": "drillthrough",
-            "label": "Drillthrough: zur Detailseite wechseln"
-          },
-          {
-            "id": "prozentformat",
-            "label": "0,95 als 95 % anzeigen"
-          },
-          {
-            "id": "referenzlinie",
-            "label": "Referenzlinie im Diagramm"
-          },
-          {
-            "id": "saeulendiagramm",
-            "label": "Säulendiagramm erstellen"
-          },
-          {
-            "id": "tooltips",
-            "label": "Tooltip gezielt ergänzen"
-          },
-          {
-            "id": "visual-sortieren",
-            "label": "Visual nach Wert oder Kategorie sortieren"
+            "id": "power-bi-csv-export",
+            "label": "Power-BI-Tabelle als CSV exportieren und in Excel öffnen"
           }
         ]
       },
       {
-        "title": "Fehler & Plausibilitätsprüfung",
+        "title": "Fehlersuche",
+        "status": "Aktiv",
         "items": [
           {
             "id": "summe-zu-hoch",
@@ -338,28 +181,20 @@ export const toolsCatalog: Tool[] = [
             "label": "BLANK: Warum bleibt die Kennzahl leer?"
           },
           {
-            "id": "filter-fehler",
-            "label": "Filter funktioniert nicht"
-          },
-          {
             "id": "beziehung-fehler",
             "label": "Beziehung lässt sich nicht erstellen"
           },
           {
+            "id": "filter-fehler",
+            "label": "Filter funktioniert nicht"
+          },
+          {
+            "id": "problem-merge-zeilen",
+            "label": "Mehr Zeilen nach Merge"
+          },
+          {
             "id": "datum-sortieren",
             "label": "Datum / Monat falsch sortiert"
-          },
-          {
-            "id": "measure-fehler",
-            "label": "Measure reagiert unerwartet"
-          },
-          {
-            "id": "bestand-monate",
-            "label": "Bestand wird über Monate aufsummiert"
-          },
-          {
-            "id": "mehrere-datumsbeziehungen",
-            "label": "Datumsfilter wirkt auf das falsche Datum"
           },
           {
             "id": "visual-gesamtsumme",
@@ -372,12 +207,15 @@ export const toolsCatalog: Tool[] = [
   {
     "name": "Excel",
     "slug": "excel",
-    "description": "Aktive Praxishilfe: Listen vorbereiten, Werte zuordnen, Formeln einsetzen und Ergebnisse auswerten.",
+    "description": "Aktiv: Listen vorbereiten, Werte zuordnen, Formeln nachschlagen und Ergebnisse mit PivotTables oder Power Query prüfen.",
     "groups": [
       {
         "title": "Daten prüfen & bereinigen",
         "items": [
-          {"id":"excel-csv-spalten","label":"CSV in einer Spalte? Richtig trennen und laden"},
+          {
+            "id": "excel-csv-spalten",
+            "label": "CSV in einer Spalte? Richtig trennen und laden"
+          },
           {
             "id": "excel-liste-vorbereiten",
             "label": "Excel-Liste für Auswertung vorbereiten"
@@ -400,16 +238,8 @@ export const toolsCatalog: Tool[] = [
             "label": "Leerzeichen entfernen: GLÄTTEN"
           },
           {
-            "id": "text-ausschnitt",
-            "label": "LINKS, RECHTS und TEIL"
-          },
-          {
-            "id": "text-trennzeichen",
-            "label": "TEXTVOR und TEXTNACH"
-          },
-          {
-            "id": "textteilen",
-            "label": "TEXTTEILEN: Text dynamisch verteilen"
+            "id": "excel-text-zerlegen",
+            "label": "Text in Excel zerlegen: Position oder Trennzeichen?"
           },
           {
             "id": "textverketten",
@@ -747,7 +577,15 @@ export const powerQueryGroups: Group[] = [
       }
     ]
   },
-  { title: "M / Code", items: [{id: "power-query-m", label: "M-Grundlagen · Formeln & Funktionen"}] },
+  {
+    "title": "M / Code",
+    "items": [
+      {
+        "id": "power-query-m",
+        "label": "M-Grundlagen · Formeln & Funktionen"
+      }
+    ]
+  },
   {
     "title": "Tabellen kombinieren",
     "items": [
@@ -796,4 +634,172 @@ export const powerQueryGroups: Group[] = [
     ]
   }
 ];
-export const frequent = ["pq-workflow", "pq-profiling", "calculate", "xverweis", "beziehungen", "dubletten", "measure-spalte", "distinctcount"];
+export const daxGroups: Group[] = [
+  {
+    "title": "Kernwissen",
+    "items": [
+      {
+        "id": "dax-grundlagen",
+        "label": "DAX verstehen: Measures, Kontexte und Iteratoren"
+      },
+      {
+        "id": "measure-spalte",
+        "label": "Measure oder Spalte?"
+      },
+      {
+        "id": "measure",
+        "label": "Measure erstellen"
+      },
+      {
+        "id": "filterkontext",
+        "label": "Filterkontext prüfen"
+      },
+      {
+        "id": "datumstabelle",
+        "label": "Datumstabelle erstellen"
+      },
+      {
+        "id": "bestand-bewegung",
+        "label": "Bestandskennzahl oder Bewegungskennzahl?"
+      }
+    ]
+  },
+  {
+    "title": "Kennzahlen & Logik",
+    "items": [
+      {
+        "id": "sum",
+        "label": "SUM: Spalte summieren"
+      },
+      {
+        "id": "count",
+        "label": "COUNT: nichtleere Werte zählen"
+      },
+      {
+        "id": "countrows",
+        "label": "COUNTROWS: Zeilen zählen"
+      },
+      {
+        "id": "distinctcount",
+        "label": "DISTINCTCOUNT: eindeutige Personen zählen"
+      },
+      {
+        "id": "divide",
+        "label": "DIVIDE: Quote berechnen"
+      },
+      {
+        "id": "dax-average",
+        "label": "AVERAGE: Durchschnitt je Datenzeile"
+      },
+      {
+        "id": "dax-min-max",
+        "label": "MIN und MAX: kleinster oder größter Wert"
+      },
+      {
+        "id": "dax-if",
+        "label": "IF: zwei Ergebnisse unterscheiden"
+      },
+      {
+        "id": "dax-switch",
+        "label": "SWITCH: mehrere Fälle verständlich ordnen"
+      },
+      {
+        "id": "dax-coalesce",
+        "label": "COALESCE und ISBLANK: fehlende Ergebnisse behandeln"
+      }
+    ]
+  },
+  {
+    "title": "Filter & Kontext",
+    "items": [
+      {
+        "id": "calculate",
+        "label": "CALCULATE"
+      },
+      {
+        "id": "dax-filter",
+        "label": "FILTER: eine Teilmenge bilden"
+      },
+      {
+        "id": "dax-all",
+        "label": "ALL oder REMOVEFILTERS?"
+      },
+      {
+        "id": "removefilters",
+        "label": "REMOVEFILTERS: Filter gezielt aufheben"
+      },
+      {
+        "id": "selectedvalue",
+        "label": "SELECTEDVALUE: eindeutige Auswahl lesen"
+      },
+      {
+        "id": "dax-values",
+        "label": "VALUES und HASONEVALUE: Auswahl prüfen"
+      },
+      {
+        "id": "dax-variablen",
+        "label": "VAR / RETURN: DAX verständlich aufbauen"
+      }
+    ]
+  },
+  {
+    "title": "Tabellen & Beziehungen",
+    "items": [
+      {
+        "id": "sumx",
+        "label": "SUMX: zeilenweise rechnen und summieren"
+      },
+      {
+        "id": "dax-tabellen",
+        "label": "DAX-Tabellen: auswählen, ergänzen und gruppieren"
+      },
+      {
+        "id": "related",
+        "label": "RELATED: Wert aus einer Beziehung holen"
+      },
+      {
+        "id": "dax-beziehungen",
+        "label": "DAX über Tabellen hinweg: Beziehungen und Zuordnung"
+      },
+      {
+        "id": "dax-ranglisten",
+        "label": "TOPN, RANKX und CONCATENATEX: Ranglisten nachvollziehen"
+      }
+    ]
+  },
+  {
+    "title": "Datum & Zeitvergleiche",
+    "items": [
+      {
+        "id": "dax-jahr-monat",
+        "label": "YEAR und MONTH: Kalenderattribute"
+      },
+      {
+        "id": "dateadd",
+        "label": "DATEADD und SAMEPERIODLASTYEAR"
+      },
+      {
+        "id": "datesytd-totalytd",
+        "label": "DATESYTD oder TOTALYTD"
+      },
+      {
+        "id": "dax-perioden",
+        "label": "Monat, Quartal und Vorperiode in DAX vergleichen"
+      },
+      {
+        "id": "aktueller-stichtag",
+        "label": "Letzten verfügbaren Stichtag bestimmen"
+      }
+    ]
+  },
+  {
+    "title": "Referenz",
+    "items": [
+      {
+        "id": "dax-formeln",
+        "label": "DAX – Funktionen & Formeln"
+      }
+    ]
+  }
+];
+export const frequent = ["pq-workflow","pq-profiling","calculate","xverweis","beziehungen","dubletten","measure-spalte","distinctcount"];

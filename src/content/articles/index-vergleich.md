@@ -80,7 +80,8 @@
     "eingabe": "A1:D4: Kunde/Konto/Segment/Bestand; Zeile 2=P001/K001/A/1000, Zeile 3=P001/K002/B/2000, Zeile 4=P002/K003/A/500. Ergebnis in H2. F2=K002.",
     "anpassen": "D2:D4 ist die Rückgabe, B2:B4 die Suchspalte und F2 der gesuchte Schlüssel. 0 verlangt exakte Übereinstimmung.",
     "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
-  }
+  },
+  "ebene": "Praxisartikel"
 }
 ---
 

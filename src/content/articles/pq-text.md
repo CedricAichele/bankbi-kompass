@@ -89,7 +89,8 @@
       "bildAnzeigen": false
     }
   ],
-  "praxis": true
+  "praxis": true,
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -156,3 +157,7 @@ Drei Zeilen bleiben drei Zeilen, Ort hat einen verschiedenen Wert, Standortnumme
 ## Passender M-Code
 
 [Text.Trim, Text.Clean und Text.Upper: Beispiel, Ergebnis und Anpassung](#/wissen/power-query-m?gruppe=Text) in der praktischen M-Referenz.
+
+## Passende M-Funktion nachschlagen
+
+[Syntax, Mini-Beispiel und Anpassungen: Text.Trim](#/wissen/power-query-m?funktion=Text.Trim).

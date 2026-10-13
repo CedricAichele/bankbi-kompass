@@ -1,4 +1,6 @@
-export const mCategories = ["Text", "Zahlen", "Datum", "Datum/Uhrzeit", "Bedingungen", "NULL und Fehler", "Spalten", "Tabellen", "Filtern", "Gruppieren", "Listen", "Merge / Join", "Datentypen", "Hilfreiche Spezialfunktionen"] as const;
+import { mExtra } from "./m-extra";
+import syntax from "./m-syntax.json";
+export const mCategories = ["Text", "Zahlen", "Datum", "Datum/Uhrzeit", "Bedingungen", "NULL und Fehler", "Spalten", "Tabellen", "Filtern", "Gruppieren", "Listen", "Merge / Join", "Datentypen", "Hilfreiche Spezialfunktionen", "Records", "Dateien", "Fortgeschritten"] as const;
 export type MEntry = { name: string; category: string; use: string; input: string; code: string; result: string; adapt: string; where: string; note?: string; source: string };
 const entries: MEntry[] = [];
 function add(category: string, name: string, use: string, input: string, code: string, result: string, adapt: string, note?: string, source?: string) {
@@ -72,9 +74,19 @@ table("Hilfreiche Spezialfunktionen", "Table.AddIndexColumn", "Eine technische Z
 for (const [name, result, use] of [["Sum", "60", "Werte einer Liste summieren."], ["Average", "20", "Das arithmetische Mittel bestimmen."], ["Min", "10", "Den kleinsten Wert finden."], ["Max", "30", "Den größten Wert finden."], ["Count", "3", "Elemente einer Liste zählen."]]) add("Listen", "List." + name, use, "Werte = {10, 20, 30}", `List.${name}([Werte])`, result, "[Werte] ist hier eine Spalte mit Listenwerten, keine einzelne Zahl. In einer Gruppierung z. B. [Bestand] als Spaltenliste verwenden.", name === "Count" ? "List.Count zählt auch null-Elemente; nicht mit einer Anzahl gefüllter Werte verwechseln." : "Fehlende Werte und leere Listen fachlich gesondert prüfen.");
 add("Listen", "List.Distinct", "Eine Liste auf unterschiedliche Werte reduzieren.", 'Kategorien = {"A", "A", "B"}', "List.Distinct([Kategorien])", '{"A", "B"}', "[Kategorien] durch eine Listenspalte ersetzen.", "Liefert eine Liste, keine Tabelle.");
 add("Listen", "List.Contains", "Eine Kategorie gegen mehrere erlaubte Werte prüfen.", 'Kategorie = "B"', 'List.Contains({"A", "B", "C"}, [Kategorie])', "true", "Erlaubte Werte in geschweiften Klammern und Kategorie-Spalte ersetzen.");
-export const mEntries: readonly MEntry[] = entries;
+export const mEntries: readonly MEntry[] = [...entries, ...mExtra].map(e => e.name === "Record.FieldOrDefault" ? {...e,category:"Records"} : e);
+export const mSyntax = new Map(syntax.map(e => [e.name, e.syntax]));
+export const mAliases: Record<string,string[]> = {
+  "Text.Trim": ["leerzeichen", "text bereinigen"],
+  "Date.EndOfMonth": ["monat ende", "monat letzter tag", "monatsende", "monatsultimo"],
+  "Table.SelectRows": ["tabelle filtern", "zeilen filtern"],
+  "Table.Distinct": ["doppelte", "dubletten"],
+  "Table.NestedJoin": ["join", "merge", "wert andere tabelle"],
+  "Table.Group": ["kunden gruppieren", "zusammenfassen"],
+  "try … otherwise": ["fehler ersetzen", "fehler abfangen"],
+};
 const normalize = (text: string) => text.toLocaleLowerCase("de-DE").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9äöüß]+/g, " ").trim();
 export function findMEntries(query: string, category = "") {
   const words = normalize(query).split(/\s+/).filter(Boolean);
-  return mEntries.filter(entry => (!category || entry.category === category) && words.every(word => normalize([entry.name, entry.category, entry.use, entry.code, entry.adapt, entry.note].join(" ")).includes(word)));
+  return mEntries.filter(entry => (!category || entry.category === category) && words.every(word => normalize([entry.name, entry.category, entry.use, entry.code, entry.adapt, entry.note, ...(mAliases[entry.name] || [])].join(" ")).includes(word)));
 }

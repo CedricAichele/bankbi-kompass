@@ -15,16 +15,19 @@
     "SELECTEDVALUE: eindeutige Auswahl lesen",
     "Reporting"
   ],
-  "synonyme": [],
+  "synonyme": [
+    "selectedvalue"
+  ],
   "verwandteThemen": [
     "slicer",
-    "blank"
+    "blank",
+    "dax-formeln"
   ],
   "kontexte": [
     "Reporting"
   ],
   "quelleTyp": "synthetisches-beispiel",
-  "zuletztGeprueft": "2026-09-21",
+  "zuletztGeprueft": "2026-10-13",
   "art": "artikel",
   "quellen": [
     "https://learn.microsoft.com/en-us/dax/selectedvalue-function-dax"
@@ -36,7 +39,8 @@
     "Vorhandene Tabelle und benötigte Datentypen prüfen.",
     "Neues Measure mit der angegebenen Formel erstellen.",
     "Ergebnis ohne Filter und mit Slicer vergleichen."
-  ]
+  ],
+  "ebene": "Praxisartikel"
 }
 ---
 
@@ -96,3 +100,8 @@ Die Spalte ist das erste Argument, der Ersatztext das zweite. Entscheidend ist e
 ## Plausibilitätscheck
 
 Prüfe ohne Auswahl, mit einer Gruppe und mit zwei Gruppen.
+
+
+## Was muss ich anpassen?
+
+Ersetze die im Beispiel verwendeten Tabellen-, Spalten- und Measure-Namen durch deine Modellnamen. Behalte den gezeigten Eingabeort: eine berechnete Spalte ist etwas anderes als ein Measure. Grenzwerte, Ergebnistexte und Filterbedingungen an die fachliche Regel anpassen. Prüfe die gleiche Kennzahl ungefiltert, je Gruppe und im Gesamtergebnis; eine technisch gültige Formel beweist keine passende Datenebene.

@@ -38,7 +38,8 @@
   ],
   "screenshots": [],
   "praxis": true,
-  "kurzformel": "```dax\nNeugeschaeft YTD = TOTALYTD ( [Neugeschaeft], DimDatum[Datum] )\n```"
+  "kurzformel": "```dax\nNeugeschaeft YTD = TOTALYTD ( [Neugeschaeft], DimDatum[Datum] )\n```",
+  "ebene": "Praxisartikel"
 }
 ---
 

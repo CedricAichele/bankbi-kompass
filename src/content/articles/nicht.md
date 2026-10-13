@@ -36,7 +36,8 @@
     "Quellbereiche und Kriterienzellen festlegen.",
     "Formel in einer freien Ergebniszelle eingeben.",
     "Ausgabe anhand der passenden Quellzeilen kontrollieren."
-  ]
+  ],
+  "ebene": "Praxisartikel"
 }
 ---
 

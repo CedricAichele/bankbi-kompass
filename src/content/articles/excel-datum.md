@@ -43,7 +43,8 @@
     "eingabe": "A2 enthält Text „31.01.2026“, bestätigte deutsche Datumsinterpretation. Ergebnis H2 als Datum formatieren.",
     "anpassen": "A2 durch die Datumstextzelle ersetzen. Mehrdeutige Formate erst nach Quellenklärung konvertieren.",
     "version": "Excel 2016/2019/2021/2024 und Microsoft 365."
-  }
+  },
+  "ebene": "Praxisartikel"
 }
 ---
 
