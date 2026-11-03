@@ -9,6 +9,8 @@ import { ArticleToc, SectionJump } from "../components/ArticleToc";
 import { Markdown } from "../components/Markdown";
 import { ExcelReference } from "../components/ExcelReference";
 import { MReference } from "../components/MReference";
+import { IdaReference } from "../components/IdaReference";
+import { idaLegacyTargets, idaDisclaimer } from "../content/ida";
 import { DaxReference } from "../components/DaxReference";
 import { ReferenceImage } from "../components/ReferenceImage";
 import { DecisionTools } from "../components/DecisionTools";
@@ -22,6 +24,7 @@ export function Reference({
 }) {
   const { slug } = useParams();
   if (slug && consolidatedRoutes[slug]) return <Navigate replace to={consolidatedRoutes[slug]} />;
+  if(slug && idaLegacyTargets[slug]) return <Navigate replace to={"/wissen/"+idaLegacyTargets[slug]}/>;
   if (slug && archivedIdaIds.has(slug)) return <Navigate replace to="/bereich/ida" />;
   const item = contents.find((x) => x.slug === slug);
   if (!item) {
@@ -44,7 +47,7 @@ export function Reference({
       <SectionJump targets={{kontrolle: item.id === "pq-workflow" ? sectionId("Ergebnis kontrollieren") : sectionId("Plausibilitätscheck"),haeufig:"m-common",eingabe:"m-input"}} />
       <div className={toc.length ? "reference-layout with-toc" : "reference-layout"}>
       {toc.length > 0 && <ArticleToc entries={toc}/>}
-      <article className={"reference" + (item.id === "power-query-m" ? " m-reference-page" : "")}>
+      <article className={"reference" + (item.bereich === "IDA" ? " ida-article" : "") + (item.id === "power-query-m" ? " m-reference-page" : "")}>
         <header className="reference-header">
           <div>
             <span className="eyebrow">
@@ -68,7 +71,7 @@ export function Reference({
             {favorites.includes(item.id) ? "Gemerkt" : "Merken"}
           </button>
         </header>
-        {!["power-query-m", "dax-formeln"].includes(item.id) && <div className="answer">
+        {!["power-query-m", "dax-formeln", "ida-formeln"].includes(item.id) && <div className="answer">
           <h2>Kurzantwort</h2>
           <p>{item.kurzbeschreibung}</p>
           {item.kurzformel && <Markdown text={item.kurzformel} />}
@@ -78,14 +81,13 @@ export function Reference({
           </div>
         </div>
         }
-        {item.bereich !== "IDA" && !["power-query-m", "dax-formeln"].includes(item.id) && <div className="location">
+        {item.bereich !== "IDA" && !["power-query-m", "dax-formeln", "ida-formeln"].includes(item.id) && <div className="location">
           <span>WO FINDE ICH DAS?</span>
           <p>{item.ort}</p>
         </div>}
-        {item.bereich === "IDA" && (
+        {item.bereich === "IDA" && item.id !== "ida-formeln" && (
           <p className="ida-label">
-            Allgemeines Reportingprinzip · Bedienung kann je IDA-Umgebung abweichen. {" "}
-            <Link to="/ida-hinweise">Geltungsbereich ansehen</Link>
+            {idaDisclaimer}
           </p>
         )}
         {["Grundverständnis", "Voraussetzungen", "Symptom", "Schnelltest"].filter((name) => sections[name]).map((name) => (
@@ -93,8 +95,9 @@ export function Reference({
         ))}
         {item.id === "power-query-m" && <MReference />}
         {item.id === "dax-formeln" && <DaxReference />}
+        {item.id === "ida-formeln" && <IdaReference />}
         {item.id === "excel-formeln" && <div id="excel-reference" tabIndex={-1}><ExcelReference /></div>}
-        {!["power-query-m", "excel-formeln", "dax-formeln"].includes(item.id) && <div
+        {!["power-query-m", "excel-formeln", "dax-formeln", "ida-formeln"].includes(item.id) && <div
           className={
             "reference-grid" + (illustrated ? " illustrated-reference" : "") + (["pq-workflow", "pq-benutzerdefiniert", "dateien-kombinieren"].includes(item.id) ? " workflow-reference" : "")
           }

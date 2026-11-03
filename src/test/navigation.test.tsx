@@ -107,11 +107,11 @@ describe("Aufgabenorientierte Navigation",()=>{
     for(const name of [...commonDaxNames,...daxTasks.flatMap(x=>x.names)])expect(daxEntries.find(x=>x.name===name)?.article,name).toBeTruthy();
     for(const item of contents.filter(x=>x.art==="artikel"))expect(item.ebene,item.id).toBeTruthy();
   });
-  it("behält historische Gruppenlinks und den IDA-Entwicklungsstand",async()=>{
+  it("behält historische Gruppenlinks und den öffentlichen IDA-Bereich",async()=>{
     const {view}=await open("/bereich/excel?gruppe=Text%20bearbeiten","Text bearbeiten");
     expect(screen.getByRole("link",{name:"Leerzeichen entfernen: GLÄTTEN"})).toBeVisible();view.unmount();
-    const {main}=await open("/bereich/ida","IDA");
-    expect(within(main).getByText("In Entwicklung")).toBeVisible();
-    expect(main.querySelectorAll('a[href*="/wissen/ida-"]')).toHaveLength(0);
+    const {main}=await open("/bereich/ida","IDA / Cognos");
+    expect(within(main).getByRole("heading",{name:"GVM",level:2})).toBeVisible();
+    expect(main.querySelectorAll(".ida-areas .discovery-card")).toHaveLength(3);
   });
 });

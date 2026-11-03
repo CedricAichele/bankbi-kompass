@@ -2,6 +2,7 @@ import Fuse from "fuse.js";
 import type { Content } from "../content/schema";
 import { toolsCatalog } from "../content/catalog";
 import { mEntries, mAliases } from "../content/m-reference";
+import { idaFunctions, idaNormalize } from "../content/ida-reference";
 import { daxEntries } from "../content/dax-reference";
 import { excelEntries } from "../content/excel-reference";
 export type Filters = {
@@ -50,7 +51,7 @@ export function searchContent(
     description: normalize(item.kurzbeschreibung),
     category: normalize(item.kategorie),
     body: normalize(item.body),
-    tasks: item.id === "power-query-m" ? mEntries.map(x=>normalize([x.name,x.category,x.use,x.adapt,x.note,...(mAliases[x.name]||[])].join(" "))) : item.id === "dax-formeln" ? daxEntries.map(x=>normalize([x.name,x.category,x.description,...x.synonyms].join(" "))) : item.id === "excel-formeln" ? excelEntries(items).map(x=>normalize([x.name,x.category,x.use,x.adapt].join(" "))) : [],
+    tasks: item.id === "power-query-m" ? mEntries.map(x=>normalize([x.name,x.category,x.use,x.adapt,x.note,...(mAliases[x.name]||[])].join(" "))) : item.id === "dax-formeln" ? daxEntries.map(x=>normalize([x.name,x.category,x.description,...x.synonyms].join(" "))) : item.id === "ida-formeln" ? idaFunctions.map(x=>normalize(["ida cognos",x.id,x.name,x.category,x.use,...x.aliases].join(" "))) : item.id === "excel-formeln" ? excelEntries(items).map(x=>normalize([x.name,x.category,x.use,x.adapt].join(" "))) : [],
   }));
   const fuse = new Fuse(indexed, {
     includeScore: true,
@@ -71,23 +72,15 @@ export function searchContent(
   const taskTerms=q.split(" ").filter(w=>!["in","im","der","die","das","einer","einem","mit","von","und","zu"].includes(w));
   const taskHit=(x:typeof indexed[number])=>taskTerms.length>0 && x.tasks.some(t=>taskTerms.every(w=>t.includes(w)));
   for (const entry of indexed.filter(taskHit)) if(!matches.some(x=>x.item===entry)) matches.push({item:entry,refIndex:indexed.indexOf(entry),score:0.3});
-  if (!matches.length) {
-    // Longer questions can fail phrase matching despite containing useful terms.
-    // Keep negations and compare all remaining terms, independent of word order.
-    const filler = new Set(["ich", "mein", "meine", "meinen", "der", "die", "das", "ein", "eine", "ist", "hat", "habe", "es", "gibt", "warum", "wie", "nach", "dem", "beim", "von", "mit", "im", "auf", "mir", "kann", "zu"]);
-    const terms = [...new Set(q.split(" ").filter(term => !filler.has(term)))];
-    if (terms.length >= 2) {
-      return indexed
-        .filter(x => {
-          const text = [x.title, ...x.synonyms, ...x.tags, x.description].join(" ");
-          return terms.every(term => text.includes(term));
-        })
-        .sort((a, b) => {
-          const titleHits = (x: typeof a) => terms.filter(term => x.title.includes(term)).length;
-          return titleHits(b) - titleHits(a) || a.item.titel.localeCompare(b.item.titel, "de");
-        })
-        .map(x => x.item);
-    }
+  // A body match must not suppress an established answer to a longer question.
+  // Keep negations and match the remaining terms independent of word order.
+  const filler = new Set(["ich", "mein", "meine", "meinen", "der", "die", "das", "ein", "eine", "ist", "hat", "habe", "es", "gibt", "warum", "wie", "nach", "dem", "beim", "von", "mit", "im", "auf", "mir", "kann", "zu"]);
+  const questionTerms = q.split(" ").length > 5 || !matches.length
+    ? [...new Set(q.split(" ").filter(term => !filler.has(term)))] : [];
+  const questionHit = (entry: typeof indexed[number]) => questionTerms.length >= 2 &&
+    questionTerms.every(term => [entry.title, ...entry.synonyms, ...entry.tags, entry.description].join(" ").includes(term));
+  for (const entry of indexed.filter(questionHit)) {
+    if (!matches.some(x => x.item === entry)) matches.push({ item: entry, refIndex: indexed.indexOf(entry), score: 0.15 });
   }
   return matches
     .sort((a, b) => {
@@ -100,9 +93,12 @@ export function searchContent(
               ? 2
               : x.item.title.includes(q)
                 ? 3
-                : taskHit(x.item) ? 3.5 : 4;
+                : taskHit(x.item) ? 3.5 : questionHit(x.item) ? 3.75 : 4;
+      const titleHits = (x: typeof a) => questionHit(x.item)
+        ? questionTerms.filter(term => x.item.title.includes(term)).length : 0;
       return (
         priority(a) - priority(b) ||
+        titleHits(b) - titleHits(a) ||
         (a.score ?? 1) - (b.score ?? 1) ||
         a.item.item.titel.localeCompare(b.item.item.titel, "de")
       );
@@ -119,6 +115,11 @@ export function searchTarget(item: Content, query = "") {
   if(item.id === "dax-formeln") {
     const exact=daxEntries.find(x=>normalize(x.name)===normalize(query) || x.synonyms.some(a=>normalize(a)===normalize(query)));
     if(exact) return base+"?funktion="+encodeURIComponent(exact.name);
+  }
+  if(item.id === "ida-formeln") {
+    const q=idaNormalize(query).replace(/\b(?:ida|cognos|agree21)\b/g,"").trim();
+    const exact=idaFunctions.find(x=>idaNormalize(x.name)===q || idaNormalize(x.id)===q || x.aliases.some(a=>idaNormalize(a)===q));
+    if(exact)return (exact.frequent ? base : "/ida/referenz")+"?funktion="+encodeURIComponent(exact.id);
   }
   if(item.id === "excel-formeln") return base+"?funktion="+encodeURIComponent(query.trim());
   return base;

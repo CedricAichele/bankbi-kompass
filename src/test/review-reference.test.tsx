@@ -16,12 +16,14 @@ describe("Review: Suche und praktische Referenzen",()=>{
     expect(searchContent(contents,q).slice(0,3).map(x=>x.id)).toContain(id);
   });
   it("respektiert Werkzeuge und Kategorien und verlinkt konkrete M-Funktionen",()=>{
-    expect(searchContent(contents,"aufrunden",{bereich:"IDA"})).toEqual([]);
+    const idaResults=searchContent(contents,"aufrunden",{bereich:"IDA"});
+    expect(idaResults.every(x=>x.bereich==="IDA"||x.werkzeuge.includes("IDA"))).toBe(true);
+    expect(idaResults.some(x=>x.id==="power-query-m")).toBe(false);
     const m=byId("power-query-m")!;
     expect(searchTarget(m,"Number.RoundUp")).toBe("/wissen/power-query-m?funktion=Number.RoundUp");
     expect(searchContent(contents,"Datum",{bereich:"Excel",kategorie:"Datum & Datentypen"}).every(x=>x.bereich==="Excel" && x.kategorie==="Datum & Datentypen")).toBe(true);
     for(const q of ["aufbereiten","nachschlagen","NULL","M","Excel"])
-      expect(searchContent(contents,q).some(x=>archivedIdaIds.has(x.id)||x.bereich==="IDA")).toBe(false);
+      expect(searchContent(contents,q).some(x=>archivedIdaIds.has(x.id))).toBe(false);
   });
   it("hält die Excel-Karten an die ausführlichen Artikel gebunden",()=>{
     for(const entry of excelEntries(contents)) {

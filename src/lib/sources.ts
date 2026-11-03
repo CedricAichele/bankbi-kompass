@@ -4,6 +4,7 @@ export function documentationLabel(url: string): string {
   try {
     const { hostname } = new URL(url);
     const host = hostname.toLowerCase().replace(/\.$/, "");
+    if(["www.rurberatung.de","bankinghub.de","www.arbeitsagentur.de"].includes(host)) return "Öffentliche Produkt- / Praxisquelle";
     if (host === "learn.microsoft.com" || host === "support.microsoft.com") {
       provider = "Microsoft";
     } else if (host === "ibm.com" || host.endsWith(".ibm.com")) {

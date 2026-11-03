@@ -21,9 +21,7 @@ import { contexts } from "../content/schema";
 import { searchContent } from "../lib/search";
 import { EntryList, SearchForm, Empty } from "../components/ReferenceLists";
 import { DecisionTools } from "../components/DecisionTools";
-export function IdaPage() {
-  return <article className="note-list"><header className="page-heading"><span className="eyebrow">In Entwicklung</span><h1>IDA</h1><p>Der IDA-Bereich wird derzeit neu aufgebaut.</p></header><h2>Geplante Themen</h2><p>Hier sollen allgemein gehaltene Inhalte zu folgenden Themen entstehen:</p><ul>{["Listen und Auswertungen","Filterlogik","Parameter","Berechnungen","Aggregationen","Mehrfachzeilen und Joins","Export","Plausibilitätsprüfung","Berichtsbetrieb"].map(x=><li key={x}>{x}</li>)}</ul><p>IDA soll langfristig ein wichtiger Teil von BankBI Kompass werden. Aktuell sind hier noch keine Anleitungen veröffentlicht.</p><p><Link to="/bereich/power-bi">Zum Power-BI-Katalog</Link> · <Link to="/bereich/excel">Zum Excel-Katalog</Link></p></article>;
-}
+import { IdaPage } from "./Ida";
 export function PowerQueryPage() {
   return <><Breadcrumbs items={[{label:"Start",to:"/"},{label:"Power BI",to:"/bereich/power-bi"},{label:"Power Query"}]} /><header className="page-heading"><span className="eyebrow">AUSGEBAUT</span><h1>Power Query & Datenaufbereitung</h1><p>Daten laden, prüfen und für die Analyse vorbereiten. Die Transformationen gelten für Power BI und Excel.</p></header><SearchForm /><DiscoveryCards areas={powerQueryAreas} /><p className="secondary-links"><Link to="/wissen/excel-power-query">Einstieg in Excel</Link> · <Link to="/bereich/datenanalyse">Grundbegriffe verstehen</Link></p></>;
 }
@@ -34,7 +32,7 @@ export function HomePage() {
         <span className="eyebrow">DATENANALYSE · BUSINESS INTELLIGENCE · REPORTING</span>
         <h1>Was möchtest du machen oder finden?</h1>
         <p>BankBI Kompass hilft dir, Daten aufzubereiten, Auswertungen zu verstehen und Fehler zu lösen – mit konkreten Schritten und nachvollziehbaren Beispielen.</p>
-        <p><strong>Aktueller Schwerpunkt: Power BI und Power Query.</strong> Excel ist als Praxiskatalog verfügbar; IDA wird neu aufgebaut.</p>
+        <p><strong>Aktueller Schwerpunkt: Power BI und Power Query.</strong> Excel und IDA bieten ergänzende Praxiskataloge.</p>
         <SearchForm prominent />
         <p>Suche nach einer Funktion oder deiner Frage, etwa „summe stimmt nicht“ oder „zwei tabellen verbinden“.</p>
         <p>Ein unabhängiges Praxisprojekt von <Link to="/ueber">Cedric Aichele</Link> – Wirtschaftsingenieur mit Schwerpunkt Controlling und Datenanalyse.</p>
@@ -141,7 +139,7 @@ function ToolOverview({ tool }: { tool: Tool }) {
         ))}
       </div>
       <Link className="tool-all" to={"/bereich/" + tool.slug}>
-        {tool.name === "IDA" ? "Entwicklungsstand ansehen" : "Alle Themen"} <ArrowRight size={15} />
+        Alle Themen <ArrowRight size={15} />
       </Link>
     </div>
   );
@@ -231,7 +229,6 @@ export function Browse({
           : area === "Datenanalyse"
             ? "Datenbegriffe"
             : "Suchen & finden";
-  if (selected === "IDA" || /\b(?:ida|cognos)\b/i.test(query)) return <Navigate replace to="/bereich/ida" />;
   return (
     <>
       <header className="page-heading">

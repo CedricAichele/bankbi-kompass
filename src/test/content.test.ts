@@ -7,6 +7,8 @@ import {
   sectionsOf,
   requiredSections,
 } from "../content/schema";
+import { idaPublicIds } from "../content/ida";
+import { archivedIdaIds } from "../content/redirects";
 import { toolsCatalog, frequent } from "../content/catalog";
 import { legacyIds, migrateIds } from "../content/redirects";
 import { decisions } from "../lib/decisions";
@@ -56,7 +58,7 @@ describe("Kurze, vollständige Schnellreferenzen", () => {
       "Fehlersuche",
     ]);
     expect(toolsCatalog[1].groups.map(x=>x.title)).toEqual(expect.arrayContaining(["Daten prüfen & bereinigen", "Text bearbeiten", "Datum & Datentypen"]));
-    expect(toolsCatalog[2].groups).toHaveLength(0);
+    expect(toolsCatalog[2].groups).toHaveLength(4);
   });
   it("enthält eigenständige Aufgaben ohne doppelte Funktionsanleitungen", () => {
     const tasks = contents.filter((x) => x.art === "aufgabe");
@@ -66,8 +68,8 @@ describe("Kurze, vollständige Schnellreferenzen", () => {
     expect(contents.some((x) => x.id === "kundenstruktur")).toBe(false);
   });
   it("enthält keine öffentlichen IDA-Altartikel", () => {
-    expect(contents.filter(x => x.bereich === "IDA")).toEqual([]);
-    expect(contents.some(x => x.werkzeuge.includes("IDA"))).toBe(false);
+    expect(contents.filter(x => x.bereich === "IDA").map(x=>x.id).sort()).toEqual([...idaPublicIds].sort());
+    expect(contents.some(x=>archivedIdaIds.has(x.id))).toBe(false);
   });
   it("weist fehlende Module, ungültige Quellentypen und tote Verweise zurück", () => {
     expect(() => parseContent("Kein Frontmatter")).toThrow();

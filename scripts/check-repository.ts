@@ -1,6 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { readFileSync, existsSync } from "node:fs";
 import { extname } from "node:path";
+import { scanContent } from "../src/lib/content-safety";
 // Git respektiert die Ignore-Regeln. Trefferwerte werden bewusst nicht ausgegeben.
 const files = execFileSync(
   "git",
@@ -67,6 +68,12 @@ for (const file of files) {
   // Prüfprogramme und Test-Fixtures enthalten die gesuchten Muster absichtlich.
   if (file === "scripts/check-repository.ts" || file.startsWith("src/test/"))
     continue;
+  if ((file.startsWith("src/content/") && /"bereich"\s*:\s*"IDA"/.test(text)) || file === "src/content/ida-functions.json") {
+    for(const label of scanContent(text,{ida:true})) {
+      console.error(`${file}: ${label}`);
+      flags++;
+    }
+  }
   for (const [label, regex] of rules)
     if (regex.test(text)) {
       console.error(`${file}: ${label}`);

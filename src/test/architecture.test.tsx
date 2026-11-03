@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent, within } from "@testing-library/react";
 import App from "../App";
 import { contents, byId } from "../content";
+import { idaPublicIds, idaLegacyTargets } from "../content/ida";
 import { archivedIdaIds, legacyIds, migrateIds } from "../content/redirects";
 import { powerQueryGroups, toolsCatalog } from "../content/catalog";
 import { searchContent } from "../lib/search";
@@ -11,29 +12,30 @@ describe("Öffentliche Architektur", () => {
   it("hält archivierte IDA-Inhalte aus Index, Suche, Katalog und Favoriten fern", () => {
     for (const id of archivedIdaIds) expect(byId(id)).toBeUndefined();
     for (const query of ["IDA", "Cognos", "Parameter", "", "ida-filter"])
-      expect(searchContent(contents, query).some(x => x.bereich === "IDA" || archivedIdaIds.has(x.id))).toBe(false);
-    expect(migrateIds([...archivedIdaIds], new Set(contents.map(x=>x.id)))).toEqual([]);
-    expect(toolsCatalog.find(t=>t.name==="IDA")!.groups).toEqual([]);
+      expect(searchContent(contents, query).some(x => archivedIdaIds.has(x.id))).toBe(false);
+    expect(migrateIds([...archivedIdaIds], new Set(contents.map(x=>x.id))).every(id=>idaPublicIds.includes(id))).toBe(true);
+    expect(toolsCatalog.find(t=>t.name==="IDA")!.groups.map(g=>g.title)).toEqual(["Auswertungen & Reporting","GVM","aCI-Batch","Formeln & Funktionen"]);
   });
-  it("leitet jeden archivierten IDA-Direktlink auf die Entwicklungsseite um", async () => {
-    for (const id of archivedIdaIds) {
-      window.location.hash = "/wissen/" + id;
-      const view = render(<App />);
-      expect(await screen.findByRole("heading", {level:1, name:"IDA"})).toBeVisible();
-      expect(window.location.hash).toBe("#/bereich/ida");
-      expect(within(screen.getByRole("main")).queryAllByRole("link").every(x => !x.getAttribute("href")?.includes("/wissen/ida-"))).toBe(true);
-      view.unmount();
-    }
-  }, 15000);
-  it("führt die IDA-Suche einschließlich Vorschlag zur Statusseite", async () => {
+  it.each([...archivedIdaIds])("leitet den archivierten Direktlink %s auf ein neu geprüftes Ziel um",async(id)=>{
+    const target=idaLegacyTargets[id];
+    expect(target,id).toBeTruthy();
+    window.location.hash="/wissen/"+id;
+    render(<App/>);
+    const item=byId(target.split("?")[0])!;
+    expect(await screen.findByRole("heading",{level:1,name:item.titel})).toBeVisible();
+    expect(window.location.hash).toBe("#/wissen/"+target);
+    expect(byId(id)).toBeUndefined();
+    expect(within(screen.getByRole("main")).queryAllByRole("link").every(x=>!archivedIdaIds.has((x.getAttribute("href")||"").split("/").pop()!.split("?")[0]))).toBe(true);
+  });
+  it("führt die IDA-Suche einschließlich Vorschlag zum öffentlichen Bereich", async () => {
     window.location.hash = "/";
     render(<App />);
     const input = await screen.findByRole("textbox", {name:"Aufgabe oder Funktion suchen"});
     fireEvent.focus(input);
     fireEvent.change(input, {target:{value:"IDA"}});
-    expect(screen.getByRole("link", {name:/IDA · In Entwicklung/})).toHaveAttribute("href", "#/bereich/ida");
+    expect(screen.getByRole("link", {name:"IDA / Cognos öffnen"})).toHaveAttribute("href", "#/bereich/ida");
     fireEvent.submit(input.closest("form")!);
-    expect(await screen.findByRole("heading", {level:1, name:"IDA"})).toBeVisible();
+    expect(await screen.findByRole("heading", {level:1, name:"IDA / Cognos"})).toBeVisible();
   });
   it("erhält zusammengeführte URLs und vermeidet doppelte Katalogeinträge", () => {
     for (const [old,target] of Object.entries(legacyIds)) {

@@ -119,11 +119,12 @@ describe("Schnelle Bedienung und Routing", () => {
       screen.queryByRole("link", { name: "SUMMEWENNS" }),
     ).not.toBeInTheDocument();
   });
-  it("IDA zeigt den Entwicklungsstand ohne Artikel", async () => {
+  it("IDA zeigt drei öffentliche Säulen ohne alte Miniartikel", async () => {
     window.location.hash = "/bereich/ida";
     render(<App />);
-    expect(await screen.findByRole("heading", {level: 1, name: "IDA"})).toBeVisible();
-    expect(screen.getByText("In Entwicklung")).toBeVisible();
+    expect(await screen.findByRole("heading", {level: 1, name: "IDA / Cognos"})).toBeVisible();
+    expect(screen.getByRole("heading",{level:2,name:"GVM"})).toBeVisible();
+    expect(screen.getByRole("heading",{level:2,name:"aCI-Batch"})).toBeVisible();
     expect(screen.queryByRole("link", {name: "Liste erstellen"})).not.toBeInTheDocument();
   });
   it("erhält alte Direktlinks und migriert alte Favoriten", async () => {

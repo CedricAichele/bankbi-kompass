@@ -1,3 +1,4 @@
+import { idaLegacyTargets } from "./ida";
 export const legacyIds: Record<string,string> = {
   "kundenstruktur": "eine-zeile-je-person",
   "stichtagsreporting": "stichtag",
@@ -57,4 +58,4 @@ export const consolidatedRoutes: Record<string,string> = {
   "monatsultimo": "/wissen/dax-jahr-monat",
   "begriff-zeilenkontext": "/wissen/dax-grundlagen"
 };
-export function migrateIds(ids:string[], valid:Set<string>) { return [...new Set(ids.map(id=>{ const mapped=legacyIds[id]||id; return consolidatedRoutes[mapped]?.split("/").pop()?.split("?")[0] || mapped; }).filter(id=>valid.has(id)))]; }
+export function migrateIds(ids:string[], valid:Set<string>) { return [...new Set(ids.map(id=>{ const mapped=idaLegacyTargets[id]?.split("?")[0]||legacyIds[id]||id; return consolidatedRoutes[mapped]?.split("/").pop()?.split("?")[0] || mapped; }).filter(id=>valid.has(id)))]; }

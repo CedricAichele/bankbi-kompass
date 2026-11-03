@@ -23,9 +23,9 @@ describe("Struktur und Referenzbestand", () => {
     expect(distinct.overloads?.[0].source).toContain("distinct-table-function-dax");
   });
   it("trennt Ebenen, reduziert Artikel und hält konsolidierte Inhalte aus dem Index", () => {
-    expect(contents.filter(x => x.art === "artikel").length).toBeLessThan(163);
+    expect(contents.filter(x => x.art === "artikel" && x.bereich !== "IDA").length).toBeLessThan(163);
     for (const item of contents.filter(x => x.art === "artikel")) expect(item.ebene, item.id).toBeTruthy();
-    expect(contents.filter(x => x.ebene === "Referenz").map(x => x.id).sort()).toEqual(["dax-formeln", "excel-formeln", "power-query-m"]);
+    expect(contents.filter(x => x.ebene === "Referenz").map(x => x.id).sort()).toEqual(["dax-formeln", "excel-formeln", "ida-formeln", "power-query-m"]);
     for (const [id, path] of Object.entries(consolidatedRoutes)) {
       expect(byId(id)).toBeUndefined();
       expect(byId(path.split("/").pop()!.split("?")[0]), id).toBeDefined();
