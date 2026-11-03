@@ -45,7 +45,7 @@
 }
 ---
 
-GVM steht für Geschäftsvorfallmanagement und ist eines der drei großen Themen meiner IDA-Arbeit. Geschäftsvorfälle können auf definierten Vorlagen bzw. standardisierten Strukturen aufbauen; IDA kann die Datenbasis und die relevanten Fälle liefern.
+Bankindividuelle Geschäftsvorfälle basieren auf einer vorhandenen GVM-Vorlage. Für eine konkrete Anforderung passe ich die dazugehörige Datenbasis in IDA an die gewünschten Fälle, Filter und fachlichen Kriterien des Anfragers an. Die Vorlage bildet den Ausgangspunkt; die IDA-Auswertung bestimmt, welche Fälle für die Verarbeitung ausgewählt werden.
 
 ## Wofür ich GVM im IDA-Kontext brauche
 
@@ -53,16 +53,22 @@ Eine Auswertung kann die relevanten Personen, Konten oder Vorgänge bestimmen. A
 
 ## Zusammenhang mit IDA-Auswertungen
 
-Fachliche Regel → IDA-Auswertung → relevante Fälle → nachgelagerte Bearbeitung in GVM. Das beschreibt die fachliche Zuordnung; die konkrete technische Übergabe hängt von der Umgebung ab.
+### Fall 1: Daten bereits im GVM-Package vorhanden
 
-Reichen die vorhandenen Daten und Filter der GVM-Datengrundlage nicht aus, ergänze ich weitere IDA-Abfragen:
+- Das vorhandene GVM-Package verwenden.
+- Die benötigten GVM-Daten in die Abfrage aufnehmen.
+- Den passenden Vorlagenbezug verwenden.
+- Buchungsdatum bzw. Zeitraum bei Bedarf über Parameter steuerbar machen.
+- Die benötigten fachlichen Filter ergänzen.
 
-1. Benötigte GVM-Daten in einer Abfrage zusammenstellen.
-2. Ergänzende Daten, etwa auf Kunden- oder Kontoebene, in einer weiteren Abfrage aufbereiten.
-3. Die benötigten Filter dort anwenden.
-4. Zeilenebenen und Verbindungsschlüssel prüfen, dann die Abfragen gezielt verbinden.
+### Fall 2: Daten nicht vollständig im GVM-Package vorhanden
 
-Dabei den passenden Vorlagenbezug filtern und das Buchungsdatum bzw. den benötigten Zeitraum über Parameter steuerbar machen. Weitere fachlich erforderliche Filter ergänzen.
+- Die GVM-Abfrage wie im ersten Fall vorbereiten.
+- Eine zusätzliche IDA-Abfrage aus einem anderen geeigneten Package erstellen.
+- Dort die zusätzlich benötigten Daten aufnehmen und die benötigten Filter setzen.
+- Die zusätzliche Abfrage über geeignete Schlüssel mit der GVM-Abfrage verbinden.
+
+**Vor dem Join die Granularität prüfen:** Kundenebene, Kontoebene und andere Ebenen dürfen nicht unkontrolliert vervielfacht werden. Zeilenzahlen und fachliche Schlüssel vor und nach der Verbindung vergleichen.
 
 ## Allgemeiner Ablauf
 

@@ -53,6 +53,37 @@ aCI-Batch ordne ich hier als Werkzeug für Bestandsänderungen auf Grundlage vor
 
 Eine fachlich definierte Änderung soll für eine ausgewählte Menge von Objekten vorbereitet werden. Entscheidend sind die richtige Auswahl, ein eindeutiger Bezug und der beabsichtigte Zielwert.
 
+## Feldliste / Produktdokumentation prüfen
+
+Bevor ich die Änderungsdaten aufbereite, prüfe ich das gewünschte Feld in der zugehörigen aCI-Batch-Feldliste bzw. Produktdokumentation. Das gehört zum normalen Ablauf und ist Voraussetzung für die Vorbereitung der Übergabedatei.
+
+| Prüfen | Festhalten |
+|---|---|
+| Änderbarkeit | Kann das gewünschte Feld über aCI-Batch geändert werden? |
+| Änderungsart | Welche Operationen sind für dieses Feld und Objekt unterstützt? |
+| Sachgebiet / Objektbereich | Welcher fachliche Bereich ist relevant? |
+| Objekt / Segment und Feld | Wie werden Zielobjekt und Zielfeld in der Feldliste technisch bezeichnet? |
+| Feldlänge | Welche Länge ist vorgesehen? |
+| Nachkommastellen | Wie werden numerische Werte interpretiert und formatiert? |
+| Format | Welcher Datentyp und welches Format werden erwartet? |
+| Wertebereich | Welche Werte sind für das Feld zulässig? |
+| Plausibilitäten / Abhängigkeiten | Welche zusätzlichen Bedingungen oder Umsetzungsregeln gelten? |
+| Weitere Objekte / Konditionen | Was muss neben dem eigentlichen Zielfeld mit berücksichtigt werden? |
+
+Die konkrete Felddefinition entnehme ich der gültigen Produktdokumentation. Die folgenden Notizen verwenden ausgeschriebene fachliche Bezeichnungen.
+
+## Arbeitsablauf
+
+1. Fachliche Änderungsanforderung klären.
+2. Das relevante Feld in der Feldliste / Produktdokumentation prüfen.
+3. Zulässige Änderungsart und benötigte Metadaten feststellen.
+4. Den relevanten Bestand über IDA bestimmen.
+5. Schlüssel sowie alte und neue Werte vorbereiten.
+6. Die Übergabedatei entsprechend den bestätigten Felddefinitionen erzeugen.
+7. Eingaben, Auswahlmenge und beabsichtigte Änderungen plausibilisieren.
+8. Die Datei über den dafür vorgesehenen Prozess verarbeiten.
+9. Das Ergebnis anhand der betroffenen Objekte kontrollieren.
+
 ## Datenbasis vorbereiten
 
 - In IDA die benötigten Personen, Konten oder anderen fachlichen Objekte auswählen.
@@ -64,7 +95,7 @@ Eine fachlich definierte Änderung soll für eine ausgewählte Menge von Objekte
 
 Der Schlüssel muss genau das gewünschte Objekt treffen. Ausgangswert und Zielwert gegenüberstellen: Steht ein Objekt bereits im Zielzustand, ist es kein zusätzlicher notwendiger Änderungsfall. Zwei Zeilen mit demselben Schlüssel und verschiedenen Zielwerten sind ein Konflikt; nicht beliebig eine Zeile entfernen.
 
-Ein Schlüssel kann aus mehreren Bestandteilen bestehen. Bestandteile, Reihenfolge, Länge und Formatierung prüfen; führende Nullen bei textuellen Kennungen erhalten. Ein frei erfundenes fachliches Beispiel wäre die Kombination aus Kontonummer 4711 und Stichtag 30.09.2026. Es legt weder Feldlängen noch einen technischen Schlüsselaufbau für aCI-Batch fest.
+Ein Schlüssel kann aus mehreren Bestandteilen bestehen. Bestandteile, Reihenfolge, Länge und Formatierung anhand der Felddefinition prüfen; führende Nullen bei textuellen Kennungen erhalten.
 
 ## Änderung, Neuanlage und Löschung
 
@@ -74,20 +105,29 @@ Ein Schlüssel kann aus mehreren Bestandteilen bestehen. Bestandteile, Reihenfol
 
 Für die Übergabe gelten die Anforderungen des vorgesehenen Verarbeitungskontexts: benötigte Angaben, Datentypen, Format und eindeutige Schlüssel. Eine Berichtsliste ist nicht automatisch eine verarbeitbare Übergabedatei. Hier wird kein aCI-Batch-Dateischema festgelegt.
 
-Das Zielfeld muss über die für den Objektbereich vorgesehenen Metadaten eindeutig identifiziert werden. Welche Felder änderbar und welche Angaben erforderlich sind, ergibt sich aus der jeweils gültigen Produktdokumentation.
-
-| Angabe | Merken |
-|---|---|
-| Verarbeitungsart | Änderung, Neuanlage oder Löschung nur verwenden, wenn für Objekt und Feld unterstützt |
-| Objektbereich und Zielfeld | zulässige Kombination anhand der Felddefinition bestimmen |
-| Feldlänge | maximal bzw. technisch vorgesehene Länge beachten; nicht mit der tatsächlichen Wertlänge verwechseln |
-| Nachkommastellen | beeinflussen die Interpretation und Formatierung numerischer Werte |
-| Datentyp und Format | müssen exakt zur technischen Felddefinition passen |
-| Alter und neuer Wert | bisherigen Wert und beabsichtigten Zielwert unterscheiden |
+Die in der Feldliste bestätigten Angaben zu Änderungsart, Sachgebiet / Objektbereich, Objekt / Segment, Feld, Feldlänge, Nachkommastellen und Format für die Datei verwenden. Die technisch vorgesehene Feldlänge ist dabei nicht automatisch die tatsächlich genutzte Wertlänge.
 
 Je nach Änderungsart kann der bisherige Wert zur Validierung relevant sein oder bewusst ignoriert werden. Für NULL, leeren Inhalt und Ignorieren ausschließlich die dafür dokumentierten technischen Werte verwenden.
 
 Die vorbereitete Datei wird über den vorgesehenen kontrollierten Prozess verarbeitet.
+
+## Synthetisches Änderungsbeispiel
+
+**Synthetisches Beispiel – Werte und Schlüssel frei erfunden.**
+
+Für dieses Beispiel wird angenommen, dass die Feldliste eine Änderung am Hinweis eines Adressobjekts erlaubt. Auch die Feldlänge und der Schlüsselaufbau sind frei erfunden. Die Tabelle ist eine fachliche Prüfübersicht und kein aCI-Batch-Dateischema.
+
+| Änderungsart | Objektbereich | Objekt | Feld | Feldlänge | Format | Schlüssel | Alter Wert | Neuer Wert |
+|---|---|---|---|---:|---|---|---|---|
+| Änderung | Kunde | Adresse | Hinweis | 30 | Text | `000123-0004` | leer | Beispieltext |
+
+- **Änderungsart:** Welche Operation ausgeführt werden soll; hier eine Änderung an einem bestehenden Objekt.
+- **Objektbereich / Objekt:** Wo das Zielobjekt fachlich liegt; im Beispiel ein Adressobjekt im Kundenbereich.
+- **Feld:** Welches Attribut geändert wird; hier der erfundene Hinweis.
+- **Feldlänge / Format:** Aus der Feldliste übernehmen. Im Beispiel gelten eine maximale Länge von 30 Zeichen und Textformat; für numerische Felder zusätzlich die Nachkommastellen prüfen.
+- **Schlüssel:** Identifiziert genau das zu ändernde Objekt und kann aus mehreren Bestandteilen bestehen. `000123-0004` zeigt nur eine erfundene Kombination mit führenden Nullen.
+- **Alter Wert:** Der bisherige Wert, soweit er für die Verarbeitung relevant ist. „leer“ beschreibt hier den Ausgangszustand und ist kein technischer Sonderwert.
+- **Neuer Wert:** Der gewünschte Zielwert; hier der Text „Beispieltext“.
 
 ## Prüfung vor Verarbeitung
 

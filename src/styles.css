@@ -1781,6 +1781,7 @@ footer strong {
 .ida-note-section { margin:28px 0; scroll-margin-top:85px; }
 .ida-note-section h2, .ida-reference h2 { font-size:23px; margin:0 0 14px; }
 .ida-note-section h3 { font-size:18px; margin:22px 0 10px; }
+.ida-note #ida-synthetisches-anderungsbeispiel th, .ida-note #ida-synthetisches-anderungsbeispiel td { white-space:nowrap; }
 .ida-note-related { display:flex; flex-wrap:wrap; gap:10px 22px; margin:32px 0 20px; font-size:14px; }
 .ida-note-footer { display:flex; flex-wrap:wrap; align-items:baseline; gap:12px 24px; padding-top:16px; border-top:1px solid var(--border); color:var(--muted); font-size:13px; }
 .ida-note-footer summary, .ida-input-help summary { cursor:pointer; }
