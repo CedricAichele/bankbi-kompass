@@ -9,8 +9,8 @@ import { ArticleToc, SectionJump } from "../components/ArticleToc";
 import { Markdown } from "../components/Markdown";
 import { ExcelReference } from "../components/ExcelReference";
 import { MReference } from "../components/MReference";
-import { IdaReference } from "../components/IdaReference";
-import { idaLegacyTargets, idaDisclaimer } from "../content/ida";
+import { IdaNote } from "../components/IdaNote";
+import { idaLegacyTargets } from "../content/ida";
 import { DaxReference } from "../components/DaxReference";
 import { ReferenceImage } from "../components/ReferenceImage";
 import { DecisionTools } from "../components/DecisionTools";
@@ -37,6 +37,7 @@ export function Reference({
       </div>
     );
   }
+  if (item.darstellung === "ida-note") return <IdaNote item={item} saved={favorites.includes(item.id)} onToggle={onToggle}/>;
   const sections = sectionsOf(item.body);
   const illustrated = item.screenshots.length > 0;
   const toc = articleToc(item);
@@ -85,17 +86,11 @@ export function Reference({
           <span>WO FINDE ICH DAS?</span>
           <p>{item.ort}</p>
         </div>}
-        {item.bereich === "IDA" && item.id !== "ida-formeln" && (
-          <p className="ida-label">
-            {idaDisclaimer}
-          </p>
-        )}
         {["Grundverständnis", "Voraussetzungen", "Symptom", "Schnelltest"].filter((name) => sections[name]).map((name) => (
           <section className="practice-section" key={name} id={sectionId(name)} tabIndex={-1}><h2>{name}</h2><Markdown text={sections[name]} /></section>
         ))}
         {item.id === "power-query-m" && <MReference />}
         {item.id === "dax-formeln" && <DaxReference />}
-        {item.id === "ida-formeln" && <IdaReference />}
         {item.id === "excel-formeln" && <div id="excel-reference" tabIndex={-1}><ExcelReference /></div>}
         {!["power-query-m", "excel-formeln", "dax-formeln", "ida-formeln"].includes(item.id) && <div
           className={

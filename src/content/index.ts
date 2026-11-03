@@ -1,6 +1,6 @@
 import { parseContent, validateLinks } from "./schema";
 import { mEntries, mAliases } from "./m-reference";
-import { idaFunctions } from "./ida-reference";
+import { idaFunctions, idaSpellings } from "./ida-reference";
 import { daxEntries } from "./dax-reference";
 import { excelEntries } from "./excel-reference";
 const files = import.meta.glob("./{articles,problems,tasks}/*.md", {
@@ -19,5 +19,5 @@ if (daxReference) daxReference.synonyme.push(...daxEntries.flatMap(x => [x.name,
 const excelReference = contents.find(x => x.id === "excel-formeln");
 if (excelReference) excelReference.synonyme.push(...excelEntries(contents).map(x => x.name));
 const idaReference=contents.find(x=>x.id==="ida-formeln");
-if(idaReference)idaReference.synonyme.push(...idaFunctions.flatMap(x=>[x.name,...x.aliases].flatMap(term=>["ida "+term,"cognos "+term])));
+if(idaReference)idaReference.synonyme.push(...[...idaFunctions.flatMap(x=>[x.name,...x.aliases]),...idaSpellings.flatMap(x=>x.names)].flatMap(term=>["ida "+term,"cognos "+term]));
 export const byId = (id: string) => contents.find((x) => x.id === id);

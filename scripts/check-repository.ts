@@ -68,7 +68,7 @@ for (const file of files) {
   // Prüfprogramme und Test-Fixtures enthalten die gesuchten Muster absichtlich.
   if (file === "scripts/check-repository.ts" || file.startsWith("src/test/"))
     continue;
-  if ((file.startsWith("src/content/") && /"bereich"\s*:\s*"IDA"/.test(text)) || file === "src/content/ida-functions.json") {
+  if ((file.startsWith("src/content/") && /"bereich"\s*:\s*"IDA"/.test(text)) || ["src/content/ida-functions.json","src/content/ida-spellings.json"].includes(file)) {
     for(const label of scanContent(text,{ida:true})) {
       console.error(`${file}: ${label}`);
       flags++;

@@ -1,4 +1,6 @@
 import data from "./ida-functions.json";
+import spellings from "./ida-spellings.json";
+export const idaSpellings=spellings;
 export type IdaFunction = {id:string;name:string;category:string;use:string;syntax:string;code:string;input:string;result:string;adapt:string;pitfall:string;source:string;sourceLabel:string;availability:string;relevance:string;frequent:boolean;kind:string;where:string;support:string;aliases:string[]};
 export const idaFunctions:IdaFunction[]=data.functions;
 export const idaCategories=["Aggregation","Logik","NULL","Vergleiche","Text","Datum/Zeit","Typumwandlung","Zahlen","Analyse/Window","Prompt/Parameter","Dimensional / OLAP"];

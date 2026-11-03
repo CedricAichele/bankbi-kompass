@@ -15,7 +15,7 @@ describe("Öffentliche Referenzansicht", () => {
         </MemoryRouter>,
       );
       expect(html, item.id).not.toMatch(/\bTODO\b|Screenshot ersetzen|Ersatzaufnahme|Geplante Aufnahme|Aufnahmeplan|Arbeitsauftrag|Cedric soll|noch aufnehmen|in diesem Pass|in diesem Durchlauf|Codex|Cleanup|Qualitätspass/i);
-      expect(html, item.id).toContain("Beispiele: generisch oder synthetisch");
+      if(item.darstellung === "ida-note") { expect(html,item.id).toContain('class="ida-note"'); expect(html,item.id).not.toContain('class="answer"'); } else expect(html, item.id).toContain("Beispiele: generisch oder synthetisch");
       expect(html, item.id).toContain(item.quellen.some(url=>/https:\/\/(?:www\.ibm\.com|public\.dhe\.ibm\.com|learn\.microsoft\.com|support\.microsoft\.com)\//.test(url)) ? "Offizielle Dokumentation" : "Öffentliche Produkt- / Praxisquelle");
       expect(archivedIdaIds.has(item.id)).toBe(false);
       if(item.bereich === "IDA") expect(item.screenshots).toHaveLength(0);

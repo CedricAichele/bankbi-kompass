@@ -14,7 +14,7 @@ describe("Öffentliche Architektur", () => {
     for (const query of ["IDA", "Cognos", "Parameter", "", "ida-filter"])
       expect(searchContent(contents, query).some(x => archivedIdaIds.has(x.id))).toBe(false);
     expect(migrateIds([...archivedIdaIds], new Set(contents.map(x=>x.id))).every(id=>idaPublicIds.includes(id))).toBe(true);
-    expect(toolsCatalog.find(t=>t.name==="IDA")!.groups.map(g=>g.title)).toEqual(["Auswertungen & Reporting","GVM","aCI-Batch","Formeln & Funktionen"]);
+    expect(toolsCatalog.find(t=>t.name==="IDA")!.groups.map(g=>g.title)).toEqual(["Auswertungen & Reporting","Formeln & Funktionen","GVM","aCI-Batch"]);
   });
   it.each([...archivedIdaIds])("leitet den archivierten Direktlink %s auf ein neu geprüftes Ziel um",async(id)=>{
     const target=idaLegacyTargets[id];

@@ -1,6 +1,6 @@
 # BankBI Kompass
 
-BankBI Kompass ist ein praxisorientiertes Wissens- und Nachschlagewerk für Datenanalyse, Business Intelligence und Reporting. Der aktuelle Schwerpunkt liegt auf Power BI, Power Query und Excel. IDA ist in Entwicklung und soll langfristig ein wichtiger Bereich werden. Die Inhalte helfen dabei, typische Aufgaben aus Datenaufbereitung, Analyse, Datenmodellierung, Reporting und Controlling schnell nachzuschlagen und praktisch nachzuvollziehen.
+BankBI Kompass ist ein praxisorientiertes Wissens- und Nachschlagewerk für Datenanalyse, Business Intelligence und Reporting. Der aktuelle Schwerpunkt liegt auf Power BI, Power Query und Excel. IDA ergänzt den Katalog als persönliche, öffentlich bereinigte Arbeitsnotizsammlung. Die Inhalte helfen dabei, typische Aufgaben aus Datenaufbereitung, Analyse, Datenmodellierung, Reporting und Controlling schnell nachzuschlagen und praktisch nachzuvollziehen.
 
 **[BankBI Kompass öffnen](https://cedricaichele.github.io/bankbi-kompass/)**
 
@@ -11,7 +11,7 @@ BankBI Kompass unterstützt das gezielte Nachschlagen im Arbeitsalltag. Kurze An
 ## Was bietet die Anwendung?
 
 - Zentrale Suche nach Funktionen, Begriffen und Aufgaben.
-- Aktive Kataloge für Power BI und Excel; IDA mit eigener Entwicklungsübersicht.
+- Kataloge für Power BI und Excel; IDA mit vier kompakten Notizseiten.
 - Durchsuchbare Power-Query-M-Referenz mit Funktionsübersicht, Eingabeorten und ausführlichen Beispielen.
 - Power-Query-Workflow für neue Daten und eine gemeinsame Transformationsbasis für Power BI und Excel.
 - Typische Aufgaben, Probleme & Lösungen, Werkzeugwahl und Datenbegriffe.
@@ -39,7 +39,7 @@ Die Kurzantwort steht oben. Danach folgen Anlass und Voraussetzungen, konkrete S
 
 **Excel:** Formeln, Datenbereinigung, PivotTables, Power Query und Analyse.
 
-**IDA/Cognos:** In Entwicklung. Der Bereich wird neu aufgebaut; frühere Artikel sind archiviert und nicht Teil des öffentlichen Katalogs. Geplant sind allgemein gehaltene Reporting- und Analysehilfen.
+**IDA/Cognos:** Arbeitsnotizen zu Auswertungen & Reporting, Formeln & Funktionen, GVM und aCI-Batch. Die Notizen haben einen eigenen reduzierten Renderer; frühere Einzelartikel führen auf die passenden Abschnitte.
 
 ## Langfristige Entwicklung
 

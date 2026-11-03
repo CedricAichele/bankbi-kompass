@@ -21,3 +21,7 @@ Diese Berichte beschreiben einen datierten Arbeitsstand. Sie sind keine aktuelle
 Historische Arbeitsberichte liegen unter docs/history/. Aufnahmeplanung und Bildnachweise bleiben als laufende Arbeitsunterlagen direkt unter docs/. Die Berichte wurden archiviert, nicht gelöscht.
 
 Unter docs/archive/ liegen frühere IDA-Artikel und zusammengeführte Seiten als Arbeitsmaterial. Sie werden nicht von Vite importiert und sind weder im öffentlichen Katalog noch in der Suche enthalten. Ihre alten Metadaten und Links dokumentieren den damaligen Stand.
+
+## IDA-Notizen
+
+IDA verwendet vier Notizseiten mit `darstellung: ida-note` und einen eigenen Renderer. Einordnung und fachliche Abschnitte ersetzen die Tutorial-Pflichtabschnitte; die Standards für Power BI und Excel gelten unverändert. Grundlage sind öffentlich bereinigte persönliche Arbeitsnotizen. Die Einträge der Funktionsreferenz werden getrennt nach Ausdruckskontext geprüft. Siehe [aktueller IDA-Pass](ida-notes-pass.md).

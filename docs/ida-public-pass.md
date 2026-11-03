@@ -1,5 +1,7 @@
 # Öffentlicher IDA-Bereich – Umsetzung und Quellenprüfung
 
+> Historischer Bericht des ersten Umbaus. Die aktuelle Notizstruktur ist in [ida-notes-pass.md](ida-notes-pass.md) dokumentiert.
+
 Stand: 3. November 2026. Projekt: BankBI Kompass.
 
 ## Struktur und Umfang

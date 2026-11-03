@@ -112,6 +112,6 @@ describe("Aufgabenorientierte Navigation",()=>{
     expect(screen.getByRole("link",{name:"Leerzeichen entfernen: GLÄTTEN"})).toBeVisible();view.unmount();
     const {main}=await open("/bereich/ida","IDA / Cognos");
     expect(within(main).getByRole("heading",{name:"GVM",level:2})).toBeVisible();
-    expect(main.querySelectorAll(".ida-areas .discovery-card")).toHaveLength(3);
+    expect(main.querySelectorAll(".ida-note-index li")).toHaveLength(4);
   });
 });

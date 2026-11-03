@@ -4,66 +4,87 @@ import { MemoryRouter } from "react-router-dom";
 import App from "../App";
 import { contents, byId } from "../content";
 import { archivedIdaIds } from "../content/redirects";
-import { idaPublicIds, idaLegacyTargets } from "../content/ida";
+import { idaPublicIds, idaLegacyTargets, idaSectionKey } from "../content/ida";
 import { idaFunctions, idaCategories, idaAvailability, findIdaFunctions } from "../content/ida-reference";
 import { IdaReference } from "../components/IdaReference";
 import { articleToc, articleBreadcrumbs } from "../lib/article-navigation";
 import { scanContent } from "../lib/content-safety";
 import { searchContent, searchTarget } from "../lib/search";
-import { sectionsOf } from "../content/schema";
+import { sectionsOf, parseContent } from "../content/schema";
 import { documentationLabel } from "../lib/sources";
 
-describe("Öffentlicher IDA-Bereich",()=>{
-  it("enthält genau 15 neu bewertete Sammelartikel mit Beispielen, Quellen und Kontrollen",()=>{
+describe("IDA als persönliche Notizsammlung",()=>{
+  it("enthält vier eigenständige Notizseiten ohne vorgeschriebene Tutorialabschnitte",()=>{
     const ida=contents.filter(x=>x.bereich==="IDA");
     expect(ida.map(x=>x.id).sort()).toEqual([...idaPublicIds].sort());
-    expect(ida).toHaveLength(15);
+    expect(ida).toHaveLength(4);
     for(const item of ida){
-      expect(archivedIdaIds.has(item.id)).toBe(false);
+      expect(item.darstellung).toBe("ida-note");
       expect(item.screenshots).toHaveLength(0);
+      expect(item.verwandteThemen.length).toBeLessThanOrEqual(4);
       expect(item.quellen.length).toBeGreaterThan(0);
       expect(scanContent(JSON.stringify(item))).toEqual([]);
-      const sections=sectionsOf(item.body);
-      for(const name of ["Schritte","Beispiel","Ergebnis","Plausibilitätscheck","Typischer Fehler"])expect(sections[name],item.id+name).toBeTruthy();
-      expect(item.body.length,item.id).toBeGreaterThan(1000);
+      expect(item.body).not.toMatch(/P-A|K-A1|Demo-A|Ergebnis = 350/);
+      for(const name of ["Wann brauche ich das?","Voraussetzungen","Schritte","Ergebnis","Plausibilitätscheck","Warum funktioniert das?","Was muss ich anpassen?","Typischer Fehler"])expect(sectionsOf(item.body)[name],item.id+name).toBeUndefined();
     }
+    expect(byId("ida-gvm")!.body).toContain("welche Vorlage aktiv verwendet wird");
     expect(byId("ida-ci-batch")!.body).toContain("kein aCI-Batch-Dateischema");
-    expect(byId("ida-gvm-datenbasis")!.body).toContain("keine zugesicherte automatische");
   });
-  it("zeigt drei Säulen und die Referenz bei unverändert sieben Hauptpunkten",async()=>{
+  it("zeigt vier direkte Einstiege bei unverändert sieben Hauptpunkten",async()=>{
     window.location.hash="/bereich/ida";render(<App/>);
     await screen.findByRole("heading",{level:1,name:"IDA / Cognos"});
     const main=screen.getByRole("main");
-    expect(main.querySelectorAll(".ida-areas .discovery-card")).toHaveLength(3);
-    for(const name of ["Auswertungen & Reporting","GVM","aCI-Batch","Formeln & Funktionen"])expect(within(main).getByRole("heading",{level:2,name})).toBeVisible();
-    expect(within(main).getByRole("link",{name:"IDA / Cognos – Formeln & Funktionen"})).toHaveAttribute("href","#/wissen/ida-formeln");
+    expect(main.querySelectorAll(".ida-note-index li")).toHaveLength(4);
+    expect(within(main).getByRole("link",{name:"Auswertungen & Reporting"})).toHaveAttribute("href","#/wissen/ida-reporting");
     expect(within(screen.getByRole("navigation",{name:"Hauptnavigation"})).getAllByRole("link")).toHaveLength(7);
-    expect(within(main).queryByText("In Entwicklung")).not.toBeInTheDocument();
-    expect(main.querySelectorAll(".function-card")).toHaveLength(0);
-    expect(main.querySelectorAll(".primary-links a")).toHaveLength(10);
-    fireEvent.click(within(main).getByRole("link",{name:"Alle Reporting-Themen"}));
+    expect(main.querySelectorAll(".discovery-card, .function-card")).toHaveLength(0);
+    fireEvent.click(within(main).getByRole("link",{name:"Auswertungen & Reporting"}));
     await within(main).findByRole("heading",{level:1,name:"Auswertungen & Reporting"});
-    expect(main.querySelectorAll(".catalog-grid a")).toHaveLength(10);
+    expect(main.querySelector(".ida-note")).toBeTruthy();
+    expect(main.querySelectorAll(".answer,.pitfall,.reference-grid,.context-tags")).toHaveLength(0);
+    expect(within(main).getByRole("navigation",{name:"Weiterführend"}).querySelectorAll("a")).toHaveLength(3);
+    expect(articleToc(byId("ida-reporting")!)).toHaveLength(9);
+    for(const entry of articleToc(byId("ida-reporting")!)){expect(entry.children).toBeUndefined();expect(document.getElementById(entry.target)).toBeTruthy();}
+    expect(articleBreadcrumbs(byId("ida-reporting")!).map(x=>x.label)).toEqual(["Start","IDA / Cognos","Auswertungen & Reporting"]);
   });
-  it("hält alle Archivkennungen unveröffentlicht und hat für jede ein geprüftes Ziel",()=>{
-    for(const id of archivedIdaIds){expect(byId(id)).toBeUndefined();expect(idaLegacyTargets[id],id).toBeTruthy();expect(idaPublicIds).toContain(idaLegacyTargets[id].split("?")[0]);}
-    expect(articleBreadcrumbs(byId("ida-prompts")!).map(x=>x.label)).toEqual(["Start","IDA / Cognos","Auswertungen & Reporting",byId("ida-prompts")!.titel]);
+  it("hält alle sechzig ersetzten IDs aus dem öffentlichen Index und verlinkt echte Abschnitte",()=>{
+    expect(archivedIdaIds.size).toBe(60);
+    for(const id of archivedIdaIds){
+      expect(byId(id)).toBeUndefined();
+      const [target,query]=idaLegacyTargets[id].split("?");
+      expect(idaPublicIds).toContain(target);
+      const section=new URLSearchParams(query).get("abschnitt");
+      if(section)expect(Object.keys(sectionsOf(byId(target)!.body)).map(idaSectionKey)).toContain(section);
+    }
   });
-  it("prüft die synthetische Join-Kontrolle unabhängig vom Artikeltext",()=>{
-    const konten=[{person:"Demo-A",betrag:100},{person:"Demo-A",betrag:200},{person:"Demo-B",betrag:50}];
-    const partner=["Demo-A","Demo-A","Demo-B"];
+  it("prüft die Konto-/Personenebene und eine Join-Vervielfachung unabhängig vom Text",()=>{
+    const konten=[{person:10001,bestand:1500},{person:10001,bestand:4000},{person:10002,bestand:2500}];
+    const partner=[10001,10001,10002];
     const joined=konten.flatMap(k=>partner.filter(p=>p===k.person).map(()=>k));
-    expect(konten.reduce((s,k)=>s+k.betrag,0)).toBe(350);
-    expect(joined).toHaveLength(5);expect(joined.reduce((s,k)=>s+k.betrag,0)).toBe(650);
+    expect(konten.reduce((s,k)=>s+k.bestand,0)).toBe(8000);
     expect(new Set(konten.map(k=>k.person)).size).toBe(2);
-    expect(byId("ida-plausibilitaet")!.body).toContain("650");
+    expect(joined).toHaveLength(5);
+    expect(joined.reduce((s,k)=>s+k.bestand,0)).toBe(13500);
+  });
+  it("validiert den eigenen Inhaltstyp, ohne das Standardschema zu lockern",()=>{
+    const item=byId("ida-reporting")!;
+    const raw=(meta:object,body:string)=>"---\n"+JSON.stringify(meta)+"\n---\n"+body;
+    expect(()=>parseContent(raw(item,"Kurze Einordnung.\n\n## Thema\nNützlich.\n\n## Kontrolle\nAnzahl prüfen."))).not.toThrow();
+    expect(()=>parseContent(raw({...item,bereich:"Excel"},"Einordnung.\n\n## Thema\nText.\n\n## Kontrolle\nText."))).toThrow();
+    expect(()=>parseContent(raw(item,"## Thema\nText."))).toThrow();
+    expect(()=>parseContent(raw({...item,darstellung:undefined},"Einordnung.\n\n## Thema\nText."))).toThrow(/Abschnitt/);
+  });
+  it.each([["join","joins"],["mehrfachauswahl","prompts"],["burst","versand"],["ida filter","filter"],["ida granularität","granularitaet"]])("führt %s unmittelbar zum Abschnitt", (q,section)=>{
+    expect(searchContent(contents,q,{bereich:"IDA"}).map(x=>x.id)).toContain("ida-reporting");
+    expect(searchTarget(byId("ida-reporting")!,q)).toBe("/wissen/ida-reporting?abschnitt="+section);
   });
 });
+
 describe("Cognos-Funktionen und Sprachkontexte",()=>{
   it("begrenzt Schnellbereich und trennt alle fünf Verfügbarkeitsklassen",()=>{
-    expect(idaFunctions).toHaveLength(75);
-    expect(idaFunctions.filter(e=>e.frequent)).toHaveLength(40);
-    expect(new Set(idaFunctions.map(e=>e.id)).size).toBe(75);
+    expect(idaFunctions).toHaveLength(102);
+    expect(idaFunctions.filter(e=>e.frequent)).toHaveLength(43);
+    expect(new Set(idaFunctions.map(e=>e.id)).size).toBe(102);
     expect(idaAvailability).toHaveLength(5);
     for(const c of idaAvailability)expect(idaFunctions.some(e=>e.availability===c),c).toBe(true);
     for(const c of idaCategories)expect(idaFunctions.some(e=>e.category===c),c).toBe(true);
@@ -82,7 +103,7 @@ describe("Cognos-Funktionen und Sprachkontexte",()=>{
       expect(findIdaFunctions(alias).some(e=>e.name.split(" · ")[0]===name),alias).toBe(true);
     }
     expect(idaFunctions.find(e=>e.id==="cast-number")!.code).toBe("cast([Textzahl], decimal(10, 2))");
-    expect(idaFunctions.find(e=>e.id==="count-distinct")!.code).toBe("count(distinct [Person] for report)");
+    expect(idaFunctions.find(e=>e.id==="count-distinct")!.code).toBe("count(distinct [Personennummer] for report)");
   });
   it.each([["eindeutige personen","count-distinct"],["zeilen zählen","count"],["summe","total"],["wenn dann","case"],["leerwert","coalesce"],["mehrere werte prompt","promptmany"],["rang","rank"],["vorherige zeile","sql-lag"],["text enthält","position"],["monat letzter tag","last-of-month"]])("findet %s über Alltagssprache",(q,id)=>{
     expect(findIdaFunctions(q).map(e=>e.id)).toContain(id);
@@ -92,35 +113,37 @@ describe("Cognos-Funktionen und Sprachkontexte",()=>{
   it.each(["gvm","geschäftsvorfallmanagement","ci batch","aci batch","massenänderung","bestandsänderung","burst","kreuztabelle"])("erschließt den Themenbereich %s",q=>{
     expect(searchContent(contents,q).slice(0,3).some(x=>x.bereich==="IDA")).toBe(true);
   });
-  it("zeigt ohne Suche 40 kompakte Einstiege und keine OLAP-/SQL-Spezialfunktionen",()=>{
+  it("zeigt Bedeutung und Beispiel für alle 43 häufigen Einträge ohne Aufklappen",()=>{
     render(<MemoryRouter><IdaReference/></MemoryRouter>);
-    const common=screen.getByLabelText("Häufige IDA-Funktionen");
-    expect(within(common).getAllByRole("link")).toHaveLength(40);
-    expect(common.textContent).not.toMatch(/currentMember|regexp_|dense_rank|row_number/);
-    expect(screen.getByRole("link",{name:"Alle Funktionen anzeigen"})).toHaveAttribute("href","/ida/referenz");
-    expect(screen.getByRole("link",{name:/Wert aus vorheriger Zeile/})).toHaveAttribute("href","/ida/referenz?funktion=sql-lag");
+    const table=screen.getByRole("table",{name:"Häufige IDA-Funktionen"});
+    expect(table.querySelectorAll(".ida-expression-row")).toHaveLength(43);
+    expect(table.querySelectorAll(".ida-expression-row code")).toHaveLength(43);
+    expect(table.querySelectorAll("details[open]")).toHaveLength(0);
+    expect(table.querySelector(".ida-expression-row code")).toBeVisible();
+    expect(table.textContent).not.toMatch(/currentMember|regexp_|dense_rank|row_number/);
+    expect(screen.getByRole("link",{name:"Alle Funktionen anzeigen →"})).toHaveAttribute("href","/ida/referenz");
   });
-  it("öffnet gefilterte Ausdrucksdetails mit Eingabeort, Sollwert und Kopierfunktion",async()=>{
+  it("öffnet Hinweise inline und kopiert nur das konkrete Beispiel",async()=>{
     const copy=vi.fn().mockResolvedValue(undefined);Object.defineProperty(navigator,"clipboard",{configurable:true,value:{writeText:copy}});
     render(<MemoryRouter initialEntries={["/?funktion=promptmany"]}><IdaReference/></MemoryRouter>);
-    const detail=screen.getByRole("region",{name:"Ausgewählter IDA-Ausdruck"});
-    for(const name of ["Wo eingeben?","Ausgangswert","Erwartetes Ergebnis","Was muss ich anpassen?","Typischer Fehler"])expect(within(detail).getByRole("heading",{name})).toBeVisible();
-    expect(within(detail).getByText("Prompt-/Makrofunktion")).toBeVisible();
-    fireEvent.click(within(detail).getByRole("button",{name:"Kopieren"}));
-    await waitFor(()=>expect(copy).toHaveBeenCalledWith("[Segment] in (#promptmany('pSegment', 'string')#)"));
+    const detail=document.querySelector("#ida-detail-promptmany")!;
+    expect(detail).toHaveAttribute("open");
+    for(const label of ["Eingabe","Ausgang","Ergebnis","Anpassen","Beachten"])expect(within(detail as HTMLElement).getByText(label,{exact:true})).toBeVisible();
+    fireEvent.click(within(detail as HTMLElement).getByRole("button",{name:"Kopieren"}));
+    await waitFor(()=>expect(copy).toHaveBeenCalledWith("[Kundengruppe] in (#promptmany('pKundengruppe', 'string')#)"));
   });
-  it("macht den erweiterten Bestand separat filterbar und erhält Pagination und Direktfilter",()=>{
+  it("erhält alle erweiterten Einträge, Filter und Seitennavigation",()=>{
     render(<MemoryRouter initialEntries={["/?funktion=sql-lag"]}><IdaReference extended/></MemoryRouter>);
-    expect(document.querySelectorAll(".function-card")).toHaveLength(1);
-    expect(document.querySelector(".function-card")).toHaveAttribute("open");
-    expect(screen.getByRole("heading",{name:"Wo eingeben?"})).toBeVisible();
+    expect(document.querySelectorAll(".ida-expression-row")).toHaveLength(1);
+    expect(document.querySelector("#ida-detail-sql-lag")).toHaveAttribute("open");
+    expect(screen.getByText("Eingabe",{exact:true})).toBeVisible();
     fireEvent.click(screen.getByRole("button",{name:"Filter zurücksetzen"}));
-    expect(document.querySelectorAll(".function-card")).toHaveLength(25);
+    expect(document.querySelectorAll(".ida-expression-row")).toHaveLength(25);
     fireEvent.click(screen.getByRole("button",{name:"Weitere Funktionen"}));
     expect(document.querySelector(".ida-reference > p[role=status]")).toHaveTextContent("Seite 2");
     fireEvent.change(screen.getByRole("combobox",{name:"Herkunft / Verfügbarkeit"}),{target:{value:"Dimensional / OLAP"}});
-    expect(document.querySelectorAll(".function-card")).toHaveLength(8);
-    expect(document.querySelectorAll(".function-card[open]")).toHaveLength(0);
+    expect(document.querySelectorAll(".ida-expression-row")).toHaveLength(8);
+    expect(document.querySelectorAll(".ida-expression-details[open]")).toHaveLength(0);
   });
   it("verweist in der IDA-TOC nur auf vorhandene semantische Anker",async()=>{
     window.location.hash="/wissen/ida-formeln";render(<App/>);

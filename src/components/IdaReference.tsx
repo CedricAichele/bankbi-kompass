@@ -1,37 +1,55 @@
+import { Fragment } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { ArrowRight, ChevronRight } from "lucide-react";
-import { idaFunctions, idaCategories, idaAvailability, findIdaFunctions, idaNormalize, type IdaFunction } from "../content/ida-reference";
-import { idaDisclaimer } from "../content/ida";
+import { idaFunctions, idaSpellings, idaCategories, idaAvailability, findIdaFunctions, idaNormalize, type IdaFunction } from "../content/ida-reference";
 import { CodeBlock } from "./CodeBlock";
-import { SyntaxBlock } from "./SyntaxBlock";
 import { SectionJump } from "./ArticleToc";
 
-const tasks=[
-  ["Zeilen zählen","count"],["Eindeutige Personen zählen","count-distinct"],["Werte summieren","total"],["Durchschnitt berechnen","average"],["Minimum / Maximum","minimum"],["Bedingungen abbilden","case"],["Fehlenden Wert ersetzen","coalesce"],["Text durchsuchen","position"],["Text abschneiden","substring"],["Leerzeichen entfernen","trim"],["Datum zerlegen","extract-year"],["Monatsende bestimmen","last-of-month"],["Rang bilden","rank"],["Prompt verwenden","parameter"],
-];
 export function IdaFunctionDetails({entry}:{entry:IdaFunction}) {
-  return <div className="ida-function-detail" id={"ida-detail-"+entry.id} tabIndex={-1}><h3>{entry.name}</h3><p className="ida-function-context"><strong>{entry.availability}</strong> · {entry.kind} · {entry.relevance}</p><h4>Wann brauche ich das?</h4><p>{entry.use}</p><h4>Ausgangswert</h4><p>{entry.input}</p><h4>Kurzsyntax · Orientierung</h4><SyntaxBlock code={entry.syntax}/><h4>Wo eingeben?</h4><p className="code-location">{entry.where}</p><h4>Mini-Beispiel</h4><CodeBlock code={entry.code} language={entry.availability==="Datenquellenabhängig" ? "sql" : "cognos"}/><h4>Erwartetes Ergebnis</h4><p>{entry.result}</p><h4>Was muss ich anpassen?</h4><p>{entry.adapt}</p><h4>Typischer Fehler</h4><p>{entry.pitfall}</p><h4>Verfügbarkeit und Grenzen</h4><p>{entry.support}</p><p><a href={entry.source} target="_blank" rel="noreferrer">{entry.sourceLabel} →</a></p><p><Link to={entry.category==="Prompt/Parameter" ? "/wissen/ida-prompts" : entry.category==="Vergleiche" ? "/wissen/ida-filter-praxis" : "/wissen/ida-berechnungen"}>Passende Praxisanleitung →</Link></p></div>;
+  return <div className="ida-function-detail">
+    <h3>{entry.name}</h3>
+    <p className="ida-function-context">{entry.availability} · {entry.kind} · {entry.relevance}</p>
+    <CodeBlock code={entry.code} language={entry.availability==="Datenquellenabhängig" ? "sql" : "cognos"}/>
+    <dl className="ida-expression-notes">
+      <dt>Ausgang</dt><dd>{entry.input}</dd>
+      <dt>Ergebnis</dt><dd>{entry.result}</dd>
+      <dt>Anpassen</dt><dd>{entry.adapt}</dd>
+      <dt>Eingabe</dt><dd>{entry.where}</dd>
+      <dt>Beachten</dt><dd>{entry.pitfall}</dd>
+      <dt>Verfügbarkeit</dt><dd>{entry.support}</dd>
+    </dl>
+    <p><a href={entry.source} target="_blank" rel="noreferrer">{entry.sourceLabel} →</a></p>
+  </div>;
 }
 export function IdaReference({extended=false}:{extended?:boolean}) {
   const [params,setParams]=useSearchParams();
   const query=params.get("funktion")||"", category=params.get("gruppe")||"", availability=params.get("kontext")||"";
   const matches=findIdaFunctions(query,category,availability,!extended);
-  const exact=matches.find(e=>e.id===query || idaNormalize(e.name)===idaNormalize(query) || e.aliases.some(a=>idaNormalize(a)===idaNormalize(query)));
-  const selected=exact || (query && matches.length===1 ? matches[0] : undefined);
+  const selected=matches.find(e=>e.id===query || idaNormalize(e.name)===idaNormalize(query) || e.aliases.some(a=>idaNormalize(a)===idaNormalize(query))) || (query && matches.length===1 ? matches[0] : undefined);
   const pages=Math.max(1,Math.ceil(matches.length/25)),page=Math.min(pages,Math.max(1,Math.floor(Number(params.get("seite")))||1));
+  const visible=extended ? matches.slice((page-1)*25,page*25) : matches;
+  const noteMatches=extended && (!availability || availability==="Umgebungsabhängig / prüfen") ? idaSpellings.filter(x=>(!category||x.category===category) && idaNormalize(query).split(" ").filter(Boolean).every(term=>idaNormalize([...x.names,x.note].join(" ")).includes(term))) : [];
   function update(key:string,value:string){const next=new URLSearchParams(params);value?next.set(key,value):next.delete(key);next.delete("abschnitt");if(key!=="seite")next.delete("seite");setParams(next,{replace:true,preventScrollReset:true});}
-  const target=(id:string)=>"/wissen/ida-formeln?funktion="+id+"&abschnitt=detail";
   return <section className="ida-reference" aria-label={extended ? "Erweiterte IDA-Referenz" : "IDA-Schnellreferenz"}>
     <SectionJump targets={{detail:selected ? "ida-detail-"+selected.id : ""}}/>
-    <p id="ida-reference-intro" tabIndex={-1}>{idaDisclaimer}</p>
-    {!extended && <section className="discovery-section" aria-label="IDA-Formelaufgaben"><h2>Was möchtest du machen?</h2><div className="task-grid">{tasks.map(([label,id])=><Link to={target(id)} key={id}><strong>{label}</strong><span>{idaFunctions.find(e=>e.id===id)!.name}</span></Link>)}<Link to="/ida/referenz?funktion=sql-lag"><strong>Wert aus vorheriger Zeile</strong><span>lag · datenquellenabhängig / fortgeschritten</span></Link></div></section>}
-    <details className="practice-details" id="ida-input" tabIndex={-1}><summary>Eingabehilfe: Berichtsausdruck, Parameter, Makro oder SQL?</summary><p>Ein berechnetes Datenelement erhält einen Cognos-Ausdruck, etwa <code>total([Betrag] for report)</code>. Ein Filter braucht eine Bedingung, etwa <code>[Betrag] &gt; 0</code>. Wähle eigene Datenelemente aus dem Quellenbaum; die Bezeichnungen hier sind erfunden.</p><p>Ein Value Prompt ist ein sichtbares Control. Ein Parameter wie <code>?pSegment?</code> wird im Filter verwendet. Makros stehen in <code>#...#</code> und erzeugen Ausdrucks-/Abfragetext. Sie sind keine gewöhnlichen Spaltenfunktionen.</p><p>Mit „Datenquellenabhängig“ gekennzeichnete SQL-Ausdrücke gehören nur in einen passenden, zugelassenen SQL-Kontext. Cognos-cast verwendet hier eine Komma-Syntax; natives SQL kann AS verwenden. Typnamen wie varchar und decimal sind keine eigenständigen allgemeinen Cognos-Funktionen.</p><p>Die Kernsyntax ist anhand der öffentlichen IBM-Ausdrucksreferenz für Framework Manager 10.1.1 geprüft; aktuelles Cognos-12-Reporting und Function-Set-Hinweise ergänzen die Einordnung. Der ältere Syntaxbeleg ist keine Zusage für jede heutige IDA-Version. Im tatsächlich verfügbaren Expression Editor validieren. Die Website führt keine Cognos-Abfragen aus.</p></details>
-    <h2 id="ida-function-search" tabIndex={-1}>{extended ? "Erweiterten Katalog durchsuchen" : "Häufig verwendete Funktionen"}</h2>
-    <div className="filters reference-filters"><label>IDA-Funktion oder Aufgabe<input type="search" value={query} onChange={e=>update("funktion",e.target.value)} placeholder="z. B. eindeutige Personen, NULL, Monatsende"/></label><label id="ida-categories" tabIndex={-1}>Kategorie<select value={category} onChange={e=>update("gruppe",e.target.value)}><option value="">Alle Kategorien</option>{idaCategories.filter(c=>extended||c!=="Dimensional / OLAP").map(c=><option key={c}>{c}</option>)}</select></label><label>Herkunft / Verfügbarkeit<select value={availability} onChange={e=>update("kontext",e.target.value)}><option value="">Alle Kontexte</option>{idaAvailability.filter(c=>extended||!["Dimensional / OLAP","Datenquellenabhängig"].includes(c)).map(c=><option key={c}>{c}</option>)}</select></label><button onClick={()=>setParams({},{replace:true,preventScrollReset:true})}>Filter zurücksetzen</button></div>
-    <p role="status">{matches.length} passende Funktionen und Muster{extended ? ` · Seite ${page} von ${pages}` : " im Schnellbereich"}</p>
-    {!matches.length && <p>Kein Treffer in dieser Ansicht. Filter zurücksetzen oder im erweiterten Katalog suchen.</p>}
-    {!extended ? <><div className="common-function-groups ida-common" aria-label="Häufige IDA-Funktionen">{idaCategories.map(c=>{const entries=matches.filter(e=>e.category===c);return entries.length ? <section key={c}><h3>{c}</h3><ul>{entries.map(e=><li key={e.id}><Link to={target(e.id)}><strong>{e.name}</strong><span>{e.use}</span><ChevronRight size={14}/></Link></li>)}</ul></section>:null;})}</div>{selected && <section className="m-entry" aria-label="Ausgewählter IDA-Ausdruck"><IdaFunctionDetails entry={selected}/></section>}</> : <><div className="function-cards">{matches.slice((page-1)*25,page*25).map(e=><details className="function-card" key={e.id} open={e===selected ? true : undefined}><summary><strong>{e.name}</strong><span>{e.category} · {e.availability}</span><span>{e.use}</span></summary><IdaFunctionDetails entry={e}/></details>)}</div>{pages>1 && <nav className="reference-pagination" aria-label="Seiten der IDA-Referenz"><button disabled={page===1} onClick={()=>update("seite",String(page-1))}>Vorherige</button><span>Seite {page} von {pages}</span><button disabled={page===pages} onClick={()=>update("seite",String(page+1))}>Weitere Funktionen</button></nav>}</>}
-    {!extended && <section className="advanced-catalog" id="ida-advanced" tabIndex={-1}><h2>Erweiterter Funktionskatalog</h2><p>Weitere Ausdrücke, SQL-Window-Muster und Dimensional / OLAP stehen getrennt. Datenquelle, Function Set und Produktversion bestimmen die Verfügbarkeit.</p><Link className="catalog-button" to="/ida/referenz">Alle Funktionen anzeigen<ArrowRight size={16}/></Link></section>}
-    <details className="practice-details"><summary>Vergleiche und Operatoren kompakt</summary><p><code>=</code>, <code>&lt;&gt;</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>between</code>, <code>in</code>, <code>not in</code>, <code>like</code>, <code>not like</code>, <code>and</code>, <code>or</code>, <code>not</code>, <code>is null</code> und <code>is not null</code> sind Operatoren beziehungsweise Ausdrucksmuster. Sie werden nicht als eigenständige Funktionen ausgegeben.</p><p>Gemischte Bedingungen klammern; NULL, inklusive Grenzen und Platzhalter bewusst testen. <Link to="/wissen/ida-filter-praxis">Filterbeispiele und Vorher/Nachher-Kontrolle →</Link></p></details>
+    <h2 id="ida-function-search" tabIndex={-1}>{extended ? "Funktionskatalog" : "Häufig gebraucht"}</h2>
+    <div className="filters reference-filters">
+      <label>Funktion oder Suchwort<input type="search" value={query} onChange={e=>update("funktion",e.target.value)} placeholder="z. B. count, eindeutige Personen, Monatsende"/></label>
+      <label id="ida-categories" tabIndex={-1}>Kategorie<select value={category} onChange={e=>update("gruppe",e.target.value)}><option value="">Alle Kategorien</option>{idaCategories.filter(c=>extended||c!=="Dimensional / OLAP").map(c=><option key={c}>{c}</option>)}</select></label>
+      <label>Herkunft / Verfügbarkeit<select value={availability} onChange={e=>update("kontext",e.target.value)}><option value="">Alle Kontexte</option>{idaAvailability.filter(c=>extended||!["Dimensional / OLAP","Datenquellenabhängig"].includes(c)).map(c=><option key={c}>{c}</option>)}</select></label>
+      <button onClick={()=>setParams({},{replace:true,preventScrollReset:true})}>Filter zurücksetzen</button>
+    </div>
+    <p role="status">{matches.length} Funktionen und Muster{extended ? " · Seite "+page+" von "+pages : " im Schnellbereich"}</p>
+    {!matches.length && !noteMatches.length && <p>Kein Treffer. Filter zurücksetzen oder im erweiterten Katalog suchen.</p>}
+    {matches.length>0 && <table className="ida-function-table" aria-label={extended ? "Erweiterter Funktionskatalog" : "Häufige IDA-Funktionen"}>
+      <thead><tr><th>Kategorie</th><th>Funktion</th><th>Wofür?</th><th>Beispiel</th></tr></thead>
+      <tbody>{visible.map(e=><Fragment key={e.id}>
+        <tr className="ida-expression-row"><td data-label="Kategorie">{e.category}</td><th scope="row" data-label="Funktion">{e.name}<small>{e.availability}</small></th><td data-label="Wofür?">{e.use}</td><td data-label="Beispiel"><code>{e.code}</code></td></tr>
+        <tr className="ida-expression-hints"><td colSpan={4}><details className="ida-expression-details" id={"ida-detail-"+e.id} open={e===selected ? true : undefined} tabIndex={-1}><summary>Hinweise zu {e.name}</summary><IdaFunctionDetails entry={e}/></details></td></tr>
+      </Fragment>)}</tbody>
+    </table>}
+    {extended && pages>1 && <nav className="reference-pagination" aria-label="Seiten der IDA-Referenz"><button disabled={page===1} onClick={()=>update("seite",String(page-1))}>Vorherige</button><span>Seite {page} von {pages}</span><button disabled={page===pages} onClick={()=>update("seite",String(page+1))}>Weitere Funktionen</button></nav>}
+    {!extended && <section className="ida-advanced" id="ida-advanced" tabIndex={-1}><h2>Erweiterter Funktionskatalog</h2><p>{idaFunctions.length} Einträge insgesamt. SQL-/Window-Muster, Regex und Dimensional / OLAP sind nach Datenquelle und Function Set gekennzeichnet.</p><Link to="/ida/referenz">Alle Funktionen anzeigen →</Link></section>}
+    {noteMatches.length>0 && <details className="ida-spelling-notes" open={query ? true : undefined}><summary>Weitere Schreibweisen aus meinen Notizen · {noteMatches.length} Gruppen</summary><p>Diese Namen bleiben als Suchhilfe erhalten. Die Einordnung unterscheidet Notiznamen, belegte Alternativen und kontextabhängige Schreibweisen; sie ist keine zusätzliche Liste universell ausführbarer Cognos-Funktionen.</p>{noteMatches.map(x=><div key={x.names[0]}><p><strong>{x.names.join(" · ")}</strong></p><p>{x.note} <Link to={(idaFunctions.find(e=>e.id===x.target)!.frequent ? "/wissen/ida-formeln" : "/ida/referenz")+"?funktion="+x.target}>Zur verwandten Referenz →</Link></p></div>)}</details>}
+    <details className="ida-input-help" id="ida-input"><summary>Schreibweise und Eingabekontext</summary><p>Berechnete Datenelemente erhalten einen Berichtsausdruck, Filter eine Bedingung. Eigene Datenelemente aus dem Quellenbaum einsetzen. Ein Prompt-Control erfasst Werte; ein Parameter wie <code>?pKundengruppe?</code> wird im Ausdruck verwendet. Makros stehen in <code>#...#</code>.</p><p>Die Kernsyntax ist mit IBMs Ausdrucksreferenz für Framework Manager 10.1.1 abgeglichen; der Beleg ist versionsgebunden. Cognos-12-Dokumentation ergänzt die Kontextprüfung. Im eigenen Expression Editor validieren. SQL-Beispiele gehören ausschließlich in einen dafür geeigneten Kontext der genannten Datenquelle.</p><p>Operatoren: <code>=, &lt;&gt;, &gt;, &lt;, &gt;=, &lt;=, IN, NOT IN, BETWEEN, LIKE, NOT LIKE, AND, OR, NOT, IS NULL, IS NOT NULL</code>. <Link to="/wissen/ida-reporting?abschnitt=filter">Zu den Filternotizen →</Link></p></details>
   </section>;
 }

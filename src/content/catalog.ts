@@ -489,7 +489,7 @@ export const toolsCatalog: Tool[] = [
     "name": "IDA",
     "slug": "ida",
     "description": "Auswertungen und Reporting mit IDA / Cognos sowie die angrenzenden Themen GVM und aCI-Batch.",
-    "groups": [{"title":"Auswertungen & Reporting","items":[{"id":"ida-erste-auswertung","label":"Erste Auswertung aufbauen"},{"id":"ida-filter-praxis","label":"Filter richtig einsetzen"},{"id":"ida-prompts","label":"Prompts und Parameter"},{"id":"ida-abfragen-verbinden","label":"Abfragen verbinden"},{"id":"ida-berechnungen","label":"Berechnungen & Aggregationen"},{"id":"ida-plausibilitaet","label":"Plausibilitätsprüfung"}]},{"title":"GVM","items":[{"id":"ida-gvm","label":"GVM verstehen"},{"id":"ida-gvm-datenbasis","label":"IDA und GVM"}]},{"title":"aCI-Batch","items":[{"id":"ida-ci-batch","label":"aCI-Batch verstehen"},{"id":"ida-ci-datenbasis","label":"IDA und aCI-Batch"}]},{"title":"Formeln & Funktionen","items":[{"id":"ida-formeln","label":"IDA / Cognos – Formeln & Funktionen"}]}]
+    "groups": [{"title":"Auswertungen & Reporting","items":[{"id":"ida-reporting","label":"Auswertungen & Reporting"}]},{"title":"Formeln & Funktionen","items":[{"id":"ida-formeln","label":"IDA / Cognos – Formeln & Funktionen"}]},{"title":"GVM","items":[{"id":"ida-gvm","label":"GVM"}]},{"title":"aCI-Batch","items":[{"id":"ida-ci-batch","label":"aCI-Batch"}]}]
   }
 ];
 export const powerQueryGroups: Group[] = [

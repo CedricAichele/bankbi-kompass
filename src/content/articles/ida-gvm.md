@@ -2,29 +2,30 @@
 {
   "id": "ida-gvm",
   "slug": "ida-gvm",
-  "titel": "Geschäftsvorfallmanagement (GVM)",
+  "titel": "GVM",
   "bereich": "IDA",
   "werkzeuge": [
     "IDA"
   ],
   "kategorie": "GVM",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Die Rolle von Geschäftsvorfällen im agree21-Umfeld verstehen: Eine fachlich begründete Fallmenge ist die Grundlage einer nachvollziehbaren Bearbeitung.",
-  "ort": "Konzeptionelle fachliche Prüfmethode; keine bankindividuelle Bedienfolge",
+  "kurzbeschreibung": "Meine Merkpunkte zu Geschäftsvorfallmanagement: Zusammenhang mit IDA, Vorlagenbezug, Fallmenge und Abgleich mit der nachgelagerten Bearbeitung.",
+  "ort": "Persönliche IDA-Arbeitsnotizen",
   "tags": [
     "GVM",
-    "synthetisch"
+    "IDA-Notizen"
   ],
   "synonyme": [
     "gvm",
     "geschäftsvorfallmanagement",
+    "ida gvm",
     "geschäftsvorfall",
-    "agree21 gvm"
+    "gvm vorlage"
   ],
   "verwandteThemen": [
-    "ida-gvm-datenbasis",
-    "ida-granularitaet",
-    "ida-plausibilitaet"
+    "ida-reporting",
+    "ida-formeln",
+    "ida-ci-batch"
   ],
   "kontexte": [
     "Reporting",
@@ -33,53 +34,54 @@
   "quelleTyp": "oeffentliche-dokumentation",
   "zuletztGeprueft": "2026-11-03",
   "art": "artikel",
-  "ebene": "Praxisartikel",
-  "praxis": true,
+  "ebene": "Kernwissen",
+  "praxis": false,
   "screenshots": [],
   "quellen": [
     "https://bankinghub.de/operations/migration-ausbaustufen-agree21",
     "https://www.rurberatung.de/"
-  ]
+  ],
+  "darstellung": "ida-note"
 }
 ---
 
-## Wann brauche ich das?
+GVM steht für Geschäftsvorfallmanagement und ist eines der drei großen Themen meiner IDA-Arbeit. Geschäftsvorfälle können auf definierten Vorlagen bzw. standardisierten Strukturen aufbauen; IDA kann die Datenbasis und die relevanten Fälle liefern.
 
-Du willst verstehen, wie eine fachliche Beobachtung aus einer Auswertung in eine nachgelagerte Bearbeitung einzuordnen ist. GVM ist ein öffentlich verwendeter Begriff im agree21-Umfeld.
+## Wofür ich GVM im IDA-Kontext brauche
 
-## Voraussetzungen
+Eine Auswertung kann die relevanten Personen, Konten oder Vorgänge bestimmen. Aus dieser Auswahl ergibt sich ein Bearbeitungsanlass; eine Ergebniszeile ist dabei nicht automatisch ein eigener Geschäftsvorfall.
 
-Ein allgemein beschreibbares fachliches Anliegen. Die Beispiele sind generisch und enthalten keine realen Unternehmens- oder Kundendaten. Öffentlich zugängliche Produkt- und Praxisquellen belegen die Einordnung, keine konkrete Institutsimplementierung.
+## Zusammenhang mit IDA-Auswertungen
 
-## Schritte
+Fachliche Regel → IDA-Auswertung → relevante Fälle → nachgelagerte Bearbeitung in GVM. Das beschreibt die fachliche Zuordnung; die konkrete technische Übergabe hängt von der Umgebung ab.
 
-1. Formuliere die Beobachtung und das fachliche Ziel einer möglichen Bearbeitung.
-2. Lege fest, was ein Fall in diesem Beispiel bedeutet: Person, Konto oder anderer fachlicher Bezug.
-3. Bestimme die relevanten Fälle mit nachvollziehbaren Kriterien.
-4. Prüfe Vollständigkeit, Mehrfachzuordnungen und die Aktualität der Auswahl.
-5. Trenne die analytische Fallliste von der Entscheidung über eine nachgelagerte Bearbeitung.
-6. Prüfe später, ob die fachliche Beobachtung nachvollziehbar behandelt wurde.
+Reichen die vorhandenen Daten und Filter der GVM-Datengrundlage nicht aus, ergänze ich weitere IDA-Abfragen:
 
-## Beispiel
+1. Benötigte GVM-Daten in einer Abfrage zusammenstellen.
+2. Ergänzende Daten, etwa auf Kunden- oder Kontoebene, in einer weiteren Abfrage aufbereiten.
+3. Die benötigten Filter dort anwenden.
+4. Zeilenebenen und Verbindungsschlüssel prüfen, dann die Abfragen gezielt verbinden.
 
-Rein konzeptionell: In einer erfundenen Merkmalsprüfung fehlt bei zwei Konten derselben Person P-A eine Angabe; bei P-B ist sie vorhanden. Für die Beispiel-Frage soll genau ein Prüffall je Person entstehen. Die zwei Kontozeilen liefern deshalb einen Fall für P-A mit zwei zugehörigen Detailbelegen. Es ist keine reale GVM-Vorlage und keine Empfehlung für eine bankfachliche Regel.
+Dabei den passenden Vorlagenbezug filtern und das Buchungsdatum bzw. den benötigten Zeitraum über Parameter steuerbar machen. Weitere fachlich erforderliche Filter ergänzen.
 
-## Ergebnis
+## Allgemeiner Ablauf
 
-Die Auswertung liefert eine begründete Fallmenge. GVM steht im agree21-Umfeld für die Bearbeitung beziehungsweise Steuerung von Geschäftsvorfällen. Wie ein konkreter Fall technisch erzeugt oder weitergeleitet wird, ist durch die hier verwendeten öffentlichen Quellen nicht festgelegt.
+- Anlass und gewünschte Bearbeitung festhalten.
+- Auswertung auf die richtige Ebene bringen und Fallmenge prüfen.
+- Eine passende Geschäftsvorfallvorlage zuordnen. Vor einer Umstellung prüfen, welche Vorlage aktiv verwendet wird.
+- Auswahl und spätere Bearbeitung über denselben fachlichen Bezug abgleichen.
 
-## Warum funktioniert das?
+## Worauf ich bei der Datenbasis achte
 
-Auswahl und Bearbeitung beantworten verschiedene Fragen. Eine Auswertung fragt: Welche fachlichen Objekte erfüllen das Kriterium? Ein Geschäftsvorfall ordnet einen Bearbeitungsanlass ein. Eine doppelte Detailzeile muss nicht einen zweiten fachlichen Anlass bedeuten.
+Personen-, Konto- und Vorgangsebene unterscheiden. Hat eine Person mehrere betroffene Konten, muss klar sein, ob ein Fall je Person oder je Konto gemeint ist. Schlüssel, Stichtag, Filter und Mehrfachtreffer kontrollieren; Detailbelege bei einer Verdichtung nachvollziehbar halten.
 
-## Gute Kriterien und Kontrolle
+## Was nicht in IDA selbst passiert
 
-Eine Regel braucht eine eindeutige Bezugsgröße, einen geklärten Datenstand und verständliche Ein-/Ausschlüsse. Unbekannte Merkmale sind nicht automatisch Fehler. Gegenbeispiele und Grenzfälle gehören genauso zur Prüfung wie positive Treffer. Saubere Kriterien machen nachvollziehbar, warum ein Objekt in der Fallmenge erscheint. [Zusammenspiel mit IDA](#/wissen/ida-gvm-datenbasis).
+Die Auswertung liefert die Datenbasis. Das operative Anlegen und Bearbeiten der Geschäftsvorfälle gehört zum nachgelagerten Kontext und ist für die reine Auswertungsaufgabe nicht immer relevant. Ein Berichtslauf bestätigt diese Bearbeitung nicht.
 
-## Typischer Fehler
+## Eigene Merkpunkte
 
-Jede Ergebniszeile ungeprüft als eigenen Geschäftsvorfall interpretieren. Ob ein Fall je Person, Konto oder Anlass entsteht, ist eine fachliche Entscheidung und keine allgemeine GVM-Konstante.
-
-## Plausibilitätscheck
-
-Zwei auffällige Kontozeilen zu P-A ergeben bei der hier gewählten Personenebene einen Prüffall. P-B bleibt ausgeschlossen. Eine andere Falldefinition müsste andere, ausdrücklich erklärte Kontrollwerte besitzen.
+- Auswahlregel und Fallbegriff vor der Weiterverwendung klären.
+- Vorlagenbezug bei Änderungen erneut prüfen.
+- Wiederholte Detailzeilen nicht als zusätzliche Fälle zählen.
+- Für den Abgleich dieselbe Auswahl und denselben Datenstand verwenden.

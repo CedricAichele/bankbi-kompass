@@ -1,10 +1,193 @@
-export const idaPublicIds = ["ida-orientierung","ida-erste-auswertung","ida-granularitaet","ida-filter-praxis","ida-prompts","ida-abfragen-verbinden","ida-berechnungen","ida-ausgabe","ida-plausibilitaet","ida-berichtsbetrieb","ida-formeln","ida-gvm","ida-gvm-datenbasis","ida-ci-batch","ida-ci-datenbasis"];
-export const idaReportingGroups = [
-  {title:"Auswertung aufbauen",items:[{id:"ida-orientierung",label:"IDA verstehen"},{id:"ida-erste-auswertung",label:"Erste Auswertung aufbauen"},{id:"ida-granularitaet",label:"Granularität und Zeilenebene"}]},
-  {title:"Daten auswählen und verbinden",items:[{id:"ida-filter-praxis",label:"Filter richtig einsetzen"},{id:"ida-prompts",label:"Prompts und Parameter"},{id:"ida-abfragen-verbinden",label:"Join, Union, Intersect und Except"}]},
-  {title:"Berechnen, ausgeben und prüfen",items:[{id:"ida-berechnungen",label:"Berechnungen und Aggregationen"},{id:"ida-ausgabe",label:"Liste, Kreuztabelle und Ausgabe"},{id:"ida-plausibilitaet",label:"Plausibilitätsprüfung und Fehlersuche"},{id:"ida-berichtsbetrieb",label:"Scheduling, Versand und Bursting · kurz erklärt"}]},
+export const idaPublicIds = ["ida-reporting","ida-formeln","ida-gvm","ida-ci-batch"];
+export const idaReportingOutline = [
+  {
+    "title": "Grundregeln",
+    "key": "grundregeln",
+    "label": "Grundregeln"
+  },
+  {
+    "title": "Ebenen / Granularität",
+    "key": "granularitaet",
+    "label": "Granularität"
+  },
+  {
+    "title": "Filter",
+    "key": "filter",
+    "label": "Filter"
+  },
+  {
+    "title": "Abfragen verbinden",
+    "key": "joins",
+    "label": "Joins / Union"
+  },
+  {
+    "title": "Prompts / Parameter",
+    "key": "prompts",
+    "label": "Prompts"
+  },
+  {
+    "title": "Berechnungen & Aggregationen",
+    "key": "berechnungen",
+    "label": "Berechnungen"
+  },
+  {
+    "title": "Liste / Kreuztabelle",
+    "key": "darstellung",
+    "label": "Darstellung"
+  },
+  {
+    "title": "Scheduling / Versand / Bursting",
+    "key": "versand",
+    "label": "Versand"
+  },
+  {
+    "title": "Kontrolle",
+    "key": "kontrolle",
+    "label": "Kontrolle"
+  }
 ];
-export const idaDisclaimer = "Bezeichnungen, verfügbare Funktionen und Bedienung können je Cognos-/IDA-Version, Datenquelle und Berechtigung abweichen. Die Beispiele sind generisch und enthalten keine realen Unternehmens- oder Kundendaten.";
+export const idaSearchSections = [
+  {
+    "section": "grundregeln",
+    "terms": [
+      "erste auswertung",
+      "auswertung erstellen"
+    ]
+  },
+  {
+    "section": "granularitaet",
+    "terms": [
+      "granularitat",
+      "ebene",
+      "konten pro person"
+    ]
+  },
+  {
+    "section": "filter",
+    "terms": [
+      "filter",
+      "null werte",
+      "and",
+      "or"
+    ]
+  },
+  {
+    "section": "joins",
+    "terms": [
+      "join",
+      "union",
+      "intersect",
+      "except",
+      "abfragen verbinden"
+    ]
+  },
+  {
+    "section": "prompts",
+    "terms": [
+      "prompt",
+      "parameter",
+      "mehrfachauswahl",
+      "einfachauswahl"
+    ]
+  },
+  {
+    "section": "berechnungen",
+    "terms": [
+      "berechnung",
+      "aggregation",
+      "rang",
+      "ranking",
+      "top n"
+    ]
+  },
+  {
+    "section": "darstellung",
+    "terms": [
+      "liste",
+      "kreuztabelle",
+      "excel export",
+      "csv"
+    ]
+  },
+  {
+    "section": "versand",
+    "terms": [
+      "burst",
+      "versand",
+      "scheduling",
+      "zeitplanung"
+    ]
+  },
+  {
+    "section": "kontrolle",
+    "terms": [
+      "kontrolle",
+      "plausibilitat",
+      "fehlersuche"
+    ]
+  }
+];
+export const idaDisclaimer = "Bezeichnungen und verfügbare Funktionen hängen von IDA-/Cognos-Version, Datenquelle und Berechtigung ab. Beispiele sind erfunden; interne Abläufe und Daten werden nicht veröffentlicht.";
 export const idaLegacyTargets:Record<string,string> = {
-  "ida-aggregation":"ida-berechnungen","ida-anzahl":"ida-berechnungen","ida-ausfuehren":"ida-erste-auswertung","ida-bedingungen":"ida-filter-praxis","ida-berechnung":"ida-berechnungen","ida-betrieb":"ida-berichtsbetrieb","ida-csv":"ida-ausgabe","ida-datenelement":"ida-erste-auswertung","ida-dubletten":"ida-granularitaet","ida-durchschnitt":"ida-berechnungen","ida-ebene":"ida-granularitaet","ida-excel-export":"ida-ausgabe","ida-excel-liste":"ida-ausgabe","ida-extrema":"ida-berechnungen","ida-falllogik":"ida-berechnungen","ida-filter-pruefen":"ida-plausibilitaet","ida-filter":"ida-filter-praxis","ida-filterebene":"ida-filter-praxis","ida-filtertypen":"ida-filter-praxis","ida-formate":"ida-ausgabe","ida-gruppieren":"ida-berechnungen","ida-join-aggregation":"ida-abfragen-verbinden","ida-join-pruefen":"ida-abfragen-verbinden","ida-konto":"ida-granularitaet","ida-mehrere-joins":"ida-abfragen-verbinden","ida-mehrfachauswahl":"ida-prompts","ida-not-null":"ida-filter-praxis","ida-null":"ida-formeln?funktion=coalesce","ida-nullstellen":"ida-plausibilitaet","ida-parameter-anzeigen":"ida-prompts","ida-parameter-filter":"ida-prompts","ida-parameter-mehrfach":"ida-prompts","ida-parameter-optional":"ida-prompts","ida-parameter-typ":"ida-prompts","ida-parameter":"ida-prompts","ida-performance":"ida-plausibilitaet","ida-prompt":"ida-prompts","ida-quote":"ida-berechnungen","ida-sortieren":"ida-ausgabe","ida-spalten":"ida-erste-auswertung","ida-speichern":"ida-erste-auswertung","ida-statusverlauf":"ida-granularitaet","ida-summe":"ida-berechnungen","ida-vorgang":"ida-granularitaet","ida-zeitplanung":"ida-berichtsbetrieb","ida-zielgranularitaet":"ida-granularitaet","reporting":"ida-orientierung","laufzeitanalyse":"ida-plausibilitaet"
+  "ida-aggregation": "ida-reporting?abschnitt=berechnungen",
+  "ida-anzahl": "ida-reporting?abschnitt=berechnungen",
+  "ida-ausfuehren": "ida-reporting?abschnitt=grundregeln",
+  "ida-bedingungen": "ida-reporting?abschnitt=filter",
+  "ida-berechnung": "ida-reporting?abschnitt=berechnungen",
+  "ida-betrieb": "ida-reporting?abschnitt=versand",
+  "ida-csv": "ida-reporting?abschnitt=darstellung",
+  "ida-datenelement": "ida-reporting?abschnitt=grundregeln",
+  "ida-dubletten": "ida-reporting?abschnitt=granularitaet",
+  "ida-durchschnitt": "ida-reporting?abschnitt=berechnungen",
+  "ida-ebene": "ida-reporting?abschnitt=granularitaet",
+  "ida-excel-export": "ida-reporting?abschnitt=darstellung",
+  "ida-excel-liste": "ida-reporting?abschnitt=darstellung",
+  "ida-extrema": "ida-reporting?abschnitt=berechnungen",
+  "ida-falllogik": "ida-reporting?abschnitt=berechnungen",
+  "ida-filter-pruefen": "ida-reporting?abschnitt=kontrolle",
+  "ida-filter": "ida-reporting?abschnitt=filter",
+  "ida-filterebene": "ida-reporting?abschnitt=filter",
+  "ida-filtertypen": "ida-reporting?abschnitt=filter",
+  "ida-formate": "ida-reporting?abschnitt=darstellung",
+  "ida-gruppieren": "ida-reporting?abschnitt=berechnungen",
+  "ida-join-aggregation": "ida-reporting?abschnitt=joins",
+  "ida-join-pruefen": "ida-reporting?abschnitt=joins",
+  "ida-konto": "ida-reporting?abschnitt=granularitaet",
+  "ida-mehrere-joins": "ida-reporting?abschnitt=joins",
+  "ida-mehrfachauswahl": "ida-reporting?abschnitt=prompts",
+  "ida-not-null": "ida-reporting?abschnitt=filter",
+  "ida-null": "ida-formeln?funktion=coalesce",
+  "ida-nullstellen": "ida-reporting?abschnitt=kontrolle",
+  "ida-parameter-anzeigen": "ida-reporting?abschnitt=prompts",
+  "ida-parameter-filter": "ida-reporting?abschnitt=prompts",
+  "ida-parameter-mehrfach": "ida-reporting?abschnitt=prompts",
+  "ida-parameter-optional": "ida-reporting?abschnitt=prompts",
+  "ida-parameter-typ": "ida-reporting?abschnitt=prompts",
+  "ida-parameter": "ida-reporting?abschnitt=prompts",
+  "ida-performance": "ida-reporting?abschnitt=kontrolle",
+  "ida-prompt": "ida-reporting?abschnitt=prompts",
+  "ida-quote": "ida-reporting?abschnitt=berechnungen",
+  "ida-sortieren": "ida-reporting?abschnitt=darstellung",
+  "ida-spalten": "ida-reporting?abschnitt=grundregeln",
+  "ida-speichern": "ida-reporting?abschnitt=grundregeln",
+  "ida-statusverlauf": "ida-reporting?abschnitt=granularitaet",
+  "ida-summe": "ida-reporting?abschnitt=berechnungen",
+  "ida-vorgang": "ida-reporting?abschnitt=granularitaet",
+  "ida-zeitplanung": "ida-reporting?abschnitt=versand",
+  "ida-zielgranularitaet": "ida-reporting?abschnitt=granularitaet",
+  "reporting": "ida-reporting?abschnitt=grundregeln",
+  "laufzeitanalyse": "ida-reporting?abschnitt=kontrolle",
+  "ida-orientierung": "ida-reporting?abschnitt=grundregeln",
+  "ida-erste-auswertung": "ida-reporting?abschnitt=grundregeln",
+  "ida-granularitaet": "ida-reporting?abschnitt=granularitaet",
+  "ida-filter-praxis": "ida-reporting?abschnitt=filter",
+  "ida-prompts": "ida-reporting?abschnitt=prompts",
+  "ida-abfragen-verbinden": "ida-reporting?abschnitt=joins",
+  "ida-berechnungen": "ida-reporting?abschnitt=berechnungen",
+  "ida-ausgabe": "ida-reporting?abschnitt=darstellung",
+  "ida-plausibilitaet": "ida-reporting?abschnitt=kontrolle",
+  "ida-berichtsbetrieb": "ida-reporting?abschnitt=versand",
+  "ida-gvm-datenbasis": "ida-gvm?abschnitt=zusammenhang-mit-ida-auswertungen",
+  "ida-ci-datenbasis": "ida-ci-batch?abschnitt=datenbasis-vorbereiten"
 };
+export function idaSectionKey(title:string) { return idaReportingOutline.find(x=>x.title===title)?.key || title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/ß/g,"ss").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,""); }

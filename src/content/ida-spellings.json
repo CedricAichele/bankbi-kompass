@@ -1,0 +1,198 @@
+[
+  {
+    "names": [
+      "distinctcount",
+      "count(rows for report)"
+    ],
+    "category": "Aggregation",
+    "note": "Für die Zählung im Bericht den Umfang ausdrücklich festlegen. Hier ist count mit einem verlässlich gefüllten Datenelement bzw. count distinct belegt; diese Notizschreibweisen werden nicht als zusätzliche universelle Cognos-Funktionen vorausgesetzt.",
+    "target": "count-distinct"
+  },
+  {
+    "names": [
+      "variance",
+      "stddev",
+      "covariance",
+      "correlation"
+    ],
+    "category": "Aggregation",
+    "note": "Streuung und Zusammenhang sind kontextabhängig. Cognos kennt unter anderem variance und standard-deviation; statistische Varianten, Stichprobe/Grundgesamtheit und Datenquellenunterstützung prüfen. stddev ist nicht blind als Cognos-Schreibweise zu kopieren.",
+    "target": "standard-deviation"
+  },
+  {
+    "names": [
+      "iif",
+      "zeroifnull",
+      "nullifzero"
+    ],
+    "category": "Logik",
+    "note": "In einem Cognos-Bericht lassen sich die gemeinten Aufgaben mit if/then/else, coalesce bzw. nullif ausdrücken. Die kurzen Notiznamen sind keine zugesagten zusätzlichen Funktionen des verfügbaren Function Sets.",
+    "target": "if"
+  },
+  {
+    "names": [
+      "initcap",
+      "title",
+      "proper",
+      "ucase",
+      "lcase"
+    ],
+    "category": "Text",
+    "note": "Wortanfänge und Groß-/Kleinschreibung unterscheiden. upper und lower sind als Berichtsausdrücke enthalten; INITCAP sowie alternative Namen hängen von Datenquelle und Function Set ab. Eigennamen nicht blind umschreiben.",
+    "target": "upper"
+  },
+  {
+    "names": [
+      "ascii",
+      "chr",
+      "soundex",
+      "insert",
+      "reverse",
+      "overlay",
+      "space",
+      "split",
+      "contains",
+      "matches"
+    ],
+    "category": "Text",
+    "note": "Zeichencodes, phonetische Vergleiche und Textbearbeitung haben je Datenquelle andere Funktionen. contains([Text],Suchwert), matches und split nicht ungeprüft als allgemeine Berichtsfunktionen übernehmen. Für einfache Teiltextsuche sind position und LIKE enthalten; für Muster Regex im passenden SQL-Kontext.",
+    "target": "position"
+  },
+  {
+    "names": [
+      "str",
+      "varchar",
+      "string",
+      "char",
+      "int",
+      "integer",
+      "smallint",
+      "bigint",
+      "decimal",
+      "float",
+      "real",
+      "number",
+      "to_number",
+      "double_precision",
+      "tinyint",
+      "num"
+    ],
+    "category": "Typumwandlung",
+    "note": "SQL-Typnamen, datenbankspezifische Umwandlungsfunktionen und Cognos-cast sind verschiedene Dinge. Der bestätigte Cognos-Weg verwendet cast(Ausdruck, Typ); natives SQL kann CAST(Ausdruck AS Typ) verlangen. Zulässige Typen und Konvertierungen im jeweiligen Function Set nachlesen.",
+    "target": "cast-number"
+  },
+  {
+    "names": [
+      "current_time",
+      "today",
+      "now"
+    ],
+    "category": "Datum/Zeit",
+    "note": "Technischer Ausführungszeitpunkt statt fachlicher Stichtag. In Berichtsausdrücken dokumentiert IBM auch Today() und Now(); SQL kennt andere Schreibweisen. Nicht aus einem Zeitwert automatisch auf das fachliche Berichtsdatum schließen.",
+    "target": "current-timestamp"
+  },
+  {
+    "names": [
+      "year",
+      "month",
+      "day",
+      "hour",
+      "minute",
+      "second",
+      "quarter",
+      "week",
+      "weekday",
+      "day_of_week",
+      "day_of_year",
+      "extract"
+    ],
+    "category": "Datum/Zeit",
+    "note": "Die Notizen nennen kurze Bestandteilsfunktionen. Für die enthaltenen Cognos-Beispiele ist extract(part, Datum) bzw. _day_of_week dokumentiert. SQL-EXTRACT mit FROM und direkte Datumsfunktionen nur im passenden Datenquellenkontext verwenden; Kalenderwochenregeln unterscheiden sich.",
+    "target": "extract-year"
+  },
+  {
+    "names": [
+      "add_days",
+      "add_weeks",
+      "add_months",
+      "add_quarters",
+      "add_years",
+      "add_hours",
+      "add_minutes",
+      "add_seconds",
+      "days_between",
+      "months_between",
+      "years_between",
+      "relativeDate"
+    ],
+    "category": "Datum/Zeit",
+    "note": "Datum verschieben oder Differenzen bilden. In den belegten Cognos-Beispielen stehen Unterstrichfunktionen wie _add_days und _add_months. Aus Namen ohne Unterstrich oder relativeDate folgt keine universelle Berichtssyntax; Einheit und Parameterreihenfolge prüfen.",
+    "target": "add-days"
+  },
+  {
+    "names": [
+      "first_of_month",
+      "first_of_quarter",
+      "first_of_year",
+      "last_of_month",
+      "last_of_quarter",
+      "last_of_year"
+    ],
+    "category": "Datum/Zeit",
+    "note": "Periodenanfang und Periodenende nicht mit Verschieben um eine feste Tageszahl verwechseln. _first_of_month und _last_of_month sind konkret belegt; weitere Periodenfunktionen hängen vom verfügbaren Function Set ab.",
+    "target": "last-of-month"
+  },
+  {
+    "names": [
+      "timestampMask",
+      "dateMask"
+    ],
+    "category": "Datum/Zeit",
+    "note": "Eine Textmaske ist kein Datentyp. Ohne bestätigte Syntax dieses Function Sets keine Maskenfunktion kopieren. Für die belegte Standarddarstellung date2string bzw. timestamp2string verwenden oder die Ausgabeformatierung einstellen.",
+    "target": "date2string"
+  },
+  {
+    "names": [
+      "truncate",
+      "log",
+      "sign",
+      "sin",
+      "cos",
+      "tan",
+      "asin",
+      "acos",
+      "atan"
+    ],
+    "category": "Zahlen",
+    "note": "Mathematische Notiznamen bleiben als Orientierung erhalten. Runden, Abschneiden, Logarithmusbasis und Winkeleinheit getrennt behandeln. Zusätzliche SQL-/Trigonometriefunktionen nur aus dem Function Set der jeweiligen Quelle einsetzen.",
+    "target": "round"
+  },
+  {
+    "names": [
+      "promptmacro",
+      "promptdefault"
+    ],
+    "category": "Prompt/Parameter",
+    "note": "Die belegten Makrofunktionen heißen prompt und promptmany. Einen Default über das defaultText-Argument von prompt setzen; diese beiden Notiznamen nicht als eigenständige bestätigte Funktionen kopieren.",
+    "target": "prompt-default"
+  },
+  {
+    "names": [
+      "member",
+      "roleValue"
+    ],
+    "category": "Dimensional / OLAP",
+    "note": "Dimensionale Funktionen, keine relationalen Textspaltenfunktionen. member definiert ein berechnetes Mitglied, statt lediglich einen Schlüssel zu referenzieren. roleValue benötigt eine zum Modell passende Rolle. Mitglieds- und Rollenargumente aus dem tatsächlichen Modell einsetzen.",
+    "target": "olap-tuple"
+  },
+  {
+    "names": [
+      "exists",
+      "current_date - 1",
+      "current_timestamp - interval"
+    ],
+    "category": "Vergleiche",
+    "note": "SQL-Existenzprüfung und Datumsarithmetik benötigen den passenden Ausdruckskontext. EXISTS arbeitet mit einer Unterabfrage; exists([Feld]) ist keine übernommene allgemeine Cognos-Formel. Für Datumsverschiebungen sind hier geprüfte _add_days-Beispiele enthalten.",
+    "target": "add-days"
+  }
+]

@@ -2,7 +2,8 @@ import Fuse from "fuse.js";
 import type { Content } from "../content/schema";
 import { toolsCatalog } from "../content/catalog";
 import { mEntries, mAliases } from "../content/m-reference";
-import { idaFunctions, idaNormalize } from "../content/ida-reference";
+import { idaFunctions, idaSpellings, idaNormalize } from "../content/ida-reference";
+import { idaSearchSections } from "../content/ida";
 import { daxEntries } from "../content/dax-reference";
 import { excelEntries } from "../content/excel-reference";
 export type Filters = {
@@ -108,6 +109,11 @@ export function searchContent(
 /** Exact function searches can open the matching reference card without duplicating articles. */
 export function searchTarget(item: Content, query = "") {
   const base="/wissen/"+item.slug;
+  if(item.id === "ida-reporting") {
+    const q=normalize(query).replace(/\b(?:ida|cognos|agree21)\b/g,"").trim();
+    const section=idaSearchSections.find(x=>x.terms.some(term=>q===term || (term.length>3 && q.includes(term))));
+    if(section)return base+"?abschnitt="+section.section;
+  }
   if(item.id === "power-query-m") {
     const exact=mEntries.find(x=>normalize(x.name)===normalize(query) || mAliases[x.name]?.some(a=>normalize(a)===normalize(query)));
     if(exact) return base+"?funktion="+encodeURIComponent(exact.name);
@@ -120,6 +126,7 @@ export function searchTarget(item: Content, query = "") {
     const q=idaNormalize(query).replace(/\b(?:ida|cognos|agree21)\b/g,"").trim();
     const exact=idaFunctions.find(x=>idaNormalize(x.name)===q || idaNormalize(x.id)===q || x.aliases.some(a=>idaNormalize(a)===q));
     if(exact)return (exact.frequent ? base : "/ida/referenz")+"?funktion="+encodeURIComponent(exact.id);
+    if(idaSpellings.some(x=>x.names.some(name=>idaNormalize(name)===q)))return "/ida/referenz?funktion="+encodeURIComponent(q);
   }
   if(item.id === "excel-formeln") return base+"?funktion="+encodeURIComponent(query.trim());
   return base;

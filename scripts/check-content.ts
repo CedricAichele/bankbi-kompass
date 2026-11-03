@@ -5,7 +5,7 @@ import { scanContent } from "../src/lib/content-safety";
 import { toolsCatalog, powerQueryGroups, frequent } from "../src/content/catalog";
 import { idaPublicIds } from "../src/content/ida";
 import { archivedIdaIds } from "../src/content/redirects";
-import { idaFunctions } from "../src/content/ida-reference";
+import { idaFunctions, idaSpellings } from "../src/content/ida-reference";
 const files = ["articles", "problems", "tasks"].flatMap((dir) =>
   readdirSync(join("src/content", dir))
     .filter((x) => x.endsWith(".md"))
@@ -15,12 +15,15 @@ const items = files.map((file) => parseContent(readFileSync(file, "utf8")));
 validateLinks(items);
 if (items.some(x => archivedIdaIds.has(x.id))) throw new Error("Archivierte IDA-Inhalte dürfen nicht öffentlich indexiert werden.");
 const publicIda = items.filter(x=>x.bereich==="IDA");
-if(publicIda.length>15 || publicIda.some(x=>!idaPublicIds.includes(x.id) || x.screenshots.length)) throw new Error("IDA benötigt geprüfte Sammelartikel ohne Bildschirmaufnahmen.");
+if(publicIda.length!==4 || publicIda.some(x=>!idaPublicIds.includes(x.id) || x.darstellung!=="ida-note" || x.screenshots.length || x.verwandteThemen.length>4)) throw new Error("IDA benötigt vier geprüfte Notizseiten ohne Bildschirmaufnahmen und höchstens vier Weiterführungen.");
 if(idaPublicIds.some(id=>!publicIda.some(x=>x.id===id))) throw new Error("Ein geprüfter IDA-Eintrag fehlt.");
 if(new Set(idaFunctions.map(x=>x.id)).size!==idaFunctions.length) throw new Error("Doppelte IDA-Referenzkennung.");
 for(const entry of idaFunctions) {
   for(const field of ["source","syntax","code","input","result","adapt","pitfall","availability","where","support"] as const) if(!entry[field]) throw new Error(`IDA-Referenz ${entry.id}: ${field} fehlt.`);
   if(scanContent(JSON.stringify(entry),{ida:true}).length) throw new Error(`IDA-Referenz ${entry.id}: Vertraulichkeitsprüfung fehlgeschlagen.`);
+}
+for(const entry of idaSpellings) {
+  if(!entry.names.length || !entry.note || !idaFunctions.some(x=>x.id===entry.target) || scanContent(JSON.stringify(entry),{ida:true}).length) throw new Error("Ungültige IDA-Notizschreibweise.");
 }
 const ids = new Set(items.map((x) => x.slug));
 for (const id of [
@@ -44,7 +47,7 @@ for (const [i, item] of items.entries()) {
   const sections = sectionsOf(item.body);
   if (!item.quellen.length)
     throw new Error(`${item.id}: Passende offizielle Dokumentation fehlt.`);
-  if (item.praxis && (!sections.Ergebnis || !sections["Warum funktioniert das?"] || !sections["Plausibilitätscheck"]))
+  if (item.darstellung !== "ida-note" && item.praxis && (!sections.Ergebnis || !sections["Warum funktioniert das?"] || !sections["Plausibilitätscheck"]))
     throw new Error(`${item.id}: Vertiefte Anleitung benötigt Ergebnis, Erklärung und Plausibilitätscheck.`);
   if ((frequent.includes(item.id) || item.art === "aufgabe") && !sections.Ergebnis)
     console.warn(`Redaktioneller Hinweis ${item.id}: konkretes Ergebnis als eigenen Abschnitt ergänzen.`);

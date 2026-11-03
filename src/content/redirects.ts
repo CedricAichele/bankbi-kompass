@@ -38,7 +38,7 @@ export const legacyIds: Record<string,string> = {
   "begriff-append": "anhaengen",
   "begriff-join": "zusammenfuehren"
 };
-export const archivedIdaIds = new Set(["ida-aggregation","ida-anzahl","ida-ausfuehren","ida-bedingungen","ida-berechnung","ida-betrieb","ida-csv","ida-datenelement","ida-dubletten","ida-durchschnitt","ida-ebene","ida-excel-export","ida-excel-liste","ida-extrema","ida-falllogik","ida-filter-pruefen","ida-filter","ida-filterebene","ida-filtertypen","ida-formate","ida-gruppieren","ida-join-aggregation","ida-join-pruefen","ida-konto","ida-mehrere-joins","ida-mehrfachauswahl","ida-not-null","ida-null","ida-nullstellen","ida-parameter-anzeigen","ida-parameter-filter","ida-parameter-mehrfach","ida-parameter-optional","ida-parameter-typ","ida-parameter","ida-performance","ida-prompt","ida-quote","ida-sortieren","ida-spalten","ida-speichern","ida-statusverlauf","ida-summe","ida-vorgang","ida-zeitplanung","ida-zielgranularitaet","reporting","laufzeitanalyse"]);
+export const archivedIdaIds = new Set(Object.keys(idaLegacyTargets));
 export const consolidatedRoutes: Record<string,string> = {
   "karte": "/wissen/visualwahl",
   "tabelle": "/wissen/visualwahl",

@@ -47,7 +47,7 @@ export function EntryList({
             </div>
             <ArrowUpRight size={18} />
           </Link>
-          {quickView && (
+          {quickView && item.darstellung !== "ida-note" && (
             <details className="quick-preview">
               <summary>Schnellansicht: {item.titel}</summary>
               <div>

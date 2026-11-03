@@ -21,7 +21,7 @@ describe("Kurze, vollständige Schnellreferenzen", () => {
     for (const item of contents) {
       expect(schema.safeParse(item).success, item.id).toBe(true);
       const parts = sectionsOf(item.body);
-      for (const section of requiredSections)
+      for (const section of item.darstellung === "ida-note" ? [] : requiredSections)
         expect(parts[section], item.id).toBeTruthy();
       expect(item.kurzbeschreibung.length, item.id).toBeLessThanOrEqual(340);
       if (item.praxis) for (const name of ["Ergebnis", "Warum funktioniert das?", "Plausibilitätscheck"])

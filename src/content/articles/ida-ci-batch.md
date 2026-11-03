@@ -2,31 +2,32 @@
 {
   "id": "ida-ci-batch",
   "slug": "ida-ci-batch",
-  "titel": "agree21CI-Batch / aCI-Batch",
+  "titel": "aCI-Batch",
   "bereich": "IDA",
   "werkzeuge": [
     "IDA"
   ],
   "kategorie": "aCI-Batch",
   "schwierigkeit": "Grundlage",
-  "kurzbeschreibung": "Bestandsänderungen als kontrollierte Verarbeitung einer fachlich vorbereiteten Datenmenge verstehen. Auswahl, beabsichtigte Änderung und Ergebnisprüfung bleiben getrennt nachvollziehbar.",
-  "ort": "Konzeptionelle fachliche Prüfmethode; keine bankindividuelle Bedienfolge",
+  "kurzbeschreibung": "Meine Merkpunkte zu agree21CI-Batch: IDA-Auswahl, eindeutige Schlüssel, zu ändernde Werte, Übergabe und Prüfung vor und nach der Verarbeitung.",
+  "ort": "Persönliche IDA-Arbeitsnotizen",
   "tags": [
     "aCI-Batch",
-    "synthetisch"
+    "IDA-Notizen"
   ],
   "synonyme": [
     "ci batch",
     "aci batch",
     "agree21ci batch",
-    "aCI-Batch",
     "massenänderung",
-    "bestandsänderung"
+    "bestandsänderung",
+    "ida ci batch",
+    "ida aci batch"
   ],
   "verwandteThemen": [
-    "ida-ci-datenbasis",
-    "ida-plausibilitaet",
-    "ida-granularitaet"
+    "ida-reporting",
+    "ida-formeln",
+    "ida-gvm"
   ],
   "kontexte": [
     "Reporting",
@@ -35,61 +36,68 @@
   "quelleTyp": "oeffentliche-dokumentation",
   "zuletztGeprueft": "2026-11-03",
   "art": "artikel",
-  "ebene": "Praxisartikel",
-  "praxis": true,
+  "ebene": "Kernwissen",
+  "praxis": false,
   "screenshots": [],
   "quellen": [
     "https://www.rurberatung.de/",
     "https://www.arbeitsagentur.de/jobsuche/jobdetail/14935-00011588_007-S"
-  ]
+  ],
+  "darstellung": "ida-note"
 }
 ---
 
-## Wann brauche ich das?
+aCI-Batch ordne ich hier als Werkzeug für Bestandsänderungen auf Grundlage vorbereiteter Daten ein. IDA liefert die Auswahl und Kontrollbasis; die Änderung erfolgt im nachgelagerten Verarbeitungsschritt.
 
-Du willst die Rolle von aCI-Batch bei fachlich vorbereiteten Bestandsänderungen verstehen. Öffentlich zugängliche Quellen nennen agree21CI-Batch im Zusammenhang mit Bestandsänderungen nach fachlichen Vorgaben. Hier geht es um die Prüfmethode, nicht um ein technisches Importformat.
+## Wofür ich es brauche
 
-## Voraussetzungen
+Eine fachlich definierte Änderung soll für eine ausgewählte Menge von Objekten vorbereitet werden. Entscheidend sind die richtige Auswahl, ein eindeutiger Bezug und der beabsichtigte Zielwert.
 
-Eine fachlich geklärte Anforderung und eine bekannte Ausgangsmenge. Die Beispiele sind erfunden. Die Darstellung enthält keine echte Dateistruktur, Bedienfolge oder Übertragungslogik.
+## Datenbasis vorbereiten
 
-## Schritte
+- In IDA die benötigten Personen, Konten oder anderen fachlichen Objekte auswählen.
+- Stichtag und Filter festhalten; nur notwendige Angaben übernehmen.
+- Eine eindeutige Zeile je beabsichtigtem Änderungsfall herstellen.
+- Fehlende Angaben und widersprüchliche Zielwerte vor der Weiterverarbeitung klären.
 
-1. Fachliche Anforderung und gewünschten Zielzustand beschreiben.
-2. Relevanten Bestand anhand klarer Auswahlkriterien bestimmen.
-3. Ausgangswerte, Zielwerte und eindeutig identifizierbare fachliche Objekte prüfen.
-4. Datenqualität und die Anforderungen an Typ und Format im tatsächlich zugelassenen Kontext klären.
-5. Kontrollierte Verarbeitung als eigenen Umsetzungsschritt betrachten.
-6. Tatsächlichen Endzustand mit der erwarteten Änderungsmenge vergleichen.
+## Schlüssel / zu ändernde Werte
 
-## Beispiel
+Der Schlüssel muss genau das gewünschte Objekt treffen. Ausgangswert und Zielwert gegenüberstellen: Steht ein Objekt bereits im Zielzustand, ist es kein zusätzlicher notwendiger Änderungsfall. Zwei Zeilen mit demselben Schlüssel und verschiedenen Zielwerten sind ein Konflikt; nicht beliebig eine Zeile entfernen.
 
-**Fachliche Kontrolltabelle – kein aCI-Batch-Dateischema:**
+Ein Schlüssel kann aus mehreren Bestandteilen bestehen. Bestandteile, Reihenfolge, Länge und Formatierung prüfen; führende Nullen bei textuellen Kennungen erhalten. Ein frei erfundenes fachliches Beispiel wäre die Kombination aus Kontonummer 4711 und Stichtag 30.09.2026. Es legt weder Feldlängen noch einen technischen Schlüsselaufbau für aCI-Batch fest.
 
-| Erfundenes Objekt | Ausgangszustand | Gewünschter Zustand | Fachliche Bewertung |
-|---|---|---|---|
-| Demo-A | bisher | gewünscht | Änderung erforderlich |
-| Demo-B | gewünscht | gewünscht | bereits im Zielzustand |
-| Demo-C | bisher | gewünscht | Änderung erforderlich |
+## Änderung, Neuanlage und Löschung
 
-Die Spalten sind Erklärungshilfen. Die Texte sind keine realen Änderungskennzeichen oder erlaubten Importwerte. Die drei ausgewählten Objekte bedeuten nur zwei erwartete fachliche Änderungen.
+**Änderung:** Ein vorhandenes Objekt erhält einen anderen Wert. **Neuanlage:** Ein bisher nicht vorhandenes Objekt entsteht. **Löschung:** Ein vorhandenes Objekt wird entfernt. Die Vorgangsart muss zur fachlichen Absicht passen. Welche Arten für ein konkretes Objekt unterstützt sind, muss im jeweiligen Verarbeitungskontext geprüft werden; die Begriffe sind keine Zusage, dass aCI-Batch jede Operation erlaubt.
 
-## Ergebnis
+## Datei / Übergabe allgemein
 
-Auswahlmenge 3, erwartete Änderungsmenge 2, bereits passend 1. Ob und wie diese fachliche Menge technisch verarbeitet werden kann, hängt von der konkreten Umgebung ab und wird aus den öffentlichen Quellen nicht abgeleitet.
+Für die Übergabe gelten die Anforderungen des vorgesehenen Verarbeitungskontexts: benötigte Angaben, Datentypen, Format und eindeutige Schlüssel. Eine Berichtsliste ist nicht automatisch eine verarbeitbare Übergabedatei. Hier wird kein aCI-Batch-Dateischema festgelegt.
 
-## Warum funktioniert das?
+Das Zielfeld muss über die für den Objektbereich vorgesehenen Metadaten eindeutig identifiziert werden. Welche Felder änderbar und welche Angaben erforderlich sind, ergibt sich aus der jeweils gültigen Produktdokumentation.
 
-Eine Massenänderung braucht eine nachvollziehbare Abgrenzung zwischen ausgewählten Objekten und wirklich zu ändernden Objekten. Bereits passende Objekte und Konflikte sind keine zusätzlichen notwendigen Änderungen. Die Auswertung selbst ändert den Bestand noch nicht.
+| Angabe | Merken |
+|---|---|
+| Verarbeitungsart | Änderung, Neuanlage oder Löschung nur verwenden, wenn für Objekt und Feld unterstützt |
+| Objektbereich und Zielfeld | zulässige Kombination anhand der Felddefinition bestimmen |
+| Feldlänge | maximal bzw. technisch vorgesehene Länge beachten; nicht mit der tatsächlichen Wertlänge verwechseln |
+| Nachkommastellen | beeinflussen die Interpretation und Formatierung numerischer Werte |
+| Datentyp und Format | müssen exakt zur technischen Felddefinition passen |
+| Alter und neuer Wert | bisherigen Wert und beabsichtigten Zielwert unterscheiden |
 
-## Kontrolle und Grenzen
+Je nach Änderungsart kann der bisherige Wert zur Validierung relevant sein oder bewusst ignoriert werden. Für NULL, leeren Inhalt und Ignorieren ausschließlich die dafür dokumentierten technischen Werte verwenden.
 
-Formale Verarbeitbarkeit und fachliche Richtigkeit sind verschiedene Prüfungen. Ein formal akzeptierter Datensatz kann das falsche Objekt oder einen fachlich falschen Zielwert betreffen. Vorher/Nachher muss sich auf denselben Bezug und einen geeigneten Datenstand beziehen. Ein unbekanntes Ergebnis ist keine bestätigte erfolgreiche Änderung. [IDA-Datenbasis vorbereiten](#/wissen/ida-ci-datenbasis).
+Die vorbereitete Datei wird über den vorgesehenen kontrollierten Prozess verarbeitet.
 
-## Typischer Fehler
+## Prüfung vor Verarbeitung
 
-Alle drei ausgewählten Objekte als drei notwendige Änderungen zählen oder eine erfolgreiche technische Verarbeitung mit einem geprüften fachlichen Zielzustand gleichsetzen.
+- Auswahlmenge und tatsächlich notwendige Änderungsmenge unterscheiden.
+- Schlüssel vollständig und auf der gewählten Ebene eindeutig?
+- Ausgangswerte noch passend zum betrachteten Datenstand?
+- Zielwerte fachlich begründet und ohne Widersprüche?
+- Erforderliche Angaben vorhanden, Typ und Format kompatibel?
+- Zusätzlich dokumentierte Wertebereiche, Plausibilitäten, Abhängigkeiten und Nebenobjekte berücksichtigt? Nur das Zielfeld zu betrachten kann für eine gültige Änderung zu wenig sein.
 
-## Plausibilitätscheck
+## Prüfung nach Verarbeitung
 
-Demo-A und Demo-C sollen den Zielzustand erreichen; Demo-B war schon passend. Erwartung 2 Änderungen, danach 3 passende Zustände. Abweichungen je fachlichem Objekt untersuchen; daraus keine allgemeingültigen aCI-Protokoll- oder Statuscodes ableiten.
+Dieselben Objekte erneut betrachten und den tatsächlichen Zielzustand vergleichen. Geänderte, bereits passende und ungeklärte Fälle getrennt zählen. Stichproben ergänzen den Mengenabgleich; ein technischer Erfolgsstatus ersetzt die fachliche Ergebnisprüfung nicht.

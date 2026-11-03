@@ -119,7 +119,7 @@ describe("Schnelle Bedienung und Routing", () => {
       screen.queryByRole("link", { name: "SUMMEWENNS" }),
     ).not.toBeInTheDocument();
   });
-  it("IDA zeigt drei öffentliche Säulen ohne alte Miniartikel", async () => {
+  it("IDA zeigt vier Notizseiten ohne alte Miniartikel", async () => {
     window.location.hash = "/bereich/ida";
     render(<App />);
     expect(await screen.findByRole("heading", {level: 1, name: "IDA / Cognos"})).toBeVisible();

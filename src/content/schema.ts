@@ -90,6 +90,7 @@ export const schema = z
     ]),
     zuletztGeprueft: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
     art: z.enum(["artikel", "problem", "aufgabe"]),
+    darstellung: z.literal("ida-note").optional(),
     ebene: z.enum(["Kernwissen", "Praxisartikel", "Referenz"]).optional(),
     praxis: z.boolean().default(false),
     schnellschritte: z.array(z.string().min(10)).min(2).max(4).optional(),
@@ -108,6 +109,8 @@ export const schema = z
     quellen: z.array(z.string().url()).default([]),
   })
   .superRefine((item, ctx) => {
+    if (item.darstellung === "ida-note" && item.bereich !== "IDA")
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: "Der Notizmodus ist für IDA reserviert." });
     if (item.bereich === "IDA")
       for (const img of item.screenshots)
         if (!img.schema || (img.src && !img.src.startsWith("images/ida/")))
@@ -138,6 +141,13 @@ export function parseContent(raw: string): Content {
   if (!match) throw new Error("Markdown-Frontmatter fehlt.");
   const item = { ...schema.parse(parse(match[1])), body: match[2] };
   const sections = sectionsOf(item.body);
+  if (item.darstellung === "ida-note") {
+    const intro = item.body.split(/^## /m)[0].trim();
+    const headings = [...item.body.matchAll(/^## (.+)$/gm)].map(x => x[1].trim());
+    if (!intro || headings.length < 2 || headings.some(name => !sections[name]) || new Set(headings).size !== headings.length)
+      throw new Error(`${item.id}: IDA-Notizen benötigen eine Einordnung und mindestens zwei eindeutige, gefüllte Abschnitte.`);
+    return item;
+  }
   for (const name of requiredSections)
     if (!sections[name])
       throw new Error(`${item.id}: Abschnitt „${name}“ fehlt.`);

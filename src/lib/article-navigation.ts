@@ -1,6 +1,7 @@
 import { type Content, sectionsOf } from "../content/schema";
 import { powerQueryGroups } from "../content/catalog";
 import { excelAreas } from "../content/discovery";
+import { idaReportingOutline } from "../content/ida";
 import type { Crumb } from "../components/Breadcrumbs";
 
 export type TocEntry = { label: string; target: string; children?: TocEntry[] };
@@ -14,7 +15,8 @@ export const workflowPhases = [
 ];
 const longGuides = new Set(["pq-workflow","dateien-kombinieren","pq-benutzerdefiniert","pq-profiling","dax-grundlagen","excel-liste-vorbereiten","excel-power-query","pivottable"]);
 export function articleToc(item:Content):TocEntry[] {
-  if(item.id==="ida-formeln") return [{label:"Einstieg",target:"ida-reference-intro"},{label:"Häufige Funktionen",target:"ida-function-search"},{label:"Kategorien",target:"ida-categories"},{label:"Eingabehilfe",target:"ida-input"},{label:"Erweiterter Katalog",target:"ida-advanced"}];
+  if(item.id==="ida-reporting") return idaReportingOutline.map(x=>({label:x.label,target:"ida-"+x.key}));
+  if(item.id==="ida-formeln") return [{label:"Häufig gebraucht",target:"ida-function-search"},{label:"Kategorien",target:"ida-categories"},{label:"Erweiterter Katalog",target:"ida-advanced"}];
   if(item.id==="power-query-m") return [
     {label:"Einstieg",target:"m-intro"},{label:"Häufig gebraucht",target:"m-common"},{label:"Kategorien",target:"m-categories"},{label:"Referenz durchsuchen",target:"m-search"},{label:"Eingabehilfe",target:"m-input"},
   ];
@@ -49,7 +51,7 @@ export function articleBreadcrumbs(item:Content):Crumb[] {
     else if(item.kategorie==="Berichte & Visualisierung")base.push({label:"Berichte",to:"/bereich/power-bi/themen/berichte"});
   } else if(item.bereich==="IDA") {
     base.push({label:"IDA / Cognos",to:"/bereich/ida"});
-    if(item.kategorie==="Auswertungen & Reporting")base.push({label:"Auswertungen & Reporting",to:"/ida/auswertungen"});
+    if(item.kategorie==="Auswertungen & Reporting" && item.id!=="ida-reporting")base.push({label:"Auswertungen & Reporting",to:"/wissen/ida-reporting"});
     else if(item.kategorie==="GVM" && item.id!=="ida-gvm")base.push({label:"GVM",to:"/wissen/ida-gvm"});
     else if(item.kategorie==="aCI-Batch" && item.id!=="ida-ci-batch")base.push({label:"aCI-Batch",to:"/wissen/ida-ci-batch"});
   } else if(item.bereich==="Excel") {
